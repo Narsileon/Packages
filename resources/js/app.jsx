@@ -41,7 +41,7 @@ createInertiaApp({
                     const langs = import.meta.glob('../../lang/*.json')
                     return await langs[`../../lang/${lang}.json`]()
             }}>
-                <App {...props} />             
+                <App {...props}/>             
             </LaravelReactI18nProvider>, el      
         );
     },
