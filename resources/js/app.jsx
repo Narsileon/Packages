@@ -3,11 +3,10 @@ import '../css/app.css';
 import { render } from 'react-dom';
 import { createInertiaApp } from '@inertiajs/inertia-react';
 import { InertiaProgress } from '@inertiajs/progress';
-import { LaravelReactI18nProvider } from 'laravel-react-i18n'
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 
-import WebLayout from './Layouts/Web/Layout.jsx';
-import BackofficeLayout from './Layouts/Backoffice/Layout';
+import WebLayout from '@Shared/Layouts/WebLayout.jsx';
+import BackofficeLayout from '@Shared/Layouts/BackofficeLayout';
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 
@@ -33,17 +32,7 @@ createInertiaApp({
         return page;
     },
     setup({ el, App, props }) {
-        return render(
-            <LaravelReactI18nProvider
-                lang={'fr'}
-                fallbackLang={'en'}
-                resolve={async (lang) => {
-                    const langs = import.meta.glob('../../lang/*.json')
-                    return await langs[`../../lang/${lang}.json`]()
-            }}>
-                <App {...props}/>             
-            </LaravelReactI18nProvider>, el      
-        );
+        return render(<App {...props}/>, el);
     },
 });
 

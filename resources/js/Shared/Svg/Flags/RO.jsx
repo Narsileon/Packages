@@ -9,6 +9,7 @@ export default function RO({ size="8" }) {
 			}
 			viewBox="0 0 640 480"
 			aria-hidden="true"
+			xmlns="http://www.w3.org/2000/svg"
 		>
 			<path fill="#00319C" d="M0 0h213.3v480H0z"/>
 			<path fill="#FFDE00" d="M213.3 0h213.4v480H213.3z"/>

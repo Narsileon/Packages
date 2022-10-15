@@ -9,6 +9,7 @@ export default function PL({ size="8" }) {
 			}
 			viewBox="0 0 640 480"
 			aria-hidden="true"
+			xmlns="http://www.w3.org/2000/svg"
 		>
 			<path fill="#FFFFFF" d="M640 480H0V0h640z"/>
 			<path fill="#DC143C" d="M640 480H0V240h640z"/>

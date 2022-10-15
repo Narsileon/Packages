@@ -9,6 +9,7 @@ export default function NL({ size="8" }) {
 			}
 			viewBox="0 0 640 480"
 			aria-hidden="true"
+			xmlns="http://www.w3.org/2000/svg"
 		>
 			<path fill="#21468b" d="M0 0h640v480H0z"/>
 			<path fill="#FFFFFF" d="M0 0h640v320H0z"/>
