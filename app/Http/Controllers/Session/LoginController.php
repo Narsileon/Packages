@@ -18,7 +18,7 @@ class LoginController extends Controller
 
     public function create()
     {
-        return Inertia::render('session.login.create');
+        return Inertia::render('Session/Login/Create');
     }
 
     public function store(LoginCreateRequest $request)

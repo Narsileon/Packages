@@ -8,13 +8,13 @@ export default function FormTextArea({
 }) {
     return (
         <div>
-            <FormLabel label={label}/>
+            <FormLabel label={ label }/>
             <textarea 
-                className={`field ${className}`}
-                required={true}
-                {...props}
+                className={ `field ${className}` }
+                required={ true }
+                { ...props }
             /> 
-            <FormError message={error}/>
+            <FormError message={ error }/>
         </div>   
     );
 }

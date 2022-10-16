@@ -9,11 +9,11 @@ export default function FormSelect({
 }) {
     return (
         <div>
-            <FormLabel label={label}/>
+            <FormLabel label={ label }/>
             <select
-                className={`field ${className}`}
-                required={true}
-                {...props}
+                className={ `field ${className}` }
+                required={ true }
+                { ...props }
             >            
                 {
                     options.map((option, index) => {

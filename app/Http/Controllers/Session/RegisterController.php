@@ -18,7 +18,7 @@ class RegisterController extends Controller
 
     public function create()
     {
-        return Inertia::render('session.register.create');
+        return Inertia::render('Session/Register/Create');
     }
 
     public function store(RegisterCreateRequest $request)

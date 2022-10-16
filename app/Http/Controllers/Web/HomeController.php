@@ -15,7 +15,7 @@ class HomeController extends Controller
 
     public function __invoke()
     {
-        return Inertia::render('web.home.index');
+        return Inertia::render('Web/Home/Index');
     }
 
     #endregion

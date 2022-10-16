@@ -15,7 +15,7 @@ class DashboardController extends Controller
 
     public function __invoke()
     {
-        return Inertia::render('backoffice.dashboard.index');
+        return Inertia::render('Backoffice/Dashboard/Index');
     }
 
     #endregion
