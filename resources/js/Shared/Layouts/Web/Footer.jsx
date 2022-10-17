@@ -1,4 +1,4 @@
-import WebsiteLogo from "@/Shared/WebsiteLogo";
+import WebsiteLogo from "@/Shared/Layouts/WebsiteLogo";
 import { Link } from "@inertiajs/inertia-react";
 
 export default function Footer() {

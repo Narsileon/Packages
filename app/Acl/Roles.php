@@ -15,6 +15,8 @@ abstract class Roles
     #region CONSTANTS
 
     public const SUPER_ADMIN = 'super-admin';
+    
+    public const ADMIN = 'admin';
 
     #endregion
 }

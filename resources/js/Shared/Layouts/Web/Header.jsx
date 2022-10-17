@@ -1,8 +1,8 @@
 import { usePage } from "@inertiajs/inertia-react";
 import NavLink from "@/Components/Navigations/NavLink";
 import Nav from "@/Shared/Layouts/Web/Nav";
-import ThemeButton from "@/Shared/ThemeButton";
-import WebsiteLogo from "@/Shared/WebsiteLogo";
+import ThemeButton from "@/Shared/Layouts/ThemeButton";
+import WebsiteLogo from "@/Shared/Layouts/WebsiteLogo";
 
 export default function Header() {
     return (

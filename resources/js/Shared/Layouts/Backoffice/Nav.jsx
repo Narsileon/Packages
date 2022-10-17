@@ -1,5 +1,6 @@
-import WebsiteLogo from "@/Shared/WebsiteLogo";
-import ThemeButton from "@/Shared/ThemeButton";
+import WebsiteLogo from "@/Shared/Layouts/WebsiteLogo";
+import ThemeButton from "@/Shared/Layouts/ThemeButton";
+import NavLink from "@/Components/Navigations/NavLink";
 
 export default function Nav() {
     return (
@@ -18,7 +19,12 @@ export default function Nav() {
 
             <div className="px-1">
                 <ul className="space-y-4">
-
+                    <NavLink
+                        label="Users"
+                    />
+                    <NavLink
+                        label="Roles"
+                    />
                 </ul>
             </div>                
         </aside>
