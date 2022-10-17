@@ -1,6 +1,6 @@
 export default function Sort({ 
     order="none",
-    className,
+    className="",
 }) {
     function renderSort() {
         switch (order) {

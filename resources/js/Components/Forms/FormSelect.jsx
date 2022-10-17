@@ -3,7 +3,7 @@ import { FormError, FormLabel } from "@/Components/Forms";
 export default function FormSelect({
     label, 
     error,
-    className, 
+    className="", 
     options, 
     ...props 
 }) {

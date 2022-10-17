@@ -1,6 +1,6 @@
 export default function Arrow({
     direction="down",
-    className,
+    className="",
 }) {
     function getRotation() {
         switch (direction) {

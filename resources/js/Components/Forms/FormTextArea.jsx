@@ -3,7 +3,7 @@ import { FormError, FormLabel } from "@/Components/Forms";
 export default function FormTextArea({ 
     label,
     error,
-    className,
+    className="",
     ...props 
 }) {
     return (

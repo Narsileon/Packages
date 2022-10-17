@@ -1,6 +1,6 @@
 export default function Theme({ 
     theme="light",
-    className,
+    className="",
 }) {
     function renderArrow() {
         switch (theme) {

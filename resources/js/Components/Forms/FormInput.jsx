@@ -15,7 +15,7 @@ export default function FormInput({
         <div>
             <FormLabel label={ label }/>
             <input 
-                className={ `field ${className}` }
+                className={ `field w-full ${className}` }
                 type="text"
                 onChange={ onChange }
                 required={ true }

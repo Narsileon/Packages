@@ -2,7 +2,7 @@ import { useRef } from "react"
 import { useClickAway, useToggle } from "react-use";
 
 export default function Dropdown({
-    className,
+    className="",
     trigger, 
     children,
 }) {

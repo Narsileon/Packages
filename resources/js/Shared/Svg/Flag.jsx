@@ -1,6 +1,6 @@
 export default function Flag({ 
     name,
-    className, 
+    className="", 
 }) {
 	function renderFlag() {
         switch (direction) {
