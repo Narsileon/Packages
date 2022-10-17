@@ -1,5 +1,5 @@
 import { Head, useForm } from "@inertiajs/inertia-react";
-import { Form, FormButton, FormInput } from "@/Components/Forms";
+import { Form, FormButton, FormCheckbox, FormInput } from "@/Components/Forms";
 
 export default function Create({ permissions }) {
 	let object = {
@@ -11,14 +11,6 @@ export default function Create({ permissions }) {
 	});
 
 	const { data, setData, post, processing, errors } = useForm(object);
-
-	const onChange = (event) => {
-        setData(event.target.id, event.target.value);
-    };
-
-	const onCheck = (event) => {
-		setData(event.target.id, event.target.checked);
-	};
 
 	const submit = (e) => {
         e.preventDefault();
@@ -39,19 +31,19 @@ export default function Create({ permissions }) {
 					label="Name"  
 					value={ data.name } 
 					error={ errors.name } 
-					onChange={ onChange } 
+					setData={ setData } 
 				/>
 
 				{
 					Object.entries(data).slice(1).map(([key, value], index) => {
 						return (
-							<FormInput 
+							<FormCheckbox 
 								id={ key }
 								label={ key }
 								type="checkbox"  
 								checked={ value } 
 								error={ errors[key] } 
-								onChange={ onCheck } 
+								setData={ setData } 
 								key={ index }
 							/>								
 						);

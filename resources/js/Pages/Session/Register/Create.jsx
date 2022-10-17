@@ -33,7 +33,7 @@ export default function Create() {
                     label="Username"
                     value={ data.username } 
                     error={ errors.username } 
-                    onChange={ onChange } 
+                    setData={ setData } 
                 />
                 {/* Email */}
                 <FormInput 
@@ -42,7 +42,7 @@ export default function Create() {
                     type="email"
                     value={ data.email} 
                     error={ errors.email} 
-                    onChange={ onChange } 
+                    setData={ setData } 
                 />
                 {/* Password */}
                 <FormInput 
@@ -51,7 +51,7 @@ export default function Create() {
                     type="password" 
                     value={ data.password} 
                     error={ errors.password} 
-                    onChange={ onChange } 
+                    setData={ setData } 
                     autoComplete="new-password"
                 />
                 {/* Last Name */}
@@ -60,7 +60,7 @@ export default function Create() {
                     label="Last name"
                     value={ data.last_name } 
                     error={ errors.last_name } 
-                    onChange={ onChange } 
+                    setData={ setData } 
                 />
                 {/* First Name */}
                 <FormInput 
@@ -68,7 +68,7 @@ export default function Create() {
                     label="First name"  
                     value={ data.first_name } 
                     error={ errors.first_name } 
-                    onChange={ onChange } 
+                    setData={ setData } 
                 />
 
                 <FormButton 

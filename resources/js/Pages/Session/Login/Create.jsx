@@ -31,7 +31,7 @@ export default function Create() {
                         type="email"
                         value={ data.email} 
                         error={ errors.email} 
-                        onChange={ onChange } 
+                        setData={ setData } 
                     />
                     {/* Password */}
                     <FormInput 
@@ -40,7 +40,7 @@ export default function Create() {
                         type="password" 
                         value={ data.password} 
                         error={ errors.password} 
-                        onChange={ onChange } 
+                        setData={ setData } 
                         autoComplete="current-password"
                     />
                 </div>

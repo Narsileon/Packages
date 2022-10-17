@@ -1,17 +1,23 @@
 import { FormError, FormLabel } from "@/Components/Forms";
 
 export default function FormInput({ 
-    label, 
+    label,
+    setData, 
     error,
     className="", 
     ...props 
 }) {
+	const onChange = (event) => {
+        setData(event.target.id, event.target.value);
+    };
+
     return (
         <div>
             <FormLabel label={ label }/>
             <input 
                 className={ `field ${className}` }
                 type="text"
+                onChange={ onChange }
                 required={ true }
                 { ...props }
             />  

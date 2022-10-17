@@ -10,10 +10,6 @@ export default function Create() {
 		first_name: '',
     });
 
-	const onChange = (event) => {
-        setData(event.target.id, event.target.value);
-    };
-
 	const submit = (e) => {
         e.preventDefault();
 
@@ -33,7 +29,7 @@ export default function Create() {
 					label="Username"  
 					value={ data.username } 
 					error={ errors.username } 
-					onChange={ onChange } 
+					setData={ setData } 
 				/>
 				<FormInput 
 					id="email" 
@@ -41,7 +37,7 @@ export default function Create() {
 					type="email"
 					value={ data.email} 
 					error={ errors.email} 
-					onChange={ onChange } 
+					setData={ setData } 
 				/>
 				<FormInput 
 					id="password" 
@@ -49,21 +45,21 @@ export default function Create() {
 					type="password" 
 					value={ data.password} 
 					error={ errors.password} 
-					onChange={ onChange } 
+					setData={ setData } 
 				/>
 				<FormInput 
 					id="last_name" 
 					label="Last name" 
 					value={ data.last_name } 
 					error={ errors.last_name } 
-					onChange={ onChange } 
+					setData={ setData }  
 				/>
 				<FormInput 
 					id="first_name" 
 					label="First name" 
 					value={ data.first_name } 
 					error={ errors.first_name } 
-					onChange={ onChange } 
+					setData={ setData } 
 				/>
 
 				<FormButton 

@@ -32,7 +32,7 @@ export default function Edit({ user }) {
 					label="Username"  
 					value={ data.username } 
 					error={ errors.username } 
-					onChange={ onChange } 
+					setData={ setData } 
 				/>
 				<FormInput 
 					id="email" 
@@ -40,21 +40,21 @@ export default function Edit({ user }) {
 					type="email"
 					value={ data.email} 
 					error={ errors.email} 
-					onChange={ onChange } 
+					setData={ setData } 
 				/>
 				<FormInput 
 					id="last_name" 
 					label="Last name" 
 					value={ data.last_name } 
 					error={ errors.last_name } 
-					onChange={ onChange } 
+					setData={ setData } 
 				/>
 				<FormInput 
 					id="first_name" 
 					label="First name" 
 					value={ data.first_name } 
 					error={ errors.first_name } 
-					onChange={ onChange } 
+					setData={ setData } 
 				/>
 
 				<FormButton 

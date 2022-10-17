@@ -29,7 +29,7 @@ export default function Edit({ role }) {
 					label="Name"  
 					value={ data.name } 
 					error={ errors.name } 
-					onChange={ onChange } 
+					setData={ setData } 
 				/>
 
 				<FormButton 
