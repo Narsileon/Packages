@@ -7,10 +7,6 @@ export default function Create() {
         password: '',
     });
 
-    const onChange = (event) => {
-        setData(event.target.id, event.target.value);
-    };
-
 	const submit = (e) => {
         e.preventDefault();
 

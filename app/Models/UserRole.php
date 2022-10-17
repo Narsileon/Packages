@@ -16,6 +16,8 @@ class UserRole extends Role
     const FIELD_NAME = "name";
     const FIELD_GUARD ="guard_name";
 
+    const ATTRIBUTE_PERMISSIONS ="permissions";
+
     #endregion
 
     #region FIELDS

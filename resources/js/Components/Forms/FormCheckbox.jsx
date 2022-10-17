@@ -19,7 +19,6 @@ export default function FormCheckbox({
                     className={ `field w-min ${className}` }
                     type="text"
                     onChange={ onChange }
-                    required={ true }
                     { ...props }
                 />                 
             </div>

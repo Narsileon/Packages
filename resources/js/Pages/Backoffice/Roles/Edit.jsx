@@ -1,14 +1,16 @@
 import { Head, useForm } from "@inertiajs/inertia-react";
-import { Form, FormButton, FormInput } from "@/Components/Forms";
+import { Form, FormButton, FormCheckbox, FormInput } from "@/Components/Forms";
 
-export default function Edit({ role }) {
-    const { data, setData, patch, processing, errors } = useForm({
-        name: role.data.name,
-    });
+export default function Edit({ role, permissions }) {
+	let object = {
+		name: role.data.name,
+	}
+	
+	Object.entries(permissions).map(([key, value]) => {
+		object[key] = role.data.permissions.some(x => x.name == value) ? true : false;
+	});
 
-	const onChange = (event) => {
-        setData(event.target.id, event.target.value);
-    };
+    const { data, setData, patch, processing, errors } = useForm(object);
 
 	const submit = (e) => {
         e.preventDefault();
@@ -31,6 +33,22 @@ export default function Edit({ role }) {
 					error={ errors.name } 
 					setData={ setData } 
 				/>
+
+				{
+					Object.entries(data).slice(1).map(([key, value], index) => {
+						return (
+							<FormCheckbox 
+								id={ key }
+								label={ key }
+								type="checkbox"  
+								checked={ value } 
+								error={ errors[key] } 
+								setData={ setData } 
+								key={ index }
+							/>								
+						);
+					})
+				}
 
 				<FormButton 
 					label="Update" 

@@ -9,10 +9,6 @@ export default function Edit({ user }) {
         first_name: user.data.first_name
     });
 
-	const onChange = (event) => {
-        setData(event.target.id, event.target.value);
-    };
-
 	const submit = (e) => {
         e.preventDefault();
 

@@ -10,10 +10,6 @@ export default function Create() {
         first_name: '',
     });
 
-    const onChange = (event) => {
-        setData(event.target.id, event.target.value);
-    };
-
 	const submit = (event) => {
         event.preventDefault();
 

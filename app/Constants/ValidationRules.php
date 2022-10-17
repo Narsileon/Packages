@@ -13,10 +13,14 @@ abstract class ValidationRules
     #region CONSTANTS
 
     const REQUIRED = "required";
+    const OPTIONAL = "nullable";
 
+    const TYPE_ARRAY = "array";
+    const TYPE_BOOLEAN = "boolean";
     const TYPE_DATE = "date";
     const TYPE_EMAIL = "email";
     const TYPE_IMAGE = "image";
+    const TYPE_INTEGER = "int";
     const TYPE_STRING = "string";
 
     #endregion

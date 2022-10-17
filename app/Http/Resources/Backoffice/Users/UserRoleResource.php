@@ -19,7 +19,7 @@ class UserRoleResource extends JsonResource
             UserRole::FIELD_ID => $this->{ UserRole::FIELD_ID },
             UserRole::FIELD_NAME => $this->{ UserRole::FIELD_NAME },
 
-            
+            UserRole::ATTRIBUTE_PERMISSIONS => new UserPermissionCollection($this->permissions)
         ];
     }
 
