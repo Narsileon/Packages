@@ -16,11 +16,11 @@ class UserResource extends JsonResource
     public function toArray($request)
     {
         return [
-            User::FIELD_ID => $this->{User::FIELD_ID},
-            User::FIELD_USERNAME => $this->{User::FIELD_USERNAME},
-            User::FIELD_EMAIL => $this->{User::FIELD_EMAIL},
-            User::FIELD_LAST_NAME => $this->{User::FIELD_LAST_NAME},
-            User::FIELD_FIRST_NAME => $this->{User::FIELD_FIRST_NAME},
+            User::FIELD_ID => $this->{ User::FIELD_ID },
+            User::FIELD_USERNAME => $this->{ User::FIELD_USERNAME },
+            User::FIELD_EMAIL => $this->{ User::FIELD_EMAIL },
+            User::FIELD_LAST_NAME => $this->{ User::FIELD_LAST_NAME },
+            User::FIELD_FIRST_NAME => $this->{ User::FIELD_FIRST_NAME },
         ];
     }
 

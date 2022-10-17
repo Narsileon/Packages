@@ -1,0 +1,45 @@
+import Pagination from "@/Shared/Pagination";
+import SearchField from "@/Shared/SearchField";
+import Table from "@/Components/Tables/Table";
+import { Head, Link } from "@inertiajs/inertia-react";
+
+export default function Index({ users, filters }) {
+	const columns = [
+		{ label: "#", accessor: "id", sortable: true },
+		{ label: "Username", accessor: "username", sortable: true },
+	];
+
+	const settings = { 
+		link: "/backoffice/users/",
+		editable: true, 
+		deletable: true,
+	};
+
+	return (
+		<>
+			<Head title="Manage" />
+
+			<div className="flex justify-between mb-4">
+				<div className="flex items-center">
+					<h1 className="text-2xl">
+            			Manage users
+					</h1>
+
+					<Link href={ route('backoffice.users.create') } className="text-green-500 hover:text-green-600 ml-4">
+            			Create user
+					</Link>
+				</div>
+
+				<SearchField filter={ filters.search } />
+			</div>
+
+			<Table 
+				data={ users.data }
+				columns={ columns } 
+				settings={ settings }
+			/>
+
+			<Pagination links={users.meta.links} />
+		</>
+	);
+}

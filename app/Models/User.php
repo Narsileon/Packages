@@ -4,8 +4,6 @@ namespace App\Models;
 
 #region USE
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-
 use App\Constants\CastTypes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;

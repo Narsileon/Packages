@@ -3,6 +3,8 @@
 #region USE
 
 use App\Http\Controllers\Backoffice\DashboardController;
+use App\Http\Controllers\Backoffice\RoleController;
+use App\Http\Controllers\Backoffice\UserController;
 use Illuminate\Support\Facades\Route;
 
 #endregion
@@ -16,5 +18,8 @@ Route::group(
     function () 
     {
         Route::get('dashboard', DashboardController::class)->name('dashboard');
+
+        Route::resource('users', UserController::class)->except(['show']);
+        Route::resource('roles', RoleController::class)->except(['show']);
     }
 );

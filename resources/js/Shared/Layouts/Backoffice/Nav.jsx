@@ -20,9 +20,15 @@ export default function Nav() {
             <div className="px-1">
                 <ul className="space-y-4">
                     <NavLink
+                        href={ route("backoffice.dashboard") }
+                        label="Dashboard"
+                    />
+                    <NavLink
+                        href={ route("backoffice.users.index") }
                         label="Users"
                     />
                     <NavLink
+                        href={ route("backoffice.roles.index") }
                         label="Roles"
                     />
                 </ul>

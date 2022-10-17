@@ -3,7 +3,7 @@ import { usePrevious } from "react-use";
 import { Inertia } from "@inertiajs/inertia";
 import { usePage } from "@inertiajs/inertia-react";
 import pickBy from "lodash/pickBy";
-import Sort from "@/Shared/Svg/Icons/Sort";
+import Sort from "@/Shared/Svg/Sort";
 
 export default function TableHead({ columns }) {
     const [values, setValues] = useState({
@@ -57,11 +57,15 @@ export default function TableHead({ columns }) {
                                         { label }
                                     </span>
                                     {
-                                        values.field === accessor && values.sort === "asc" ?
-                                            <Sort name="asc" /> :
-                                        values.field === accessor && values.sort === "desc" ?
-                                            <Sort name="desc" /> :
-                                            <Sort name="none" />
+                                        <Sort 
+                                            className="w-4 h-4"
+                                            order={
+                                                values.field === accessor && values.sort === "asc" ?
+                                                "asc" :
+                                                values.field === accessor && values.sort === "desc" ?
+                                                "desc" : "none"
+                                            } 
+                                        />
                                     }
                                 </button>
                             </th>

@@ -1,13 +1,13 @@
 import Arrow from "@/Shared/Svg/Arrow";
-import Dropdown from "../Elements/Dropdown";
-import DropdownItem from "../Elements/DropdownItem";
-import { Menu } from "@/Shared/Svg/Icons";
+import Dropdown from "@/Components/Elements/Dropdowns/Dropdown";
+import DropdownItem from "@/Components/Elements/Dropdowns/DropdownLink";
+import Menu from "@/Shared/Svg/Menu";
 
 export default function TableBody({ tableData, columns, settings }) {
 	const trigger = () => (
-		<div className="flex justify-between items-center space-x-1 bg">
-			<Menu />
-			<Arrow />
+		<div className="flex justify-between items-center bg">
+			<Menu className="w-6 h-6" />
+			<Arrow className="w-5 h-5" />
 		</div>
 	);
 
