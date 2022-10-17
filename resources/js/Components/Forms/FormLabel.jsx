@@ -2,7 +2,7 @@ export default function FormLabel({ label }) {
     return (
         <label 
             htmlFor={ label }
-            className="block m-1 uppercase font-bold text-xs"
+            className="block m-1 font-semibold"
         > 
             { label }
         </label>

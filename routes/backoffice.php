@@ -2,6 +2,7 @@
 
 #region USE
 
+use App\Http\Controllers\Backoffice\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 #endregion

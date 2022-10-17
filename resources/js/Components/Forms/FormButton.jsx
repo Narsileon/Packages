@@ -7,7 +7,7 @@ export default function FormButton({
         <button
             type={ type }       
             disabled={ processing }
-            className="px-4 py-2 primary-button"
+            className="primary-button"
         >
             { label }
         </button>

@@ -4,7 +4,7 @@ namespace App\Http\Requests\Session;
 
 #region USE
 
-use App\Http\Requests\ValidationRules;
+use App\Constants\ValidationRules;
 use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 

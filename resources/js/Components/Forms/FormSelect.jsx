@@ -1,4 +1,4 @@
-import { FormError, FormLabel } from "@/Components/Form/Index";
+import { FormError, FormLabel } from "@/Components/Forms";
 
 export default function FormSelect({
     label, 
