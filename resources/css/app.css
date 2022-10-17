@@ -10,6 +10,15 @@
 }
 
 @layer components {
+    .primary-background { @apply 
+        bg-gray-200 
+        dark:bg-gray-700
+    }
+    .primary-button { @apply
+        bg-blue-500 px-3 py-2 font-semibold text-white rounded 
+        hover:bg-blue-600
+        transition-all duration-300
+    }
     .bordered { @apply 
         border-2 
         border-gray-500
@@ -29,10 +38,5 @@
         bordered block w-full p-2 rounded-lg 
         bg-gray-100 placeholder-gray-500
         dark:bg-gray-800 placeholder-gray-500
-    }
-    .primary-button { @apply
-        bg-blue-500 px-3 py-2 font-semibold text-white rounded 
-        hover:bg-blue-600
-        transition-all duration-300
     }
 }

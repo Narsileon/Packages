@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useMount, useUpdateEffect } from "react-use";
-import Theme from "./Svg/Icons/Theme";
+import Theme from "@/Shared/Svg/Theme";
 
 export default function ThemeButton() {
     const hasValue = () => localStorage.hasOwnProperty("darkMode");

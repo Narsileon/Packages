@@ -1,7 +1,7 @@
 import WebsiteLogo from "@/Shared/WebsiteLogo";
 import ThemeButton from "@/Shared/ThemeButton";
 
-export default function BackofficeLayout({ children }) {
+export default function Layout({ children }) {
     return (
         <main>
             <aside>

@@ -3,8 +3,8 @@ import { createInertiaApp } from '@inertiajs/inertia-react';
 import { InertiaProgress } from '@inertiajs/progress';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 
-import WebLayout from '@/Shared/Layouts/WebLayout.jsx';
-import BackofficeLayout from '@/Shared/Layouts/BackofficeLayout';
+import WebLayout from '@/Shared/Layouts/Web/Layout';
+import BackofficeLayout from '@/Shared/Layouts/Backoffice/Layout';
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 

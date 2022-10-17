@@ -1,4 +1,4 @@
-import Arrow from "@/Shared/Svg/Icons/Arrow";
+import Arrow from "@/Shared/Svg/Arrow";
 import Dropdown from "../Elements/Dropdown";
 import DropdownItem from "../Elements/DropdownItem";
 import { Menu } from "@/Shared/Svg/Icons";
