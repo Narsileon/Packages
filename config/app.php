@@ -73,6 +73,31 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Available locales
+    |--------------------------------------------------------------------------
+    |
+    | The application locales.
+    |
+    */
+
+    'available_locales' =>
+    [
+        'bulgarian' => 'bg',
+        'dutch' => 'nl',
+        'english' => 'en',
+        'finnish' => 'fi',
+        'french' => 'fr',
+        'german' => 'de',
+        'hungarian' => 'hu',
+        'italian' => 'it',
+        'norwegian' => 'no',
+        'polish' => 'pl',
+        'romanian' => 'ro',
+        'swedish' => 'sv',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Locale Configuration
     |--------------------------------------------------------------------------
     |

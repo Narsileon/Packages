@@ -1,26 +1,11 @@
-import WebsiteLogo from "@/Shared/WebsiteLogo";
-import ThemeButton from "@/Shared/ThemeButton";
+import Nav from "./Nav";
 
 export default function Layout({ children }) {
     return (
-        <main>
-            <aside>
-                <div className="flex items-center justify-between space-x-2">
-                    <WebsiteLogo />
+        <main className="flex min-h-screen">
+            <Nav />
 
-                    <div className="flex items-center">
-                        <ThemeButton />
-                    </div>
-                </div>
-
-                <div className="px-1">
-                    <ul className="space-y-4">
-
-                    </ul>
-                </div>                
-            </aside>
-
-            <section>
+            <section className="w-10/12 m-4">
                 { children }
             </section>
         </main>
