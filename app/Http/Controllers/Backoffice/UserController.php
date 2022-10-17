@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Backoffice;
 
 #region USE
 
+use App\Acl\Permissions;
+use App\Acl\Roles;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backoffice\Users\UserCreateRequest;
 use App\Http\Requests\Backoffice\Users\UserUpdateRequest;
@@ -21,24 +23,27 @@ class UserController extends Controller
 
     public function index()
     {
-        return Inertia::render('Backoffice/Users/Index', [
-            'users' => new UserCollection(User::query()
-                ->when(Request::input('search'), function ($query, $search) {
-                    $query->where(User::FIELD_USERNAME, 'like', "%{$search}%");
+        return Inertia::render("Backoffice/Users/Index", [
+            "users" => new UserCollection(User::query()
+                ->when(Request::input("search"), function ($query, $search) {
+                    $query->where(User::FIELD_USERNAME, "like", "%{$search}%");
                 })
-                ->when(Request::input('sort'), function ($query, $sort) {
-                    $query->orderBy(Request::input('field'), $sort);
+                ->when(Request::input("sort"), function ($query, $sort) {
+                    $query->orderBy(Request::input("field"), $sort);
                 })
                 ->paginate(10)
                 ->withQueryString()),
 
-            'filters' => Request::only(['search']),
+            "filters" => Request::only(["search"]),
         ]);
     }
 
     public function create()
     {
-        return Inertia::render('Backoffice/Users/Create');
+        return Inertia::render("Backoffice/Users/Create", [
+            "roles" => Roles::getConstants(),
+            "permissions" => Permissions::getConstants(),
+        ]);
     }
 
     public function store(UserCreateRequest $request)
@@ -47,13 +52,15 @@ class UserController extends Controller
 
         User::create($attributes);
 
-        return redirect(route('backoffice.users.index'));
+        return redirect(route("backoffice.users.index"));
     }
 
     public function edit(User $user)
     {
-        return Inertia::render('Backoffice/Users/Edit', [
-            'user' => new UserResource($user),
+        return Inertia::render("Backoffice/Users/Edit", [
+            "user" => new UserResource($user),
+            "roles" => Roles::getConstants(),
+            "permissions" => Permissions::getConstants(),
         ]);
     }
 
@@ -63,7 +70,7 @@ class UserController extends Controller
 
         $user->update($attributes);
 
-        return redirect(route('backoffice.users.index'));
+        return redirect(route("backoffice.users.index"));
     }
 
     public function destroy(User $user)

@@ -15,7 +15,7 @@ class UserCreateRequest extends FormRequest
 {
     public function authorize() : bool
     {
-        return $this->user()->hasPermissionTo(Permissions::USERS_CREATE);
+        return $this->user()->can(Permissions::USERS_CREATE);
     }
 
     public function rules() : array

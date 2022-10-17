@@ -15,7 +15,7 @@ class UserRoleCreateRequest extends FormRequest
 {
     public function authorize() : bool
     {
-        return $this->user()->hasPermissionTo(Permissions::ROLES_CREATE);
+        return $this->user()->can(Permissions::ROLES_CREATE);
     }
 
     public function rules() : array

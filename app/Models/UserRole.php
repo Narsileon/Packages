@@ -12,9 +12,9 @@ class UserRole extends Role
 {
     #region CONSTANTS
 
-    const FIELD_ID = 'id';
-    const FIELD_NAME = 'name';
-    const FIELD_GUARD ='guard_name';
+    const FIELD_ID = "id";
+    const FIELD_NAME = "name";
+    const FIELD_GUARD ="guard_name";
 
     #endregion
 

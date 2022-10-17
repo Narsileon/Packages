@@ -2,8 +2,6 @@
 
 namespace App\Providers;
 
-// use Illuminate\Support\Facades\Gate;
-
 use App\Acl\Roles;
 use App\Models\User;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -19,7 +17,7 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Gate::before(function(User $user, $ability) {
+        Gate::before(function (User $user) {
             return $user->hasRole(Roles::SUPER_ADMIN) ? true : null;
         });
     }

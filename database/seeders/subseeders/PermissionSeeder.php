@@ -20,6 +20,7 @@ class PermissionSeeder extends Seeder
     {
         $this->CreateRoles();
         $this->CreatePermissions();
+        $this->InitSuperAdmin();
     }
 
     #endregion
@@ -44,6 +45,13 @@ class PermissionSeeder extends Seeder
         {
             Permission::create(['name' => $permission]);
         }
+    }
+
+    private function InitSuperAdmin()
+    {
+        $role = Role::findByName(Roles::SUPER_ADMIN);
+
+        $role->givePermissionTo(Permissions::getConstants());
     }
 
     #endregion

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backoffice;
 
 #region USE
 
+use App\Acl\Permissions;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backoffice\Users\UserRoleCreateRequest;
 use App\Http\Requests\Backoffice\Users\UserRoleUpdateRequest;
@@ -21,24 +22,26 @@ class RoleController extends Controller
 
     public function index()
     {
-        return Inertia::render('Backoffice/Roles/Index', [
-            'roles' => new UserRoleCollection(Role::query()
-                ->when(Request::input('search'), function ($query, $search) {
-                    $query->where('name', 'like', "%{$search}%");
+        return Inertia::render("Backoffice/Roles/Index", [
+            "roles" => new UserRoleCollection(Role::query()
+                ->when(Request::input("search"), function ($query, $search) {
+                    $query->where("name", "like", "%{$search}%");
                 })
-                ->when(Request::input('sort'), function ($query, $sort) {
-                    $query->orderBy(Request::input('field'), $sort);
+                ->when(Request::input("sort"), function ($query, $sort) {
+                    $query->orderBy(Request::input("field"), $sort);
                 })
                 ->paginate(10)
                 ->withQueryString()),
 
-            'filters' => Request::only(['search']),
+            "filters" => Request::only(["search"]),
         ]);
     }
 
     public function create()
     {
-        return Inertia::render('Backoffice/Roles/Create');
+        return Inertia::render("Backoffice/Roles/Create", [
+            "permissions" => Permissions::getConstants(),
+        ]);
     }
 
     public function store(UserRoleCreateRequest $request)
@@ -47,13 +50,14 @@ class RoleController extends Controller
 
         Role::create($attributes);
 
-        return redirect(route('backoffice.roles.index'));
+        return redirect(route("backoffice.roles.index"));
     }
 
     public function edit(Role $role)
     {
-        return Inertia::render('Backoffice/Roles/Edit', [
-            'role' => new UserRoleResource($role),
+        return Inertia::render("Backoffice/Roles/Edit", [
+            "role" => new UserRoleResource($role),
+            "permissions" => Permissions::getConstants(),
         ]);
     }
 
@@ -63,7 +67,7 @@ class RoleController extends Controller
 
         $role->update($attributes);
 
-        return redirect(route('backoffice.roles.index'));
+        return redirect(route("backoffice.roles.index"));
     }
 
     public function destroy(Role $role)
