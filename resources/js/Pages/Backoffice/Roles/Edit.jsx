@@ -1,7 +1,7 @@
 import { Head, useForm } from "@inertiajs/inertia-react";
 import { Form, FormButton, FormCheckbox, FormInput } from "@/Components/Forms";
 
-export default function Edit({ role, availablePermissions }) {
+export default function Edit({ role, availablePermissions, activePermissions }) {
 	let object = {
 		name: role.data.name,
 	}
@@ -10,7 +10,12 @@ export default function Edit({ role, availablePermissions }) {
 		object[key] = role.data.permissions.some(x => x.name == value) ? true : false;
 	});
 
-    const { data, setData, patch, processing, errors } = useForm(object);
+    const { data, setData, transform, patch, processing, errors } = useForm(object);
+
+	transform((data) => ({
+		...data,
+		permissions: data.remember ? 'on' : '',
+	}));
 
 	const submit = (e) => {
         e.preventDefault();

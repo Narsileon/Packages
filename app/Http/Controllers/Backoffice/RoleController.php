@@ -8,8 +8,10 @@ use App\Acl\Permissions;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backoffice\Users\UserRoleCreateRequest;
 use App\Http\Requests\Backoffice\Users\UserRoleUpdateRequest;
+use App\Http\Resources\Backoffice\Users\UserPermissionCollection;
 use App\Http\Resources\Backoffice\Users\UserRoleCollection;
 use App\Http\Resources\Backoffice\Users\UserRoleResource;
+use App\Models\UserPermission;
 use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
 use Spatie\Permission\Models\Role;
@@ -68,7 +70,7 @@ class RoleController extends Controller
     {
         $role = new UserRoleResource($role);
 
-        $availablePermissions = Permissions::getConstants();
+        $availablePermissions = new UserPermissionCollection(UserPermission::All());
         $activePermissions = $role->permissions->pluck('id')->toArray();
 
         return Inertia::render("Backoffice/Roles/Edit", compact(
