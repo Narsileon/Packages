@@ -1,17 +1,17 @@
-import { Link } from "@inertiajs/inertia-react";
+import { Link, usePage } from "@inertiajs/inertia-react";
 
 export default function NavLink({ 
-	label, 
-	active, 
+	label,
+	href, 
     ...props
 }) {
+	const active = href == usePage().props.ziggy.location ? true : false;
+
 	return (
 		<li>
 			<Link
-				className={
-					"selectable"
-					+ (active ? ' selectable-active' : "")
-				}
+				href={ href }
+				className={ `selectable ${ active ? "selectable-active" : ""}` }
                 { ...props }
 			>
 				{ label }
