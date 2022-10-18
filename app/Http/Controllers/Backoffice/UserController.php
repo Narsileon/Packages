@@ -40,10 +40,13 @@ class UserController extends Controller
 
     public function create()
     {
-        return Inertia::render("Backoffice/Users/Create", [
-            "roles" => Roles::getConstants(),
-            "permissions" => Permissions::getConstants(),
-        ]);
+        $roles = Roles::getConstants();
+        $permissions = Permissions::getConstants();
+
+        return Inertia::render("Backoffice/Users/Create", compact(
+            "roles",
+            "permissions",
+        ));
     }
 
     public function store(UserCreateRequest $request)
@@ -57,18 +60,25 @@ class UserController extends Controller
 
     public function show(User $user)
     {
-        return Inertia::render("Backoffice/Users/Show", [
-            "user" => new UserResource($user),
-        ]);
+        $user = new UserResource($user);
+
+        return Inertia::render("Backoffice/Users/Show", compact(
+            "user",
+        ));
     }
 
     public function edit(User $user)
     {
-        return Inertia::render("Backoffice/Users/Edit", [
-            "user" => new UserResource($user),
-            "roles" => Roles::getConstants(),
-            "permissions" => Permissions::getConstants(),
-        ]);
+        $user = new UserResource($user);
+
+        $roles = Roles::getConstants();
+        $permissions = Permissions::getConstants();
+
+        return Inertia::render("Backoffice/Users/Edit", compact(
+            "user",
+            "roles",
+            "permissions",
+        ));
     }
 
     public function update(UserUpdateRequest $request, User $user)
@@ -76,6 +86,9 @@ class UserController extends Controller
         $attributes = $request->validated();
 
         $user->update($attributes);
+
+        $user->roles()->sync($request->get('roles', []));
+        $user->permissions()->sync($request->get('permissions', []));
 
         return redirect(route("backoffice.users.index"));
     }

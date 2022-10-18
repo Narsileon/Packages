@@ -45,6 +45,16 @@ class UserUpdateRequest extends FormRequest
                 ValidationRules::min(3),
                 ValidationRules::max(255),
             ],
+
+            User::ATTRIBUTE_ROLES => [
+                ValidationRules::OPTIONAL,
+                ValidationRules::TYPE_ARRAY,
+            ],
+
+            User::ATTRIBUTE_PERMISSIONS => [
+                ValidationRules::OPTIONAL,
+                ValidationRules::TYPE_ARRAY,
+            ],
         ];
     }
 }

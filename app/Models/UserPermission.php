@@ -4,11 +4,11 @@ namespace App\Models;
 
 #region USE
 
-use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 #endregion
 
-class UserPermission extends Role
+class UserPermission extends Permission
 {
     #region CONSTANTS
 

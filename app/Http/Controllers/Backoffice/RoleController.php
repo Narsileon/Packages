@@ -39,9 +39,11 @@ class RoleController extends Controller
 
     public function create()
     {
-        return Inertia::render("Backoffice/Roles/Create", [
-            "permissions" => Permissions::getConstants(),
-        ]);
+        $permissions = Permissions::getConstants();
+
+        return Inertia::render("Backoffice/Roles/Create", compact(
+            "permissions",
+        ));
     }
 
     public function store(UserRoleCreateRequest $request)
@@ -55,17 +57,25 @@ class RoleController extends Controller
 
     public function show(Role $role)
     {
-        return Inertia::render("Backoffice/Roles/Show", [
-            "role" => new UserRoleResource($role),
-        ]);
+        $role = new UserRoleResource($role);
+
+        return Inertia::render("Backoffice/Roles/Show", compact(
+            "role",
+        ));
     }
 
     public function edit(Role $role)
     {
-        return Inertia::render("Backoffice/Roles/Edit", [
-            "role" => new UserRoleResource($role),
-            "permissions" => Permissions::getConstants(),
-        ]);
+        $role = new UserRoleResource($role);
+
+        $availablePermissions = Permissions::getConstants();
+        $activePermissions = $role->permissions->pluck('id')->toArray();
+
+        return Inertia::render("Backoffice/Roles/Edit", compact(
+            "role",
+            "availablePermissions",
+            "activePermissions",
+        ));
     }
 
     public function update(UserRoleUpdateRequest $request, Role $role)

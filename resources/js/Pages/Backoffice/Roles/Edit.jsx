@@ -1,12 +1,12 @@
 import { Head, useForm } from "@inertiajs/inertia-react";
 import { Form, FormButton, FormCheckbox, FormInput } from "@/Components/Forms";
 
-export default function Edit({ role, permissions }) {
+export default function Edit({ role, availablePermissions }) {
 	let object = {
 		name: role.data.name,
 	}
 	
-	Object.entries(permissions).map(([key, value]) => {
+	Object.entries(availablePermissions).map(([key, value]) => {
 		object[key] = role.data.permissions.some(x => x.name == value) ? true : false;
 	});
 
