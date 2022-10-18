@@ -18,7 +18,6 @@ class UserPermissionResource extends JsonResource
         return [
             UserPermission::FIELD_ID => $this->{ UserPermission::FIELD_ID },
             UserPermission::FIELD_NAME => $this->{ UserPermission::FIELD_NAME }, 
-            UserPermission::FIELD_GUARD => $this->{ UserPermission::FIELD_GUARD }, 
         ];
     }
 

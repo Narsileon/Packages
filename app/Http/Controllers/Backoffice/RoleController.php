@@ -70,13 +70,11 @@ class RoleController extends Controller
     {
         $role = new UserRoleResource($role);
 
-        $availablePermissions = new UserPermissionCollection(UserPermission::All());
-        $activePermissions = $role->permissions->pluck('id')->toArray();
+        $permissions = new UserPermissionCollection(UserPermission::All());
 
         return Inertia::render("Backoffice/Roles/Edit", compact(
             "role",
-            "availablePermissions",
-            "activePermissions",
+            "permissions",
         ));
     }
 
@@ -85,6 +83,7 @@ class RoleController extends Controller
         $attributes = $request->validated();
 
         $role->update($attributes);
+        $role->syncPermissions($attributes["permissions"]);
 
         return redirect(route("backoffice.roles.index"));
     }

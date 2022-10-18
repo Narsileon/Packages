@@ -9,7 +9,7 @@ use Illuminate\Http\Resources\Json\ResourceCollection;
 
 #endregion
 
-class UserPermissionCollection extends ResourceCollection
+class UserRolePermissionCollection extends ResourceCollection
 {
     #region PUBLIC METHODS
 
@@ -17,7 +17,6 @@ class UserPermissionCollection extends ResourceCollection
     {
         return $this->collection->map->only(
             UserPermission::FIELD_ID,
-            UserPermission::FIELD_NAME,
         );
     }
 

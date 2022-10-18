@@ -29,7 +29,7 @@ class UserRoleUpdateRequest extends FormRequest
                 ValidationRules::unique('roles', UserRole::FIELD_NAME, $this->role->id),
             ],
             UserRole::ATTRIBUTE_PERMISSIONS => [
-                ValidationRules::REQUIRED,
+                ValidationRules::OPTIONAL,
                 ValidationRules::TYPE_ARRAY,
             ]
         ];

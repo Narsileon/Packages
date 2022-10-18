@@ -1,26 +1,35 @@
 import { Head, useForm } from "@inertiajs/inertia-react";
 import { Form, FormButton, FormCheckbox, FormInput } from "@/Components/Forms";
+import { Inertia } from "@inertiajs/inertia";
 
-export default function Edit({ role, availablePermissions, activePermissions }) {
-	let object = {
-		name: role.data.name,
-	}
-	
-	Object.entries(availablePermissions).map(([key, value]) => {
-		object[key] = role.data.permissions.some(x => x.name == value) ? true : false;
+export default function Edit({ role, permissions }) {
+	let object = {};
+
+	permissions.data.map((permission) => {
+		object[permission.name] = role.data.permissions.some(x => x.id === permission.id);
 	});
 
-    const { data, setData, transform, patch, processing, errors } = useForm(object);
+	const { data, setData, transform, patch, processing, errors } = useForm({
+		name: role.data.name,
+		permissions: object,
+	});
 
-	transform((data) => ({
-		...data,
-		permissions: data.remember ? 'on' : '',
-	}));
+	const onChange = (event) => {
+		let temp = data.permissions;
+		temp[event.target.id] = event.target.checked;
+
+		setData('permissions', temp);
+    };
 
 	const submit = (e) => {
         e.preventDefault();
 
-        patch('/backoffice/roles/' + role.data.id);
+		transform(() => ({
+			...data,
+			permissions: permissions.data.filter(x => data.permissions[x.name] == true)
+		}))
+		
+		patch('/backoffice/roles/' + role.data.id)
     };
 
     return (
@@ -35,21 +44,21 @@ export default function Edit({ role, availablePermissions, activePermissions }) 
 					id="name"
 					label="Name"  
 					value={ data.name } 
-					error={ errors.name } 
+					error={ errors.name }
 					setData={ setData } 
 				/>
 
 				{
-					Object.entries(data).slice(1).map(([key, value], index) => {
+					permissions.data.map((permission) => {
 						return (
-							<FormCheckbox 
-								id={ key }
-								label={ key }
+							<FormCheckbox
+								id={ permission.name } 
+								label={ permission.name }
 								type="checkbox"  
-								checked={ value } 
-								error={ errors[key] } 
-								setData={ setData } 
-								key={ index }
+								checked={ data.permissions[permission.name] } 
+								error={ errors[data.permissions[permission.name]] } 
+								onChange={ onChange } 
+								key={ permission.id }
 							/>								
 						);
 					})
