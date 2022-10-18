@@ -9,9 +9,8 @@ export default function NavLink({
 		<li>
 			<Link
 				className={
-					"whitespace-nowrap font-bold text-sm" 
-					+ " hover:text-blue-500"
-					+ (active ? ' text-blue-500' : "")
+					"selectable"
+					+ (active ? ' selectable-active' : "")
 				}
                 { ...props }
 			>

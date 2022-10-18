@@ -18,7 +18,7 @@ export default function Nav() {
                 </div>
             </div>
 
-            <div className="px-1">
+            <div>
                 <ul className="space-y-4">
                     <SidebarLink
                         href={ route("backoffice.dashboard") }

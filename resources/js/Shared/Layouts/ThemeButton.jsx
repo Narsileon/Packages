@@ -28,8 +28,7 @@ export default function ThemeButton() {
         <button 
             type="button" 
             className={
-                "p-2 rounded-lg"
-                + " hover:bg-gray-500"
+                "selectable p-2 rounded-lg"
             }
             onClick={ () => toggle(isDark = !isDark) }
         >   

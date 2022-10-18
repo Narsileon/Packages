@@ -39,4 +39,11 @@
         bg-gray-100 placeholder-gray-500
         dark:bg-gray-800 placeholder-gray-500
     }
+    .selectable { @apply
+        whitespace-nowrap font-semibold
+        hover:text-blue-500
+    }
+    .selectable-active { @apply
+        text-blue-500
+    }
 }

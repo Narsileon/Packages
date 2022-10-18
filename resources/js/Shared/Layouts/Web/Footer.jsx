@@ -4,7 +4,7 @@ import { Link } from "@inertiajs/inertia-react";
 export default function Footer() {
     return (
         <footer className="primary-background w-full p-2 border-t-2 border-gray-500 text-sm">
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between p-2">
                 <WebsiteLogo />
                 <ul className="flex flex-wrap items-center space-x-4">
                     {/* Links (Texts) */}

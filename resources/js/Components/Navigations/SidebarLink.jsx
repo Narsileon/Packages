@@ -9,12 +9,14 @@ export default function SidebarLink({
 	return (
 		<li>
 			<Link
-				className="primary-element flex items-center"
+				className="selectable flex items-center"
                 { ...props }
 			>
-                { icon }
+                <div className="px-1">
+                    { icon }
+                </div>
                 
-                <span className="flex-1 whitespace-nowrap ml-3">
+                <span className="flex-1 whitespace-nowrap ml-2">
                     { label }
                 </span>
 			</Link>			
