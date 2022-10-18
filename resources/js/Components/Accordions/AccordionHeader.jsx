@@ -1,4 +1,4 @@
-import { Arrow } from "@/Shared/Svg/Arrow"
+import { Arrow } from "@/Shared/Svg/Chevron"
 import { useToggle } from "react-use"
 
 export default function AccordionHeader({ header, children }) {

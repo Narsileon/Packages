@@ -9,11 +9,7 @@ export default function SidebarLink({
 	return (
 		<li>
 			<Link
-				className={
-					"whitespace-nowrap font-bold text-sm" 
-					+ " hover:text-blue-500"
-					+ (active ? ' text-blue-500' : "")
-				}
+				className="primary-element flex items-center"
                 { ...props }
 			>
                 { icon }

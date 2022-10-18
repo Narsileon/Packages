@@ -1,14 +1,14 @@
-import Arrow from "@/Shared/Svg/Arrow";
+import { Link } from "@inertiajs/inertia-react";
+import Chevron from "@/Shared/Svg/Chevron";
 import Dropdown from "@/Components/Elements/Dropdowns/Dropdown";
 import DropdownItem from "@/Components/Elements/Dropdowns/DropdownLink";
-import Menu from "@/Shared/Svg/Menu";
-import { Link } from "@inertiajs/inertia-react";
+import Icon from "@/Shared/Svg/Icon";
 
 export default function TableBody({ tableData, columns, settings }) {
 	const trigger = () => (
 		<div className="flex justify-between items-center bg">
-			<Menu className="w-6 h-6" />
-			<Arrow className="w-5 h-5" />
+			<Icon className="w-6 h-6" name="menu" />
+			<Chevron className="w-4 h-4" />
 		</div>
 	);
 

@@ -29,9 +29,11 @@ export default function Sort({
 
     return (
         <svg 
-            id={ `icon-sort-${ order }` }  
+            id={ `sort-${ order }` }  
             className={ `flex-shrink-0 ${ className }` } 
             fill="currentColor" 
+            clipRule="evenodd"
+            fillRule="evenodd" 
             viewBox="0 0 320 512"
             aria-hidden="true" 
             xmlns="http://www.w3.org/2000/svg"

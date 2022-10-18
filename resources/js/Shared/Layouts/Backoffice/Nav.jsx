@@ -42,6 +42,12 @@ export default function Nav() {
                     />
                     <SidebarLink
                         href={ route("backoffice.roles.index") }
+                        icon={ 
+                            <Icon 
+                                name="shield"
+                                className="w-6 h-6"
+                            /> 
+                        }
                         label="Roles"
                     />
                 </ul>

@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { usePrevious } from "react-use";
 import { Inertia } from "@inertiajs/inertia";
 import { usePage } from "@inertiajs/inertia-react";
-import Search from "@/Shared/Svg/Search";
 import pickBy from "lodash/pickBy";
+import Icon from "./Svg/Icon";
 
 export default function SearchField({ filter }) {
     const [values, setValues] = useState({
@@ -39,7 +39,7 @@ export default function SearchField({ filter }) {
 	return (
         <div className="relative">
             <div className="flex absolute inset-y-0 left-0 items-center pl-2 pointer-events-none">
-                <Search className="w-6 h-6" />
+                <Icon name="search" className="w-6 h-6" />
             </div>
             <input 
                 value={ values.search } 
