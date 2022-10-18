@@ -53,6 +53,13 @@ class RoleController extends Controller
         return redirect(route("backoffice.roles.index"));
     }
 
+    public function show(Role $role)
+    {
+        return Inertia::render("Backoffice/Roles/Show", [
+            "role" => new UserRoleResource($role),
+        ]);
+    }
+
     public function edit(Role $role)
     {
         return Inertia::render("Backoffice/Roles/Edit", [

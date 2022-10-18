@@ -5,8 +5,16 @@ import { Head, Link } from "@inertiajs/inertia-react";
 
 export default function Index({ users, filters }) {
 	const columns = [
-		{ label: "#", accessor: "id", sortable: true },
-		{ label: "Username", accessor: "username", sortable: true },
+		{ 
+			label: "#", 
+			accessor: "id", 
+			sortable: true 
+		},
+		{ 
+			label: "Username", 
+			accessor: "username", 
+			sortable: true 
+		},
 	];
 
 	const settings = { 

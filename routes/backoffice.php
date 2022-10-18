@@ -19,7 +19,7 @@ Route::group(
     {
         Route::get('dashboard', DashboardController::class)->name('dashboard');
 
-        Route::resource('users', UserController::class)->except(['show']);
-        Route::resource('roles', RoleController::class)->except(['show']);
+        Route::resource('users', UserController::class);
+        Route::resource('roles', RoleController::class);
     }
 );

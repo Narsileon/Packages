@@ -55,6 +55,13 @@ class UserController extends Controller
         return redirect(route("backoffice.users.index"));
     }
 
+    public function show(User $user)
+    {
+        return Inertia::render("Backoffice/Users/Show", [
+            "user" => new UserResource($user),
+        ]);
+    }
+
     public function edit(User $user)
     {
         return Inertia::render("Backoffice/Users/Edit", [

@@ -2,6 +2,7 @@ import Arrow from "@/Shared/Svg/Arrow";
 import Dropdown from "@/Components/Elements/Dropdowns/Dropdown";
 import DropdownItem from "@/Components/Elements/Dropdowns/DropdownLink";
 import Menu from "@/Shared/Svg/Menu";
+import { Link } from "@inertiajs/inertia-react";
 
 export default function TableBody({ tableData, columns, settings }) {
 	const trigger = () => (
@@ -27,13 +28,13 @@ export default function TableBody({ tableData, columns, settings }) {
 								>
 									{ !settings.editable ? null:
 										<DropdownItem 
-											href={settings.link + rowData.id + '/edit'} 
+											href={ settings.link + rowData.id + '/edit' } 
 											label="Edit"
 										/>
 									}
 									{ !settings.deletable ? null:
 										<DropdownItem 
-											href={settings.link + rowData.id}
+											href={ settings.link + rowData.id }
 											label="Delete"
 											method="delete" 
 											as="button"   
@@ -48,7 +49,9 @@ export default function TableBody({ tableData, columns, settings }) {
 										className="p-2 text-left"
 										key={ accessor }
 									>
-										{ rowData[accessor] }
+										<Link href={ settings.link + rowData.id }>
+											{ rowData[accessor] }
+										</Link>
 									</td>
 								);
 							})}
