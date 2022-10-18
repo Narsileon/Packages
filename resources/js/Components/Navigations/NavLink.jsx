@@ -1,4 +1,5 @@
 import { Link, usePage } from "@inertiajs/inertia-react";
+import t from "@/localization";
 
 export default function NavLink({ 
 	label,
@@ -14,7 +15,7 @@ export default function NavLink({
 				className={ `selectable ${ active ? "selectable-active" : ""}` }
                 { ...props }
 			>
-				{ label }
+				{ t(label) }
 			</Link>			
 		</li>
 	);
