@@ -1,6 +1,7 @@
-import WebsiteLogo from "@/Shared/Layouts/WebsiteLogo";
+import SidebarLink from "@/Components/Navigations/SidebarLink";
 import ThemeButton from "@/Shared/Layouts/ThemeButton";
-import NavLink from "@/Components/Navigations/NavLink";
+import WebsiteLogo from "@/Shared/Layouts/WebsiteLogo";
+import Icon from "@/Shared/Svg/Icon";
 
 export default function Nav() {
     return (
@@ -19,15 +20,27 @@ export default function Nav() {
 
             <div className="px-1">
                 <ul className="space-y-4">
-                    <NavLink
+                    <SidebarLink
                         href={ route("backoffice.dashboard") }
+                        icon={ 
+                            <Icon 
+                                name="dashboard"
+                                className="w-6 h-6"
+                            /> 
+                        }
                         label="Dashboard"
                     />
-                    <NavLink
+                    <SidebarLink
                         href={ route("backoffice.users.index") }
+                        icon={ 
+                            <Icon 
+                                name="user"
+                                className="w-6 h-6"
+                            /> 
+                        }
                         label="Users"
                     />
-                    <NavLink
+                    <SidebarLink
                         href={ route("backoffice.roles.index") }
                         label="Roles"
                     />

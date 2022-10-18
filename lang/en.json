@@ -12,8 +12,13 @@
     "Log in": "Log in",
     "Log out": "Log out",
     "Manage": "Manage",
+    "Permission": "Permission",
+    "Permissions": "Permissions",
     "Register": "Register",
+    "Role": "Role",
+    "Roles": "Roles",
     "Search for": "Search for...",
     "Update": "Update",
+    "User": "User",
     "Users": "Users"
 }

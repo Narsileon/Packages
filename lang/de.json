@@ -12,8 +12,13 @@
     "Log in": "Anmelden",
     "Log out": "Abmelden",
     "Manage": "Verwalten",
+    "Permission": "Berechtigung",
+    "Permissions": "Berechtigungen",
     "Register": "Registrieren",
+    "Role": "Rolle",
+    "Roles": "Rollen",
     "Search for": "Suchen nach...",
     "Update": "Aktualisieren",
+    "User": "Benutzer",
     "Users": "Benutzer"
 }

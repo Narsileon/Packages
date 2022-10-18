@@ -12,8 +12,13 @@
     "Log in": "Se connecter",
     "Log out": "Se déconnecter",
     "Manage": "Gérer",
+    "Permission": "Autorisation",
+    "Permissions": "Autorisations",
     "Register": "S'inscrire",
+    "Role": "Rôle",
+    "Roles": "Rôles",
     "Search for": "Rechercher...",
     "Update": "Mettre à jour",
+    "User": "Utilisateur",
     "Users": "Utilisateurs"
 }
