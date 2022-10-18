@@ -34,7 +34,7 @@ export default function ThemeButton() {
             onClick={ () => toggle(isDark = !isDark) }
         >   
             <Theme 
-                className="w-6 h-6"
+                className="w-5 h-5"
                 theme={ isDark ? "dark" : "light" }
             />
         </button>
