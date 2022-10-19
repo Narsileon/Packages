@@ -25,8 +25,8 @@ export default function Dropdown({
                 { trigger }
             </button>
             { !open ? null :
-                <div className={ `primary-background absolute overflow-auto min-w-fit mt-2 p-2 z-40 bordered rounded ${ childrenClasses }` }>
-                    <ul className="divided-y space-y-2">
+                <div className={ `primary-background absolute overflow-auto min-w-fit mt-2 z-40 bordered rounded ${ childrenClasses }` }>
+                    <ul className="divided-y space-y-1">
                         { children }
                     </ul>
                 </div>

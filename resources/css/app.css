@@ -44,8 +44,9 @@
         hover:text-blue-500
     }
     .selectable-item { @apply
-        whitespace-nowrap
-        hover:text-blue-500
+        block whitespace-nowrap p-1 rounded
+        hover:bg-gray-300 hover:text-blue-500 
+        dark:hover:bg-gray-600 
     }
     .selectable-active { @apply
         text-blue-500

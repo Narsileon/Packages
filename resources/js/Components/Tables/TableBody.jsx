@@ -24,23 +24,27 @@ export default function TableBody({ tableData, columns, settings }) {
 							<td className="p-2 w-0">
 								<Dropdown 
 									trigger={ trigger() }
-									childrenClasses="p-2 left-0"
+									childrenClasses="left-0"
 									width="12"
-								>
-									{ !settings.editable ? null:
-										<DropdownItem
-											href={ settings.link + rowData.id + '/edit' } 
-											label="Edit"
-										/>
-									}
-									{ !settings.deletable ? null:
-										<DropdownItem 
-											href={ settings.link + rowData.id }
-											label="Delete"
-											method="delete" 
-											as="button"   
-										/>
-									}
+								>	
+									<div>
+										{ !settings.editable ? null:
+											<DropdownItem
+												href={ settings.link + rowData.id + '/edit' } 
+												label="Edit"
+											/>
+										}
+									</div>
+									<div>
+										{ !settings.deletable ? null:
+											<DropdownItem 
+												href={ settings.link + rowData.id }
+												label="Delete"
+												method="delete" 
+												as="button"   
+											/>
+										}										
+									</div>
 								</Dropdown>
 							</td>
 
