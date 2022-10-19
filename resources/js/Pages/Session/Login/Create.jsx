@@ -18,43 +18,40 @@ export default function Create() {
         <>
             <Head title={ t("Log in") } /> 
 
-            <div className="w-6/12 m-auto">
-                <Form 
-                    header={ 
-                        <FormHeader title={ t("Log in") } /> 
-                    }
-                    footer={ 
-                        <FormFooter 
-                            href={ route("home") }
-                            label="Log in"
-                            processing={ processing }
-                        />
-                    }
-                    onSubmit={ submit }
-                >
-                    <div className="space-y-4">
-                        {/* Email */}
-                        <FormInput 
-                            id="email" 
-                            label="Email" 
-                            type="email"
-                            value={ data.email} 
-                            error={ errors.email} 
-                            setData={ setData } 
-                        />
-                        {/* Password */}
-                        <FormInput 
-                            id="password" 
-                            label="Password" 
-                            type="password" 
-                            value={ data.password} 
-                            error={ errors.password} 
-                            setData={ setData } 
-                            autoComplete="current-password"
-                        />
-                    </div>
-                </Form>
-            </div>	
+            <Form 
+                className="w-6/12 m-auto"
+                header={ 
+                    <FormHeader title={ t("Log in") } /> 
+                }
+                footer={ 
+                    <FormFooter 
+                        href={ route("home") }
+                        label="Log in"
+                        processing={ processing }
+                    />
+                }
+                onSubmit={ submit }
+            >
+                {/* Email */}
+                <FormInput 
+                    id="email" 
+                    label="Email" 
+                    type="email"
+                    value={ data.email} 
+                    error={ errors.email} 
+                    setData={ setData } 
+                />
+                {/* Password */}
+                <FormInput 
+                    id="password" 
+                    label="Password" 
+                    type="password" 
+                    value={ data.password} 
+                    error={ errors.password} 
+                    setData={ setData } 
+                    autoComplete="current-password"
+                />
+            </Form>
         </>
 	);
 }
