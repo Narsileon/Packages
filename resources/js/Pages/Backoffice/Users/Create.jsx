@@ -1,7 +1,6 @@
 import { Head, useForm } from "@inertiajs/inertia-react";
 import { t } from "@/localization";
-import { Form, FormInput, FormFooter } from "@/Components/Forms";
-import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
+import { Form, FormInput, FormHeader, FormFooter } from "@/Components/Forms";
 
 export default function Create() {
 	const { data, setData, post, processing, errors } = useForm({
@@ -23,7 +22,16 @@ export default function Create() {
 			<Head title={ t("Create user") } />
 
 			<Form 
-				title="Create user"
+				header={ 
+					<FormHeader title={ t("Create user") } /> 
+				}
+				footer={ 
+					<FormFooter 
+						href={ route("backoffice.users.index") }
+						label="Create"
+						processing={ processing }
+					/>
+				}
 				onSubmit={ submit }
 			>
 				<FormInput 
@@ -63,18 +71,6 @@ export default function Create() {
 					error={ errors.first_name } 
 					setData={ setData } 
 				/>
-
-				<FormFooter>
-					<PrimaryButton 
-						href={ route("backoffice.users.index") }
-						type="link"
-						label="Back"
-					/>
-					<PrimaryButton 
-						label="Create"
-						processing={ processing } 
-					/>
-				</FormFooter>
 			</Form>
 		</>
 	);

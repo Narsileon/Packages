@@ -1,7 +1,6 @@
 import { Head, useForm } from "@inertiajs/inertia-react";
 import { t } from "@/localization";
 import { Form, FormCheckbox, FormInput, FormFooter, FormHeader } from "@/Components/Forms";
-import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 
 export default function Create({ permissions }) {
 	let object = {
@@ -20,31 +19,21 @@ export default function Create({ permissions }) {
         post('/backoffice/roles');
     };
 
-	const header = (
-		<FormHeader title="Create role"/>
-	)
-
-	const footer = (
-		<FormFooter>
-			<PrimaryButton 
-				href={ route("backoffice.roles.index") }
-				type="link"
-				label="Back"
-			/>
-			<PrimaryButton 
-				label="Create"
-				processing={ processing } 
-			/>
-		</FormFooter>
-	)
-
 	return (
 		<>
 			<Head title={ t("Create role") } />
 
 			<Form 
-				header={ header }
-				footer={ footer }
+				header={ 
+					<FormHeader title={ t("Create role") } /> 
+				}
+				footer={ 
+					<FormFooter 
+						href={ route("backoffice.roles.index") }
+						label="Create"
+						processing={ processing }
+					/>
+				}
 				onSubmit={ submit }
 			>
 				<FormInput 

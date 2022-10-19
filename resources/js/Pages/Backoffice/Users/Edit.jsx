@@ -1,7 +1,6 @@
 import { Head, useForm } from "@inertiajs/inertia-react";
 import { t } from "@/localization";
-import { Form, FormInput, FormFooter } from "@/Components/Forms";
-import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
+import { Form, FormInput, FormHeader, FormFooter } from "@/Components/Forms";
 
 export default function Edit({ user }) {
     const { data, setData, patch, processing, errors } = useForm({
@@ -19,22 +18,31 @@ export default function Edit({ user }) {
 
     return (
         <>
-			<Head title={ t("Create role") } />
+			<Head title={ t("Edit user") } />
 
 			<Form 
-				title="Edit user"
+				header={ 
+					<FormHeader title={ t("Edit user") } /> 
+				}
+				footer={ 
+					<FormFooter 
+						href={ route("backoffice.users.index") }
+						label="Update"
+						processing={ processing }
+					/>
+				}
 				onSubmit={ submit }
 			>
 				<FormInput 
 					id="username"
-					label="Username"  
+					label="username"  
 					value={ data.username } 
 					error={ errors.username } 
 					setData={ setData } 
 				/>
 				<FormInput 
 					id="email" 
-					label="Email" 
+					label="email" 
 					type="email"
 					value={ data.email} 
 					error={ errors.email} 
@@ -42,30 +50,18 @@ export default function Edit({ user }) {
 				/>
 				<FormInput 
 					id="last_name" 
-					label="Last name" 
+					label="last_name" 
 					value={ data.last_name } 
 					error={ errors.last_name } 
 					setData={ setData } 
 				/>
 				<FormInput 
 					id="first_name" 
-					label="First name" 
+					label="first_name" 
 					value={ data.first_name } 
 					error={ errors.first_name } 
 					setData={ setData } 
 				/>
-
-				<FormFooter>
-					<PrimaryButton 
-						href={ route("backoffice.users.index") }
-						type="link"
-						label="Back"
-					/>
-					<PrimaryButton 
-						label="Update"
-						processing={ processing } 
-					/>
-				</FormFooter>
             </Form>
         </>
     );
