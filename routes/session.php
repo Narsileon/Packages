@@ -2,6 +2,7 @@
 
 #region USE
 
+use App\Http\Controllers\Session\LocaleController;
 use App\Http\Controllers\Session\LoginController;
 use App\Http\Controllers\Session\LogoutController;
 use App\Http\Controllers\Session\RegisterController;
@@ -19,4 +20,5 @@ Route::controller(LoginController::class)->middleware('guest')->group(function (
     Route::post('login', 'store');
 });
 
+Route::get('locales/{locale}', LocaleController::class)->name('locale');
 Route::post('logout', LogoutController::class)->name('logout');

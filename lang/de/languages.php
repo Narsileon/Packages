@@ -4,7 +4,13 @@ return [
     'language'  => 'Sprache',
     'languages' => 'Sprachen',
 
-    'english'   => 'Englisch',
-    'french'    => 'Französisch',
-    'german'    => 'Deutsch',
+    'bg'        => 'Bulgarisch',
+    'da'        => 'Dänisch', 
+    'de'        => 'Deutsch',
+    'en'        => 'Englisch',
+    'fi'        => 'Finnisch', 
+    'fr'        => 'Französisch',
+    'it'        => 'Italienisch',
+    'nl'        => 'Niederländisch', 
+    'sv'        => 'Schwedisch', 
 ];

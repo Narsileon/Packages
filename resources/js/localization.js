@@ -1,5 +1,12 @@
 const t = (key, replacements = null) => {
-    let text = window._localization[key] || key;
+    let text;
+
+    if (!window._localization)
+    {
+        text = key;
+    } else {
+        text = window._localization[key] || key;
+    }
 
     if (replacements)
     {

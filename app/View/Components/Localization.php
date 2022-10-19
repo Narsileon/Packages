@@ -45,30 +45,36 @@ class Localization extends Component
             $phpLocalization = $this->getPhpLocalization($locale);
             $jsonLocalization = $this->getJsonLocalization($locale);
         
-            return array_merge($phpLocalization, $jsonLocalization);
+            return array_merge($phpLocalization, $jsonLocalization); 
         });
     }
 
-    private function getPhpLocalization($locale) {
-        if (File::exists(lang_path("$locale"))) 
+    private function getPhpLocalization($locale) : array
+    {
+        if (!File::exists(lang_path("$locale")))
         {
-            return collect(File::allFiles(lang_path("$locale")))
-                ->filter(function($file) {
-                    return $file->getExtension() === "php";
-                })
-                ->flatMap(function($file) {
-                    return Arr::dot(File::getRequire($file->getRealPath()));
-                })
-                ->toArray()
-            ;
-        }
+            return [];
+        } 
+
+        return collect(File::allFiles(lang_path("$locale")))
+            ->filter(function($file) {
+                return $file->getExtension() === "php";
+            })
+            ->flatMap(function($file) {
+                return Arr::dot(File::getRequire($file->getRealPath()));
+            })
+            ->toArray()
+        ;
     }
 
-    private function getJsonLocalization($locale) {
-        if (File::exists(lang_path("$locale.json"))) 
+    private function getJsonLocalization($locale) : array
+    {
+        if (!File::exists(lang_path("$locale.json")))
         {
-            return json_decode(File::get(lang_path("$locale.json")), true);
+            return [];
         }
+
+        return json_decode(File::get(lang_path("$locale.json")), true);
     }
 
     #endregion

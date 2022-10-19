@@ -5,7 +5,6 @@ namespace App\Http\Middleware;
 #region USE
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use Inertia\Middleware;
@@ -64,7 +63,7 @@ class HandleInertiaRequests extends Middleware
     private function initializeLocaliztion()
     {
         $availableLocales = Config::get("app.available_locales");
-        $locale = App::getLocale();
+        $locale = app()->getLocale();
 
         return compact(
             "availableLocales",

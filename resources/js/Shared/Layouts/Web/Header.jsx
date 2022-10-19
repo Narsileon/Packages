@@ -1,5 +1,4 @@
-import { usePage } from "@inertiajs/inertia-react";
-import NavLink from "@/Components/Navigations/NavLink";
+import LocaleDropdown from "@/Shared/Layouts/LocaleDropdown";
 import Nav from "@/Shared/Layouts/Web/Nav";
 import ThemeButton from "@/Shared/Layouts/ThemeButton";
 import WebsiteLogo from "@/Shared/Layouts/WebsiteLogo";
@@ -12,6 +11,7 @@ export default function Header() {
             </div>
 
             <div className="flex items-center space-x-2">
+                <LocaleDropdown />
                 <Nav />
                 <ThemeButton />                   
             </div>
