@@ -1,4 +1,5 @@
 import { Head, useForm } from "@inertiajs/inertia-react";
+import { t } from "@/localization";
 import { Form, FormInput, FormFooter } from "@/Components/Forms";
 import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 
@@ -19,7 +20,7 @@ export default function Create() {
 
 	return (
 		<>
-			<Head title="Create user" />
+			<Head title={ t("Create user") } />
 
 			<Form 
 				title="Create user"

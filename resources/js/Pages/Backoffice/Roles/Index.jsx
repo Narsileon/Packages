@@ -1,7 +1,8 @@
+import { Head, Link } from "@inertiajs/inertia-react";
+import { t } from "@/localization";
 import Pagination from "@/Shared/Pagination";
 import SearchField from "@/Shared/SearchField";
 import Table from "@/Components/Tables/Table";
-import { Head, Link } from "@inertiajs/inertia-react";
 
 export default function Index({ roles, filters }) {
 	const columns = [
@@ -17,7 +18,7 @@ export default function Index({ roles, filters }) {
 
 	return (
 		<>
-			<Head title="Manage" />
+			<Head title={ t("Roles") } />
 
 			<div className="flex justify-between mb-4">
 				<div className="flex items-center">

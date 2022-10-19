@@ -1,4 +1,5 @@
 import { useForm } from "@inertiajs/inertia-react";
+import { t } from "@/localization";
 import { Form, FormCheckbox, FormFooter, FormInput } from "@/Components/Forms";
 import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 
@@ -52,6 +53,8 @@ export default function Edit({ role, permissions }) {
 
     return (
         <>
+			<Head title={ t("Edit role") } />
+
 			<Form 
 				header={ header }
 				footer={ footer }

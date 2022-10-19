@@ -1,4 +1,5 @@
 import { Head, useForm } from "@inertiajs/inertia-react";
+import { t } from "@/localization";
 import { Form, FormInput, FormFooter } from "@/Components/Forms";
 import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 
@@ -18,7 +19,7 @@ export default function Edit({ user }) {
 
     return (
         <>
-            <Head title="Edit user" />
+			<Head title={ t("Create role") } />
 
 			<Form 
 				title="Edit user"

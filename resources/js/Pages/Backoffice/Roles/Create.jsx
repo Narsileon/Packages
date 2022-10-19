@@ -1,4 +1,5 @@
 import { Head, useForm } from "@inertiajs/inertia-react";
+import { t } from "@/localization";
 import { Form, FormCheckbox, FormInput, FormFooter, FormHeader } from "@/Components/Forms";
 import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 
@@ -39,6 +40,8 @@ export default function Create({ permissions }) {
 
 	return (
 		<>
+			<Head title={ t("Create role") } />
+
 			<Form 
 				header={ header }
 				footer={ footer }
