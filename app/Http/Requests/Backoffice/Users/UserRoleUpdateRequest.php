@@ -31,7 +31,7 @@ class UserRoleUpdateRequest extends FormRequest
             UserRole::ATTRIBUTE_PERMISSIONS => [
                 ValidationRules::OPTIONAL,
                 ValidationRules::TYPE_ARRAY,
-            ]
+            ],
         ];
     }
 }

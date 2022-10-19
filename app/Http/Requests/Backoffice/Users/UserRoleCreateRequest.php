@@ -28,6 +28,10 @@ class UserRoleCreateRequest extends FormRequest
                 ValidationRules::max(255),
                 ValidationRules::unique('roles', UserRole::FIELD_NAME),
             ],
+            UserRole::ATTRIBUTE_PERMISSIONS => [
+                ValidationRules::OPTIONAL,
+                ValidationRules::TYPE_ARRAY,
+            ],
         ];
     }
 }

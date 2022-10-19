@@ -51,7 +51,9 @@ class RoleController extends Controller
     {
         $attributes = $request->validated();
 
-        Role::create($attributes);
+        $role = Role::create($attributes);
+
+        $role->syncPermissions($attributes["permissions"]);
 
         return redirect(route("backoffice.roles.index"));
     }
