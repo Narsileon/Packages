@@ -82,18 +82,18 @@ return [
 
     'available_locales' =>
     [
-        'bulgarian' => 'bg',
-        'dutch' => 'nl',
-        'english' => 'en',
-        'finnish' => 'fi',
-        'french' => 'fr',
-        'german' => 'de',
-        'hungarian' => 'hu',
-        'italian' => 'it',
-        'norwegian' => 'no',
-        'polish' => 'pl',
-        'romanian' => 'ro',
-        'swedish' => 'sv',
+        'bg',
+        'nl',
+        'en',
+        'fi',
+        'fr',
+        'de',
+        'hu',
+        'it',
+        'no',
+        'pl',
+        'ro',
+        'sv',
     ],
 
     /*

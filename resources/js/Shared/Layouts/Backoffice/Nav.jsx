@@ -31,6 +31,16 @@ export default function Nav() {
                         label="Dashboard"
                     />
                     <SidebarLink
+                        href={ route("backoffice.calendar") }
+                        icon={ 
+                            <Icon 
+                                name="calendar"
+                                className="w-6 h-6"
+                            /> 
+                        }
+                        label="Calendar"
+                    />
+                    <SidebarLink
                         href={ route("backoffice.users.index") }
                         icon={ 
                             <Icon 

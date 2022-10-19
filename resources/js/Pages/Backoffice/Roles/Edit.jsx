@@ -1,6 +1,6 @@
-import { Head, useForm } from "@inertiajs/inertia-react";
-import { Form, FormButton, FormCheckbox, FormInput } from "@/Components/Forms";
-import { Inertia } from "@inertiajs/inertia";
+import { useForm } from "@inertiajs/inertia-react";
+import { Form, FormCheckbox, FormFooter, FormInput } from "@/Components/Forms";
+import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 
 export default function Edit({ role, permissions }) {
 	let object = {};
@@ -32,12 +32,29 @@ export default function Edit({ role, permissions }) {
 		patch('/backoffice/roles/' + role.data.id)
     };
 
+	const header = (
+		<FormHeader title="Create role"/>
+	)
+
+	const footer = (
+		<FormFooter>
+			<PrimaryButton 
+				href={ route("backoffice.roles.index") }
+				type="link"
+				label="Back"
+			/>
+			<PrimaryButton 
+				label="Create"
+				processing={ processing } 
+			/>
+		</FormFooter>
+	)
+
     return (
         <>
-            <Head title="Edit role" />
-
 			<Form 
-				title="Edit role"
+				header={ header }
+				footer={ footer }
 				onSubmit={ submit }
 			>
 				<FormInput 
@@ -63,11 +80,6 @@ export default function Edit({ role, permissions }) {
 						);
 					})
 				}
-
-				<FormButton 
-					label="Update" 
-					processing={ processing } 
-				/>
             </Form>
         </>
     );

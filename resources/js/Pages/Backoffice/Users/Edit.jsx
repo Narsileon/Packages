@@ -1,5 +1,6 @@
 import { Head, useForm } from "@inertiajs/inertia-react";
-import { Form, FormButton, FormInput } from "@/Components/Forms";
+import { Form, FormInput, FormFooter } from "@/Components/Forms";
+import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 
 export default function Edit({ user }) {
     const { data, setData, patch, processing, errors } = useForm({
@@ -53,10 +54,17 @@ export default function Edit({ user }) {
 					setData={ setData } 
 				/>
 
-				<FormButton 
-					label="Update" 
-					processing={ processing } 
-				/>
+				<FormFooter>
+					<PrimaryButton 
+						href={ route("backoffice.users.index") }
+						type="link"
+						label="Back"
+					/>
+					<PrimaryButton 
+						label="Update"
+						processing={ processing } 
+					/>
+				</FormFooter>
             </Form>
         </>
     );

@@ -18,4 +18,4 @@ const t = (key, replacements = null) => {
     return text;
 }
 
-export default t;
+export { t };

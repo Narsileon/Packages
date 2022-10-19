@@ -1,5 +1,5 @@
 import { Link, usePage } from "@inertiajs/inertia-react";
-import t from "@/localization";
+import { t } from "@/localization";
 
 export default function NavLink({ 
 	label,
