@@ -10,13 +10,7 @@ export default function Nav() {
             hover:w-80
             transition-all duration-300
         ">
-            <div className="flex items-center justify-between space-x-2">
-                <WebsiteLogo />
-
-                <div className="flex items-center">
-                    <ThemeButton />
-                </div>
-            </div>
+            <Header />
 
             <div>
                 <ul className="space-y-4">
@@ -64,4 +58,16 @@ export default function Nav() {
             </div>                
         </aside>
     );
+}
+
+const Header = () => {
+    return (
+        <header className="flex items-center justify-between space-x-2">
+            <WebsiteLogo />
+
+            <div className="flex items-center">
+                <ThemeButton />
+            </div>
+        </header>        
+    )
 }
