@@ -36,14 +36,14 @@ export default function Create() {
 			>
 				<FormInput 
 					id="username"
-					label="Username"  
+					label="username"  
 					value={ data.username } 
 					error={ errors.username } 
 					setData={ setData } 
 				/>
 				<FormInput 
 					id="email" 
-					label="Email" 
+					label="email" 
 					type="email"
 					value={ data.email} 
 					error={ errors.email} 
@@ -51,7 +51,7 @@ export default function Create() {
 				/>
 				<FormInput 
 					id="password" 
-					label="Password" 
+					label="password" 
 					type="password" 
 					value={ data.password} 
 					error={ errors.password} 
@@ -59,14 +59,14 @@ export default function Create() {
 				/>
 				<FormInput 
 					id="last_name" 
-					label="Last name" 
+					label="last_name" 
 					value={ data.last_name } 
 					error={ errors.last_name } 
 					setData={ setData }  
 				/>
 				<FormInput 
 					id="first_name" 
-					label="First name" 
+					label="first_name" 
 					value={ data.first_name } 
 					error={ errors.first_name } 
 					setData={ setData } 

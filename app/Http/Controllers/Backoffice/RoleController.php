@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Backoffice;
 
 #region USE
 
-use App\Acl\Permissions;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backoffice\Users\UserRoleCreateRequest;
 use App\Http\Requests\Backoffice\Users\UserRoleUpdateRequest;
@@ -41,7 +40,7 @@ class RoleController extends Controller
 
     public function create()
     {
-        $permissions = Permissions::getConstants();
+        $permissions = new UserPermissionCollection(UserPermission::All());
 
         return Inertia::render("Backoffice/Roles/Create", compact(
             "permissions",

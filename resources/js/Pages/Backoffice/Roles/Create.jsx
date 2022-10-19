@@ -1,20 +1,33 @@
 import { Head, useForm } from "@inertiajs/inertia-react";
 import { t } from "@/localization";
-import { Form, FormCheckbox, FormInput, FormFooter, FormHeader } from "@/Components/Forms";
+import { Form, FormCheckbox, FormFooter, FormHeader, FormInput } from "@/Components/Forms";
 
 export default function Create({ permissions }) {
-	let object = {
-		name: "",
-	}
+	let object = {};
 	
-	Object.keys(permissions).map(key => {
-		object[key] = true;
+	permissions.data.map((permission) => {
+		object[permission.name] = false;
 	});
 
-	const { data, setData, post, processing, errors } = useForm(object);
+	const { data, setData, transform, post, processing, errors } = useForm({
+		name: "",
+		permissions: object,
+	});
+
+	const onChange = (event) => {
+		let temp = data.permissions;
+		temp[event.target.id] = event.target.checked;
+
+		setData('permissions', temp);
+    };
 
 	const submit = (e) => {
         e.preventDefault();
+
+		transform(() => ({
+			...data,
+			permissions: permissions.data.filter(x => data.permissions[x.name] == true)
+		}))
 
         post('/backoffice/roles');
     };
@@ -38,23 +51,23 @@ export default function Create({ permissions }) {
 			>
 				<FormInput 
 					id="name"
-					label="Name"  
+					label="name"  
 					value={ data.name } 
 					error={ errors.name } 
 					setData={ setData } 
 				/>
 
 				{
-					Object.entries(data).slice(1).map(([key, value], index) => {
+					permissions.data.map((permission) => {
 						return (
-							<FormCheckbox 
-								id={ key }
-								label={ key }
+							<FormCheckbox
+								id={ permission.name } 
+								label={ permission.name }
 								type="checkbox"  
-								checked={ value } 
-								error={ errors[key] } 
-								setData={ setData } 
-								key={ index }
+								checked={ data.permissions[permission.name] } 
+								error={ errors[data.permissions[permission.name]] } 
+								onChange={ onChange } 
+								key={ permission.id }
 							/>								
 						);
 					})
