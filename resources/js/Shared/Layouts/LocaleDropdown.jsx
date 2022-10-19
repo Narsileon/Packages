@@ -16,7 +16,7 @@ export default function LocaleDropdown() {
                     availableLocales.map(availableLocale => {
                         return (
                             <li key={ availableLocale }>
-                                <Link
+                                <a
                                     href={ `/locales/${availableLocale}` } 
                                     className={
                                         "block w-full p-2 whitespace-nowrap text-left" 
@@ -33,7 +33,7 @@ export default function LocaleDropdown() {
                                             { t(availableLocale) } 
                                         </span>             
                                     </div>
-                                </Link>
+                                </a>
                             </li>
                         );
                     })

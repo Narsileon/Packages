@@ -35,7 +35,7 @@ export default function Create() {
                 {/* Email */}
                 <FormInput 
                     id="email" 
-                    label="Email" 
+                    label="email" 
                     type="email"
                     value={ data.email} 
                     error={ errors.email} 
@@ -44,7 +44,7 @@ export default function Create() {
                 {/* Password */}
                 <FormInput 
                     id="password" 
-                    label="Password" 
+                    label="password" 
                     type="password" 
                     value={ data.password} 
                     error={ errors.password} 

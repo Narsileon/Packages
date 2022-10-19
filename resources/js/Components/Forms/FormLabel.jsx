@@ -1,4 +1,5 @@
 import { t } from "@/localization";
+import { upperFirst } from "lodash";
 
 export default function FormLabel({ label }) {
     return (
@@ -6,7 +7,7 @@ export default function FormLabel({ label }) {
             htmlFor={ label }
             className="block m-1 font-semibold"
         > 
-            { t(label) }
+            { upperFirst(t(`attributes.${ label }`)) }
         </label>
     );
 }

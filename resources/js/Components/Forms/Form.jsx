@@ -6,7 +6,8 @@ export default function Form({
     ...props 
 }) {
     return (
-        <form className={`primary-background bordered mt-4 p-8 space-y-8 rounded-xl ${ className }`}
+        <form 
+            className={ `primary-background bordered mt-4 p-8 space-y-8 rounded-xl ${ className }` }
             { ...props }
         >
             { header }
