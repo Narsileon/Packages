@@ -10,7 +10,9 @@ export default function LocaleDropdown() {
     let availableLocales = props.localization.availableLocales;
 
     return (
-        <Dropdown trigger={ t(locale) }>
+        <Dropdown 
+            trigger={ t(locale) }
+        >
             <div>
                 {
                     availableLocales.map(availableLocale => {

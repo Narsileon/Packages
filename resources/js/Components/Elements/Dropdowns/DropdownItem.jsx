@@ -5,7 +5,7 @@ export default function DropdownItem({
     ...props
 }) {
     return (
-        <li>
+        <li className="selectable-item">
             <Link 
                 { ...props }
             >

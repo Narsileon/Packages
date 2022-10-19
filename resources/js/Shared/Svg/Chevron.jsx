@@ -41,6 +41,8 @@ export default function Chevron({
         <svg
             id={ `chevron-${ direction }` }
             className={ `flex-shrink-0 ${ className }` } 
+            fill="transparent"
+            fillRule="evenodd"
             stroke="currentColor"
             strokeLinecap="round" 
             strokeLinejoin="round" 

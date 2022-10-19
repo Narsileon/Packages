@@ -1,6 +1,7 @@
 import { usePage } from "@inertiajs/inertia-react";
 import NavLink from "@/Components/Navigations/NavLink";
 import Dropdown from "@/Components/Elements/Dropdowns/Dropdown";
+import DropdownItem from "@/Components/Elements/Dropdowns/DropdownItem";
 
 export default function Nav() {
     const auth = usePage().props.auth;
@@ -17,17 +18,24 @@ export default function Nav() {
                     auth ? 
                     (
                         <>
-                            <Dropdown trigger="aaa">
-                                <NavLink 
-                                    href={ route('backoffice.dashboard') } 
-                                    label="Dashboard"
-                                />
-                                <NavLink 
-                                    href={ route('logout') } 
-                                    label="Log out"
-                                    method="post"
-                                    as="button"
-                                />
+                            <Dropdown 
+                                childrenClasses="right-0"
+                                trigger="Menu"
+                            >
+                                <div>
+                                    <DropdownItem 
+                                        href={ route('backoffice.dashboard') } 
+                                        label="Dashboard"
+                                    />                 
+                                </div>
+                                <div>
+                                    <DropdownItem 
+                                        href={ route('logout') } 
+                                        label="Log out"
+                                        method="post"
+                                        as="button"
+                                    />                                   
+                                </div>
                             </Dropdown>
                         </>
                     ) 

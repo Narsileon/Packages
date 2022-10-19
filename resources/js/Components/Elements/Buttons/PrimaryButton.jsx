@@ -23,7 +23,8 @@ export default function PrimaryButton({
         return (
             <Link
                 className="primary-button"
-                as="button"
+                method="get"
+                onClick={ (e) => e.preventDefault }
                 { ...props }
             >
                 { t(label) }

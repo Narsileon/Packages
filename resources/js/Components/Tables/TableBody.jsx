@@ -1,7 +1,7 @@
 import { Link } from "@inertiajs/inertia-react";
 import Chevron from "@/Shared/Svg/Chevron";
 import Dropdown from "@/Components/Elements/Dropdowns/Dropdown";
-import DropdownItem from "@/Components/Elements/Dropdowns/DropdownLink";
+import DropdownItem from "@/Components/Elements/Dropdowns/DropdownItem";
 import Icon from "@/Shared/Svg/Icon";
 
 export default function TableBody({ tableData, columns, settings }) {
@@ -24,10 +24,11 @@ export default function TableBody({ tableData, columns, settings }) {
 							<td className="p-2 w-0">
 								<Dropdown 
 									trigger={ trigger() }
+									childrenClasses="p-2 left-0"
 									width="12"
 								>
 									{ !settings.editable ? null:
-										<DropdownItem 
+										<DropdownItem
 											href={ settings.link + rowData.id + '/edit' } 
 											label="Edit"
 										/>
