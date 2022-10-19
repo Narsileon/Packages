@@ -1,6 +1,6 @@
-import { useForm } from "@inertiajs/inertia-react";
+import { Head, useForm } from "@inertiajs/inertia-react";
 import { t } from "@/localization";
-import { Form, FormButton, FormInput } from "@/Components/Forms";
+import { Form, FormFooter, FormHeader, FormInput } from "@/Components/Forms";
 
 export default function Create() {
     const { data, setData, post, processing, errors } = useForm({
@@ -20,7 +20,16 @@ export default function Create() {
 
             <div className="w-6/12 m-auto">
                 <Form 
-                    title="Log in" 
+                    header={ 
+                        <FormHeader title={ t("Log in") } /> 
+                    }
+                    footer={ 
+                        <FormFooter 
+                            href={ route("home") }
+                            label="Log in"
+                            processing={ processing }
+                        />
+                    }
                     onSubmit={ submit }
                 >
                     <div className="space-y-4">
@@ -42,13 +51,6 @@ export default function Create() {
                             error={ errors.password} 
                             setData={ setData } 
                             autoComplete="current-password"
-                        />
-                    </div>
-
-                    <div className="mt-8">
-                        <FormButton 
-                            label="Log in" 
-                            processing={ processing } 
                         />
                     </div>
                 </Form>

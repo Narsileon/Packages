@@ -4,7 +4,7 @@ import { useClickAway, useToggle } from "react-use";
 export default function Dropdown({
     className="",
     trigger, 
-    children,
+    children
 }) {
     const dropdown = useRef(null);
 

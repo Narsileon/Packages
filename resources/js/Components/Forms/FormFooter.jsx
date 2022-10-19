@@ -1,7 +1,18 @@
-export default function FormFooter({ children }) {
+import { t } from "@/localization";
+import PrimaryButton from "../Elements/Buttons/PrimaryButton";
+
+export default function FormFooter({ href, label, processing }) {
     return (
         <div className="flex justify-between">
-            { children }
+			<PrimaryButton 
+				href={ href }
+				type="link"
+				label={ t("Back") }
+			/>
+			<PrimaryButton 
+				label={ label }
+				processing={ processing } 
+			/>
         </div>
     );
 }

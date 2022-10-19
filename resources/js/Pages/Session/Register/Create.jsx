@@ -1,5 +1,5 @@
 import { Head, useForm } from "@inertiajs/inertia-react";
-import { Form, FormButton, FormInput } from "@/Components/Forms";
+import { Form, FormFooter, FormHeader, FormInput } from "@/Components/Forms";
 import { t } from "@/localization";
 
 export default function Create() {
@@ -23,8 +23,16 @@ export default function Create() {
 
             <div className="w-6/12 m-auto">
                 <Form 
-                    className="space-y-4"
-                    title="Register" 
+                    header={ 
+                        <FormHeader title={ t("Register") } /> 
+                    }
+                    footer={ 
+                        <FormFooter 
+                            href={ route("home") }
+                            label="Register"
+                            processing={ processing }
+                        />
+                    }
                     onSubmit={ submit }
                 >
                     {/* Username */}
@@ -69,11 +77,6 @@ export default function Create() {
                         value={ data.first_name } 
                         error={ errors.first_name } 
                         setData={ setData } 
-                    />
-
-                    <FormButton 
-                        label="Register" 
-                        processing={ processing } 
                     />
                 </Form>
             </div>

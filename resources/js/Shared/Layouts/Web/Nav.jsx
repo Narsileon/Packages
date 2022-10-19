@@ -1,5 +1,6 @@
 import { usePage } from "@inertiajs/inertia-react";
 import NavLink from "@/Components/Navigations/NavLink";
+import Dropdown from "@/Components/Elements/Dropdowns/Dropdown";
 
 export default function Nav() {
     const auth = usePage().props.auth;
@@ -16,10 +17,18 @@ export default function Nav() {
                     auth ? 
                     (
                         <>
-                            <NavLink 
-                                href={ route('backoffice.dashboard') } 
-                                label="Dashboard"
-                            />
+                            <Dropdown trigger="aaa">
+                                <NavLink 
+                                    href={ route('backoffice.dashboard') } 
+                                    label="Dashboard"
+                                />
+                                <NavLink 
+                                    href={ route('logout') } 
+                                    label="Log out"
+                                    method="post"
+                                    as="button"
+                                />
+                            </Dropdown>
                         </>
                     ) 
                     :
