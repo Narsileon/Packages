@@ -17,15 +17,13 @@ export default function LocaleDropdown() {
                 {
                     availableLocales.map(availableLocale => {
                         return (
-                            <li key={ availableLocale }>
+                            <li 
+                                className="m-1"
+                                key={ availableLocale }
+                            >
                                 <a
                                     href={ `/locales/${availableLocale}` } 
                                     className={ `selectable-item ${ availableLocale == locale ? "selectable-active" : "" }` }
-                                    // className={
-                                    //     "block w-full p-2 whitespace-nowrap text-left" 
-                                    //     + " hover:bg-gray-300 hover:text-blue-500" 
-                                    //     + " dark:hover:bg-gray-600" 
-                                    // }
                                 >
                                     <div className="flex items-center space-x-2">
                                         <Flag 
