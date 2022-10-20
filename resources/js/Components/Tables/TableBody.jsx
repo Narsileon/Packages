@@ -1,8 +1,10 @@
+import { Inertia } from "@inertiajs/inertia";
 import { Link } from "@inertiajs/inertia-react";
 import Chevron from "@/Shared/Svg/Chevron";
 import Dropdown from "@/Components/Elements/Dropdowns/Dropdown";
 import DropdownItem from "@/Components/Elements/Dropdowns/DropdownItem";
 import Icon from "@/Shared/Svg/Icon";
+
 
 export default function TableBody({ tableData, columns, settings }) {
 	const trigger = () => (
@@ -11,6 +13,12 @@ export default function TableBody({ tableData, columns, settings }) {
 			<Chevron className="w-4 h-4" />
 		</div>
 	);
+	
+	function destroy(id) {
+		if (confirm('Are you sure you want to delete this contact?')) {
+		  	Inertia.delete(settings.link + id);
+		}
+	}
 
     return (
         <tbody className="divided-y">
@@ -32,16 +40,15 @@ export default function TableBody({ tableData, columns, settings }) {
 											<DropdownItem
 												href={ settings.link + rowData.id + '/edit' } 
 												label="Edit"
+												type="link"
 											/>
 										}
 									</div>
 									<div>
 										{ !settings.deletable ? null:
 											<DropdownItem 
-												href={ settings.link + rowData.id }
 												label="Delete"
-												method="delete" 
-												as="button"   
+												onClick={ () => destroy(rowData.id) } 
 											/>
 										}										
 									</div>

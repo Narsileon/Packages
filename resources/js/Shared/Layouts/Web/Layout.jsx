@@ -3,6 +3,7 @@ import Nav from "./Nav";
 import LocaleDropdown from "@/Shared/Layouts/LocaleDropdown";
 import ThemeButton from "@/Shared/Layouts/ThemeButton";
 import WebsiteLogo from "@/Shared/Layouts/WebsiteLogo";
+import Logo from "@/Shared/Svg/Logo";
 
 export default function Layout({ children }) {
     return (
@@ -49,6 +50,8 @@ const Footer = () => {
                     © 2022 <Link href={route('home')} className="hover:underline">Narsil Studio™</Link>. All Rights Reserved.
                 </span>
                 <div className="flex space-x-4 h-6">
+                    <Logo name="facebook" />
+                    <Logo name="twitter" />
                     {/* Links (Icons) */}
                 </div>
             </div>

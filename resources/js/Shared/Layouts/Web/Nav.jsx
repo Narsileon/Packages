@@ -1,5 +1,5 @@
 import { usePage } from "@inertiajs/inertia-react";
-import NavLink from "@/Components/Navigations/NavLink";
+import NavLink from "@/Components/Elements/Links/NavLink";
 import Dropdown from "@/Components/Elements/Dropdowns/Dropdown";
 import DropdownItem from "@/Components/Elements/Dropdowns/DropdownItem";
 

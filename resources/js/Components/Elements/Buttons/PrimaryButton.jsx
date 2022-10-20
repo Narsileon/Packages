@@ -19,7 +19,7 @@ export default function PrimaryButton({
                     disabled={ processing }
                     { ...props }
                 >
-                    { label != null ? upperFirst(t(label)) : children }
+                    { children }
                 </button>
             );
         case "link":
@@ -29,7 +29,7 @@ export default function PrimaryButton({
                     onClick={ (e) => e.preventDefault }
                     { ...props }
                 >
-                    { label != null ? t(label) : children }
+                    { children }
                 </Link>
             )
         default:
