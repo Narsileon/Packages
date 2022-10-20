@@ -21,7 +21,6 @@ export default function Create() {
 				}
 				footer={ 
 					<FormFooter 
-						href={ route("backoffice.users.index") }
 						label="Create"
 						processing={ processing }
 					/>

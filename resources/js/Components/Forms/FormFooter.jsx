@@ -1,11 +1,14 @@
 import { t } from "@/narsil-localization";
-import PrimaryButton from "../Elements/Buttons/PrimaryButton";
+import { usePage } from "@inertiajs/inertia-react";
+import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 
-export default function FormFooter({ href, label, processing }) {
+export default function FormFooter({ label, processing }) {
+	const previousLocation = usePage().props.ziggy.previousLocation;
+
     return (
         <div className="flex justify-between">
 			<PrimaryButton 
-				href={ href }
+				href={ previousLocation !== "" ? previousLocation : "#" }
 				type="link"
 				label={ t("Back") }
 			/>

@@ -73,9 +73,28 @@ class HandleInertiaRequests extends Middleware
 
     private function initializeZiggy($request)
     {
-        return array_merge((new Ziggy())->toArray(), [
-            'location' => $request->url(),
-        ]);
+        $location = $request->url();
+        $previousLocation = $this->getPreviousLocation($location);
+
+        return array_merge((new Ziggy())->toArray(), compact(
+            "location",
+            "previousLocation",
+        ));
+    }
+
+    private function getPreviousLocation($next)
+    {
+        $url = url()->previous();
+
+        if ($url !== "" && $url !== $next)
+        {
+            return $url;
+        }
+
+        else
+        {
+            return "";
+        }
     }
 
     #endregion

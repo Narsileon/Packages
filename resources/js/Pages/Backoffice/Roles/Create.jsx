@@ -40,7 +40,6 @@ export default function Create({ permissions }) {
 				}
 				footer={ 
 					<FormFooter 
-						href={ route("backoffice.roles.index") }
 						label="Create"
 						processing={ processing }
 					/>

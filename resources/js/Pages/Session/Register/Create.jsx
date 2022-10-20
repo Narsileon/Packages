@@ -22,7 +22,6 @@ export default function Create() {
                 }
                 footer={ 
                     <FormFooter 
-                        href={ route("home") }
                         label="Register"
                         processing={ processing }
                     />

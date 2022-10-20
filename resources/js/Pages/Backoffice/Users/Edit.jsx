@@ -20,7 +20,6 @@ export default function Edit({ user }) {
 				}
 				footer={ 
 					<FormFooter 
-						href={ route("backoffice.users.index") }
 						label="Update"
 						processing={ processing }
 					/>

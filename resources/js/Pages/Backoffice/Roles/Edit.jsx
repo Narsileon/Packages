@@ -40,7 +40,6 @@ export default function Edit({ role, permissions }) {
 				}
 				footer={ 
 					<FormFooter 
-						href={ route("backoffice.roles.index") }
 						label="Update"
 						processing={ processing }
 					/>
