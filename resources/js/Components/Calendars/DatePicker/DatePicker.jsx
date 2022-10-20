@@ -4,10 +4,13 @@ import Chevron from "@/Shared/Svg/Chevron";
 import Icon from "@/Shared/Svg/Icon";
 import { useToggle } from "react-use";
 import { days, months } from "../useCalendar"
+import { useMonth } from "../useMonth";
 import DatePickerCell from "./DatePickerCell";
 
-export default function Datepicker({ dates, activeDate, setDate, addMonths }) {
+export default function Datepicker({ setExternalDate }) {
     const today = new Date();
+
+    const [ dates, setDate, activeDate, activeWeek, addMonths, addDays ] = useMonth();
 
     const [show, toggle] = useToggle(false);
 
@@ -22,7 +25,10 @@ export default function Datepicker({ dates, activeDate, setDate, addMonths }) {
                             return (
                                 <DatePickerCell 
                                     label={ date.getDate() } 
-                                    action={ () => setDate(date) }
+                                    action={ () => {
+                                        setDate(date);
+                                        setExternalDate(date);
+                                    }}
                                     current={ activeDate.getMonth() == date.getMonth() } 
                                     active={ 
                                         date.getFullYear() == today.getFullYear() && 
@@ -47,7 +53,7 @@ export default function Datepicker({ dates, activeDate, setDate, addMonths }) {
                 className="p-2"
                 onClick={ toggle }
             >
-                <Icon name="calendar" />
+                <Icon name="calendar" className="w-6 h-6"/>
             </button>
 
             {
@@ -62,11 +68,11 @@ export default function Datepicker({ dates, activeDate, setDate, addMonths }) {
                                 }
                             </div>
                             <div className="flex space-x-3">
-                                <PrimaryButton action={ (event) => addMonths(event, -1) }>
-                                    <Chevron direction="left" />
+                                <PrimaryButton onClick={ (event) => addMonths(event, -1) }>
+                                    <Chevron direction="left" className="w-3 h-3" />
                                 </PrimaryButton>
-                                <PrimaryButton action={ (event) => addMonths(event, 1) }>
-                                    <Chevron direction="right" />
+                                <PrimaryButton onClick={ (event) => addMonths(event, 1) }>
+                                    <Chevron direction="right" className="w-3 h-3" />
                                 </PrimaryButton>
                             </div>
                         </div>

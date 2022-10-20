@@ -25,12 +25,7 @@ export default function Calendar({ tasks }) {
                         }
                     </div>
                     <div className="flex space-x-2">
-                        <Datepicker 
-                            dates={ dates }
-                            activeDate={ activeDate } 
-                            setDate={ setDate } 
-                            addMonths={ addMonths } 
-                        />
+                        <Datepicker setExternalDate={ setDate } />
                         <div className="flex space-x-2">
                             <PrimaryButton
                                 label="month"
