@@ -2,8 +2,8 @@ import { FormError, FormLabel } from "@/Components/Forms";
 
 export default function FormCheckbox({ 
     label,
-    setData, 
     error,
+    setData, 
     className="", 
     ...props 
 }) {

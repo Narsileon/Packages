@@ -10,12 +10,6 @@ export default function Edit({ user }) {
         first_name: user.data.first_name
     });
 
-	const submit = (e) => {
-        e.preventDefault();
-
-        patch('/backoffice/users/' + user.data.id);
-    };
-
     return (
         <>
 			<Head title={ t("Edit user") } />
@@ -31,7 +25,7 @@ export default function Edit({ user }) {
 						processing={ processing }
 					/>
 				}
-				onSubmit={ submit }
+				submit={ () => patch('/backoffice/users/' + user.data.id) }
 			>
 				<FormInput 
 					id="username"

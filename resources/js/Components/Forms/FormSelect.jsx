@@ -1,34 +1,29 @@
 import { FormError, FormLabel } from "@/Components/Forms";
 
 export default function FormSelect({
-    label, 
+    label,
     error,
+    setData,
+    children,
     className="", 
-    options, 
     ...props 
 }) {
+    const onChange = (event) => {
+        setData(event.target.id, event.target.value);
+    };
+
     return (
         <div>
-            <FormLabel label={ label }/>
+            <FormLabel label={ label } />
             <select
                 className={ `field ${className}` }
+                onChange={ onchange }
                 required={ true }
                 { ...props }
             >            
-                {
-                    options.map((option, index) => {
-                        return (
-                            <option 
-                                value={ option.id }
-                                key={ index }
-                            >
-                                { option.title }
-                            </option>
-                        );
-                    })
-                }   
+                { children }
             </select>  
-            <FormError message={ error }/>
+            <FormError message={ error } />
         </div>         
     );
 }

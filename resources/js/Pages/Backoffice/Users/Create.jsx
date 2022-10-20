@@ -11,12 +11,6 @@ export default function Create() {
 		first_name: '',
     });
 
-	const submit = (e) => {
-        e.preventDefault();
-
-        post('/backoffice/users');
-    };
-
 	return (
 		<>
 			<Head title={ t("Create user") } />
@@ -32,7 +26,7 @@ export default function Create() {
 						processing={ processing }
 					/>
 				}
-				onSubmit={ submit }
+				submit={ () => post('/backoffice/users') }
 			>
 				<FormInput 
 					id="username"

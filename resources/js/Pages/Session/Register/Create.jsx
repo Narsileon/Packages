@@ -11,12 +11,6 @@ export default function Create() {
         first_name: '',
     });
 
-	const submit = (event) => {
-        event.preventDefault();
-
-        post(route('register'));
-    };
-
     return (
         <>
             <Head title={ t("Register") } />    
@@ -33,7 +27,7 @@ export default function Create() {
                         processing={ processing }
                     />
                 }
-                onSubmit={ submit }
+                submit={ post(route('register')) }
             >
                 {/* Username */}
                 <FormInput 

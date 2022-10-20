@@ -8,12 +8,6 @@ export default function Create() {
         password: '',
     });
 
-	const submit = (e) => {
-        e.preventDefault();
-
-        post(route('login'));
-    };
-
 	return (
         <>
             <Head title={ t("Log in") } /> 
@@ -21,7 +15,9 @@ export default function Create() {
             <Form 
                 className="w-6/12 m-auto"
                 header={ 
-                    <FormHeader title={ t("Log in") } /> 
+                    <FormHeader 
+                        title={ t("Log in") } 
+                    /> 
                 }
                 footer={ 
                     <FormFooter 
@@ -30,7 +26,7 @@ export default function Create() {
                         processing={ processing }
                     />
                 }
-                onSubmit={ submit }
+                submit={ () => post(route('login')) }
             >
                 {/* Email */}
                 <FormInput 

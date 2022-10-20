@@ -21,9 +21,7 @@ export default function Edit({ role, permissions }) {
 		setData('permissions', temp);
     };
 
-	const submit = (e) => {
-        e.preventDefault();
-
+	const submit = () => {
 		transform(() => ({
 			...data,
 			permissions: permissions.data.filter(x => data.permissions[x.name] == true)
@@ -47,7 +45,7 @@ export default function Edit({ role, permissions }) {
 						processing={ processing }
 					/>
 				}
-				onSubmit={ submit }
+				submit={ submit }
 			>
 				<FormInput 
 					id="name"

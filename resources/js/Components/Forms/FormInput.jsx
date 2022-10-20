@@ -2,8 +2,8 @@ import { FormError, FormLabel } from "@/Components/Forms";
 
 export default function FormInput({ 
     label,
-    setData, 
     error,
+    setData, 
     className="", 
     ...props 
 }) {
@@ -13,15 +13,15 @@ export default function FormInput({
 
     return (
         <div>
-            <FormLabel label={ label }/>
+            <FormLabel label={ label } />
             <input 
-                className={ `field w-full ${className}` }
+                className={ `field w-full ${ className }` }
                 type="text"
                 onChange={ onChange }
                 required={ true }
                 { ...props }
             />  
-            <FormError message={ error }/>
+            <FormError message={ error } />
         </div>   
     )
 }
