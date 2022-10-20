@@ -22,7 +22,7 @@ class UserResource extends JsonResource
             User::FIELD_LAST_NAME => $this->{ User::FIELD_LAST_NAME },
             User::FIELD_FIRST_NAME => $this->{ User::FIELD_FIRST_NAME },
 
-            User::ATTRIBUTE_ROLES => $this->getRoleNames(),
+            User::ATTRIBUTE_ROLES => new UserRoleCollection($this->{ User::ATTRIBUTE_ROLES}),
             User::ATTRIBUTE_PERMISSIONS => new UserPermissionCollection($this->getAllPermissions()),
         ];
     }

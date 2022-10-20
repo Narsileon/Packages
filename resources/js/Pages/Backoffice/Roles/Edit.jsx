@@ -3,22 +3,26 @@ import { t } from "@/narsil-localization";
 import { Form, FormCheckbox, FormFooter, FormHeader, FormInput } from "@/Components/Forms";
 
 export default function Edit({ role, permissions }) {
-	let object = {};
-
-	permissions.data.map((permission) => {
-		object[permission.name] = role.data.permissions.some(x => x.id === permission.id);
-	});
+	function initializeObject(collection) {
+		let object = {};
+	
+		collection.data.map((item) => {
+			object[item.name] = role.data.permissions.some(x => x.id === item.id);
+		});
+	
+		return object;
+	}	
 
 	const { data, setData, transform, patch, processing, errors } = useForm({
 		name: role.data.name,
-		permissions: object,
+		permissions: initializeObject(permissions),
 	});
 
 	const onChange = (event) => {
-		let temp = data.permissions;
-		temp[event.target.id] = event.target.checked;
+		let array = data.permissions;
+		array[event.target.id] = event.target.checked;
 
-		setData('permissions', temp);
+		setData('permissions', array);
     };
 
 	const submit = () => {

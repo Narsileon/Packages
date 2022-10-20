@@ -1,31 +1,50 @@
 import { Head, useForm } from "@inertiajs/inertia-react";
 import { t } from "@/narsil-localization";
-import { Form, FormCheckbox, FormInput, FormHeader, FormFooter, FormLabel } from "@/Components/Forms";
+import { Form, FormCheckbox, FormHeader, FormFooter, FormInput, FormLabel } from "@/Components/Forms";
 
 export default function Create({ roles, permissions }) {
+	function initializeRoles() {
+		let object = {};
+	
+		roles.data.map((item) => {
+			object[item.name] = false;
+		});
+	
+		return object;
+	}	
+
+	function initializePermissions() {
+		let object = {};
+	
+		permissions.data.map((item) => {
+			object[item.name] = false;
+		});
+	
+		return object;
+	}	
+
 	const { data, setData, transform, post, processing, errors } = useForm({
         username: '',
         email: '',
 		password: '',
 		last_name: '',
 		first_name: '',
-		roles: {},
-		permissions: {},
+		roles: initializeRoles(),
+		permissions: initializePermissions(),
     });
 
-	roles.data.map((role) => {
-		data.roles[role.name] = false;
-	});
+	const onRoleChange = (event) => {
+		let array = data.roles;
+		array[event.target.id] = event.target.checked;
 
-	permissions.data.map((permission) => {
-		data.permissions[permission.name] = false;
-	});
+		setData("roles", array);
+    };
 
-	const onChange = (event, name) => {
+	const onPermissionChange = (event) => {
 		let array = data.permissions;
 		array[event.target.id] = event.target.checked;
 
-		setData(name, array);
+		setData("permissions", array);
     };
 
 	const submit = () => {
@@ -101,7 +120,7 @@ export default function Create({ roles, permissions }) {
 								label={ role.name }
 								checked={ data.roles[role.name] } 
 								error={ errors[data.roles[role.name]] } 
-								onChange={ (e) => onChange(e, "roles") } 
+								onChange={ onRoleChange } 
 								key={ role.id }
 							/>								
 						);
@@ -117,7 +136,7 @@ export default function Create({ roles, permissions }) {
 								label={ permission.name }  
 								checked={ data.permissions[permission.name] } 
 								error={ errors[data.permissions[permission.name]] } 
-								onChange={ (e) => onChange(e, "permissions") } 
+								onChange={ onPermissionChange } 
 								key={ permission.id }
 							/>								
 						);

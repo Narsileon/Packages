@@ -3,15 +3,19 @@ import { t } from "@/narsil-localization";
 import { Form, FormCheckbox, FormFooter, FormHeader, FormInput } from "@/Components/Forms";
 
 export default function Create({ permissions }) {
-	let object = {};
+	function initializeObject(collection) {
+		let object = {};
 	
-	permissions.data.map((permission) => {
-		object[permission.name] = false;
-	});
+		collection.data.map((item) => {
+			object[item.name] = false;
+		});
+	
+		return object;
+	}	
 
 	const { data, setData, transform, post, processing, errors } = useForm({
 		name: "",
-		permissions: (object),
+		permissions: initializeObject(permissions),
 	});
 
 	const onChange = (event) => {
