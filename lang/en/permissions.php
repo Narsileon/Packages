@@ -7,7 +7,8 @@ return [
     'permission'    => 'permission',
     'permissions'   => 'permissions',
 
-    'attributes' => [
+    'attributes' => 
+    [
         'backoffice-view'   => 'View backoffice',
         'users-view'        => 'View users',
         'users-create'      => 'Create an user',

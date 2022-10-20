@@ -7,7 +7,8 @@ return [
     'permission'    => 'autorisation',
     'permissions'   => 'autorisations',
 
-    'attributes' => [
+    'attributes' => 
+    [
         'backoffice-view'   => 'Voir l\'arrière guichet',
         'users-view'        => 'Voir les utilisateurs',
         'users-create'      => 'Créer un utilisateur',

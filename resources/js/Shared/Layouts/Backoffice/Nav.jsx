@@ -33,7 +33,7 @@ export default function Nav() {
                                 className="w-6 h-6"
                             /> 
                         }
-                        label="Calendar"
+                        label="calendar"
                     />
                     <SidebarLink
                         href={ route("backoffice.users.index") }
@@ -53,7 +53,7 @@ export default function Nav() {
                                 className="w-6 h-6"
                             /> 
                         }
-                        label="Roles"
+                        label="roles"
                     />
                 </ul>
             </div>

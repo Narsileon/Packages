@@ -3,7 +3,8 @@ import { FormError, FormLabel } from "@/Components/Forms";
 export default function FormCheckbox({ 
     label,
     error,
-    setData, 
+    setData,
+    submit, 
     className="", 
     ...props 
 }) {

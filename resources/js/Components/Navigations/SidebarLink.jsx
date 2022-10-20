@@ -1,4 +1,6 @@
 import { Link, usePage } from "@inertiajs/inertia-react";
+import { t } from "@/localization";
+import { upperFirst } from "lodash";
 
 export default function SidebarLink({ 
 	label, 
@@ -20,7 +22,7 @@ export default function SidebarLink({
                 </div>
                 
                 <span className="flex-1 whitespace-nowrap ml-2">
-                    { label }
+                    { upperFirst(t(label)) }
                 </span>
 			</Link>			
 		</li>
