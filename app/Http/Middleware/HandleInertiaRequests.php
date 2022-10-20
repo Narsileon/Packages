@@ -73,8 +73,8 @@ class HandleInertiaRequests extends Middleware
 
     private function initializeZiggy($request)
     {
-        $location = $request->url();
-        $previousLocation = $this->getPreviousLocation($location);
+        $location = url()->current();
+        $previousLocation = $this->getPreviousLocation();
 
         return array_merge((new Ziggy())->toArray(), compact(
             "location",
@@ -82,11 +82,11 @@ class HandleInertiaRequests extends Middleware
         ));
     }
 
-    private function getPreviousLocation($next)
+    private function getPreviousLocation()
     {
         $url = url()->previous();
 
-        if ($url !== "" && $url !== $next)
+        if ($url !== "" && $url !== url()->current())
         {
             return $url;
         }
