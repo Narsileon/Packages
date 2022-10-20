@@ -18,7 +18,7 @@ export default function FormCheckbox({
                 <FormLabel label={ label }/>
                 <input 
                     className={ `field w-min ${className}` }
-                    type="text"
+                    type="checkbox"
                     onChange={ onChange }
                     { ...props }
                 />                 
