@@ -1,6 +1,6 @@
 import { t } from "@/localization";
 import { useToggle } from "react-use";
-import { days, months, useCalendar } from "@/Components/Calendars/narsil-calendar"
+import { addMonths, days, months, useCalendar } from "@/Components/Calendars/narsil-calendar"
 import Chevron from "@/Shared/Svg/Chevron";
 import DatePickerCell from "./DatePickerCell";
 import Icon from "@/Shared/Svg/Icon";
@@ -9,7 +9,7 @@ import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 export default function Datepicker({ setExternalDate, getExternalDate }) {
     const today = new Date();
 
-    const [ dates, setDate, activeDate, activeWeek, addMonths, addDays ] = useCalendar();
+    const [ date, setDate, dates ] = useCalendar();
 
     const [show, toggle] = useToggle(false);
 
@@ -20,21 +20,21 @@ export default function Datepicker({ setExternalDate, getExternalDate }) {
             rows.push(
                 <tr key={ Object.keys(dates)[i] }>
                     {
-                        dates[Object.keys(dates)[i]].map((date) => {
+                        dates[Object.keys(dates)[i]].map((d) => {
                             return (
                                 <DatePickerCell 
-                                    label={ date.getDate() } 
+                                    label={ d.getDate() } 
                                     action={ () => {
-                                        setDate(date);
-                                        setExternalDate(date);
+                                        setDate(d);
+                                        setExternalDate(d);
                                     }}
-                                    current={ activeDate.getMonth() == date.getMonth() } 
+                                    current={ date.getMonth() == d.getMonth() } 
                                     active={ 
-                                        date.getFullYear() == today.getFullYear() && 
-                                        date.getMonth() == today.getMonth() && 
-                                        date.getDate() == today.getDate() 
+                                        d.getFullYear() == today.getFullYear() && 
+                                        d.getMonth() == today.getMonth() && 
+                                        d.getDate() == today.getDate() 
                                     }
-                                    key={ date }
+                                    key={ d }
                                 />
                             );
                         })
@@ -66,14 +66,14 @@ export default function Datepicker({ setExternalDate, getExternalDate }) {
                         <div className="flex items-center justify-between p-2">
                             <div className="text-left font-bold">
                                 {
-                                    (t(months[activeDate.getMonth()]) + " " + activeDate.getFullYear())
+                                    (t(months[date.getMonth()]) + " " + date.getFullYear())
                                 }
                             </div>
                             <div className="flex space-x-3">
-                                <PrimaryButton onClick={ (event) => addMonths(event, -1) }>
+                                <PrimaryButton onClick={ () => setDate(addMonths(date, -1)) }>
                                     <Chevron direction="left" className="w-3 h-3" />
                                 </PrimaryButton>
-                                <PrimaryButton onClick={ (event) => addMonths(event, 1) }>
+                                <PrimaryButton onClick={ () => setDate(addMonths(date, 1)) }>
                                     <Chevron direction="right" className="w-3 h-3" />
                                 </PrimaryButton>
                             </div>
