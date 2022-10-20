@@ -1,10 +1,12 @@
 import { Link } from "@inertiajs/inertia-react";
 import { t } from "@/localization";
+import { upperFirst } from "lodash";
 
 export default function PrimaryButton({
     label,
     type="submit",
     processing,
+    children,
     ...props
 }) {
     if (type == "submit") {
@@ -14,7 +16,7 @@ export default function PrimaryButton({
                 disabled={ processing }
                 { ...props }
             >
-                { t(label) }
+                { label != null ? upperFirst(t(label)) : children }
             </button>
         );
     }
@@ -27,7 +29,7 @@ export default function PrimaryButton({
                 onClick={ (e) => e.preventDefault }
                 { ...props }
             >
-                { t(label) }
+                { label != null ? t(label) : children }
             </Link>
         );
     }

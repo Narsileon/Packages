@@ -3,6 +3,14 @@
 return [
     "calendar"  => "calendar",
 
+    'year'      => 'year',
+    'month'     => 'month',
+    'week'      => 'week',
+    'day'       => 'jour',
+    'hour'      => 'heure',
+    'minute'    => 'minute',
+    'seconde'   => 'seconde',
+
     'monday'    => 'Monday',
     'tuesday'   => 'Tuesday',
     'wednesday' => 'Wednesday',

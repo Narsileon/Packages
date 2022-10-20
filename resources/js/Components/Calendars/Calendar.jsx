@@ -33,21 +33,20 @@ export default function Calendar({ tasks }) {
                         />
                         <div className="flex space-x-2">
                             <PrimaryButton
-                                label="Month"
+                                label="month"
                                 onClick={ () => setShow("month") }
                             />
                             <PrimaryButton
-                                label="Week"
+                                label="week"
                                 onClick={ () => setShow("week") }
                             />
                             <PrimaryButton
-                                label="Day"
+                                label="day"
                                 onClick={ () => setShow("day") }
                             />
                         </div>
                         <div className="flex space-x-2">
-                            <button 
-                                className="primary-button"
+                            <PrimaryButton 
                                 onClick={ 
                                     show == "month" 
                                     ? (event) => addMonths(event, -1) 
@@ -58,10 +57,9 @@ export default function Calendar({ tasks }) {
                                     : null
                                 }
                             >
-                                <Chevron direction="left" />
-                            </button>
-                            <button
-                                className="primary-button"
+                                <Chevron direction="left" className="w-6 h-6" />
+                            </PrimaryButton>
+                            <PrimaryButton
                                 onClick={ 
                                     show == "month" 
                                     ? (event) => addMonths(event, 1) 
@@ -72,8 +70,8 @@ export default function Calendar({ tasks }) {
                                     : null
                                 }
                             >
-                                <Chevron direction="right" />
-                            </button>
+                                <Chevron direction="right" className="w-6 h-6" />
+                            </PrimaryButton>
                         </div>
                     </div>
                 </div>

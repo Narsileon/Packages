@@ -27,9 +27,7 @@ class Localization extends Component
 
     public function render()
     {   
-        $locale = App::getLocale();
-
-        $localization = $this->getLocalization($locale);
+        $localization = $this->getLocalization(App::getLocale());
 
         return view('components.localization', compact(
             "localization",
