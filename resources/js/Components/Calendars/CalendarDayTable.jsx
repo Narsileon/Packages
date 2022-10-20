@@ -1,6 +1,6 @@
 import { t } from "@/localization";
-import CalendarCell from "./CalendarCell";
-import { days } from "./useCalendar"
+import { days } from "@/Components/Calendars/narsil-calendar"
+import CalendarCell from "@/Components/Calendars/CalendarCell";
 
 export default function CalendarDayTable({ date, activeMonth, setDate }) {
     const today = new Date();

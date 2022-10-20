@@ -1,16 +1,15 @@
-import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 import { t } from "@/localization";
-import Chevron from "@/Shared/Svg/Chevron";
-import Icon from "@/Shared/Svg/Icon";
 import { useToggle } from "react-use";
-import { days, months } from "../useCalendar"
-import { useMonth } from "../useMonth";
+import { days, months, useCalendar } from "@/Components/Calendars/narsil-calendar"
+import Chevron from "@/Shared/Svg/Chevron";
 import DatePickerCell from "./DatePickerCell";
+import Icon from "@/Shared/Svg/Icon";
+import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 
 export default function Datepicker({ setExternalDate, getExternalDate }) {
     const today = new Date();
 
-    const [ dates, setDate, activeDate, activeWeek, addMonths, addDays ] = useMonth();
+    const [ dates, setDate, activeDate, activeWeek, addMonths, addDays ] = useCalendar();
 
     const [show, toggle] = useToggle(false);
 

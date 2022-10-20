@@ -1,17 +1,16 @@
 import { useState } from "react";
-import { months } from "./useCalendar"
-import { useMonth } from "./useMonth";
-import CalendarDayTable from "./CalendarDayTable";
-import CalendarMonthTable from "./CalendarMonthTable";
-import CalendarWeekTable from "./CalendarWeekTable";
-import Datepicker from "./DatePicker/DatePicker";
-import PrimaryButton from "../Elements/Buttons/PrimaryButton";
 import { t } from "@/localization";
+import { months, useCalendar } from "@/Components/Calendars/narsil-calendar"
+import CalendarDayTable from "@/Components/Calendars/CalendarDayTable";
+import CalendarMonthTable from "@/Components/Calendars/CalendarMonthTable";
+import CalendarWeekTable from "@/Components/Calendars/CalendarWeekTable";
 import Chevron from "@/Shared/Svg/Chevron";
+import Datepicker from "@/Components/Calendars/DatePicker/DatePicker";
+import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 
 export default function Calendar({ tasks }) {
 
-    const [ dates, setDate, activeDate, activeWeek, addMonths, addDays ] = useMonth();
+    const [ dates, setDate, activeDate, activeWeek, addMonths, addDays ] = useCalendar();
 
     const [ show, setShow ] = useState("month");
 

@@ -1,14 +1,46 @@
 import { useEffect, useState } from "react";
-import { useWeekNumber } from "./useCalendar";
 
-export const useMonth = () => {
+function getWeekNumber(date) {
+    let firstDay = new Date(date.getFullYear(), 0, 1);
+
+    let days = Math.floor((date - firstDay) / (24 * 60 * 60 * 1000));
+         
+    return Math.ceil(days / 7);
+}
+
+export const days = [
+    "monday", 
+    "tuesday", 
+    "wednesday", 
+    "thursday", 
+    "friday", 
+    "saturday",
+    "sunday", 
+];
+
+export const months = [
+    "january",
+    "february",
+    "march",
+    "april",
+    "may",
+    "june",
+    "july",
+    "august",
+    "september",
+    "october",
+    "november",
+    "december",
+];
+
+export const useCalendar = () => {
     const [date, setDate] = useState(new Date());
     const [dates, setDates] = useState(get());
-    const [activeWeek, setActiveWeek] = useState(useWeekNumber(date));
+    const [activeWeek, setActiveWeek] = useState(getWeekNumber(date));
 
     useEffect(() => {
         setDates(get);
-        setActiveWeek(useWeekNumber(date))
+        setActiveWeek(getWeekNumber(date))
     }, [date])
 
     function addDays(event, value) {
@@ -34,8 +66,8 @@ export const useMonth = () => {
 
         let firstDayOfTheMonth = new Date(date.getFullYear(), date.getMonth(), 1).getDay();
 
-        let firstWeek = useWeekNumber(new Date(date.getFullYear(), date.getMonth(), 1));
-        let lastWeek = useWeekNumber(new Date(date.getFullYear(), date.getMonth() + 1, 0));
+        let firstWeek = getWeekNumber(new Date(date.getFullYear(), date.getMonth(), 1));
+        let lastWeek = getWeekNumber(new Date(date.getFullYear(), date.getMonth() + 1, 0));
 
         if (firstDayOfTheMonth == 0) {
             firstDayOfTheMonth = 7
@@ -69,3 +101,4 @@ export const useMonth = () => {
 
     return[ dates, setDate, date, activeWeek, addMonths, addDays ]
 }
+
