@@ -11,14 +11,14 @@ export default function Create({ permissions }) {
 
 	const { data, setData, transform, post, processing, errors } = useForm({
 		name: "",
-		permissions: object,
+		permissions: (object),
 	});
 
 	const onChange = (event) => {
-		let temp = data.permissions;
-		temp[event.target.id] = event.target.checked;
+		let array = data.permissions;
+		array[event.target.id] = event.target.checked;
 
-		setData('permissions', temp);
+		setData('permissions', array);
     };
 
 	const submit = () => {

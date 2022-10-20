@@ -1,15 +1,42 @@
 import { Head, useForm } from "@inertiajs/inertia-react";
 import { t } from "@/narsil-localization";
-import { Form, FormInput, FormHeader, FormFooter } from "@/Components/Forms";
+import { Form, FormCheckbox, FormInput, FormHeader, FormFooter, FormLabel } from "@/Components/Forms";
 
-export default function Create() {
-	const { data, setData, post, processing, errors } = useForm({
+export default function Create({ roles, permissions }) {
+	const { data, setData, transform, post, processing, errors } = useForm({
         username: '',
         email: '',
 		password: '',
 		last_name: '',
 		first_name: '',
+		roles: {},
+		permissions: {},
     });
+
+	roles.data.map((role) => {
+		data.roles[role.name] = false;
+	});
+
+	permissions.data.map((permission) => {
+		data.permissions[permission.name] = false;
+	});
+
+	const onChange = (event, name) => {
+		let array = data.permissions;
+		array[event.target.id] = event.target.checked;
+
+		setData(name, array);
+    };
+
+	const submit = () => {
+		transform(() => ({
+			...data,
+			roles: roles.data.filter(x => data.roles[x.name] == true),
+			permissions: permissions.data.filter(x => data.permissions[x.name] == true),
+		}))
+
+        post('/backoffice/users');
+    };
 
 	return (
 		<>
@@ -25,7 +52,7 @@ export default function Create() {
 						processing={ processing }
 					/>
 				}
-				submit={ () => post('/backoffice/users') }
+				submit={ submit }
 			>
 				<FormInput 
 					id="username"
@@ -64,6 +91,38 @@ export default function Create() {
 					error={ errors.first_name } 
 					setData={ setData } 
 				/>
+
+				<FormLabel label="Roles" />
+				{
+					roles.data.map((role) => {
+						return (
+							<FormCheckbox
+								id={ role.name } 
+								label={ role.name }
+								checked={ data.roles[role.name] } 
+								error={ errors[data.roles[role.name]] } 
+								onChange={ (e) => onChange(e, "roles") } 
+								key={ role.id }
+							/>								
+						);
+					})
+				}
+
+				<FormLabel label="Permissions" />
+				{
+					permissions.data.map((permission) => {
+						return (
+							<FormCheckbox
+								id={ permission.name } 
+								label={ permission.name }  
+								checked={ data.permissions[permission.name] } 
+								error={ errors[data.permissions[permission.name]] } 
+								onChange={ (e) => onChange(e, "permissions") } 
+								key={ permission.id }
+							/>								
+						);
+					})
+				}
 			</Form>
 		</>
 	);

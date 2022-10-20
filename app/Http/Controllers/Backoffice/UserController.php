@@ -4,14 +4,16 @@ namespace App\Http\Controllers\Backoffice;
 
 #region USE
 
-use App\Acl\Permissions;
-use App\Acl\Roles;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backoffice\Users\UserCreateRequest;
 use App\Http\Requests\Backoffice\Users\UserUpdateRequest;
 use App\Http\Resources\Backoffice\Users\UserCollection;
+use App\Http\Resources\Backoffice\Users\UserPermissionCollection;
 use App\Http\Resources\Backoffice\Users\UserResource;
+use App\Http\Resources\Backoffice\Users\UserRoleCollection;
 use App\Models\User;
+use App\Models\UserPermission;
+use App\Models\UserRole;
 use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
 
@@ -40,8 +42,8 @@ class UserController extends Controller
 
     public function create()
     {
-        $roles = Roles::getConstants();
-        $permissions = Permissions::getConstants();
+        $roles = $this->getAllRoles();
+        $permissions = $this->getAllPermissions();
 
         return Inertia::render("Backoffice/Users/Create", compact(
             "roles",
@@ -53,7 +55,9 @@ class UserController extends Controller
     {
         $attributes = $request->validated();
 
-        User::create($attributes);
+        $user = User::create($attributes);
+
+        $user->syncPermissions($request->get('permissions', []));
 
         return redirect(route("backoffice.users.index"));
     }
@@ -71,8 +75,8 @@ class UserController extends Controller
     {
         $user = new UserResource($user);
 
-        $roles = Roles::getConstants();
-        $permissions = Permissions::getConstants();
+        $roles = $this->getAllRoles();
+        $permissions = $this->getAllPermissions();
 
         return Inertia::render("Backoffice/Users/Edit", compact(
             "user",
@@ -87,8 +91,8 @@ class UserController extends Controller
 
         $user->update($attributes);
 
-        $user->roles()->sync($request->get('roles', []));
-        $user->permissions()->sync($request->get('permissions', []));
+        $user->syncRoles($request->get('roles', []));
+        $user->syncPermissions($request->get('permissions', []));
 
         return redirect(route("backoffice.users.index"));
     }
@@ -98,6 +102,20 @@ class UserController extends Controller
         $user->delete();
 
         return back();
+    }
+
+    #endregion
+
+    #region PRIVATE METHODS
+
+    private function getAllRoles()
+    {
+        return new UserRoleCollection(UserRole::All());
+    }
+
+    private function getAllPermissions()
+    {
+        return new UserPermissionCollection(UserPermission::All());
     }
 
     #endregion

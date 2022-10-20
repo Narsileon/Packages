@@ -40,7 +40,7 @@ class RoleController extends Controller
 
     public function create()
     {
-        $permissions = new UserPermissionCollection(UserPermission::All());
+        $permissions = $this->getAllPermissions();
 
         return Inertia::render("Backoffice/Roles/Create", compact(
             "permissions",
@@ -70,8 +70,7 @@ class RoleController extends Controller
     public function edit(Role $role)
     {
         $role = new UserRoleResource($role);
-
-        $permissions = new UserPermissionCollection(UserPermission::All());
+        $permissions = $this->getAllPermissions();
 
         return Inertia::render("Backoffice/Roles/Edit", compact(
             "role",
@@ -94,6 +93,15 @@ class RoleController extends Controller
         $role->delete();
 
         return back();
+    }
+
+    #endregion
+
+    #region PRIVATE METHODS
+
+    private function getAllPermissions()
+    {
+        return new UserPermissionCollection(UserPermission::All());
     }
 
     #endregion
