@@ -7,7 +7,7 @@ import { days, months } from "../useCalendar"
 import { useMonth } from "../useMonth";
 import DatePickerCell from "./DatePickerCell";
 
-export default function Datepicker({ setExternalDate }) {
+export default function Datepicker({ setExternalDate, getExternalDate }) {
     const today = new Date();
 
     const [ dates, setDate, activeDate, activeWeek, addMonths, addDays ] = useMonth();
@@ -51,7 +51,10 @@ export default function Datepicker({ setExternalDate }) {
         <div>
             <button 
                 className="p-2"
-                onClick={ toggle }
+                onClick={ () => {
+                    toggle();
+                    setDate(getExternalDate); 
+                }}
             >
                 <Icon name="calendar" className="w-6 h-6"/>
             </button>

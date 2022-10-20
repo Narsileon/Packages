@@ -15,6 +15,10 @@ export default function Calendar({ tasks }) {
 
     const [ show, setShow ] = useState("month");
 
+    function getActiveDate() {
+        return activeDate;
+    }
+
     return (
         <div className="primary-background bordered flex flex-grow w-full h-fit overflow-auto">
             <div className="flex flex-col w-full p-2">
@@ -25,7 +29,7 @@ export default function Calendar({ tasks }) {
                         }
                     </div>
                     <div className="flex space-x-2">
-                        <Datepicker setExternalDate={ setDate } />
+                        <Datepicker setExternalDate={ setDate } getExternalDate={ getActiveDate } />
                         <div className="flex space-x-2">
                             <PrimaryButton
                                 label="month"
