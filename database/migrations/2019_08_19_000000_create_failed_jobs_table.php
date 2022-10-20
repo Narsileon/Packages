@@ -10,9 +10,12 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    #region PUBLIC METHODS
+
     public function up()
     {
-        Schema::create('failed_jobs', function (Blueprint $table) {
+        Schema::create('failed_jobs', function (Blueprint $table) 
+        {
             $table->id();
             $table->string('uuid')->unique();
             $table->text('connection');
@@ -27,4 +30,6 @@ return new class extends Migration
     {
         Schema::dropIfExists('failed_jobs');
     }
+
+    #endregion
 };

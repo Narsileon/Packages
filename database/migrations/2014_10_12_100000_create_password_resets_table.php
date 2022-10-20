@@ -10,9 +10,12 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    #region PUBLIC METHODS
+
     public function up()
     {
-        Schema::create('password_resets', function (Blueprint $table) {
+        Schema::create('password_resets', function (Blueprint $table) 
+        {
             $table->string('email')->index();
             $table->string('token');
             $table->timestamp('created_at')->nullable();
@@ -23,4 +26,6 @@ return new class extends Migration
     {
         Schema::dropIfExists('password_resets');
     }
+
+    #endregion
 };

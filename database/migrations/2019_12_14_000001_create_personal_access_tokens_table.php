@@ -10,9 +10,12 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    #region PUBLIC METHODS
+
     public function up()
     {
-        Schema::create('personal_access_tokens', function (Blueprint $table) {
+        Schema::create('personal_access_tokens', function (Blueprint $table) 
+        {
             $table->id();
             $table->morphs('tokenable');
             $table->string('name');
@@ -28,4 +31,6 @@ return new class extends Migration
     {
         Schema::dropIfExists('personal_access_tokens');
     }
+
+    #endregion
 };

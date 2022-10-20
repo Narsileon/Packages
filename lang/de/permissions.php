@@ -1,11 +1,11 @@
 <?php
 
 return [
-    'Role'      => 'Rolle',
-    'Roles'     => 'Rollen',
+    'role'      => 'Rolle',
+    'roles'     => 'Rollen',
 
-    'Permission'    => 'Berechtigung',
-    'Permissions'   => 'Berechtigungen',
+    'permission'    => 'Berechtigung',
+    'permissions'   => 'Berechtigungen',
 
     'attributes' => [
         'backoffice-view'   => 'Anzeigen des Backoffice',

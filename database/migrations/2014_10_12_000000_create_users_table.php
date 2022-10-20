@@ -11,9 +11,12 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    #region PUBLIC METHODS
+
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) 
+        {
             $table->id();
             $table->string(User::FIELD_USERNAME)->unique();
             $table->string(User::FIELD_EMAIL)->unique();
@@ -30,4 +33,6 @@ return new class extends Migration
     {
         Schema::dropIfExists('users');
     }
+
+    #endregion
 };

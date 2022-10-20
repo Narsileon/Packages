@@ -1,7 +1,7 @@
 <?php
 
 return [
-    "calendar"  => "Calendar",
+    "calendar"  => "calendar",
 
     'monday'    => 'Monday',
     'tuesday'   => 'Tuesday',

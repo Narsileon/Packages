@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'language'  => 'Language',
-    'languages' => 'Languages',
+    'language'  => 'language',
+    'languages' => 'languages',
 
     'bg'        => 'Bulgarian',
     'da'        => 'Danish', 

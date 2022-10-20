@@ -1,11 +1,11 @@
 <?php
 
 return [
-    'Role'      => 'Rôle',
-    'Roles'     => 'Rôles',
+    'role'      => 'rôle',
+    'roles'     => 'rôles',
 
-    'Permission'    => 'Autorisation',
-    'Permissions'   => 'Autorisations',
+    'permission'    => 'autorisation',
+    'permissions'   => 'autorisations',
 
     'attributes' => [
         'backoffice-view'   => 'Voir l\'arrière guichet',

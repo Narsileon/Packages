@@ -12,6 +12,8 @@ use Illuminate\Support\Str;
 
 class UserFactory extends Factory
 {
+    #region PUBLIC METHODS
+
     public function definition() : array
     {
         return [
@@ -31,4 +33,6 @@ class UserFactory extends Factory
             User::FIELD_EMAIL_VERIFIED_AT => null,
         ]);
     }
+
+    #endregion
 }
