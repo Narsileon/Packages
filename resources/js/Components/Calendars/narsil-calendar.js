@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+//#region CONSTANTS
+
 export const days = [
     "monday", 
     "tuesday", 
@@ -25,6 +27,10 @@ export const months = [
     "december",
 ];
 
+//#endregion
+
+//#region MAIN 
+
 export const useCalendar = () => {
     const [date, setDate] = useState(new Date());
     const [dates, setDates] = useState(getDates(date));
@@ -38,6 +44,10 @@ export const useCalendar = () => {
     return[ date, setDate, dates, activeWeek ]
 }
 
+//#endregion
+
+//#region PUBLIC METHODS
+
 export function addDays(date, value) {
     return new Date(date.getFullYear(), date.getMonth(), date.getDate() + value);
 }
@@ -49,6 +59,10 @@ export function addMonths(date, value) {
 export function addYears(date, value) {
     return new Date(date.getFullYear() + value, date.getMonth(), date.getDate());
 }
+
+//#endregion
+
+//#region PRIVATE METHODS
 
 function getDates(date) {
     let previousLastDate = new Date(date.getFullYear(), date.getMonth(), 0).getDate();
@@ -95,3 +109,5 @@ function getWeekNumber(date) {
          
     return Math.ceil(days / 7);
 }
+
+//#endregion
