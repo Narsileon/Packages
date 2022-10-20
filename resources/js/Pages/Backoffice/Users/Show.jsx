@@ -1,5 +1,5 @@
 import { Head, Link } from "@inertiajs/inertia-react";
-import { t } from "@/localization";
+import { t } from "@/narsil-localization";
 import Text from "@/Components/Elements/Text";
 
 export default function Show({ user }) {

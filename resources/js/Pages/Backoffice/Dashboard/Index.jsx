@@ -1,5 +1,5 @@
 import { Head } from "@inertiajs/inertia-react";
-import { t } from "@/localization";
+import { t } from "@/narsil-localization";
 
 export default function Index() {
     return (

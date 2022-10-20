@@ -1,4 +1,4 @@
-import { t } from "@/localization";
+import { t } from "@/narsil-localization";
 import { days } from "@/Components/Calendars/narsil-calendar"
 import CalendarCell from "@/Components/Calendars/CalendarCell";
 

@@ -1,5 +1,5 @@
 import { Head, Link } from "@inertiajs/inertia-react";
-import { t } from "@/localization";
+import { t } from "@/narsil-localization";
 import Pagination from "@/Shared/Pagination";
 import SearchField from "@/Shared/SearchField";
 import Table from "@/Components/Tables/Table";

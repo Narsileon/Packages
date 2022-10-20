@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { t } from "@/localization";
+import { t } from "@/narsil-localization";
 import { addDays, addMonths, months, useCalendar } from "@/Components/Calendars/narsil-calendar"
 import CalendarDayTable from "@/Components/Calendars/CalendarDayTable";
 import CalendarMonthTable from "@/Components/Calendars/CalendarMonthTable";

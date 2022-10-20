@@ -1,5 +1,5 @@
 import { Head, useForm } from "@inertiajs/inertia-react";
-import { t } from "@/localization";
+import { t } from "@/narsil-localization";
 import { Form, FormInput, FormHeader, FormFooter } from "@/Components/Forms";
 
 export default function Create() {

@@ -1,5 +1,5 @@
 import { Link } from "@inertiajs/inertia-react";
-import { t } from "@/localization";
+import { t } from "@/narsil-localization";
 import { upperFirst } from "lodash";
 
 export default function PrimaryButton({

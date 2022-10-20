@@ -1,5 +1,5 @@
 import { usePage } from "@inertiajs/inertia-react";
-import { t } from "@/localization";
+import { t } from "@/narsil-localization";
 import { upperCase } from "lodash";
 import Dropdown from "@/Components/Elements/Dropdowns/Dropdown";
 import Flag from "@/Shared/Svg/Flag";

@@ -1,4 +1,4 @@
-import { t } from "@/localization";
+import { t } from "@/narsil-localization";
 import PrimaryButton from "../Elements/Buttons/PrimaryButton";
 
 export default function FormFooter({ href, label, processing }) {

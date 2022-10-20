@@ -1,5 +1,5 @@
 import { Head, useForm } from "@inertiajs/inertia-react";
-import { t } from "@/localization";
+import { t } from "@/narsil-localization";
 import { Form, FormCheckbox, FormFooter, FormHeader, FormInput } from "@/Components/Forms";
 
 export default function Edit({ role, permissions }) {
