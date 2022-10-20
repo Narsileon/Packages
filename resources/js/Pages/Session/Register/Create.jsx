@@ -1,6 +1,6 @@
 import { Head, useForm } from "@inertiajs/inertia-react";
-import { Form, FormFooter, FormHeader, FormInput } from "@/Components/Forms";
 import { t } from "@/localization";
+import { Form, FormFooter, FormHeader, FormInput } from "@/Components/Forms";
 
 export default function Create() {
     const { data, setData, post, processing, errors } = useForm({
@@ -27,7 +27,7 @@ export default function Create() {
                         processing={ processing }
                     />
                 }
-                submit={ post(route('register')) }
+                submit={ () => post(route('register')) }
             >
                 {/* Username */}
                 <FormInput 

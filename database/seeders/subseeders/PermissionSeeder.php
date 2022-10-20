@@ -33,7 +33,9 @@ class PermissionSeeder extends Seeder
 
         foreach($roles as $role)
         {
-            Role::create(['name' => $role]);
+            Role::create([
+                'name' => $role,
+            ]);
         }
     }
 
@@ -43,7 +45,9 @@ class PermissionSeeder extends Seeder
 
         foreach($permissions as $permission)
         {
-            Permission::create(['name' => $permission]);
+            Permission::create([
+                'name' => $permission,
+            ]);
         }
     }
 

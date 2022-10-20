@@ -14,6 +14,8 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
+    #region PUBLIC METHODS
+
     public function run()
     {
         $this->call([
@@ -23,4 +25,6 @@ class DatabaseSeeder extends Seeder
             BackofficeSeeder::class,
         ]);
     }
+
+    #endregion
 }
