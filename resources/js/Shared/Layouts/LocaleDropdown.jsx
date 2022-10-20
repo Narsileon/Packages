@@ -1,4 +1,4 @@
-import { Link, usePage } from "@inertiajs/inertia-react";
+import { usePage } from "@inertiajs/inertia-react";
 import { t } from "@/localization";
 import { upperCase } from "lodash";
 import Dropdown from "@/Components/Elements/Dropdowns/Dropdown";

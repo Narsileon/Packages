@@ -14,46 +14,51 @@ export default function Nav() {
                     label="Home"                     
                 />
 
-                {
-                    auth ? 
-                    (
-                        <>
-                            <Dropdown 
-                                childrenClasses="right-0"
-                                trigger="Menu"
-                            >
-                                <div>
-                                    <DropdownItem 
-                                        href={ route('backoffice.dashboard') } 
-                                        label="Dashboard"
-                                    />                 
-                                </div>
-                                <div>
-                                    <DropdownItem 
-                                        href={ route('logout') } 
-                                        label="Log out"
-                                        method="post"
-                                        as="button"
-                                    />                                   
-                                </div>
-                            </Dropdown>
-                        </>
-                    ) 
-                    :
-                    (
-                        <>
-                            <NavLink 
-                                href={ route('register') } 
-                                label="Register"
-                            />
-                            <NavLink 
-                                href={ route('login') } 
-                                label="Log in" 
-                            />
-                        </>
-                    )
-                }
+                { auth ? <NavAuth /> : <NavGuest /> }
             </ul>
         </nav> 
     );
+}
+
+const NavAuth = () => {
+    return (
+        <>
+            <Dropdown 
+                childrenClasses="right-0"
+                trigger="Menu"
+            >
+                <div>
+                    <DropdownItem 
+                        href={ route('backoffice.dashboard') } 
+                        label="Dashboard"
+                        type="link"
+                    />                 
+                </div>
+                <div>
+                    <DropdownItem 
+                        href={ route('logout') } 
+                        label="Log out"
+                        type="link"
+                        method="post"
+                        as="button"
+                    />                                   
+                </div>
+            </Dropdown>
+        </>        
+    );
+}
+
+const NavGuest = () => {
+    return (
+        <>
+            <NavLink 
+                href={ route('register') } 
+                label="Register"
+            />
+            <NavLink 
+                href={ route('login') } 
+                label="Log in" 
+            />
+        </>
+    )
 }

@@ -4,33 +4,35 @@ import { upperFirst } from "lodash";
 
 export default function PrimaryButton({
     label,
-    type="submit",
     processing,
+    type="button",
     children,
     ...props
 }) {
-    if (type == "submit") {
-        return (
-            <button
-                className="primary-button"
-                disabled={ processing }
-                { ...props }
-            >
-                { label != null ? upperFirst(t(label)) : children }
-            </button>
-        );
-    }
+    children = label != null ? upperFirst(t(label)) : children;
 
-    if (type == "link") {
-        return (
-            <Link
-                className="primary-button"
-                method="get"
-                onClick={ (e) => e.preventDefault }
-                { ...props }
-            >
-                { label != null ? t(label) : children }
-            </Link>
-        );
+    switch (type) {
+        case "button":
+            return (
+                <button
+                    className="primary-button"
+                    disabled={ processing }
+                    { ...props }
+                >
+                    { label != null ? upperFirst(t(label)) : children }
+                </button>
+            );
+        case "link":
+            return (
+                <Link
+                    className="primary-button"
+                    onClick={ (e) => e.preventDefault }
+                    { ...props }
+                >
+                    { label != null ? t(label) : children }
+                </Link>
+            )
+        default:
+            break;
     }
 }

@@ -6,8 +6,8 @@ return [
     'year'      => 'year',
     'month'     => 'month',
     'week'      => 'week',
-    'day'       => 'jour',
-    'hour'      => 'heure',
+    'day'       => 'day',
+    'hour'      => 'hour',
     'minute'    => 'minute',
     'seconde'   => 'seconde',
 
