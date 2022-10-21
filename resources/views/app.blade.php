@@ -22,7 +22,5 @@
 
     <body>
         @inertia
-
-        <x-localization />
     </body>
 </html>

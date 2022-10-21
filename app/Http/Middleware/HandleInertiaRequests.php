@@ -4,9 +4,9 @@ namespace App\Http\Middleware;
 
 #region USE
 
+use App\Localization\Localization;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Config;
 use Inertia\Middleware;
 use Tightenco\Ziggy\Ziggy;
 
@@ -30,13 +30,15 @@ class HandleInertiaRequests extends Middleware
     public function share(Request $request): array
     {
         $auth = $this->initializeAuth($request);
-        $localization = $this->initializeLocaliztion();
         $ziggy = $this->initializeZiggy($request);
+
+        $localization = Localization::get();
 
         return array_merge(parent::share($request), compact(
             "auth",
-            "localization",
             "ziggy",
+
+            "localization",
         ));
     }
 
@@ -58,17 +60,6 @@ class HandleInertiaRequests extends Middleware
                 "username" => $user->username,
             ]
         ];
-    }
-
-    private function initializeLocaliztion()
-    {
-        $availableLocales = Config::get("app.available_locales");
-        $locale = app()->getLocale();
-
-        return compact(
-            "availableLocales",
-            "locale"
-        );
     }
 
     private function initializeZiggy($request)

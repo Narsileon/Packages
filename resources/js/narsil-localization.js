@@ -1,15 +1,19 @@
+import { usePage } from "@inertiajs/inertia-react";
+
 const t = (key, replacements = null) => {
+    const strings = usePage().props.localization.strings
+
     let text;
 
-    if (!window._localization) {
+    if (!strings) {
         text = key;
     } else {
-        text = window._localization[key] || key;
+        text = strings[key] || key;
     }
 
     if (replacements) {
         Object.keys(replacements).forEach(x => {
-            text = localization.replace(`:${x}`, replacements[r]);
+            text = t.replace(`:${x}`, replacements[r]);
         })
     }
 

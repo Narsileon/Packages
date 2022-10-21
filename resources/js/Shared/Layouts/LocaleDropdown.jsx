@@ -1,14 +1,11 @@
-import { usePage } from "@inertiajs/inertia-react";
+import { Link, usePage } from "@inertiajs/inertia-react";
 import { t } from "@/narsil-localization";
 import { upperCase } from "lodash";
 import Dropdown from "@/Components/Elements/Dropdowns/Dropdown";
 import Flag from "@/Shared/Svg/Flag";
 
 export default function LocaleDropdown() {
-    const props = usePage().props;
-
-    let locale = props.localization.locale;
-    let availableLocales = props.localization.availableLocales;
+    const { locale, availableLocales} = usePage().props.localization;
 
     return (
         <Dropdown 
@@ -22,7 +19,7 @@ export default function LocaleDropdown() {
                                 className="m-1"
                                 key={ availableLocale }
                             >
-                                <a
+                                <Link
                                     href={ `/locales/${availableLocale}` } 
                                     className={ `selectable-item ${ availableLocale == locale ? "selectable-active" : "" }` }
                                 >
@@ -35,7 +32,7 @@ export default function LocaleDropdown() {
                                             { t(availableLocale) } 
                                         </span>             
                                     </div>
-                                </a>
+                                </Link>
                             </li>
                         );
                     })
