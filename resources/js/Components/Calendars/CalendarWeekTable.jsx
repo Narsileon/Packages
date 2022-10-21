@@ -59,7 +59,7 @@ export default function CalendarWeekTable({ dates, activeMonth, setDate }) {
                                         { dates[index].getDate() }
                                     </div>
                                     <div className="text-left">
-                                        { t(label) }                                 
+                                        { t(`time.${ label }`) }                                 
                                     </div>
                                 </th>   
                             );                     

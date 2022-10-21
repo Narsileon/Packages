@@ -31,15 +31,15 @@ export default function Calendar({ tasks }) {
                         <Datepicker setExternalDate={ setDate } getExternalDate={ getActiveDate } />
                         <div className="flex space-x-2">
                             <PrimaryButton
-                                label="month"
+                                label="time.month"
                                 onClick={ () => setShow("month") }
                             />
                             <PrimaryButton
-                                label="week"
+                                label="time.week"
                                 onClick={ () => setShow("week") }
                             />
                             <PrimaryButton
-                                label="day"
+                                label="time.day"
                                 onClick={ () => setShow("day") }
                             />
                         </div>

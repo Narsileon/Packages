@@ -56,7 +56,7 @@ export default function CalendarMonthTable({ dates, activeMonth, setDate }) {
                                     key={ index }
                                 >
                                     <span>
-                                        { t(label) }                                 
+                                        { t(`time.${ label }`) }                                 
                                     </span>
                                 </th>   
                             );                     

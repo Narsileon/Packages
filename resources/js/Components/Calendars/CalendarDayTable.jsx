@@ -46,7 +46,7 @@ export default function CalendarDayTable({ date, activeMonth, setDate }) {
                             { date.getDate() }
                         </div>
                         <div className="text-left">
-                            { t(days[date.getDay()]) }                                 
+                            { t(`time.${ days[date.getDay()] }`) }                                   
                         </div>
                     </th>  
                 </tr>
