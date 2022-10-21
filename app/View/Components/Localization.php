@@ -23,6 +23,12 @@ class Localization extends Component
 
     #endregion
 
+    #region CONSTANTS
+
+    private const INCLUDE_FILENAME = true; 
+
+    #endregion
+
     #region PUBLIC METHODS
 
     public function render()
@@ -39,7 +45,8 @@ class Localization extends Component
     #region PRIVATE METHODS
 
     private function getLocalization($locale) {
-        return Cache::rememberForever("localization_$locale", function() use($locale) {
+        return Cache::rememberForever("localization_$locale", function() use($locale) 
+        {
             $phpLocalization = $this->getPhpLocalization($locale);
             $jsonLocalization = $this->getJsonLocalization($locale);
         
@@ -55,11 +62,13 @@ class Localization extends Component
         } 
 
         return collect(File::allFiles(lang_path("$locale")))
-            ->filter(function($file) {
+            ->filter(function($file) 
+            {
                 return $file->getExtension() === "php";
             })
-            ->flatMap(function($file) {
-                return Arr::dot(File::getRequire($file->getRealPath()));
+            ->flatMap(function($file) 
+            {
+                return self::INCLUDE_FILENAME ? File::getRequire($file->getRealPath()) : Arr::dot(File::getRequire($file->getRealPath()));
             })
             ->toArray()
         ;
