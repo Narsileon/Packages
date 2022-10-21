@@ -34,7 +34,7 @@ abstract class Localization
 
     private static function getLocalization($locale) 
     {
-        return Cache::rememberForever("localization_$locale", function() use($locale) 
+        return Cache::remember("localization_$locale", 600, function() use($locale) 
         {
             $phpLocalization = self::getPhpLocalization($locale);
             $jsonLocalization = self::getJsonLocalization($locale);
