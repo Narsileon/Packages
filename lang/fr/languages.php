@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'language'  => 'langue',
-    'languages' => 'langues',
+    'language'  => 'Langue',
+    'languages' => 'Langues',
 
     'bg'        => 'Bulgare',
     'da'        => 'Danois', 
@@ -15,6 +15,7 @@ return [
     'it'        => 'Italien',
     'nl'        => 'Néerlandais', 
     'no'        => 'Norvégien', 
+    'pl'        => 'Polonais', 
     'pt'        => 'Portugais', 
     'ro'        => 'Roumain', 
     'sv'        => 'Suédois', 

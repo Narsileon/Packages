@@ -15,7 +15,7 @@ export default function Nav() {
                 <SidebarLink
                     href={ route("backoffice.calendar") }
                     icon="calendar"
-                    label="calendar"
+                    label="Calendar"
                 />
                 <SidebarLink
                     href={ route("backoffice.users.index") }
@@ -43,7 +43,7 @@ const SidebarLink = ({ href, icon, label }) => {
             </div>
             
             <span className="flex-1 whitespace-nowrap ml-2">
-                { upperFirst(t(label)) }
+                { (t(label)) }
             </span>
         </NavLink>
     );

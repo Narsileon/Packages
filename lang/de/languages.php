@@ -15,6 +15,7 @@ return [
     'it'        => 'Italienisch',
     'nl'        => 'Niederländisch', 
     'no'        => 'Norwegisch', 
+    'pl'        => 'Polnisch', 
     'pt'        => 'Portugiesisch', 
     'ro'        => 'Rumänisch',
     'sv'        => 'Schwedisch', 

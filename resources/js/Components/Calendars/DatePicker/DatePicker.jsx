@@ -9,7 +9,7 @@ import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 export default function Datepicker({ setExternalDate, getExternalDate }) {
     const today = new Date();
 
-    const [ date, setDate, dates ] = useCalendar();
+    const [date, setDate, dates] = useCalendar();
 
     const [show, toggle] = useToggle(false);
 
@@ -66,7 +66,7 @@ export default function Datepicker({ setExternalDate, getExternalDate }) {
                         <div className="flex items-center justify-between p-2">
                             <div className="text-left font-bold">
                                 {
-                                    (t(months[date.getMonth()]) + " " + date.getFullYear())
+                                    t(months[date.getMonth()]) + " " + date.getFullYear()
                                 }
                             </div>
                             <div className="flex space-x-3">
@@ -87,7 +87,7 @@ export default function Datepicker({ setExternalDate, getExternalDate }) {
                                                 return (
                                                     <th 
                                                         className="p-3"
-                                                        key={index}
+                                                        key={ index }
                                                     >
                                                         <span className="flex items-center justify-center w-3 aspect-square rounded-full">
                                                             { (t(label)).slice(0, 2) }                                 

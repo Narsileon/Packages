@@ -8,9 +8,7 @@ export default function LocaleDropdown() {
     const { locale, availableLocales} = usePage().props.localization;
 
     return (
-        <Dropdown 
-            trigger={ upperCase(locale) }
-        >
+        <Dropdown trigger={ upperCase(locale) }>
             <div>
                 {
                     availableLocales.map(availableLocale => {
@@ -29,7 +27,7 @@ export default function LocaleDropdown() {
                                             className="w-6 h-6" 
                                         />
                                         <span>
-                                            { t(availableLocale) } 
+                                            { t(`languages.${ availableLocale }`) } 
                                         </span>             
                                     </div>
                                 </Link>

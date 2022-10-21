@@ -2,20 +2,17 @@
 
 namespace App\Localization;
 
-use Illuminate\Support\Arr;
+#region USE
+
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
 
+#endregion
+
 abstract class Localization
 {
-    #region CONSTANTS
-
-    private const INCLUDE_FILENAME = true; 
-
-    #endregion
-
     #region PUBLIC METHODS
 
     public static function get() 
@@ -47,23 +44,13 @@ abstract class Localization
     }
 
     private static function getPhpLocalization($locale) : array
-    {
-        if (!File::exists(lang_path("$locale")))
-        {
-            return [];
-        } 
+    {       
+        $translationFiles = File::exists(lang_path("$locale")) ? File::files(lang_path("$locale")) : File::files(lang_path("en"));
 
-        return collect(File::allFiles(lang_path("$locale")))
-            ->filter(function($file) 
-            {
-                return $file->getExtension() === "php";
-            })
-            ->flatMap(function($file) 
-            {
-                return self::INCLUDE_FILENAME ? File::getRequire($file->getRealPath()) : Arr::dot(File::getRequire($file->getRealPath()));
-            })
-            ->toArray()
-        ;
+        return collect($translationFiles)
+            ->map(fn($file) => [$file->getFilenameWithoutExtension() => require($file)])
+            ->collapse()
+            ->toArray();
     }
 
     private static function getJsonLocalization($locale) : array

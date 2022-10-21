@@ -7,7 +7,7 @@ export default function FormLabel({ label }) {
             htmlFor={ label }
             className="block m-1 font-semibold"
         > 
-            { upperFirst(t(`attributes.${ label }`)) }
+            { upperFirst(t(`validation.attributes.${ label }`)) }
         </label>
     );
 }
