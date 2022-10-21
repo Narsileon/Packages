@@ -1,5 +1,5 @@
 import { Link } from "@inertiajs/inertia-react";
-import Logo from "../Svg/Logo";
+import Logo from "@/Shared/Svg/Logo";
 
 export default function WebsiteLogo() {
     return (
@@ -9,7 +9,7 @@ export default function WebsiteLogo() {
         >
             <Logo 
                 name="github" 
-                className="w-8 h-8" 
+                size="8" 
             />
             <h1 className="whitespace-nowrap font-bold text-xl">
                 Narsil Studio

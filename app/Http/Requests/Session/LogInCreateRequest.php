@@ -10,7 +10,7 @@ use Illuminate\Foundation\Http\FormRequest;
 
 #endregion
 
-class LogInCreateRequest extends FormRequest
+class LoginCreateRequest extends FormRequest
 {
     #region PUBLIC METHODS
 

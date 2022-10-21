@@ -3,8 +3,6 @@ export default function Icon({
     className="",
     fillColor="currentColor",
 }) {
-    const path = renderIcon();
-
     function renderIcon() {
         switch (name) {
             // Calendar
@@ -101,11 +99,12 @@ export default function Icon({
                 );
             // Search
             case "search":
-                fillColor="transparent";
-
                 return (
                     <>
-                        <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        <path
+                            fill="transparent" 
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" 
+                        />
                     </>
                 );
             // Shield
@@ -145,7 +144,7 @@ export default function Icon({
         <svg 
             id={ `icon-${ name }` } 
             className={ `flex-shrink-0 ${ className }` } 
-            fill={ fillColor }
+            fill="currentColor"
             clipRule="evenodd"
             fillRule="evenodd"
             stroke="currentColor" 
@@ -156,7 +155,7 @@ export default function Icon({
             aria-hidden="true" 
             xmlns="http://www.w3.org/2000/svg"
         >
-            { path }
+            { renderIcon() }
         </svg>
     );        
 }

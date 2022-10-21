@@ -1,6 +1,7 @@
 export default function Logo({ 
     name,
     className="",
+    size="6",
 }) {
     function renderLogo() {
         switch (name) {
@@ -39,8 +40,8 @@ export default function Logo({
 
     return (
         <svg 
-            id={ "logo-" + name }
-            className={ `flex-shrink-0 ${ className }` } 
+            id={ `logo-${ name }` }
+            className={ `flex-shrink-0 w-${ size } h-${ size} ${ className }` } 
             fill="currentColor"
             clipRule="evenodd"
             fillRule="evenodd" 

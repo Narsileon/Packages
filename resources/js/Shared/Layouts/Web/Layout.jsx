@@ -36,6 +36,14 @@ const Header = () => {
 }
 
 const Footer = () => {
+    const LogoLink = ({ href, name }) => {
+        return (
+            <Link href={ href }>
+                <Logo name={ name } />
+            </Link>
+        );
+    }
+
     return (
         <footer className="primary-background w-full p-2 border-t-2 border-gray-500 text-sm">
             <div className="flex items-center justify-between p-2">
@@ -49,9 +57,19 @@ const Footer = () => {
                 <span>
                     © 2022 <Link href={route('home')} className="hover:underline">Narsil Studio™</Link>. All Rights Reserved.
                 </span>
-                <div className="flex space-x-4 h-6">
-                    <Logo name="facebook" />
-                    <Logo name="twitter" />
+                <div className="flex space-x-4">                   
+                    <LogoLink 
+                        href={ route('home') }  
+                        name="facebook" 
+                    />
+                    <LogoLink 
+                        href={ route('home') }  
+                        name="instagram" 
+                    />
+                    <LogoLink 
+                        href={ route('home') }  
+                        name="twitter" 
+                    />
                     {/* Links (Icons) */}
                 </div>
             </div>

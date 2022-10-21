@@ -1,5 +1,5 @@
+import BackButton from "@/Components/Elements/Buttons/BackButton";
 import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
-import BackButton from "../Elements/Buttons/BackButton";
 
 export default function FormFooter({ label, processing }) {
     return (
