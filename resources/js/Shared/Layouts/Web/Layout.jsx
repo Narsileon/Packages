@@ -4,6 +4,7 @@ import LocaleDropdown from "@/Shared/Layouts/LocaleDropdown";
 import ThemeButton from "@/Shared/Layouts/ThemeButton";
 import WebsiteLogo from "@/Shared/Layouts/WebsiteLogo";
 import Logo from "@/Shared/Svg/Logo";
+import Flash from "@/Shared/Flash";
 
 export default function Layout({ children }) {
     return (
@@ -13,6 +14,8 @@ export default function Layout({ children }) {
             <section className="flex-grow w-9/12 mx-auto my-4">
                 { children }
             </section>
+
+            <Flash />
 
             <Footer />
         </main>

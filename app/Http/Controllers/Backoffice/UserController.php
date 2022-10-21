@@ -57,9 +57,9 @@ class UserController extends Controller
 
         $user = User::create($attributes);
 
-        $user->syncPermissions($request->get('permissions', []));
+        $user->syncPermissions($request->get("permissions", []));
 
-        return redirect(route("backoffice.users.index"));
+        return redirect(route("backoffice.users.index"))->with("success", "user_created");
     }
 
     public function show(User $user)
@@ -91,17 +91,17 @@ class UserController extends Controller
 
         $user->update($attributes);
 
-        $user->syncRoles($request->get('roles', []));
-        $user->syncPermissions($request->get('permissions', []));
+        $user->syncRoles($request->get("roles", []));
+        $user->syncPermissions($request->get("permissions", []));
 
-        return redirect(route("backoffice.users.index"));
+        return redirect(route("backoffice.users.index"))->with("success", "user_updated");
     }
 
     public function destroy(User $user)
     {
         $user->delete();
 
-        return back();
+        return back()->with("success", "user_deleted");;
     }
 
     #endregion

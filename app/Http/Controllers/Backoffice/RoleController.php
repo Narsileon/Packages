@@ -55,7 +55,7 @@ class RoleController extends Controller
 
         $role->syncPermissions($attributes["permissions"]);
 
-        return redirect(route("backoffice.roles.index"));
+        return redirect(route("backoffice.roles.index"))->with("success", "role_created");
     }
 
     public function show(Role $role)
@@ -85,14 +85,14 @@ class RoleController extends Controller
         $role->update($attributes);
         $role->syncPermissions($attributes["permissions"]);
 
-        return redirect(route("backoffice.roles.index"));
+        return redirect(route("backoffice.roles.index"))->with("success", "role_updated");
     }
 
     public function destroy(Role $role)
     {
         $role->delete();
 
-        return back();
+        return back()->with("success", "role_deleted");;
     }
 
     #endregion

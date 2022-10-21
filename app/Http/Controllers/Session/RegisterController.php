@@ -18,7 +18,7 @@ class RegisterController extends Controller
 
     public function create()
     {
-        return Inertia::render('Session/Register/Create');
+        return Inertia::render("Session/Register/Create");
     }
 
     public function store(RegisterCreateRequest $request)
@@ -29,7 +29,7 @@ class RegisterController extends Controller
 
         Auth::login($user);
 
-        return redirect(route('home'));
+        return redirect(route("home"))->with("success", "register");
     }
 
     #endregion

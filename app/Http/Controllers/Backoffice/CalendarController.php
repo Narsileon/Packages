@@ -13,6 +13,6 @@ class CalendarController extends Controller
 {
     public function __invoke()
     {
-        return Inertia::render('Backoffice/Calendar/Index');
+        return Inertia::render("Backoffice/Calendar/Index");
     }
 }

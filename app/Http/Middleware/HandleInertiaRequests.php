@@ -16,7 +16,7 @@ class HandleInertiaRequests extends Middleware
 {
     #region FIELDS
 
-    protected $rootView = 'app';
+    protected $rootView = "app";
 
     #endregion
 
@@ -30,12 +30,14 @@ class HandleInertiaRequests extends Middleware
     public function share(Request $request): array
     {
         $auth = $this->initializeAuth($request);
+        $flash = $this->initializeFlash($request);
         $ziggy = $this->initializeZiggy($request);
 
         $localization = Localization::get();
 
         return array_merge(parent::share($request), compact(
             "auth",
+            "flash",
             "ziggy",
 
             "localization",
@@ -46,7 +48,7 @@ class HandleInertiaRequests extends Middleware
 
     #region PRIVATE METHODS
 
-    private function initializeAuth()
+    private function initializeAuth($request)
     {
         $user = Auth::user();
 
@@ -59,6 +61,14 @@ class HandleInertiaRequests extends Middleware
             "user" => [
                 "username" => $user->username,
             ]
+        ];
+    }
+
+    private function initializeFlash($request)
+    {
+        return [
+            "success" => fn() => $request->session()->get("success"),
+            "error" => fn() => $request->session()->get("error"),
         ];
     }
 

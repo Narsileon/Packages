@@ -17,7 +17,7 @@ class LocaleController extends Controller
     {
         App::setLocale($locale);
 
-        session()->put('locale', $locale);
+        session()->put("locale", $locale);
 
         return back();
     }

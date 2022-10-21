@@ -2,6 +2,7 @@ import Nav from "./Nav";
 import LocaleDropdown from "@/Shared/Layouts/LocaleDropdown";
 import ThemeButton from "@/Shared/Layouts/ThemeButton";
 import WebsiteLogo from "@/Shared/Layouts/WebsiteLogo";
+import Flash from "@/Shared/Flash";
 
 export default function Layout({ children }) {
     return (
@@ -19,6 +20,8 @@ export default function Layout({ children }) {
             <section className="w-10/12 m-4">
                 { children }
             </section>
+
+            <Flash />
         </main>
     );
 }
