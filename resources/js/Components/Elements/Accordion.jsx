@@ -1,0 +1,49 @@
+import { useState } from "react";
+import Chevron from "@/Shared/Svg/Chevron";
+
+export default function Accordion({ questions }) {
+    const values = {};
+
+    questions.data.map(({ id }) => {
+        values[id] = false;
+    });
+
+    const [items, setItems] = useState(values);
+
+    return (
+        <div className="bordered divided-y rounded">
+            {
+                questions.data.map(({ id, question, answer }) => {
+                    return (
+                        <div 
+                            className="divided-y"
+                            key={ id }
+                        >
+                            <h1>
+                                <button 
+                                    type="button" 
+                                    className="
+                                        primary-background flex items-center justify-between w-full p-4 text-left
+                                    "
+                                    onClick={ () => setItems({ ...items, [id]: !items[id] }) }
+                                >
+                                    <span>
+                                        { question }
+                                    </span>
+                                    <Chevron direction={ items[id] ? "up" : "down" } className="w-6 h-6" />
+                                </button>
+                            </h1> 
+                            { items[id] && ( 
+                                <div className="bg-gray-100 dark:bg-gray-800">
+                                    <div className="p-4 text-left">
+                                        { answer }
+                                    </div>
+                                </div>
+                            )}  
+                        </div>
+                    );
+                }) 
+            }
+        </div>
+    );
+}
