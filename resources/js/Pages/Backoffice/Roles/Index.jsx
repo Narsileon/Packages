@@ -40,7 +40,7 @@ export default function Index({ roles, filters }) {
 				settings={ settings }
 			/>
 
-			<Pagination links={roles.meta.links} />
+			<Pagination data={ roles.meta } />
 		</>
 	);
 }

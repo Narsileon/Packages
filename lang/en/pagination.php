@@ -1,6 +1,8 @@
 <?php
 
 return [
-    'previous'  => '&laquo; Previous',
-    'next'      => 'Next &raquo;',
+    'results'       => 'Showing :from to :to of :total results',
+
+    'next'          => 'Next',
+    'previous'      => 'Previous',
 ];

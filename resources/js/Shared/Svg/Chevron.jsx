@@ -32,6 +32,20 @@ export default function Chevron({
                         <path d="M15 19l-7-7 7-7" />
                     </>
                 );
+            // Double left
+            case "double-left":
+                return (
+                    <>
+                        <path d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
+                    </>
+                );
+            // Double right
+            case "double-right":
+                return (
+                    <>
+                        <path d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+                    </>
+                );
             default:
                 return null;
         };

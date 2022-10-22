@@ -48,7 +48,7 @@ export default function Index({ users, filters }) {
 				settings={ settings }
 			/>
 
-			<Pagination links={users.meta.links} />
+			<Pagination data={ users.meta } />
 		</>
 	);
 }
