@@ -32,20 +32,6 @@ export default function Edit({ user, roles, permissions }) {
 		permissions: initializePermissions(),
     });
 
-	const onRoleChange = (event) => {
-		let array = data.roles;
-		array[event.target.id] = event.target.checked;
-
-		setData("roles", array);
-    };
-
-	const onPermissionChange = (event) => {
-		let array = data.permissions;
-		array[event.target.id] = event.target.checked;
-
-		setData("permissions", array);
-    };
-
 	const submit = () => {
 		transform(() => ({
 			...data,
@@ -111,7 +97,7 @@ export default function Edit({ user, roles, permissions }) {
 								label={ role.name }
 								checked={ data.roles[role.name] } 
 								error={ errors[data.roles[role.name]] } 
-								onChange={ onRoleChange } 
+								onChange={ (e) => setData("roles", { ...data.roles, [role.name]: e.target.checked }) }
 								key={ role.id }
 							/>								
 						);
@@ -127,7 +113,7 @@ export default function Edit({ user, roles, permissions }) {
 								label={ permission.name }  
 								checked={ data.permissions[permission.name] } 
 								error={ errors[data.permissions[permission.name]] } 
-								onChange={ onPermissionChange } 
+								onChange={ (e) => setData("permissions", { ...data.permissions, [permission.name]: e.target.checked }) } 
 								key={ permission.id }
 							/>								
 						);

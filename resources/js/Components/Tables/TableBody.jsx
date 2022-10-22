@@ -1,10 +1,9 @@
 import { Inertia } from "@inertiajs/inertia";
 import { Link } from "@inertiajs/inertia-react";
-import Chevron from "@/Shared/Svg/Chevron";
 import Dropdown from "@/Components/Elements/Dropdowns/Dropdown";
 import DropdownItem from "@/Components/Elements/Dropdowns/DropdownItem";
+import Chevron from "@/Shared/Svg/Chevron";
 import Icon from "@/Shared/Svg/Icon";
-
 
 export default function TableBody({ tableData, columns, settings }) {
 	const trigger = () => (

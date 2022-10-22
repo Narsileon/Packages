@@ -18,13 +18,6 @@ export default function Edit({ role, permissions }) {
 		permissions: initializeObject(permissions),
 	});
 
-	const onChange = (event) => {
-		let array = data.permissions;
-		array[event.target.id] = event.target.checked;
-
-		setData('permissions', array);
-    };
-
 	const submit = () => {
 		transform(() => ({
 			...data,
@@ -67,7 +60,7 @@ export default function Edit({ role, permissions }) {
 								type="checkbox"  
 								checked={ data.permissions[permission.name] } 
 								error={ errors[data.permissions[permission.name]] } 
-								onChange={ onChange } 
+								onChange={ (e) => setData("permissions", { ...data.permissions, [permission.name]: e.target.checked }) } 
 								key={ permission.id }
 							/>								
 						);
