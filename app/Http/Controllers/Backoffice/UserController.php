@@ -26,17 +26,16 @@ class UserController extends Controller
     public function index()
     {
         return Inertia::render("Backoffice/Users/Index", [
-            "users" => new UserCollection(User::query()
-                ->when(Request::input("search"), function ($query, $search) {
-                    $query->where(User::FIELD_USERNAME, "like", "%{$search}%");
+            'users' => new UserCollection(User::query()
+                ->filter(request(['id', 'username']))
+                ->when(Request::input('sort'), function ($query, $sort) {
+                    $query->orderBy(Request::input('field'), $sort);
                 })
-                ->when(Request::input("sort"), function ($query, $sort) {
-                    $query->orderBy(Request::input("field"), $sort);
-                })
-                ->paginate(10)
-                ->withQueryString()),
-
-            "filters" => Request::only(["search"]),
+                ->paginate(10)),
+            'filters' => [
+                'id' => Request::input(User::FIELD_ID),
+                'username' => Request::input(User::FIELD_USERNAME),
+            ],
         ]);
     }
 

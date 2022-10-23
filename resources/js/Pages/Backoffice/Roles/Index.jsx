@@ -31,7 +31,7 @@ export default function Index({ roles, filters }) {
 					</Link>
 				</div>
 
-				<SearchField filter={ filters.search } />
+				<SearchField filters = { filters } />
 			</div>
 
 			<Table 

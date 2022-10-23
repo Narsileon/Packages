@@ -39,7 +39,7 @@ export default function Index({ users, filters }) {
 					</Link>
 				</div>
 
-				<SearchField filter={ filters.search } />
+				<SearchField filters={ filters } />
 			</div>
 
 			<Table 

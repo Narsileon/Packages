@@ -4,12 +4,15 @@ namespace App\Models;
 
 #region USE
 
+use App\Traits\HasScopeFilter;
 use Spatie\Permission\Models\Role;
 
 #endregion
 
 class UserRole extends Role
 {
+    use HasScopeFilter;
+
     #region CONSTANTS
 
     const FIELD_ID = "id";

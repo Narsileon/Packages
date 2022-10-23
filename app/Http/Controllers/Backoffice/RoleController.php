@@ -11,6 +11,7 @@ use App\Http\Resources\Backoffice\Users\UserPermissionCollection;
 use App\Http\Resources\Backoffice\Users\UserRoleCollection;
 use App\Http\Resources\Backoffice\Users\UserRoleResource;
 use App\Models\UserPermission;
+use App\Models\UserRole;
 use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
 use Spatie\Permission\Models\Role;
@@ -24,17 +25,16 @@ class RoleController extends Controller
     public function index()
     {
         return Inertia::render("Backoffice/Roles/Index", [
-            "roles" => new UserRoleCollection(Role::query()
-                ->when(Request::input("search"), function ($query, $search) {
-                    $query->where("name", "like", "%{$search}%");
+            'roles' => new UserRoleCollection(UserRole::query()
+                ->filter(request(['id', 'name']))
+                ->when(Request::input('sort'), function ($query, $sort) {
+                    $query->orderBy(Request::input('field'), $sort);
                 })
-                ->when(Request::input("sort"), function ($query, $sort) {
-                    $query->orderBy(Request::input("field"), $sort);
-                })
-                ->paginate(10)
-                ->withQueryString()),
-
-            "filters" => Request::only(["search"]),
+                ->paginate(10)),
+            'filters' => [
+                'id' => Request::input(UserRole::FIELD_ID),
+                'name' => Request::input(UserRole::FIELD_NAME),
+            ],
         ]);
     }
 
