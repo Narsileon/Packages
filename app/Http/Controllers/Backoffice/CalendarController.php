@@ -11,8 +11,12 @@ use Inertia\Inertia;
 
 class CalendarController extends Controller
 {
+    #region PUBLIC METHODS
+
     public function __invoke()
     {
         return Inertia::render("Backoffice/Calendar/Index");
     }
+
+    #endregion
 }

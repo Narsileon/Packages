@@ -5,7 +5,8 @@ namespace App\Models;
 #region USE
 
 use App\Constants\CastTypes;
-use App\Traits\HasScopeFilter;
+use App\Traits\IsFilterable;
+use App\Traits\IsSortable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -16,7 +17,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, HasRoles, HasScopeFilter, Notifiable;
+    use HasApiTokens, HasFactory, HasRoles, IsFilterable, IsSortable, Notifiable;
 
     #region CONSTANTS
 

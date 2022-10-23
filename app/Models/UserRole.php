@@ -4,14 +4,15 @@ namespace App\Models;
 
 #region USE
 
-use App\Traits\HasScopeFilter;
+use App\Traits\IsFilterable;
+use App\Traits\IsSortable;
 use Spatie\Permission\Models\Role;
 
 #endregion
 
 class UserRole extends Role
 {
-    use HasScopeFilter;
+    use IsFilterable, IsSortable;
 
     #region CONSTANTS
 

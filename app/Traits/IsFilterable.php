@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Schema;
 
 #endregion
 
-trait HasScopeFilter
+trait IsFilterable
 {
     #region PUBLIC METHODS
 
