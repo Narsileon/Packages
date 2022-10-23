@@ -12,16 +12,16 @@ abstract class ValidationRules
 {
     #region CONSTANTS
 
-    const REQUIRED = "required";
-    const OPTIONAL = "nullable";
+    const REQUIRED = 'required';
+    const OPTIONAL = 'nullable';
 
-    const TYPE_ARRAY = "array";
-    const TYPE_BOOLEAN = "boolean";
-    const TYPE_DATE = "date";
-    const TYPE_EMAIL = "email";
-    const TYPE_IMAGE = "image";
-    const TYPE_INTEGER = "int";
-    const TYPE_STRING = "string";
+    const TYPE_ARRAY = 'array';
+    const TYPE_BOOLEAN = 'boolean';
+    const TYPE_DATE = 'date';
+    const TYPE_EMAIL = 'email';
+    const TYPE_IMAGE = 'image';
+    const TYPE_INTEGER = 'int';
+    const TYPE_STRING = 'string';
 
     #endregion
 
@@ -32,7 +32,7 @@ abstract class ValidationRules
         return Rule::exists($table, $column);
     }
 
-    public static function unique(string $table, string $column, string $ignoreId = "") : string
+    public static function unique(string $table, string $column, string $ignoreId = '') : string
     {
         return Rule::unique($table, $column)->ignore($ignoreId);
     }
