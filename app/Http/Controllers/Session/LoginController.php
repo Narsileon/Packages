@@ -18,7 +18,7 @@ class LoginController extends Controller
 
     public function create()
     {
-        return Inertia::render("Session/Login/Create");
+        return Inertia::render('Session/Login/Create');
     }
 
     public function store(LoginCreateRequest $request)
@@ -27,14 +27,14 @@ class LoginController extends Controller
 
         if (!Auth::attempt($credentials)) {
             return back()->withErrors([
-                User::FIELD_EMAIL => __("auth.failed"),
-                User::FIELD_PASSWORD => __("auth.password"),
+                User::FIELD_EMAIL => __('auth.failed'),
+                User::FIELD_PASSWORD => __('auth.password'),
             ]);         
         }
 
         session()->regenerate();
 
-        return redirect()->intended()->with("success", "login");
+        return redirect()->intended()->with('success', 'login');
     }
 
     #endregion

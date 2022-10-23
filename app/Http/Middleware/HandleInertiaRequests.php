@@ -16,7 +16,7 @@ class HandleInertiaRequests extends Middleware
 {
     #region FIELDS
 
-    protected $rootView = "app";
+    protected $rootView = 'app';
 
     #endregion
 
@@ -36,11 +36,11 @@ class HandleInertiaRequests extends Middleware
         $localization = Localization::get();
 
         return array_merge(parent::share($request), compact(
-            "auth",
-            "flash",
-            "ziggy",
+            'auth',
+            'flash',
+            'ziggy',
 
-            "localization",
+            'localization',
         ));
     }
 
@@ -58,8 +58,8 @@ class HandleInertiaRequests extends Middleware
         }
 
         return [
-            "user" => [
-                "username" => $user->username,
+            'user' => [
+                'username' => $user->username,
             ]
         ];
     }
@@ -67,8 +67,8 @@ class HandleInertiaRequests extends Middleware
     private function initializeFlash($request)
     {
         return [
-            "success" => fn() => $request->session()->get("success"),
-            "error" => fn() => $request->session()->get("error"),
+            'success' => fn() => $request->session()->get('success'),
+            'error' => fn() => $request->session()->get('error'),
         ];
     }
 
@@ -78,8 +78,8 @@ class HandleInertiaRequests extends Middleware
         $previousLocation = $this->getPreviousLocation();
 
         return array_merge((new Ziggy())->toArray(), compact(
-            "location",
-            "previousLocation",
+            'location',
+            'previousLocation',
         ));
     }
 
@@ -87,14 +87,14 @@ class HandleInertiaRequests extends Middleware
     {
         $url = url()->previous();
 
-        if ($url !== "" && $url !== url()->current())
+        if ($url !== '' && $url !== url()->current())
         {
             return $url;
         }
 
         else
         {
-            return "";
+            return '';
         }
     }
 

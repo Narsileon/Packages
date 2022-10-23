@@ -25,7 +25,7 @@ class UserController extends Controller
 
     public function index()
     {
-        return Inertia::render("Backoffice/Users/Index", [
+        return Inertia::render('Backoffice/Users/Index', [
             'users' => new UserCollection(User::query()
                 ->filter(request(['id', 'username', 'email']))
                 ->sort()
@@ -43,9 +43,9 @@ class UserController extends Controller
         $roles = $this->getAllRoles();
         $permissions = $this->getAllPermissions();
 
-        return Inertia::render("Backoffice/Users/Create", compact(
-            "roles",
-            "permissions",
+        return Inertia::render('Backoffice/Users/Create', compact(
+            'roles',
+            'permissions',
         ));
     }
 
@@ -55,17 +55,17 @@ class UserController extends Controller
 
         $user = User::create($attributes);
 
-        $user->syncPermissions($request->get("permissions", []));
+        $user->syncPermissions($request->get('permissions', []));
 
-        return redirect(route("backoffice.users.index"))->with("success", "user_created");
+        return redirect(route('backoffice.users.index'))->with('success', 'user_created');
     }
 
     public function show(User $user)
     {
         $user = new UserResource($user);
 
-        return Inertia::render("Backoffice/Users/Show", compact(
-            "user",
+        return Inertia::render('Backoffice/Users/Show', compact(
+            'user',
         ));
     }
 
@@ -76,10 +76,10 @@ class UserController extends Controller
         $roles = $this->getAllRoles();
         $permissions = $this->getAllPermissions();
 
-        return Inertia::render("Backoffice/Users/Edit", compact(
-            "user",
-            "roles",
-            "permissions",
+        return Inertia::render('Backoffice/Users/Edit', compact(
+            'user',
+            'roles',
+            'permissions',
         ));
     }
 
@@ -89,17 +89,17 @@ class UserController extends Controller
 
         $user->update($attributes);
 
-        $user->syncRoles($request->get("roles", []));
-        $user->syncPermissions($request->get("permissions", []));
+        $user->syncRoles($request->get('roles', []));
+        $user->syncPermissions($request->get('permissions', []));
 
-        return redirect(route("backoffice.users.index"))->with("success", "user_updated");
+        return redirect(route('backoffice.users.index'))->with('success', 'user_updated');
     }
 
     public function destroy(User $user)
     {
         $user->delete();
 
-        return back()->with("success", "user_deleted");;
+        return back()->with('success', 'user_deleted');;
     }
 
     #endregion

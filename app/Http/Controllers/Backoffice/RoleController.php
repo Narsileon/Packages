@@ -24,7 +24,7 @@ class RoleController extends Controller
 
     public function index()
     {
-        return Inertia::render("Backoffice/Roles/Index", [
+        return Inertia::render('Backoffice/Roles/Index', [
             'roles' => new UserRoleCollection(UserRole::query()
                 ->filter(request(['id', 'name']))
                 ->sort()
@@ -40,8 +40,8 @@ class RoleController extends Controller
     {
         $permissions = $this->getAllPermissions();
 
-        return Inertia::render("Backoffice/Roles/Create", compact(
-            "permissions",
+        return Inertia::render('Backoffice/Roles/Create', compact(
+            'permissions',
         ));
     }
 
@@ -51,17 +51,17 @@ class RoleController extends Controller
 
         $role = Role::create($attributes);
 
-        $role->syncPermissions($attributes["permissions"]);
+        $role->syncPermissions($attributes['permissions']);
 
-        return redirect(route("backoffice.roles.index"))->with("success", "role_created");
+        return redirect(route('backoffice.roles.index'))->with('success', 'role_created');
     }
 
     public function show(Role $role)
     {
         $role = new UserRoleResource($role);
 
-        return Inertia::render("Backoffice/Roles/Show", compact(
-            "role",
+        return Inertia::render('Backoffice/Roles/Show', compact(
+            'role',
         ));
     }
 
@@ -70,9 +70,9 @@ class RoleController extends Controller
         $role = new UserRoleResource($role);
         $permissions = $this->getAllPermissions();
 
-        return Inertia::render("Backoffice/Roles/Edit", compact(
-            "role",
-            "permissions",
+        return Inertia::render('Backoffice/Roles/Edit', compact(
+            'role',
+            'permissions',
         ));
     }
 
@@ -81,16 +81,16 @@ class RoleController extends Controller
         $attributes = $request->validated();
 
         $role->update($attributes);
-        $role->syncPermissions($attributes["permissions"]);
+        $role->syncPermissions($attributes['permissions']);
 
-        return redirect(route("backoffice.roles.index"))->with("success", "role_updated");
+        return redirect(route('backoffice.roles.index'))->with('success', 'role_updated');
     }
 
     public function destroy(Role $role)
     {
         $role->delete();
 
-        return back()->with("success", "role_deleted");;
+        return back()->with('success', 'role_deleted');;
     }
 
     #endregion
