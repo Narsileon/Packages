@@ -16,6 +16,11 @@ export default function Index({ users, filters }) {
 			accessor: "username", 
 			sortable: true 
 		},
+		{ 
+			label: "Email", 
+			accessor: "email", 
+			sortable: true 
+		},
 	];
 
 	const settings = { 

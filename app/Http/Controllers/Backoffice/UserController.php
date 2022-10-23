@@ -27,7 +27,7 @@ class UserController extends Controller
     {
         return Inertia::render("Backoffice/Users/Index", [
             'users' => new UserCollection(User::query()
-                ->filter(request(['id', 'username']))
+                ->filter(request(['id', 'username', 'email']))
                 ->when(Request::input('sort'), function ($query, $sort) {
                     $query->orderBy(Request::input('field'), $sort);
                 })
@@ -35,6 +35,7 @@ class UserController extends Controller
             'filters' => [
                 'id' => Request::input(User::FIELD_ID),
                 'username' => Request::input(User::FIELD_USERNAME),
+                'email' => Request::input(User::FIELD_EMAIL),
             ],
         ]);
     }
