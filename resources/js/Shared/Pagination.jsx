@@ -11,56 +11,73 @@ export default function Pagination({ data }) {
 
     return (
         <div className="flex items-center justify-between mt-8">
-            <p className="text-sm">
-                { t("pagination.results", {
-                    "from": data.from,
-                    "to": data.to,
-                    "total": data.total,
-                })}
-            </p>
-            <div className="flex inline-block space-x-1">
-                <Link 
+            <Results data={ data } />
+
+            <div className="flex inline-block border border-gray-500 divided-x rounded">
+                <PaginationButton 
                     href={ data.links[1].url }
-                    className="flex items-center"
                     key="<<"
                 >
                     <Chevron direction="double-left" className="w-4 h-4" />
-                </Link>
-                <Link 
+                </PaginationButton>
+                <PaginationButton 
                     href={ data.links[previousIndex].url }
-                    className="flex items-center"
                     key="<"
                 >
                     <Chevron direction="left" className="w-4 h-4" />
-                </Link>
+                </PaginationButton>
                 {
                     data.links.slice(1, lastIndex).map((link) => {
                         return (
-                            <Link 
+                            <PaginationButton 
                                 href={ link.url } 
-                                className="px-1"
                                 key={ link.label }
                             >
                                 { link.label }
-                            </Link>
+                            </PaginationButton>
                         );   
                     })
                 }
-                <Link 
+                <PaginationButton 
                     href={ data.links[nextIndex].url }
-                    className="flex items-center"
                     key=">"
                 >
                     <Chevron direction="right" className="w-4 h-4" />
-                </Link>
-                <Link 
+                </PaginationButton>
+                <PaginationButton 
                     href={ data.links[lastIndex - 1].url }
-                    className="flex items-center"
                     key=">>"
                 >
                     <Chevron direction="double-right" className="w-4 h-4" />
-                </Link>
+                </PaginationButton>
             </div>
         </div>
     );
 }
+
+const Results = ({ data }) => {
+    return(
+        <p className="text-sm">
+            { data.total > 0 ? (
+                t("pagination.results", {
+                    "from": data.from,
+                    "to": data.to,
+                    "total": data.total,
+                })
+            ) : (
+                t("pagination.empty")
+            )}
+        </p>
+    );
+}
+
+const PaginationButton = ({ children, ...props }) => {
+    return(
+        <Link
+            className="selectable flex items-center py-1 px-2 aspect-square"
+            { ...props }
+        >
+            { children }
+        </Link>
+    );
+}   

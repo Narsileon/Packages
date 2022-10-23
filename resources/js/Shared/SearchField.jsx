@@ -1,25 +1,25 @@
 import { useEffect, useState } from "react";
 import { usePrevious } from "react-use";
 import { Inertia } from "@inertiajs/inertia";
-import { usePage } from "@inertiajs/inertia-react";
+import { t } from "@/narsil-localization";
 import pickBy from "lodash/pickBy";
-import Icon from "./Svg/Icon";
+import Icon from "@/Shared/Svg/Icon";
+import Dropdown from "@/Components/Elements/Dropdowns/Dropdown";
+import DropdownItem from "@/Components/Elements/Dropdowns/DropdownItem";
+import Chevron from "./Svg/Chevron";
 
-export default function SearchField({ filter }) {
-    const [values, setValues] = useState({
-        search: filter || '',
-    });
+export default function SearchField({ filters }) {
+    const [values, setValues] = useState(filters);
+    const [filter, setFilter] = useState(Object.keys(filters)[0])
 
     const previousValues = usePrevious(values);
-
-    let href = usePage().url;
 
     useEffect(() => {
         if (previousValues) {
             const query = Object.keys(pickBy(values)).length
                 ? pickBy(values)
                 : { remember: 'forget' };
-            Inertia.get(href, query, {
+            Inertia.get(route(route().current()), query, {
                 replace: true,
                 preserveState: true
             });
@@ -27,7 +27,7 @@ export default function SearchField({ filter }) {
     }, [values]);
 
     function handleChange(e) {
-        const key = e.target.name;
+        const key = filter;
         const value = e.target.value;
     
         setValues(values => ({
@@ -36,21 +36,62 @@ export default function SearchField({ filter }) {
         }));
     }
 
+    function reset() {
+        Object.keys(filters).map((key) => {
+            setValues(values => ({
+                ...values,
+                [key]: ""
+              }));
+        })
+    }
+
 	return (
-        <div className="relative">
-            <div className="flex absolute inset-y-0 left-0 items-center pl-2 pointer-events-none">
-                <Icon name="search" className="w-6 h-6" />
+        <div className="relative flex items-center bordered rounded">
+            <div className="primary-background flex items-center justify-between">
+                <Icon name="search" className="w-6 h-6 m-2" />
+                <Dropdown 
+                    trigger={
+                        <div className="flex items-center justify-between p-2 space-x-2">
+                            <span>
+                                { filter }
+                            </span>
+                            <Chevron direction="down" className="w-4 h-4" />
+                        </div>
+                    }
+                    childrenClasses="right-0" 
+                >
+                    <div>
+                        {
+                            Object.keys(filters).map((key) => {
+                                return (
+                                    <DropdownItem 
+                                        label={ key }
+                                        onClick={ () => {
+                                            setFilter(key);
+                                            handleChange;
+                                        }}
+                                        key={ key }
+                                    />
+                                );
+                            })
+                        }
+                    </div>
+                </Dropdown>
             </div>
             <input 
-                value={ values.search } 
-                id="search"
-                name="search"
+                value={ values[filter] ? values[filter] : "" } 
                 type="text"
-                placeholder="Search..." 
+                placeholder={ t("Search for") }
                 autoComplete="off"
                 onChange={ handleChange }
-                className="field pl-10" 
+                className="bg-transparent focus:outline-none p-2" 
             />
+            <button
+                className="primary-background p-2"
+                onClick={ reset }
+            >
+                Reset
+            </button>
         </div>
 	);
 }
