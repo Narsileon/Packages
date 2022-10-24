@@ -4,7 +4,6 @@ import { Inertia } from "@inertiajs/inertia";
 import { t } from "@/narsil-localization";
 import { Dropdown, DropdownItem, DropdownPanel } from "@/Components/Elements/Dropdowns";
 import pickBy from "lodash/pickBy";
-import Chevron from "@/Shared/Svg/Chevron";
 import Icon from "@/Shared/Svg/Icon";
 
 export default function SearchField({ filters }) {
@@ -46,18 +45,14 @@ export default function SearchField({ filters }) {
 
 	return (
         <div className="relative flex items-center bordered rounded">
-            <div className="primary-background flex items-center justify-between">
+            <div className="primary-background flex items-center justify-between px-2">
                 <Icon name="search" className="w-6 h-6 m-2" />
                 <Dropdown 
                     trigger={
-                        <div className="flex items-center justify-between p-2 space-x-2">
-                            <span>
-                                { filter }
-                            </span>
-                            <Chevron direction="down" className="w-4 h-4" />
-                        </div>
+                        filter
                     }
                     childrenClasses="right-0" 
+                    showChevron={ true }
                 >
                     <DropdownPanel>
                         <div>
