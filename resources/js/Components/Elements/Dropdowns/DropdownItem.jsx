@@ -13,7 +13,7 @@ export default function DropdownItem({
     switch (type) {
         case "button":
             return (
-                <li className="selectable m-1 p-1">
+                <li className="selectable p-1">
                     <button 
                         { ...props }
                     >

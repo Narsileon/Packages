@@ -24,7 +24,7 @@ export default function Dropdown({
                 className={ `selectable w-full ${ triggerClasses } ${ open ? "selectable-active" : "" }` }
                 onClick={ setOpen }
             >
-                <div className="flex items-center justify-between w-full">
+                <div className="flex items-center justify-between w-full p-1 space-x-1">
                     { trigger }
                     
                     { showChevron && ( <Chevron direction={ open ? "up" : "down" } className="w-4 h-4" /> ) }

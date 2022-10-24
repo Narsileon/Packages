@@ -1,11 +1,12 @@
 import { t } from "@/narsil-localization";
+import { upperFirst } from "lodash";
 import NavLink from "@/Components/Elements/Links/NavLink";
 import Icon from "@/Shared/Svg/Icon";
 
 export default function Nav() {
     return (
         <nav>
-            <ul className="space-y-4">
+            <ul>
                 <SidebarLink
                     href={ route("backoffice.dashboard") }
                     icon="dashboard"
@@ -31,19 +32,35 @@ export default function Nav() {
     );
 }
 
-const SidebarLink = ({ href, icon, label }) => {
+const SidebarCategory = ({ label, icon }) => {
+    return (
+        <div className="flex">
+            <Icon 
+                name={ icon } 
+                className="w-6 h-6" 
+            />
+
+            <span className="flex ml-3 text-left whitespace-nowrap">
+                { upperFirst(t(label)) }
+            </span>
+        </div>
+    );
+}
+
+const SidebarLink = ({
+    href, 
+    icon, 
+    label 
+}) => {
     return (
         <NavLink
-            className="flex items-center"
+            className="flex items-center p-1"
             href={ href }
         >
-            <div className="px-1">
-                <Icon name={ icon } className="w-6 h-6" />
-            </div>
-            
-            <span className="flex-1 whitespace-nowrap ml-2">
-                { (t(label)) }
-            </span>
+            <SidebarCategory 
+                label= { label }
+                icon= { icon }
+            /> 
         </NavLink>
     );
 }
