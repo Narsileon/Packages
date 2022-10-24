@@ -1,19 +1,11 @@
-import { Inertia } from "@inertiajs/inertia";
 import { Link } from "@inertiajs/inertia-react";
-import Dropdown from "@/Components/Elements/Dropdowns/Dropdown";
-import DropdownItem from "@/Components/Elements/Dropdowns/DropdownItem";
+import { Dropdown, DropdownItem, DropdownPanel } from "@/Components/Elements/Dropdowns";
 import Icon from "@/Shared/Svg/Icon";
-import { DropdownPanel } from "../Elements/Dropdowns";
 
-export default function TableBody({ tableData, columns, settings }) {
-	function destroy(id) {
-		if (confirm('Are you sure you want to delete this contact?')) {
-		  	Inertia.delete(settings.link + id);
-		}
-	}
-
+export default function TableBody({ tableData, columns, settings, openModal }) {
     return (
-        <tbody className="divided-y">
+		<>
+			<tbody className="divided-y">
 			{ 
 				tableData.map((rowData, index) => {
 					return (
@@ -42,7 +34,7 @@ export default function TableBody({ tableData, columns, settings }) {
 										{ !settings.deletable ? null:
 											<DropdownItem 
 												label="Delete"
-												onClick={ () => destroy(rowData.id) } 
+												onClick={ () => openModal(rowData.id) }
 											/>
 										}
 										</div>										
@@ -66,6 +58,7 @@ export default function TableBody({ tableData, columns, settings }) {
 					);
 				})
 			}
-       </tbody>
+			</tbody>
+		</>
     );
 }
