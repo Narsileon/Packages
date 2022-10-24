@@ -43,16 +43,17 @@
         whitespace-nowrap font-semibold
         hover:text-blue-500
     }
-    .selectable-item { @apply
-        block whitespace-nowrap p-1 rounded
-        hover:bg-gray-300 hover:text-blue-500 
-        dark:hover:bg-gray-600 
-    }
     .selectable-active { @apply
         text-blue-500
     }
-    .link { @apply
+    .link-icon { @apply
+        hover:text-blue-500
+    }
+    .link-paragraph { @apply
         text-blue-500
+        hover:underline
+    }
+    .link-text { @apply
         hover:underline
     }
 }

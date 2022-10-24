@@ -1,7 +1,6 @@
 import { usePage } from "@inertiajs/inertia-react";
+import { Dropdown, DropdownItem, DropdownPanel } from "@/Components/Elements/Dropdowns";
 import NavLink from "@/Components/Elements/Links/NavLink";
-import Dropdown from "@/Components/Elements/Dropdowns/Dropdown";
-import DropdownItem from "@/Components/Elements/Dropdowns/DropdownItem";
 
 export default function Nav() {
     const auth = usePage().props.auth;
@@ -27,22 +26,24 @@ const NavAuth = () => {
                 childrenClasses="right-0"
                 trigger="Menu"
             >
-                <div>
-                    <DropdownItem 
-                        href={ route('backoffice.dashboard') } 
-                        label="Dashboard"
-                        type="link"
-                    />                 
-                </div>
-                <div>
-                    <DropdownItem 
-                        href={ route('logout') } 
-                        label="Log out"
-                        type="link"
-                        method="post"
-                        as="button"
-                    />                                   
-                </div>
+                <DropdownPanel>
+                    <div>
+                        <DropdownItem 
+                            href={ route('backoffice.dashboard') } 
+                            label="Dashboard"
+                            type="link"
+                        />                 
+                    </div>
+                    <div>
+                        <DropdownItem 
+                            href={ route('logout') } 
+                            label="Log out"
+                            type="link"
+                            method="post"
+                            as="button"
+                        />                                   
+                    </div>
+                </DropdownPanel>
             </Dropdown>
         </>        
     );

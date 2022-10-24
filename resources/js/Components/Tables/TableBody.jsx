@@ -4,6 +4,7 @@ import Dropdown from "@/Components/Elements/Dropdowns/Dropdown";
 import DropdownItem from "@/Components/Elements/Dropdowns/DropdownItem";
 import Chevron from "@/Shared/Svg/Chevron";
 import Icon from "@/Shared/Svg/Icon";
+import { DropdownPanel } from "../Elements/Dropdowns";
 
 export default function TableBody({ tableData, columns, settings }) {
 	const trigger = () => (
@@ -34,7 +35,8 @@ export default function TableBody({ tableData, columns, settings }) {
 									childrenClasses="left-0"
 									width="12"
 								>	
-									<div>
+									<DropdownPanel>
+										<div>
 										{ !settings.editable ? null:
 											<DropdownItem
 												href={ settings.link + rowData.id + '/edit' } 
@@ -42,15 +44,16 @@ export default function TableBody({ tableData, columns, settings }) {
 												type="link"
 											/>
 										}
-									</div>
-									<div>
+										</div>
+										<div>
 										{ !settings.deletable ? null:
 											<DropdownItem 
 												label="Delete"
 												onClick={ () => destroy(rowData.id) } 
 											/>
-										}										
-									</div>
+										}
+										</div>										
+									</DropdownPanel>
 								</Dropdown>
 							</td>
 

@@ -14,6 +14,8 @@ const t = (key, replacements = null) => {
 
 export { t };
 
+//#region PRIVATE METHODS
+
 function findValue(key) {
     let failed = false;
     let link = usePage().props.localization.strings;
@@ -33,3 +35,5 @@ function findValue(key) {
 
     return failed ? key : link;
 }
+
+//#endregion

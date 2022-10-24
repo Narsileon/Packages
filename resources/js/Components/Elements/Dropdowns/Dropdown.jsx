@@ -1,10 +1,11 @@
 import { useRef } from "react"
 import { useClickAway, useToggle } from "react-use";
+import Chevron from "@/Shared/Svg/Chevron";
 
 export default function Dropdown({
     triggerClasses="",
-    childrenClasses="",
-    trigger, 
+    trigger,
+    showChevron=false, 
     children
 }) {
     const dropdown = useRef(null);
@@ -19,18 +20,20 @@ export default function Dropdown({
             ref={ dropdown }
         >
             <button 
-                className={ `selectable ${ triggerClasses } ${ open ? "selectable-active" : "" }` }
+                className={ `selectable w-full ${ triggerClasses } ${ open ? "selectable-active" : "" }` }
                 onClick={ setOpen }
             >
-                { trigger }
-            </button>
-            { !open ? null :
-                <div className={ `primary-background absolute overflow-auto min-w-fit mt-2 z-40 bordered rounded ${ childrenClasses }` }>
-                    <ul className="divided-y space-y-1">
-                        { children }
-                    </ul>
+                <div className="flex items-center justify-between w-full">
+                    { trigger }
+                    
+                    { showChevron && ( <Chevron direction={ open ? "up" : "down" } className="w-4 h-4" /> ) }
                 </div>
-            }
+            </button>
+            { open && (
+                <>
+                    { children }
+                </>
+            )}
         </div>
     );
 }

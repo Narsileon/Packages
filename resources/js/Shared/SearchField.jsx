@@ -2,11 +2,10 @@ import { useEffect, useState } from "react";
 import { usePrevious } from "react-use";
 import { Inertia } from "@inertiajs/inertia";
 import { t } from "@/narsil-localization";
+import { Dropdown, DropdownItem, DropdownPanel } from "@/Components/Elements/Dropdowns";
 import pickBy from "lodash/pickBy";
+import Chevron from "@/Shared/Svg/Chevron";
 import Icon from "@/Shared/Svg/Icon";
-import Dropdown from "@/Components/Elements/Dropdowns/Dropdown";
-import DropdownItem from "@/Components/Elements/Dropdowns/DropdownItem";
-import Chevron from "./Svg/Chevron";
 
 export default function SearchField({ filters }) {
     const [values, setValues] = useState(filters);
@@ -60,22 +59,24 @@ export default function SearchField({ filters }) {
                     }
                     childrenClasses="right-0" 
                 >
-                    <div>
-                        {
-                            Object.keys(filters).map((key) => {
-                                return (
-                                    <DropdownItem 
-                                        label={ key }
-                                        onClick={ () => {
-                                            setFilter(key);
-                                            handleChange;
-                                        }}
-                                        key={ key }
-                                    />
-                                );
-                            })
-                        }
-                    </div>
+                    <DropdownPanel>
+                        <div>
+                            {
+                                Object.keys(filters).map((key) => {
+                                    return (
+                                        <DropdownItem 
+                                            label={ key }
+                                            onClick={ () => {
+                                                setFilter(key);
+                                                handleChange;
+                                            }}
+                                            key={ key }
+                                        />
+                                    );
+                                })
+                            }
+                        </div>
+                    </DropdownPanel>
                 </Dropdown>
             </div>
             <input 

@@ -1,6 +1,7 @@
 import { Head, useForm } from "@inertiajs/inertia-react";
 import { t } from "@/narsil-localization";
-import { Form, FormCheckbox, FormHeader, FormFooter, FormInput, FormLabel } from "@/Components/Forms";
+import { useScroll } from "@/narsil-react";
+import { Form, FormCheckbox, FormHeader, FormFooter, FormInput,FormSectionHeader, FormSummary } from "@/Components/Forms";
 
 export default function Edit({ user, roles, permissions }) {
 	function initializeRoles() {
@@ -32,6 +33,9 @@ export default function Edit({ user, roles, permissions }) {
 		permissions: initializePermissions(),
     });
 
+	const [roleSection, scrollTo] = useScroll();
+	const [permissionSection, scrollToPermission] = useScroll();
+
 	const submit = () => {
 		transform(() => ({
 			...data,
@@ -46,80 +50,96 @@ export default function Edit({ user, roles, permissions }) {
         <>
 			<Head title={ t("Edit user") } />
 
-			<Form 
-				header={ 
-					<FormHeader title={ t("Edit user") } /> 
-				}
-				footer={ 
-					<FormFooter 
-						label="Update"
-						processing={ processing }
+			<div className="flex justify-between space-x-8">
+				<FormSummary>
+					<button onClick={ scrollTo }>
+						Roles
+					</button>
+					<button onClick={ scrollToPermission }>
+						Permissions
+					</button>
+				</FormSummary>
+				<Form 
+					header={ 
+						<FormHeader title={ t("Edit user") } /> 
+					}
+					footer={ 
+						<FormFooter 
+							label="Update"
+							processing={ processing }
+						/>
+					}
+					submit={ submit }
+				>
+					<FormInput 
+						id="username"
+						label="username"  
+						value={ data.username } 
+						error={ errors.username } 
+						setData={ setData } 
 					/>
-				}
-				submit={ submit }
-			>
-				<FormInput 
-					id="username"
-					label="username"  
-					value={ data.username } 
-					error={ errors.username } 
-					setData={ setData } 
-				/>
-				<FormInput 
-					id="email" 
-					label="email" 
-					type="email"
-					value={ data.email} 
-					error={ errors.email} 
-					setData={ setData } 
-				/>
-				<FormInput 
-					id="last_name" 
-					label="last_name" 
-					value={ data.last_name } 
-					error={ errors.last_name } 
-					setData={ setData } 
-				/>
-				<FormInput 
-					id="first_name" 
-					label="first_name" 
-					value={ data.first_name } 
-					error={ errors.first_name } 
-					setData={ setData } 
-				/>
+					<FormInput 
+						id="email" 
+						label="email" 
+						type="email"
+						value={ data.email} 
+						error={ errors.email} 
+						setData={ setData } 
+					/>
+					<FormInput 
+						id="last_name" 
+						label="last_name" 
+						value={ data.last_name } 
+						error={ errors.last_name } 
+						setData={ setData } 
+					/>
+					<FormInput 
+						id="first_name" 
+						label="first_name" 
+						value={ data.first_name } 
+						error={ errors.first_name } 
+						setData={ setData } 
+					/>
 
-				<FormLabel label="Roles" />
-				{
-					roles.data.map((role) => {
-						return (
-							<FormCheckbox
-								id={ role.name } 
-								label={ role.name }
-								checked={ data.roles[role.name] } 
-								error={ errors[data.roles[role.name]] } 
-								onChange={ (e) => setData("roles", { ...data.roles, [role.name]: e.target.checked }) }
-								key={ role.id }
-							/>								
-						);
-					})
-				}
+					<section ref={ roleSection }>
+						<FormSectionHeader title="Roles" />
 
-				<FormLabel label="Permissions" />
-				{
-					permissions.data.map((permission) => {
-						return (
-							<FormCheckbox
-								id={ permission.name } 
-								label={ permission.name }  
-								checked={ data.permissions[permission.name] } 
-								error={ errors[data.permissions[permission.name]] } 
-								onChange={ (e) => setData("permissions", { ...data.permissions, [permission.name]: e.target.checked }) } 
-								key={ permission.id }
-							/>								
-						);
-					})
-				}
-            </Form>
+						{
+							roles.data.map((role) => {
+								return (
+									<FormCheckbox
+										id={ role.name } 
+										label={ role.name }
+										checked={ data.roles[role.name] } 
+										error={ errors[data.roles[role.name]] } 
+										onChange={ (e) => setData("roles", { ...data.roles, [role.name]: e.target.checked }) }
+										key={ role.id }
+									/>								
+								);
+							})
+						}
+					</section>
+
+					<section ref={ permissionSection }>
+						<FormSectionHeader title="Permissions" />
+
+						{
+							permissions.data.map((permission) => {
+								return (
+									<FormCheckbox
+										id={ permission.name } 
+										label={ permission.name }  
+										checked={ data.permissions[permission.name] } 
+										error={ errors[data.permissions[permission.name]] } 
+										onChange={ (e) => setData("permissions", { ...data.permissions, [permission.name]: e.target.checked }) } 
+										key={ permission.id }
+									/>								
+								);
+							})
+						}
+					</section>
+				</Form>
+			</div>
         </>
     );
 }
