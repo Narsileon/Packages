@@ -3,7 +3,7 @@ import Icon from "./Svg/Icon";
 
 export default function ModalWindow({ text, action, actionLabel, setShow }) {
     return (
-        <section className="absolute primary-background bordered w-96 h-min inset-0 m-auto z-50 rounded-lg shadow-xl">
+        <section className="absolute primary-background border-2 bordered w-96 h-min inset-0 m-auto z-50 rounded-lg shadow-xl">
             <button 
                 className="absolute top-0 right-0 p-2"
                 onClick={ () => setShow(false) }

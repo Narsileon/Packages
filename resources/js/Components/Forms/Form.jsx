@@ -14,7 +14,7 @@ export default function Form({
 
     return (
         <form 
-            className={ `relative primary-background bordered m-4 p-8 w-full space-y-8 rounded-xl ${ className }` }
+            className={ `relative primary-background border-2 bordered m-4 p-8 w-full space-y-8 rounded-xl ${ className }` }
             onSubmit={ onSubmit }
             { ...props }
         >

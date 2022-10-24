@@ -11,7 +11,7 @@ export default function CalendarMonthTable({ dates, activeMonth, setDate }) {
         for (let i = 0; i < Object.keys(dates).length; i++) {
             rows.push(
                 <tr 
-                    className="w-auto h-24 divided-x"
+                    className="w-auto h-24 divide-x divided"
                     key={ Object.keys(dates)[i] }
                 >
                     <td className="flex items-start justify-center m-2 text-center">
@@ -43,8 +43,8 @@ export default function CalendarMonthTable({ dates, activeMonth, setDate }) {
 
     return (
         <table className="table-fixed col-grow w-full mt-2">
-            <thead className="bordered h-12">
-                <tr className="divided-x">
+            <thead className="border-2 bordered h-12">
+                <tr className="divide-x divided">
                     <th className="w-12">
                         #
                     </th>
@@ -64,7 +64,7 @@ export default function CalendarMonthTable({ dates, activeMonth, setDate }) {
                     }
                 </tr>
             </thead>
-            <tbody className="bordered divided-y">
+            <tbody className="border-2 bordered divide-y divided">
                 { renderRows() }
             </tbody>
         </table>

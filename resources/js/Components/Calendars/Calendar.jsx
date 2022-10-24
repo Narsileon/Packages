@@ -19,7 +19,7 @@ export default function Calendar({ tasks }) {
     }
 
     return (
-        <div className="primary-background bordered flex flex-grow w-full h-fit overflow-auto">
+        <div className="primary-background border-2 bordered flex flex-grow w-full h-fit overflow-auto">
             <div className="flex flex-col w-full p-2">
                 <div className="flex items-center justify-between">
                     <div className="text-left font-bold">

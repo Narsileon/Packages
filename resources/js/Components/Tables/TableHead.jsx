@@ -40,7 +40,7 @@ export default function TableHead({ columns }) {
             bg-gray-400
             dark:bg-gray-800
         ">
-            <tr className="divided-x">
+            <tr className="divide-x divided">
                 <th />
                 { 
                     columns.map(({ label, accessor, sortable }) => {

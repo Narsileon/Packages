@@ -7,7 +7,7 @@ export default function Nav() {
 
     return (
         <nav>
-            <ul className="flex space-x-2">
+            <ul className="flex items-center space-x-2">
                 <NavLink
                     href={ route('home') } 
                     label="Home"                     

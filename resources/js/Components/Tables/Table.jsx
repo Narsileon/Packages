@@ -15,7 +15,7 @@ export default function Table({ data, columns, settings }) {
 	}
 
     return (
-		<div className="bordered rounded">
+		<div className="border-2 bordered rounded">
 	        <table className="min-w-full">
 				<TableHead 
 					columns={ columns } 

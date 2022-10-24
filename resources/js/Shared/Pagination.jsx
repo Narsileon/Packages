@@ -13,7 +13,7 @@ export default function Pagination({ data }) {
         <div className="flex items-center justify-between mt-8">
             <Results data={ data } />
 
-            <div className="flex inline-block border border-gray-500 divided-x rounded">
+            <div className="flex inline-block border border-gray-500 divide-x divided rounded">
                 <PaginationButton 
                     href={ data.links[1].url }
                     key="<<"
