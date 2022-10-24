@@ -28,7 +28,6 @@ export default function Flash() {
                     </div>
                     
                     <CloseButton 
-                        className="self-start p-1"
                         onClick={ () => setVisible(false) } 
                     />
                 </div>

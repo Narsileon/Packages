@@ -16,7 +16,7 @@ export default function LocaleDropdown() {
                             return (
                                 <DropdownItem
                                     href={ `/locales/${availableLocale}` } 
-                                    className={ `selectable-item ${ availableLocale == locale ? "selectable-active" : "" }` }
+                                    className={ `selectable ${ availableLocale == locale ? "selectable-active" : "" }` }
                                     type="link"
                                     key={ availableLocale }
                                 >
