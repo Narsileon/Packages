@@ -9,7 +9,7 @@ export default function WebsiteLogo() {
         >
             <Logo 
                 name="github" 
-                size="8" 
+                className="w-8 h-8" 
             />
             <h1 className="whitespace-nowrap font-bold text-xl">
                 Narsil Studio

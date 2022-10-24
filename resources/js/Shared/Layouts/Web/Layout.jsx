@@ -24,10 +24,8 @@ export default function Layout({ children }) {
 
 const Header = () => {
     return (
-        <header className="primary-background border-b-2 border-gray-500 flex justify-between p-2">
-            <div className="flex items-center">
-                <WebsiteLogo />
-            </div>
+        <header className=" flex justify-between primary-background p-4 border-b-2 bordered">
+            <WebsiteLogo />
 
             <div className="flex items-center space-x-4">
                 <LocaleDropdown />
@@ -39,41 +37,63 @@ const Header = () => {
 }
 
 const Footer = () => {
-    const LogoLink = ({ href, name }) => {
-        return (
-            <Link href={ href }>
-                <Logo name={ name } />
-            </Link>
-        );
-    }
+    // Data: links
+    const links = [];
+
+    // Data: icons
+    const icons = [
+        { route: '#', name: "github" },
+        { route: '#', name: "facebook" },
+        { route: '#', name: "instagram" },
+        { route: '#', name: "twitter" },
+    ];
 
     return (
-        <footer className="primary-background w-full p-2 border-t-2 border-gray-500 text-sm">
-            <div className="flex items-center justify-between p-2">
+        <footer className="primary-background w-full p-4 border-t-2 bordered text-sm">
+            {/* First line */}
+            <div className="flex items-center justify-between">
                 <WebsiteLogo />
-                <ul className="flex flex-wrap items-center space-x-4">
-                    {/* Links (Texts) */}
-                </ul>
+
+                {/* Links */}
+                <div className="flex items-center space-x-4">
+                    {
+                        links.map(({ route, label }, index) => {
+                            return (
+                                <Link 
+                                    className="link-text"
+                                    href={ route } 
+                                    key={ index }
+                                >
+                                    { t(label) }
+                                </Link>
+                            );
+                        })
+                    }
+                </div>
             </div>
-            <hr className="my-2 border-gray-500" />
-            <div className="flex items-center justify-between p-2">
+
+            <hr className="my-4 bordered" />
+
+            <div className="flex items-center justify-between">
                 <span>
-                    © 2022 <Link href={route('home')} className="hover:underline">Narsil Studio™</Link>. All Rights Reserved.
+                    © 2022 <Link href={route('home')} className="link-text">Narsil Studio™</Link>. All Rights Reserved.
                 </span>
-                <div className="flex space-x-4">                   
-                    <LogoLink 
-                        href={ route('home') }  
-                        name="facebook" 
-                    />
-                    <LogoLink 
-                        href={ route('home') }  
-                        name="instagram" 
-                    />
-                    <LogoLink 
-                        href={ route('home') }  
-                        name="twitter" 
-                    />
-                    {/* Links (Icons) */}
+
+                {/* Icons */}
+                <div className="flex items-center space-x-4">
+                    {
+                        icons.map(({ route, name }) => {
+                            return (
+                                <Link 
+                                    className="link-icon"
+                                    href={ route } 
+                                    key={ name }
+                                >
+                                    <Logo name={ name } />
+                                </Link>
+                            );
+                        })
+                    }
                 </div>
             </div>
         </footer>         

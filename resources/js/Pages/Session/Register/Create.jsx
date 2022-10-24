@@ -16,7 +16,7 @@ export default function Create() {
             <Head title={ t("Register") } />    
 
             <Form 
-                className="w-6/12 m-auto"
+                className="w-6/12 mx-auto"
                 header={ 
                     <FormHeader title={ t("Register") } /> 
                 }
