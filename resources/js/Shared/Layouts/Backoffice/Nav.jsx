@@ -1,5 +1,4 @@
 import { t } from "@/narsil-localization";
-import { upperFirst } from "lodash";
 import NavLink from "@/Components/Elements/Links/NavLink";
 import Icon from "@/Shared/Svg/Icon";
 

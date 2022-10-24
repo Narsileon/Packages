@@ -19,6 +19,7 @@ export default function Dropdown({
             className="relative"
             ref={ dropdown }
         >
+            {/* Trigger */}
             <button 
                 className={ `selectable w-full ${ triggerClasses } ${ open ? "selectable-active" : "" }` }
                 onClick={ setOpen }
@@ -29,6 +30,8 @@ export default function Dropdown({
                     { showChevron && ( <Chevron direction={ open ? "up" : "down" } className="w-4 h-4" /> ) }
                 </div>
             </button>
+
+            {/* Content */}
             { open && (
                 <>
                     { children }

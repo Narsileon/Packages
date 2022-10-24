@@ -2,18 +2,10 @@ import { Inertia } from "@inertiajs/inertia";
 import { Link } from "@inertiajs/inertia-react";
 import Dropdown from "@/Components/Elements/Dropdowns/Dropdown";
 import DropdownItem from "@/Components/Elements/Dropdowns/DropdownItem";
-import Chevron from "@/Shared/Svg/Chevron";
 import Icon from "@/Shared/Svg/Icon";
 import { DropdownPanel } from "../Elements/Dropdowns";
 
 export default function TableBody({ tableData, columns, settings }) {
-	const trigger = () => (
-		<div className="flex justify-between items-center bg">
-			<Icon className="w-6 h-6" name="menu" />
-			<Chevron className="w-4 h-4" />
-		</div>
-	);
-	
 	function destroy(id) {
 		if (confirm('Are you sure you want to delete this contact?')) {
 		  	Inertia.delete(settings.link + id);
@@ -31,8 +23,9 @@ export default function TableBody({ tableData, columns, settings }) {
 						>
 							<td className="p-2 w-0">
 								<Dropdown 
-									trigger={ trigger() }
+									trigger={ <Icon name="menu" className="w-6 h-6" /> }
 									childrenClasses="left-0"
+									showChevron ={ true }
 									width="12"
 								>	
 									<DropdownPanel>

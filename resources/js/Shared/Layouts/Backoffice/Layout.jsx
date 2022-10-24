@@ -17,7 +17,7 @@ export default function Layout({ children }) {
                 <Nav />            
             </aside>
 
-            <section className="w-10/12 m-4">
+            <section className="w-full m-4">
                 { children }
             </section>
 

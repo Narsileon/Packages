@@ -7,6 +7,9 @@
         bg-white text-black
         dark:bg-gray-900 dark:text-white
     }
+    nav { @apply
+        font-semibold
+    }
 }
 
 @layer components {
@@ -40,7 +43,7 @@
         dark:bg-gray-800 placeholder-gray-500
     }
     .selectable { @apply
-        whitespace-nowrap font-semibold
+        whitespace-nowrap
         hover:text-blue-500
     }
     .selectable-active { @apply
