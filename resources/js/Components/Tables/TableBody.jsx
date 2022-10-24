@@ -5,12 +5,12 @@ import Icon from "@/Shared/Svg/Icon";
 export default function TableBody({ tableData, columns, settings, openModal }) {
     return (
 		<>
-			<tbody className="divide-y divided">
+			<tbody className="divide-y divide-color">
 			{ 
 				tableData.map((rowData, index) => {
 					return (
 						<tr 
-							className="primary-background odd:bg-gray-100 odd:dark:bg-gray-600 divide-x divided"
+							className="table-row divide-x divide-color"
 							key={ index }
 						>
 							<td className="p-2 w-0">

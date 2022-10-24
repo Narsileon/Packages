@@ -3,7 +3,7 @@ export default function Progress({
     progress,
     size="3",
     baseColor="gray-300",
-    darkColor="gray-700",
+    darkColor="gray-600",
     fillColor="blue-500",
 }) {
     return (

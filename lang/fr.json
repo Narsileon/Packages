@@ -3,7 +3,9 @@
     "All_M": "Tous",
     "All_F": "Toutes",
     "Back": "Retour",
+    "Cancel": "Annuler",
     "Categories": "Catégories",
+    "Confirmer": "Confirmer",
     "Contact": "Contact",
     "Create": "Créer",
     "Dashboard": "Tableau de bord",
@@ -13,9 +15,11 @@
     "Log in": "Se connecter",
     "Log out": "Se déconnecter",
     "Manage": "Gérer",
+    "No": "Non",
     "Register": "S'inscrire",
     "Search for": "Rechercher...",
     "Update": "Mettre à jour",
     "User": "Utilisateur",
-    "Users": "Utilisateurs"
+    "Users": "Utilisateurs",
+    "Yes:": "Oui"
 }

@@ -1,8 +1,7 @@
 import { Head, Link } from "@inertiajs/inertia-react";
 import { t } from "@/narsil-localization";
-import Pagination from "@/Shared/Pagination";
-import SearchField from "@/Shared/SearchField";
 import Table from "@/Components/Tables/Table";
+import SearchField from "@/Shared/SearchField";
 
 export default function Index({ roles, filters }) {
 	const columns = [
@@ -35,12 +34,10 @@ export default function Index({ roles, filters }) {
 			</div>
 
 			<Table 
-				data={ roles.data }
+				collection={ roles }
 				columns={ columns } 
 				settings={ settings }
 			/>
-
-			<Pagination data={ roles.meta } />
 		</>
 	);
 }

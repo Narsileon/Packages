@@ -24,7 +24,7 @@ export default function Layout({ children }) {
 
 const Header = () => {
     return (
-        <header className=" flex justify-between primary-background p-4 border-b-2 bordered">
+        <header className=" flex justify-between primary-background p-4 border-b-2 border-color">
             <WebsiteLogo />
 
             <div className="flex items-center space-x-4">
@@ -49,7 +49,7 @@ const Footer = () => {
     ];
 
     return (
-        <footer className="primary-background w-full p-4 border-t-2 bordered text-sm">
+        <footer className="primary-background w-full p-4 border-t-2 border-color text-sm">
             {/* First line */}
             <div className="flex items-center justify-between">
                 <WebsiteLogo />
@@ -72,7 +72,7 @@ const Footer = () => {
                 </div>
             </div>
 
-            <hr className="my-4 bordered" />
+            <hr className="my-4 border-color" />
 
             <div className="flex items-center justify-between">
                 <span>

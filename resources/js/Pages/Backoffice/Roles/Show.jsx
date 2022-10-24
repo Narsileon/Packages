@@ -8,7 +8,7 @@ export default function Show({ role }) {
 			<Head title={ t("Role") } />
 
             <div className="w-6/12 m-auto">
-                <div className="primary-background border-2 bordered mt-4 p-8 space-y-4 rounded-xl">
+                <div className="primary-background border-2 border-color mt-4 p-8 space-y-4 rounded-xl">
                     <h1 className="flex text-xl justify-center font-bold">
                         Role
                     </h1>

@@ -1,6 +1,10 @@
 <?php
 
 return [
+    'modal' => [
+        'delete'        => 'Sind Sie sicher, dass Sie dieses Element löschen möchten?',
+    ],
+
     'success' => [
         'register'      => 'Ihr Konto wurde erfolgreich erstellt.',
         'login'         => 'Anmeldung erfolgreich.',

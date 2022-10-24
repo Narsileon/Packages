@@ -22,16 +22,16 @@
         hover:bg-blue-600
         transition-all duration-300
     }
-    .bordered { @apply 
+    .border-color { @apply 
         border-gray-500
         dark:border-gray-500
     }
-    .divided { @apply 
+    .divide-color { @apply 
         divide-gray-500 
         dark:divide-gray-500
     }
     .field { @apply 
-        border-2 bordered p-2 rounded-lg 
+        border-2 border-color p-2 rounded-lg 
         bg-gray-100 placeholder-gray-500
         dark:bg-gray-800 placeholder-gray-500
     }
@@ -51,5 +51,9 @@
     }
     .link-text { @apply
         hover:underline
+    }
+    .table-row { @apply
+        bg-gray-200 odd:bg-gray-100
+        dark:bg-gray-700 dark:odd:bg-gray-600
     }
 }

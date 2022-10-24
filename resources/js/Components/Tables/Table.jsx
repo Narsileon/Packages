@@ -1,11 +1,12 @@
+import { useState } from "react";
 import { useToggle } from "react-use";
-import ModalWindow from "@/Shared/ModalWindow";
+import { Inertia } from "@inertiajs/inertia";
 import TableBody from "./TableBody";
 import TableHead from "./TableHead";
-import { useState } from "react";
-import { Inertia } from "@inertiajs/inertia";
+import ModalWindow from "@/Shared/ModalWindow";
+import Pagination from "@/Shared/Pagination";
 
-export default function Table({ data, columns, settings }) {
+export default function Table({ collection, columns, settings }) {
 	const [id, setId] = useState(null);
 	const [show, setShow] = useToggle(false);
 
@@ -15,18 +16,24 @@ export default function Table({ data, columns, settings }) {
 	}
 
     return (
-		<div className="border-2 bordered rounded">
-	        <table className="min-w-full">
-				<TableHead 
-					columns={ columns } 
-				/>
-				<TableBody 
-					tableData={ data } 
-					columns={ columns } 
-					settings={ settings }
-					openModal={ openModal } 
-				/>
-			</table>	
+		<>
+			<div className="border-2 border-color rounded">
+				<table className="min-w-full">
+					<TableHead 
+						columns={ columns } 
+					/>
+					<TableBody 
+						tableData={ collection.data } 
+						columns={ columns } 
+						settings={ settings }
+						openModal={ openModal } 
+					/>
+				</table>
+			</div>
+
+			<div>
+				<Pagination data={ collection.meta } />	
+			</div>
 
 			{ show && ( 
 				<ModalWindow 
@@ -36,6 +43,6 @@ export default function Table({ data, columns, settings }) {
 					setShow={ setShow }
 				/>
 			)}
-		</div>
+		</>
     );
 }

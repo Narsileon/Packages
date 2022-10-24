@@ -4,7 +4,7 @@ export default function FormSectionHeader({
     title, 
 }) {
     return (
-        <div className="border-b-2 border-gray-500" >
+        <div className="border-b-2 border-color" >
             <h1 className="text-lg">
                 { t(title) }
             </h1>

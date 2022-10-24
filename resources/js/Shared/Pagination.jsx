@@ -10,10 +10,10 @@ export default function Pagination({ data }) {
     let nextIndex = clamp(data.current_page + 1, 1, lastIndex - 1);
 
     return (
-        <div className="flex items-center justify-between mt-8">
+        <div className="flex items-center justify-between mt-4">
             <Results data={ data } />
 
-            <div className="flex inline-block border border-gray-500 divide-x divided rounded">
+            <div className="flex inline-block border border-gray-500 divide-x divide-color rounded">
                 <PaginationButton 
                     href={ data.links[1].url }
                     key="<<"

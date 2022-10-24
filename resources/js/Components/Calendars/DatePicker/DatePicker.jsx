@@ -61,7 +61,7 @@ export default function Datepicker({ setExternalDate, getExternalDate }) {
             {
                 !show ? null :
 
-                <div className="absolute primary-background border-2 bordered w-fit h-fit z-10">
+                <div className="absolute primary-background border-2 border-color w-fit h-fit z-10">
                     <div className="text-sm p-1 rounded">
                         <div className="flex items-center justify-between p-2">
                             <div className="text-left font-bold">

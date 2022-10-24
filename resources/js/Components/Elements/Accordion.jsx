@@ -11,12 +11,12 @@ export default function Accordion({ questions }) {
     const [items, setItems] = useState(values);
 
     return (
-        <div className="border-2 bordered divide-y divided rounded">
+        <div className="border-2 border-color divide-y divide-color rounded">
             {
                 questions.data.map(({ id, question, answer }) => {
                     return (
                         <div 
-                            className="divide-y divided"
+                            className="divide-y divide-color"
                             key={ id }
                         >
                             <h1>

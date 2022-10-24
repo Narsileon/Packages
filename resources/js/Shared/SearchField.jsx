@@ -44,7 +44,7 @@ export default function SearchField({ filters }) {
     }
 
 	return (
-        <div className="relative flex items-center border-2 bordered rounded">
+        <div className="relative flex items-center border-2 border-color rounded">
             <div className="primary-background flex items-center justify-between px-2">
                 <Icon name="search" className="w-6 h-6 m-2" />
                 <Dropdown 

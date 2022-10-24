@@ -29,7 +29,7 @@ export default function Toggle({
                         + " peer"
                         + " peer-checked:bg-" + fillColor
                         + " peer-checked:after:translate-x-full"
-                        + " after:absolute after:top-0.5 after:left-[2px] after:h-4 after:w-4 after:bg-white after:border after:border-gray-500 after:rounded-full after:transition-all"
+                        + " after:absolute after:top-0.5 after:left-[2px] after:h-4 after:w-4 after:bg-white after:border after:border-color after:rounded-full after:transition-all"
                     }
                 >
                 </div>

@@ -3,7 +3,9 @@
     "All_M": "All",
     "All_F": "All",
     "Back": "Back",
+    "Cancel": "Cancel",
     "Categories": "Categories",
+    "Confirm": "Confirm",
     "Contact": "Contact",
     "Create": "Create",
     "Dashboard": "Dashboard",
@@ -13,9 +15,11 @@
     "Log in": "Log in",
     "Log out": "Log out",
     "Manage": "Manage",
+    "No": "No",
     "Register": "Register",
     "Search for": "Search for...",
     "Update": "Update",
     "User": "User",
-    "Users": "Users"
+    "Users": "Users",
+    "Yes:": "Yes"
 }

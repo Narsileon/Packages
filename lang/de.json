@@ -3,7 +3,9 @@
     "All_M": "Alle",
     "All_F": "Alle",
     "Back": "Züruck",
+    "Cancel": "Abbrechen",
     "Categories": "Kategorien",
+    "Confirm": "Bestätigen",
     "Contact": "Kontakt",
     "Create": "Erstellen",
     "Dashboard": "Armaturenbrett",
@@ -13,9 +15,11 @@
     "Log in": "Anmelden",
     "Log out": "Abmelden",
     "Manage": "Verwalten",
+    "No": "Nein",
     "Register": "Registrieren",
     "Search for": "Suchen nach...",
     "Update": "Aktualisieren",
     "User": "Benutzer",
-    "Users": "Benutzer"
+    "Users": "Benutzer",
+    "Yes:": "Ja"
 }
