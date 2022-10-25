@@ -102,14 +102,14 @@ export default function Edit({ user, roles, permissions }) {
 					/>
 
 					<section ref={ roleSection }>
-						<FormSectionHeader title={ t('permissions.roles') } />
+						<FormSectionHeader title="permissions.roles" />
 
 						{
 							roles.data.map((role) => {
 								return (
 									<FormCheckbox
 										id={ role.name } 
-										label={ `permissions.${ role.name }` }
+										label={ t(`permissions.${ role.name }`) }
 										checked={ data.roles[role.name] } 
 										error={ errors[data.roles[role.name]] } 
 										onChange={ (e) => setData("roles", { ...data.roles, [role.name]: e.target.checked }) } 
@@ -121,14 +121,14 @@ export default function Edit({ user, roles, permissions }) {
 					</section>
 
 					<section ref={ permissionSection }>
-						<FormSectionHeader title={ t('permissions.permissions') } />
+						<FormSectionHeader title="permissions.permissions" />
 
 						{
 							permissions.data.map((permission) => {
 								return (
 									<FormCheckbox
 										id={ permission.name } 
-										label={ `permissions.${ permission.name }` } 
+										label={ t(`permissions.${ permission.name }`) } 
 										checked={ data.permissions[permission.name] } 
 										error={ errors[data.permissions[permission.name]] } 
 										onChange={ (e) => setData("permissions", { ...data.permissions, [permission.name]: e.target.checked }) } 

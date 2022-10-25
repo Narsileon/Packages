@@ -8,7 +8,7 @@ import Flash from "@/Shared/Flash";
 
 export default function Layout({ children }) {
     return (
-        <main className="flex flex-col min-h-screen w-screen min-w-fit">
+        <main className="flex flex-col h-screen min-h-fit w-screen min-w-fit">
             <Header />
 
             <section className="
