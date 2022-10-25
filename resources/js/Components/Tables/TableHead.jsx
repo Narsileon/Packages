@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { usePrevious } from "react-use";
 import { Inertia } from "@inertiajs/inertia";
 import { usePage } from "@inertiajs/inertia-react";
+import { t } from "@/narsil-localization";
+import { upperFirst } from "lodash";
 import pickBy from "lodash/pickBy";
 import Sort from "@/Shared/Svg/Sort";
 
@@ -54,7 +56,7 @@ export default function TableHead({ columns }) {
                                     onClick={ sortable ? () => handleChange(accessor) : null}
                                 >
                                     <span className="p-2">
-                                        { label }
+                                        { upperFirst(t(`validation.attributes.${ label }`)) }
                                     </span>
                                     {
                                         <Sort 

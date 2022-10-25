@@ -22,11 +22,8 @@ export default function Nav() {
 const NavAuth = () => {
     return (
         <>
-            <Dropdown 
-                childrenClasses="right-0"
-                trigger="Menu"
-            >
-                <DropdownPanel>
+            <Dropdown trigger="Menu">
+                <DropdownPanel className="right-0">
                     <div>
                         <DropdownItem 
                             href={ route('backoffice.dashboard') } 

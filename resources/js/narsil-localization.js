@@ -1,7 +1,7 @@
 import { usePage } from "@inertiajs/inertia-react";
 
 const t = (key, replacements = null) => {
-    let text = findValue(key);
+    let text = localize(key);
 
     if (replacements) {
         Object.keys(replacements).forEach(x => {
@@ -16,24 +16,37 @@ export { t };
 
 //#region PRIVATE METHODS
 
-function findValue(key) {
-    let failed = false;
-    let link = usePage().props.localization.strings;
+function localize(key) {
+    let table = usePage().props.localization.strings;
 
-    if (key.includes('.'))
-    {
-        key.split('.').forEach((subKey) => {
-            if (link[subKey] != undefined) {
-                link = link[subKey]
-            } else {
-                failed = true;
-            }
-        });        
+    if (key.includes('.')) {
+        return localizeNestedKey(table, key);
     } else {
-        link = link[key] || key;
+        return localizePrimaryKey(table, key);
     }
+}
 
-    return failed ? key : link;
+function localizePrimaryKey(table, key) {
+    let value = table[key] || key;
+
+    return value;
+}
+
+function localizeNestedKey(table, key) {
+    let value = table;
+
+    let keys = key.split('.');
+    let failed = false;
+
+    keys.forEach((subKey) => {
+        if (value[subKey] != undefined) {
+            value = value[subKey]
+        } else {
+            failed = true;
+        }
+    });
+
+    return failed ? keys.pop() : value;
 }
 
 //#endregion

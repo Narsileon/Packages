@@ -15,7 +15,7 @@ export default function Nav() {
                 <SidebarLink
                     href={ route("backoffice.calendar") }
                     icon="calendar"
-                    label="Calendar"
+                    label="time.calendar"
                 />
                 <SidebarLink
                     href={ route("backoffice.users.index") }
@@ -25,7 +25,7 @@ export default function Nav() {
                 <SidebarLink
                     href={ route("backoffice.roles.index") }
                     icon="shield"
-                    label="roles"
+                    label="permissions.roles"
                 />
             </ul>
         </nav>
