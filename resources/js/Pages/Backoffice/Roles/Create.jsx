@@ -56,7 +56,7 @@ export default function Create({ permissions }) {
 						return (
 							<FormCheckbox
 								id={ permission.name } 
-								label={ permission.name }
+								label={ `permissions.${ permission.name }` } 
 								type="checkbox"  
 								checked={ data.permissions[permission.name] } 
 								error={ errors[data.permissions[permission.name]] } 

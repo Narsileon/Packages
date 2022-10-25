@@ -1,7 +1,7 @@
 import { Head, useForm } from "@inertiajs/inertia-react";
 import { t } from "@/narsil-localization";
 import { useScroll } from "@/narsil-react";
-import { Form, FormCheckbox, FormHeader, FormFooter, FormInput,FormSectionHeader, FormSummary } from "@/Components/Forms";
+import { Form, FormCheckbox, FormFooter, FormHeader, FormInput, FormSectionHeader, FormSummary } from "@/Components/Forms";
 
 export default function Edit({ user, roles, permissions }) {
 	function initializeRoles() {
@@ -48,15 +48,15 @@ export default function Edit({ user, roles, permissions }) {
 
     return (
         <>
-			<Head title={ t("Edit user") } />
+            <Head title={ t('Edit user') } />
 
 			<div className="flex justify-between space-x-8">
 				<FormSummary>
 					<button onClick={ scrollTo }>
-						Roles
+						{ t('permissions.roles') }
 					</button>
 					<button onClick={ scrollToPermission }>
-						Permissions
+						{ t('permissions.permissions') }
 					</button>
 				</FormSummary>
 				<Form 
@@ -71,9 +71,9 @@ export default function Edit({ user, roles, permissions }) {
 					}
 					submit={ submit }
 				>
-					<FormInput 
-						id="username"
-						label="username"  
+				<FormInput 
+						id="username" 
+						label="username" 
 						value={ data.username } 
 						error={ errors.username } 
 						setData={ setData } 
@@ -87,8 +87,8 @@ export default function Edit({ user, roles, permissions }) {
 						setData={ setData } 
 					/>
 					<FormInput 
-						id="last_name" 
-						label="last_name" 
+						id="last_name"  
+						label="last_name"
 						value={ data.last_name } 
 						error={ errors.last_name } 
 						setData={ setData } 
@@ -102,17 +102,17 @@ export default function Edit({ user, roles, permissions }) {
 					/>
 
 					<section ref={ roleSection }>
-						<FormSectionHeader title="Roles" />
+						<FormSectionHeader title={ t('permissions.roles') } />
 
 						{
 							roles.data.map((role) => {
 								return (
 									<FormCheckbox
 										id={ role.name } 
-										label={ role.name }
+										label={ `permissions.${ role.name }` }
 										checked={ data.roles[role.name] } 
 										error={ errors[data.roles[role.name]] } 
-										onChange={ (e) => setData("roles", { ...data.roles, [role.name]: e.target.checked }) }
+										onChange={ (e) => setData("roles", { ...data.roles, [role.name]: e.target.checked }) } 
 										key={ role.id }
 									/>								
 								);
@@ -121,14 +121,14 @@ export default function Edit({ user, roles, permissions }) {
 					</section>
 
 					<section ref={ permissionSection }>
-						<FormSectionHeader title="Permissions" />
+						<FormSectionHeader title={ t('permissions.permissions') } />
 
 						{
 							permissions.data.map((permission) => {
 								return (
 									<FormCheckbox
 										id={ permission.name } 
-										label={ permission.name }  
+										label={ `permissions.${ permission.name }` } 
 										checked={ data.permissions[permission.name] } 
 										error={ errors[data.permissions[permission.name]] } 
 										onChange={ (e) => setData("permissions", { ...data.permissions, [permission.name]: e.target.checked }) } 
