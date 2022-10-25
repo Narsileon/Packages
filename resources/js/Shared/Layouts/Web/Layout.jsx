@@ -8,10 +8,13 @@ import Flash from "@/Shared/Flash";
 
 export default function Layout({ children }) {
     return (
-        <main className="flex flex-col min-h-screen">
+        <main className="flex flex-col min-h-screen w-screen min-w-fit">
             <Header />
 
-            <section className="flex-grow w-9/12 mx-auto my-4">
+            <section className="
+                flex-grow w-full mx-auto my-4
+                lg:w-9/12"
+            >
                 { children }
             </section>
 
@@ -74,13 +77,16 @@ const Footer = () => {
 
             <hr className="my-4 border-color" />
 
-            <div className="flex items-center justify-between">
+            <div className="sm:flex sm:items-center sm:justify-between">
                 <span>
                     © 2022 <Link href={route('home')} className="link-text">Narsil Studio™</Link>. All Rights Reserved.
                 </span>
 
                 {/* Icons */}
-                <div className="flex items-center space-x-4">
+                <div className="
+                    flex items-center mt-4 space-x-4
+                    sm:mt-0
+                ">
                     {
                         icons.map(({ route, name }) => {
                             return (

@@ -27,15 +27,13 @@ export default function Flash() {
                         </div>
                     </div>
                     
-                    <CloseButton 
-                        onClick={ () => setVisible(false) } 
-                    />
+                    <CloseButton onClick={ () => setVisible(false) } />
                 </div>
             )}
 
             { flash.error && visible && (
                 <div className="fixed flex items-center justify-between bottom-4 right-4 bg-red-500 text-white rounded">
-                    <div className="flex items-center space-x-1">
+                    <div className="flex items-center mr-6 space-x-1">
                         <Icon 
                             name="danger" 
                             className="w-6 h-6" 
@@ -45,10 +43,7 @@ export default function Flash() {
                         </div>
                     </div>
                     
-                    <CloseButton 
-                        className="self-start p-1"
-                        onClick={ () => setVisible(false) } 
-                    />
+                    <CloseButton onClick={ () => setVisible(false) } />
                 </div>
             )}
         </>
