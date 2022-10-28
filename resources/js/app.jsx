@@ -21,9 +21,9 @@ createInertiaApp({
 
         page.then((module) => {
             module.default.layout = 
-            name.startsWith("Web/") ? module.default.layout || webLayout :
-            name.startsWith("Session/") ? module.default.layout || webLayout :
-            name.startsWith("Backoffice/") ? module.default.layout || backofficeLayout :
+            name.startsWith('Web/') ? module.default.layout || webLayout :
+            name.startsWith('Session/') ? module.default.layout || webLayout :
+            name.startsWith('Backoffice/') ? module.default.layout || backofficeLayout :
             module.default.layout;
         });
 

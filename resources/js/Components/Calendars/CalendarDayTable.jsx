@@ -10,20 +10,20 @@ export default function CalendarDayTable({ date, activeMonth, setDate }) {
 
         for (let i = 0; i < 24; i ++) {
             rows.push(
-                <tr 
+                <tr
                     className="w-auto h-24 divide-x divide-color"
                     key={ i }
                 >
                     <td className="flex items-start justify-center m-2 text-center">
-                        { i }                       
+                        { i }
                     </td>
-                    <CalendarCell 
+                    <CalendarCell
                         action={ () => { setDate(date) }}
-                        current={ activeMonth == date.getMonth() } 
-                        active={ 
-                            date.getFullYear() == today.getFullYear() && 
-                            date.getMonth() == today.getMonth() && 
-                            date.getDate() == today.getDate() 
+                        current={ activeMonth == date.getMonth() }
+                        active={
+                            date.getFullYear() == today.getFullYear() &&
+                            date.getMonth() == today.getMonth() &&
+                            date.getDate() == today.getDate()
                         }
                         key={ date }
                     />
@@ -46,9 +46,9 @@ export default function CalendarDayTable({ date, activeMonth, setDate }) {
                             { date.getDate() }
                         </div>
                         <div className="text-left">
-                            { t(`time.${ days[date.getDay()] }`) }                                   
+                            { t(`date-time.days.${ days[date.getDay()] }`) }
                         </div>
-                    </th>  
+                    </th>
                 </tr>
             </thead>
             <tbody className="border-2 border-color divide-y divide-color">

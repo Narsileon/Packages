@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { t } from "@/narsil-localization";
+import { p, t } from "@/narsil-localization";
 import { addDays, addMonths, months, useCalendar } from "@/Components/Calendars/narsil-calendar"
 import CalendarDayTable from "@/Components/Calendars/CalendarDayTable";
 import CalendarMonthTable from "@/Components/Calendars/CalendarMonthTable";
@@ -31,27 +31,27 @@ export default function Calendar({ tasks }) {
                         <Datepicker setExternalDate={ setDate } getExternalDate={ getActiveDate } />
                         <div className="flex space-x-2">
                             <PrimaryButton
-                                label="time.month"
+                                label={ p('date-time.units.months', 1) }
                                 onClick={ () => setShow("month") }
                             />
                             <PrimaryButton
-                                label="time.week"
+                                label={ p('date-time.units.weeks', 1) }
                                 onClick={ () => setShow("week") }
                             />
                             <PrimaryButton
-                                label="time.day"
+                                label={ p('date-time.units.days', 1) }
                                 onClick={ () => setShow("day") }
                             />
                         </div>
                         <div className="flex space-x-2">
-                            <PrimaryButton 
+                            <PrimaryButton
                                 onClick={ () =>
-                                    show == "month" 
-                                    ? setDate(addMonths(date, -1)) 
+                                    show == "month"
+                                    ? setDate(addMonths(date, -1))
                                     : show == "week"
-                                    ? setDate(addDays(date, -7))  
+                                    ? setDate(addDays(date, -7))
                                     : show == "day"
-                                    ? setDate(addDays(date, -1))  
+                                    ? setDate(addDays(date, -1))
                                     : null
                                 }
                             >
@@ -59,12 +59,12 @@ export default function Calendar({ tasks }) {
                             </PrimaryButton>
                             <PrimaryButton
                                 onClick={ () =>
-                                    show == "month" 
-                                    ? setDate(addMonths(date, 1)) 
+                                    show == "month"
+                                    ? setDate(addMonths(date, 1))
                                     : show == "week"
-                                    ? setDate(addDays(date, 7))  
+                                    ? setDate(addDays(date, 7))
                                     : show == "day"
-                                    ? setDate(addDays(date, 1))  
+                                    ? setDate(addDays(date, 1))
                                     : null
                                 }
                             >
@@ -75,22 +75,22 @@ export default function Calendar({ tasks }) {
                 </div>
                 {
                     show == "month" ?
-                    <CalendarMonthTable 
-                        activeMonth={ date.getMonth() } 
-                        dates={ dates }  
-                        setDate={ setDate } 
+                    <CalendarMonthTable
+                        activeMonth={ date.getMonth() }
+                        dates={ dates }
+                        setDate={ setDate }
                     />
                     : show == "week" ?
-                    <CalendarWeekTable 
-                        activeMonth={ date.getMonth() } 
-                        dates={ dates[activeWeek] } 
-                        setDate={ setDate } 
+                    <CalendarWeekTable
+                        activeMonth={ date.getMonth() }
+                        dates={ dates[activeWeek] }
+                        setDate={ setDate }
                     />
                     : show == "day" ?
-                    <CalendarDayTable 
-                        activeMonth={ date.getMonth() } 
-                        date={ date } 
-                        setDate={ setDate } 
+                    <CalendarDayTable
+                        activeMonth={ date.getMonth() }
+                        date={ date }
+                        setDate={ setDate }
                     />
                     : null
                 }

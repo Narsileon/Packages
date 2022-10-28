@@ -1,19 +1,18 @@
 <?php
 
+use App\Acl\Permissions;
+
 return [
-    'role'              => 'role',
-    'roles'             => 'roles',
+    'roles'                         => 'Role|Roles',
+    'permissions'                   => 'Permission|Permissions',
 
-    'permission'        => 'permission',
-    'permissions'       => 'permissions',
-
-    'backoffice-view'   => 'View backoffice',
-    'users-view'        => 'View users',
-    'users-create'      => 'Create an user',
-    'users-update'      => 'Update an user',
-    'users-delete'      => 'Delete an user',
-    'roles-view'        => 'View roles',
-    'roles-create'      => 'Create a role',
-    'roles-update'      => 'Update a role',
-    'roles-delete'      => 'Delete a role',        
+    Permissions::BACKOFFICE_VIEW    => 'View backoffice',
+    Permissions::USERS_VIEW         => 'View users',
+    Permissions::USERS_CREATE       => 'Create an user',
+    Permissions::USERS_UPDATE       => 'Update an user',
+    Permissions::USERS_DELETE       => 'Delete an user',
+    Permissions::ROLES_VIEW         => 'View roles',
+    Permissions::ROLES_CREATE       => 'Create a role',
+    Permissions::ROLES_UPDATE       => 'Update a role',
+    Permissions::ROLES_DELETE       => 'Delete a role',
 ];

@@ -11,23 +11,23 @@ export default function CalendarWeekTable({ dates, activeMonth, setDate }) {
 
         for (let i = 0; i < 24; i ++) {
             rows.push(
-                <tr 
+                <tr
                     className="w-auto h-24 divide-x divide-color"
                     key={ i }
                 >
                     <td className="flex items-start justify-center m-2 text-center">
-                        { i }                       
+                        { i }
                     </td>
                     {
                         dates.map((date) => {
                             return (
-                                <CalendarCell 
+                                <CalendarCell
                                     action={ () => { setDate(date) }}
-                                    current={ activeMonth == date.getMonth() } 
-                                    active={ 
-                                        date.getFullYear() == today.getFullYear() && 
-                                        date.getMonth() == today.getMonth() && 
-                                        date.getDate() == today.getDate() 
+                                    current={ activeMonth == date.getMonth() }
+                                    active={
+                                        date.getFullYear() == today.getFullYear() &&
+                                        date.getMonth() == today.getMonth() &&
+                                        date.getDate() == today.getDate()
                                     }
                                     key={ date }
                                 />
@@ -51,7 +51,7 @@ export default function CalendarWeekTable({ dates, activeMonth, setDate }) {
                     {
                         days.map((label, index) => {
                             return (
-                                <th 
+                                <th
                                     className="p-2"
                                     key={ index }
                                 >
@@ -59,10 +59,10 @@ export default function CalendarWeekTable({ dates, activeMonth, setDate }) {
                                         { dates[index].getDate() }
                                     </div>
                                     <div className="text-left">
-                                        { t(`time.${ label }`) }                                 
+                                        { t(`date-time.days.${ label }`) }
                                     </div>
-                                </th>   
-                            );                     
+                                </th>
+                            );
                         })
                     }
                 </tr>

@@ -1,4 +1,4 @@
-import { t } from "@/narsil-localization";
+import { p, t } from "@/narsil-localization";
 import { upperFirst } from "lodash";
 import NavLink from "@/Components/Elements/Links/NavLink";
 import Icon from "@/Shared/Svg/Icon";
@@ -15,7 +15,7 @@ export default function Nav() {
                 <SidebarLink
                     href={ route("backoffice.calendar") }
                     icon="calendar"
-                    label="time.calendar"
+                    label="date-time.calendar"
                 />
                 <SidebarLink
                     href={ route("backoffice.users.index") }
@@ -25,7 +25,7 @@ export default function Nav() {
                 <SidebarLink
                     href={ route("backoffice.roles.index") }
                     icon="shield"
-                    label="permissions.roles"
+                    label={ p('permissions.roles', 2) }
                 />
             </ul>
         </nav>
@@ -35,9 +35,9 @@ export default function Nav() {
 const SidebarCategory = ({ label, icon }) => {
     return (
         <div className="flex">
-            <Icon 
-                name={ icon } 
-                className="w-6 h-6" 
+            <Icon
+                name={ icon }
+                className="w-6 h-6"
             />
 
             <span className="flex ml-3 text-left whitespace-nowrap">
@@ -48,19 +48,19 @@ const SidebarCategory = ({ label, icon }) => {
 }
 
 const SidebarLink = ({
-    href, 
-    icon, 
-    label 
+    href,
+    icon,
+    label
 }) => {
     return (
         <NavLink
             className="flex items-center p-1"
             href={ href }
         >
-            <SidebarCategory 
+            <SidebarCategory
                 label= { label }
                 icon= { icon }
-            /> 
+            />
         </NavLink>
     );
 }

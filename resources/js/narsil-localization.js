@@ -4,15 +4,25 @@ const t = (key, replacements = null) => {
     let text = localize(key);
 
     if (replacements) {
-        Object.keys(replacements).forEach(x => {
-            text = text.replace(`:${ x }`, replacements[x]);
-        })
+        text = replace(text, replacements);
     }
 
     return text;
 }
 
-export { t };
+const p = (key, count, replacements = null) => {
+    let text = localize(key);
+
+    text = pluralize(text, count)
+
+    if (replacements) {
+        text = replace(text, replacements);
+    }
+
+    return text;
+}
+
+export { t, p };
 
 //#region PRIVATE METHODS
 
@@ -47,6 +57,24 @@ function localizeNestedKey(table, key) {
     });
 
     return failed ? keys.pop() : value;
+}
+
+function pluralize(text, count) {
+    let values = text.split('|');
+
+    if (count > 1 ) {
+        return values[1];
+    } else {
+        return values[0];
+    }
+}
+
+function replace(text, replacements) {
+    Object.keys(replacements).forEach(x => {
+        text = text.replace(`:${ x }`, replacements[x]);
+    })
+
+    return text;
 }
 
 //#endregion

@@ -25,14 +25,14 @@ export default function ThemeButton() {
     });
 
     return (
-        <button 
-            type="button" 
+        <button
+            type="button"
             className={
                 "selectable p-2 rounded-lg"
             }
             onClick={ () => toggle(isDark = !isDark) }
-        >   
-            <Theme 
+        >
+            <Theme
                 className="w-5 h-5"
                 theme={ isDark ? "dark" : "light" }
             />
