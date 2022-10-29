@@ -6,7 +6,7 @@ import Logo from "@/Shared/Svg/Logo";
 export default function Footer({ textLinks, iconLinks }) {
     return (
         <footer id="footer" className="primary-background w-full p-4 border-t-2 border-color text-sm">
-            <div id="top-footer" className="grid grid-cols-1 md:grid-cols-2 space-y-4 md:space-y-0">
+            <section id="top-footer" className="grid grid-cols-1 md:grid-cols-2 space-y-4 md:space-y-0">
                 <div id="website-logo" className="col-span-1 flex items-center justify-center md:justify-start">
                     <WebsiteLogo />
                 </div>
@@ -26,11 +26,11 @@ export default function Footer({ textLinks, iconLinks }) {
                         })
                     }
                 </div>
-            </div>
+            </section>
 
             <hr className="my-4 border-color" />
 
-            <div id="bottom-footer" className="grid grid-cols-1 md:grid-cols-2 space-y-4 md:space-y-0">
+            <section id="bottom-footer" className="grid grid-cols-1 md:grid-cols-2 space-y-4 md:space-y-0">
                 <div id="icon-links" className="col-span-1 md:order-2 flex items-center justify-center md:justify-end space-x-4">
                     {
                         iconLinks.map(({ route, name }) => {
@@ -53,7 +53,7 @@ export default function Footer({ textLinks, iconLinks }) {
                         <span className="block whitespace-nowrap">All Rights Reserved.</span>
                     </p>
                 </div>
-            </div>
+            </section>
         </footer>
     );
 }
