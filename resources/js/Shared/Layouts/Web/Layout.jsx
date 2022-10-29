@@ -3,7 +3,9 @@ import Header from "./Header";
 import Footer from "./Footer";
 
 export default function Layout({ children }) {
-    const footerTextLinks = [];
+    const footerTextLinks = [
+        { route: route('faq'), label: "FAQ" },
+    ];
 
     const footerIconLinks = [
         { route: '#', name: "github" },
@@ -13,10 +15,10 @@ export default function Layout({ children }) {
     ];
 
     return (
-        <main className="flex flex-col min-h-screen w-screen min-w-fit">
+        <main className="flex flex-col min-h-screen w-full min-w-fit">
             <Header />
 
-            <section className="flex-grow w-full mx-auto my-4 lg:w-9/12">
+            <section className="flex-grow w-11/12 md:w-10/12 lg:w-9/12 mx-auto my-4">
                 { children }
             </section>
 

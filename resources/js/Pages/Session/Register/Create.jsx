@@ -13,15 +13,15 @@ export default function Create() {
 
     return (
         <>
-            <Head title={ t("Register") } />    
+            <Head title={ t("Register") } />
 
-            <Form 
+            <Form
                 className="w-9/12 lg:w-6/12 mx-auto"
-                header={ 
-                    <FormHeader title={ t("Register") } /> 
+                header={
+                    <FormHeader title={ t("Register") } />
                 }
-                footer={ 
-                    <FormFooter 
+                footer={
+                    <FormFooter
                         label="Register"
                         processing={ processing }
                     />
@@ -29,47 +29,47 @@ export default function Create() {
                 submit={ () => post(route('register')) }
             >
                 {/* Username */}
-                <FormInput 
+                <FormInput
                     id="username"
-                    label="username"
-                    value={ data.username } 
-                    error={ errors.username } 
-                    setData={ setData } 
+                    label={ t('validation.attributes.username') }
+                    value={ data.username }
+                    error={ errors.username }
+                    setData={ setData }
                 />
                 {/* Email */}
-                <FormInput 
+                <FormInput
                     id="email"
-                    label="email" 
+                    label={ t('validation.attributes.email') }
                     type="email"
-                    value={ data.email} 
-                    error={ errors.email} 
-                    setData={ setData } 
+                    value={ data.email}
+                    error={ errors.email}
+                    setData={ setData }
                 />
                 {/* Password */}
-                <FormInput 
-                    id="password" 
-                    label="password" 
-                    type="password" 
-                    value={ data.password} 
-                    error={ errors.password} 
-                    setData={ setData } 
+                <FormInput
+                    id="password"
+                    label={ t('validation.attributes.password') }
+                    type="password"
+                    value={ data.password}
+                    error={ errors.password}
+                    setData={ setData }
                     autoComplete="new-password"
                 />
                 {/* Last Name */}
-                <FormInput 
+                <FormInput
                     id="last_name"
-                    label="last_name"
-                    value={ data.last_name } 
-                    error={ errors.last_name } 
-                    setData={ setData } 
+                    label={ t('validation.attributes.last_name') }
+                    value={ data.last_name }
+                    error={ errors.last_name }
+                    setData={ setData }
                 />
                 {/* First Name */}
-                <FormInput 
+                <FormInput
                     id="first_name"
-                    label="first_name"  
-                    value={ data.first_name } 
-                    error={ errors.first_name } 
-                    setData={ setData } 
+                    label={ t('validation.attributes.first_name') }
+                    value={ data.first_name }
+                    error={ errors.first_name }
+                    setData={ setData }
                 />
             </Form>
         </>

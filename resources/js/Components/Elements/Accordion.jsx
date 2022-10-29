@@ -1,10 +1,10 @@
 import { useState } from "react";
 import Chevron from "@/Shared/Svg/Chevron";
 
-export default function Accordion({ questions }) {
+export default function Accordion({ collection }) {
     const values = {};
 
-    questions.data.map(({ id }) => {
+    collection.data.map(({ id }) => {
         values[id] = false;
     });
 
@@ -13,15 +13,15 @@ export default function Accordion({ questions }) {
     return (
         <div className="border-2 border-color divide-y divide-color rounded">
             {
-                questions.data.map(({ id, question, answer }) => {
+                collection.data.map(({ id, question, answer }) => {
                     return (
-                        <div 
+                        <div
                             className="divide-y divide-color"
                             key={ id }
                         >
                             <h1>
-                                <button 
-                                    type="button" 
+                                <button
+                                    type="button"
                                     className="
                                         primary-background flex items-center justify-between w-full p-4 text-left
                                     "
@@ -32,17 +32,17 @@ export default function Accordion({ questions }) {
                                     </span>
                                     <Chevron direction={ items[id] ? "up" : "down" } className="w-6 h-6" />
                                 </button>
-                            </h1> 
-                            { items[id] && ( 
+                            </h1>
+                            { items[id] && (
                                 <div className="bg-gray-100 dark:bg-gray-800">
                                     <div className="p-4 text-left">
                                         { answer }
                                     </div>
                                 </div>
-                            )}  
+                            )}
                         </div>
                     );
-                }) 
+                })
             }
         </div>
     );

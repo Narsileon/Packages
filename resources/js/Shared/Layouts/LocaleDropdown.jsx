@@ -15,26 +15,26 @@ export default function LocaleDropdown() {
                         availableLocales.map(availableLocale => {
                             return (
                                 <DropdownItem
-                                    href={ `/locales/${availableLocale}` } 
+                                    href={ `/locales/${availableLocale}` }
                                     className={ `selectable ${ availableLocale == locale ? "selectable-active" : "" }` }
                                     type="link"
                                     key={ availableLocale }
                                 >
                                     <div className="flex items-center space-x-2">
-                                        <Flag 
-                                            name={ availableLocale } 
-                                            className="w-6 h-6" 
+                                        <Flag
+                                            name={ availableLocale }
+                                            className="w-6 h-6"
                                         />
                                         <span>
-                                            { t(`languages.${ availableLocale }`) } 
-                                        </span>             
+                                            { t(`locales.${ availableLocale }`) }
+                                        </span>
                                     </div>
                                 </DropdownItem>
                             );
                         })
                     }
-                </div> 
-            </DropdownPanel>         
+                </div>
+            </DropdownPanel>
         </Dropdown>
     );
 }

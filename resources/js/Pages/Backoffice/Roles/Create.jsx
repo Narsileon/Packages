@@ -5,13 +5,13 @@ import { Form, FormCheckbox, FormFooter, FormHeader, FormInput } from "@/Compone
 export default function Create({ permissions }) {
 	function initializeObject(collection) {
 		let object = {};
-	
+
 		collection.data.map((item) => {
 			object[item.name] = false;
 		});
-	
+
 		return object;
-	}	
+	}
 
 	const { data, setData, transform, post, processing, errors } = useForm({
 		name: "",
@@ -31,38 +31,38 @@ export default function Create({ permissions }) {
 		<>
 			<Head title={ t("Create role") } />
 
-			<Form 
-				header={ 
-					<FormHeader title={ t("Create role") } /> 
+			<Form
+				header={
+					<FormHeader title={ t("Create role") } />
 				}
-				footer={ 
-					<FormFooter 
+				footer={
+					<FormFooter
 						label="Create"
 						processing={ processing }
 					/>
 				}
 				submit={ submit }
 			>
-				<FormInput 
+				<FormInput
 					id="name"
-					label="name"  
-					value={ data.name } 
-					error={ errors.name } 
-					setData={ setData } 
+					label={ t('validation.attributes.name') }
+					value={ data.name }
+					error={ errors.name }
+					setData={ setData }
 				/>
 
 				{
 					permissions.data.map((permission) => {
 						return (
 							<FormCheckbox
-								id={ permission.name } 
-								label={ `permissions.${ permission.name }` } 
-								type="checkbox"  
-								checked={ data.permissions[permission.name] } 
-								error={ errors[data.permissions[permission.name]] } 
-								onChange={ (e) => setData("permissions", { ...data.permissions, [permission.name]: e.target.checked }) } 
+								id={ permission.name }
+								label={ `permissions.${ permission.name }` }
+								type="checkbox"
+								checked={ data.permissions[permission.name] }
+								error={ errors[data.permissions[permission.name]] }
+								onChange={ (e) => setData("permissions", { ...data.permissions, [permission.name]: e.target.checked }) }
 								key={ permission.id }
-							/>								
+							/>
 						);
 					})
 				}

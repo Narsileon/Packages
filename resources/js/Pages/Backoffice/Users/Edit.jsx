@@ -73,14 +73,14 @@ export default function Edit({ user, roles, permissions }) {
 				>
 				<FormInput
 						id="username"
-						label="username"
+						label={ t('validation.attributes.username') }
 						value={ data.username }
 						error={ errors.username }
 						setData={ setData }
 					/>
 					<FormInput
 						id="email"
-						label="email"
+						label={ t('validation.attributes.email') }
 						type="email"
 						value={ data.email}
 						error={ errors.email}
@@ -88,14 +88,14 @@ export default function Edit({ user, roles, permissions }) {
 					/>
 					<FormInput
 						id="last_name"
-						label="last_name"
+						label={ t('validation.attributes.last_name') }
 						value={ data.last_name }
 						error={ errors.last_name }
 						setData={ setData }
 					/>
 					<FormInput
 						id="first_name"
-						label="first_name"
+						label={ t('validation.attributes.first_name') }
 						value={ data.first_name }
 						error={ errors.first_name }
 						setData={ setData }

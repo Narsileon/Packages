@@ -4,6 +4,7 @@
 
 use App\Http\Controllers\Backoffice\CalendarController;
 use App\Http\Controllers\Backoffice\DashboardController;
+use App\Http\Controllers\Backoffice\FaqController;
 use App\Http\Controllers\Backoffice\RoleController;
 use App\Http\Controllers\Backoffice\UserController;
 use Illuminate\Support\Facades\Route;
@@ -15,13 +16,14 @@ Route::group(
         'prefix' => 'backoffice',
         'as' => 'backoffice.',
         'middleware' => 'auth',
-    ], 
-    function () 
+    ],
+    function ()
     {
         Route::get('dashboard', DashboardController::class)->name('dashboard');
         Route::get('calendar', CalendarController::class)->name('calendar');
-        
+
         Route::resource('users', UserController::class);
         Route::resource('roles', RoleController::class);
+        Route::resource('faqs', FaqController::class);
     }
 );

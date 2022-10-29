@@ -1,5 +1,7 @@
 {
     "About": "Über",
+    "Add": "Hinzufügen",
+    "Add :resource": ":resource hinzufügen",
     "All_M": "Alle",
     "All_F": "Alle",
     "Back": "Züruck",
@@ -8,9 +10,13 @@
     "Confirm": "Bestätigen",
     "Contact": "Kontakt",
     "Create": "Erstellen",
+    "Create :resource": ":resource erstellen",
     "Dashboard": "Armaturenbrett",
     "Delete": "Löschen",
+    "Delete :resource": ":resource löschen",
     "Edit": "Bearbeiten",
+    "Edit :resource": ":resource bearbeiten",
+    "FAQ": "FAQ",
     "Home": "Start",
     "Log in": "Anmelden",
     "Log out": "Abmelden",
@@ -20,7 +26,6 @@
     "Reset": "Zurücksetzen",
     "Search for": "Suchen nach...",
     "Update": "Aktualisieren",
-    "User": "Benutzer",
-    "Users": "Benutzer",
+    "Update: resource": ":resource aktualisieren",
     "Yes:": "Ja"
 }

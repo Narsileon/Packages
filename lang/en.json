@@ -1,5 +1,7 @@
 {
     "About": "About",
+    "Add": "Add",
+    "Add :resource": "Add :resource",
     "All_M": "All",
     "All_F": "All",
     "Back": "Back",
@@ -8,9 +10,13 @@
     "Confirm": "Confirm",
     "Contact": "Contact",
     "Create": "Create",
+    "Create :resource": "Create :resource",
     "Dashboard": "Dashboard",
     "Delete": "Delete",
+    "Delete :resource": "Delete :resource",
     "Edit": "Edit",
+    "Edit :resource": "Edit :resource",
+    "FAQ": "FAQ",
     "Home": "Home",
     "Log in": "Log in",
     "Log out": "Log out",
@@ -20,7 +26,6 @@
     "Reset": "Reset",
     "Search for": "Search for...",
     "Update": "Update",
-    "User": "User",
-    "Users": "Users",
+    "Update: resource": "Update :resource",
     "Yes:": "Yes"
 }

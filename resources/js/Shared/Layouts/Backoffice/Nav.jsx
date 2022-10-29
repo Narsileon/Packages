@@ -10,22 +10,27 @@ export default function Nav() {
                 <SidebarLink
                     href={ route("backoffice.dashboard") }
                     icon="dashboard"
-                    label="Dashboard"
+                    label={ t('Dashboard') }
                 />
                 <SidebarLink
                     href={ route("backoffice.calendar") }
                     icon="calendar"
-                    label="date-time.calendar"
+                    label={ t('date-time.calendar') }
                 />
                 <SidebarLink
                     href={ route("backoffice.users.index") }
                     icon="user"
-                    label="Users"
+                    label={ p('common.users', 2) }
                 />
                 <SidebarLink
                     href={ route("backoffice.roles.index") }
                     icon="shield"
                     label={ p('permissions.roles', 2) }
+                />
+                <SidebarLink
+                    href={ route("backoffice.faqs.index") }
+                    icon="shield"
+                    label={ t('FAQ') }
                 />
             </ul>
         </nav>

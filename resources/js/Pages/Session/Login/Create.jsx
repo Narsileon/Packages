@@ -10,17 +10,17 @@ export default function Create() {
 
 	return (
         <>
-            <Head title={ t("Log in") } /> 
+            <Head title={ t("Log in") } />
 
-            <Form 
+            <Form
                 className="w-9/12 lg:w-6/12 mx-auto"
-                header={ 
-                    <FormHeader 
-                        title={ t("Log in") } 
-                    /> 
+                header={
+                    <FormHeader
+                        title={ t("Log in") }
+                    />
                 }
-                footer={ 
-                    <FormFooter 
+                footer={
+                    <FormFooter
                         label="Log in"
                         processing={ processing }
                     />
@@ -28,22 +28,22 @@ export default function Create() {
                 submit={ () => post(route('login')) }
             >
                 {/* Email */}
-                <FormInput 
-                    id="email" 
-                    label="email" 
+                <FormInput
+                    id="email"
+                    label={ t('validation.attributes.email') }
                     type="email"
-                    value={ data.email} 
-                    error={ errors.email} 
-                    setData={ setData } 
+                    value={ data.email}
+                    error={ errors.email}
+                    setData={ setData }
                 />
                 {/* Password */}
-                <FormInput 
-                    id="password" 
-                    label="password" 
-                    type="password" 
-                    value={ data.password} 
-                    error={ errors.password} 
-                    setData={ setData } 
+                <FormInput
+                    id="password"
+                    label={ t('validation.attributes.password') }
+                    type="password"
+                    value={ data.password}
+                    error={ errors.password}
+                    setData={ setData }
                     autoComplete="current-password"
                 />
             </Form>
