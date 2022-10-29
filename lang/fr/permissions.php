@@ -3,8 +3,9 @@
 use App\Acl\Permissions;
 
 return [
-    'roles'                         => 'Rôle|Rôles',
-    'permissions'                   => 'Autorisation|Autorisations',
+    'new-role'                      => 'un nouveau rôle',
+    'permissions'                   => 'autorisation|autorisations',
+    'roles'                         => 'rôle|rôles',
 
     Permissions::BACKOFFICE_VIEW    => 'Voir l\'arrière guichet',
 

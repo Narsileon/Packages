@@ -3,8 +3,9 @@
 use App\Acl\Permissions;
 
 return [
-    'roles'                         => 'Role|Roles',
-    'permissions'                   => 'Permission|Permissions',
+    'new-role'                      => 'a new role',
+    'permissions'                   => 'permission|permissions',
+    'roles'                         => 'role|roles',
 
     Permissions::BACKOFFICE_VIEW    => 'View backoffice',
 

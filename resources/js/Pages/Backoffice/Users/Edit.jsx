@@ -48,7 +48,7 @@ export default function Edit({ user, roles, permissions }) {
 
     return (
         <>
-            <Head title={ t('Edit user') } />
+            <Head title={ t('Edit :resource', {'resource': data.username}) } />
 
 			<div className="flex justify-between space-x-8">
 				<FormSummary>
@@ -61,7 +61,7 @@ export default function Edit({ user, roles, permissions }) {
 				</FormSummary>
 				<Form
 					header={
-						<FormHeader title={ t("Edit user") } />
+						<FormHeader title={ t('Edit :resource', {'resource': data.username}) } />
 					}
 					footer={
 						<FormFooter

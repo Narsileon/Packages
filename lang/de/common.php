@@ -1,5 +1,6 @@
 <?php
 
 return [
-    'users'     => 'Benutzer|Benutzer',
+    'new-user'      => 'einen neuen Benutzer',
+    'users'         => 'Benutzer|Benutzer',
 ];

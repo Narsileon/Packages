@@ -1,5 +1,5 @@
 import { Head, Link } from "@inertiajs/inertia-react";
-import { t } from "@/narsil-localization";
+import { p, t } from "@/narsil-localization";
 import Table from "@/Components/Tables/Table";
 import SearchField from "@/Shared/SearchField";
 
@@ -9,9 +9,9 @@ export default function Index({ roles, filters }) {
 		{ label: "Name", accessor: "name", sortable: true },
 	];
 
-	const settings = { 
+	const settings = {
 		link: "/backoffice/roles/",
-		editable: true, 
+		editable: true,
 		deletable: true,
 	};
 
@@ -22,20 +22,20 @@ export default function Index({ roles, filters }) {
 			<div className="flex justify-between mb-4">
 				<div className="flex items-center">
 					<h1 className="text-2xl">
-            			Manage roles
+						{ t('List of :resource', { 'resource': p('permissions.roles', 2) }) }
 					</h1>
 
 					<Link href={ route('backoffice.roles.create') } className="text-green-500 hover:text-green-600 ml-4">
-            			Create role
+						{ t('Create :resource', { 'resource': t('permissions.new-role') }) }
 					</Link>
 				</div>
 
 				<SearchField filters = { filters } />
 			</div>
 
-			<Table 
+			<Table
 				collection={ roles }
-				columns={ columns } 
+				columns={ columns }
 				settings={ settings }
 			/>
 		</>

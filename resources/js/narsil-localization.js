@@ -1,4 +1,9 @@
 import { usePage } from "@inertiajs/inertia-react";
+import { upperFirst } from "lodash";
+
+export { t, p };
+
+//#region PUBLIC METHODS
 
 const t = (key, replacements = null) => {
     let text = localize(key);
@@ -22,7 +27,7 @@ const p = (key, count, replacements = null) => {
     return text;
 }
 
-export { t, p };
+//#endregion
 
 //#region PRIVATE METHODS
 
@@ -71,7 +76,11 @@ function pluralize(text, count) {
 
 function replace(text, replacements) {
     Object.keys(replacements).forEach(x => {
-        text = text.replace(`:${ x }`, replacements[x]);
+        if (text.includes(x)) {
+            text = text.replace(`:${ x }`, replacements[x]);
+        } else if(text.includes(upperFirst(x))) {
+            text = text.replace(`:${ upperFirst(x) }`, upperFirst(replacements[x]));
+        }
     })
 
     return text;
