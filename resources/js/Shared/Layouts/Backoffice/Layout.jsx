@@ -14,7 +14,7 @@ export default function Layout({ children }) {
             ">
                 <Header />
 
-                <Nav />            
+                <Nav />
             </aside>
 
             <section className="w-full m-4">
@@ -35,6 +35,6 @@ const Header = () => {
                 <LocaleDropdown />
                 <ThemeButton />
             </div>
-        </header>        
+        </header>
     )
 }

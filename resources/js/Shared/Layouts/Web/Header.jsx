@@ -6,15 +6,19 @@ import ThemeButton from "@/Shared/Layouts/ThemeButton";
 export default function Header () {
     return (
         <header id="header" className="flex justify-between primary-background border-b-2 border-color p-4">
-            <section id="left-header" className="flex items-center space-x-4">
-                <WebsiteLogo />
-                <ThemeButton />
-            </section>
+            <div id="left-header">
+                <div className="flex items-center space-x-4">
+                    <WebsiteLogo />
+                    <ThemeButton />
+                </div>
+            </div>
 
-            <section id="right-header" className="flex items-center space-x-4">
-                <LocaleDropdown />
-                <Nav />
-            </section>
+            <div id="right-header">
+                <div className="flex items-center space-x-4">
+                    <LocaleDropdown />
+                    <Nav />
+                </div>
+            </div>
         </header>
     );
 }
