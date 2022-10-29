@@ -2,19 +2,19 @@ import { Head, useForm } from "@inertiajs/inertia-react";
 import { t } from "@/narsil-localization";
 import { Form, FormFooter, FormHeader, FormInput } from "@/Components/Forms";
 
-export default function Edit({ question }) {
+export default function Edit({ faq }) {
     const { data, setData, patch, processing, errors } = useForm({
-        question: question.data.question,
-        answer: question.data.answer,
+        question: faq.question,
+        answer: faq.answer,
     });
 
     return (
         <>
-            <Head title={ t('Edit question') } />
+            <Head title={ t('Edit faq') } />
 
 			<Form
 				header={
-					<FormHeader title={ t("Edit question") } />
+					<FormHeader title={ t("Edit faq") } />
 				}
 				footer={
 					<FormFooter
@@ -22,7 +22,7 @@ export default function Edit({ question }) {
 						processing={ processing }
 					/>
 				}
-				submit={ () => patch('/backoffice/questions/' + question.data.id) }
+				submit={ () => patch('/backoffice/faqs/' + faq.id) }
 			>
                 <FormInput
 					id="question"

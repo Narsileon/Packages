@@ -13,6 +13,8 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class UserUpdateRequest extends FormRequest
 {
+    #region PUBLIC METHODS
+
     public function authorize() : bool
     {
         return $this->user()->can(Permissions::USERS_UPDATE);
@@ -55,4 +57,6 @@ class UserUpdateRequest extends FormRequest
             ],
         ];
     }
+
+    #endregion
 }

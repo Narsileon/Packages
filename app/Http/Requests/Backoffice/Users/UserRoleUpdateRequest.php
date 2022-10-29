@@ -13,6 +13,8 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class UserRoleUpdateRequest extends FormRequest
 {
+    #region PUBLIC METHODS
+
     public function authorize() : bool
     {
         return $this->user()->can(Permissions::ROLES_UPDATE);
@@ -34,4 +36,6 @@ class UserRoleUpdateRequest extends FormRequest
             ],
         ];
     }
+
+    #endregion
 }

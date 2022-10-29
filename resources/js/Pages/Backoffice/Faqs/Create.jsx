@@ -10,11 +10,11 @@ export default function Create() {
 
 	return (
 		<>
-			<Head title={ t('Create question') } />
+			<Head title={ t('Create faq') } />
 
 			<Form
 				header={
-					<FormHeader title={ t("Create question") } />
+					<FormHeader title={ t("Create faq") } />
 				}
 				footer={
 					<FormFooter
@@ -22,7 +22,7 @@ export default function Create() {
 						processing={ processing }
 					/>
 				}
-				submit={ () => post('/backoffice/questions') }
+				submit={ () => post('/backoffice/faqs') }
 			>
 				<FormInput
 					id="question"

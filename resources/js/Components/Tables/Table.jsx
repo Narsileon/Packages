@@ -19,24 +19,24 @@ export default function Table({ collection, columns, settings }) {
 		<>
 			<div className="border-2 border-color rounded">
 				<table className="min-w-full">
-					<TableHead 
-						columns={ columns } 
+					<TableHead
+						columns={ columns }
 					/>
-					<TableBody 
-						tableData={ collection.data } 
-						columns={ columns } 
+					<TableBody
+						tableData={ collection.data }
+						columns={ columns }
 						settings={ settings }
-						openModal={ openModal } 
+						openModal={ openModal }
 					/>
 				</table>
 			</div>
 
 			<div>
-				<Pagination data={ collection.meta } />	
+				<Pagination data={ collection.meta ? collection.meta : collection } />
 			</div>
 
-			{ show && ( 
-				<ModalWindow 
+			{ show && (
+				<ModalWindow
 					text="Are you sure you want to delete this contact?"
 					action={ () => Inertia.delete(settings.link + id) }
 					actionLabel="Delete"

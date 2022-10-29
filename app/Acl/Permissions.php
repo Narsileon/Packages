@@ -25,6 +25,11 @@ abstract class Permissions
     public const ROLES_CREATE = 'roles-create';
     public const ROLES_UPDATE = 'roles-update';
     public const ROLES_DELETE = 'roles-delete';
-    
+
+    public const FAQS_VIEW = 'faqs-view';
+    public const FAQS_CREATE = 'faqs-create';
+    public const FAQS_UPDATE = 'faqs-update';
+    public const FAQS_DELETE = 'faqs-delete';
+
     #endregion
 }

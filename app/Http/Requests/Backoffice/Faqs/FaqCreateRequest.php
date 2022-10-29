@@ -12,6 +12,8 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class FaqCreateRequest extends FormRequest
 {
+    #region PUBLIC METHODS
+
     public function authorize() : bool
     {
         return $this->user()->can('create', Faq::class);
@@ -31,4 +33,6 @@ class FaqCreateRequest extends FormRequest
             ],
         ];
     }
+
+    #endregion
 }

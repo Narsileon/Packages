@@ -12,6 +12,8 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class FaqUpdateRequest extends FormRequest
 {
+    #region PUBLIC METHODS
+
     public function authorize() : bool
     {
         return $this->user()->can('update', Faq::class);
@@ -31,4 +33,6 @@ class FaqUpdateRequest extends FormRequest
             ],
         ];
     }
+
+    #endregion PUBLIC METHODS
 }

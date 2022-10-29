@@ -17,8 +17,8 @@ class FaqController extends Controller
 {
     public function index()
     {
-        return Inertia::render('Backoffice/Questions/Index', [
-            'questions' => Faq::All()->query()
+        return Inertia::render('Backoffice/Faqs/Index', [
+            'faqs' => Faq::latest()
                 ->filter(request(['id', 'question']))
                 ->sort()
                 ->paginate(),
@@ -31,7 +31,7 @@ class FaqController extends Controller
 
     public function create()
     {
-        return Inertia::render('Backoffice/Questions/Create');
+        return Inertia::render('Backoffice/Faqs/Create');
     }
 
     public function store(FaqCreateRequest $request)
@@ -40,12 +40,12 @@ class FaqController extends Controller
 
         Faq::create($attributes);
 
-        return redirect(route('backoffice.questions.index'));
+        return redirect(route('backoffice.faqs.index'));
     }
 
     public function edit(Faq $faq)
     {
-        return Inertia::render('Backoffice/Questions/Edit', compact(
+        return Inertia::render('Backoffice/Faqs/Edit', compact(
             'faq'
         ));
     }
@@ -56,7 +56,7 @@ class FaqController extends Controller
 
         $faq->update($attributes);
 
-        return redirect(route('backoffice.questions.index'));
+        return redirect(route('backoffice.faqs.index'));
     }
 
     public function destroy(Faq $faq)

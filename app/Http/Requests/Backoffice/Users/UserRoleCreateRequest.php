@@ -13,6 +13,8 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class UserRoleCreateRequest extends FormRequest
 {
+    #region PUBLIC METHODS
+
     public function authorize() : bool
     {
         return $this->user()->can(Permissions::ROLES_CREATE);
@@ -34,4 +36,6 @@ class UserRoleCreateRequest extends FormRequest
             ],
         ];
     }
+
+    #endregion
 }
