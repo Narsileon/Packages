@@ -1,15 +1,14 @@
-import { t } from "@/narsil-localization";
+import { upperFirst } from "lodash";
 
-export default function FormSectionHeader({ 
-    title, 
+export default function FormSectionHeader({
+    title,
 }) {
     return (
         <div className="border-b-2 border-color" >
             <h1 className="text-lg">
-                { t(title) }
+                { upperFirst(title) }
             </h1>
         </div>
     );
 }
 
-  

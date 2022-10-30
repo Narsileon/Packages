@@ -10,15 +10,15 @@ export default function Create() {
 
 	return (
 		<>
-			<Head title={ t('Create faq') } />
+			<Head title={ t('Create :resource', { 'resource': t('FAQ') }) } />
 
 			<Form
 				header={
-					<FormHeader title={ t("Create faq") } />
+					<FormHeader title={ t('Create :resource', { 'resource': t('FAQ') }) } />
 				}
 				footer={
 					<FormFooter
-						label="Create"
+						label={ t('Create') }
 						processing={ processing }
 					/>
 				}

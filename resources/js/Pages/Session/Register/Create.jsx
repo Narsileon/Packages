@@ -13,16 +13,16 @@ export default function Create() {
 
     return (
         <>
-            <Head title={ t("Register") } />
+            <Head title={ t('Registration') } />
 
             <Form
                 className="w-9/12 lg:w-6/12 mx-auto"
                 header={
-                    <FormHeader title={ t("Register") } />
+                    <FormHeader title={ t('Registration') } />
                 }
                 footer={
                     <FormFooter
-                        label="Register"
+                        label={ t('Register') }
                         processing={ processing }
                     />
                 }

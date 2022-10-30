@@ -1,5 +1,5 @@
 import { Head, useForm } from "@inertiajs/inertia-react";
-import { t } from "@/narsil-localization";
+import { p, t } from "@/narsil-localization";
 import { Form, FormCheckbox, FormFooter, FormHeader, FormInput } from "@/Components/Forms";
 
 export default function Edit({ role, permissions }) {
@@ -29,15 +29,15 @@ export default function Edit({ role, permissions }) {
 
     return (
         <>
-			<Head title={ t("Edit role") } />
+			<Head title={ t('Edit :resource', { 'resource': p('permissions.roles', 1) }) } />
 
 			<Form
 				header={
-					<FormHeader title={ t("Edit role") } />
+					<FormHeader title={ t('Edit :resource', { 'resource': p('permissions.roles', 1) }) } />
 				}
 				footer={
 					<FormFooter
-						label="Update"
+						label={ t('Update') }
 						processing={ processing }
 					/>
 				}
@@ -56,7 +56,7 @@ export default function Edit({ role, permissions }) {
 						return (
 							<FormCheckbox
 								id={ permission.name }
-								label={ `permissions.${ permission.name }` }
+								label={ t(`permissions.${ permission.name }`) }
 								type="checkbox"
 								checked={ data.permissions[permission.name] }
 								error={ errors[data.permissions[permission.name]] }

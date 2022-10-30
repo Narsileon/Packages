@@ -5,9 +5,9 @@ import Calendar from "@/Components/Calendars/Calendar";
 export default function Index() {
     return (
         <>
-            <Head title={ t("Calendar") } />
+            <Head title={ t('date-time.calendar') } />
 
-			<Calendar />        
+			<Calendar />
         </>
     );
 }

@@ -15,11 +15,14 @@ export default function ModalWindow({ text, action, actionLabel, setShow }) {
             <div className="flex items-center h-screen w-96 m-auto">
 
                 {/* // Modal Window */}
-                <div 
+                <div
                     className="relative primary-background border-2 border-color align-center h-min rounded-lg shadow-xl"
                     ref={ modal }
                 >
-                    <CloseButton onClick={ () => setShow(false) } />
+                    <CloseButton
+                        className="absolute top-0 right-0 m-2 w-5 h-5"
+                        onClick={ () => setShow(false) }
+                    />
 
                     <div className="p-8 text-center">
                         {/* Content */}
@@ -29,12 +32,12 @@ export default function ModalWindow({ text, action, actionLabel, setShow }) {
 
                         {/* Footer */}
                         <div className="flex items-center justify-between">
-                            <PrimaryButton 
-                                label={ t("Cancel") } 
+                            <PrimaryButton
+                                label={ t("Cancel") }
                                 onClick={ () => setShow(false) }
                             />
-                            <PrimaryButton 
-                                label={ actionLabel } 
+                            <PrimaryButton
+                                label={ actionLabel }
                                 onClick={ () => {
                                     action();
                                     setShow(false);

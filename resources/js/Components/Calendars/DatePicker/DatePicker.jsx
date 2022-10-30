@@ -22,17 +22,17 @@ export default function Datepicker({ setExternalDate, getExternalDate }) {
                     {
                         dates[Object.keys(dates)[i]].map((d) => {
                             return (
-                                <DatePickerCell 
-                                    label={ d.getDate() } 
+                                <DatePickerCell
+                                    label={ d.getDate() }
                                     action={ () => {
                                         setDate(d);
                                         setExternalDate(d);
                                     }}
-                                    current={ date.getMonth() == d.getMonth() } 
-                                    active={ 
-                                        d.getFullYear() == today.getFullYear() && 
-                                        d.getMonth() == today.getMonth() && 
-                                        d.getDate() == today.getDate() 
+                                    current={ date.getMonth() == d.getMonth() }
+                                    active={
+                                        d.getFullYear() == today.getFullYear() &&
+                                        d.getMonth() == today.getMonth() &&
+                                        d.getDate() == today.getDate()
                                     }
                                     key={ d }
                                 />
@@ -48,11 +48,11 @@ export default function Datepicker({ setExternalDate, getExternalDate }) {
 
     return (
         <div>
-            <button 
+            <button
                 className="p-2"
                 onClick={ () => {
                     toggle();
-                    setDate(getExternalDate); 
+                    setDate(getExternalDate);
                 }}
             >
                 <Icon name="calendar" className="w-6 h-6"/>
@@ -66,7 +66,7 @@ export default function Datepicker({ setExternalDate, getExternalDate }) {
                         <div className="flex items-center justify-between p-2">
                             <div className="text-left font-bold">
                                 {
-                                    t(months[date.getMonth()]) + " " + date.getFullYear()
+                                    t(`date-time.months.${ months[date.getMonth()] }`) + " " + date.getFullYear()
                                 }
                             </div>
                             <div className="flex space-x-3">
@@ -85,15 +85,15 @@ export default function Datepicker({ setExternalDate, getExternalDate }) {
                                         {
                                             days.map((label, index) => {
                                                 return (
-                                                    <th 
+                                                    <th
                                                         className="p-3"
                                                         key={ index }
                                                     >
                                                         <span className="flex items-center justify-center w-3 aspect-square rounded-full">
-                                                            { (t(label)).slice(0, 2) }                                 
+                                                            { (t(`date-time.days.${ label }`)).slice(0, 2) }
                                                         </span>
-                                                    </th>   
-                                                );                     
+                                                    </th>
+                                                );
                                             })
                                         }
                                     </tr>

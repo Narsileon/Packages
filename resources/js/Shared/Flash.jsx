@@ -12,40 +12,49 @@ export default function Flash() {
     useEffect(() => {
         setVisible(true);
       }, [flash]);
-    
+
     return (
         <>
             { flash.success && visible && (
-                <div className="fixed flex items-center justify-between bottom-4 right-4 p-1 bg-green-500 text-white rounded">
-                    <div className="flex items-center space-x-1">
-                        <Icon 
-                            name="check" 
-                            className="w-6 h-6" 
-                        />
-                        <div className="py-2">
-                            { t(`messages.success.${ flash.success }`) }
-                        </div>
-                    </div>
-                    
-                    <CloseButton onClick={ () => setVisible(false) } />
-                </div>
+                <Message
+                    message={ t(`messages.success.${ flash.success }`) }
+                    icon="check"
+                    color="bg-green-500"
+                    setVisible={ setVisible }
+                />
             )}
 
             { flash.error && visible && (
-                <div className="fixed flex items-center justify-between bottom-4 right-4 bg-red-500 text-white rounded">
-                    <div className="flex items-center mr-6 space-x-1">
-                        <Icon 
-                            name="danger" 
-                            className="w-6 h-6" 
-                        />
-                        <div className="py-2">
-                            { t(`messages.error.${ flash.success }`) }
-                        </div>
-                    </div>
-                    
-                    <CloseButton onClick={ () => setVisible(false) } />
-                </div>
+                <Message
+                    message={ t(`messages.errors.${ flash.error }`) }
+                    icon="danger"
+                    color="bg-red-500"
+                    setVisible={ setVisible }
+                />
             )}
         </>
     );
 }
+
+const Message = ({ message, icon, color, setVisible }) => {
+    return (
+        <div className={ `fixed bottom-4 right-4 text-white rounded ${ color }` }>
+            <div className={ `relative flex items-center justify-between` }>
+                <div className="flex items-center ml-2 mr-6 space-x-2">
+                    <Icon
+                        name={ icon }
+                        className="w-6 h-6"
+                    />
+                    <div className="py-2">
+                        { message }
+                    </div>
+                </div>
+
+                <CloseButton
+                    className="absolute top-0 right-0 m-1 w-4 h-4"
+                    onClick={ () => setVisible(false) }
+                />
+            </div>
+        </div>
+    );
+};

@@ -1,6 +1,4 @@
 import { Link } from "@inertiajs/inertia-react";
-import { t } from "@/narsil-localization";
-import { upperFirst } from "lodash";
 
 export default function PrimaryButton({
     label,
@@ -9,7 +7,7 @@ export default function PrimaryButton({
     children,
     ...props
 }) {
-    children = label != null ? upperFirst(t(label)) : children;
+    children = label != null ? label : children;
 
     switch (type) {
         case "button":

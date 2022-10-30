@@ -16,6 +16,27 @@ abstract class Permissions
 
     public const BACKOFFICE_VIEW = 'backoffice-view';
 
+    public const USERS = [
+        'view',
+        'create',
+        'update',
+        'delete',
+    ];
+
+    public const ROLES = [
+        'view',
+        'create',
+        'update',
+        'delete',
+    ];
+
+    public const FAQS = [
+        'view',
+        'create',
+        'update',
+        'delete',
+    ];
+
     public const USERS_VIEW = 'users-view';
     public const USERS_CREATE = 'users-create';
     public const USERS_UPDATE = 'users-update';

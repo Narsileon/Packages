@@ -10,18 +10,18 @@ export default function Create() {
 
 	return (
         <>
-            <Head title={ t("Log in") } />
+            <Head title={ t('Connection') } />
 
             <Form
                 className="w-9/12 lg:w-6/12 mx-auto"
                 header={
                     <FormHeader
-                        title={ t("Log in") }
+                        title={ t('Connection') }
                     />
                 }
                 footer={
                     <FormFooter
-                        label="Log in"
+                        label={ t('Log in') }
                         processing={ processing }
                     />
                 }

@@ -4,7 +4,7 @@ import { t } from "@/narsil-localization";
 export default function Index() {
     return (
         <>
-            <Head title={ t("Dashboard") } />
+            <Head title={ t('Dashboard') } />
         </>
     );
 }

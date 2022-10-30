@@ -49,7 +49,7 @@ export default function Create({ roles, permissions }) {
 
 	return (
 		<>
-			<Head title={ t("Create user") } />
+			<Head title={ t('Create :resource', {'resource': t('common.new-user')}) } />
 
 			<div className="flex justify-between space-x-8">
 				<FormSummary>
@@ -62,11 +62,11 @@ export default function Create({ roles, permissions }) {
 				</FormSummary>
 				<Form
 					header={
-						<FormHeader title={ t("Create user") } />
+						<FormHeader title={ t('Create :resource', {'resource': t('common.new-user')}) } />
 					}
 					footer={
 						<FormFooter
-							label="Create"
+							label={ t('Create') }
 							processing={ processing }
 						/>
 					}

@@ -9,7 +9,7 @@ export default function BackButton({ ...props }) {
             href={ previousLocation !== "" ? previousLocation : "#" }
             { ...props }
         >
-            { t("Back") }
+            { t('Back') }
         </Link>
     );
 }

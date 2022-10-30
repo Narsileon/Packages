@@ -17,16 +17,16 @@ export default function Index({ roles, filters }) {
 
 	return (
 		<>
-			<Head title={ t("Roles") } />
+			<Head title={ p('permissions.roles', 2) } />
 
 			<div className="flex justify-between mb-4">
-				<div className="flex items-center">
+				<div className="flex items-end">
 					<h1 className="text-2xl">
-						{ t('List of :resource', { 'resource': p('permissions.roles', 2) }) }
+						{ t('List of :resource', {'resource': p('permissions.roles', 2)}) }
 					</h1>
 
 					<Link href={ route('backoffice.roles.create') } className="text-green-500 hover:text-green-600 ml-4">
-						{ t('Create :resource', { 'resource': t('permissions.new-role') }) }
+						{ t('Create :resource', {'resource': t('permissions.new-role')}) }
 					</Link>
 				</div>
 

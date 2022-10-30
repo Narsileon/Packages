@@ -29,15 +29,15 @@ export default function Create({ permissions }) {
 
 	return (
 		<>
-			<Head title={ t("Create role") } />
+			<Head title={ t('Create :resource', {'resource': t('permissions.new-role')}) } />
 
 			<Form
 				header={
-					<FormHeader title={ t("Create role") } />
+					<FormHeader title={ t('Create :resource', {'resource': t('permissions.new-role')}) } />
 				}
 				footer={
 					<FormFooter
-						label="Create"
+						label={ t('Create') }
 						processing={ processing }
 					/>
 				}
@@ -56,7 +56,7 @@ export default function Create({ permissions }) {
 						return (
 							<FormCheckbox
 								id={ permission.name }
-								label={ `permissions.${ permission.name }` }
+								label={ t(`permissions.${ permission.name }`) }
 								type="checkbox"
 								checked={ data.permissions[permission.name] }
 								error={ errors[data.permissions[permission.name]] }

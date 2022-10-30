@@ -48,7 +48,7 @@ export default function Edit({ user, roles, permissions }) {
 
     return (
         <>
-            <Head title={ t('Edit :resource', {'resource': data.username}) } />
+            <Head title={ t('Edit :resource', {'resource': p('common.users', 1)}) } />
 
 			<div className="flex justify-between space-x-8">
 				<FormSummary>
@@ -61,11 +61,14 @@ export default function Edit({ user, roles, permissions }) {
 				</FormSummary>
 				<Form
 					header={
-						<FormHeader title={ t('Edit :resource', {'resource': data.username}) } />
+						<FormHeader title={ t(':resource: Editing of :label', {
+							'resource': p('common.users', 2),
+							'label': user.data.username,
+						}) } />
 					}
 					footer={
 						<FormFooter
-							label="Update"
+							label={ t('Update') }
 							processing={ processing }
 						/>
 					}

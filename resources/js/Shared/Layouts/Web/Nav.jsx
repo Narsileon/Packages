@@ -1,4 +1,5 @@
 import { usePage } from "@inertiajs/inertia-react";
+import { t } from "@/narsil-localization";
 import { Dropdown, DropdownItem, DropdownPanel } from "@/Components/Elements/Dropdowns";
 import NavLink from "@/Components/Elements/Links/NavLink";
 
@@ -9,53 +10,53 @@ export default function Nav() {
         <nav>
             <ul className="flex items-center space-x-2">
                 <NavLink
-                    href={ route('home') } 
-                    label="Home"                     
+                    href={ route('home') }
+                    label="Home"
                 />
 
                 { auth ? <NavAuth /> : <NavGuest /> }
             </ul>
-        </nav> 
+        </nav>
     );
 }
 
 const NavAuth = () => {
     return (
         <>
-            <Dropdown trigger="Menu">
+            <Dropdown trigger={ t('Menu') }>
                 <DropdownPanel className="right-0">
                     <div>
-                        <DropdownItem 
-                            href={ route('backoffice.dashboard') } 
+                        <DropdownItem
+                            href={ route('backoffice.dashboard') }
                             label="Dashboard"
                             type="link"
-                        />                 
+                        />
                     </div>
                     <div>
-                        <DropdownItem 
-                            href={ route('logout') } 
+                        <DropdownItem
+                            href={ route('logout') }
                             label="Log out"
                             type="link"
                             method="post"
                             as="button"
-                        />                                   
+                        />
                     </div>
                 </DropdownPanel>
             </Dropdown>
-        </>        
+        </>
     );
 }
 
 const NavGuest = () => {
     return (
         <>
-            <NavLink 
-                href={ route('register') } 
+            <NavLink
+                href={ route('register') }
                 label="Register"
             />
-            <NavLink 
-                href={ route('login') } 
-                label="Log in" 
+            <NavLink
+                href={ route('login') }
+                label="Log in"
             />
         </>
     )

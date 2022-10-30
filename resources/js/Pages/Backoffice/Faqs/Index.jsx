@@ -17,10 +17,10 @@ export default function Index({ faqs, filters }) {
 
 	return (
 		<>
-			<Head title={ t('Manage faqs') } />
+			<Head title={ t('FAQ') } />
 
 			<div className="flex justify-between mb-4">
-				<div className="flex items-center">
+				<div className="flex items-end">
 					<h1 className="text-2xl">
 						{ t('List of :resource', { 'resource': t('FAQ') }) }
 					</h1>

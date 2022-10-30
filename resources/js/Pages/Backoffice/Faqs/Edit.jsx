@@ -18,7 +18,7 @@ export default function Edit({ faq }) {
 				}
 				footer={
 					<FormFooter
-						label="Update"
+						label={ t('Update') }
 						processing={ processing }
 					/>
 				}

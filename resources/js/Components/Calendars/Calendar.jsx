@@ -24,7 +24,7 @@ export default function Calendar({ tasks }) {
                 <div className="flex items-center justify-between">
                     <div className="text-left font-bold">
                         {
-                            (t(months[date.getMonth()]) + " " + date.getFullYear())
+                            t(`date-time.months.${ months[date.getMonth()] }`) + " " + date.getFullYear()
                         }
                     </div>
                     <div className="flex space-x-2">
