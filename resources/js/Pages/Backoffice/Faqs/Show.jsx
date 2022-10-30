@@ -2,7 +2,6 @@ import { Head } from "@inertiajs/inertia-react";
 import { t } from "@/narsil-localization";
 import { upperFirst } from "lodash";
 import ShowTable from "@/Components/Backoffice/ShowTable";
-import Text from "@/Components/Elements/Text";
 
 export default function Show({ faq }) {
     const title = t('FAQ');
@@ -14,8 +13,9 @@ export default function Show({ faq }) {
             <ShowTable
                 title={ title }
                 href={ `/backoffice/faqs/${ faq.id }/edit` }
+                data={ faq }
             >
-                <div className="grid grid-cols-2 grid-rows-6 gap-y-4">
+                <div className="grid grid-cols-2 gap-y-4">
                     <div className="col-span-2 flex items-center space-x-1">
                         <span>
                             { upperFirst(t('validation.attributes.id')) + t(':') }
@@ -39,22 +39,6 @@ export default function Show({ faq }) {
                     </div>
                     <div className="col-span-2">
                         { faq.answer }
-                    </div>
-                    <div className="col-span-2 space-x-1">
-                        <span>
-                            { upperFirst(t('validation.attributes.created_at')) + t(':') }
-                        </span>
-                        <span>
-                            { faq.created_at }
-                        </span>
-                    </div>
-                    <div className="col-span-2 space-x-1">
-                        <span>
-                            { upperFirst(t('validation.attributes.updated_at')) + t(':') }
-                        </span>
-                        <span>
-                            { faq.updated_at }
-                        </span>
                     </div>
                 </div>
             </ShowTable>

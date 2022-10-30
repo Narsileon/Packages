@@ -1,10 +1,12 @@
 import { t } from "@/narsil-localization";
+import { upperFirst } from "lodash";
 import BackButton from "@/Components/Elements/Buttons/BackButton";
 import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 
 export default function ShowTable({
     title,
     href,
+    data,
     children
 }) {
     return (
@@ -14,7 +16,29 @@ export default function ShowTable({
                     { title }
                 </h1>
 
-                { children }
+                <section id="display-data" className="space-y-4">
+                    { children }
+
+                    <hr className="border border-color"/>
+                    <div>
+                        <div className="space-x-1">
+                            <span>
+                                { upperFirst(t('validation.attributes.created_at')) + t(':') }
+                            </span>
+                            <span>
+                                { data.created_at }
+                            </span>
+                        </div>
+                        <div className="space-x-1">
+                            <span>
+                                { upperFirst(t('validation.attributes.updated_at')) + t(':') }
+                            </span>
+                            <span>
+                                { data.updated_at }
+                            </span>
+                        </div>
+                    </div>
+                </section>
 
                 <div className="flex items-center justify-between">
                     <BackButton className="primary-button" />
