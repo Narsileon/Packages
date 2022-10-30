@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Backoffice\Questions;
+namespace App\Http\Requests\Backoffice\Faqs;
 
 #region USE
 
@@ -25,7 +25,7 @@ class FaqUpdateRequest extends FormRequest
             Faq::FIELD_QUESTION => [
                 ValidationRules::REQUIRED,
                 ValidationRules::TYPE_STRING,
-                ValidationRules::unique('faqs', Faq::FIELD_QUESTION, $this->question->id),
+                ValidationRules::unique('faqs', Faq::FIELD_QUESTION, $this->faq->id),
             ],
             Faq::FIELD_ANSWER => [
                 ValidationRules::REQUIRED,

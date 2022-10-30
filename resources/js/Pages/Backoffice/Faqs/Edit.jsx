@@ -1,8 +1,10 @@
 import { Head, useForm } from "@inertiajs/inertia-react";
 import { t } from "@/narsil-localization";
-import { Form, FormFooter, FormHeader, FormInput } from "@/Components/Forms";
+import Formular from "./Formular";
 
 export default function Edit({ faq }) {
+	const title = t('Edit faq');
+
     const { data, setData, patch, processing, errors } = useForm({
         question: faq.question,
         answer: faq.answer,
@@ -10,35 +12,17 @@ export default function Edit({ faq }) {
 
     return (
         <>
-            <Head title={ t('Edit faq') } />
+            <Head title={ title } />
 
-			<Form
-				header={
-					<FormHeader title={ t("Edit faq") } />
-				}
-				footer={
-					<FormFooter
-						label={ t('Update') }
-						processing={ processing }
-					/>
-				}
-				submit={ () => patch('/backoffice/faqs/' + faq.id) }
-			>
-                <FormInput
-					id="question"
-					label={ t('validation.attributes.question') }
-					value={ data.question }
-					error={ errors.question }
-					setData={ setData }
-				/>
-				<FormInput
-					id="answer"
-					label={ t('validation.attributes.answer') }
-					value={ data.answer }
-					error={ errors.answer }
-					setData={ setData }
-				/>
-            </Form>
+			<Formular
+				title= { title }
+				label= { t('Update') }
+				submit= { () => patch('/backoffice/faqs/' + faq.id) }
+				data={ data }
+				setData={ setData }
+				processing={ processing }
+				errors={ errors }
+			/>
         </>
     );
 }

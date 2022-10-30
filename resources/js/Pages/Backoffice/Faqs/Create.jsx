@@ -1,8 +1,10 @@
 import { Head, useForm } from "@inertiajs/inertia-react";
 import { t } from "@/narsil-localization";
-import { Form, FormFooter, FormHeader, FormInput } from "@/Components/Forms";
+import Formular from "./Formular";
 
 export default function Create() {
+	const title = t('Create :resource', { 'resource': t('FAQ') });
+
 	const { data, setData, post, processing, errors } = useForm({
         question: '',
         answer: '',
@@ -10,35 +12,17 @@ export default function Create() {
 
 	return (
 		<>
-			<Head title={ t('Create :resource', { 'resource': t('FAQ') }) } />
+			<Head title={ title } />
 
-			<Form
-				header={
-					<FormHeader title={ t('Create :resource', { 'resource': t('FAQ') }) } />
-				}
-				footer={
-					<FormFooter
-						label={ t('Create') }
-						processing={ processing }
-					/>
-				}
-				submit={ () => post('/backoffice/faqs') }
-			>
-				<FormInput
-					id="question"
-					label={ t('validation.attributes.question') }
-					value={ data.question }
-					error={ errors.question }
-					setData={ setData }
-				/>
-				<FormInput
-					id="answer"
-					label={ t('validation.attributes.answer') }
-					value={ data.answer }
-					error={ errors.answer }
-					setData={ setData }
-				/>
-			</Form>
+			<Formular
+				title= { title }
+				label= { t('Create') }
+				submit= { () => post('/backoffice/faqs') }
+				data={ data }
+				setData={ setData }
+				processing={ processing }
+				errors={ errors }
+			/>
 		</>
 	);
 }

@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Backoffice;
 #region USE
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Backoffice\Questions\FaqCreateRequest;
-use App\Http\Requests\Backoffice\Questions\FaqUpdateRequest;
+use App\Http\Requests\Backoffice\Faqs\FaqCreateRequest;
+use App\Http\Requests\Backoffice\Faqs\FaqUpdateRequest;
 use App\Models\Web\Faq;
 use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;

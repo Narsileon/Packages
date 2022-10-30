@@ -1,8 +1,10 @@
 import { Head, useForm } from "@inertiajs/inertia-react";
 import { p, t } from "@/narsil-localization";
-import { Form, FormCheckbox, FormFooter, FormHeader, FormInput } from "@/Components/Forms";
+import Formular from "./Formular";
 
 export default function Edit({ role, permissions }) {
+	const title = t('Edit :resource', { 'resource': p('permissions.roles', 1) });
+
 	function initializeObject(collection) {
 		let object = {};
 
@@ -29,44 +31,18 @@ export default function Edit({ role, permissions }) {
 
     return (
         <>
-			<Head title={ t('Edit :resource', { 'resource': p('permissions.roles', 1) }) } />
+			<Head title={ title } />
 
-			<Form
-				header={
-					<FormHeader title={ t('Edit :resource', { 'resource': p('permissions.roles', 1) }) } />
-				}
-				footer={
-					<FormFooter
-						label={ t('Update') }
-						processing={ processing }
-					/>
-				}
-				submit={ submit }
-			>
-				<FormInput
-					id="name"
-					label={ t('validation.attributes.name') }
-					value={ data.name }
-					error={ errors.name }
-					setData={ setData }
-				/>
-
-				{
-					permissions.data.map((permission) => {
-						return (
-							<FormCheckbox
-								id={ permission.name }
-								label={ t(`permissions.${ permission.name }`) }
-								type="checkbox"
-								checked={ data.permissions[permission.name] }
-								error={ errors[data.permissions[permission.name]] }
-								onChange={ (e) => setData('permissions', { ...data.permissions, [permission.name]: e.target.checked }) }
-								key={ permission.id }
-							/>
-						);
-					})
-				}
-            </Form>
+			<Formular
+				title= { title }
+				label= { t('Update') }
+				submit= { submit }
+				data={ data }
+				setData={ setData }
+				processing={ processing }
+				errors={ errors }
+				permissions={ permissions }
+			/>
         </>
     );
 }

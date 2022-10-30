@@ -1,9 +1,10 @@
 import { Head, useForm } from "@inertiajs/inertia-react";
-import { p, t } from "@/narsil-localization";
-import { useScroll } from "@/narsil-react";
-import { Form, FormCheckbox, FormHeader, FormFooter, FormInput, FormSummary, FormSectionHeader } from "@/Components/Forms";
+import { t } from "@/narsil-localization";
+import Formular from "./Formular";
 
 export default function Create({ roles, permissions }) {
+	const title = t('Create :resource', {'resource': t('common.new-user')});
+
 	function initializeRoles() {
 		let object = {};
 
@@ -34,9 +35,6 @@ export default function Create({ roles, permissions }) {
 		permissions: initializePermissions(),
     });
 
-	const [roleSection, scrollTo] = useScroll();
-	const [permissionSection, scrollToPermission] = useScroll();
-
 	const submit = () => {
 		transform(() => ({
 			...data,
@@ -49,104 +47,19 @@ export default function Create({ roles, permissions }) {
 
 	return (
 		<>
-			<Head title={ t('Create :resource', {'resource': t('common.new-user')}) } />
+			<Head title={ title } />
 
-			<div className="flex justify-between space-x-8">
-				<FormSummary>
-					<button onClick={ scrollTo }>
-						{ p('permissions.roles', 2) }
-					</button>
-					<button onClick={ scrollToPermission }>
-						{ p('permissions.permissions', 2) }
-					</button>
-				</FormSummary>
-				<Form
-					header={
-						<FormHeader title={ t('Create :resource', {'resource': t('common.new-user')}) } />
-					}
-					footer={
-						<FormFooter
-							label={ t('Create') }
-							processing={ processing }
-						/>
-					}
-					submit={ submit }
-				>
-					<FormInput
-						id="username"
-						label={ t('validation.attributes.username') }
-						value={ data.username }
-						error={ errors.username }
-						setData={ setData }
-					/>
-					<FormInput
-						id="email"
-						label={ t('validation.attributes.email') }
-						type="email"
-						value={ data.email}
-						error={ errors.email}
-						setData={ setData }
-					/>
-					<FormInput
-						id="password"
-						label={ t('validation.attributes.password') }
-						type="password"
-						value={ data.password}
-						error={ errors.password}
-						setData={ setData }
-					/>
-					<FormInput
-						id="last_name"
-						label={ t('validation.attributes.last_name') }
-						value={ data.last_name }
-						error={ errors.last_name }
-						setData={ setData }
-					/>
-					<FormInput
-						id="first_name"
-						label={ t('validation.attributes.first_name') }
-						value={ data.first_name }
-						error={ errors.first_name }
-						setData={ setData }
-					/>
-
-					<section ref={ roleSection }>
-						<FormSectionHeader title={ p('permissions.roles', 2) } />
-						{
-							roles.data.map((role) => {
-								return (
-									<FormCheckbox
-										id={ role.name }
-										label={ t(`permissions.${ role.name }`) }
-										checked={ data.roles[role.name] }
-										error={ errors[data.roles[role.name]] }
-										onChange={ (e) => setData("roles", { ...data.roles, [role.name]: e.target.checked }) }
-										key={ role.id }
-									/>
-								);
-							})
-						}
-					</section>
-
-					<section ref={ permissionSection }>
-						<FormSectionHeader title={ p('permissions.permissions', 2) } />
-						{
-							permissions.data.map((permission) => {
-								return (
-									<FormCheckbox
-										id={ permission.name }
-										label={ t(`permissions.${ permission.name }`) }
-										checked={ data.permissions[permission.name] }
-										error={ errors[data.permissions[permission.name]] }
-										onChange={ (e) => setData("permissions", { ...data.permissions, [permission.name]: e.target.checked }) }
-										key={ permission.id }
-									/>
-								);
-							})
-						}
-					</section>
-				</Form>
-			</div>
+			<Formular
+				title= { title }
+				label= { t('Create') }
+				submit= { submit }
+				data={ data }
+				setData={ setData }
+				processing={ processing }
+				errors={ errors }
+				roles={ roles }
+				permissions={ permissions }
+			/>
 		</>
 	);
 }

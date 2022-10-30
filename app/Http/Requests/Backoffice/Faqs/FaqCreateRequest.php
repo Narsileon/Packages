@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Backoffice\Questions;
+namespace App\Http\Requests\Backoffice\Faqs;
 
 #region USE
 
