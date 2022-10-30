@@ -21,6 +21,8 @@ class UserResource extends JsonResource
             User::FIELD_EMAIL => $this->{ User::FIELD_EMAIL },
             User::FIELD_LAST_NAME => $this->{ User::FIELD_LAST_NAME },
             User::FIELD_FIRST_NAME => $this->{ User::FIELD_FIRST_NAME },
+            User::CREATED_AT => $this->{ User::CREATED_AT },
+            User::UPDATED_AT => $this->{ User::UPDATED_AT },
 
             User::ATTRIBUTE_ROLES => new UserRoleCollection($this->{ User::ATTRIBUTE_ROLES}),
             User::ATTRIBUTE_PERMISSIONS => new UserPermissionCollection($this->getAllPermissions()),

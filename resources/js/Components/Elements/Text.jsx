@@ -1,3 +1,5 @@
+import { upperFirst } from "lodash";
+
 export default function Text({
     label,
     value,
@@ -5,11 +7,11 @@ export default function Text({
     return (
         <div className="flex justify-between">
             <span>
-                { `${label}:` }
-            </span>   
+                { `${ upperFirst(label) }:` }
+            </span>
             <span>
                 { value }
-            </span>                 
+            </span>
         </div>
     );
 }

@@ -18,6 +18,8 @@ class UserRoleResource extends JsonResource
         return [
             UserRole::FIELD_ID => $this->{ UserRole::FIELD_ID },
             UserRole::FIELD_NAME => $this->{ UserRole::FIELD_NAME },
+            UserRole::CREATED_AT => $this->{ UserRole::CREATED_AT },
+            UserRole::UPDATED_AT => $this->{ UserRole::UPDATED_AT },
 
             UserRole::ATTRIBUTE_PERMISSIONS => new UserRolePermissionCollection($this->permissions)
         ];

@@ -3,13 +3,13 @@ import { Link } from "@inertiajs/inertia-react";
 export default function PrimaryButton({
     label,
     processing,
-    type="button",
+    as="button",
     children,
     ...props
 }) {
     children = label != null ? label : children;
 
-    switch (type) {
+    switch (as) {
         case "button":
             return (
                 <button

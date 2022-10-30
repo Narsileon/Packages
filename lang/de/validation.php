@@ -169,6 +169,7 @@ return [
         'gender'                   => 'geschlecht',
         'group'                    => 'gruppe',
         'hour'                     => 'stunde',
+        'id'                       => 'id',
         'image'                    => 'bild',
         'last_name'                => 'nachname',
         'lesson'                   => 'lesson',

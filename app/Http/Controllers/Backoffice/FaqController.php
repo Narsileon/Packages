@@ -43,6 +43,13 @@ class FaqController extends Controller
         return redirect(route('backoffice.faqs.index'));
     }
 
+    public function show(Faq $faq)
+    {
+        return Inertia::render('Backoffice/Faqs/Show', compact(
+            'faq',
+        ));
+    }
+
     public function edit(Faq $faq)
     {
         return Inertia::render('Backoffice/Faqs/Edit', compact(

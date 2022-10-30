@@ -4,8 +4,8 @@ import { upperFirst } from "lodash";
 import ShowTable from "@/Components/Backoffice/ShowTable";
 import Text from "@/Components/Elements/Text";
 
-export default function Show({ role }) {
-    const title = t('Role');
+export default function Show({ faq }) {
+    const title = t('FAQ');
 
     return (
         <>
@@ -13,39 +13,47 @@ export default function Show({ role }) {
 
             <ShowTable
                 title={ title }
-                href={ `/backoffice/roles/${ role.data.id }/edit` }
+                href={ `/backoffice/faqs/${ faq.id }/edit` }
             >
-                <div className="grid grid-cols-4 grid-rows-6 gap-y-4">
-                    <div className="col-span-2 space-x-1">
+                <div className="grid grid-cols-2 grid-rows-6 gap-y-4">
+                    <div className="col-span-2 flex items-center space-x-1">
                         <span>
                             { upperFirst(t('validation.attributes.id')) + t(':') }
                         </span>
                         <span>
-                            { role.data.id }
+                            { faq.id }
                         </span>
+                    </div>
+                    <div className="col-span-2">
+                        <span>
+                            { upperFirst(t('validation.attributes.question')) + t(':') }
+                        </span>
+                    </div>
+                    <div className="col-span-2">
+                        <span>
+                            { faq.question }
+                        </span>
+                    </div>
+                    <div className="col-span-2">
+                        { upperFirst(t('validation.attributes.answer')) + t(':') }
+                    </div>
+                    <div className="col-span-2">
+                        { faq.answer }
                     </div>
                     <div className="col-span-2 space-x-1">
-                        <span>
-                            { upperFirst(t('validation.attributes.name')) + t(':') }
-                        </span>
-                        <span>
-                            { role.data.name }
-                        </span>
-                    </div>
-                    <div className="col-span-4 space-x-1">
                         <span>
                             { upperFirst(t('validation.attributes.created_at')) + t(':') }
                         </span>
                         <span>
-                            { role.data.created_at }
+                            { faq.created_at }
                         </span>
                     </div>
-                    <div className="col-span-4 space-x-1">
+                    <div className="col-span-2 space-x-1">
                         <span>
                             { upperFirst(t('validation.attributes.updated_at')) + t(':') }
                         </span>
                         <span>
-                            { role.data.updated_at }
+                            { faq.updated_at }
                         </span>
                     </div>
                 </div>
