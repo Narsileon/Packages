@@ -27,7 +27,7 @@ export default function SearchField({ filters }) {
     function handleChange(e) {
         const key = filter;
         const value = e.target.value;
-    
+
         setValues(values => ({
           ...values,
           [key]: value
@@ -44,14 +44,14 @@ export default function SearchField({ filters }) {
     }
 
 	return (
-        <div className="relative flex items-center border-2 border-color rounded">
+        <div className="grid grid-cols-1 md: grid-cols-3 border-2 border-color rounded">
             <div className="primary-background flex items-center justify-between px-2">
                 <Icon name="search" className="w-6 h-6 m-2" />
-                <Dropdown 
+                <Dropdown
                     trigger={
                         filter
                     }
-                    childrenClasses="right-0" 
+                    childrenClasses="right-0"
                     showChevron={ true }
                 >
                     <DropdownPanel>
@@ -59,7 +59,7 @@ export default function SearchField({ filters }) {
                             {
                                 Object.keys(filters).map((key) => {
                                     return (
-                                        <DropdownItem 
+                                        <DropdownItem
                                             label={ key }
                                             onClick={ () => {
                                                 setFilter(key);
@@ -74,13 +74,13 @@ export default function SearchField({ filters }) {
                     </DropdownPanel>
                 </Dropdown>
             </div>
-            <input 
-                value={ values[filter] ? values[filter] : "" } 
+            <input
+                value={ values[filter] ? values[filter] : "" }
                 type="text"
                 placeholder={ t("Search for") }
                 autoComplete="off"
                 onChange={ handleChange }
-                className="bg-transparent focus:outline-none p-2" 
+                className="bg-transparent focus:outline-none p-2"
             />
             <button
                 className="primary-background p-2"

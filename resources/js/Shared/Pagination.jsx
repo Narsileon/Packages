@@ -10,64 +10,73 @@ export default function Pagination({ data }) {
     let nextIndex = clamp(data.current_page + 1, 1, lastIndex - 1);
 
     return (
-        <div className="flex items-center justify-between mt-4">
-            <Results data={ data } />
-
-            <div className="flex inline-block border border-gray-500 divide-x divide-color rounded">
-                <PaginationButton 
-                    href={ data.links[1].url }
-                    key="<<"
-                >
-                    <Chevron direction="double-left" className="w-4 h-4" />
-                </PaginationButton>
-                <PaginationButton 
-                    href={ data.links[previousIndex].url }
-                    key="<"
-                >
-                    <Chevron direction="left" className="w-4 h-4" />
-                </PaginationButton>
-                {
-                    data.links.slice(1, lastIndex).map((link) => {
-                        return (
-                            <PaginationButton 
-                                href={ link.url } 
-                                key={ link.label }
-                            >
-                                { link.label }
-                            </PaginationButton>
-                        );   
-                    })
-                }
-                <PaginationButton 
-                    href={ data.links[nextIndex].url }
-                    key=">"
-                >
-                    <Chevron direction="right" className="w-4 h-4" />
-                </PaginationButton>
-                <PaginationButton 
-                    href={ data.links[lastIndex - 1].url }
-                    key=">>"
-                >
-                    <Chevron direction="double-right" className="w-4 h-4" />
-                </PaginationButton>
+        <section
+            id="pagination"
+            className="grid grid-cols-1 md:grid-cols-2 gap-y-4 mt-4"
+        >
+            <div
+                id="pagination-links"
+                className="md:order-2 md:place-self-end"
+            >
+                <div className="flex md:justify-items-end border border-gray-500 w-fit divide-x divide-color rounded">
+                    <div className="flex">
+                    <PaginationButton
+                        href={ data.links[1].url }
+                        key="<<"
+                    >
+                        <Chevron direction="double-left" className="w-4 h-4" />
+                    </PaginationButton>
+                    <PaginationButton
+                        href={ data.links[previousIndex].url }
+                        key="<"
+                    >
+                        <Chevron direction="left" className="w-4 h-4" />
+                    </PaginationButton>
+                    {
+                        data.links.slice(1, lastIndex).map((link) => {
+                            return (
+                                <PaginationButton
+                                    href={ link.url }
+                                    key={ link.label }
+                                >
+                                    { link.label }
+                                </PaginationButton>
+                            );
+                        })
+                    }
+                    <PaginationButton
+                        href={ data.links[nextIndex].url }
+                        key=">"
+                    >
+                        <Chevron direction="right" className="w-4 h-4" />
+                    </PaginationButton>
+                    <PaginationButton
+                        href={ data.links[lastIndex - 1].url }
+                        key=">>"
+                    >
+                        <Chevron direction="double-right" className="w-4 h-4" />
+                    </PaginationButton>
+                    </div>
+                </div>
             </div>
-        </div>
-    );
-}
 
-const Results = ({ data }) => {
-    return(
-        <p className="text-sm">
-            { data.total > 0 ? (
-                t("pagination.results", {
-                    "from": data.from,
-                    "to": data.to,
-                    "total": data.total,
-                })
-            ) : (
-                t("pagination.empty")
-            )}
-        </p>
+            <div
+                id="pagination-results"
+                className="md:order-1 self-center"
+            >
+                <p className="text-sm">
+                    { data.total > 0 ? (
+                        t("pagination.results", {
+                            "from": data.from,
+                            "to": data.to,
+                            "total": data.total,
+                        })
+                    ) : (
+                        t("pagination.empty")
+                    )}
+                </p>
+            </div>
+        </section>
     );
 }
 
@@ -80,4 +89,4 @@ const PaginationButton = ({ children, ...props }) => {
             { children }
         </Link>
     );
-}   
+}

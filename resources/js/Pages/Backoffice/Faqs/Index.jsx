@@ -1,7 +1,6 @@
-import { Head, Link } from "@inertiajs/inertia-react";
+import { Head } from "@inertiajs/inertia-react";
 import { t } from "@/narsil-localization";
 import Table from "@/Components/Tables/Table";
-import SearchField from "@/Shared/SearchField";
 
 export default function Index({ faqs, filters }) {
 	const settings = {
@@ -14,23 +13,13 @@ export default function Index({ faqs, filters }) {
 		<>
 			<Head title={ t('FAQ') } />
 
-			<div className="flex justify-between mb-4">
-				<div className="flex items-end">
-					<h1 className="text-2xl">
-						{ t('List of :resource', { 'resource': t('FAQ') }) }
-					</h1>
-
-					<Link href="/backoffice/faqs/create" className="text-green-500 hover:text-green-600 ml-4">
-						{ t('Create :resource', { 'resource': t('FAQ') }) }
-					</Link>
-				</div>
-
-				<SearchField filters={ filters } />
-			</div>
-
 			<Table
+				title={ t('List of :resource', { 'resource': t('FAQ') }) }
+				createLabel={ t('Create :resource', { 'resource': t('FAQ') }) }
+				createLink={ route('backoffice.faqs.create') }
 				collection={ faqs }
 				settings={ settings }
+				filters={ filters }
 			/>
 		</>
 	);
