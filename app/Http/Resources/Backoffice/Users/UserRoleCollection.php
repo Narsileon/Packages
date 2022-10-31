@@ -17,7 +17,11 @@ class UserRoleCollection extends ResourceCollection
     {
         return $this->collection->map->only(
             UserRole::FIELD_ID,
+
             UserRole::FIELD_NAME,
+
+            UserRole::CREATED_AT,
+            UserRole::UPDATED_AT,
         );
     }
 

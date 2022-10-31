@@ -4,24 +4,6 @@ import Table from "@/Components/Tables/Table";
 import SearchField from "@/Shared/SearchField";
 
 export default function Index({ users, filters }) {
-	const columns = [
-		{
-			label: "#",
-			accessor: "id",
-			sortable: true
-		},
-		{
-			label: "Username",
-			accessor: "username",
-			sortable: true
-		},
-		{
-			label: "Email",
-			accessor: "email",
-			sortable: true
-		},
-	];
-
 	const settings = {
 		link: "/backoffice/users/",
 		editable: true,
@@ -32,8 +14,8 @@ export default function Index({ users, filters }) {
 		<>
 			<Head title={ p('common.users', 2) } />
 
-			<div className="flex justify-between mb-4">
-				<div className="flex items-end">
+			<div className="md:flex md:justify-between mb-4">
+				<div className="md:flex md:items-end">
 					<h1 className="text-2xl">
 						{ t('List of :resource', {'resource': p('common.users', 2)}) }
 					</h1>
@@ -48,7 +30,6 @@ export default function Index({ users, filters }) {
 
 			<Table
 				collection={ users }
-				columns={ columns }
 				settings={ settings }
 			/>
 		</>

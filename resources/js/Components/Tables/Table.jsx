@@ -1,12 +1,15 @@
 import { useState } from "react";
 import { useToggle } from "react-use";
 import { Inertia } from "@inertiajs/inertia";
+import { useHorizontalScroll } from "@/narsil-react";
 import TableBody from "./TableBody";
 import TableHead from "./TableHead";
 import ModalWindow from "@/Shared/ModalWindow";
 import Pagination from "@/Shared/Pagination";
 
-export default function Table({ collection, columns, settings }) {
+export default function Table({ collection, settings }) {
+	const table = useHorizontalScroll();
+
 	const [id, setId] = useState(null);
 	const [show, setShow] = useToggle(false);
 
@@ -17,14 +20,16 @@ export default function Table({ collection, columns, settings }) {
 
     return (
 		<>
-			<div className="border-2 border-color rounded">
+			<div
+				className="border-2 border-color rounded overflow-x-scroll"
+				ref={ table }
+			>
 				<table className="min-w-full">
 					<TableHead
-						columns={ columns }
+						data={ collection.data }
 					/>
 					<TableBody
-						tableData={ collection.data }
-						columns={ columns }
+						data={ collection.data }
 						settings={ settings }
 						openModal={ openModal }
 					/>

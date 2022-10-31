@@ -6,9 +6,9 @@ import Flash from "@/Shared/Flash";
 
 export default function Layout({ children }) {
     return (
-        <main className="flex min-h-screen">
-            <aside className="
-                sticky overflow-hidden primary-background top-0 h-screen w-12 p-2 space-y-4
+        <main className="flex h-screen max-w-screen">
+            <aside className="flex-none
+                sticky overflow-hidden primary-background top-0 h-full w-12 p-2 space-y-4
                 hover:w-80 hover:overflow-visible
                 transition-all duration-300
             ">
@@ -17,7 +17,7 @@ export default function Layout({ children }) {
                 <Nav />
             </aside>
 
-            <section className="w-full m-4">
+            <section className="grid grid-cols-1 grow content-start m-4">
                 { children }
             </section>
 

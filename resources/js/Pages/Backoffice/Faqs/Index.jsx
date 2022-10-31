@@ -4,11 +4,6 @@ import Table from "@/Components/Tables/Table";
 import SearchField from "@/Shared/SearchField";
 
 export default function Index({ faqs, filters }) {
-	const columns = [
-		{ label: "#", accessor: "id", sortable: true },
-		{ label: "question", accessor: "question", sortable: true },
-	];
-
 	const settings = {
 		link: "/backoffice/faqs/",
 		editable: true,
@@ -35,7 +30,6 @@ export default function Index({ faqs, filters }) {
 
 			<Table
 				collection={ faqs }
-				columns={ columns }
 				settings={ settings }
 			/>
 		</>

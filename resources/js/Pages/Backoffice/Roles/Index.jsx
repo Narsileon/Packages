@@ -4,11 +4,6 @@ import Table from "@/Components/Tables/Table";
 import SearchField from "@/Shared/SearchField";
 
 export default function Index({ roles, filters }) {
-	const columns = [
-		{ label: "#", accessor: "id", sortable: true },
-		{ label: "Name", accessor: "name", sortable: true },
-	];
-
 	const settings = {
 		link: "/backoffice/roles/",
 		editable: true,
@@ -35,7 +30,6 @@ export default function Index({ roles, filters }) {
 
 			<Table
 				collection={ roles }
-				columns={ columns }
 				settings={ settings }
 			/>
 		</>

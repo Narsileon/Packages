@@ -1,5 +1,5 @@
 import { p, t } from "@/narsil-localization";
-import { useScroll } from "@/narsil-react";
+import { useScrollTo } from "@/narsil-react";
 import { Form, FormCheckbox, FormFooter, FormHeader, FormInput, FormSectionHeader, FormSummary } from "@/Components/Forms";
 
 export default function Formular({
@@ -13,8 +13,8 @@ export default function Formular({
     roles,
     permissions,
 }) {
-	const [roleSection, scrollToRoles] = useScroll();
-	const [permissionSection, scrollToPermissions] = useScroll();
+	const [roleSection, scrollToRoles] = useScrollTo();
+	const [permissionSection, scrollToPermissions] = useScrollTo();
 
     return (
         <div className="flex justify-between space-x-8">
