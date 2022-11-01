@@ -17,6 +17,7 @@ return [
     'footer_links'      => 'Footer-Link|Footer-Links',
     'header_links'      => 'Header-Link|Header-Links',
     'home'              => 'Start',
+    'languages'         => 'Sprache|Sprachen',
     'links'             => 'link|links',
     'login'             => 'anmelden',
     'logout'            => 'abmelden',

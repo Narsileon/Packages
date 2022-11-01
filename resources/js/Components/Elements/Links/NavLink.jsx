@@ -13,7 +13,7 @@ export default function NavLink({
 
 	return (
 		<li>
-			<div className="flex items-center p-1 space-x-2">
+			<div className="selectable flex items-center p-1 space-x-2">
 				<Icon
 					className="w-6 h-6"
 					name={ icon }

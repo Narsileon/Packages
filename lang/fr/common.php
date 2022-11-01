@@ -17,6 +17,7 @@ return [
     'footer_links'      => 'lien de pied de page|liens de pied de page',
     'header_links'      => 'lien d\'en-tête|liens d\'en-tête',
     'home'              => 'accueil',
+    'languages'         => 'langage|langages',
     'links'             => 'lien|liens',
     'login'             => 'se connecter',
     'logout'            => 'se déconnecter',

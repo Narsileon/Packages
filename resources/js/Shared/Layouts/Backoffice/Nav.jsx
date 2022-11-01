@@ -38,6 +38,11 @@ export default function Nav() {
                                 label={ transChoice('permissions.roles', 2) }
                                 icon="group"
                             />
+                            <NavLink
+                                href={ route('backoffice.languages') }
+                                label={ transChoice('common.languages', 2) }
+                                icon="language"
+                            />
                         </>
                     )}
                 </Section>

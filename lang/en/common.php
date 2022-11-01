@@ -17,6 +17,7 @@ return [
     'footer_links'      => 'footer link|footer links',
     'header_links'      => 'header link|header links',
     'home'              => 'home',
+    'languages'         => 'language|languages',
     'links'             => 'link|links',
     'login'             => 'log in',
     'logout'            => 'log out',
