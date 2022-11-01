@@ -1,5 +1,5 @@
 import { Head } from "@inertiajs/inertia-react";
-import { t } from "@/narsil-localization";
+import { trans } from "@/narsil-localization";
 import Table from "@/Components/Tables/Table";
 
 export default function Index({ faqs, filters }) {
@@ -11,11 +11,11 @@ export default function Index({ faqs, filters }) {
 
 	return (
 		<>
-			<Head title={ t('FAQ') } />
+			<Head title={ trans('FAQ') } />
 
 			<Table
-				title={ t('List of :resource', { 'resource': t('FAQ') }) }
-				createLabel={ t('Create :resource', { 'resource': t('FAQ') }) }
+				title={ trans('List of :resource', { 'resource': trans('FAQ') }) }
+				createLabel={ trans('Create :resource', { 'resource': trans('FAQ') }) }
 				createLink={ route('backoffice.faqs.create') }
 				collection={ faqs }
 				settings={ settings }

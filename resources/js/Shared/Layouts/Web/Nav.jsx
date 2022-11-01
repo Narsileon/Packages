@@ -1,14 +1,14 @@
 import { useToggle } from "react-use";
 import { usePage } from "@inertiajs/inertia-react";
+import { trans } from "@/narsil-localization";
 import MenuButton from "@/Components/Elements/Buttons/MenuButton";
 import NavLink from "@/Components/Elements/Links/NavLink";
-import { t } from "@/narsil-localization";
 
 export default function Nav() {
     const auth = usePage().props.auth;
 
     const commonLinks = [
-        { route: route('home'), label: t('Home') },
+        { route: route('home'), label: trans('Home') },
     ];
 
     const [open, setOpen] = useToggle(false);

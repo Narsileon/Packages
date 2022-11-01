@@ -1,5 +1,5 @@
 import { Link } from "@inertiajs/inertia-react";
-import { t } from "@/narsil-localization";
+import { trans } from "@/narsil-localization";
 import WebsiteLogo from "@/Shared/Layouts/WebsiteLogo";
 import Logo from "@/Shared/Svg/Logo";
 
@@ -23,7 +23,7 @@ export default function Footer({ textLinks, iconLinks }) {
                                         href={ route }
                                         key={ index }
                                     >
-                                        { t(label) }
+                                        { trans(label) }
                                     </Link>
                                 );
                             })
@@ -60,7 +60,7 @@ export default function Footer({ textLinks, iconLinks }) {
                                 © 2022 <Link href={ route('home') } className="link-text">Narsil Studio™</Link>.
                             </span>
                             <span className="block whitespace-nowrap">
-                                { t('All rights reserved.') }
+                                { trans('All rights reserved.') }
                             </span>
                         </p>
                     </div>

@@ -1,9 +1,9 @@
 import { Head, useForm } from "@inertiajs/inertia-react";
-import { t } from "@/narsil-localization";
+import { trans } from "@/narsil-localization";
 import Formular from "./Formular";
 
 export default function Create({ roles, permissions }) {
-	const title = t('Create :resource', {'resource': t('common.new_user')});
+	const title = t('Create :resource', {'resource': trans('common.new_user')});
 
 	function initializeRoles() {
 		let object = {};
@@ -51,7 +51,7 @@ export default function Create({ roles, permissions }) {
 
 			<Formular
 				title= { title }
-				label= { t('Create') }
+				label= { trans('Create') }
 				submit= { submit }
 				data={ data }
 				setData={ setData }

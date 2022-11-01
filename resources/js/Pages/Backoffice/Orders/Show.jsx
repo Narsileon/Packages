@@ -1,5 +1,5 @@
 import { Head } from "@inertiajs/inertia-react";
-import { t } from "@/narsil-localization";
+import { trans } from "@/narsil-localization";
 import { upperFirst } from "lodash";
 import ShowTable from "@/Components/Backoffice/ShowTable";
 

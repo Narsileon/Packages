@@ -1,5 +1,5 @@
 import { Link } from '@inertiajs/inertia-react';
-import { t } from '@/narsil-localization';
+import { trans } from '@/narsil-localization';
 import { clamp } from 'lodash';
 import Chevron from '@/Shared/Svg/Chevron';
 

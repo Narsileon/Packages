@@ -1,11 +1,11 @@
 import { usePage } from "@inertiajs/inertia-react";
 import { upperFirst } from "lodash";
 
-export { t, p };
+export { trans, transChoice };
 
 //#region PUBLIC METHODS
 
-const t = (key, replacements = null) => {
+const trans = (key, replacements = null) => {
     let text = localize(key);
 
     if (replacements) {
@@ -15,7 +15,7 @@ const t = (key, replacements = null) => {
     return text;
 }
 
-const p = (key, count, replacements = null) => {
+const transChoice = (key, count, replacements = null) => {
     let text = localize(key);
 
     text = pluralize(text, count)

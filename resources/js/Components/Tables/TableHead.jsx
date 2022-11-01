@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { usePrevious } from "react-use";
 import { Inertia } from "@inertiajs/inertia";
 import { usePage } from "@inertiajs/inertia-react";
-import { t } from "@/narsil-localization";
+import { trans } from "@/narsil-localization";
 import { upperFirst } from "lodash";
 import pickBy from "lodash/pickBy";
 import Sort from "@/Shared/Svg/Sort";

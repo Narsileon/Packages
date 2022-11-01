@@ -1,8 +1,8 @@
 import { Link } from "@inertiajs/inertia-react";
-import { t } from "@/narsil-localization";
+import { trans } from "@/narsil-localization";
 import { upperFirst } from "lodash";
 
-export default function DropdownItem({ 
+export default function DropdownItem({
     label,
     type="button",
     children,
@@ -14,7 +14,7 @@ export default function DropdownItem({
         case "button":
             return (
                 <li className="selectable p-1">
-                    <button 
+                    <button
                         { ...props }
                     >
                         { children }
@@ -24,7 +24,7 @@ export default function DropdownItem({
         case "link":
             return (
                 <li className="selectable m-1 p-1">
-                    <Link 
+                    <Link
                         { ...props }
                     >
                         { children }

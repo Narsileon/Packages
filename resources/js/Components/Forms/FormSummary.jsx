@@ -1,10 +1,10 @@
-import { t } from "@/narsil-localization";
+import { trans } from "@/narsil-localization";
 
 export default function FormSummary({ children }) {
     return (
         <nav className="sticky top-4 h-full mx-4">
             <p>
-                { t("Sections") }
+                { trans("Sections") }
             </p>
             <ul className="p-2">
                 { children }

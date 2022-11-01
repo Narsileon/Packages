@@ -1,9 +1,9 @@
 import { Head, useForm } from "@inertiajs/inertia-react";
-import { t } from "@/narsil-localization";
+import { trans } from "@/narsil-localization";
 import Formular from "./Formular";
 
 export default function Create() {
-	const title = t('Create :resource', { 'resource': p('common.orders', 1) });
+	const title = t('Create :resource', { 'resource':transChoice('common.orders', 1) });
 
 	const { data, setData, post, processing, errors } = useForm({
         question: '',
@@ -16,7 +16,7 @@ export default function Create() {
 
 			<Formular
 				title= { title }
-				label= { t('Create') }
+				label= { trans('Create') }
 				submit= { () => post('/backoffice/faqs') }
 				data={ data }
 				setData={ setData }

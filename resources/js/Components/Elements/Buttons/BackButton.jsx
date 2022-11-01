@@ -1,4 +1,4 @@
-import { t } from "@/narsil-localization";
+import { trans } from "@/narsil-localization";
 import { Link, usePage } from "@inertiajs/inertia-react";
 import { upperFirst } from "lodash";
 

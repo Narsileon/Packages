@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { usePrevious } from "react-use";
 import { Inertia } from "@inertiajs/inertia";
-import { t } from "@/narsil-localization";
+import { trans } from "@/narsil-localization";
 import { Dropdown, DropdownItem, DropdownPanel } from "@/Components/Elements/Dropdowns";
 import pickBy from "lodash/pickBy";
 import Icon from "@/Shared/Svg/Icon";
@@ -77,7 +77,7 @@ export default function SearchFilter({ filters }) {
             <input
                 value={ values[filter] ? values[filter] : "" }
                 type="text"
-                placeholder={ t("Search for") }
+                placeholder={ trans("Search for") }
                 autoComplete="off"
                 onChange={ handleChange }
                 className="bg-transparent focus:outline-none p-2"
@@ -86,7 +86,7 @@ export default function SearchFilter({ filters }) {
                 className="primary-background p-2"
                 onClick={ reset }
             >
-                { t('Reset') }
+                { trans('Reset') }
             </button>
         </div>
 	);

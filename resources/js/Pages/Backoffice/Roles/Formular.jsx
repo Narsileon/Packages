@@ -1,4 +1,4 @@
-import { t } from "@/narsil-localization";
+import { trans } from "@/narsil-localization";
 import { Form, FormCheckbox, FormFooter, FormHeader, FormInput } from "@/Components/Forms";
 
 export default function Formular({
@@ -19,7 +19,7 @@ export default function Formular({
         >
             <FormInput
                 id="name"
-                label={ t('validation.attributes.name') }
+                label={ trans('validation.attributes.name') }
                 value={ data.name }
                 error={ errors.name }
                 setData={ setData }
@@ -30,7 +30,7 @@ export default function Formular({
                     return (
                         <FormCheckbox
                             id={ permission.name }
-                            label={ t(`permissions.${ permission.name }`) }
+                            label={ trans(`permissions.${ permission.name }`) }
                             type="checkbox"
                             checked={ data.permissions[permission.name] }
                             error={ errors[data.permissions[permission.name]] }

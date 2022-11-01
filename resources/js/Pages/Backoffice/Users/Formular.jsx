@@ -1,4 +1,4 @@
-import { p, t } from "@/narsil-localization";
+import { trans, transChoice } from "@/narsil-localization";
 import { useScrollTo } from "@/narsil-react";
 import { Form, FormCheckbox, FormFooter, FormHeader, FormInput, FormSectionHeader, FormSummary } from "@/Components/Forms";
 
@@ -20,10 +20,10 @@ export default function Formular({
         <div className="flex justify-between space-x-8">
             <FormSummary>
                 <button onClick={ scrollToRoles }>
-                    { p('permissions.roles', 2) }
+                    {transChoice('permissions.roles', 2) }
                 </button>
                 <button onClick={ scrollToPermissions }>
-                    { p('permissions.permissions', 2) }
+                    {transChoice('permissions.permissions', 2) }
                 </button>
             </FormSummary>
             <Form
@@ -33,14 +33,14 @@ export default function Formular({
             >
             <FormInput
                     id="username"
-                    label={ t('validation.attributes.username') }
+                    label={ trans('validation.attributes.username') }
                     value={ data.username }
                     error={ errors.username }
                     setData={ setData }
                 />
                 <FormInput
                     id="email"
-                    label={ t('validation.attributes.email') }
+                    label={ trans('validation.attributes.email') }
                     type="email"
                     value={ data.email}
                     error={ errors.email}
@@ -48,7 +48,7 @@ export default function Formular({
                 />
                 <FormInput
                     id="password"
-                    label={ t('validation.attributes.password') }
+                    label={ trans('validation.attributes.password') }
                     type="password"
                     value={ data.password}
                     error={ errors.password}
@@ -56,28 +56,28 @@ export default function Formular({
                 />
                 <FormInput
                     id="last_name"
-                    label={ t('validation.attributes.last_name') }
+                    label={ trans('validation.attributes.last_name') }
                     value={ data.last_name }
                     error={ errors.last_name }
                     setData={ setData }
                 />
                 <FormInput
                     id="first_name"
-                    label={ t('validation.attributes.first_name') }
+                    label={ trans('validation.attributes.first_name') }
                     value={ data.first_name }
                     error={ errors.first_name }
                     setData={ setData }
                 />
 
                 <section ref={ roleSection }>
-                    <FormSectionHeader title={ p('permissions.roles', 2) } />
+                    <FormSectionHeader title={transChoice('permissions.roles', 2) } />
 
                     {
                         roles.data.map((role) => {
                             return (
                                 <FormCheckbox
                                     id={ role.name }
-                                    label={ t(`permissions.${ role.name }`) }
+                                    label={ trans(`permissions.${ role.name }`) }
                                     checked={ data.roles[role.name] }
                                     error={ errors[data.roles[role.name]] }
                                     onChange={ (e) => setData("roles", { ...data.roles, [role.name]: e.target.checked }) }
@@ -89,14 +89,14 @@ export default function Formular({
                 </section>
 
                 <section ref={ permissionSection }>
-                    <FormSectionHeader title={ p('permissions.permissions', 2) } />
+                    <FormSectionHeader title={transChoice('permissions.permissions', 2) } />
 
                     {
                         permissions.data.map((permission) => {
                             return (
                                 <FormCheckbox
                                     id={ permission.name }
-                                    label={ t(`permissions.${ permission.name }`) }
+                                    label={ trans(`permissions.${ permission.name }`) }
                                     checked={ data.permissions[permission.name] }
                                     error={ errors[data.permissions[permission.name]] }
                                     onChange={ (e) => setData("permissions", { ...data.permissions, [permission.name]: e.target.checked }) }

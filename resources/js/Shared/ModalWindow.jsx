@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { useClickAway } from "react-use";
-import { t } from "@/narsil-localization";
+import { trans } from "@/narsil-localization";
 import CloseButton from "@/Components/Elements/Buttons/CloseButton";
 import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 
@@ -33,7 +33,7 @@ export default function ModalWindow({ text, action, actionLabel, setShow }) {
                         {/* Footer */}
                         <div className="flex items-center justify-between">
                             <PrimaryButton
-                                label={ t("Cancel") }
+                                label={ trans("Cancel") }
                                 onClick={ () => setShow(false) }
                             />
                             <PrimaryButton

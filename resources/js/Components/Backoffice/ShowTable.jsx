@@ -1,4 +1,4 @@
-import { t } from "@/narsil-localization";
+import { trans } from "@/narsil-localization";
 import { upperFirst } from "lodash";
 import BackButton from "@/Components/Elements/Buttons/BackButton";
 import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
@@ -44,7 +44,7 @@ export default function ShowTable({
                     <BackButton className="primary-button" />
                     <PrimaryButton
                         href={ href }
-                        label={ t('Edit') }
+                        label={ trans('Edit') }
                         as="link"
                     />
                 </div>

@@ -1,5 +1,5 @@
 import { Head, useForm } from "@inertiajs/inertia-react";
-import { t } from "@/narsil-localization";
+import { trans } from "@/narsil-localization";
 import { Form, FormFooter, FormHeader, FormInput } from "@/Components/Forms";
 
 export default function Create() {
@@ -10,18 +10,18 @@ export default function Create() {
 
 	return (
         <>
-            <Head title={ t('Connection') } />
+            <Head title={ trans('Connection') } />
 
             <Form
                 className="w-9/12 lg:w-6/12 mx-auto"
                 header={
                     <FormHeader
-                        title={ t('Connection') }
+                        title={ trans('Connection') }
                     />
                 }
                 footer={
                     <FormFooter
-                        label={ t('common.login') }
+                        label={ trans('common.login') }
                         processing={ processing }
                     />
                 }
@@ -30,7 +30,7 @@ export default function Create() {
                 {/* Email */}
                 <FormInput
                     id="email"
-                    label={ t('validation.attributes.email') }
+                    label={ trans('validation.attributes.email') }
                     type="email"
                     value={ data.email}
                     error={ errors.email}
@@ -39,7 +39,7 @@ export default function Create() {
                 {/* Password */}
                 <FormInput
                     id="password"
-                    label={ t('validation.attributes.password') }
+                    label={ trans('validation.attributes.password') }
                     type="password"
                     value={ data.password}
                     error={ errors.password}

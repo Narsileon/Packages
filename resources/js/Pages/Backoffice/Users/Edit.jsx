@@ -1,9 +1,9 @@
 import { Head, useForm } from "@inertiajs/inertia-react";
-import { p, t } from "@/narsil-localization";
+import { trans, transChoice } from "@/narsil-localization";
 import Formular from "./Formular";
 
 export default function Edit({ user, roles, permissions }) {
-	const title = t('Edit :resource', {'resource': p('common.users', 1)});
+	const title = t('Edit :resource', {'resource':transChoice('common.users', 1)});
 
 	function initializeRoles() {
 		let object = {};
@@ -51,7 +51,7 @@ export default function Edit({ user, roles, permissions }) {
 
 			<Formular
 				title= { title }
-				label= { t('Update') }
+				label= { trans('Update') }
 				submit= { submit }
 				data={ data }
 				setData={ setData }

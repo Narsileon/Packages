@@ -1,5 +1,5 @@
 import { Head } from "@inertiajs/inertia-react";
-import { t } from "@/narsil-localization";
+import { trans } from "@/narsil-localization";
 import Table from "@/Components/Tables/Table";
 
 export default function Index({ footerLinks, filters }) {
@@ -11,11 +11,11 @@ export default function Index({ footerLinks, filters }) {
 
 	return (
 		<>
-			<Head title={ t('FAQ') } />
+			<Head title={ trans('FAQ') } />
 
 			<Table
-				title={ t('List of :resource', { 'resource': p('common.footer_links', 2) }) }
-				createLabel={ t('Create :resource', { 'resource': p('common.footer_links', 1) }) }
+				title={ trans('List of :resource', { 'resource':transChoice('common.footer_links', 2) }) }
+				createLabel={ trans('Create :resource', { 'resource':transChoice('common.footer_links', 1) }) }
 				createLink={ route('backoffice.footer_links.create') }
 				collection={ footerLinks }
 				settings={ settings }

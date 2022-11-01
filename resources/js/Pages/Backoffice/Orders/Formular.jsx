@@ -1,4 +1,4 @@
-import { t } from "@/narsil-localization";
+import { trans } from "@/narsil-localization";
 import { Form, FormFooter, FormHeader, FormInput } from "@/Components/Forms";
 
 export default function Formular({
@@ -18,14 +18,14 @@ export default function Formular({
         >
             <FormInput
                 id="question"
-                label={ t('validation.attributes.question') }
+                label={ trans('validation.attributes.question') }
                 value={ data.question }
                 error={ errors.question }
                 setData={ setData }
             />
             <FormInput
                 id="answer"
-                label={ t('validation.attributes.answer') }
+                label={ trans('validation.attributes.answer') }
                 value={ data.answer }
                 error={ errors.answer }
                 setData={ setData }

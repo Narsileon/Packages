@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { usePage } from "@inertiajs/inertia-react";
-import { t } from "@/narsil-localization";
+import { trans } from "@/narsil-localization";
 import CloseButton from "@/Components/Elements/Buttons/CloseButton";
 import Icon from "@/Shared/Svg/Icon";
 
@@ -17,7 +17,7 @@ export default function Flash() {
         <>
             { flash.success && visible && (
                 <Message
-                    message={ t(`messages.success.${ flash.success }`) }
+                    message={ trans(`messages.success.${ flash.success }`) }
                     icon="check"
                     color="bg-green-500"
                     setVisible={ setVisible }
@@ -26,7 +26,7 @@ export default function Flash() {
 
             { flash.error && visible && (
                 <Message
-                    message={ t(`messages.errors.${ flash.error }`) }
+                    message={ trans(`messages.errors.${ flash.error }`) }
                     icon="danger"
                     color="bg-red-500"
                     setVisible={ setVisible }

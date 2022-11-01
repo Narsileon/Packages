@@ -1,4 +1,4 @@
-import { t } from "@/narsil-localization";
+import { trans } from "@/narsil-localization";
 import { useToggle } from "react-use";
 import { addMonths, days, months, useCalendar } from "@/Components/Calendars/narsil-calendar"
 import Chevron from "@/Shared/Svg/Chevron";

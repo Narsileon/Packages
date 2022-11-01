@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { p, t } from "@/narsil-localization";
+import { trans, transChoice } from "@/narsil-localization";
 import { addDays, addMonths, months, useCalendar } from "@/Components/Calendars/narsil-calendar"
 import CalendarDayTable from "@/Components/Calendars/CalendarDayTable";
 import CalendarMonthTable from "@/Components/Calendars/CalendarMonthTable";
@@ -23,7 +23,7 @@ export default function Calendar({ tasks }) {
             id="Calendar"
         >
             <h1 className="text-xl">
-                { t('date-time.calendar')}
+                { trans('date-time.calendar')}
             </h1>
 
             <div className="primary-background border-2 border-color flex flex-grow w-full h-fit overflow-auto">
@@ -38,15 +38,15 @@ export default function Calendar({ tasks }) {
                             <Datepicker setExternalDate={ setDate } getExternalDate={ getActiveDate } />
                             <div className="flex space-x-2">
                                 <PrimaryButton
-                                    label={ p('date-time.units.months', 1) }
+                                    label={transChoice('date-time.units.months', 1) }
                                     onClick={ () => setShow("month") }
                                 />
                                 <PrimaryButton
-                                    label={ p('date-time.units.weeks', 1) }
+                                    label={transChoice('date-time.units.weeks', 1) }
                                     onClick={ () => setShow("week") }
                                 />
                                 <PrimaryButton
-                                    label={ p('date-time.units.days', 1) }
+                                    label={transChoice('date-time.units.days', 1) }
                                     onClick={ () => setShow("day") }
                                 />
                             </div>

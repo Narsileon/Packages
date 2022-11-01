@@ -1,5 +1,5 @@
 import { Head } from "@inertiajs/inertia-react";
-import { p, t } from "@/narsil-localization";
+import { trans, transChoice } from "@/narsil-localization";
 import Table from "@/Components/Tables/Table";
 
 export default function Index({ users, filters }) {
@@ -11,11 +11,11 @@ export default function Index({ users, filters }) {
 
 	return (
 		<>
-			<Head title={ p('common.users', 2) } />
+			<Head title={transChoice('common.users', 2) } />
 
 			<Table
-				title={ t('List of :resource', {'resource': p('common.users', 2)}) }
-				createLabel={ t('Create :resource', {'resource': t('common.new_user')}) }
+				title={ trans('List of :resource', {'resource':transChoice('common.users', 2)}) }
+				createLabel={ trans('Create :resource', {'resource': trans('common.new_user')}) }
 				createLink={ route('backoffice.users.create') }
 				collection={ users }
 				settings={ settings }

@@ -1,4 +1,4 @@
-import { t } from "@/narsil-localization";
+import { trans } from "@/narsil-localization";
 import { days } from "@/Components/Calendars/narsil-calendar"
 import CalendarCell from "@/Components/Calendars/CalendarCell";
 
@@ -46,7 +46,7 @@ export default function CalendarDayTable({ date, activeMonth, setDate }) {
                             { date.getDate() }
                         </div>
                         <div className="text-left">
-                            { t(`date-time.days.${ days[date.getDay()] }`) }
+                            { trans(`date-time.days.${ days[date.getDay()] }`) }
                         </div>
                     </th>
                 </tr>

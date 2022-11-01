@@ -1,4 +1,4 @@
-import { p, t } from "@/narsil-localization";
+import { trans, transChoice } from "@/narsil-localization";
 import { upperFirst } from "lodash";
 import NavLink from "@/Components/Elements/Links/NavLink";
 import Icon from "@/Shared/Svg/Icon";
@@ -10,27 +10,27 @@ export default function Nav() {
                 <SidebarLink
                     href={ route("backoffice.dashboard") }
                     icon="dashboard"
-                    label={ t('Dashboard') }
+                    label={ trans('Dashboard') }
                 />
                 <SidebarLink
                     href={ route("backoffice.calendar") }
                     icon="calendar"
-                    label={ t('date-time.calendar') }
+                    label={ trans('date-time.calendar') }
                 />
                 <SidebarLink
                     href={ route("backoffice.users.index") }
                     icon="user"
-                    label={ p('common.users', 2) }
+                    label={transChoice('common.users', 2) }
                 />
                 <SidebarLink
                     href={ route("backoffice.roles.index") }
                     icon="shield"
-                    label={ p('permissions.roles', 2) }
+                    label={transChoice('permissions.roles', 2) }
                 />
                 <SidebarLink
                     href={ route("backoffice.faqs.index") }
                     icon="shield"
-                    label={ t('FAQ') }
+                    label={ trans('FAQ') }
                 />
             </ul>
         </nav>

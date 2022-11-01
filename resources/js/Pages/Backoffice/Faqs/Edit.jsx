@@ -1,9 +1,9 @@
 import { Head, useForm } from "@inertiajs/inertia-react";
-import { t } from "@/narsil-localization";
+import { trans } from "@/narsil-localization";
 import Formular from "./Formular";
 
 export default function Edit({ faq }) {
-	const title = t('Edit :resource', { 'resource': t('FAQ') });
+	const title = t('Edit :resource', { 'resource': trans('FAQ') });
 
     const { data, setData, patch, processing, errors } = useForm({
         question: faq.question,
@@ -16,7 +16,7 @@ export default function Edit({ faq }) {
 
 			<Formular
 				title= { title }
-				label= { t('Update') }
+				label= { trans('Update') }
 				submit= { () => patch('/backoffice/faqs/' + faq.id) }
 				data={ data }
 				setData={ setData }

@@ -1,5 +1,5 @@
 import { usePage } from "@inertiajs/inertia-react";
-import { t } from "@/narsil-localization";
+import { trans } from "@/narsil-localization";
 import { upperCase } from "lodash";
 import { Dropdown, DropdownItem, DropdownPanel } from "@/Components/Elements/Dropdowns";
 import Flag from "@/Shared/Svg/Flag";
@@ -26,7 +26,7 @@ export default function LocaleDropdown() {
                                             className="w-6 h-6"
                                         />
                                         <span>
-                                            { t(`locales.${ availableLocale }`) }
+                                            { trans(`locales.${ availableLocale }`) }
                                         </span>
                                     </div>
                                 </DropdownItem>
