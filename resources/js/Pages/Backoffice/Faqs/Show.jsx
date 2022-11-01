@@ -18,7 +18,7 @@ export default function Show({ faq }) {
                 <div className="grid grid-cols-2 gap-y-4">
                     <div className="col-span-2 flex items-center space-x-1">
                         <span>
-                            { upperFirst(t('validation.attributes.id')) + t(':') }
+                            { upperFirst(trans('validation.attributes.id')) + t(':') }
                         </span>
                         <span>
                             { faq.id }
@@ -26,7 +26,7 @@ export default function Show({ faq }) {
                     </div>
                     <div className="col-span-2">
                         <span>
-                            { upperFirst(t('validation.attributes.question')) + t(':') }
+                            { upperFirst(trans('validation.attributes.question')) + t(':') }
                         </span>
                     </div>
                     <div className="col-span-2">
@@ -35,7 +35,7 @@ export default function Show({ faq }) {
                         </span>
                     </div>
                     <div className="col-span-2">
-                        { upperFirst(t('validation.attributes.answer')) + t(':') }
+                        { upperFirst(trans('validation.attributes.answer')) + t(':') }
                     </div>
                     <div className="col-span-2">
                         { faq.answer }

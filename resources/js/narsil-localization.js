@@ -65,12 +65,16 @@ function localizeNestedKey(table, key) {
 }
 
 function pluralize(text, count) {
-    let values = text.split('|');
+    if (text.includes('|')) {
+        let values = text.split('|');
 
-    if (count > 1 ) {
-        return values[1];
+        if (count > 1 ) {
+            return values[1];
+        } else {
+            return values[0];
+        }
     } else {
-        return values[0];
+        return text;
     }
 }
 

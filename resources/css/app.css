@@ -3,9 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-    html { @apply
-        h-full
-    }
     main { @apply
         bg-white text-black
         dark:bg-gray-900 dark:text-white
@@ -16,25 +13,25 @@
 }
 
 @layer components {
-    .primary-background { @apply 
-        bg-gray-200 
+    .primary-background { @apply
+        bg-gray-200
         dark:bg-gray-700
     }
     .primary-button { @apply
-        bg-blue-500 px-3 py-2 font-semibold text-white rounded 
+        bg-blue-500 px-3 py-2 font-semibold text-white rounded
         hover:bg-blue-600
         transition-all duration-300
     }
-    .border-color { @apply 
+    .border-color { @apply
         border-gray-500
         dark:border-gray-500
     }
-    .divide-color { @apply 
-        divide-gray-500 
+    .divide-color { @apply
+        divide-gray-500
         dark:divide-gray-500
     }
-    .field { @apply 
-        border-2 border-color p-2 rounded-lg 
+    .field { @apply
+        border-2 border-color p-2 rounded-lg
         bg-gray-100 placeholder-gray-500
         dark:bg-gray-800 placeholder-gray-500
     }

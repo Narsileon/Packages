@@ -8,7 +8,7 @@ export default function Nav() {
     const auth = usePage().props.auth;
 
     const commonLinks = [
-        { route: route('home'), label: trans('Home') },
+        { route: route('home'), label: trans('common.home'), icon: 'home' },
     ];
 
     const [open, setOpen] = useToggle(false);
@@ -22,11 +22,7 @@ export default function Nav() {
             />
 
             <ul className={ `md:flex md:space-x-4 ${ open ? "absolute primary-background w-full h-screen top-0 left-0 z-40" : "hidden" }` }>
-                <NavLink
-                    href={ route('home') }
-                    label="Home"
-                    icon="home"
-                />
+                { renderLinks(commonLinks) }
 
                 <li className="relative">
                     <MenuButton
@@ -43,40 +39,58 @@ export default function Nav() {
     );
 }
 
-const NavAuth = () => {
+const renderLinks = (links) => {
     return (
         <>
-            <NavLink
-                href={ route('backoffice.dashboard') }
-                label="Dashboard"
-                icon="dashboard"
-                type="link"
-            />
-            <NavLink
-                href={ route('logout') }
-                label="Log out"
-                icon="logout"
-                type="link"
-                method="post"
-                as="button"
-            />
+            {
+                links.map(({ route, label, icon }) => {
+                    return (
+                        <NavLink
+                            href={ route }
+                            label={ label }
+                            icon={ icon }
+                            key={ label }
+                        />
+                    );
+                })
+            }
+        </>
+    );
+}
+
+const NavAuth = () => {
+    const links = [
+        { route: route('backoffice.dashboard'), label: trans('common.dashboard'), icon: 'dashboard' },
+    ];
+
+    return (
+        <>
+            <div>
+                { renderLinks(links) }
+            </div>
+
+            <div>
+                <NavLink
+                    href={ route('logout') }
+                    label="Log out"
+                    icon="logout"
+                    method="post"
+                    as="button"
+                />
+            </div>
         </>
     );
 }
 
 const NavGuest = () => {
+    const links = [
+        { route: route('register'), label: trans('common.register'), icon: 'register' },
+        { route: route('login'), label: trans('common.login'), icon: 'login' },
+    ];
+
     return (
         <>
-            <NavLink
-                href={ route('register') }
-                label="Register"
-                icon="register"
-            />
-            <NavLink
-                href={ route('login') }
-                label="Log in"
-                icon="login"
-            />
+            { renderLinks(links) }
         </>
     )
 }

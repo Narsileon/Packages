@@ -5,7 +5,6 @@ import Chevron from "@/Shared/Svg/Chevron";
 export default function Dropdown({
     triggerClasses="",
     trigger,
-    showChevron=false, 
     children
 }) {
     const dropdown = useRef(null);
@@ -13,21 +12,23 @@ export default function Dropdown({
     const [open, setOpen] = useToggle(false);
 
     useClickAway(dropdown, () => setOpen(false));
-    
+
     return (
-        <div 
+        <div
             className="relative"
             ref={ dropdown }
         >
             {/* Trigger */}
-            <button 
+            <button
                 className={ `selectable w-full ${ triggerClasses } ${ open ? "selectable-active" : "" }` }
                 onClick={ setOpen }
             >
                 <div className="flex items-center justify-between w-full p-1 space-x-1">
-                    { trigger }
-                    
-                    { showChevron && ( <Chevron direction={ open ? "up" : "down" } className="w-4 h-4" /> ) }
+                    <div>
+                        { trigger }
+                    </div>
+
+                    <Chevron direction={ open ? "up" : "down" } className="w-4 h-4" />
                 </div>
             </button>
 

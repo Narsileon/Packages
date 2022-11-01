@@ -56,7 +56,7 @@ export default function TableHead({ data }) {
                                     onClick={ () => handleChange(key) }
                                 >
                                     <span className="p-2">
-                                        { upperFirst(t(`validation.attributes.${ key }`)) }
+                                        { upperFirst(trans(`validation.attributes.${ key }`)) }
                                     </span>
                                     {
                                         <Sort

@@ -66,13 +66,13 @@ export default function Pagination({ data }) {
             >
                 <p className="text-sm">
                     { data.total > 0 ? (
-                        t("pagination.results", {
+                        trans("pagination.results", {
                             "from": data.from,
                             "to": data.to,
                             "total": data.total,
                         })
                     ) : (
-                        t("pagination.empty")
+                        trans("pagination.empty")
                     )}
                 </p>
             </div>

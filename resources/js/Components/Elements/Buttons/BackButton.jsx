@@ -10,7 +10,7 @@ export default function BackButton({ ...props }) {
             href={ previousLocation !== "" ? previousLocation : "#" }
             { ...props }
         >
-            { upperFirst(t('common.back')) }
+            { upperFirst(trans('common.back')) }
         </Link>
     );
 }

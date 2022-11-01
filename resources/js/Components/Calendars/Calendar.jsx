@@ -31,18 +31,18 @@ export default function Calendar({ tasks }) {
                     <div className="flex items-center justify-between">
                         <div className="text-left font-bold">
                             {
-                                t(`date-time.months.${ months[date.getMonth()] }`) + " " + date.getFullYear()
+                                trans(`date-time.months.${ months[date.getMonth()] }`) + " " + date.getFullYear()
                             }
                         </div>
                         <div className="flex space-x-2">
                             <Datepicker setExternalDate={ setDate } getExternalDate={ getActiveDate } />
                             <div className="flex space-x-2">
                                 <PrimaryButton
-                                    label={transChoice('date-time.units.months', 1) }
+                                    label={ transChoice('date-time.units.months', 1) }
                                     onClick={ () => setShow("month") }
                                 />
                                 <PrimaryButton
-                                    label={transChoice('date-time.units.weeks', 1) }
+                                    label={ transChoice('date-time.units.weeks', 1) }
                                     onClick={ () => setShow("week") }
                                 />
                                 <PrimaryButton

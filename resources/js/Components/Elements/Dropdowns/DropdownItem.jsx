@@ -8,7 +8,7 @@ export default function DropdownItem({
     children,
     ...props
 }) {
-    children = label != null ? upperFirst(t(label)) : children
+    children = label != null ? upperFirst(trans(label)) : children
 
     switch (type) {
         case "button":

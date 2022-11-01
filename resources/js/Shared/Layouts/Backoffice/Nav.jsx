@@ -1,71 +1,60 @@
 import { trans, transChoice } from "@/narsil-localization";
-import { upperFirst } from "lodash";
 import NavLink from "@/Components/Elements/Links/NavLink";
-import Icon from "@/Shared/Svg/Icon";
+import Dropdown from "@/Components/Elements/Dropdowns/Dropdown";
 
 export default function Nav() {
     return (
-        <nav>
+        <nav className="ml-1">
             <ul>
-                <SidebarLink
-                    href={ route("backoffice.dashboard") }
+                <NavLink className="p-1"
+                    href={ route('backoffice.dashboard') }
+                    label={ trans('common.dashboard') }
                     icon="dashboard"
-                    label={ trans('Dashboard') }
                 />
-                <SidebarLink
-                    href={ route("backoffice.calendar") }
-                    icon="calendar"
+                <NavLink className="p-1"
+                    href={ route('backoffice.calendar') }
                     label={ trans('date-time.calendar') }
+                    icon="calendar"
                 />
-                <SidebarLink
-                    href={ route("backoffice.users.index") }
+                <NavLink className="p-1"
+                    href={ route('backoffice.users.index') }
+                    label={ transChoice('common.users', 2) }
                     icon="user"
-                    label={transChoice('common.users', 2) }
                 />
-                <SidebarLink
-                    href={ route("backoffice.roles.index") }
-                    icon="shield"
-                    label={transChoice('permissions.roles', 2) }
+                <NavLink className="p-1"
+                    href={ route('backoffice.roles.index') }
+                    label={ transChoice('permissions.roles', 2) }
+                    icon="group"
                 />
-                <SidebarLink
-                    href={ route("backoffice.faqs.index") }
-                    icon="shield"
-                    label={ trans('FAQ') }
-                />
+                <Dropdown trigger={
+                    <NavLink
+                        label={ transChoice('common.links', 2) }
+                        icon="web"
+                    />
+                }>
+                    <Dropdown trigger={
+                        <NavLink
+                            label={ transChoice('common.links', 2) }
+                            icon="link"
+                        />
+                    }>
+                        <NavLink className="p-1"
+                            href={ route('backoffice.footer_links.index') }
+                            label={ transChoice('common.footer_links', 2) }
+                        />
+                        <NavLink className="p-1"
+                            href={ route('backoffice.header_links.index') }
+                            label={ transChoice('common.header_links', 2) }
+                        />
+                    </Dropdown>
+
+                    <NavLink className="p-1"
+                        href={ route('backoffice.faqs.index') }
+                        label={ trans('common.faq') }
+                        icon="question"
+                    />
+                </Dropdown>
             </ul>
         </nav>
-    );
-}
-
-const SidebarCategory = ({ label, icon }) => {
-    return (
-        <div className="flex">
-            <Icon
-                name={ icon }
-                className="w-6 h-6"
-            />
-
-            <span className="flex ml-3 text-left whitespace-nowrap">
-                { upperFirst(t(label)) }
-            </span>
-        </div>
-    );
-}
-
-const SidebarLink = ({
-    href,
-    icon,
-    label
-}) => {
-    return (
-        <NavLink
-            className="flex items-center p-1"
-            href={ href }
-        >
-            <SidebarCategory
-                label= { label }
-                icon= { icon }
-            />
-        </NavLink>
     );
 }

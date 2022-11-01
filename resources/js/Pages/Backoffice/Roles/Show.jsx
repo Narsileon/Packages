@@ -4,7 +4,7 @@ import { upperFirst } from "lodash";
 import ShowTable from "@/Components/Backoffice/ShowTable";
 
 export default function Show({ role }) {
-    const title = upperFirst(p('permissions.roles', 1));
+    const title = upperFirst(transChoice('permissions.roles', 1));
 
     return (
         <>
@@ -18,7 +18,7 @@ export default function Show({ role }) {
                 <div className="grid grid-cols-4 gap-y-4">
                     <div className="col-span-4 space-x-1">
                         <span>
-                            { upperFirst(t('validation.attributes.id')) + t(':') }
+                            { upperFirst(trans('validation.attributes.id')) + t(':') }
                         </span>
                         <span>
                             { role.data.id }
@@ -26,7 +26,7 @@ export default function Show({ role }) {
                     </div>
                     <div className="col-span-4 space-x-1">
                         <span>
-                            { upperFirst(t('validation.attributes.name')) + t(':') }
+                            { upperFirst(trans('validation.attributes.name')) + t(':') }
                         </span>
                         <span>
                             { role.data.name }

@@ -28,7 +28,7 @@ class FooterLinkController extends Controller
             'search' => Request::input('search'),
         ];
 
-        return Inertia::render('Backoffice/Faqs/Index', compact(
+        return Inertia::render('Backoffice/FooterLinks/Index', compact(
             'faqs',
             'filters',
         ));
@@ -36,7 +36,7 @@ class FooterLinkController extends Controller
 
     public function create()
     {
-        return Inertia::render('Backoffice/Faqs/Create');
+        return Inertia::render('Backoffice/FooterLinks/Create');
     }
 
     public function store(FaqCreateRequest $request)
@@ -45,19 +45,19 @@ class FooterLinkController extends Controller
 
         Faq::create($attributes);
 
-        return redirect(route('backoffice.faqs.index'));
+        return redirect(route('backoffice.footer_links.index'));
     }
 
     public function show(Faq $faq)
     {
-        return Inertia::render('Backoffice/Faqs/Show', compact(
+        return Inertia::render('Backoffice/FooterLinks/Show', compact(
             'faq',
         ));
     }
 
     public function edit(Faq $faq)
     {
-        return Inertia::render('Backoffice/Faqs/Edit', compact(
+        return Inertia::render('Backoffice/FooterLinks/Edit', compact(
             'faq'
         ));
     }
@@ -68,7 +68,7 @@ class FooterLinkController extends Controller
 
         $faq->update($attributes);
 
-        return redirect(route('backoffice.faqs.index'));
+        return redirect(route('backoffice.footer_links.index'));
     }
 
     public function destroy(Faq $faq)
