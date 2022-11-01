@@ -8,7 +8,7 @@ export default function Layout({ children }) {
     return (
         <main className="flex h-screen max-w-screen">
             <aside className="flex-none
-                sticky overflow-hidden primary-background top-0 h-full w-12 p-2 space-y-4
+                sticky overflow-hidden primary-background top-0 h-full w-10 p-1 space-y-4
                 hover:w-80 hover:overflow-visible
                 transition-all duration-300
             ">

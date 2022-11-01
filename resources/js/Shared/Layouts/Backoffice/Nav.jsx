@@ -104,7 +104,7 @@ const Section = ({ label, icon, children, ...props }) => {
     return (
         <li>
             <button
-                className="flex items-center selectable p-1 space-x-3"
+                className="flex items-center selectable p-1 space-x-2"
                 { ...props }
             >
                 <Icon
