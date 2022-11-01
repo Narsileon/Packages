@@ -15,7 +15,7 @@ export default function Index({ roles, filters }) {
 
 			<Table
 				title={ t('List of :resource', {'resource': p('permissions.roles', 2)}) }
-				createLabel={ t('Create :resource', {'resource': t('permissions.new-role')}) }
+				createLabel={ t('Create :resource', {'resource': t('permissions.new_role')}) }
 				createLink={ route('backoffice.roles.create') }
 				collection={ roles }
 				settings={ settings }

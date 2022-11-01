@@ -2,7 +2,10 @@
 
 return [
     'categories'    => 'category|categories',
-    'new-category'  => 'a new category',
-    'new-user'      => 'a new user',
+    'footer_links'  => 'footer link|footer links',
+    'header_links'  => 'header link|header links',
+    'new_category'  => 'a new category',
+    'new_user'      => 'a new user',
+    'orders'        => 'order|orders',
     'users'         => 'user|users',
 ];

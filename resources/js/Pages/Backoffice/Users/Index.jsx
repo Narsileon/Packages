@@ -15,7 +15,7 @@ export default function Index({ users, filters }) {
 
 			<Table
 				title={ t('List of :resource', {'resource': p('common.users', 2)}) }
-				createLabel={ t('Create :resource', {'resource': t('common.new-user')}) }
+				createLabel={ t('Create :resource', {'resource': t('common.new_user')}) }
 				createLink={ route('backoffice.users.create') }
 				collection={ users }
 				settings={ settings }

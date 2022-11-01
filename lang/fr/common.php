@@ -2,7 +2,10 @@
 
 return [
     'categories'    => 'catégorie|catérogies',
-    'new-category'  => 'une nouvelle catégorie',
-    'new-user'      => 'un nouvel utilisateur',
+    'footer_links'  => 'lien de pied de page|liens de pied de page',
+    'header_links'  => 'lien d\'en-tête|liens d\'en-tête',
+    'new_category'  => 'une nouvelle catégorie',
+    'new_user'      => 'un nouvel utilisateur',
+    'orders'        => 'commande|commandes',
     'users'         => 'utilisateur|utilisateurs',
 ];
