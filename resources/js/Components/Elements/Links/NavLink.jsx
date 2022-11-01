@@ -1,9 +1,10 @@
 import { Link, usePage } from "@inertiajs/inertia-react";
-import { t } from "@/narsil-localization";
 import { upperFirst } from "lodash";
+import Icon from "@/Shared/Svg/Icon";
 
-export default function NavLink({ 
+export default function NavLink({
 	label,
+	icon,
 	className="",
 	children,
     ...props
@@ -11,13 +12,17 @@ export default function NavLink({
 	const active = props.href ? props.href == usePage().props.ziggy.location ? true : false : false;
 
 	return (
-		<li>
+		<li className="flex items-center justify-start space-x-2">
+			<Icon
+				className="w-6 h-6"
+				name={ icon }
+			/>
 			<Link
 				className={ `selectable ${ className } ${ active ? "selectable-active" : ""}` }
                 { ...props }
 			>
-				{ label != null ? upperFirst(t(label)) : children }
-			</Link>			
+				{ label ? upperFirst(label) : children }
+			</Link>
 		</li>
 	);
 }

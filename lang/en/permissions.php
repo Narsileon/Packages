@@ -3,7 +3,7 @@
 use App\Acl\Permissions;
 
 return [
-    'new-role'                      => 'a new role',
+    'new_role'                      => 'a new role',
     'permissions'                   => 'permission|permissions',
     'roles'                         => 'role|roles',
 

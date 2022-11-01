@@ -3,7 +3,7 @@ import { t } from "@/narsil-localization";
 import Formular from "./Formular";
 
 export default function Create({ roles, permissions }) {
-	const title = t('Create :resource', {'resource': t('common.new-user')});
+	const title = t('Create :resource', {'resource': t('common.new_user')});
 
 	function initializeRoles() {
 		let object = {};
