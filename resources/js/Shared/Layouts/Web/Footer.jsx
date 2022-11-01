@@ -56,8 +56,12 @@ export default function Footer({ textLinks, iconLinks }) {
                 <div className="col-span-1 md:order-1">
                     <div className="flex items-center justify-center md:justify-start">
                         <p className="md:flex space-x-1 text-center">
-                            <span className="block whitespace-nowrap">© 2022 <Link href={ route('home') } className="link-text">Narsil Studio™</Link>.</span>
-                            <span className="block whitespace-nowrap">All Rights Reserved.</span>
+                            <span className="block whitespace-nowrap">
+                                © 2022 <Link href={ route('home') } className="link-text">Narsil Studio™</Link>.
+                            </span>
+                            <span className="block whitespace-nowrap">
+                                { t('All rights reserved.') }
+                            </span>
                         </p>
                     </div>
                 </div>

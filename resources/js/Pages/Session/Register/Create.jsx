@@ -22,7 +22,7 @@ export default function Create() {
                 }
                 footer={
                     <FormFooter
-                        label={ t('Register') }
+                        label={ t('common.register') }
                         processing={ processing }
                     />
                 }

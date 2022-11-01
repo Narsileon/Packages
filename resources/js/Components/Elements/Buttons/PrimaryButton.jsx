@@ -1,4 +1,5 @@
 import { Link } from "@inertiajs/inertia-react";
+import { upperFirst } from "lodash";
 
 export default function PrimaryButton({
     label,
@@ -7,7 +8,7 @@ export default function PrimaryButton({
     children,
     ...props
 }) {
-    children = label != null ? label : children;
+    children = label != null ? upperFirst(label) : children;
 
     switch (as) {
         case "button":

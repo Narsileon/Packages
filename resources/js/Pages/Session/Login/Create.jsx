@@ -21,7 +21,7 @@ export default function Create() {
                 }
                 footer={
                     <FormFooter
-                        label={ t('Log in') }
+                        label={ t('common.login') }
                         processing={ processing }
                     />
                 }

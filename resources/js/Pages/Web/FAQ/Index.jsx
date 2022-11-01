@@ -5,7 +5,7 @@ import Accordion from '@/Components/Elements/Accordion';
 export default function Index({ faqs }) {
     return (
         <>
-            <Head title={ t('FAQ') } />
+            <Head title={ t('common.faq') } />
 
             <Accordion collection={ faqs } />
         </>

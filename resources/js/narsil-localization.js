@@ -34,7 +34,7 @@ const p = (key, count, replacements = null) => {
 function localize(key) {
     let table = usePage().props.localization.strings;
 
-    if (key.includes('.')) {
+    if (key.slice(0, -1).includes('.')) {
         return localizeNestedKey(table, key);
     } else {
         return localizePrimaryKey(table, key);

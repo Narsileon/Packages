@@ -1,5 +1,6 @@
 import { t } from "@/narsil-localization";
 import { Link, usePage } from "@inertiajs/inertia-react";
+import { upperFirst } from "lodash";
 
 export default function BackButton({ ...props }) {
 	const previousLocation = usePage().props.ziggy.previousLocation;
@@ -9,7 +10,7 @@ export default function BackButton({ ...props }) {
             href={ previousLocation !== "" ? previousLocation : "#" }
             { ...props }
         >
-            { t('Back') }
+            { upperFirst(t('common.back')) }
         </Link>
     );
 }
