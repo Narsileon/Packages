@@ -8,6 +8,7 @@ use App\Http\Controllers\Backoffice\DictionaryController;
 use App\Http\Controllers\Backoffice\FaqController;
 use App\Http\Controllers\Backoffice\FooterLinkController;
 use App\Http\Controllers\Backoffice\HeaderLinkController;
+use App\Http\Controllers\Backoffice\LanguageController;
 use App\Http\Controllers\Backoffice\OrderController;
 use App\Http\Controllers\Backoffice\RoleController;
 use App\Http\Controllers\Backoffice\UserController;
@@ -23,7 +24,7 @@ Route::group([
     // Management
     Route::resource('users', UserController::class);
     Route::resource('roles', RoleController::class);
-    Route::get('languages', DashboardController::class)->name('languages');
+    Route::get('languages', LanguageController::class)->name('languages');
 
     // Backoffice
     Route::get('dashboard', DashboardController::class)->name('dashboard');

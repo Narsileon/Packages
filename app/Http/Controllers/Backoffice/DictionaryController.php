@@ -15,7 +15,7 @@ class DictionaryController extends Controller
 
     public function __invoke()
     {
-        return Inertia::render('Backoffice/Dashboard/Index');
+        return Inertia::render('Backoffice/Dictionary/Index');
     }
 
     #endregion
