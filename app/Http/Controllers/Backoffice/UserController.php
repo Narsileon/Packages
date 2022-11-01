@@ -25,15 +25,20 @@ class UserController extends Controller
 
     public function index()
     {
-        return Inertia::render('Backoffice/Users/Index', [
-            'users' => new UserCollection(User::query()
-                ->search(request('search'))
-                ->sort()
-                ->paginate(10)),
-            'filters' => [
-                'search' => Request::input('search'),
-            ],
-        ]);
+        $users = new UserCollection(User::query()
+            ->search(request('search'))
+            ->sort()
+            ->paginate(10)
+        );
+
+        $filters = [
+            'search' => Request::input('search'),
+        ];
+
+        return Inertia::render('Backoffice/Users/Index', compact(
+            'users',
+            'filters',
+        ));
     }
 
     public function create()

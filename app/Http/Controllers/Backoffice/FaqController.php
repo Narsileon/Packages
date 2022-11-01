@@ -15,17 +15,23 @@ use Inertia\Inertia;
 
 class FaqController extends Controller
 {
+    #region PUBLIC METHODS
+
     public function index()
     {
-        return Inertia::render('Backoffice/Faqs/Index', [
-            'faqs' => Faq::latest()
-                ->filter(request('search'))
-                ->sort()
-                ->paginate(),
-            'filters' => [
-                'search' => Request::input('search'),
-            ],
-        ]);
+        $faqs = Faq::latest()
+            ->search(request('search'))
+            ->sort()
+            ->paginate();
+
+        $filters = [
+            'search' => Request::input('search'),
+        ];
+
+        return Inertia::render('Backoffice/Faqs/Index', compact(
+            'faqs',
+            'filters',
+        ));
     }
 
     public function create()
@@ -71,4 +77,6 @@ class FaqController extends Controller
 
         return back();
     }
+
+    #endregion
 }

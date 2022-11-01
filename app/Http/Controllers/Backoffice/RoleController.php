@@ -24,15 +24,20 @@ class RoleController extends Controller
 
     public function index()
     {
-        return Inertia::render('Backoffice/Roles/Index', [
-            'roles' => new UserRoleCollection(UserRole::query()
-                ->filter(request('search'))
-                ->sort()
-                ->paginate(10)),
-            'filters' => [
-                'search' => Request::input('search'),
-            ],
-        ]);
+        $roles = new UserRoleCollection(UserRole::query()
+            ->search(request('search'))
+            ->sort()
+            ->paginate(10)
+        );
+
+        $filters = [
+            'search' => Request::input('search'),
+        ];
+
+        return Inertia::render('Backoffice/Roles/Index', compact(
+            'roles',
+            'filters',
+        ));
     }
 
     public function create()
