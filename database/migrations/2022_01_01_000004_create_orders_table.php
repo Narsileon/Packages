@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    #region PUBLIC METHODS
+
     public function up()
     {
         Schema::create('orders', function (Blueprint $table) {
@@ -32,4 +34,6 @@ return new class extends Migration
     {
         Schema::dropIfExists('orders');
     }
+
+    #endregion
 };

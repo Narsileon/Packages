@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    #region PUBLIC METHODS
+
     public function up()
     {
         Schema::create('footer_links', function (Blueprint $table) {
@@ -26,4 +28,6 @@ return new class extends Migration
     {
         Schema::dropIfExists('footer_links');
     }
+
+    #endregion
 };

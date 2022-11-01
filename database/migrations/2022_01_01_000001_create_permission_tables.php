@@ -11,6 +11,8 @@ use Spatie\Permission\PermissionRegistrar;
 
 class CreatePermissionTables extends Migration
 {
+    #region PUBLIC METHODS
+
     public function up()
     {
         $tableNames = config('permission.table_names');
@@ -132,4 +134,6 @@ class CreatePermissionTables extends Migration
         Schema::drop($tableNames['roles']);
         Schema::drop($tableNames['permissions']);
     }
+
+    #endregion
 }
