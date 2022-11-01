@@ -27,13 +27,11 @@ class UserController extends Controller
     {
         return Inertia::render('Backoffice/Users/Index', [
             'users' => new UserCollection(User::query()
-                ->filter(request(['id', 'username', 'email']))
+                ->search(request('search'))
                 ->sort()
                 ->paginate(10)),
             'filters' => [
-                'id' => Request::input(User::FIELD_ID),
-                'username' => Request::input(User::FIELD_USERNAME),
-                'email' => Request::input(User::FIELD_EMAIL),
+                'search' => Request::input('search'),
             ],
         ]);
     }

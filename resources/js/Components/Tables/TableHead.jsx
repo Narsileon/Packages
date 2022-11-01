@@ -45,7 +45,7 @@ export default function TableHead({ data }) {
             <tr className="divide-x divide-color">
                 <th className="w-16"/>
                 {
-                    Object.keys(data[0]).map((key) => {
+                    data[0] != null && Object.keys(data[0]).map((key) => {
                         return (
                             <th
                                 className="text-left min-w-sm max-w-lg"

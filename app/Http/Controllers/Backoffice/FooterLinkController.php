@@ -13,7 +13,7 @@ use Inertia\Inertia;
 
 #endregion
 
-class FaqController extends Controller
+class FooterLinkController extends Controller
 {
     public function index()
     {

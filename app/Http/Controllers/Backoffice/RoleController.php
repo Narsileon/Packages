@@ -26,12 +26,11 @@ class RoleController extends Controller
     {
         return Inertia::render('Backoffice/Roles/Index', [
             'roles' => new UserRoleCollection(UserRole::query()
-                ->filter(request(['id', 'name']))
+                ->filter(request('search'))
                 ->sort()
                 ->paginate(10)),
             'filters' => [
-                'id' => Request::input(UserRole::FIELD_ID),
-                'name' => Request::input(UserRole::FIELD_NAME),
+                'search' => Request::input('search'),
             ],
         ]);
     }
