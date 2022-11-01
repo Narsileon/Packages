@@ -3,6 +3,7 @@
 return [
     'about'             => 'about',
     'back'              => 'back',
+    'backoffice'        => 'backoffice',
     'cancel'            => 'cancel',
     'categories'        => 'category|categories',
     'confirm'           => 'confirm',
@@ -18,6 +19,7 @@ return [
     'links'             => 'link|links',
     'login'             => 'log in',
     'logout'            => 'log out',
+    'management'        => 'management',
     'menu'              => 'menu',
     'new_category'      => 'a new category',
     'new_footer_link'   => 'a new footer link',
@@ -30,5 +32,6 @@ return [
     'reset'             => 'reset',
     'update'            => 'update',
     'users'             => 'user|users',
+    'web'               => 'web',
     'yes'               => 'yes',
 ];

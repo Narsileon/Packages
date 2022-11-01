@@ -7,9 +7,6 @@
         bg-white text-black
         dark:bg-gray-900 dark:text-white
     }
-    nav { @apply
-        font-semibold
-    }
 }
 
 @layer components {
@@ -44,13 +41,6 @@
     }
     .link-icon { @apply
         hover:text-blue-500
-    }
-    .link-paragraph { @apply
-        text-blue-500
-        hover:underline
-    }
-    .link-text { @apply
-        hover:underline
     }
     .table-row { @apply
         bg-gray-200 odd:bg-gray-100

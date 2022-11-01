@@ -3,6 +3,7 @@
 return [
     'about'             => 'über uns',
     'back'              => 'züruck',
+    'backoffice'        => 'Backoffice',
     'cancel'            => 'abbrechen',
     'categories'        => 'Kategorie|Kategorien',
     'confirm'           => 'bestätigen',
@@ -18,6 +19,7 @@ return [
     'links'             => 'link|links',
     'login'             => 'anmelden',
     'logout'            => 'abmelden',
+    'management'        => 'Verwaltung',
     'menu'              => 'Menü',
     'new_category'      => 'eine neue Kategorie',
     'new_footer_link'   => 'einen neuen Footer-Link',
@@ -30,5 +32,6 @@ return [
     'reset'             => 'zurücksetzen',
     'update'            => 'aktualisieren',
     'users'             => 'Benutzer|Benutzer',
+    'web'               => 'Web',
     'yes'               => 'ja',
 ];

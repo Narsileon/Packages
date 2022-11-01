@@ -8,6 +8,7 @@ use App\Http\Controllers\Backoffice\DictionaryController;
 use App\Http\Controllers\Backoffice\FaqController;
 use App\Http\Controllers\Backoffice\FooterLinkController;
 use App\Http\Controllers\Backoffice\HeaderLinkController;
+use App\Http\Controllers\Backoffice\OrderController;
 use App\Http\Controllers\Backoffice\RoleController;
 use App\Http\Controllers\Backoffice\UserController;
 use Illuminate\Support\Facades\Route;
@@ -19,17 +20,18 @@ Route::group([
     'as' => 'backoffice.',
     'middleware' => 'auth',
 ], function () {
-    // Users
+    // Management
     Route::resource('users', UserController::class);
     Route::resource('roles', RoleController::class);
+
+    // Backoffice
+    Route::get('dashboard', DashboardController::class)->name('dashboard');
+    Route::get('calendar', CalendarController::class)->name('calendar');
+    Route::resource('orders', OrderController::class);
+    Route::get('dictionary', DictionaryController::class)->name('disctionary');
 
     // Web
     Route::resource('header_links', HeaderLinkController::class);
     Route::resource('footer_links', FooterLinkController::class);
     Route::resource('faqs', FaqController::class);
-
-    // Backoffice
-    Route::get('dashboard', DashboardController::class)->name('dashboard');
-    Route::get('calendar', CalendarController::class)->name('calendar');
-    Route::get('dictionary', DictionaryController::class)->name('disctionary');
 });

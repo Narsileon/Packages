@@ -18,7 +18,7 @@ export default function NavLink({
 				name={ icon }
 			/>
 			<Link
-				className={ `selectable ${ className } ${ active ? "selectable-active" : ""}` }
+				className={ `selectable p-1 ${ className } ${ active ? "selectable-active" : ""}` }
                 { ...props }
 			>
 				{ label ? upperFirst(label) : children }

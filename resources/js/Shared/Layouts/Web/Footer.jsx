@@ -19,7 +19,7 @@ export default function Footer({ textLinks, iconLinks }) {
                             textLinks.map(({ route, label }, index) => {
                                 return (
                                     <Link
-                                        className="link-text"
+                                        className="hover:underline"
                                         href={ route }
                                         key={ index }
                                     >
@@ -57,7 +57,7 @@ export default function Footer({ textLinks, iconLinks }) {
                     <div className="flex items-center justify-center md:justify-start">
                         <p className="md:flex space-x-1 text-center">
                             <span className="block whitespace-nowrap">
-                                © 2022 <Link href={ route('home') } className="link-text">Narsil Studio™</Link>.
+                                © 2022 <Link href={ route('home') } className="hover:underline">Narsil Studio™</Link>.
                             </span>
                             <span className="block whitespace-nowrap">
                                 { trans('All rights reserved.') }

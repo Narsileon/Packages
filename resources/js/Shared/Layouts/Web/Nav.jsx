@@ -15,7 +15,7 @@ export default function Nav() {
     const [open2, setOpen2] = useToggle(false);
 
     return (
-        <nav className="flex items-center">
+        <nav className="flex items-center font-semibold">
             <MenuButton
                 className="md:hidden"
                 onClick={ setOpen }
@@ -24,13 +24,13 @@ export default function Nav() {
             <ul className={ `md:flex md:space-x-4 ${ open ? "absolute primary-background w-full h-screen top-0 left-0 z-40" : "hidden" }` }>
                 { renderLinks(commonLinks) }
 
-                <li className="relative">
+                <li className="relative grid">
                     <MenuButton
                         className="hidden md:block"
                         onClick={ setOpen2 }
                     />
 
-                    <ul className={ `${ !open && open2 ? "absolute primary-background border-2 border-color mt-2 p-2 space-y-2 right-0 z-40 rounded" : "md:hidden" }` }>
+                    <ul className={ `${ !open && open2 ? "absolute primary-background border-2 border-color p-2 space-y-2 top-12 right-0 z-40 rounded" : "md:hidden" }` }>
                         { auth ? <NavAuth /> : <NavGuest /> }
                     </ul>
                 </li>
