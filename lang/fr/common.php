@@ -11,6 +11,7 @@ return [
     'create'            => 'créer',
     'dashboard'         => 'tableau de bord',
     'delete'            => 'supprimer',
+    'dictionary'        => 'dictionnaire',
     'edit'              => 'modifier',
     'faq'               => 'FAQ',
     'footer_links'      => 'lien de pied de page|liens de pied de page',

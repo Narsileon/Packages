@@ -11,6 +11,7 @@ return [
     'create'            => 'create',
     'dashboard'         => 'dashboard',
     'delete'            => 'delete',
+    'dictionary'        => 'dictionary',
     'edit'              => 'edit',
     'faq'               => 'FAQ',
     'footer_links'      => 'footer link|footer links',

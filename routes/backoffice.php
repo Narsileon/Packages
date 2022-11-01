@@ -28,7 +28,7 @@ Route::group([
     Route::get('dashboard', DashboardController::class)->name('dashboard');
     Route::get('calendar', CalendarController::class)->name('calendar');
     Route::resource('orders', OrderController::class);
-    Route::get('dictionary', DictionaryController::class)->name('disctionary');
+    Route::get('dictionary', DictionaryController::class)->name('dictionary');
 
     // Web
     Route::resource('header_links', HeaderLinkController::class);

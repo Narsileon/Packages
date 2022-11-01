@@ -5,11 +5,12 @@ import Chevron from "@/Shared/Svg/Chevron";
 export default function Dropdown({
     triggerClasses="",
     trigger,
+    visibility=false,
     children
 }) {
     const dropdown = useRef(null);
 
-    const [open, setOpen] = useToggle(false);
+    const [open, setOpen] = useToggle(visibility);
 
     useClickAway(dropdown, () => setOpen(false));
 

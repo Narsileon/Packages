@@ -11,6 +11,7 @@ return [
     'create'            => 'erstellen',
     'dashboard'         => 'Armaturenbrett',
     'delete'            => 'löschen',
+    'dictionary'        => 'Wörterbuch',
     'edit'              => 'bearbeiten',
     'faq'               => 'FAQ',
     'footer_links'      => 'Footer-Link|Footer-Links',
