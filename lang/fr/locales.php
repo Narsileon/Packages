@@ -182,5 +182,4 @@ return [
     'za'        => 'Zhuang',
     'zh'        => 'Chinois',
     'zu'        => 'Zoulou',
-
 ];

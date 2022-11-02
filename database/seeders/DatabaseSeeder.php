@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use Database\Seeders\Subseeders\BackofficeSeeder;
 use Database\Seeders\Subseeders\PermissionSeeder;
+use Database\Seeders\Subseeders\SessionSeeder;
 use Database\Seeders\Subseeders\UserSeeder;
 use Database\Seeders\Subseeders\WebSeeder;
 use Illuminate\Database\Seeder;
@@ -20,6 +21,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             PermissionSeeder::class,
+            SessionSeeder::class,
             UserSeeder::class,
             WebSeeder::class,
             BackofficeSeeder::class,
