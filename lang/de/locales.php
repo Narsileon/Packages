@@ -1,8 +1,7 @@
 <?php
 
 return [
-    'language'  => 'Sprache',
-    'languages' => 'Sprachen',
+    'languages' => 'Sprache|Sprachen',
 
     'aa'        => 'Afar',
     'ab'        => 'Abchasisch',

@@ -94,7 +94,7 @@ const Section = ({
     const [show, setShow] = useToggle(visibility);
 
     return (
-        <li>
+        <ul>
             <button
                 className="flex items-center selectable p-1 space-x-2"
                 onClick={ setShow }
@@ -111,6 +111,6 @@ const Section = ({
             <div className="ml-8">
                 { show && children }
             </div>
-        </li>
+        </ul>
     );
 }

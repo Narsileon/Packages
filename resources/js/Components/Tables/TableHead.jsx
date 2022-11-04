@@ -1,41 +1,9 @@
-import { useEffect, useState } from "react";
-import { usePrevious } from "react-use";
-import { Inertia } from "@inertiajs/inertia";
-import { usePage } from "@inertiajs/inertia-react";
+import { useSort } from "@/narsil-react";
 import { trans } from "@/narsil-localization";
-import { upperFirst } from "lodash";
-import pickBy from "lodash/pickBy";
-import Sort from "@/Shared/Svg/Sort";
+import SortButton from "@/Components/Elements/Buttons/SortButton";
 
 export default function TableHead({ data }) {
-    const [values, setValues] = useState({
-        field: '',
-        sort: 'asc',
-    });
-
-    const previousValues = usePrevious(values);
-
-    let href = usePage().url;
-
-    const handleChange = (accessor) => {
-        setValues(values => ({
-            ...values,
-            ['field']: accessor,
-            ['sort']: accessor === values.field && values.sort === "asc" ? "desc" : "asc",
-        }));
-    };
-
-    useEffect(() => {
-        if (previousValues) {
-            const query = Object.keys(pickBy(values)).length
-                ? pickBy(values)
-                : { remember: 'forget' };
-            Inertia.get(href, query, {
-                replace: true,
-                preserveState: true
-            });
-        }
-    }, [values]);
+	const [values, handleChange] = useSort();
 
     return (
         <thead className="
@@ -51,25 +19,13 @@ export default function TableHead({ data }) {
                                 className="text-left min-w-sm max-w-lg"
                                 key={ key }
                             >
-                                <button
-                                    className="flex items-center m-2"
+                                <SortButton
+                                    label={ trans(`validation.attributes.${ key }`) }
+                                    accessor={ key }
+                                    field={ values.field }
+                                    order={ values.sort }
                                     onClick={ () => handleChange(key) }
-                                >
-                                    <span className="p-2">
-                                        { upperFirst(trans(`validation.attributes.${ key }`)) }
-                                    </span>
-                                    {
-                                        <Sort
-                                            className="w-4 h-4"
-                                            order={
-                                                values.field === key && values.sort === "asc" ?
-                                                "asc" :
-                                                values.field === key && values.sort === "desc" ?
-                                                "desc" : "none"
-                                            }
-                                        />
-                                    }
-                                </button>
+                                />
                             </th>
                         );
                     })

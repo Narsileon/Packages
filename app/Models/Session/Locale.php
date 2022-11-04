@@ -4,6 +4,8 @@ namespace App\Models\Session;
 
 #region USE
 
+use App\Traits\IsFilterable;
+use App\Traits\IsSortable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,7 +13,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Locale extends Model
 {
-    use HasFactory;
+    use HasFactory, IsFilterable, IsSortable;
 
     #region CONSTANTS
 
@@ -27,6 +29,12 @@ class Locale extends Model
     [
         self::FIELD_LOCALE,
         self::FIELD_ACTIVE,
+    ];
+
+    protected $hidden =
+    [
+        self::CREATED_AT,
+        self::UPDATED_AT,
     ];
 
     protected $perPage = 10;

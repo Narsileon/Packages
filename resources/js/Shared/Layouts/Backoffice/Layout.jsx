@@ -6,9 +6,9 @@ import Flash from "@/Shared/Flash";
 
 export default function Layout({ children }) {
     return (
-        <main className="flex h-screen max-w-screen">
+        <main className="flex min-h-screen max-w-screen">
             <aside className="flex-none
-                sticky overflow-hidden primary-background top-0 h-full w-10 p-1 space-y-4
+                sticky overflow-hidden primary-background top-0 h-screen w-10 p-1 space-y-4
                 hover:w-80 hover:overflow-visible
                 transition-all duration-300
             ">
