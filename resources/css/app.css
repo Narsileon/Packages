@@ -7,6 +7,29 @@
         bg-white text-black
         dark:bg-gray-900 dark:text-white
     }
+
+    table { @apply
+        min-w-full
+        divide-y-2 divide-color
+    }
+
+    tbody { @apply
+        divide-y divide-color
+    }
+
+    tr { @apply
+        divide-x divide-color
+        bg-gray-200 odd:bg-gray-100
+        dark:bg-gray-700 dark:odd:bg-gray-600
+    }
+
+    th { @apply
+        text-left
+    }
+
+    td { @apply
+        p-2 text-left truncate
+    }
 }
 
 @layer components {
@@ -41,9 +64,5 @@
     }
     .link-icon { @apply
         hover:text-blue-500
-    }
-    .table-row { @apply
-        bg-gray-200 odd:bg-gray-100
-        dark:bg-gray-700 dark:odd:bg-gray-600
     }
 }

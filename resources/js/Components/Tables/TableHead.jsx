@@ -10,7 +10,7 @@ export default function TableHead({ data }) {
             bg-gray-400
             dark:bg-gray-800
         ">
-            <tr className="divide-x divide-color">
+            <tr>
                 <th className="w-16"/>
                 {
                     data[0] != null && Object.keys(data[0]).map((key) => {

@@ -50,7 +50,7 @@ export default function Table({
 				className="border-2 border-color rounded overflow-x-scroll"
 				ref={ table }
 			>
-				<table className="min-w-full">
+				<table>
 					<TableHead
 						data={ collection.data }
 					/>

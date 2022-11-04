@@ -10,53 +10,48 @@ export default function Index({ locales, filters }) {
 		<>
 			<Head title={ transChoice('common.languages', 2) } />
 
-			<table>
-				<thead>
-					<tr>
-						{
-							locales[0] != null && Object.keys(locales[0]).map((key) => {
-								return (
-									<th
-										className="text-left min-w-sm max-w-lg"
-										key={ key }
-									>
-										<SortButton
-											label={ trans(`validation.attributes.${ key }`) }
-											accessor={ key }
-											field={ values.field }
-											order={ values.sort }
-											onClick={ () => handleChange(key) }
-										/>
-									</th>
-								);
-							})
-						}
-					</tr>
-				</thead>
-				<tbody>
-					{
-						locales.map((rowData, index) => {
-							return (
-								<tr
-									className="table-row divide-x divide-color"
-									key={ index }
-								>
-									{ Object.keys(locales[0]).map((key) => {
+			<section>
+				<div className="border-2 border-color rounded">
+					<table>
+						<thead>
+							<tr>
+								{
+									locales[0] != null && Object.keys(locales[0]).map((key) => {
 										return (
-											<td
-												className="p-2 min-w-lg max-w-lg text-left truncate"
-												key={ key }
-											>
-												{ rowData[key] }
-											</td>
+											<th key={ key }>
+												<SortButton
+													label={ trans(`validation.attributes.${ key }`) }
+													accessor={ key }
+													field={ values.field }
+													order={ values.sort }
+													onClick={ () => handleChange(key) }
+												/>
+											</th>
 										);
-									})}
-								</tr>
-							);
-						})
-					}
-				</tbody>
-			</table>
+									})
+								}
+							</tr>
+						</thead>
+						<tbody>
+							{
+								locales.map((rowData, index) => {
+									return (
+										<tr key={ index }>
+											{ Object.keys(locales[0]).map((key) => {
+												return (
+													<td key={ key }>
+														{ rowData[key] }
+													</td>
+												);
+											})}
+										</tr>
+									);
+								})
+							}
+						</tbody>
+					</table>
+				</div>
+			</section>
 		</>
 	);
 }

@@ -5,14 +5,11 @@ import Icon from "@/Shared/Svg/Icon";
 export default function TableBody({ data, settings, openModal }) {
     return (
 		<>
-			<tbody className="divide-y divide-color">
+			<tbody>
 			{
 				data.map((rowData, index) => {
 					return (
-						<tr
-							className="table-row divide-x divide-color"
-							key={ index }
-						>
+						<tr key={ index }>
 							<td className="p-2 w-16">
 								<Dropdown
 									trigger={ <Icon name="menu" className="w-6 h-6" /> }
@@ -45,7 +42,7 @@ export default function TableBody({ data, settings, openModal }) {
 							{ Object.keys(data[0]).map((key) => {
 								return (
 									<td
-										className="p-2 min-w-lg max-w-lg text-left truncate"
+										className="min-w-lg max-w-lg"
 										key={ key }
 									>
 										<Link href={ settings.link + rowData.id } className="truncate">
