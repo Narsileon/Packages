@@ -1,12 +1,11 @@
 import { FormError, FormLabel } from "@/Components/Forms";
 
-export default function FormCheckbox({ 
+export default function FormCheckbox({
     label,
     error,
     setData,
-    submit, 
-    className="", 
-    ...props 
+    className="",
+    ...props
 }) {
 	const onChange = (event) => {
         setData(event.target.id, event.target.checked);
@@ -16,14 +15,14 @@ export default function FormCheckbox({
         <div>
             <div className="flex justify-between w-full">
                 <FormLabel label={ label }/>
-                <input 
+                <input
                     className={ `field w-min ${className}` }
                     type="checkbox"
                     onChange={ onChange }
                     { ...props }
-                />                 
+                />
             </div>
             <FormError message={ error }/>
-        </div>   
+        </div>
     )
 }

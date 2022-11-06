@@ -3,9 +3,11 @@ import { trans, transChoice } from "@/narsil-localization";
 import { useSort } from "@/narsil-react";
 import SortButton from "@/Components/Elements/Buttons/SortButton";
 import SearchField from "@/Shared/SearchField";
+import Toggle from "@/Components/Elements/Toggle";
 
 export default function Index({ locales, filters }) {
 	const [values, handleChange] = useSort();
+
 
 	return (
 		<>
@@ -17,7 +19,10 @@ export default function Index({ locales, filters }) {
 				</div>
 				<div className="border-2 border-color rounded">
 					<table>
-						<thead>
+					<thead className="
+						bg-gray-400
+						dark:bg-gray-800
+					">
 							<tr>
 								{
 									locales[0] != null && Object.keys(locales[0]).map((key) => {
@@ -38,16 +43,18 @@ export default function Index({ locales, filters }) {
 						</thead>
 						<tbody>
 							{
-								locales.map((rowData, index) => {
+								locales.map((data) => {
 									return (
-										<tr key={ index }>
-											{ Object.keys(locales[0]).map((key) => {
-												return (
-													<td key={ key }>
-														{ rowData[key] }
-													</td>
-												);
-											})}
+										<tr key={ data['id']}>
+											<td>
+												{ data['id'] }
+											</td>
+											<td>
+												{ data['locale'] }
+											</td>
+											<td>
+												<Toggle value={ data['active'] } />
+											</td>
 										</tr>
 									);
 								})
