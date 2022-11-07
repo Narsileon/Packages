@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Backoffice;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backoffice\Faqs\FaqCreateRequest;
 use App\Http\Requests\Backoffice\Faqs\FaqUpdateRequest;
+use App\Models\Backoffice\Order;
 use App\Models\Web\Faq;
 use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
@@ -17,7 +18,7 @@ class OrderController extends Controller
 {
     public function index()
     {
-        $faqs = Faq::latest()
+        $orders = Order::latest()
             ->search(request('search'))
             ->sort()
             ->paginate();
@@ -27,7 +28,7 @@ class OrderController extends Controller
         ];
 
         return Inertia::render('Backoffice/Orders/Index', compact(
-            'faqs',
+            'orders',
             'filters',
         ));
     }
@@ -46,32 +47,32 @@ class OrderController extends Controller
         return redirect(route('backoffice.orders.index'));
     }
 
-    public function show(Faq $faq)
+    public function show(Order $order)
     {
         return Inertia::render('Backoffice/Orders/Show', compact(
-            'faq',
+            'order',
         ));
     }
 
-    public function edit(Faq $faq)
+    public function edit(Order $order)
     {
         return Inertia::render('Backoffice/Orders/Edit', compact(
-            'faq'
+            'order'
         ));
     }
 
-    public function update(FaqUpdateRequest $request, Faq $faq)
+    public function update(FaqUpdateRequest $request, Order $order)
     {
         $attributes = $request->validated();
 
-        $faq->update($attributes);
+        $order->update($attributes);
 
         return redirect(route('backoffice.orders.index'));
     }
 
-    public function destroy(Faq $faq)
+    public function destroy(Order $order)
     {
-        $faq->delete();
+        $order->delete();
 
         return back();
     }

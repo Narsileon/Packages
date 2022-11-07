@@ -1,13 +1,24 @@
 import { Head } from "@inertiajs/inertia-react";
 import { trans, transChoice } from "@/narsil-localization";
-import { useSort } from "@/narsil-react";
+import { useFrontSortableTable, useSort } from "@/narsil-react";
 import SortButton from "@/Components/Elements/Buttons/SortButton";
 import SearchField from "@/Shared/SearchField";
 import Toggle from "@/Components/Elements/Toggle";
+import { upperFirst } from "lodash";
+import { useState } from "react";
 
 export default function Index({ locales, filters }) {
-	const [values, handleChange] = useSort();
+	const [tableData, handleSorting] = useFrontSortableTable(locales)
 
+	const [sortField, setSortField] = useState("");
+ 	const [order, setOrder] = useState("asc");
+
+	 const handleSortingChange = (accessor) => {
+		const sortOrder = accessor === sortField && order === "asc" ? "desc" : "asc";
+		setSortField(accessor);
+		setOrder(sortOrder);
+		handleSorting(accessor, sortOrder);
+	};
 
 	return (
 		<>
@@ -24,26 +35,39 @@ export default function Index({ locales, filters }) {
 						dark:bg-gray-800
 					">
 							<tr>
-								{
-									locales[0] != null && Object.keys(locales[0]).map((key) => {
-										return (
-											<th key={ key }>
-												<SortButton
-													label={ trans(`validation.attributes.${ key }`) }
-													accessor={ key }
-													field={ values.field }
-													order={ values.sort }
-													onClick={ () => handleChange(key) }
-												/>
-											</th>
-										);
-									})
-								}
+								<th>
+									<SortButton
+										label={ trans('common.id') }
+										accessor={ 'id' }
+										onClick={ () => handleSortingChange('id') }
+									/>
+								</th>
+								<th>
+									<SortButton
+										label={ trans('common.code') }
+										accessor={ 'locale' }
+										onClick={ () => handleSortingChange('locale') }
+									/>
+								</th>
+								<th>
+									<SortButton
+										label={ upperFirst(transChoice('locales.languages', 1)) }
+										accessor={ 'locale' }
+										onClick={ () => handleSortingChange('locale') }
+									/>
+								</th>
+								<th>
+									<SortButton
+										label={ upperFirst(trans('common.active')) }
+										accessor={ 'active' }
+										onClick={ () => handleSortingChange('active') }
+									/>
+								</th>
 							</tr>
 						</thead>
 						<tbody>
 							{
-								locales.map((data) => {
+								tableData.map((data) => {
 									return (
 										<tr key={ data['id']}>
 											<td>
@@ -51,6 +75,9 @@ export default function Index({ locales, filters }) {
 											</td>
 											<td>
 												{ data['locale'] }
+											</td>
+											<td>
+												{ trans(`locales.${ data['locale'] }`) }
 											</td>
 											<td>
 												<Toggle value={ data['active'] } />

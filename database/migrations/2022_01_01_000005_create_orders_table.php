@@ -19,7 +19,7 @@ return new class extends Migration
             $table->id();
             $table->string(Order::FIELD_TYPE);
             $table->string(Order::FIELD_STATUS);
-            $table->integer(Order::FIELD_ORDER_NUMMER);
+            $table->integer(Order::FIELD_ORDER_NUMBER);
             $table->date(Order::FIELD_ORDER_DATE);
             $table->date(Order::FIELD_START_DATE);
             $table->date(Order::FIELD_END_DATE);

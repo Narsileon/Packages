@@ -18,7 +18,7 @@ class OrderFactory extends Factory
         return [
             Order::FIELD_TYPE => fake()->word(),
             Order::FIELD_STATUS => fake()->word(),
-            Order::FIELD_ORDER_NUMMER => fake()->ean8(),
+            Order::FIELD_ORDER_NUMBER => fake()->ean8(),
             Order::FIELD_ORDER_DATE => fake()->date(),
             Order::FIELD_START_DATE => fake()->date(),
             Order::FIELD_END_DATE => fake()->date(),

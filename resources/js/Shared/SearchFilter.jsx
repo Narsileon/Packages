@@ -77,7 +77,7 @@ export default function SearchFilter({ filters }) {
             <input
                 value={ values[filter] ? values[filter] : "" }
                 type="text"
-                placeholder={ trans("Search for") }
+                placeholder={ trans('common.search') }
                 autoComplete="off"
                 onChange={ handleChange }
                 className="bg-transparent focus:outline-none p-2"

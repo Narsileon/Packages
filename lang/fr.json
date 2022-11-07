@@ -1,11 +1,7 @@
 {
     ":": " :",
     ":resource: Editing of :label": ":Resource: Modification de \":label\"",
-    "About": "À propos",
-    "Add": "Ajouter",
     "Add :resource": "Ajouter :resource",
-    "All_M": "Tous",
-    "All_F": "Toutes",
     "All rights reserved.": "Tous droits réservés.",
     "Connection": "Connexion",
     "Create :resource": "Créer :resource",
@@ -13,6 +9,5 @@
     "Edit :resource": "Modifier :resource",
     "List of :resource": "Liste des :resource",
     "Registration": "Inscription",
-    "Search for": "Rechercher...",
-    "Update: resource": "Mettre à jour :resource"
+    "Update :resource": "Mettre à jour :resource"
 }

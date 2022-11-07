@@ -21,7 +21,7 @@ class Order extends Model
     const FIELD_ID = 'id';
     const FIELD_TYPE = 'type';
     const FIELD_STATUS = 'status';
-    const FIELD_ORDER_NUMMER = 'order_nummer';
+    const FIELD_ORDER_NUMBER = 'order_number';
     const FIELD_ORDER_DATE = 'order_date';
     const FIELD_START_DATE = 'start_date';
     const FIELD_END_DATE = 'end_date';
@@ -37,7 +37,7 @@ class Order extends Model
     [
         self::FIELD_TYPE,
         self::FIELD_STATUS,
-        self::FIELD_ORDER_NUMMER,
+        self::FIELD_ORDER_NUMBER,
         self::FIELD_ORDER_DATE,
         self::FIELD_START_DATE,
         self::FIELD_END_DATE,
