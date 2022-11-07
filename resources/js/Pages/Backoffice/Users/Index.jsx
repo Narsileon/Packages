@@ -18,20 +18,20 @@ export default function Index({ users, filters }) {
 
 			<div className="space-y-4">
 				<section id="header">
-					<div className="grid grid-cols-3">
-						<div className="span-col-1">
+					<div className="grid grid-cols-2 md:grid-cols-3 gap-y-4 md:gap-y-0">
+						<div className="col-span-1">
 							<span className="text-xl">
 								{ trans('List of :resource', {'resource':transChoice('common.users', 2)}) }
 							</span>
 						</div>
-						<div className="span-col-1">
-							<SearchField filters={ filters } />
-						</div>
-						<div className="span-col-1 place-self-end">
+						<div className="col-span-1 md:order-2 place-self-end">
 							<PrimaryButton
 								href={ route('backoffice.users.create') }
 								label={ trans('Create :resource', {'resource': trans('common.new_user')}) }
 							/>
+						</div>
+						<div className="col-span-2 md:col-span-1 md:order-1">
+							<SearchField filters={ filters } />
 						</div>
 					</div>
 				</section>

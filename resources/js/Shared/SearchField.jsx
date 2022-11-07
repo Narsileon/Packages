@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { usePrevious } from "react-use";
 import { Inertia } from "@inertiajs/inertia";
 import { trans } from "@/narsil-localization";
+import { upperFirst } from "lodash";
 import pickBy from "lodash/pickBy";
 import Icon from "@/Shared/Svg/Icon";
 
@@ -30,18 +31,18 @@ export default function SearchField({ filters }) {
     }
 
 	return (
-        <div className="grid grid-cols-1 md: grid-cols-3 border-2 border-color rounded">
-            <div className="primary-background flex items-center justify-between px-2">
+        <div className="flex border-2 border-color rounded">
+            <div className="primary-background flex items-center w-min-fit justify-between">
                 <Icon name="search" className="w-6 h-6 m-2" />
             </div>
 
             <input
                     value={ values['search'] ? values['search'] : "" }
                     type="text"
-                    placeholder={ trans('common.search') }
+                    placeholder={ `${ upperFirst(trans('common.search')) }...` }
                     autoComplete="off"
                     onChange={ handleChange }
-                    className="bg-transparent focus:outline-none p-2"
+                    className="bg-transparent focus:outline-none p-2 w-full"
                 />
         </div>
 	);

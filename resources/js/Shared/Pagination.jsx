@@ -12,7 +12,7 @@ export default function Pagination({ data }) {
     return (
         <section id="pagination">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4 mt-4">
-                <div className="md:order-2 md:place-self-end">
+                <div className="md:order-2 place-self-end">
                     <div className="flex md:justify-items-end border border-gray-500 w-fit divide-x divide-color rounded">
                         <div className="flex">
                         <PaginationButton
@@ -55,7 +55,7 @@ export default function Pagination({ data }) {
                     </div>
                 </div>
 
-                <div className="md:order-1 self-center">
+                <div className="md:order-1 place-self-end md:place-self-start self-center">
                     <p className="text-sm">
                         { data.total > 0 ? (
                             trans("pagination.results", {
