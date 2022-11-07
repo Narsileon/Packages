@@ -8,9 +8,9 @@ export default function Layout({ children }) {
     return (
         <main className="flex min-h-screen max-w-screen">
             <aside className="flex-none
-                sticky overflow-hidden primary-background top-0 h-screen w-10 p-1 space-y-4
-                hover:w-80 hover:overflow-visible
-                transition-all duration-300
+                sticky overflow-hidden primary-background top-0 h-screen w-10 p-1 z-50 space-y-4
+                hover:absolute md:hover:sticky hover:w-80 hover:overflow-visible
+                md:transition-all md:duration-300
             ">
                 <Header />
 
