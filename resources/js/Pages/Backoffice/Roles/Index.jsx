@@ -1,6 +1,7 @@
 import { Head } from "@inertiajs/inertia-react";
 import { trans, transChoice } from "@/narsil-localization";
 import Table from "@/Components/Tables/Table";
+import Pagination from "@/Shared/Pagination";
 
 export default function Index({ roles, filters }) {
 	const settings = {
@@ -21,6 +22,10 @@ export default function Index({ roles, filters }) {
 				settings={ settings }
 				filters={ filters }
 			/>
+
+			<section id="pagination">
+				<Pagination data={ roles.meta } />
+			</section>
 		</>
 	);
 }

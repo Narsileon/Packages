@@ -6,7 +6,6 @@ import { useHorizontalScroll } from "@/narsil-react";
 import TableBody from "./TableBody";
 import TableHead from "./TableHead";
 import ModalWindow from "@/Shared/ModalWindow";
-import Pagination from "@/Shared/Pagination";
 import SearchField from "@/Shared/SearchField";
 
 export default function Table({
@@ -60,10 +59,6 @@ export default function Table({
 						openModal={ openModal }
 					/>
 				</table>
-			</div>
-
-			<div>
-				<Pagination data={ collection.meta ? collection.meta : collection } />
 			</div>
 
 			{ show && (

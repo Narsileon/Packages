@@ -21,8 +21,7 @@ class FooterLinkController extends Controller
     {
         $faqs = Faq::latest()
             ->search(request('search'))
-            ->sort()
-            ->paginate();
+            ->sort();
 
         $filters = [
             'search' => Request::input('search'),

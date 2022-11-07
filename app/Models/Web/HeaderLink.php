@@ -34,8 +34,6 @@ class HeaderLink extends Model
         self::FIELD_ACTIVE
     ];
 
-    protected $perPage = 10;
-
     #endregion
 
     #region PROTECTED METHODS
