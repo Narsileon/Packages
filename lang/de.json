@@ -8,6 +8,7 @@
     "Delete :resource": ":Resource löschen",
     "Edit :resource": ":Resource bearbeiten",
     "List of :resource": "Liste der :resource",
+    "No :resource was found in the database": "Kein(e) :resource wurde in der Datenbank gefunden.",
     "Registration": "Registrierung",
     "Update :resource": ":Resource aktualisieren"
 }

@@ -1,20 +1,14 @@
 import { useState } from "react";
 import { useToggle } from "react-use";
 import { Inertia } from "@inertiajs/inertia";
-import { Link } from "@inertiajs/inertia-react";
 import { useHorizontalScroll } from "@/narsil-react";
 import TableBody from "./TableBody";
 import TableHead from "./TableHead";
 import ModalWindow from "@/Shared/ModalWindow";
-import SearchField from "@/Shared/SearchField";
 
 export default function Table({
-	title,
-	createLink,
-	createLabel,
 	data,
 	settings,
-	filters,
 }) {
 	const table = useHorizontalScroll();
 
@@ -27,24 +21,7 @@ export default function Table({
 	}
 
     return (
-		<>
-			<div className="md:flex md:justify-between mb-4">
-				<div className="md:flex md:items-end">
-					<h1 className="text-2xl">
-						{ title }
-					</h1>
-
-					<Link
-						href={ createLink }
-						className="text-green-500 hover:text-green-600 ml-4"
-					>
-						{ createLabel }
-					</Link>
-				</div>
-
-				<SearchField filters={ filters } />
-			</div>
-
+		<section id="table">
 			<div
 				className="border-2 border-color rounded overflow-x-scroll"
 				ref={ table }
@@ -69,6 +46,7 @@ export default function Table({
 					setShow={ setShow }
 				/>
 			)}
-		</>
+
+		</section>
     );
 }

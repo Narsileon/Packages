@@ -19,16 +19,17 @@ class FooterLinkController extends Controller
 
     public function index()
     {
-        $footerLinks = FooterLink::latest()
+        $links = FooterLink::latest()
             ->search(request('search'))
-            ->sort();
+            ->sort()
+            ->get();
 
         $filters = [
             'search' => Request::input('search'),
         ];
 
         return Inertia::render('Backoffice/FooterLinks/Index', compact(
-            'footerLinks',
+            'links',
             'filters',
         ));
     }

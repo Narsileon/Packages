@@ -15,10 +15,7 @@ export default function Dropdown({
     useClickAway(dropdown, () => setOpen(false));
 
     return (
-        <div
-            className="relative"
-            ref={ dropdown }
-        >
+        <div ref={ dropdown }>
             {/* Trigger */}
             <button
                 className={ `selectable w-full ${ triggerClasses } ${ open ? "selectable-active" : "" }` }

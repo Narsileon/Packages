@@ -8,6 +8,7 @@
     "Delete :resource": "Delete :resource",
     "Edit :resource": "Edit :resource",
     "List of :resource": "List of :resource",
+    "No :resource was found in the database": "No :resource was found in the database.",
     "Registration": "Registration",
     "Update :resource": "Update :resource"
 }
