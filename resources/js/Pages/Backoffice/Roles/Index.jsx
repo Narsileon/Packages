@@ -18,7 +18,7 @@ export default function Index({ roles, filters }) {
 				title={ trans('List of :resource', {'resource':transChoice('permissions.roles', 2)}) }
 				createLabel={ trans('Create :resource', {'resource': trans('permissions.new_role')}) }
 				createLink={ route('backoffice.roles.create') }
-				collection={ roles }
+				data={ roles.data }
 				settings={ settings }
 				filters={ filters }
 			/>

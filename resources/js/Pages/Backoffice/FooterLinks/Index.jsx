@@ -1,5 +1,5 @@
 import { Head } from "@inertiajs/inertia-react";
-import { trans } from "@/narsil-localization";
+import { trans, transChoice } from "@/narsil-localization";
 import Table from "@/Components/Tables/Table";
 
 export default function Index({ footerLinks, filters }) {

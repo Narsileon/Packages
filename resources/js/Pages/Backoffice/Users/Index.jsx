@@ -18,7 +18,7 @@ export default function Index({ users, filters }) {
 				title={ trans('List of :resource', {'resource':transChoice('common.users', 2)}) }
 				createLabel={ trans('Create :resource', {'resource': trans('common.new_user')}) }
 				createLink={ route('backoffice.users.create') }
-				collection={ users }
+				data={ users.data }
 				settings={ settings }
 				filters={ filters }
 			/>

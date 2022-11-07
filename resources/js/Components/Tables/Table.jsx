@@ -12,7 +12,7 @@ export default function Table({
 	title,
 	createLink,
 	createLabel,
-	collection,
+	data,
 	settings,
 	filters,
 }) {
@@ -51,10 +51,10 @@ export default function Table({
 			>
 				<table>
 					<TableHead
-						data={ collection.data }
+						data={ data }
 					/>
 					<TableBody
-						data={ collection.data }
+						data={ data }
 						settings={ settings }
 						openModal={ openModal }
 					/>
