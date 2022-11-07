@@ -26,7 +26,7 @@ class WebSeeder extends Seeder
 
     private function CreateFooterLinks()
     {
-        FooterLink::factory()->create([
+        FooterLink::create([
             FooterLink::FIELD_LABEL => 'FAQ',
             FooterLink::FIELD_URL => route('faq'),
             FooterLink::FIELD_ACTIVE => true,

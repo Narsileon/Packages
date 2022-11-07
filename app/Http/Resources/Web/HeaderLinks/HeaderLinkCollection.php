@@ -1,24 +1,24 @@
 <?php
 
-namespace App\Http\Resources\Web\Faqs;
+namespace App\Http\Resources\Web\HeaderLinks;
 
 #region USE
 
-use App\Models\Web\Faq;
+use App\Models\Web\HeaderLink;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
 #endregion
 
-class FaqCollection extends ResourceCollection
+class HeaderLinkCollection extends ResourceCollection
 {
     #region PUBLIC METHODS
 
     public function toArray($request)
     {
         return $this->collection->map->only(
-            Faq::FIELD_ID,
-            Faq::FIELD_QUESTION,
-            Faq::FIELD_ANSWER,
+            HeaderLink::FIELD_ID,
+            HeaderLink::FIELD_LABEL,
+            HeaderLink::FIELD_URL,
         );
     }
 

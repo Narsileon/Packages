@@ -15,6 +15,14 @@ return new class extends Migration
 
     public function up()
     {
+        Schema::create('header_links', function (Blueprint $table) {
+            $table->id();
+            $table->string(FooterLink::FIELD_LABEL);
+            $table->string(FooterLink::FIELD_URL);
+            $table->boolean(FooterLink::FIELD_ACTIVE);
+            $table->timestamps();
+        });
+
         Schema::create('footer_links', function (Blueprint $table) {
             $table->id();
             $table->string(FooterLink::FIELD_LABEL);
@@ -26,6 +34,7 @@ return new class extends Migration
 
     public function down()
     {
+        Schema::dropIfExists('header_links');
         Schema::dropIfExists('footer_links');
     }
 
