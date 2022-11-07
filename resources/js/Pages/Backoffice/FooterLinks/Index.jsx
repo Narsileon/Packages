@@ -17,7 +17,7 @@ export default function Index({ footerLinks, filters }) {
 				title={ trans('List of :resource', { 'resource':transChoice('common.footer_links', 2) }) }
 				createLabel={ trans('Create :resource', { 'resource':transChoice('common.footer_links', 1) }) }
 				createLink={ route('backoffice.footer_links.create') }
-				collection={ footerLinks }
+				data={ footerLinks.data }
 				settings={ settings }
 				filters={ filters }
 			/>

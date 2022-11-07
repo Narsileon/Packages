@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Backoffice;
 #region USE
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Backoffice\Faqs\FaqCreateRequest;
-use App\Http\Requests\Backoffice\Faqs\FaqUpdateRequest;
-use App\Models\Web\Faq;
+use App\Http\Requests\Backoffice\Faqs\HeaderLinkCreateRequest;
+use App\Http\Requests\Backoffice\Faqs\HeaderLinkUpdateRequest;
+use App\Models\Web\HeaderLink;
 use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
 
@@ -19,7 +19,7 @@ class HeaderLinkController extends Controller
 
     public function index()
     {
-        $faqs = Faq::latest()
+        $header_links = HeaderLink::latest()
             ->search(request('search'))
             ->sort();
 
@@ -28,7 +28,7 @@ class HeaderLinkController extends Controller
         ];
 
         return Inertia::render('Backoffice/HeaderLinks/Index', compact(
-            'faqs',
+            'header_links',
             'filters',
         ));
     }
@@ -38,41 +38,41 @@ class HeaderLinkController extends Controller
         return Inertia::render('Backoffice/HeaderLinks/Create');
     }
 
-    public function store(FaqCreateRequest $request)
+    public function store(HeaderLinkCreateRequest $request)
     {
         $attributes = $request->validated();
 
-        Faq::create($attributes);
+        HeaderLink::create($attributes);
 
         return redirect(route('backoffice.header_links.index'));
     }
 
-    public function show(Faq $faq)
+    public function show(HeaderLink $header_link)
     {
         return Inertia::render('Backoffice/HeaderLinks/Show', compact(
-            'faq',
+            'header_link',
         ));
     }
 
-    public function edit(Faq $faq)
+    public function edit(HeaderLink $header_link)
     {
         return Inertia::render('Backoffice/HeaderLinks/Edit', compact(
-            'faq'
+            'header_link'
         ));
     }
 
-    public function update(FaqUpdateRequest $request, Faq $faq)
+    public function update(HeaderLinkUpdateRequest $request, HeaderLink $header_link)
     {
         $attributes = $request->validated();
 
-        $faq->update($attributes);
+        $header_link->update($attributes);
 
         return redirect(route('backoffice.header_links.index'));
     }
 
-    public function destroy(Faq $faq)
+    public function destroy(HeaderLink $header_link)
     {
-        $faq->delete();
+        $header_link->delete();
 
         return back();
     }
