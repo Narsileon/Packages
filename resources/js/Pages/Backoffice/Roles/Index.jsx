@@ -37,12 +37,20 @@ export default function Index({ roles, filters }) {
 					</div>
 				</section>
 
-				<Table
-					data={ roles.data }
-					settings={ settings }
-				/>
+				{ roles.meta.items > 0 ? (
+					<>
+						<Table
+							data={ roles.data }
+							settings={ settings }
+						/>
 
-				<Pagination data={ roles.meta } />
+						<Pagination data={ roles.meta } />
+					</>
+				) : (
+					<div>
+						{ trans('No :resource was found in the database', { 'resource': transChoice('permissions.roles', 1) }) }
+					</div>
+				)}
 			</div>
 		</>
 	);

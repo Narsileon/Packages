@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Backoffice;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backoffice\Faqs\FaqCreateRequest;
 use App\Http\Requests\Backoffice\Faqs\FaqUpdateRequest;
+use App\Http\Resources\Backoffice\FaqCollection;
 use App\Models\Web\Faq;
 use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
@@ -19,10 +20,10 @@ class FaqController extends Controller
 
     public function index()
     {
-        $faqs = Faq::latest()
+        $faqs = new FaqCollection(Faq::query()
             ->search(request('search'))
             ->sort()
-            ->paginate();
+            ->paginate());
 
         $filters = [
             'search' => Request::input('search'),

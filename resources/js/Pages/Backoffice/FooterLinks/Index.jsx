@@ -4,7 +4,7 @@ import Table from "@/Components/Tables/Table";
 import Pagination from "@/Shared/Pagination";
 import SearchField from "@/Shared/SearchField";
 
-export default function Index({ links, filters }) {
+export default function Index({ footerLinks, filters }) {
 	const settings = {
 		link: "/backoffice/footer_links/",
 		editable: true,
@@ -13,7 +13,7 @@ export default function Index({ links, filters }) {
 
 	return (
 		<>
-			<Head title={ trans('FAQ') } />
+			<Head title={ transChoice('common.footer_links', 1) } />
 
 			<div className="space-y-4">
 				<section id="table-header">
@@ -31,24 +31,26 @@ export default function Index({ links, filters }) {
 								{ trans('Create :resource', { 'resource': trans('common.new_footer_link') }) }
 							</Link>
 						</div>
-						<div className="col-span-1 sm:col-span-2 md:col-span-1 md:order-1 place-self-center">
+						<div className="col-span-1 sm:col-span-2 md:col-span-1 md:order-1 place-self-center w-full">
 							<SearchField filters={ filters } />
 						</div>
 					</div>
 				</section>
 
-				{ links.data.length ? (
-					<Table
-						data={ links.data }
-						settings={ settings }
-					/>
-				) : (
-					<span>
-						{ trans('No :resource was found in the database', { 'resource': transChoice('common.footer_links', 1) }) }
-					</span>
-				)}
+				{ footerLinks.meta.items > 0 ? (
+					<>
+						<Table
+							data={ footerLinks.data }
+							settings={ settings }
+						/>
 
-				<Pagination data={ links } />
+						<Pagination data={ footerLinks.meta } />
+					</>
+				) : (
+					<div>
+						{ trans('No :resource was found in the database', { 'resource': transChoice('common.footer_links', 1) }) }
+					</div>
+				)}
 			</div>
 		</>
 	);

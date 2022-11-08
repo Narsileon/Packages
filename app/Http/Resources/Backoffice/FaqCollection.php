@@ -1,26 +1,25 @@
 <?php
 
-namespace App\Http\Resources\Backoffice\Users;
+namespace App\Http\Resources\Backoffice;
 
 #region USE
 
-use App\Models\UserRole;
+use App\Models\Web\Faq;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Support\Facades\DB;
 
 #endregion
 
-class UserRoleCollection extends ResourceCollection
+class FaqCollection extends ResourceCollection
 {
     #region PUBLIC METHODS
 
     public function toArray($request)
     {
         return $this->collection->map->only(
-            UserRole::FIELD_ID,
-            UserRole::FIELD_NAME,
-            UserRole::CREATED_AT,
-            UserRole::UPDATED_AT,
+            Faq::FIELD_ID,
+            Faq::FIELD_QUESTION,
+            Faq::FIELD_ANSWER,
         );
     }
 
@@ -28,7 +27,7 @@ class UserRoleCollection extends ResourceCollection
     {
         return [
             'meta' => [
-                'items' => DB::table('roles')->count(),
+                'items' => DB::table('faqs')->count(),
             ],
         ];
     }

@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Backoffice;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backoffice\Faqs\FooterLinkCreateRequest;
 use App\Http\Requests\Backoffice\Faqs\FooterLinkUpdateRequest;
+use App\Http\Resources\Backoffice\FooterLinkCollection;
 use App\Models\Web\FooterLink;
 use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
@@ -19,17 +20,17 @@ class FooterLinkController extends Controller
 
     public function index()
     {
-        $links = FooterLink::latest()
+        $footerLinks = new FooterLinkCollection(FooterLink::query()
             ->search(request('search'))
             ->sort()
-            ->paginate();
+            ->paginate());
 
         $filters = [
             'search' => Request::input('search'),
         ];
 
         return Inertia::render('Backoffice/FooterLinks/Index', compact(
-            'links',
+            'footerLinks',
             'filters',
         ));
     }

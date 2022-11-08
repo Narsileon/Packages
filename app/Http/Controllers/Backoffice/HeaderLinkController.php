@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Backoffice;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backoffice\Faqs\HeaderLinkCreateRequest;
 use App\Http\Requests\Backoffice\Faqs\HeaderLinkUpdateRequest;
+use App\Http\Resources\Backoffice\HeaderLinkCollection;
 use App\Models\Web\HeaderLink;
 use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
@@ -19,17 +20,17 @@ class HeaderLinkController extends Controller
 
     public function index()
     {
-        $header_links = HeaderLink::latest()
+        $headerLinks = new HeaderLinkCollection(HeaderLink::query()
             ->search(request('search'))
             ->sort()
-            ->paginate();
+            ->paginate());
 
         $filters = [
             'search' => Request::input('search'),
         ];
 
         return Inertia::render('Backoffice/HeaderLinks/Index', compact(
-            'header_links',
+            'headerLinks',
             'filters',
         ));
     }

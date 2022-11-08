@@ -31,18 +31,26 @@ export default function Index({ faqs, filters }) {
 								{ trans('Create :resource', { 'resource': trans('common.new_faq') }) }
 							</Link>
 						</div>
-						<div className="col-span-1 sm:col-span-2 md:col-span-1 md:order-1 place-self-center">
+						<div className="col-span-1 sm:col-span-2 md:col-span-1 md:order-1 place-self-center w-full">
 							<SearchField filters={ filters } />
 						</div>
 					</div>
 				</section>
 
-				<Table
-					data={ faqs.data }
-					settings={ settings }
-				/>
+				{ faqs.meta.items > 0 ? (
+					<>
+						<Table
+							data={ faqs.data }
+							settings={ settings }
+						/>
 
-				<Pagination data={ faqs } />
+						<Pagination data={ faqs.meta } />
+					</>
+				) : (
+					<div>
+						{ trans('No :resource was found in the database', { 'resource': trans('common.faq') }) }
+					</div>
+				)}
 			</div>
 		</>
 	);

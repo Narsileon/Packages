@@ -36,12 +36,20 @@ export default function Index({ users, fields, filters }) {
 					</div>
 				</section>
 
-				<Table
-					data={ users.data }
-					settings={ settings }
-				/>
+				{ users.meta.items > 0 ? (
+					<>
+						<Table
+							data={ users.data }
+							settings={ settings }
+						/>
 
-				<Pagination data={ users.meta } />
+						<Pagination data={ users.meta } />
+					</>
+				) : (
+					<div>
+						{ trans('No :resource was found in the database', { 'resource': transChoice('common.users', 1) }) }
+					</div>
+				)}
 			</div>
 		</>
 	);
