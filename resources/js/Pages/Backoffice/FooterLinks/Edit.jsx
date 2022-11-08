@@ -1,9 +1,9 @@
 import { Head, useForm } from "@inertiajs/inertia-react";
-import { trans } from "@/narsil-localization";
+import { trans, transChoice } from "@/narsil-localization";
 import Formular from "./Formular";
 
 export default function Edit({ footerLink }) {
-	const title = t('Edit :resource', { 'resource':transChoice('common.footer_links', 1) });
+	const title = trans('Edit :resource', { 'resource': transChoice('common.footer_links', 1) });
 
     const { data, setData, patch, processing, errors } = useForm({
         question: faq.question,

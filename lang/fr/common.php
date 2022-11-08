@@ -28,6 +28,7 @@ return [
     'management'        => 'gestion',
     'menu'              => 'menu',
     'new_category'      => 'une nouvelle catégorie',
+    'new_faq'           => 'une nouvelle FAQ',
     'new_footer_link'   => 'un nouveau lien de pied de page',
     'new_header_link'   => 'un nouveau lien d\'en-tête',
     'new_order'         => 'une nouvelle commande',

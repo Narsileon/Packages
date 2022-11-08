@@ -3,7 +3,7 @@ import { trans } from "@/narsil-localization";
 import Formular from "./Formular";
 
 export default function Create() {
-	const title = t('Create :resource', { 'resource':transChoice('common.footer_links', 1) });
+	const title = trans('Create :resource', { 'resource':transChoice('common.footer_links', 1) });
 
 	const { data, setData, post, processing, errors } = useForm({
         question: '',

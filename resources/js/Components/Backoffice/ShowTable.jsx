@@ -23,7 +23,7 @@ export default function ShowTable({
                     <div>
                         <div className="space-x-1">
                             <span>
-                                { upperFirst(trans('validation.attributes.created_at')) + t(':') }
+                                { upperFirst(trans('validation.attributes.created_at')) + trans(':') }
                             </span>
                             <span>
                                 { data.created_at }
@@ -31,7 +31,7 @@ export default function ShowTable({
                         </div>
                         <div className="space-x-1">
                             <span>
-                                { upperFirst(trans('validation.attributes.updated_at')) + t(':') }
+                                { upperFirst(trans('validation.attributes.updated_at')) + trans(':') }
                             </span>
                             <span>
                                 { data.updated_at }

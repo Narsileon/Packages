@@ -22,7 +22,7 @@ class FooterLinkController extends Controller
         $links = FooterLink::latest()
             ->search(request('search'))
             ->sort()
-            ->get();
+            ->paginate();
 
         $filters = [
             'search' => Request::input('search'),
@@ -48,32 +48,32 @@ class FooterLinkController extends Controller
         return redirect(route('backoffice.footer_links.index'));
     }
 
-    public function show(FooterLink $footer_link)
+    public function show(FooterLink $footerLink)
     {
         return Inertia::render('Backoffice/FooterLinks/Show', compact(
-            'footer_link',
+            'footerLink',
         ));
     }
 
-    public function edit(FooterLink $footer_link)
+    public function edit(FooterLink $footerLink)
     {
         return Inertia::render('Backoffice/FooterLinks/Edit', compact(
-            'footer_link'
+            'footerLink'
         ));
     }
 
-    public function update(FooterLinkUpdateRequest $request, FooterLink $footer_link)
+    public function update(FooterLinkUpdateRequest $request, FooterLink $footerLink)
     {
         $attributes = $request->validated();
 
-        $footer_link->update($attributes);
+        $footerLink->update($attributes);
 
         return redirect(route('backoffice.footer_links.index'));
     }
 
-    public function destroy(FooterLink $footer_link)
+    public function destroy(FooterLink $footerLink)
     {
-        $footer_link->delete();
+        $footerLink->delete();
 
         return back();
     }

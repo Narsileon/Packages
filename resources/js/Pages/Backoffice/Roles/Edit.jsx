@@ -3,7 +3,7 @@ import { trans, transChoice } from "@/narsil-localization";
 import Formular from "./Formular";
 
 export default function Edit({ role, permissions }) {
-	const title = t('Edit :resource', { 'resource':transChoice('permissions.roles', 1) });
+	const title = trans('Edit :resource', { 'resource':transChoice('permissions.roles', 1) });
 
 	function initializeObject(collection) {
 		let object = {};

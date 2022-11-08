@@ -13,6 +13,8 @@ export default function Index({ links, filters }) {
 		<>
 			<Head title={ trans('FAQ') } />
 
+
+
 			{ links ? (
 				<Table
 					title={ trans('List of :resource', { 'resource': transChoice('common.header_links', 2) }) }

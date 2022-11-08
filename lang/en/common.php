@@ -28,6 +28,7 @@ return [
     'management'        => 'management',
     'menu'              => 'menu',
     'new_category'      => 'a new category',
+    'new_faq'           => 'a new FAQ',
     'new_footer_link'   => 'a new footer link',
     'new_header_link'   => 'a new header link',
     'new_order'         => 'a new order',

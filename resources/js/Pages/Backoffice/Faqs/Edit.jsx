@@ -3,7 +3,7 @@ import { trans } from "@/narsil-localization";
 import Formular from "./Formular";
 
 export default function Edit({ faq }) {
-	const title = t('Edit :resource', { 'resource': trans('FAQ') });
+	const title = trans('Edit :resource', { 'resource': trans('FAQ') });
 
     const { data, setData, patch, processing, errors } = useForm({
         question: faq.question,

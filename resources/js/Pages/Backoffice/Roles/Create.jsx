@@ -3,7 +3,7 @@ import { trans } from "@/narsil-localization";
 import Formular from "./Formular";
 
 export default function Create({ permissions }) {
-	const title = t('Create :resource', {'resource': trans('permissions.new_role')});
+	const title = trans('Create :resource', {'resource': trans('permissions.new_role')});
 
 	function initializeObject(collection) {
 		let object = {};

@@ -28,6 +28,7 @@ return [
     'management'        => 'Verwaltung',
     'menu'              => 'Menü',
     'new_category'      => 'eine neue Kategorie',
+    'new_faq'           => 'eine neue FAQ',
     'new_footer_link'   => 'einen neuen Footer-Link',
     'new_header_link'   => 'einen neuen Header-Link',
     'new_order'         => 'einen neuen Auftrag',

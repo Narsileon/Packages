@@ -18,7 +18,7 @@ export default function Show({ role }) {
                 <div className="grid grid-cols-4 gap-y-4">
                     <div className="col-span-4 space-x-1">
                         <span>
-                            { upperFirst(trans('validation.attributes.id')) + t(':') }
+                            { upperFirst(trans('validation.attributes.id')) + trans(':') }
                         </span>
                         <span>
                             { role.data.id }
@@ -26,7 +26,7 @@ export default function Show({ role }) {
                     </div>
                     <div className="col-span-4 space-x-1">
                         <span>
-                            { upperFirst(trans('validation.attributes.name')) + t(':') }
+                            { upperFirst(trans('validation.attributes.name')) + trans(':') }
                         </span>
                         <span>
                             { role.data.name }

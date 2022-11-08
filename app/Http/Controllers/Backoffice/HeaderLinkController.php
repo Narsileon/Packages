@@ -21,7 +21,8 @@ class HeaderLinkController extends Controller
     {
         $header_links = HeaderLink::latest()
             ->search(request('search'))
-            ->sort();
+            ->sort()
+            ->paginate();
 
         $filters = [
             'search' => Request::input('search'),
@@ -47,32 +48,32 @@ class HeaderLinkController extends Controller
         return redirect(route('backoffice.header_links.index'));
     }
 
-    public function show(HeaderLink $header_link)
+    public function show(HeaderLink $headerLink)
     {
         return Inertia::render('Backoffice/HeaderLinks/Show', compact(
-            'header_link',
+            'headerLink',
         ));
     }
 
-    public function edit(HeaderLink $header_link)
+    public function edit(HeaderLink $headerLink)
     {
         return Inertia::render('Backoffice/HeaderLinks/Edit', compact(
-            'header_link'
+            'headerLink'
         ));
     }
 
-    public function update(HeaderLinkUpdateRequest $request, HeaderLink $header_link)
+    public function update(HeaderLinkUpdateRequest $request, HeaderLink $headerLink)
     {
         $attributes = $request->validated();
 
-        $header_link->update($attributes);
+        $headerLink->update($attributes);
 
         return redirect(route('backoffice.header_links.index'));
     }
 
-    public function destroy(HeaderLink $header_link)
+    public function destroy(HeaderLink $headerLink)
     {
-        $header_link->delete();
+        $headerLink->delete();
 
         return back();
     }
