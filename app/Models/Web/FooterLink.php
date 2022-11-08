@@ -4,9 +4,9 @@ namespace App\Models\Web;
 
 #region USE
 
+use App\Traits\IsBaseModel;
 use App\Traits\IsFilterable;
 use App\Traits\IsSortable;
-use DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class FooterLink extends Model
 {
-    use HasFactory, IsFilterable, IsSortable;
+    use HasFactory, IsBaseModel, IsFilterable, IsSortable;
 
     #region CONSTANTS
 
@@ -33,15 +33,6 @@ class FooterLink extends Model
         self::FIELD_URL,
         self::FIELD_ACTIVE
     ];
-
-    #endregion
-
-    #region PROTECTED METHODS
-
-    protected function serializeDate(DateTimeInterface $date)
-    {
-        return $date->format('Y-m-d H:i:s');
-    }
 
     #endregion
 }

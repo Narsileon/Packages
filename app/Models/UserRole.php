@@ -4,6 +4,7 @@ namespace App\Models;
 
 #region USE
 
+use App\Traits\IsBaseModel;
 use App\Traits\IsFilterable;
 use App\Traits\IsSortable;
 use Spatie\Permission\Models\Role;
@@ -12,7 +13,7 @@ use Spatie\Permission\Models\Role;
 
 class UserRole extends Role
 {
-    use IsFilterable, IsSortable;
+    use IsBaseModel, IsFilterable, IsSortable;
 
     #region CONSTANTS
 
@@ -26,10 +27,10 @@ class UserRole extends Role
 
     #region FIELDS
 
-    protected $fillable = 
+    protected $fillable =
     [
-        self::FIELD_NAME, 
-        self::FIELD_GUARD,   
+        self::FIELD_NAME,
+        self::FIELD_GUARD,
     ];
 
     protected $perPage = 100;

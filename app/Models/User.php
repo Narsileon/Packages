@@ -5,6 +5,7 @@ namespace App\Models;
 #region USE
 
 use App\Constants\CastTypes;
+use App\Traits\IsBaseModel;
 use App\Traits\IsFilterable;
 use App\Traits\IsSortable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -17,7 +18,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, HasRoles, IsFilterable, IsSortable, Notifiable;
+    use HasApiTokens, HasFactory, HasRoles, IsBaseModel, IsFilterable, IsSortable, Notifiable;
 
     #region CONSTANTS
 
@@ -37,13 +38,13 @@ class User extends Authenticatable
 
     #region FIELDS
 
-    protected $fillable = 
+    protected $fillable =
     [
         self::FIELD_USERNAME,
         self::FIELD_EMAIL,
         self::FIELD_PASSWORD,
         self::FIELD_LAST_NAME,
-        self::FIELD_FIRST_NAME,        
+        self::FIELD_FIRST_NAME,
     ];
 
     protected $hidden =

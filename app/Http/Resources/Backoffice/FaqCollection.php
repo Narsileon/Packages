@@ -20,6 +20,9 @@ class FaqCollection extends ResourceCollection
             Faq::FIELD_ID,
             Faq::FIELD_QUESTION,
             Faq::FIELD_ANSWER,
+
+            Faq::CREATED_AT,
+            Faq::UPDATED_AT,
         );
     }
 
