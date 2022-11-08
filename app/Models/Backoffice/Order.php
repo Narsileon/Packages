@@ -4,6 +4,7 @@ namespace App\Models\Backoffice;
 
 #region USE
 
+use App\Traits\IsBaseModel;
 use App\Traits\IsFilterable;
 use App\Traits\IsSortable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -13,7 +14,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    use HasFactory, IsFilterable, IsSortable;
+    use HasFactory, IsBaseModel, IsFilterable, IsSortable;
 
     #region CONSTANTS
 

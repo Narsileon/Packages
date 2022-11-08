@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Backoffice;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backoffice\Faqs\FaqCreateRequest;
 use App\Http\Requests\Backoffice\Faqs\FaqUpdateRequest;
+use App\Http\Resources\Backoffice\Orders\OrderCollection;
 use App\Models\Backoffice\Order;
 use App\Models\Web\Faq;
 use Illuminate\Support\Facades\Request;
@@ -18,10 +19,10 @@ class OrderController extends Controller
 {
     public function index()
     {
-        $orders = Order::latest()
+        $orders = new OrderCollection(Order::query()
             ->search(request('search'))
             ->sort()
-            ->paginate();
+            ->paginate());
 
         $filters = [
             'search' => Request::input('search'),
