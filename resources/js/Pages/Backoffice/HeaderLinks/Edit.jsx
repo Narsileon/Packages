@@ -8,6 +8,7 @@ export default function Edit({ headerLink }) {
     const { data, setData, patch, processing, errors } = useForm({
         label: headerLink.label,
         url: headerLink.url,
+		active: headerLink.active,
     });
 
     return (
@@ -17,7 +18,7 @@ export default function Edit({ headerLink }) {
 			<Formular
 				title= { title }
 				label= { trans('Update') }
-				submit= { () => patch('/backoffice/header_link/' + headerLink.id) }
+				submit= { () => patch('/backoffice/header_links/' + headerLink.id) }
 				data={ data }
 				setData={ setData }
 				processing={ processing }

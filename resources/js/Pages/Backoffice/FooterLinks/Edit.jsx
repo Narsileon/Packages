@@ -8,6 +8,7 @@ export default function Edit({ footerLink }) {
     const { data, setData, patch, processing, errors } = useForm({
         label: footerLink.label,
         url: footerLink.url,
+		active: footerLink.active,
     });
 
     return (

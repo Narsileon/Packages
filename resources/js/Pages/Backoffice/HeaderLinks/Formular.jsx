@@ -1,5 +1,5 @@
 import { trans } from "@/narsil-localization";
-import { Form, FormFooter, FormHeader, FormInput } from "@/Components/Forms";
+import { Form, FormCheckbox, FormFooter, FormHeader, FormInput } from "@/Components/Forms";
 
 export default function Formular({
     title,
@@ -28,6 +28,13 @@ export default function Formular({
                 label={ trans('validation.attributes.url') }
                 value={ data.url }
                 error={ errors.url }
+                setData={ setData }
+            />
+            <FormCheckbox
+                id="active"
+                label={ trans('validation.attributes.active') }
+                checked={ data.active }
+                error={ errors.active }
                 setData={ setData }
             />
         </Form>
