@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Backoffice;
 #region USE
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Backoffice\Faqs\HeaderLinkCreateRequest;
-use App\Http\Requests\Backoffice\Faqs\HeaderLinkUpdateRequest;
-use App\Http\Resources\Backoffice\HeaderLinkCollection;
+use App\Http\Requests\Backoffice\Links\HeaderLinkCreateRequest;
+use App\Http\Requests\Backoffice\Links\HeaderLinkUpdateRequest;
+use App\Http\Resources\Backoffice\Links\HeaderLinkCollection;
 use App\Models\Web\HeaderLink;
 use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;

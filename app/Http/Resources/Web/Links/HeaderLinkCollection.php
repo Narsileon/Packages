@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources\Web\HeaderLinks;
+namespace App\Http\Resources\Web\Links;
 
 #region USE
 

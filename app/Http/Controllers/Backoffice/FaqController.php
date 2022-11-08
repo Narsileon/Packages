@@ -7,7 +7,7 @@ namespace App\Http\Controllers\Backoffice;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backoffice\Faqs\FaqCreateRequest;
 use App\Http\Requests\Backoffice\Faqs\FaqUpdateRequest;
-use App\Http\Resources\Backoffice\FaqCollection;
+use App\Http\Resources\Backoffice\Faqs\FaqCollection;
 use App\Models\Web\Faq;
 use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;

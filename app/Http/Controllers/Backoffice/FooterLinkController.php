@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Backoffice;
 #region USE
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Backoffice\Faqs\FooterLinkCreateRequest;
-use App\Http\Requests\Backoffice\Faqs\FooterLinkUpdateRequest;
-use App\Http\Resources\Backoffice\FooterLinkCollection;
+use App\Http\Requests\Backoffice\Links\FooterLinkCreateRequest;
+use App\Http\Requests\Backoffice\Links\FooterLinkUpdateRequest;
+use App\Http\Resources\Backoffice\Links\FooterLinkCollection;
 use App\Models\Web\FooterLink;
 use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
