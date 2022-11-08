@@ -2,27 +2,25 @@
 
 namespace App\Providers;
 
+#region USE
+
 use Illuminate\Support\ServiceProvider;
+
+#endregion
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
+    #region PUBLIC METHODS
+
     public function register()
     {
-        //
+
     }
 
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
     public function boot()
     {
-        //
+
     }
+
+    #endregion
 }
