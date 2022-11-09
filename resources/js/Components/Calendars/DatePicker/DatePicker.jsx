@@ -66,7 +66,7 @@ export default function Datepicker({ setExternalDate, getExternalDate }) {
                         <div className="flex items-center justify-between p-2">
                             <div className="text-left font-bold">
                                 {
-                                    t(`date-time.months.${ months[date.getMonth()] }`) + " " + date.getFullYear()
+                                    trans(`date-time.months.${ months[date.getMonth()] }`) + " " + date.getFullYear()
                                 }
                             </div>
                             <div className="flex space-x-3">
@@ -90,7 +90,7 @@ export default function Datepicker({ setExternalDate, getExternalDate }) {
                                                         key={ index }
                                                     >
                                                         <span className="flex items-center justify-center w-3 aspect-square rounded-full">
-                                                            { (t(`date-time.days.${ label }`)).slice(0, 2) }
+                                                            { trans(`date-time.days.${ label }`).slice(0, 2) }
                                                         </span>
                                                     </th>
                                                 );
