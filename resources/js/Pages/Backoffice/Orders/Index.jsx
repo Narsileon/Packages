@@ -28,10 +28,10 @@ export default function Index({ orders, filters }) {
 								className="primary-button whitespace-nowrap"
 								href={ route('backoffice.orders.create') }
 							>
-								{ trans('Create :resource', { 'resource': transChoice('common.orders', 1) }) }
+								{ trans('Create :resource', { 'resource': trans('common.new_order') }) }
 							</Link>
 						</div>
-						<div className="col-span-1 sm:col-span-2 md:col-span-1 md:order-1 place-self-center">
+						<div className="col-span-1 sm:col-span-2 md:col-span-1 md:order-1 place-self-center w-full">
 							<SearchField filters={ filters } />
 						</div>
 					</div>

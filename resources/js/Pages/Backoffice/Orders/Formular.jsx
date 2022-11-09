@@ -17,17 +17,17 @@ export default function Formular({
             submit={ submit }
         >
             <FormInput
-                id="question"
-                label={ trans('validation.attributes.question') }
-                value={ data.question }
-                error={ errors.question }
+                id="type"
+                label={ trans('validation.attributes.type') }
+                value={ data.type }
+                error={ errors.type }
                 setData={ setData }
             />
             <FormInput
-                id="answer"
-                label={ trans('validation.attributes.answer') }
-                value={ data.answer }
-                error={ errors.answer }
+                id="status"
+                label={ trans('validation.attributes.status') }
+                value={ data.status }
+                error={ errors.status }
                 setData={ setData }
             />
         </Form>

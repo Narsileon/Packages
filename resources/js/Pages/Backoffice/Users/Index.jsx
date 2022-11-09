@@ -30,7 +30,7 @@ export default function Index({ users, fields, filters }) {
 								{ trans('Create :resource', {'resource': trans('common.new_user')}) }
 							</Link>
 						</div>
-						<div className="col-span-1 sm:col-span-2 md:col-span-1 md:order-1 place-self-center">
+						<div className="col-span-1 sm:col-span-2 md:col-span-1 md:order-1 place-self-center w-full">
 							<SearchField filters={ filters } />
 						</div>
 					</div>
