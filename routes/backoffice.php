@@ -24,7 +24,11 @@ Route::group([
     // Management
     Route::resource('users', UserController::class);
     Route::resource('roles', RoleController::class);
-    Route::get('languages', LanguageController::class)->name('languages');
+
+    Route::controller(LanguageController::class)->group(function () {
+        Route::get('languages', 'index')->name('languages');
+        Route::post('languages', 'update');
+    });
 
     // Backoffice
     Route::get('dashboard', DashboardController::class)->name('dashboard');

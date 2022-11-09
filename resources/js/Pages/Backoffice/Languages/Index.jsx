@@ -8,6 +8,8 @@ import { upperFirst } from "lodash";
 import { useState } from "react";
 
 export default function Index({ locales, filters }) {
+	const [data, setData] = useState(locales);
+
 	const [tableData, handleSorting] = useFrontSortableTable(locales)
 
 	const [sortField, setSortField] = useState("");

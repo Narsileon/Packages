@@ -20,5 +20,6 @@ Route::controller(LoginController::class)->middleware('guest')->group(function (
     Route::post('login', 'store');
 });
 
-Route::get('locales/{locale}', LocaleController::class)->name('locale');
 Route::post('logout', LogoutController::class)->name('logout');
+
+Route::get('locales/{locale}', LocaleController::class)->name('locale');

@@ -15,11 +15,9 @@ class LanguageController extends Controller
 {
     #region PUBLIC METHODS
 
-    public function __invoke()
+    public function index()
     {
-        $locales = Locale::search(request('search'))
-            ->sort()
-            ->get();
+        $locales = Locale::search(request('search'))->get();
 
         $filters = [
             'search' => Request::input('search'),
@@ -29,6 +27,17 @@ class LanguageController extends Controller
             'locales',
             'filters',
         ));
+    }
+
+    public function update($request)
+    {
+        foreach($request as $item)
+        {
+            $attributes = $request->validated();
+            $item->update($attributes);
+        }
+
+        return redirect(route('backoffice.orders.index'));
     }
 
     #endregion
