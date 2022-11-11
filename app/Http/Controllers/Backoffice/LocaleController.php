@@ -5,13 +5,16 @@ namespace App\Http\Controllers\Backoffice;
 #region USE
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Backoffice\Locales\LocaleUpdateRequest;
 use App\Models\Session\Locale;
+use Illuminate\Http\Request as HttpRequest;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
 
 #endregion
 
-class LanguageController extends Controller
+class LocaleController extends Controller
 {
     #region PUBLIC METHODS
 
@@ -29,15 +32,13 @@ class LanguageController extends Controller
         ));
     }
 
-    public function update($request)
+    public function update(HttpRequest $request)
     {
-        foreach($request as $item)
-        {
-            $attributes = $request->validated();
-            $item->update($attributes);
-        }
+        $request->collect()->each(function($locale) {
+            Locale::where(Locale::FIELD_ID, $locale[Locale::FIELD_ID])->update($locale);
+        });
 
-        return redirect(route('backoffice.orders.index'));
+        return redirect(route('backoffice.languages'));
     }
 
     #endregion

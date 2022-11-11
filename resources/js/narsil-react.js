@@ -94,7 +94,7 @@ export const useFrontSortableTable = (data) => {
         }
     };
 
-    return [tableData, handleSorting];
+    return [tableData, setTableData, handleSorting];
 }
 
 // Scroll to...

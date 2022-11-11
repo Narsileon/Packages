@@ -1,26 +1,44 @@
+import { useEffect, useState } from "react";
+import { Inertia } from "@inertiajs/inertia";
 import { Head } from "@inertiajs/inertia-react";
 import { trans, transChoice } from "@/narsil-localization";
-import { useFrontSortableTable, useSort } from "@/narsil-react";
+import { useFrontSortableTable } from "@/narsil-react";
+import { upperFirst } from "lodash";
 import SortButton from "@/Components/Elements/Buttons/SortButton";
 import SearchField from "@/Shared/SearchField";
 import Toggle from "@/Components/Elements/Toggle";
-import { upperFirst } from "lodash";
-import { useState } from "react";
+import { usePrevious } from "react-use";
+
 
 export default function Index({ locales, filters }) {
-	const [data, setData] = useState(locales);
+	const [tableData, setTableData, handleSorting] = useFrontSortableTable(locales)
 
-	const [tableData, handleSorting] = useFrontSortableTable(locales)
+	const previous = usePrevious(tableData);
 
 	const [sortField, setSortField] = useState("");
  	const [order, setOrder] = useState("asc");
 
-	 const handleSortingChange = (accessor) => {
+	function handleChange(event, id) {
+		let data = [...tableData];
+
+		let result = data.find(x => x.id == id);
+		result.active = !result.active;
+
+		setTableData(data);
+	}
+
+	const handleSortingChange = (accessor) => {
 		const sortOrder = accessor === sortField && order === "asc" ? "desc" : "asc";
 		setSortField(accessor);
 		setOrder(sortOrder);
 		handleSorting(accessor, sortOrder);
 	};
+
+	useEffect(() => {
+		if (previous) {
+			Inertia.patch(route('backoffice.languages'), tableData);
+		}
+    }, [tableData]);
 
 	return (
 		<>
@@ -81,18 +99,21 @@ export default function Index({ locales, filters }) {
 							{
 								tableData.map((data) => {
 									return (
-										<tr key={ data['id']}>
+										<tr key={ data.id }>
 											<td>
-												{ data['id'] }
+												{ data.id }
 											</td>
 											<td>
-												{ data['locale'] }
+												{ data.locale }
 											</td>
 											<td>
-												{ trans(`locales.${ data['locale'] }`) }
+												{ trans(`locales.${ data.locale }`) }
 											</td>
 											<td>
-												<Toggle value={ data['active'] } />
+												<Toggle
+													value={ data['active'] }
+													onChange={ (event) => handleChange(event, data.id) }
+												/>
 											</td>
 										</tr>
 									);
