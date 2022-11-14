@@ -4,9 +4,9 @@ namespace App\Localization;
 
 #region USE
 
+use App\Models\Session\Locale;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
 
 #endregion
@@ -15,16 +15,16 @@ abstract class Localization
 {
     #region PUBLIC METHODS
 
-    public static function get() 
+    public static function get()
     {
-        $availableLocales = Config::get('app.available_locales');
+        $locales = Locale::where('active', 1)->pluck('locale')->toArray();
         $locale = App::getLocale();
-        $strings = self::getLocalization($locale);
+        $dictionary = self::getLocalization($locale);
 
         return compact(
-            'availableLocales',
+            'locales',
             'locale',
-            'strings',
+            'dictionary',
         );
     }
 
@@ -32,19 +32,19 @@ abstract class Localization
 
     #region PRIVATE METHODS
 
-    private static function getLocalization($locale) 
+    private static function getLocalization($locale)
     {
-        return Cache::remember('localization_' . $locale, 600, function() use($locale) 
+        return Cache::remember('localization_' . $locale, 600, function() use($locale)
         {
             $phpLocalization = self::getPhpLocalization($locale);
             $jsonLocalization = self::getJsonLocalization($locale);
-        
-            return array_merge($phpLocalization, $jsonLocalization); 
+
+            return array_merge($phpLocalization, $jsonLocalization);
         });
     }
 
     private static function getPhpLocalization($locale) : array
-    {       
+    {
         $translationFiles = File::exists(lang_path($locale)) ? File::files(lang_path($locale)) : File::files(lang_path('en'));
 
         return collect($translationFiles)

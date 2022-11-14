@@ -32,7 +32,7 @@ const transChoice = (key, count, replacements = null) => {
 //#region PRIVATE METHODS
 
 function localize(key) {
-    let table = usePage().props.localization.strings;
+    let table = usePage().props.localization.dictionary;
 
     if (key.slice(0, -1).includes('.')) {
         return localizeNestedKey(table, key);

@@ -5,14 +5,14 @@ import { Dropdown, DropdownItem, DropdownPanel } from "@/Components/Elements/Dro
 import Flag from "@/Shared/Svg/Flag";
 
 export default function LocaleDropdown() {
-    const { locale, availableLocales} = usePage().props.localization;
+    const { locale, locales } = usePage().props.localization;
 
     return (
         <Dropdown trigger={ upperCase(locale) }>
             <DropdownPanel>
                 <div>
                     {
-                        availableLocales.map(availableLocale => {
+                        locales.map(availableLocale => {
                             return (
                                 <DropdownItem
                                     href={ `/locales/${availableLocale}` }
