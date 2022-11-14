@@ -5,7 +5,7 @@ return [
     'active'            => 'active',
     'add'               => 'add',
     'back'              => 'back',
-    'backoffice'        => 'backoffice',
+    'backoffice'        => 'back office',
     'cancel'            => 'cancel',
     'categories'        => 'category|categories',
     'code'              => 'code',
@@ -19,6 +19,7 @@ return [
     'edit'              => 'edit',
     'faq'               => 'FAQ',
     'footer_links'      => 'footer link|footer links',
+    'frontoffice'       => 'front office',
     'header_links'      => 'header link|header links',
     'home'              => 'home',
     'id'                => 'ID',
@@ -44,6 +45,5 @@ return [
     'update'            => 'update',
     'users'             => 'user|users',
     'values'            => 'value|values',
-    'web'               => 'web',
     'yes'               => 'yes',
 ];

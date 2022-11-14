@@ -26,7 +26,7 @@ export default function Index({ footerLinks, filters }) {
 						<div className="col-span-1 md:order-2 self-center place-self-end">
 							<Link
 								className="primary-button whitespace-nowrap"
-								href={ route('backoffice.footer_links.create') }
+								href={ route('admin.footer_links.create') }
 							>
 								{ trans('Create :resource', { 'resource': trans('common.new_footer_link') }) }
 							</Link>

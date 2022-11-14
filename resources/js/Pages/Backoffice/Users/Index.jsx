@@ -25,7 +25,7 @@ export default function Index({ users, fields, filters }) {
 						<div className="col-span-1 md:order-2 self-center place-self-end">
 							<Link
 								className="primary-button whitespace-nowrap"
-								href={ route('backoffice.users.create') }
+								href={ route('admin.users.create') }
 							>
 								{ trans('Create :resource', {'resource': trans('common.new_user')}) }
 							</Link>

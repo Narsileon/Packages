@@ -26,7 +26,7 @@ export default function Index({ headerLinks, filters }) {
 						<div className="col-span-1 md:order-2 self-center place-self-end">
 							<Link
 								className="primary-button whitespace-nowrap"
-								href={ route('backoffice.header_links.create') }
+								href={ route('admin.header_links.create') }
 							>
 								{ trans('Create :resource', { 'resource': trans('common.new_header_link') }) }
 							</Link>

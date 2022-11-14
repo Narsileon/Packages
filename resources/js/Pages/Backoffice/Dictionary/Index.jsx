@@ -35,7 +35,7 @@ export default function Index({ localizations, filters }) {
 
 	useEffect(() => {
 		if (previous) {
-			Inertia.patch(route('backoffice.languages'), tableData);
+			Inertia.patch(route('admin.languages'), tableData);
 		}
     }, [tableData]);
 

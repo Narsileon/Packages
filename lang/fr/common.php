@@ -19,6 +19,7 @@ return [
     'edit'              => 'modifier',
     'faq'               => 'FAQ',
     'footer_links'      => 'lien de pied de page|liens de pied de page',
+    'frontoffice'       => 'front-office',
     'header_links'      => 'lien d\'en-tête|liens d\'en-tête',
     'home'              => 'accueil',
     'id'                => 'ID',
@@ -44,6 +45,5 @@ return [
     'update'            => 'mettre à jour',
     'users'             => 'utilisateur|utilisateurs',
     'values'            => 'valeur|valeurs',
-    'web'               => 'web',
     'yes'               => 'oui',
 ];

@@ -26,7 +26,7 @@ export default function Index({ roles, filters }) {
 						<div className="col-span-1 md:order-2 self-center place-self-end">
 							<Link
 								className="primary-button whitespace-nowrap"
-								href={ route('backoffice.roles.create') }
+								href={ route('admin.roles.create') }
 							>
 								{ trans('Create :resource', {'resource': trans('permissions.new_role')}) }
 							</Link>

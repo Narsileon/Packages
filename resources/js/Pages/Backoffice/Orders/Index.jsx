@@ -26,7 +26,7 @@ export default function Index({ orders, filters }) {
 						<div className="col-span-1 md:order-2 self-center place-self-end">
 							<Link
 								className="primary-button whitespace-nowrap"
-								href={ route('backoffice.orders.create') }
+								href={ route('admin.orders.create') }
 							>
 								{ trans('Create :resource', { 'resource': trans('common.new_order') }) }
 							</Link>

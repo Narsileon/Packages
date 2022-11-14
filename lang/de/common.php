@@ -19,6 +19,7 @@ return [
     'edit'              => 'bearbeiten',
     'faq'               => 'FAQ',
     'footer_links'      => 'Footer-Link|Footer-Links',
+    'frontoffice'       => 'Frontoffice',
     'header_links'      => 'Header-Link|Header-Links',
     'home'              => 'Start',
     'id'                => 'ID',
@@ -44,6 +45,5 @@ return [
     'update'            => 'aktualisieren',
     'users'             => 'Benutzer|Benutzer',
     'values'            => 'Wert|Werte',
-    'web'               => 'Web',
     'yes'               => 'ja',
 ];

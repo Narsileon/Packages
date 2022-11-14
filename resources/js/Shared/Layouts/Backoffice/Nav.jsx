@@ -9,7 +9,7 @@ export default function Nav() {
         <nav className="font-semibold">
             <ul>
                 <NavLink
-                    href={ route('backoffice.dashboard') }
+                    href={ route('admin.dashboard') }
                     label={ trans('common.dashboard') }
                     icon="dashboard"
                 />
@@ -20,12 +20,12 @@ export default function Nav() {
                     icon="user"
                 >
                     <NavLink
-                        href={ route('backoffice.users.index') }
+                        href={ route('admin.users.index') }
                         label={ transChoice('common.users', 2) }
                         icon="users"
                     />
                     <NavLink
-                        href={ route('backoffice.roles.index') }
+                        href={ route('admin.roles.index') }
                         label={ transChoice('permissions.roles', 2) }
                         icon="group"
                     />
@@ -38,12 +38,12 @@ export default function Nav() {
                     visibility={ true }
                 >
                     <NavLink
-                        href={ route('backoffice.calendar') }
+                        href={ route('admin.calendar') }
                         label={ trans('date-time.calendar') }
                         icon="calendar"
                     />
                     <NavLink
-                        href={ route('backoffice.orders.index') }
+                        href={ route('admin.orders.index') }
                         label={ transChoice('common.orders', 2) }
                         icon="clipboard"
                     />
@@ -51,21 +51,21 @@ export default function Nav() {
 
                 {/* Web */}
                 <Section
-                    label={ trans('common.web') }
+                    label={ trans('common.frontoffice') }
                     icon="home"
                 >
                     <NavLink
-                        href={ route('backoffice.header_links.index') }
+                        href={ route('admin.header_links.index') }
                         label={ transChoice('common.header_links', 2) }
                         icon="link"
                     />
                     <NavLink
-                        href={ route('backoffice.footer_links.index') }
+                        href={ route('admin.footer_links.index') }
                         label={ transChoice('common.footer_links', 2) }
                         icon="link"
                     />
                     <NavLink
-                        href={ route('backoffice.faqs.index') }
+                        href={ route('admin.faqs.index') }
                         label={ trans('common.faq') }
                         icon="question"
                     />
@@ -77,12 +77,12 @@ export default function Nav() {
                     icon="cog"
                 >
                     <NavLink
-                        href={ route('backoffice.languages') }
+                        href={ route('admin.languages') }
                         label={ transChoice('common.languages', 2) }
                         icon="language"
                     />
                     <NavLink
-                        href={ route('backoffice.dictionary') }
+                        href={ route('admin.dictionary') }
                         label={ transChoice('common.dictionaries', 1) }
                         icon="book"
                     />

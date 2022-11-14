@@ -60,7 +60,7 @@ const renderLinks = (links) => {
 
 const NavAuth = () => {
     const links = [
-        { route: route('backoffice.dashboard'), label: trans('common.dashboard'), icon: 'dashboard' },
+        { route: route('admin.dashboard'), label: trans('common.dashboard'), icon: 'dashboard' },
     ];
 
     return (

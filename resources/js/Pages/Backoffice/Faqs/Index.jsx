@@ -26,7 +26,7 @@ export default function Index({ faqs, filters }) {
 						<div className="col-span-1 md:order-2 self-center place-self-end">
 							<Link
 								className="primary-button whitespace-nowrap"
-								href={ route('backoffice.faqs.create') }
+								href={ route('admin.faqs.create') }
 							>
 								{ trans('Create :resource', { 'resource': trans('common.new_faq') }) }
 							</Link>
