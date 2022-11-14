@@ -10,7 +10,7 @@ import SearchField from "@/Shared/SearchField";
 export default function Index({ localizations, filters }) {
     const { locale, dictionary } = usePage().props.localization;
 
-	const [tableData, setTableData, handleSorting] = useFrontSortableTable(Object.entries(dictionary))
+	const [tableData, setTableData, handleSorting] = useFrontSortableTable(dictionary.common)
 
 	const previous = usePrevious(tableData);
 
