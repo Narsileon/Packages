@@ -9,7 +9,7 @@ use Illuminate\Database\Seeder;
 
 #endregion
 
-class BackofficeSeeder extends Seeder
+class BackendSeeder extends Seeder
 {
     #region PUBLIC METHODS
 

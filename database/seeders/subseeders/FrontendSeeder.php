@@ -10,7 +10,7 @@ use Illuminate\Database\Seeder;
 
 #endregion
 
-class WebSeeder extends Seeder
+class FrontendSeeder extends Seeder
 {
     #region PUBLIC METHODS
 

@@ -4,11 +4,11 @@ namespace Database\Seeders;
 
 #region USE
 
-use Database\Seeders\Subseeders\BackofficeSeeder;
+use Database\Seeders\Subseeders\BackendSeeder;
+use Database\Seeders\Subseeders\FrontendSeeder;
 use Database\Seeders\Subseeders\PermissionSeeder;
 use Database\Seeders\Subseeders\SessionSeeder;
 use Database\Seeders\Subseeders\UserSeeder;
-use Database\Seeders\Subseeders\WebSeeder;
 use Illuminate\Database\Seeder;
 
 #endregion
@@ -23,8 +23,8 @@ class DatabaseSeeder extends Seeder
             PermissionSeeder::class,
             SessionSeeder::class,
             UserSeeder::class,
-            WebSeeder::class,
-            BackofficeSeeder::class,
+            FrontendSeeder::class,
+            BackendSeeder::class,
         ]);
     }
 

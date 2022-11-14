@@ -16,8 +16,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('localizations', function (Blueprint $table) {
-            $table->string(Localization::FIELD_KEY)->unique();
-            $table->boolean(Localization::FIELD_VALUE)->nullable();
+            $table->id();
+            $table->foreignId(Localization::FIELD_USER_ID)->constrained()->cascadeOnDelete();
+            $table->json(Localization::FIELD_DICTIONARY)->nullable();
             $table->timestamps();
         });
     }

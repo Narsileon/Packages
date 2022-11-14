@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Factories\Web;
+namespace Database\Factories\Frontend;
 
 #region USE
 
