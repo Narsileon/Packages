@@ -66,10 +66,13 @@ class HandleInertiaRequests extends Middleware
 
     private function initializeFlash($request)
     {
-        return [
-            'success' => fn() => $request->session()->get('success'),
-            'error' => fn() => $request->session()->get('error'),
-        ];
+        $success = $request->session()->get('success');
+        $error = $request->session()->get('error');
+
+        return compact(
+            'success',
+            'error',
+        );
     }
 
     private function initializeZiggy($request)
