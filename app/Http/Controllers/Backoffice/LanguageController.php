@@ -12,7 +12,7 @@ use Inertia\Inertia;
 
 #endregion
 
-class LocaleController extends Controller
+class LanguageController extends Controller
 {
     #region PUBLIC METHODS
 

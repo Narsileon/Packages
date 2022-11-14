@@ -1,14 +1,12 @@
 import { useEffect, useState } from "react";
+import { usePrevious } from "react-use";
 import { Inertia } from "@inertiajs/inertia";
 import { Head } from "@inertiajs/inertia-react";
 import { trans, transChoice } from "@/narsil-localization";
 import { useFrontSortableTable } from "@/narsil-react";
-import { upperFirst } from "lodash";
 import SortButton from "@/Components/Elements/Buttons/SortButton";
-import SearchField from "@/Shared/SearchField";
 import Toggle from "@/Components/Elements/Toggle";
-import { usePrevious } from "react-use";
-
+import SearchField from "@/Shared/SearchField";
 
 export default function Index({ locales, filters }) {
 	const [tableData, setTableData, handleSorting] = useFrontSortableTable(locales)

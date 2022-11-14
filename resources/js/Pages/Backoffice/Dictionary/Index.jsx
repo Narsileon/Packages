@@ -1,29 +1,26 @@
 import { useEffect, useState } from "react";
+import { usePrevious } from "react-use";
 import { Inertia } from "@inertiajs/inertia";
 import { Head, usePage } from "@inertiajs/inertia-react";
 import { trans, transChoice } from "@/narsil-localization";
 import { useFrontSortableTable } from "@/narsil-react";
-import { transform, upperFirst } from "lodash";
 import SortButton from "@/Components/Elements/Buttons/SortButton";
 import SearchField from "@/Shared/SearchField";
-import Toggle from "@/Components/Elements/Toggle";
-import { usePrevious } from "react-use";
-
 
 export default function Index({ localizations, filters }) {
-    const { locale } = usePage().props.localization;
+    const { locale, dictionary } = usePage().props.localization;
 
-	const [tableData, setTableData, handleSorting] = useFrontSortableTable(localizations)
+	const [tableData, setTableData, handleSorting] = useFrontSortableTable(Object.entries(dictionary))
 
 	const previous = usePrevious(tableData);
 
 	const [sortField, setSortField] = useState("");
  	const [order, setOrder] = useState("asc");
 
-	function handleChange(event, id) {
+	function handleChange(event, key) {
 		let data = [...tableData];
 
-		let result = data.find(x => x.id == id);
+		let result = data.find(x => x.key == key);
 		result.active = !result.active;
 
 		setTableData(data);
@@ -51,7 +48,7 @@ export default function Index({ localizations, filters }) {
 					<div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 md:gap-y-0 content-start place-content-between">
 						<div className="col-span-1 self-center place-self-start w-full">
 							<span className="text-xl">
-								{ trans('List of :resource', { 'resource': transChoice('locales.languages', 2) }) }
+								{ transChoice('common.dictionaries', 1) }
 							</span>
 						</div>
 						<div className="col-span-1 self-center place-self-end w-full">
@@ -69,13 +66,6 @@ export default function Index({ localizations, filters }) {
 							<tr>
 								<th>
 									<SortButton
-										label={ trans('common.id') }
-										accessor={ 'id' }
-										onClick={ () => handleSortingChange('id') }
-									/>
-								</th>
-								<th>
-									<SortButton
 										label={ transChoice('common.keys', 1) }
 										accessor={ 'locale' }
 										onClick={ () => handleSortingChange('locale') }
@@ -83,7 +73,7 @@ export default function Index({ localizations, filters }) {
 								</th>
 								<th>
 									<SortButton
-										label={ trans(`locales.${ locale }`) }
+										label={ transChoice('common.values', 1) }
 										accessor={ 'locale' }
 										onClick={ () => handleSortingChange('locale') }
 									/>
@@ -101,10 +91,7 @@ export default function Index({ localizations, filters }) {
 							{
 								tableData.map((data) => {
 									return (
-										<tr key={ data.id }>
-											<td>
-												{ data.id }
-											</td>
+										<tr key={ data.key }>
 											<td>
 												{ data.key }
 											</td>
@@ -112,10 +99,7 @@ export default function Index({ localizations, filters }) {
 												{ trans(`common.${ data.key }`) }
 											</td>
 											<td>
-												<Toggle
-													value={ data.value }
-													onChange={ (event) => handleChange(event, data.id) }
-												/>
+												{ data.value }
 											</td>
 										</tr>
 									);

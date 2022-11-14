@@ -43,6 +43,7 @@ return [
     'settings'          => 'paramètre|paramètres',
     'update'            => 'mettre à jour',
     'users'             => 'utilisateur|utilisateurs',
+    'values'            => 'valeur|valeurs',
     'web'               => 'web',
     'yes'               => 'oui',
 ];

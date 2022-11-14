@@ -17,7 +17,6 @@ class Localization extends Model
 
     #region CONSTANTS
 
-    const FIELD_ID = 'id';
     const FIELD_KEY = 'key';
     const FIELD_VALUE = 'value';
 

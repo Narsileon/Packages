@@ -43,6 +43,7 @@ return [
     'settings'          => 'setting|settings',
     'update'            => 'update',
     'users'             => 'user|users',
+    'values'            => 'value|values',
     'web'               => 'web',
     'yes'               => 'yes',
 ];

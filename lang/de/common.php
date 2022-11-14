@@ -43,6 +43,7 @@ return [
     'settings'          => 'Einstellung|Einstellungen',
     'update'            => 'aktualisieren',
     'users'             => 'Benutzer|Benutzer',
+    'values'            => 'Wert|Werte',
     'web'               => 'Web',
     'yes'               => 'ja',
 ];
