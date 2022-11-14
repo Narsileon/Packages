@@ -7,8 +7,8 @@ namespace App\Http\Controllers\Backend\Frontoffice;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Frontoffice\FooterLinkCreateRequest;
 use App\Http\Requests\Backend\Frontoffice\FooterLinkUpdateRequest;
-use App\Http\Resources\Backend\Links\FooterLinkCollection;
-use App\Models\Web\FooterLink;
+use App\Http\Resources\Backend\Frontoffice\FooterLinkCollection;
+use App\Models\Frontend\FooterLink;
 use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
 

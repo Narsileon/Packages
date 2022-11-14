@@ -2,7 +2,7 @@
 
 #region USE
 
-use App\Models\Web\FooterLink;
+use App\Models\Frontend\FooterLink;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;

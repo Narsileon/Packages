@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Web;
+namespace App\Models\Frontend;
 
 #region USE
 
@@ -12,15 +12,16 @@ use Illuminate\Database\Eloquent\Model;
 
 #endregion
 
-class Faq extends Model
+class HeaderLink extends Model
 {
     use HasFactory, IsBaseModel, IsFilterable, IsSortable;
 
     #region CONSTANTS
 
     const FIELD_ID = 'id';
-    const FIELD_QUESTION = 'question';
-    const FIELD_ANSWER = 'answer';
+    const FIELD_LABEL = 'label';
+    const FIELD_URL = 'url';
+    const FIELD_ACTIVE = 'active';
 
     #endregion
 
@@ -28,11 +29,10 @@ class Faq extends Model
 
     protected $fillable =
     [
-        self::FIELD_QUESTION,
-        self::FIELD_ANSWER,
+        self::FIELD_LABEL,
+        self::FIELD_URL,
+        self::FIELD_ACTIVE
     ];
-
-    protected $perPage = 10;
 
     #endregion
 }

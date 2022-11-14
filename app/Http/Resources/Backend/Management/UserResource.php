@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources\Backend\Users;
+namespace App\Http\Resources\Backend\Managament;
 
 #region USE
 

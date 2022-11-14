@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources\Backend\Links;
+namespace App\Http\Resources\Backend\Frontoffice;
 
 #region USE
 
-use App\Models\Web\HeaderLink;
+use App\Models\Frontend\HeaderLink;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Support\Facades\DB;
 

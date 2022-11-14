@@ -5,7 +5,7 @@ namespace App\Http\Requests\Backend\Frontoffice;
 #region USE
 
 use App\Constants\ValidationRules;
-use App\Models\Web\Faq;
+use App\Models\Frontend\Faq;
 use Illuminate\Foundation\Http\FormRequest;
 
 #endregion

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources\Backend\Faqs;
+namespace App\Http\Resources\Backend\Frontoffice;
 
 #region USE
 
-use App\Models\Web\Faq;
+use App\Models\Frontend\Faq;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Support\Facades\DB;
 

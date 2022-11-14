@@ -7,9 +7,9 @@ namespace App\Http\Controllers\Backend\Backoffice;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Backoffice\OrderCreateRequest;
 use App\Http\Requests\Backend\Backoffice\OrderUpdateRequest;
-use App\Http\Resources\Backend\Orders\OrderCollection;
-use App\Models\Backoffice\Order;
-use App\Models\Web\Faq;
+use App\Http\Resources\Backend\Backoffice\OrderCollection;
+use App\Models\Backend\Order;
+use App\Models\Frontend\Faq;
 use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
 

@@ -7,8 +7,8 @@ namespace App\Http\Controllers\Backend\Frontoffice;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Frontoffice\HeaderLinkCreateRequest;
 use App\Http\Requests\Backend\Frontoffice\HeaderLinkUpdateRequest;
-use App\Http\Resources\Backend\Links\HeaderLinkCollection;
-use App\Models\Web\HeaderLink;
+use App\Http\Resources\Backend\Frontoffice\HeaderLinkCollection;
+use App\Models\Frontend\HeaderLink;
 use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
 

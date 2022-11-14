@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources\Backend\Links;
+namespace App\Http\Resources\Backend\Frontoffice;
 
 #region USE
 
-use App\Models\Web\FooterLink;
+use App\Models\Frontend\FooterLink;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Support\Facades\DB;
 

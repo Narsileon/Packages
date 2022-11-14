@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Frontend;
 #region USE
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Web\Faqs\FaqCollection;
-use App\Models\Web\Faq;
+use App\Http\Resources\Frontend\FaqCollection;
+use App\Models\Frontend\Faq;
 use Inertia\Inertia;
 
 #endregion

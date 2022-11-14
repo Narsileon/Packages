@@ -4,7 +4,7 @@ namespace Database\Factories\Web;
 
 #region USE
 
-use App\Models\Web\Faq;
+use App\Models\Frontend\Faq;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 #endregion

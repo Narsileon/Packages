@@ -1,24 +1,23 @@
 <?php
 
-namespace App\Http\Resources\Web\Links;
+namespace App\Http\Resources\Backend\Managament;
 
 #region USE
 
-use App\Models\Web\HeaderLink;
+use App\Models\UserPermission;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
 #endregion
 
-class HeaderLinkCollection extends ResourceCollection
+class UserPermissionCollection extends ResourceCollection
 {
     #region PUBLIC METHODS
 
     public function toArray($request)
     {
         return $this->collection->map->only(
-            HeaderLink::FIELD_ID,
-            HeaderLink::FIELD_LABEL,
-            HeaderLink::FIELD_URL,
+            UserPermission::FIELD_ID,
+            UserPermission::FIELD_NAME,
         );
     }
 

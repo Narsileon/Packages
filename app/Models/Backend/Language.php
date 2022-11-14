@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Backoffice;
+namespace App\Models\Backend;
 
 #region USE
 
@@ -11,14 +11,15 @@ use Illuminate\Database\Eloquent\Model;
 
 #endregion
 
-class Localization extends Model
+class Language extends Model
 {
     use HasFactory, IsFilterable, IsSortable;
 
     #region CONSTANTS
 
-    const FIELD_KEY = 'key';
-    const FIELD_VALUE = 'value';
+    const FIELD_ID = 'id';
+    const FIELD_LOCALE = 'locale';
+    const FIELD_ACTIVE = 'active';
 
     #endregion
 
@@ -26,8 +27,14 @@ class Localization extends Model
 
     protected $fillable =
     [
-        self::FIELD_KEY,
-        self::FIELD_VALUE,
+        self::FIELD_LOCALE,
+        self::FIELD_ACTIVE,
+    ];
+
+    protected $hidden =
+    [
+        self::CREATED_AT,
+        self::UPDATED_AT,
     ];
 
     protected $perPage = 10;

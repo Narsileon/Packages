@@ -4,7 +4,7 @@ namespace App\Localization;
 
 #region USE
 
-use App\Models\Backoffice\Language;
+use App\Models\Backend\Language;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;

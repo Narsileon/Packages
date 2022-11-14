@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Backoffice;
+namespace App\Models\Backend;
 
 #region USE
 

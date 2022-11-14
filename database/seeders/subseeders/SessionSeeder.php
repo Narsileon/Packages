@@ -5,7 +5,7 @@ namespace Database\Seeders\Subseeders;
 #region USE
 
 use App\Constants\Locales;
-use App\Models\Backoffice\Language;
+use App\Models\Backend\Language;
 use Illuminate\Database\Seeder;
 
 #endregion

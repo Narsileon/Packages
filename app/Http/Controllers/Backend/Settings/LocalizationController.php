@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Backend\Settings;
 #region USE
 
 use App\Http\Controllers\Controller;
-use App\Models\Backoffice\Localization;
+use App\Models\Backend\Localization;
 use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
 

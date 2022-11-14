@@ -2,7 +2,7 @@
 
 #region USE
 
-use App\Models\Backoffice\Language;
+use App\Models\Backend\Language;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;

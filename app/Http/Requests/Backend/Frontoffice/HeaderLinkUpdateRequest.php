@@ -5,7 +5,7 @@ namespace App\Http\Requests\Backend\Frontoffice;
 #region USE
 
 use App\Constants\ValidationRules;
-use App\Models\Web\HeaderLink;
+use App\Models\Frontend\HeaderLink;
 use Illuminate\Foundation\Http\FormRequest;
 
 #endregion

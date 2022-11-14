@@ -5,7 +5,7 @@ namespace App\Http\Requests\Backend\Backoffice;
 #region USE
 
 use App\Constants\ValidationRules;
-use App\Models\Backoffice\Order;
+use App\Models\Backend\Order;
 use Illuminate\Foundation\Http\FormRequest;
 
 #endregion

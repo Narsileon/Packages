@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources\Backend\Orders;
+namespace App\Http\Resources\Backend\Backoffice;
 
 #region USE
 
-use App\Models\Backoffice\Order;
+use App\Models\Backend\Order;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Support\Facades\DB;
 

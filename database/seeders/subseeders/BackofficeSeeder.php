@@ -4,7 +4,7 @@ namespace Database\Seeders\Subseeders;
 
 #region USE
 
-use App\Models\Backoffice\Order;
+use App\Models\Backend\Order;
 use Illuminate\Database\Seeder;
 
 #endregion

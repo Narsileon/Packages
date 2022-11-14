@@ -4,8 +4,8 @@ namespace Database\Seeders\Subseeders;
 
 #region USE
 
-use App\Models\Web\Faq;
-use App\Models\Web\FooterLink;
+use App\Models\Frontend\Faq;
+use App\Models\Frontend\FooterLink;
 use Illuminate\Database\Seeder;
 
 #endregion
