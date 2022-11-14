@@ -17,22 +17,17 @@ export default function Nav() {
                 {/* Management */}
                 <Section
                     label={ trans('common.management') }
-                    icon="link"
+                    icon="user"
                 >
                     <NavLink
                         href={ route('backoffice.users.index') }
                         label={ transChoice('common.users', 2) }
-                        icon="user"
+                        icon="users"
                     />
                     <NavLink
                         href={ route('backoffice.roles.index') }
                         label={ transChoice('permissions.roles', 2) }
                         icon="group"
-                    />
-                    <NavLink
-                        href={ route('backoffice.languages') }
-                        label={ transChoice('common.languages', 2) }
-                        icon="language"
                     />
                 </Section>
 
@@ -51,11 +46,6 @@ export default function Nav() {
                         href={ route('backoffice.orders.index') }
                         label={ transChoice('common.orders', 2) }
                         icon="clipboard"
-                    />
-                    <NavLink
-                        href={ route('backoffice.dictionary') }
-                        label={ trans('common.dictionary') }
-                        icon="book"
                     />
                 </Section>
 
@@ -78,6 +68,23 @@ export default function Nav() {
                         href={ route('backoffice.faqs.index') }
                         label={ trans('common.faq') }
                         icon="question"
+                    />
+                </Section>
+
+                {/* Localization */}
+                <Section
+                    label={ transChoice('common.settings', 2) }
+                    icon="cog"
+                >
+                    <NavLink
+                        href={ route('backoffice.languages') }
+                        label={ transChoice('common.languages', 2) }
+                        icon="language"
+                    />
+                    <NavLink
+                        href={ route('backoffice.dictionary') }
+                        label={ trans('common.dictionary') }
+                        icon="book"
                     />
                 </Section>
             </ul>

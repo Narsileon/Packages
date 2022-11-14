@@ -25,19 +25,24 @@ Route::group([
     Route::resource('users', UserController::class);
     Route::resource('roles', RoleController::class);
 
-    Route::controller(LocaleController::class)->group(function () {
-        Route::get('languages', 'index')->name('languages');
-        Route::patch('languages', 'update');
-    });
-
     // Backoffice
     Route::get('dashboard', DashboardController::class)->name('dashboard');
     Route::get('calendar', CalendarController::class)->name('calendar');
     Route::resource('orders', OrderController::class);
-    Route::get('dictionary', DictionaryController::class)->name('dictionary');
 
     // Web
     Route::resource('header_links', HeaderLinkController::class);
     Route::resource('footer_links', FooterLinkController::class);
     Route::resource('faqs', FaqController::class);
+
+    // Localization
+    Route::controller(LocaleController::class)->group(function () {
+        Route::get('languages', 'index')->name('languages');
+        Route::patch('languages', 'update');
+    });
+
+    Route::controller(DictionaryController::class)->group(function () {
+        Route::get('dictionary', 'index')->name('dictionary');
+        Route::patch('dictionary', 'update');
+    });
 });

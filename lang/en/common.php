@@ -38,6 +38,7 @@ return [
     'register'          => 'register',
     'reset'             => 'reset',
     'search'            => 'search',
+    'settings'          => 'setting|settings',
     'update'            => 'update',
     'users'             => 'user|users',
     'web'               => 'web',

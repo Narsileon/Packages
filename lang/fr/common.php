@@ -38,6 +38,7 @@ return [
     'register'          => 's\'inscrire',
     'reset'             => 'réinitialiser',
     'search'            => 'rechercher',
+    'settings'          => 'paramètre|paramètres',
     'update'            => 'mettre à jour',
     'users'             => 'utilisateur|utilisateurs',
     'web'               => 'web',
