@@ -7,17 +7,27 @@ namespace App\Localization;
 use App\Models\Session\Locale;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Log;
 
 #endregion
 
 abstract class Localization
 {
+    #region CONSTANTS
+
+    private const CACHE_PREFIX = 'localization_';
+    private const FALLBACK_LOCALE = 'app.fallback_locale';
+    private const JSON_EXTENSION = '.json';
+
+    #endregion
+
     #region PUBLIC METHODS
 
     public static function get()
     {
-        $locales = Locale::where('active', 1)->pluck('locale')->toArray();
+        $locales = Locale::where(Locale::FIELD_ACTIVE, 1)->pluck(Locale::FIELD_LOCALE)->toArray();
         $locale = App::getLocale();
         $dictionary = self::getLocalization($locale);
 
@@ -34,7 +44,7 @@ abstract class Localization
 
     private static function getLocalization($locale)
     {
-        return Cache::remember('localization_' . $locale, 600, function() use($locale)
+        return Cache::remember(self::CACHE_PREFIX . $locale, 600, function() use($locale)
         {
             $phpLocalization = self::getPhpLocalization($locale);
             $jsonLocalization = self::getJsonLocalization($locale);
@@ -45,22 +55,61 @@ abstract class Localization
 
     private static function getPhpLocalization($locale) : array
     {
-        $translationFiles = File::exists(lang_path($locale)) ? File::files(lang_path($locale)) : File::files(lang_path('en'));
+        $files = null;
 
-        return collect($translationFiles)
-            ->map(fn($file) => [$file->getFilenameWithoutExtension() => require($file)])
+        if (!File::exists(lang_path($locale)))
+        {
+            if (!File::exists(lang_path(Config::get(self::FALLBACK_LOCALE))))
+            {
+                Log::error('No php localization file found for fallback locale');
+
+                return [];
+            }
+
+            else
+            {
+                $files = File::files(lang_path(Config::get(self::FALLBACK_LOCALE)));
+            }
+        }
+
+        else
+        {
+            $files = File::files(lang_path($locale));
+        }
+
+        return collect($files)
+            ->map(fn($file) => [
+                $file->getFilenameWithoutExtension() => require($file)
+            ])
             ->collapse()
             ->toArray();
     }
 
     private static function getJsonLocalization($locale) : array
     {
-        if (!File::exists(lang_path($locale . '.json')))
+        $file = null;
+
+        if (!File::exists(lang_path($locale . self::JSON_EXTENSION)))
         {
-            return [];
+            if (!File::exists(lang_path(Config::get(self::FALLBACK_LOCALE) . self::JSON_EXTENSION)))
+            {
+                Log::error('No json localization file found for fallback locale');
+
+                return [];
+            }
+
+            else
+            {
+                $file = File::get(lang_path(Config::get(self::FALLBACK_LOCALE) . self::JSON_EXTENSION));
+            }
         }
 
-        return json_decode(File::get(lang_path($locale . '.json')), true);
+        else
+        {
+            $file = File::get(lang_path($locale . self::JSON_EXTENSION));
+        }
+
+        return json_decode($file, true);
     }
 
     #endregion
