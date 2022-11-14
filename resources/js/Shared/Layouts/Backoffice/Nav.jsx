@@ -83,7 +83,7 @@ export default function Nav() {
                     />
                     <NavLink
                         href={ route('backoffice.dictionary') }
-                        label={ trans('common.dictionary') }
+                        label={ transChoice('common.dictionaries', 1) }
                         icon="book"
                     />
                 </Section>

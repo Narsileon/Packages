@@ -81,14 +81,14 @@ export default function Index({ locales, filters }) {
 								</th>
 								<th>
 									<SortButton
-										label={ upperFirst(transChoice('locales.languages', 1)) }
+										label={ transChoice('locales.languages', 1) }
 										accessor={ 'locale' }
 										onClick={ () => handleSortingChange('locale') }
 									/>
 								</th>
 								<th>
 									<SortButton
-										label={ upperFirst(trans('common.active')) }
+										label={ trans('common.active') }
 										accessor={ 'active' }
 										onClick={ () => handleSortingChange('active') }
 									/>
