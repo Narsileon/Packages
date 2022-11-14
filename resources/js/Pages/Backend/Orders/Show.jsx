@@ -1,7 +1,7 @@
 import { Head } from "@inertiajs/inertia-react";
 import { trans, transChoice } from "@/narsil-localization";
 import { upperFirst } from "lodash";
-import ShowTable from "@/Components/Backoffice/ShowTable";
+import ShowTable from "@/Components/Backend/ShowTable";
 
 export default function Show({ order }) {
     const title = transChoice('common.orders', 1);

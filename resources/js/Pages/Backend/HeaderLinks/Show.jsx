@@ -1,7 +1,7 @@
 import { Head } from "@inertiajs/inertia-react";
 import { trans, transChoice } from "@/narsil-localization";
 import { upperFirst } from "lodash";
-import ShowTable from "@/Components/Backoffice/ShowTable";
+import ShowTable from "@/Components/Backend/ShowTable";
 
 export default function Show({ headerLink }) {
     const title = upperFirst(transChoice('common.header_link', 1));
