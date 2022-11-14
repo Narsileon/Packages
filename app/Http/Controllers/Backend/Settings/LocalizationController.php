@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Backend\Settings;
 #region USE
 
 use App\Http\Controllers\Controller;
-use App\Models\Backend\Localization;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
 
@@ -17,7 +17,8 @@ class LocalizationController extends Controller
 
     public function index()
     {
-        $localizations = Localization::search(request('search'))->get();
+        $localizations = collect(json_decode(Auth::user()
+            ->localizations, true));
 
         $filters = [
             'search' => Request::input('search'),

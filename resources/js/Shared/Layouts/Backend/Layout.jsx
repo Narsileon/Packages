@@ -7,7 +7,7 @@ import Icon from "@/Shared/Svg/Icon";
 
 export default function Layout({ children }) {
     return (
-        <main className="flex min-h-screen max-w-screen">
+        <main className="flex max-h-screen max-w-screen">
             <aside className="flex-none
                 sticky overflow-hidden primary-background top-0 h-screen w-10 p-1 z-50 space-y-4
                 hover:absolute md:hover:sticky hover:w-64 hover:overflow-visible
@@ -18,13 +18,13 @@ export default function Layout({ children }) {
                 <Nav />
             </aside>
 
-            <div className="grid grids-cols-1 grow content-start">
+            <section className="w-full h-full">
                 <Header />
 
-                <section className="content-start m-4">
+                <div className="grid grid-cols-1 content-start m-4">
                     { children }
-                </section>
-            </div>
+                </div>
+            </section>
 
             <Flash />
         </main>
@@ -33,7 +33,7 @@ export default function Layout({ children }) {
 
 const Header = () => {
     return (
-        <header className="h-10 primary-background">
+        <header className="w-full h-10 primary-background">
             <div className="flex items-center justify-end mx-2">
                 <LocaleDropdown />
 

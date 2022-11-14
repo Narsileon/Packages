@@ -38,6 +38,13 @@ abstract class Localization
         );
     }
 
+    public static function getCustomizableLocalization() : array
+    {
+        $locale = App::getLocale();
+
+        return self::getPhpLocalization($locale)["common"];
+    }
+
     #endregion
 
     #region PRIVATE METHODS
@@ -61,7 +68,7 @@ abstract class Localization
         {
             if (!File::exists(lang_path(Config::get(self::FALLBACK_LOCALE))))
             {
-                Log::error('No php localization file found for fallback locale');
+                Log::error('No php localization file found for fallback locale.');
 
                 return [];
             }
@@ -93,7 +100,7 @@ abstract class Localization
         {
             if (!File::exists(lang_path(Config::get(self::FALLBACK_LOCALE) . self::JSON_EXTENSION)))
             {
-                Log::error('No json localization file found for fallback locale');
+                Log::error('No json localization file found for fallback locale.');
 
                 return [];
             }

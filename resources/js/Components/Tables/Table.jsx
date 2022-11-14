@@ -23,7 +23,7 @@ export default function Table({
     return (
 		<section id="table">
 			<div
-				className={ `border-2 border-color rounded overflow-x-scroll ${ data[0] ? "" : "hidden" }` }
+				className={ `border-2 border-color rounded overflow-x-auto ${ data[0] ? "" : "hidden" }` }
 				ref={ table }
 			>
 				<table>

@@ -56,70 +56,72 @@ export default function Index({ languages, filters }) {
 					</div>
 				</section>
 
-				<div className="border-2 border-color rounded">
-					<table>
-						<thead className="
-							bg-gray-400
-							dark:bg-gray-800
-						">
-							<tr>
-								<th>
-									<SortButton
-										label={ trans('common.id') }
-										accessor={ 'id' }
-										onClick={ () => handleSortingChange('id') }
-									/>
-								</th>
-								<th>
-									<SortButton
-										label={ trans('common.code') }
-										accessor={ 'locale' }
-										onClick={ () => handleSortingChange('locale') }
-									/>
-								</th>
-								<th>
-									<SortButton
-										label={ transChoice('locales.languages', 1) }
-										accessor={ 'locale' }
-										onClick={ () => handleSortingChange('locale') }
-									/>
-								</th>
-								<th>
-									<SortButton
-										label={ trans('common.active') }
-										accessor={ 'active' }
-										onClick={ () => handleSortingChange('active') }
-									/>
-								</th>
-							</tr>
-						</thead>
-						<tbody>
-							{
-								tableData.map((data) => {
-									return (
-										<tr key={ data.id }>
-											<td>
-												{ data.id }
-											</td>
-											<td>
-												{ data.locale }
-											</td>
-											<td>
-												{ trans(`locales.${ data.locale }`) }
-											</td>
-											<td>
-												<Toggle
-													value={ data['active'] }
-													onChange={ (event) => handleChange(event, data.id) }
-												/>
-											</td>
-										</tr>
-									);
-								})
-							}
-						</tbody>
-					</table>
-				</div>
+				<section id="table">
+					<div className="border-2 border-color overflow-y-auto rounded">
+						<table>
+							<thead className="
+								bg-gray-400
+								dark:bg-gray-800
+							">
+								<tr>
+									<th>
+										<SortButton
+											label={ trans('common.id') }
+											accessor={ 'id' }
+											onClick={ () => handleSortingChange('id') }
+										/>
+									</th>
+									<th>
+										<SortButton
+											label={ trans('common.code') }
+											accessor={ 'locale' }
+											onClick={ () => handleSortingChange('locale') }
+										/>
+									</th>
+									<th>
+										<SortButton
+											label={ transChoice('locales.languages', 1) }
+											accessor={ 'locale' }
+											onClick={ () => handleSortingChange('locale') }
+										/>
+									</th>
+									<th>
+										<SortButton
+											label={ trans('common.active') }
+											accessor={ 'active' }
+											onClick={ () => handleSortingChange('active') }
+										/>
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								{
+									tableData.map((data) => {
+										return (
+											<tr key={ data.id }>
+												<td>
+													{ data.id }
+												</td>
+												<td>
+													{ data.locale }
+												</td>
+												<td>
+													{ trans(`locales.${ data.locale }`) }
+												</td>
+												<td>
+													<Toggle
+														value={ data['active'] }
+														onChange={ (event) => handleChange(event, data.id) }
+													/>
+												</td>
+											</tr>
+										);
+									})
+								}
+							</tbody>
+						</table>
+					</div>
+				</section>
 			</div>
 		</>
 	);
