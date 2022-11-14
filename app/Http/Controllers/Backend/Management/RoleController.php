@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Backend\Management;
 #region USE
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Backend\Users\UserRoleCreateRequest;
-use App\Http\Requests\Backend\Users\UserRoleUpdateRequest;
+use App\Http\Requests\Backend\Management\UserRoleCreateRequest;
+use App\Http\Requests\Backend\Management\UserRoleUpdateRequest;
 use App\Http\Resources\Backend\Users\UserPermissionCollection;
 use App\Http\Resources\Backend\Users\UserRoleCollection;
 use App\Http\Resources\Backend\Users\UserRoleResource;

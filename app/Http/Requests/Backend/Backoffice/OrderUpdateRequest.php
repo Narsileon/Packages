@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Backend\Orders;
+namespace App\Http\Requests\Backend\Backoffice;
 
 #region USE
 
@@ -10,13 +10,13 @@ use Illuminate\Foundation\Http\FormRequest;
 
 #endregion
 
-class OrderCreateRequest extends FormRequest
+class OrderUpdateRequest extends FormRequest
 {
     #region PUBLIC METHODS
 
     public function authorize() : bool
     {
-        return $this->user()->can('create', Order::class);
+        return $this->user()->can('update', Order::class);
     }
 
     public function rules() : array
@@ -25,7 +25,7 @@ class OrderCreateRequest extends FormRequest
             Order::FIELD_ORDER_NUMBER => [
                 ValidationRules::REQUIRED,
                 ValidationRules::TYPE_INTEGER,
-                ValidationRules::unique('orders', Order::FIELD_ORDER_NUMBER),
+                ValidationRules::unique('orders', Order::FIELD_ORDER_NUMBER, $this->faq->id),
             ],
             Order::FIELD_ORDER_DATE => [
                 ValidationRules::REQUIRED,
@@ -34,5 +34,5 @@ class OrderCreateRequest extends FormRequest
         ];
     }
 
-    #endregion
+    #endregion PUBLIC METHODS
 }

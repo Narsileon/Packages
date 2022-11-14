@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Backend\Frontoffice;
 #region USE
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Backend\Links\FooterLinkCreateRequest;
-use App\Http\Requests\Backend\Links\FooterLinkUpdateRequest;
+use App\Http\Requests\Backend\Frontoffice\FooterLinkCreateRequest;
+use App\Http\Requests\Backend\Frontoffice\FooterLinkUpdateRequest;
 use App\Http\Resources\Backend\Links\FooterLinkCollection;
 use App\Models\Web\FooterLink;
 use Illuminate\Support\Facades\Request;

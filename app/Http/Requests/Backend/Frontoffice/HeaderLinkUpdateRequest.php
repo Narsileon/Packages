@@ -1,38 +1,38 @@
 <?php
 
-namespace App\Http\Requests\Backend\Links;
+namespace App\Http\Requests\Backend\Frontoffice;
 
 #region USE
 
 use App\Constants\ValidationRules;
-use App\Models\Web\FooterLink;
+use App\Models\Web\HeaderLink;
 use Illuminate\Foundation\Http\FormRequest;
 
 #endregion
 
-class FooterLinkUpdateRequest extends FormRequest
+class HeaderLinkUpdateRequest extends FormRequest
 {
     #region PUBLIC METHODS
 
     public function authorize() : bool
     {
-        return $this->user()->can('update', FooterLink::class);
+        return $this->user()->can('update', HeaderLink::class);
     }
 
     public function rules() : array
     {
         return [
-            FooterLink::FIELD_LABEL => [
+            HeaderLink::FIELD_LABEL => [
                 ValidationRules::REQUIRED,
                 ValidationRules::TYPE_STRING,
-                ValidationRules::unique('footer_links', FooterLink::FIELD_LABEL, $this->footer_link->id),
+                ValidationRules::unique('header_links', HeaderLink::FIELD_LABEL, $this->header_link->id),
             ],
-            FooterLink::FIELD_URL => [
+            HeaderLink::FIELD_URL => [
                 ValidationRules::REQUIRED,
                 ValidationRules::TYPE_STRING,
-                ValidationRules::unique('footer_links', FooterLink::FIELD_URL, $this->footer_link->id),
+                ValidationRules::unique('header_links', HeaderLink::FIELD_URL, $this->header_link->id),
             ],
-            FooterLink::FIELD_ACTIVE => [
+            HeaderLink::FIELD_ACTIVE => [
                 ValidationRules::REQUIRED,
                 ValidationRules::TYPE_BOOLEAN,
             ],

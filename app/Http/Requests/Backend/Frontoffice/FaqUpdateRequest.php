@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Backend\Faqs;
+namespace App\Http\Requests\Backend\Frontoffice;
 
 #region USE
 
@@ -10,13 +10,13 @@ use Illuminate\Foundation\Http\FormRequest;
 
 #endregion
 
-class FaqCreateRequest extends FormRequest
+class FaqUpdateRequest extends FormRequest
 {
     #region PUBLIC METHODS
 
     public function authorize() : bool
     {
-        return $this->user()->can('create', Faq::class);
+        return $this->user()->can('update', Faq::class);
     }
 
     public function rules() : array
@@ -25,7 +25,7 @@ class FaqCreateRequest extends FormRequest
             Faq::FIELD_QUESTION => [
                 ValidationRules::REQUIRED,
                 ValidationRules::TYPE_STRING,
-                ValidationRules::unique('faqs', Faq::FIELD_QUESTION),
+                ValidationRules::unique('faqs', Faq::FIELD_QUESTION, $this->faq->id),
             ],
             Faq::FIELD_ANSWER => [
                 ValidationRules::REQUIRED,
@@ -34,5 +34,5 @@ class FaqCreateRequest extends FormRequest
         ];
     }
 
-    #endregion
+    #endregion PUBLIC METHODS
 }

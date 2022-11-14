@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Backend\Management;
 #region USE
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Backend\Users\UserCreateRequest;
-use App\Http\Requests\Backend\Users\UserUpdateRequest;
+use App\Http\Requests\Backend\Management\UserCreateRequest;
+use App\Http\Requests\Backend\Management\UserUpdateRequest;
 use App\Http\Resources\Backend\Users\UserCollection;
 use App\Http\Resources\Backend\Users\UserPermissionCollection;
 use App\Http\Resources\Backend\Users\UserResource;

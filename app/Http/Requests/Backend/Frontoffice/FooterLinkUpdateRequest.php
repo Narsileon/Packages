@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Backend\Links;
+namespace App\Http\Requests\Backend\Frontoffice;
 
 #region USE
 
@@ -10,13 +10,13 @@ use Illuminate\Foundation\Http\FormRequest;
 
 #endregion
 
-class FooterLinkCreateRequest extends FormRequest
+class FooterLinkUpdateRequest extends FormRequest
 {
     #region PUBLIC METHODS
 
     public function authorize() : bool
     {
-        return $this->user()->can('create', FooterLink::class);
+        return $this->user()->can('update', FooterLink::class);
     }
 
     public function rules() : array
@@ -25,12 +25,12 @@ class FooterLinkCreateRequest extends FormRequest
             FooterLink::FIELD_LABEL => [
                 ValidationRules::REQUIRED,
                 ValidationRules::TYPE_STRING,
-                ValidationRules::unique('footer_links', FooterLink::FIELD_LABEL),
+                ValidationRules::unique('footer_links', FooterLink::FIELD_LABEL, $this->footer_link->id),
             ],
             FooterLink::FIELD_URL => [
                 ValidationRules::REQUIRED,
                 ValidationRules::TYPE_STRING,
-                ValidationRules::unique('footer_links', FooterLink::FIELD_URL),
+                ValidationRules::unique('footer_links', FooterLink::FIELD_URL, $this->footer_link->id),
             ],
             FooterLink::FIELD_ACTIVE => [
                 ValidationRules::REQUIRED,

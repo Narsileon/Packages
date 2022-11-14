@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Backend\Frontoffice;
 #region USE
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Backend\Links\HeaderLinkCreateRequest;
-use App\Http\Requests\Backend\Links\HeaderLinkUpdateRequest;
+use App\Http\Requests\Backend\Frontoffice\HeaderLinkCreateRequest;
+use App\Http\Requests\Backend\Frontoffice\HeaderLinkUpdateRequest;
 use App\Http\Resources\Backend\Links\HeaderLinkCollection;
 use App\Models\Web\HeaderLink;
 use Illuminate\Support\Facades\Request;

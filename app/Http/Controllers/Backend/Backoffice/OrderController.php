@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Backend\Backoffice;
 #region USE
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Backend\Faqs\FaqCreateRequest;
-use App\Http\Requests\Backend\Faqs\FaqUpdateRequest;
+use App\Http\Requests\Backend\Backoffice\OrderCreateRequest;
+use App\Http\Requests\Backend\Backoffice\OrderUpdateRequest;
 use App\Http\Resources\Backend\Orders\OrderCollection;
 use App\Models\Backoffice\Order;
 use App\Models\Web\Faq;
@@ -39,7 +39,7 @@ class OrderController extends Controller
         return Inertia::render('Backend/Orders/Create');
     }
 
-    public function store(FaqCreateRequest $request)
+    public function store(OrderCreateRequest $request)
     {
         $attributes = $request->validated();
 
@@ -62,7 +62,7 @@ class OrderController extends Controller
         ));
     }
 
-    public function update(FaqUpdateRequest $request, Order $order)
+    public function update(OrderUpdateRequest $request, Order $order)
     {
         $attributes = $request->validated();
 

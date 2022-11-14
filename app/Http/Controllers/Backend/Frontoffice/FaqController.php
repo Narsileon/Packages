@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Backend\Frontoffice;
 #region USE
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Backend\Faqs\FaqCreateRequest;
-use App\Http\Requests\Backend\Faqs\FaqUpdateRequest;
+use App\Http\Requests\Backend\Frontoffice\FaqCreateRequest;
+use App\Http\Requests\Backend\Frontoffice\FaqUpdateRequest;
 use App\Http\Resources\Backend\Faqs\FaqCollection;
 use App\Models\Web\Faq;
 use Illuminate\Support\Facades\Request;
