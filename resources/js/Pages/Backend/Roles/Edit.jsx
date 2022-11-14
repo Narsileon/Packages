@@ -26,7 +26,7 @@ export default function Edit({ role, permissions }) {
 			permissions: permissions.data.filter(x => data.permissions[x.name] == true)
 		}))
 
-		patch('/backoffice/roles/' + role.data.id)
+		patch('/admin/roles/' + role.data.id)
     };
 
     return (

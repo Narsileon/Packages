@@ -3,12 +3,11 @@ import { trans, transChoice } from "@/narsil-localization";
 import Formular from "./Formular";
 
 export default function Create() {
-	const title = trans('Create :resource', { 'resource': transChoice('common.header_links', 1) });
+	const title = trans('Create :resource', { 'resource': transChoice('common.orders', 1) });
 
 	const { data, setData, post, processing, errors } = useForm({
-        label: '',
-        url: '',
-		active: '',
+        type: '',
+        status: '',
     });
 
 	return (
@@ -18,7 +17,7 @@ export default function Create() {
 			<Formular
 				title= { title }
 				label= { trans('Create') }
-				submit= { () => post('/backoffice/header_links') }
+				submit= { () => post('/admin/orders') }
 				data={ data }
 				setData={ setData }
 				processing={ processing }

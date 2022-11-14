@@ -7,7 +7,7 @@ return [
     'permissions'   => 'autorisation|autorisations',
     'roles'         => 'rôle|rôles',
 
-    Permissions::BACKOFFICE_VIEW        => 'Voir l\'arrière guichet',
+    Permissions::BACKEND_VIEW        => 'Voir l\'arrière guichet',
 
     Permissions::LANGUAGES_VIEW         => 'Voir les langues',
 

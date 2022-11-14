@@ -7,7 +7,7 @@ return [
     'permissions'   => 'Berechtigung|Berechtigungen',
     'roles'         => 'Rolle|Rollen',
 
-    Permissions::BACKOFFICE_VIEW        => 'Anzeigen des Backoffice',
+    Permissions::BACKEND_VIEW        => 'Anzeigen des Backoffice',
 
     Permissions::LANGUAGES_VIEW         => 'Anzeigen von Sprachen',
 

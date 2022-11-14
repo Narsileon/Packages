@@ -12,7 +12,7 @@ export default function Show({ user }) {
 
             <ShowTable
                 title={ title }
-                href={ `/backoffice/users/${ user.data.id }/edit` }
+                href={ `/admin/users/${ user.data.id }/edit` }
                 data={ user.data }
             >
                 <div className="grid grid-cols-4 gap-y-4">

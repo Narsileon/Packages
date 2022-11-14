@@ -1,10 +1,10 @@
 import { Head } from "@inertiajs/inertia-react";
-import { trans, transChoice } from "@/narsil-localization";
+import { trans } from "@/narsil-localization";
 import { upperFirst } from "lodash";
 import ShowTable from "@/Components/Backoffice/ShowTable";
 
-export default function Show({ order }) {
-    const title = transChoice('common.orders', 1);
+export default function Show({ faq }) {
+    const title = trans('FAQ');
 
     return (
         <>
@@ -12,8 +12,8 @@ export default function Show({ order }) {
 
             <ShowTable
                 title={ title }
-                href={ `/backoffice/faqs/${ order.id }/edit` }
-                data={ order }
+                href={ `/admin/faqs/${ faq.id }/edit` }
+                data={ faq }
             >
                 <div className="grid grid-cols-2 gap-y-4">
                     <div className="col-span-2 flex items-center space-x-1">
@@ -21,24 +21,24 @@ export default function Show({ order }) {
                             { upperFirst(trans('validation.attributes.id')) + trans(':') }
                         </span>
                         <span>
-                            { order.id }
+                            { faq.id }
                         </span>
                     </div>
                     <div className="col-span-2">
                         <span>
-                            { upperFirst(trans('validation.attributes.type')) + trans(':') }
+                            { upperFirst(trans('validation.attributes.question')) + trans(':') }
                         </span>
                     </div>
                     <div className="col-span-2">
                         <span>
-                            { order.type }
+                            { faq.question }
                         </span>
                     </div>
                     <div className="col-span-2">
-                        { upperFirst(trans('validation.attributes.status')) + trans(':') }
+                        { upperFirst(trans('validation.attributes.answer')) + trans(':') }
                     </div>
                     <div className="col-span-2">
-                        { order.status }
+                        { faq.answer }
                     </div>
                 </div>
             </ShowTable>

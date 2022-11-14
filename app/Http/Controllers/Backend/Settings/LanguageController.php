@@ -24,7 +24,7 @@ class LanguageController extends Controller
             'search' => Request::input('search'),
         ];
 
-        return Inertia::render('Backoffice/Languages/Index', compact(
+        return Inertia::render('Backend/Languages/Index', compact(
             'languages',
             'filters',
         ));

@@ -3,8 +3,8 @@ import { trans, transChoice } from "@/narsil-localization";
 import { upperFirst } from "lodash";
 import ShowTable from "@/Components/Backoffice/ShowTable";
 
-export default function Show({ headerLink }) {
-    const title = upperFirst(transChoice('common.header_link', 1));
+export default function Show({ order }) {
+    const title = transChoice('common.orders', 1);
 
     return (
         <>
@@ -12,8 +12,8 @@ export default function Show({ headerLink }) {
 
             <ShowTable
                 title={ title }
-                href={ `/backoffice/footer_links/${ headerLink.id }/edit` }
-                data={ headerLink }
+                href={ `/admin/faqs/${ order.id }/edit` }
+                data={ order }
             >
                 <div className="grid grid-cols-2 gap-y-4">
                     <div className="col-span-2 flex items-center space-x-1">
@@ -21,28 +21,24 @@ export default function Show({ headerLink }) {
                             { upperFirst(trans('validation.attributes.id')) + trans(':') }
                         </span>
                         <span>
-                            { headerLink.id }
+                            { order.id }
                         </span>
                     </div>
                     <div className="col-span-2">
                         <span>
-                            { upperFirst(trans('validation.attributes.label')) + trans(':') }
+                            { upperFirst(trans('validation.attributes.type')) + trans(':') }
                         </span>
                     </div>
                     <div className="col-span-2">
                         <span>
-                            { headerLink.label }
+                            { order.type }
                         </span>
                     </div>
                     <div className="col-span-2">
-                        <span>
-                            { upperFirst(trans('validation.attributes.url')) + trans(':') }
-                        </span>
+                        { upperFirst(trans('validation.attributes.status')) + trans(':') }
                     </div>
                     <div className="col-span-2">
-                        <span>
-                            { headerLink.url }
-                        </span>
+                        { order.status }
                     </div>
                 </div>
             </ShowTable>

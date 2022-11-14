@@ -29,7 +29,7 @@ class FaqController extends Controller
             'search' => Request::input('search'),
         ];
 
-        return Inertia::render('Backoffice/Faqs/Index', compact(
+        return Inertia::render('Backend/Faqs/Index', compact(
             'faqs',
             'filters',
         ));
@@ -37,7 +37,7 @@ class FaqController extends Controller
 
     public function create()
     {
-        return Inertia::render('Backoffice/Faqs/Create');
+        return Inertia::render('Backend/Faqs/Create');
     }
 
     public function store(FaqCreateRequest $request)
@@ -51,14 +51,14 @@ class FaqController extends Controller
 
     public function show(Faq $faq)
     {
-        return Inertia::render('Backoffice/Faqs/Show', compact(
+        return Inertia::render('Backend/Faqs/Show', compact(
             'faq',
         ));
     }
 
     public function edit(Faq $faq)
     {
-        return Inertia::render('Backoffice/Faqs/Edit', compact(
+        return Inertia::render('Backend/Faqs/Edit', compact(
             'faq'
         ));
     }

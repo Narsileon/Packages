@@ -5,7 +5,7 @@ import Pagination from "@/Shared/Pagination";
 import SearchField from "@/Shared/SearchField";
 export default function Index({ users, fields, filters }) {
 	const settings = {
-		link: "/backoffice/users/",
+		link: "/admin/users/",
 		editable: true,
 		deletable: true,
 	};

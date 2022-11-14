@@ -1,13 +1,14 @@
 import { Head, useForm } from "@inertiajs/inertia-react";
-import { trans } from "@/narsil-localization";
+import { trans, transChoice } from "@/narsil-localization";
 import Formular from "./Formular";
 
-export default function Edit({ faq }) {
-	const title = trans('Edit :resource', { 'resource': trans('FAQ') });
+export default function Edit({ headerLink }) {
+	const title = trans('Edit :resource', { 'resource': transChoice('common.header_links', 1) });
 
     const { data, setData, patch, processing, errors } = useForm({
-        question: faq.question,
-        answer: faq.answer,
+        label: headerLink.label,
+        url: headerLink.url,
+		active: headerLink.active,
     });
 
     return (
@@ -17,7 +18,7 @@ export default function Edit({ faq }) {
 			<Formular
 				title= { title }
 				label= { trans('Update') }
-				submit= { () => patch('/backoffice/faqs/' + faq.id) }
+				submit= { () => patch('/admin/header_links/' + headerLink.id) }
 				data={ data }
 				setData={ setData }
 				processing={ processing }

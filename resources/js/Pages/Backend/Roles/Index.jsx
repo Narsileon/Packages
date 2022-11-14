@@ -6,7 +6,7 @@ import SearchField from "@/Shared/SearchField";
 
 export default function Index({ roles, filters }) {
 	const settings = {
-		link: "/backoffice/roles/",
+		link: "/admin/roles/",
 		editable: true,
 		deletable: true,
 	};

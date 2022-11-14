@@ -29,7 +29,7 @@ class FooterLinkController extends Controller
             'search' => Request::input('search'),
         ];
 
-        return Inertia::render('Backoffice/FooterLinks/Index', compact(
+        return Inertia::render('Backend/FooterLinks/Index', compact(
             'footerLinks',
             'filters',
         ));
@@ -37,7 +37,7 @@ class FooterLinkController extends Controller
 
     public function create()
     {
-        return Inertia::render('Backoffice/FooterLinks/Create');
+        return Inertia::render('Backend/FooterLinks/Create');
     }
 
     public function store(FooterLinkCreateRequest $request)
@@ -51,14 +51,14 @@ class FooterLinkController extends Controller
 
     public function show(FooterLink $footerLink)
     {
-        return Inertia::render('Backoffice/FooterLinks/Show', compact(
+        return Inertia::render('Backend/FooterLinks/Show', compact(
             'footerLink',
         ));
     }
 
     public function edit(FooterLink $footerLink)
     {
-        return Inertia::render('Backoffice/FooterLinks/Edit', compact(
+        return Inertia::render('Backend/FooterLinks/Edit', compact(
             'footerLink'
         ));
     }

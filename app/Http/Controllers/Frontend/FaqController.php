@@ -19,7 +19,7 @@ class FaqController extends Controller
     {
         $faqs = new FaqCollection(Faq::all());
 
-        return Inertia::render('Web/FAQ/Index', compact(
+        return Inertia::render('Frontend/FAQ/Index', compact(
             'faqs'
         ));
     }

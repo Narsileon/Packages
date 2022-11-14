@@ -35,7 +35,7 @@ class UserController extends Controller
             'search' => Request::input('search'),
         ];
 
-        return Inertia::render('Backoffice/Users/Index', compact(
+        return Inertia::render('Backend/Users/Index', compact(
             'users',
             'filters',
         ));
@@ -46,7 +46,7 @@ class UserController extends Controller
         $roles = $this->getAllRoles();
         $permissions = $this->getAllPermissions();
 
-        return Inertia::render('Backoffice/Users/Create', compact(
+        return Inertia::render('Backend/Users/Create', compact(
             'roles',
             'permissions',
         ));
@@ -67,7 +67,7 @@ class UserController extends Controller
     {
         $user = new UserResource($user);
 
-        return Inertia::render('Backoffice/Users/Show', compact(
+        return Inertia::render('Backend/Users/Show', compact(
             'user',
         ));
     }
@@ -79,7 +79,7 @@ class UserController extends Controller
         $roles = $this->getAllRoles();
         $permissions = $this->getAllPermissions();
 
-        return Inertia::render('Backoffice/Users/Edit', compact(
+        return Inertia::render('Backend/Users/Edit', compact(
             'user',
             'roles',
             'permissions',

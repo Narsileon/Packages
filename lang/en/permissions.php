@@ -7,7 +7,7 @@ return [
     'permissions'   => 'permission|permissions',
     'roles'         => 'role|roles',
 
-    Permissions::BACKOFFICE_VIEW        => 'View backoffice',
+    Permissions::BACKEND_VIEW        => 'View backoffice',
 
     Permissions::LANGUAGES_VIEW         => 'View languages',
 

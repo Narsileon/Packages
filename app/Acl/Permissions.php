@@ -14,7 +14,7 @@ abstract class Permissions
 
     #region CONSTANTS
 
-    public const BACKOFFICE_VIEW = 'backoffice-view';
+    public const BACKEND_VIEW = 'backend-view';
 
     public const LANGUAGES_VIEW = 'languages-view';
 

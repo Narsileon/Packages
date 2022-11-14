@@ -26,7 +26,7 @@ export default function Create({ permissions }) {
 			permissions: permissions.data.filter(x => data.permissions[x.name] == true)
 		}))
 
-        post('/backoffice/roles');
+        post('/admin/roles');
     };
 
 	return (

@@ -1,13 +1,13 @@
 import { Head, useForm } from "@inertiajs/inertia-react";
-import { trans, transChoice } from "@/narsil-localization";
+import { trans } from "@/narsil-localization";
 import Formular from "./Formular";
 
-export default function Edit({ order }) {
-	const title = trans('Edit :resource', { 'resource': transChoice('common.orders', 1) });
+export default function Edit({ faq }) {
+	const title = trans('Edit :resource', { 'resource': trans('FAQ') });
 
     const { data, setData, patch, processing, errors } = useForm({
-        type: order.type,
-        status: order.status,
+        question: faq.question,
+        answer: faq.answer,
     });
 
     return (
@@ -17,7 +17,7 @@ export default function Edit({ order }) {
 			<Formular
 				title= { title }
 				label= { trans('Update') }
-				submit= { () => patch('/backoffice/orders/' + order.id) }
+				submit= { () => patch('/admin/faqs/' + faq.id) }
 				data={ data }
 				setData={ setData }
 				processing={ processing }

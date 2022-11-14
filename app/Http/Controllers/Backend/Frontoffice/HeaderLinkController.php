@@ -29,7 +29,7 @@ class HeaderLinkController extends Controller
             'search' => Request::input('search'),
         ];
 
-        return Inertia::render('Backoffice/HeaderLinks/Index', compact(
+        return Inertia::render('Backend/HeaderLinks/Index', compact(
             'headerLinks',
             'filters',
         ));
@@ -37,7 +37,7 @@ class HeaderLinkController extends Controller
 
     public function create()
     {
-        return Inertia::render('Backoffice/HeaderLinks/Create');
+        return Inertia::render('Backend/HeaderLinks/Create');
     }
 
     public function store(HeaderLinkCreateRequest $request)
@@ -51,14 +51,14 @@ class HeaderLinkController extends Controller
 
     public function show(HeaderLink $headerLink)
     {
-        return Inertia::render('Backoffice/HeaderLinks/Show', compact(
+        return Inertia::render('Backend/HeaderLinks/Show', compact(
             'headerLink',
         ));
     }
 
     public function edit(HeaderLink $headerLink)
     {
-        return Inertia::render('Backoffice/HeaderLinks/Edit', compact(
+        return Inertia::render('Backend/HeaderLinks/Edit', compact(
             'headerLink'
         ));
     }

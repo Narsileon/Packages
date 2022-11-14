@@ -6,7 +6,7 @@ import SearchField from "@/Shared/SearchField";
 
 export default function Index({ faqs, filters }) {
 	const settings = {
-		link: "/backoffice/faqs/",
+		link: "/admin/faqs/",
 		editable: true,
 		deletable: true,
 	};

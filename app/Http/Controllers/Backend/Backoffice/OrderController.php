@@ -28,7 +28,7 @@ class OrderController extends Controller
             'search' => Request::input('search'),
         ];
 
-        return Inertia::render('Backoffice/Orders/Index', compact(
+        return Inertia::render('Backend/Orders/Index', compact(
             'orders',
             'filters',
         ));
@@ -36,7 +36,7 @@ class OrderController extends Controller
 
     public function create()
     {
-        return Inertia::render('Backoffice/Orders/Create');
+        return Inertia::render('Backend/Orders/Create');
     }
 
     public function store(FaqCreateRequest $request)
@@ -50,14 +50,14 @@ class OrderController extends Controller
 
     public function show(Order $order)
     {
-        return Inertia::render('Backoffice/Orders/Show', compact(
+        return Inertia::render('Backend/Orders/Show', compact(
             'order',
         ));
     }
 
     public function edit(Order $order)
     {
-        return Inertia::render('Backoffice/Orders/Edit', compact(
+        return Inertia::render('Backend/Orders/Edit', compact(
             'order'
         ));
     }

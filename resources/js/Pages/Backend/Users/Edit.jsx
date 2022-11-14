@@ -42,7 +42,7 @@ export default function Edit({ user, roles, permissions }) {
 			permissions: permissions.data.filter(x => data.permissions[x.name] == true),
 		}))
 
-        patch('/backoffice/users/' + user.data.id);
+        patch('/admin/users/' + user.data.id);
     };
 
     return (

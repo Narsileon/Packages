@@ -6,7 +6,7 @@ import Pagination from "@/Shared/Pagination";
 
 export default function Index({ headerLinks, filters }) {
 	const settings = {
-		link: "/backoffice/header_links/",
+		link: "/admin/header_links/",
 		editable: true,
 		deletable: true,
 	};

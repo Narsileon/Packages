@@ -3,8 +3,8 @@ import { trans, transChoice } from "@/narsil-localization";
 import { upperFirst } from "lodash";
 import ShowTable from "@/Components/Backoffice/ShowTable";
 
-export default function Show({ footerLink }) {
-    const title = upperFirst(transChoice('common.footer_links', 1));
+export default function Show({ headerLink }) {
+    const title = upperFirst(transChoice('common.header_link', 1));
 
     return (
         <>
@@ -12,8 +12,8 @@ export default function Show({ footerLink }) {
 
             <ShowTable
                 title={ title }
-                href={ `/backoffice/footer_links/${ footerLink.id }/edit` }
-                data={ footerLink }
+                href={ `/admin/footer_links/${ headerLink.id }/edit` }
+                data={ headerLink }
             >
                 <div className="grid grid-cols-2 gap-y-4">
                     <div className="col-span-2 flex items-center space-x-1">
@@ -21,7 +21,7 @@ export default function Show({ footerLink }) {
                             { upperFirst(trans('validation.attributes.id')) + trans(':') }
                         </span>
                         <span>
-                            { footerLink.id }
+                            { headerLink.id }
                         </span>
                     </div>
                     <div className="col-span-2">
@@ -31,7 +31,7 @@ export default function Show({ footerLink }) {
                     </div>
                     <div className="col-span-2">
                         <span>
-                            { footerLink.label }
+                            { headerLink.label }
                         </span>
                     </div>
                     <div className="col-span-2">
@@ -41,7 +41,7 @@ export default function Show({ footerLink }) {
                     </div>
                     <div className="col-span-2">
                         <span>
-                            { footerLink.url }
+                            { headerLink.url }
                         </span>
                     </div>
                 </div>

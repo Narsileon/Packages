@@ -34,7 +34,7 @@ class RoleController extends Controller
             'search' => Request::input('search'),
         ];
 
-        return Inertia::render('Backoffice/Roles/Index', compact(
+        return Inertia::render('Backend/Roles/Index', compact(
             'roles',
             'filters',
         ));
@@ -44,7 +44,7 @@ class RoleController extends Controller
     {
         $permissions = $this->getAllPermissions();
 
-        return Inertia::render('Backoffice/Roles/Create', compact(
+        return Inertia::render('Backend/Roles/Create', compact(
             'permissions',
         ));
     }
@@ -64,7 +64,7 @@ class RoleController extends Controller
     {
         $role = new UserRoleResource($role);
 
-        return Inertia::render('Backoffice/Roles/Show', compact(
+        return Inertia::render('Backend/Roles/Show', compact(
             'role',
         ));
     }
@@ -74,7 +74,7 @@ class RoleController extends Controller
         $role = new UserRoleResource($role);
         $permissions = $this->getAllPermissions();
 
-        return Inertia::render('Backoffice/Roles/Edit', compact(
+        return Inertia::render('Backend/Roles/Edit', compact(
             'role',
             'permissions',
         ));
