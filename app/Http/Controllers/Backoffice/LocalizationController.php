@@ -11,7 +11,7 @@ use Inertia\Inertia;
 
 #endregion
 
-class DictionaryController extends Controller
+class LocalizationController extends Controller
 {
     #region PUBLIC METHODS
 

@@ -8,8 +8,8 @@ import SortButton from "@/Components/Elements/Buttons/SortButton";
 import Toggle from "@/Components/Elements/Toggle";
 import SearchField from "@/Shared/SearchField";
 
-export default function Index({ locales, filters }) {
-	const [tableData, setTableData, handleSorting] = useFrontSortableTable(locales)
+export default function Index({ languages, filters }) {
+	const [tableData, setTableData, handleSorting] = useFrontSortableTable(languages)
 
 	const previous = usePrevious(tableData);
 

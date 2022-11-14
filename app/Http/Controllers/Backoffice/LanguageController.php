@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Backoffice;
 #region USE
 
 use App\Http\Controllers\Controller;
-use App\Models\Session\Locale;
+use App\Models\Backoffice\Language;
 use Illuminate\Http\Request as HttpRequest;
 use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
@@ -18,14 +18,14 @@ class LanguageController extends Controller
 
     public function index()
     {
-        $locales = Locale::search(request('search'))->get();
+        $languages = Language::search(request('search'))->get();
 
         $filters = [
             'search' => Request::input('search'),
         ];
 
         return Inertia::render('Backoffice/Languages/Index', compact(
-            'locales',
+            'languages',
             'filters',
         ));
     }
@@ -33,7 +33,7 @@ class LanguageController extends Controller
     public function update(HttpRequest $request)
     {
         $request->collect()->each(function($locale) {
-            Locale::where(Locale::FIELD_ID, $locale[Locale::FIELD_ID])->update($locale);
+            Language::where(Language::FIELD_ID, $locale[Language::FIELD_ID])->update($locale);
         });
 
         return redirect(route('backoffice.languages'));

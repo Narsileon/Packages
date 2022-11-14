@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Session;
+namespace App\Models\Backoffice;
 
 #region USE
 
@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 
 #endregion
 
-class Locale extends Model
+class Language extends Model
 {
     use HasFactory, IsFilterable, IsSortable;
 

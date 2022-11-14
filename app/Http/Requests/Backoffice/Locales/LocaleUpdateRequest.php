@@ -5,7 +5,7 @@ namespace App\Http\Requests\Backoffice\Locales;
 #region USE
 
 use App\Constants\ValidationRules;
-use App\Models\Session\Locale;
+use App\Models\Backoffice\Language;
 use Illuminate\Foundation\Http\FormRequest;
 
 #endregion
@@ -22,7 +22,7 @@ class LocaleUpdateRequest extends FormRequest
     public function rules() : array
     {
         return [
-            Locale::FIELD_ACTIVE => [
+            Language::FIELD_ACTIVE => [
                 ValidationRules::REQUIRED,
                 ValidationRules::TYPE_BOOLEAN,
             ],

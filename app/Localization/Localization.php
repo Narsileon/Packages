@@ -4,7 +4,7 @@ namespace App\Localization;
 
 #region USE
 
-use App\Models\Session\Locale;
+use App\Models\Backoffice\Language;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
@@ -27,7 +27,7 @@ abstract class Localization
 
     public static function get()
     {
-        $locales = Locale::where(Locale::FIELD_ACTIVE, 1)->pluck(Locale::FIELD_LOCALE)->toArray();
+        $locales = Language::where(Language::FIELD_ACTIVE, 1)->pluck(Language::FIELD_LOCALE)->toArray();
         $locale = App::getLocale();
         $dictionary = self::getLocalization($locale);
 

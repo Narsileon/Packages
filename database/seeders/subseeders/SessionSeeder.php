@@ -5,7 +5,7 @@ namespace Database\Seeders\Subseeders;
 #region USE
 
 use App\Constants\Locales;
-use App\Models\Session\Locale;
+use App\Models\Backoffice\Language;
 use Illuminate\Database\Seeder;
 
 #endregion
@@ -29,9 +29,9 @@ class SessionSeeder extends Seeder
         {
             $active = (in_array($code, ['de', 'en', 'fr'])) ? true : false;
 
-            Locale::create([
-                Locale::FIELD_LOCALE => $code,
-                Locale::FIELD_ACTIVE => $active,
+            Language::create([
+                Language::FIELD_LOCALE => $code,
+                Language::FIELD_ACTIVE => $active,
             ]);
         }
     }

@@ -2,7 +2,7 @@
 
 #region USE
 
-use App\Models\Session\Locale;
+use App\Models\Backoffice\Language;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,17 +15,17 @@ return new class extends Migration
 
     public function up()
     {
-        Schema::create('locales', function (Blueprint $table) {
+        Schema::create('languages', function (Blueprint $table) {
             $table->id();
-            $table->string(Locale::FIELD_LOCALE);
-            $table->boolean(Locale::FIELD_ACTIVE);
+            $table->string(Language::FIELD_LOCALE);
+            $table->boolean(Language::FIELD_ACTIVE);
             $table->timestamps();
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('locales');
+        Schema::dropIfExists('languages');
     }
 
     #endregion
