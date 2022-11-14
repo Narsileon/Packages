@@ -3,6 +3,7 @@ import { trans, transChoice } from "@/narsil-localization";
 import { upperFirst } from "lodash";
 import NavLink from "@/Components/Elements/Links/NavLink";
 import Icon from "@/Shared/Svg/Icon";
+import Chevron from "@/Shared/Svg/Chevron";
 
 export default function Nav() {
     return (
@@ -103,16 +104,24 @@ const Section = ({
     return (
         <ul>
             <button
-                className="flex items-center selectable p-1 space-x-2"
+                className="flex items-center justify-between w-full"
                 onClick={ setShow }
             >
-                <Icon
-                    name={ icon }
-                    className="w-6 h-6"
-                />
-                <h1>
-                    { upperFirst(label) }
-                </h1>
+                <div className="flex items-center selectable p-1 space-x-2">
+                    <Icon
+                        name={ icon }
+                        className="w-6 h-6"
+                    />
+                    <h1>
+                        { upperFirst(label) }
+                    </h1>
+                </div>
+                <div>
+                    <Chevron
+                        className="w-5 h-5"
+                        direction={ show ? 'up' : 'down' }
+                    />
+                </div>
             </button>
 
             <div className="ml-8">
