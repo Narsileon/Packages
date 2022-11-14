@@ -3,6 +3,7 @@ import LocaleDropdown from "@/Shared/Layouts/LocaleDropdown";
 import ThemeButton from "@/Shared/Layouts/ThemeButton";
 import WebsiteLogo from "@/Shared/Layouts/WebsiteLogo";
 import Flash from "@/Shared/Flash";
+import Icon from "@/Shared/Svg/Icon";
 
 export default function Layout({ children }) {
     return (
@@ -12,14 +13,18 @@ export default function Layout({ children }) {
                 hover:absolute md:hover:sticky hover:w-64 hover:overflow-visible
                 md:transition-all md:duration-300
             ">
-                <Header />
+                <WebsiteLogo />
 
                 <Nav />
             </aside>
 
-            <section className="grid grid-cols-1 grow content-start m-4">
-                { children }
-            </section>
+            <div className="grid grids-cols-1 grow content-start">
+                <Header />
+
+                <section className="content-start m-4">
+                    { children }
+                </section>
+            </div>
 
             <Flash />
         </main>
@@ -28,12 +33,18 @@ export default function Layout({ children }) {
 
 const Header = () => {
     return (
-        <header className="flex items-center justify-between space-x-2">
-            <WebsiteLogo />
-
-            <div className="flex items-center">
+        <header className="h-10 primary-background">
+            <div className="flex items-center justify-end mx-2">
                 <LocaleDropdown />
+
                 <ThemeButton />
+
+                <button>
+                    <Icon
+                        className="w-6 h-6"
+                        name="menu"
+                    />
+                </button>
             </div>
         </header>
     )

@@ -9,7 +9,7 @@ export default function LocaleDropdown() {
 
     return (
         <Dropdown trigger={ upperCase(locale) }>
-            <DropdownPanel>
+            <DropdownPanel className="right-0">
                 <div>
                     {
                         locales.map(availableLocale => {

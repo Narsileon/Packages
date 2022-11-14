@@ -8,10 +8,10 @@ export default function Layout({ children }) {
     ];
 
     const footerIconLinks = [
-        { route: '#', name: "github" },
-        { route: '#', name: "facebook" },
-        { route: '#', name: "instagram" },
-        { route: '#', name: "twitter" },
+        { route: '#', name: 'github' },
+        { route: '#', name: 'facebook' },
+        { route: '#', name: 'instagram' },
+        { route: '#', name: 'twitter' },
     ];
 
     return (
