@@ -18,7 +18,7 @@ export default function Layout({ children }) {
                 <Nav />
             </aside>
 
-            <section className="flex flex-col max-h-screen w-full">
+            <section className="flex flex-col max-h-screen w-full min-w-0">
                 <Header />
 
                 <div className="min-h-0 m-4">
