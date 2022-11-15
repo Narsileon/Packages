@@ -18,10 +18,10 @@ export default function Layout({ children }) {
                 <Nav />
             </aside>
 
-            <section className="w-full h-full">
+            <section className="flex flex-col max-h-screen w-full">
                 <Header />
 
-                <div className="grid grid-cols-1 content-start m-4">
+                <div className="min-h-0 m-4">
                     { children }
                 </div>
             </section>
