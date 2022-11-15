@@ -83,7 +83,7 @@ export default function Nav() {
                         icon="language"
                     />
                     <NavLink
-                        href={ route('admin.dictionary') }
+                        href={ route('admin.dictionary.index') }
                         label={ transChoice('common.dictionaries', 1) }
                         icon="book"
                     />

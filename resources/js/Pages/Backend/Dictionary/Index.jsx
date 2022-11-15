@@ -1,11 +1,13 @@
 import { useRef, useState } from "react";
 import { useClickAway, usePrevious, useToggle } from "react-use";
+import { Inertia } from "@inertiajs/inertia";
 import { Head, Link, usePage } from "@inertiajs/inertia-react";
 import { trans, transChoice } from "@/narsil-localization";
 import { useFrontSortableTable } from "@/narsil-react";
 import { upperFirst } from "lodash";
 import SortButton from "@/Components/Elements/Buttons/SortButton";
 import SearchField from "@/Shared/SearchField";
+import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 
 export default function Index({ localizations, filters }) {
 	const [tableData, setTableData, handleSorting] = useFrontSortableTable(localizations.dictionary)
@@ -18,6 +20,10 @@ export default function Index({ localizations, filters }) {
 		setSortField(accessor);
 		setOrder(sortOrder);
 		handleSorting(accessor, sortOrder);
+	};
+
+	function update() {
+		Inertia.patch(`dictionary/${ localizations.user_id }`, { dictionary: tableData});
 	};
 
 	return (
@@ -33,12 +39,10 @@ export default function Index({ localizations, filters }) {
 							</span>
 						</div>
 						<div className="col-span-1 md:order-2 self-center place-self-end">
-							<Link
-								className="primary-button whitespace-nowrap"
-								href={ route('admin.dictionary') }
-							>
-								{ upperFirst(trans('common.update')) }
-							</Link>
+							<PrimaryButton
+								label={ trans('common.update') }
+								onClick={ update }
+							/>
 						</div>
 						<div className="col-span-1 sm:col-span-2 md:col-span-1 md:order-1 place-self-center w-full">
 							<SearchField filters={ filters } />

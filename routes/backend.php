@@ -42,7 +42,7 @@ Route::group([
         Route::patch('languages', 'update');
     });
     Route::controller(LocalizationController::class)->group(function () {
-        Route::get('dictionary', 'index')->name('dictionary');
-        Route::patch('dictionary', 'update');
+        Route::get('dictionary', 'index')->name('dictionary.index');
+        Route::patch('dictionary/{localization}', 'update')->name('dictionary.update');
     });
 });
