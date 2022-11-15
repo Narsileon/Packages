@@ -5,8 +5,22 @@ import Logo from "@/Shared/Svg/Logo";
 
 export default function Footer({ textLinks, iconLinks }) {
     return (
-        <footer id="footer" className="primary-background border-t-2 border-color w-full p-4 space-y-4 text-sm">
-            <div id="top-footer" className="grid grid-cols-1 md:grid-cols-2 space-y-4 md:space-y-0">
+        <footer id="footer">
+            <div className="primary-background border-t-2 border-color w-full p-4 space-y-4 text-sm">
+                <UpperFooter textLinks={ textLinks } />
+
+                <hr className="border-color" />
+
+                <LowerFooter iconLinks={ iconLinks } />
+            </div>
+        </footer>
+    );
+}
+
+const UpperFooter = ({ textLinks }) => {
+    return (
+        <section id="upper-header">
+            <div className="grid grid-cols-1 md:grid-cols-2 space-y-4 md:space-y-0">
                 <div className="col-span-1">
                     <div className="flex items-center justify-center md:justify-start">
                         <WebsiteLogo />
@@ -31,10 +45,14 @@ export default function Footer({ textLinks, iconLinks }) {
                     </div>
                 </div>
             </div>
+        </section>
+    );
+}
 
-            <hr className="border-color" />
-
-            <div id="bottom-footer" className="grid grid-cols-1 md:grid-cols-2 space-y-4 md:space-y-0">
+const LowerFooter = ({ iconLinks }) => {
+    return (
+        <section id="lower-header">
+            <div className="grid grid-cols-1 md:grid-cols-2 space-y-4 md:space-y-0">
                 <div className="col-span-1 md:order-2">
                     <div className="flex items-center justify-center md:justify-end space-x-4">
                         {
@@ -66,6 +84,6 @@ export default function Footer({ textLinks, iconLinks }) {
                     </div>
                 </div>
             </div>
-        </footer>
+        </section>
     );
 }
