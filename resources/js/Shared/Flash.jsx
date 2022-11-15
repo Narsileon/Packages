@@ -11,7 +11,7 @@ export default function Flash() {
 
     useEffect(() => {
         setVisible(true);
-      }, [flash]);
+    }, [flash]);
 
     return (
         <>

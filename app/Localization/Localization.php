@@ -42,7 +42,7 @@ abstract class Localization
     {
         $locale = App::getLocale();
 
-        return self::getPhpLocalization($locale)["common"];
+        return array_fill_keys(self::getPhpLocalization($locale)["common"], '');
     }
 
     #endregion

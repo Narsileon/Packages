@@ -20,7 +20,7 @@ export default function Index({ faqs, filters }) {
 					<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-4 md:gap-y-0 content-start place-content-between">
 						<div className="col-span-1 self-center place-self-start">
 							<span className="text-xl">
-							{ trans('List of :resource', { 'resource': trans('common.faq') }) }
+								{ trans('List of :resource', { 'resource': trans('common.faq') }) }
 							</span>
 						</div>
 						<div className="col-span-1 md:order-2 self-center place-self-end">

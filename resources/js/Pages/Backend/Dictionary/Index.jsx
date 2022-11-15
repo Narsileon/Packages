@@ -1,31 +1,17 @@
-import { useEffect, useState } from "react";
-import { usePrevious } from "react-use";
-import { Inertia } from "@inertiajs/inertia";
-import { Head, usePage } from "@inertiajs/inertia-react";
+import { useRef, useState } from "react";
+import { useClickAway, usePrevious, useToggle } from "react-use";
+import { Head, Link, usePage } from "@inertiajs/inertia-react";
 import { trans, transChoice } from "@/narsil-localization";
 import { useFrontSortableTable } from "@/narsil-react";
+import { upperFirst } from "lodash";
 import SortButton from "@/Components/Elements/Buttons/SortButton";
 import SearchField from "@/Shared/SearchField";
-import { upperFirst } from "lodash";
 
 export default function Index({ localizations, filters }) {
-    const { locale, dictionary } = usePage().props.localization;
-
 	const [tableData, setTableData, handleSorting] = useFrontSortableTable(localizations.dictionary)
-
-	const previous = usePrevious(tableData);
 
 	const [sortField, setSortField] = useState("");
  	const [order, setOrder] = useState("asc");
-
-	function handleChange(event, key) {
-		let data = [...tableData];
-
-		let result = data.find(x => x.key == key);
-		result.active = !result.active;
-
-		setTableData(data);
-	}
 
 	const handleSortingChange = (accessor) => {
 		const sortOrder = accessor === sortField && order === "asc" ? "desc" : "asc";
@@ -34,25 +20,27 @@ export default function Index({ localizations, filters }) {
 		handleSorting(accessor, sortOrder);
 	};
 
-	useEffect(() => {
-		if (previous) {
-			Inertia.patch(route('admin.languages'), tableData);
-		}
-    }, [tableData]);
-
 	return (
 		<>
 			<Head title={ transChoice('common.dictionaries', 1) } />
 
 			<div className="flex flex-col h-full space-y-4">
-				<section id="table-header">
-					<div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 md:gap-y-0 content-start place-content-between">
-						<div className="col-span-1 self-center place-self-start w-full">
+			<section id="table-header">
+					<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-4 md:gap-y-0 content-start place-content-between">
+						<div className="col-span-1 self-center place-self-start">
 							<span className="text-xl">
 								{ upperFirst(transChoice('common.dictionaries', 1)) }
 							</span>
 						</div>
-						<div className="col-span-1 self-center place-self-end w-full">
+						<div className="col-span-1 md:order-2 self-center place-self-end">
+							<Link
+								className="primary-button whitespace-nowrap"
+								href={ route('admin.dictionary') }
+							>
+								{ upperFirst(trans('common.update')) }
+							</Link>
+						</div>
+						<div className="col-span-1 sm:col-span-2 md:col-span-1 md:order-1 place-self-center w-full">
 							<SearchField filters={ filters } />
 						</div>
 					</div>
@@ -92,7 +80,7 @@ export default function Index({ localizations, filters }) {
 							</thead>
 							<tbody>
 								{
-									Object.entries(tableData).map(([key,value]) => {
+									Object.entries(tableData).map(([key, value]) => {
 										return (
 											<tr key={ key }>
 												<td>
@@ -102,7 +90,10 @@ export default function Index({ localizations, filters }) {
 													{ trans(`common.${ key }`) }
 												</td>
 												<td>
-													{ value }
+													<CustomValue
+														value={ value }
+														handleChange={ (event) => setTableData({...tableData, [key]: event.target.value}) }
+													/>
 												</td>
 											</tr>
 										);
@@ -114,5 +105,35 @@ export default function Index({ localizations, filters }) {
 				</section>
 			</div>
 		</>
+	);
+}
+
+const CustomValue = ({ value, handleChange }) => {
+	const [show, setShow] = useToggle(false);
+
+	const field = useRef();
+
+	useClickAway(field, () => setShow(false), ['mousedown', 'submit'])
+
+	return (
+		<div
+			className="h-full w-full"
+			onClick={ setShow }
+			ref={ field }
+		>
+			{
+				show ? (
+					<textarea
+						className="field h-8 w-full p-0 m-0"
+						onChange={ (event) => handleChange(event) }
+						autoFocus
+					/>
+				) : (
+					<span>
+						{ value ? value : "..." }
+					</span>
+				)
+			}
+		</div>
 	);
 }
