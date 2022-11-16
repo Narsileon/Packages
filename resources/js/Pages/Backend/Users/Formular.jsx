@@ -19,7 +19,7 @@ export default function Formular({
 	const [permissionSection, scrollToPermissions] = useScrollTo();
 
     return (
-        <div className="flex justify-between space-x-8">
+        <div className="flex justify-between h-full space-x-8">
             <FormSummary>
                 <button onClick={ scrollToRoles }>
                     {transChoice('permissions.roles', 2) }
