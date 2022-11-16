@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Localization;
+namespace App\Services;
 
 #region USE
 
 use App\Models\Backend\Language;
+use App\Models\Backend\Localization;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
@@ -14,7 +15,7 @@ use Illuminate\Support\Facades\Log;
 
 #endregion
 
-abstract class Localization
+class LocalizationService
 {
     #region CONSTANTS
 
@@ -25,6 +26,14 @@ abstract class Localization
     #endregion
 
     #region PUBLIC METHODS
+
+    public static function createTable($user)
+    {
+        Localization::create([
+            Localization::FIELD_USER_ID => $user->id,
+            Localization::FIELD_DICTIONARY => self::getCustomizableLocalization(),
+        ]);
+    }
 
     public static function get($customized = true)
     {

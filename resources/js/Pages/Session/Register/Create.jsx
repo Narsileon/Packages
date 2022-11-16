@@ -7,6 +7,7 @@ export default function Create() {
         username: '',
         email: '',
         password: '',
+        password_confirmation: '',
         last_name: '',
         first_name: '',
     });
@@ -54,6 +55,16 @@ export default function Create() {
                     error={ errors.password}
                     setData={ setData }
                     autoComplete="new-password"
+                />
+                {/* Password Confirmation */}
+                <FormInput
+                    id="password_confirmation"
+                    label={ trans('validation.attributes.password_confirmation') }
+                    type="password"
+                    value={ data.password_confirmation}
+                    error={ errors.password}
+                    setData={ setData }
+                    autoComplete="current-password"
                 />
                 {/* Last Name */}
                 <FormInput

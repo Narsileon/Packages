@@ -5,9 +5,8 @@ namespace Database\Seeders\Subseeders;
 #region USE
 
 use App\Acl\Roles;
-use App\Localization\Localization as LocalizationLocalization;
-use App\Models\Backend\Localization;
 use App\Models\User;
+use App\Services\LocalizationService;
 use Illuminate\Database\Seeder;
 
 #endregion
@@ -37,10 +36,7 @@ class UserSeeder extends Seeder
 
         $user->assignRole(Roles::SUPER_ADMIN);
 
-        Localization::create([
-            Localization::FIELD_USER_ID => $user->id,
-            Localization::FIELD_DICTIONARY => LocalizationLocalization::getCustomizableLocalization(),
-        ]);
+        LocalizationService::createTable($user);
     }
 
     #endregion

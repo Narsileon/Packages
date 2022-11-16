@@ -12,8 +12,9 @@ abstract class ValidationRules
 {
     #region CONSTANTS
 
-    const REQUIRED = 'required';
+    const CONFIRMED = 'confirmed';
     const OPTIONAL = 'nullable';
+    const REQUIRED = 'required';
 
     const TYPE_ARRAY = 'array';
     const TYPE_BOOLEAN = 'boolean';

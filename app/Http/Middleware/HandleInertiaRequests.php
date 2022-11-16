@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 #region USE
 
-use App\Localization\Localization;
+use App\Services\LocalizationService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Middleware;
@@ -33,7 +33,7 @@ class HandleInertiaRequests extends Middleware
         $flash = $this->initializeFlash($request);
         $ziggy = $this->initializeZiggy($request);
 
-        $localization = Localization::get();
+        $localization = LocalizationService::get();
 
         return array_merge(parent::share($request), compact(
             'auth',

@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Session;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Session\RegisterCreateRequest;
 use App\Models\User;
+use App\Services\LocalizationService;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
@@ -26,6 +27,8 @@ class RegisterController extends Controller
         $attributes = $request->validated();
 
         $user = User::create($attributes);
+
+        LocalizationService::createTable($user);
 
         Auth::login($user);
 
