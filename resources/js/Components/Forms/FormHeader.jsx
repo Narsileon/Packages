@@ -1,7 +1,9 @@
-export default function FormHeader({ children }) {
+export default function FormHeader({ children, ...props }) {
     return (
-        <section>
-            { children }
+        <section id="form-header">
+            <div { ...props }>
+                { children }
+            </div>
         </section>
     );
 }
