@@ -42,6 +42,7 @@ export default function Index({ faqs, filters }) {
 			sorting,
 		},
 		onColumnOrderChange: setColumnOrder,
+		onSortingChange: setSorting,
 		getCoreRowModel: getCoreRowModel(),
 		getSortedRowModel: getSortedRowModel(),
 	})
@@ -83,10 +84,24 @@ export default function Index({ faqs, filters }) {
 				style={{ opacity: isDragging ? 0.5 : 1 }}
 			>
 				<div ref={ previewRef }>
-					{ header.isPlaceholder
-						? null
-						: flexRender(header.column.columnDef.header, header.getContext())
-					}
+					<div
+                        {...{
+							className: header.column.getCanSort()
+								? 'cursor-pointer select-none'
+								: '',
+							onClick: header.column.getToggleSortingHandler(),
+                        }}
+                      >
+                        {flexRender(
+							header.column.columnDef.header,
+							header.getContext()
+                        )}
+                        {{
+							asc: ' 🔼',
+							desc: ' 🔽',
+                        }[header.column.getIsSorted()] ?? null}
+					</div>
+
 					<button ref={ dragRef }>
 						drag
 					</button>
