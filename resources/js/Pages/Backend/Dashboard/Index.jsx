@@ -4,7 +4,7 @@ import { trans } from "@/narsil-localization";
 export default function Index() {
     return (
         <>
-            <Head title={ trans('Dashboard') } />
+            <Head title={ trans('common.dashboard') } />
         </>
     );
 }

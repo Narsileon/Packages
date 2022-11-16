@@ -51,7 +51,7 @@ export default function Edit({ user, roles, permissions }) {
 
 			<Formular
 				title= { title }
-				label= { trans('Update') }
+				label= { trans('common.update') }
 				submit= { submit }
 				data={ data }
 				setData={ setData }

@@ -16,7 +16,7 @@ export default function Edit({ faq }) {
 
 			<Formular
 				title= { title }
-				label= { trans('Update') }
+				label= { trans('common.update') }
 				submit= { () => patch('/admin/faqs/' + faq.id) }
 				data={ data }
 				setData={ setData }

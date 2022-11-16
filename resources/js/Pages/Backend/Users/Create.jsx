@@ -51,7 +51,7 @@ export default function Create({ roles, permissions }) {
 
 			<Formular
 				title= { title }
-				label= { trans('Create') }
+				label= { trans('common.create') }
 				submit= { submit }
 				data={ data }
 				setData={ setData }

@@ -17,7 +17,7 @@ export default function Edit({ footerLink }) {
 
 			<Formular
 				title= { title }
-				label= { trans('Update') }
+				label= { trans('common.update') }
 				submit= { () => patch('/admin/footer_links/' + footerLink.id) }
 				data={ data }
 				setData={ setData }

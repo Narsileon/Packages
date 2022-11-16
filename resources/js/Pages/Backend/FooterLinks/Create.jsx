@@ -17,7 +17,7 @@ export default function Create() {
 
 			<Formular
 				title= { title }
-				label= { trans('Create') }
+				label= { trans('common.create') }
 				submit= { () => post('/admin/footer_links') }
 				data={ data }
 				setData={ setData }

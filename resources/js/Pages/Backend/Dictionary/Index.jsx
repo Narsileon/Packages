@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
-import { useClickAway, usePrevious, useToggle } from "react-use";
+import { useClickAway, useToggle } from "react-use";
 import { Inertia } from "@inertiajs/inertia";
-import { Head, Link, usePage } from "@inertiajs/inertia-react";
+import { Head } from "@inertiajs/inertia-react";
 import { trans, transChoice } from "@/narsil-localization";
 import { useFrontSortableTable } from "@/narsil-react";
 import { upperFirst } from "lodash";
