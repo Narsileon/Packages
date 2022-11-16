@@ -1,17 +1,15 @@
-import { useEffect, useState } from "react";
-import { usePrevious } from "react-use";
+import { useState } from "react";
 import { Inertia } from "@inertiajs/inertia";
 import { Head } from "@inertiajs/inertia-react";
 import { trans, transChoice } from "@/narsil-localization";
 import { useFrontSortableTable } from "@/narsil-react";
+import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 import SortButton from "@/Components/Elements/Buttons/SortButton";
 import Toggle from "@/Components/Elements/Toggle";
 import SearchField from "@/Shared/SearchField";
 
 export default function Index({ languages, filters }) {
 	const [tableData, setTableData, handleSorting] = useFrontSortableTable(languages)
-
-	const previous = usePrevious(tableData);
 
 	const [sortField, setSortField] = useState("");
  	const [order, setOrder] = useState("asc");
@@ -32,11 +30,9 @@ export default function Index({ languages, filters }) {
 		handleSorting(accessor, sortOrder);
 	};
 
-	useEffect(() => {
-		if (previous) {
-			Inertia.patch(route('admin.languages'), tableData);
-		}
-    }, [tableData]);
+	function update() {
+		Inertia.patch(route('admin.languages'), tableData);
+	};
 
 	return (
 		<>
@@ -44,13 +40,19 @@ export default function Index({ languages, filters }) {
 
 			<div className="flex flex-col h-full space-y-4">
 				<section id="table-header">
-					<div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 md:gap-y-0 content-start place-content-between">
-						<div className="col-span-1 self-center place-self-start w-full">
+					<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-4 md:gap-y-0 content-start place-content-between">
+						<div className="col-span-1 self-center place-self-start">
 							<span className="text-xl">
 								{ trans('List of :resource', { 'resource': transChoice('locales.languages', 2) }) }
 							</span>
 						</div>
-						<div className="col-span-1 self-center place-self-end w-full">
+						<div className="col-span-1 md:order-2 self-center place-self-end">
+							<PrimaryButton
+								label={ trans('common.update') }
+								onClick={ update }
+							/>
+						</div>
+						<div className="col-span-1 sm:col-span-2 md:col-span-1 md:order-1 place-self-center w-full">
 							<SearchField filters={ filters } />
 						</div>
 					</div>

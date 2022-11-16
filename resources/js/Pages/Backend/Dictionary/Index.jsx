@@ -9,8 +9,8 @@ import SortButton from "@/Components/Elements/Buttons/SortButton";
 import SearchField from "@/Shared/SearchField";
 import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 
-export default function Index({ localizations, filters }) {
-	const [tableData, setTableData, handleSorting] = useFrontSortableTable(localizations.dictionary)
+export default function Index({ defaultLocalization, customLocalization, filters }) {
+	const [tableData, setTableData, handleSorting] = useFrontSortableTable(customLocalization.dictionary)
 
 	const [sortField, setSortField] = useState("");
  	const [order, setOrder] = useState("asc");
@@ -23,7 +23,7 @@ export default function Index({ localizations, filters }) {
 	};
 
 	function update() {
-		Inertia.patch(`dictionary/${ localizations.user_id }`, { dictionary: tableData});
+		Inertia.patch(`dictionary/${ customLocalization.user_id }`, { dictionary: tableData});
 	};
 
 	return (
@@ -31,7 +31,7 @@ export default function Index({ localizations, filters }) {
 			<Head title={ transChoice('common.dictionaries', 1) } />
 
 			<div className="flex flex-col h-full space-y-4">
-			<section id="table-header">
+				<section id="table-header">
 					<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-4 md:gap-y-0 content-start place-content-between">
 						<div className="col-span-1 self-center place-self-start">
 							<span className="text-xl">
@@ -91,7 +91,7 @@ export default function Index({ localizations, filters }) {
 													{ key }
 												</td>
 												<td>
-													{ trans(`common.${ key }`) }
+													{ defaultLocalization[key] }
 												</td>
 												<td>
 													<CustomValue

@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Backend\Settings;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Settings\LocalizationUpdateRequest;
+use App\Localization\Localization as LocalizationLocalization;
 use App\Models\Backend\Localization;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
@@ -19,15 +20,16 @@ class LocalizationController extends Controller
 
     public function index()
     {
-        $localizations = collect(json_decode(Auth::user()
-            ->localizations, true));
+        $defaultLocalization = collect(LocalizationLocalization::get(false))['dictionary']['common'];
+        $customLocalization = collect(json_decode(Auth::user()->localizations, true));
 
         $filters = [
             'search' => Request::input('search'),
         ];
 
         return Inertia::render('Backend/Dictionary/Index', compact(
-            'localizations',
+            'defaultLocalization',
+            'customLocalization',
             'filters',
         ));
     }
