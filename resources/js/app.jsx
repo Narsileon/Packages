@@ -1,4 +1,6 @@
 import { render } from 'react-dom';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 import { createInertiaApp } from '@inertiajs/inertia-react';
 import { InertiaProgress } from '@inertiajs/progress';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
@@ -30,7 +32,11 @@ createInertiaApp({
         return page;
     },
     setup({ el, App, props }) {
-        return render(<App {...props}/>, el);
+        return render(
+            <DndProvider backend={ HTML5Backend }>
+                <App {...props} />
+            </DndProvider>
+        , el);
     },
 });
 
