@@ -32,6 +32,7 @@ class Localization extends Model
 
     protected $fillable =
     [
+        self::FIELD_USER_ID,
         self::FIELD_DICTIONARY,
     ];
 

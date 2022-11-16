@@ -62,9 +62,9 @@ export default function Create() {
                     label={ trans('validation.attributes.password_confirmation') }
                     type="password"
                     value={ data.password_confirmation}
-                    error={ errors.password}
+                    error={ errors.password_confirmation}
                     setData={ setData }
-                    autoComplete="current-password"
+                    autoComplete="new-password"
                 />
                 {/* Last Name */}
                 <FormInput
