@@ -1,6 +1,8 @@
 import { Head, useForm } from "@inertiajs/inertia-react";
 import { trans } from "@/narsil-localization";
-import { Form, FormFooter, FormHeader, FormInput } from "@/Components/Forms";
+import { Form, FormBody, FormFooter, FormHeader, FormInput } from "@/Components/Forms";
+import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
+import BackButton from "@/Components/Elements/Buttons/BackButton";
 
 export default function Create() {
     const { data, setData, post, processing, errors } = useForm({
@@ -14,38 +16,44 @@ export default function Create() {
 
             <Form
                 className="w-9/12 lg:w-6/12 mx-auto"
-                header={
-                    <FormHeader
-                        title={ trans('Connection') }
+                submit={ () => post(route('login')) }
+            >
+                <FormHeader>
+                    <div className="flex justify-center">
+                        <h1>
+                            { trans('Connection') }
+                        </h1>
+                    </div>
+                </FormHeader>
+                <FormBody>
+                    {/* Email */}
+                    <FormInput
+                        id="email"
+                        label={ trans('validation.attributes.email') }
+                        type="email"
+                        value={ data.email}
+                        error={ errors.email}
+                        setData={ setData }
                     />
-                }
-                footer={
-                    <FormFooter
+                    {/* Password */}
+                    <FormInput
+                        id="password"
+                        label={ trans('validation.attributes.password') }
+                        type="password"
+                        value={ data.password}
+                        error={ errors.password}
+                        setData={ setData }
+                        autoComplete="current-password"
+                    />
+                </FormBody>
+
+                <FormFooter>
+                    <BackButton className="primary-button" />
+                    <PrimaryButton
                         label={ trans('common.login') }
                         processing={ processing }
                     />
-                }
-                submit={ () => post(route('login')) }
-            >
-                {/* Email */}
-                <FormInput
-                    id="email"
-                    label={ trans('validation.attributes.email') }
-                    type="email"
-                    value={ data.email}
-                    error={ errors.email}
-                    setData={ setData }
-                />
-                {/* Password */}
-                <FormInput
-                    id="password"
-                    label={ trans('validation.attributes.password') }
-                    type="password"
-                    value={ data.password}
-                    error={ errors.password}
-                    setData={ setData }
-                    autoComplete="current-password"
-                />
+                </FormFooter>
             </Form>
         </>
 	);

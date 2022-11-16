@@ -1,5 +1,7 @@
 import { trans } from "@/narsil-localization";
-import { Form, FormFooter, FormHeader, FormInput } from "@/Components/Forms";
+import { Form, FormBody, FormFooter, FormHeader, FormInput } from "@/Components/Forms";
+import BackButton from "@/Components/Elements/Buttons/BackButton";
+import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 
 export default function Formular({
     title,
@@ -11,25 +13,42 @@ export default function Formular({
     errors,
 }) {
     return (
-        <Form
-            header={ <FormHeader title={ title }/> }
-            footer={ <FormFooter label={ label } processing={ processing }/> }
-            submit={ submit }
-        >
-            <FormInput
-                id="type"
-                label={ trans('validation.attributes.type') }
-                value={ data.type }
-                error={ errors.type }
-                setData={ setData }
-            />
-            <FormInput
-                id="status"
-                label={ trans('validation.attributes.status') }
-                value={ data.status }
-                error={ errors.status }
-                setData={ setData }
-            />
+        <Form submit={ submit }>
+            <FormHeader>
+                <div className="flex justify-center">
+                    <h1>
+                        { title }
+                    </h1>
+                </div>
+            </FormHeader>
+
+            <FormBody>
+                <FormInput
+                    id="type"
+                    label={ trans('validation.attributes.type') }
+                    value={ data.type }
+                    error={ errors.type }
+                    setData={ setData }
+                />
+                <FormInput
+                    id="status"
+                    label={ trans('validation.attributes.status') }
+                    value={ data.status }
+                    error={ errors.status }
+                    setData={ setData }
+                />
+            </FormBody>
+
+            <FormFooter>
+                <BackButton
+                    className="primary-button"
+                    href={ route('admin.orders.index') }
+                />
+                <PrimaryButton
+                    label={ label }
+                    processing={ processing }
+                />
+            </FormFooter>
         </Form>
     );
 }

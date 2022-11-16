@@ -35,6 +35,10 @@
     td { @apply
         p-2 text-left truncate
     }
+
+    form h1 { @apply
+        text-xl font-bold
+    }
 }
 
 @layer components {

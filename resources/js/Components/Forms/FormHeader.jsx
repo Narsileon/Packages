@@ -1,11 +1,7 @@
-export default function FormHeader({ title, children }) {
+export default function FormHeader({ children }) {
     return (
-        <>
-            <h1 className="flex text-xl justify-center font-bold">
-                { title }    
-            </h1>
-
+        <section>
             { children }
-        </>
+        </section>
     );
 }

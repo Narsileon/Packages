@@ -1,14 +1,9 @@
-import BackButton from "@/Components/Elements/Buttons/BackButton";
-import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
-
-export default function FormFooter({ label, processing }) {
+export default function FormFooter({ children }) {
     return (
-        <div className="flex justify-between">
-			<BackButton className="primary-button" />
-			<PrimaryButton 
-				label={ label }
-				processing={ processing } 
-			/>
-        </div>
+		<section id="form-footer">
+			<div className="flex justify-between">
+				{ children }
+			</div>
+		</section>
     );
 }

@@ -1,4 +1,5 @@
 import Form from "./Form.jsx";
+import FormBody from "./FormBody.jsx";
 import FormCheckbox from "./FormCheckbox.jsx";
 import FormError from "./FormError.jsx";
 import FormFooter from "./FormFooter.jsx";
@@ -10,16 +11,17 @@ import FormSelect from "./FormSelect.jsx";
 import FormSummary from "./FormSummary.jsx";
 import FormTextArea from "./FormTextArea.jsx";
 
-export { 
+export {
     Form,
+    FormBody,
     FormCheckbox,
-    FormError, 
-    FormFooter, 
-    FormHeader, 
-    FormInput, 
+    FormError,
+    FormFooter,
+    FormHeader,
+    FormInput,
     FormLabel,
     FormSectionHeader,
     FormSelect,
     FormSummary,
-    FormTextArea, 
+    FormTextArea,
 }
