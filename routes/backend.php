@@ -12,6 +12,7 @@ use App\Http\Controllers\Backend\Settings\LocalizationController;
 use App\Http\Controllers\Backend\Backoffice\OrderController;
 use App\Http\Controllers\Backend\Management\RoleController;
 use App\Http\Controllers\Backend\Management\UserController;
+use App\Http\Controllers\Backend\Templates\FaqTemplateController;
 use Illuminate\Support\Facades\Route;
 
 #endregion
@@ -45,4 +46,12 @@ Route::group([
         Route::get('dictionary', 'index')->name('dictionary.index');
         Route::patch('dictionary/{localization}', 'update')->name('dictionary.update');
     });
+});
+
+Route::group([
+    'prefix' => 'templates',
+    'as' => 'templates.',
+    'middleware' => 'auth',
+], function () {
+    Route::get('faq', FaqTemplateController::class)->name('faq');
 });

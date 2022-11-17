@@ -2,6 +2,7 @@
 
 #region USE
 
+use App\Models\Backend\Templates\FaqTemplate;
 use App\Models\Frontend\Faq;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -24,7 +25,9 @@ return new class extends Migration
 
         Schema::create('faqs_templates', function (Blueprint $table) {
             $table->id();
-            $table->json(Faq::FIELD_QUESTION);
+            $table->foreignId(FaqTemplate::FIELD_USER_ID)->constrained()->cascadeOnDelete();
+            $table->json(FaqTemplate::FIELD_ORDER)->nullable();
+            $table->json(FaqTemplate::FIELD_SORTING);
             $table->timestamps();
         });
     }

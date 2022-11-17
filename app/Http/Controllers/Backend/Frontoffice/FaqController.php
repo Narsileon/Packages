@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend\Frontoffice;
 
 #region USE
 
+use App\Constants\Tables;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Frontoffice\FaqCreateRequest;
 use App\Http\Requests\Backend\Frontoffice\FaqUpdateRequest;
@@ -21,21 +22,21 @@ class FaqController extends Controller
 
     public function index()
     {
+        $templates = FaqService::getDefaultTemplate();
+
         $faqs = new FaqCollection(Faq::query()
             ->search(request('search'))
-            ->sort()
-            ->paginate());
+            ->newSort($templates[Tables::DEFAULT_SORTING][0])
+            ->paginate(5));
 
         $filters = [
             'search' => Request::input('search'),
         ];
 
-        $templates = FaqService::getDefaultTemplate();
-
         return Inertia::render('Backend/Faqs/Index', compact(
+            'templates',
             'faqs',
             'filters',
-            'templates',
         ));
     }
 

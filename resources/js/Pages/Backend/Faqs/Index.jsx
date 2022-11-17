@@ -1,13 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDrag, useDrop } from "react-dnd";
 import { flexRender, getCoreRowModel, getSortedRowModel, useReactTable } from "@tanstack/react-table";
+import { Inertia } from "@inertiajs/inertia";
 import { Head, Link } from "@inertiajs/inertia-react";
-import { trans } from "@/narsil-localization";
+import { trans, transChoice } from "@/narsil-localization";
 import Pagination from "@/Shared/Pagination";
 import SearchField from "@/Shared/SearchField";
+import { usePrevious } from "react-use";
+import { upperFirst } from "lodash";
 
 export default function Index({ faqs, filters, templates }) {
-	const [sorting, setSorting] = useState()
+	const [sorting, setSorting] = useState(templates.defaultSorting);
 
 	const [data, setData] = useState(faqs.data);
 
@@ -25,7 +28,14 @@ export default function Index({ faqs, filters, templates }) {
 		onSortingChange: setSorting,
 		getCoreRowModel: getCoreRowModel(),
 		getSortedRowModel: getSortedRowModel(),
-	})
+	});
+
+	const previous = usePrevious(sorting);
+
+    useEffect(() => {
+		console.log(sorting);
+
+	}, [sorting]);
 
 	const reorderColumn = (draggedColumnId, targetColumnId, columnOrder) => {
 		console.log(draggedColumnId);
@@ -73,7 +83,7 @@ export default function Index({ faqs, filters, templates }) {
                         }}
                       >
                         {flexRender(
-							header.column.columnDef.header,
+							upperFirst(transChoice(header.column.columnDef.header, 1)),
 							header.getContext()
                         )}
                         {{

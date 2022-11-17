@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Backend\Settings;
+namespace App\Http\Controllers\Backend\Templates;
 
 #region USE
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Backend\Settings\LocalizationUpdateRequest;
-use App\Models\Backend\Localization;
+use Illuminate\Http\Request;
 
 #endregion
 
@@ -14,13 +13,9 @@ class FaqTemplateController extends Controller
 {
     #region PUBLIC METHODS
 
-    public function __invoke(LocalizationUpdateRequest $request, Localization $localization)
+    public function __invoke(Request $request)
     {
-        $attributes = $request->validated();
-
-        $localization->update($attributes);
-
-        return redirect(route('admin.dictionary.index'));
+        return redirect(route('admin.faqs.index'));
     }
 
     #endregion

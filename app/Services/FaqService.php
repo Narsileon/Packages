@@ -16,10 +16,12 @@ class FaqService
     {
         $defaultColumns = self::getDefaultColumns();
         $defaultOrder = self::getDefaultOrder();
+        $defaultSorting = self::getDefaultSorting();
 
         return compact(
             'defaultColumns',
             'defaultOrder',
+            'defaultSorting',
         );
     }
 
@@ -33,27 +35,27 @@ class FaqService
             (object) [
                 'accessorKey' => Faq::FIELD_ID,
                 'id' => Faq::FIELD_ID,
-                'header' => __('common.id'),
+                'header' => 'common.id',
             ],
             (object) [
                 'accessorKey' => Faq::FIELD_QUESTION,
                 'id' => Faq::FIELD_QUESTION,
-                'header' => trans_choice('common.questions', 1),
+                'header' => 'common.questions',
             ],
             (object) [
                 'accessorKey' => Faq::FIELD_ANSWER,
                 'id' => Faq::FIELD_ANSWER,
-                'header' => trans_choice('common.answers', 1),
+                'header' => 'common.answers',
             ],
             (object) [
                 'accessorKey' => Faq::CREATED_AT,
                 'id' => Faq::CREATED_AT,
-                'header' => __('validation.attributes.created_at'),
+                'header' => 'validation.attributes.created_at',
             ],
             (object) [
                 'accessorKey' => Faq::UPDATED_AT,
                 'id' => Faq::UPDATED_AT,
-                'header' => __('validation.attributes.updated_at'),
+                'header' => 'validation.attributes.updated_at',
             ],
         );
     }
@@ -67,6 +69,16 @@ class FaqService
             Faq::UPDATED_AT,
             Faq::CREATED_AT,
         ];
+    }
+
+    private static function getDefaultSorting()
+    {
+        return array(
+            (object) [
+                'id' => Faq::FIELD_ID,
+                'desc' => false,
+            ],
+        );
     }
 
     #endregion
