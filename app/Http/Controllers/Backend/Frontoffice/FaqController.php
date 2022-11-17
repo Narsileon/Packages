@@ -11,6 +11,8 @@ use App\Http\Requests\Backend\Frontoffice\FaqUpdateRequest;
 use App\Http\Resources\Backend\Frontoffice\FaqCollection;
 use App\Models\Frontend\Faq;
 use App\Services\FaqService;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
 
@@ -22,11 +24,13 @@ class FaqController extends Controller
 
     public function index()
     {
+        $user = Auth::user();
+
         $templates = FaqService::getDefaultTemplate();
 
         $faqs = new FaqCollection(Faq::query()
             ->search(request('search'))
-            ->newSort($templates[Tables::DEFAULT_SORTING][0])
+            ->newSort($templates[Tables::SORTING][0])
             ->paginate(5));
 
         $filters = [

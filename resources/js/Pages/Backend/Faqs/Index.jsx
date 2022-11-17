@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDrag, useDrop } from "react-dnd";
-import { flexRender, getCoreRowModel, getSortedRowModel, useReactTable } from "@tanstack/react-table";
+import { flexRender, getCoreRowModel, getFilteredRowModel, getSortedRowModel, sortingFns, useReactTable } from "@tanstack/react-table";
 import { Inertia } from "@inertiajs/inertia";
 import { Head, Link } from "@inertiajs/inertia-react";
 import { trans, transChoice } from "@/narsil-localization";
@@ -8,26 +8,62 @@ import Pagination from "@/Shared/Pagination";
 import SearchField from "@/Shared/SearchField";
 import { usePrevious } from "react-use";
 import { upperFirst } from "lodash";
+import Icon from "@/Shared/Svg/Icon";
+import Sort from "@/Shared/Svg/Sort";
 
 export default function Index({ faqs, filters, templates }) {
-	const [sorting, setSorting] = useState(templates.defaultSorting)
+	const [sorting, setSorting] = useState(templates.sorting)
+
+	const [globalFilter, setGlobalFilter] = useState('');
 
 	const [data, setData] = useState(faqs.data);
 
-	const [columns] = useState(() => [...templates.defaultColumns]);
-	const [columnOrder, setColumnOrder] = useState(templates.defaultOrder);
+	const [columns] = useState(() => [...templates.columns]);
+	const [columnOrder, setColumnOrder] = useState(templates.order);
+
+	const fuzzyFilter = (row, columnId, value, addMeta) => {
+		// Rank the item
+		const itemRank = rankItem(row.getValue(columnId), value)
+
+		// Store the itemRank info
+		addMeta({
+		  itemRank,
+		})
+
+		// Return if the item should be filtered in/out
+		return itemRank.passed
+	}
+
+	const fuzzySort = (rowA, rowB, columnId) => {
+		let dir = 0
+
+		// Only sort by rank if the column has ranking information
+		if (rowA.columnFiltersMeta[columnId]) {
+		  	dir = compareItems(!rowA.columnFiltersMeta[columnId].itemRank, !rowB.columnFiltersMeta[columnId].itemRank)
+		}
+
+		// Provide an alphanumeric fallback for when the item ranks are equal
+		return dir === 0 ? sortingFns.alphanumeric(rowA, rowB, columnId) : dir
+	}
 
 	const table = useReactTable({
 		data,
 		columns,
+		filterFns: {
+			fuzzy: fuzzyFilter,
+		},
 		state: {
 			columnOrder,
+			globalFilter,
 			sorting,
 		},
+		onGlobalFilterChange: setGlobalFilter,
+		globalFilterFn: fuzzyFilter,
 		onColumnOrderChange: setColumnOrder,
 		onSortingChange: setSorting,
 		getCoreRowModel: getCoreRowModel(),
 		getSortedRowModel: getSortedRowModel(),
+		getFilteredRowModel: getFilteredRowModel(),
 	});
 
 	const previous = usePrevious(sorting);
@@ -36,10 +72,10 @@ export default function Index({ faqs, filters, templates }) {
 		console.log(sorting);
 
 		if (previous) {
-			Inertia.get(route('templates.faq'), [{
+			Inertia.get(route('templates.faq'), {
 				'order': columnOrder,
 				'sorting': sorting,
-			}]);
+			});
 		}
 	}, [sorting]);
 
@@ -79,7 +115,16 @@ export default function Index({ faqs, filters, templates }) {
 				colSpan={ header.colSpan }
 				style={{ opacity: isDragging ? 0.5 : 1 }}
 			>
-				<div ref={ previewRef }>
+				<div
+					className="flex w-full"
+					ref={ previewRef }
+				>
+					<button
+						className="ml-2"
+						ref={ dragRef }
+					>
+						<Icon className="w-6 h-6" name="sort-horizontal" />
+					</button>
 					<div
                         {...{
 							className: header.column.getCanSort()
@@ -87,20 +132,23 @@ export default function Index({ faqs, filters, templates }) {
 								: '',
 							onClick: header.column.getToggleSortingHandler(),
                         }}
-                      >
-                        {flexRender(
-							upperFirst(transChoice(header.column.columnDef.header, 1)),
-							header.getContext()
-                        )}
-                        {{
-							asc: ' 🔼',
-							desc: ' 🔽',
-                        }[header.column.getIsSorted()] ?? null}
+						className="flex justify-between w-full p-2 whitespace-nowrap space-x-2"
+                    >
+						<span>
+							{
+								flexRender(
+									upperFirst(transChoice(header.column.columnDef.header, 1)),
+									header.getContext()
+								)
+							}
+						</span>
+                        {
+							{
+								asc: <Sort className="w-5 h-5" order="asc" />,
+								desc: <Sort className="w-5 h-5" order="desc" />,
+                        	} [header.column.getIsSorted()] ?? <Sort className="w-5 h-5" />
+						}
 					</div>
-
-					<button ref={ dragRef }>
-						drag
-					</button>
 				</div>
 			</th>
 		)

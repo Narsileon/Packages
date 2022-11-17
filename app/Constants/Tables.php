@@ -6,9 +6,9 @@ abstract class Tables
 {
     #region CONSTANTS
 
-    const DEFAULT_COLUMNS = 'defaultColumns';
-    const DEFAULT_ORDER = 'defaultOrder';
-    const DEFAULT_SORTING = 'defaultSorting';
+    const COLUMNS = 'columns';
+    const ORDER = 'order';
+    const SORTING = 'sorting';
 
     CONST FIELD_ASC = 'asc';
     CONST FIELD_DESC = 'desc';

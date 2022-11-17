@@ -9,6 +9,7 @@ use App\Models\Backend\Templates\FaqTemplate;
 use App\Services\FaqService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 #endregion
 
@@ -18,12 +19,14 @@ class FaqTemplateController extends Controller
 
     public function __invoke(Request $request)
     {
+        Log::debug($request);
+
         $user = Auth::user();
 
         if ($user->faqTemplate)
         {
             $user->faqTemplate->update([
-                FaqTemplate::FIELD_ORDER => $request->order,
+                FaqTemplate::FIELD_ORDER => $request->{ FaqTemplate::FIELD_ORDER },
                 FaqTemplate::FIELD_SORTING => $request->{ FaqTemplate::FIELD_SORTING },
             ]);
         }
@@ -32,8 +35,8 @@ class FaqTemplateController extends Controller
         {
             FaqTemplate::create([
                 FaqTemplate::FIELD_USER_ID => $user->id,
-                FaqTemplate::FIELD_ORDER => $request->{ FaqTemplate::FIELD_ORDER },
-                FaqTemplate::FIELD_SORTING => $request->{ FaqTemplate::FIELD_SORTING },
+                FaqTemplate::FIELD_ORDER => FaqService::getDefaultOrder(),
+                FaqTemplate::FIELD_SORTING => FaqService::getDefaultSorting(),
             ]);
         }
 

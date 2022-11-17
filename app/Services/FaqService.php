@@ -14,14 +14,14 @@ class FaqService
 
     public static function getDefaultTemplate()
     {
-        $defaultColumns = self::getDefaultColumns();
-        $defaultOrder = self::getDefaultOrder();
-        $defaultSorting = self::getDefaultSorting();
+        $columns = self::getDefaultColumns();
+        $order = self::getDefaultOrder();
+        $sorting = self::getDefaultSorting();
 
         return compact(
-            'defaultColumns',
-            'defaultOrder',
-            'defaultSorting',
+            'columns',
+            'order',
+            'sorting',
         );
     }
 
