@@ -15,7 +15,7 @@ return new class extends Migration
     #region CONSTANTS
 
     const TABLE_FAQS = 'faqs';
-    const TABLE_FAQS_TEMPLATE = 'faqs_templates';
+    const TABLE_FAQS_TEMPLATE = 'faq_templates';
 
     #endregion
 

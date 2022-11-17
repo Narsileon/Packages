@@ -10,7 +10,7 @@ import { usePrevious } from "react-use";
 import { upperFirst } from "lodash";
 
 export default function Index({ faqs, filters, templates }) {
-	const [sorting, setSorting] = useState(templates.defaultSorting);
+	const [sorting, setSorting] = useState(templates.defaultSorting)
 
 	const [data, setData] = useState(faqs.data);
 
@@ -35,6 +35,12 @@ export default function Index({ faqs, filters, templates }) {
     useEffect(() => {
 		console.log(sorting);
 
+		if (previous) {
+			Inertia.get(route('templates.faq'), [{
+				'order': columnOrder,
+				'sorting': sorting,
+			}]);
+		}
 	}, [sorting]);
 
 	const reorderColumn = (draggedColumnId, targetColumnId, columnOrder) => {

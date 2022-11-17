@@ -22,15 +22,18 @@ class FaqTemplateController extends Controller
 
         if ($user->faqTemplate)
         {
-            $user->faqTemplate->update();
+            $user->faqTemplate->update([
+                FaqTemplate::FIELD_ORDER => $request->order,
+                FaqTemplate::FIELD_SORTING => $request->{ FaqTemplate::FIELD_SORTING },
+            ]);
         }
 
         else
         {
             FaqTemplate::create([
                 FaqTemplate::FIELD_USER_ID => $user->id,
-                FaqTemplate::FIELD_ORDER => FaqService::getDefaultOrder(),
-                FaqTemplate::FIELD_SORTING => FaqService::getDefaultSorting(),
+                FaqTemplate::FIELD_ORDER => $request->{ FaqTemplate::FIELD_ORDER },
+                FaqTemplate::FIELD_SORTING => $request->{ FaqTemplate::FIELD_SORTING },
             ]);
         }
 

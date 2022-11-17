@@ -16,7 +16,6 @@ return new class extends Migration
 
     #endregion
 
-
     #region PUBLIC METHODS
 
     public function up()
