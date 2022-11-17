@@ -11,21 +11,36 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    #region CONSTANTS
+
+    const TABLE_LOCALIZATIONS = 'localizations';
+
+    #endregion
+
     #region PUBLIC METHODS
 
     public function up()
     {
-        Schema::create('localizations', function (Blueprint $table) {
+        self::createLocalizationTable();
+    }
+
+    public function down()
+    {
+        Schema::dropIfExists(self::TABLE_LOCALIZATIONS);
+    }
+
+    #endregion
+
+    #region PRIVATE METHODS
+
+    private static function createLocalizationTable()
+    {
+        Schema::create(self::TABLE_LOCALIZATIONS, function (Blueprint $table) {
             $table->id();
             $table->foreignId(Localization::FIELD_USER_ID)->constrained()->cascadeOnDelete();
             $table->json(Localization::FIELD_DICTIONARY)->nullable();
             $table->timestamps();
         });
-    }
-
-    public function down()
-    {
-        Schema::dropIfExists('localizations');
     }
 
     #endregion

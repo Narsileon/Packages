@@ -10,11 +10,31 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    #region CONSTANTS
+
+    const TABLE_FAILED_JOBS = 'failed_jobs';
+
+    #endregion
+
     #region PUBLIC METHODS
 
     public function up()
     {
-        Schema::create('failed_jobs', function (Blueprint $table)
+        self::createFailedJobTable();
+    }
+
+    public function down()
+    {
+        Schema::dropIfExists(self::TABLE_FAILED_JOBS);
+    }
+
+    #endregion
+
+    #region PRIVATE METHODS
+
+    private static function createFailedJobTable()
+    {
+        Schema::create(self::TABLE_FAILED_JOBS, function (Blueprint $table)
         {
             $table->id();
             $table->string('uuid')->unique();
@@ -24,11 +44,6 @@ return new class extends Migration
             $table->longText('exception');
             $table->timestamp('failed_at')->useCurrent();
         });
-    }
-
-    public function down()
-    {
-        Schema::dropIfExists('failed_jobs');
     }
 
     #endregion

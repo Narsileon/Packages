@@ -10,11 +10,32 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    #region CONSTANTS
+
+    const TABLE_PERSONAL_ACCESS_TOKENS = 'personal_access_tokens';
+
+    #endregion
+
+
     #region PUBLIC METHODS
 
     public function up()
     {
-        Schema::create('personal_access_tokens', function (Blueprint $table)
+        self::createPersonalAccessTokenTable();
+    }
+
+    public function down()
+    {
+        Schema::dropIfExists(self::TABLE_PERSONAL_ACCESS_TOKENS);
+    }
+
+    #endregion
+
+    #region PRIVATE METHODS
+
+    private static function createPersonalAccessTokenTable()
+    {
+        Schema::create(self::TABLE_PERSONAL_ACCESS_TOKENS, function (Blueprint $table)
         {
             $table->id();
             $table->morphs('tokenable');
@@ -25,11 +46,6 @@ return new class extends Migration
             $table->timestamp('expires_at')->nullable();
             $table->timestamps();
         });
-    }
-
-    public function down()
-    {
-        Schema::dropIfExists('personal_access_tokens');
     }
 
     #endregion

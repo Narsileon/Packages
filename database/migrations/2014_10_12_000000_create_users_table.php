@@ -11,11 +11,31 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    #region CONSTANTS
+
+    const TABLE_USERS = 'users';
+
+    #endregion
+
     #region PUBLIC METHODS
 
     public function up()
     {
-        Schema::create('users', function (Blueprint $table)
+        self::createUserTable();
+    }
+
+    public function down()
+    {
+        Schema::dropIfExists(self::TABLE_USERS);
+    }
+
+    #endregion
+
+    #region PRIVATE METHODS
+
+    private static function createUserTable()
+    {
+        Schema::create(self::TABLE_USERS, function (Blueprint $table)
         {
             $table->id();
             $table->string(User::FIELD_USERNAME)->unique();
@@ -27,11 +47,6 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
-    }
-
-    public function down()
-    {
-        Schema::dropIfExists('users');
     }
 
     #endregion

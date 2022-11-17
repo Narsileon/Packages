@@ -12,30 +12,50 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    #region CONSTANTS
+
+    const TABLE_FAQS = 'faqs';
+    const TABLE_FAQS_TEMPLATE = 'faqs_templates';
+
+    #endregion
+
     #region PUBLIC METHODS
 
     public function up()
     {
-        Schema::create('faqs', function (Blueprint $table) {
+        self::createFaqTable();
+        self::createTemplateTable();
+    }
+
+    public function down()
+    {
+        Schema::dropIfExists(self::TABLE_FAQS);
+        Schema::dropIfExists(self::TABLE_FAQS_TEMPLATE);
+    }
+
+    #endregion
+
+    #region PRIVATE METHODS
+
+    private static function createFaqTable()
+    {
+        Schema::create(self::TABLE_FAQS, function (Blueprint $table) {
             $table->id();
             $table->longText(Faq::FIELD_QUESTION);
             $table->longText(Faq::FIELD_ANSWER);
             $table->timestamps();
         });
+    }
 
-        Schema::create('faqs_templates', function (Blueprint $table) {
+    private static function createTemplateTable()
+    {
+        Schema::create(self::TABLE_FAQS_TEMPLATE, function (Blueprint $table) {
             $table->id();
             $table->foreignId(FaqTemplate::FIELD_USER_ID)->constrained()->cascadeOnDelete();
-            $table->json(FaqTemplate::FIELD_ORDER)->nullable();
+            $table->json(FaqTemplate::FIELD_ORDER);
             $table->json(FaqTemplate::FIELD_SORTING);
             $table->timestamps();
         });
-    }
-
-    public function down()
-    {
-        Schema::dropIfExists('faqs');
-        Schema::dropIfExists('faqs_templates');
     }
 
     #endregion

@@ -6,6 +6,7 @@ namespace App\Models;
 
 use App\Constants\CastTypes;
 use App\Models\Backend\Localization;
+use App\Models\Backend\Templates\FaqTemplate;
 use App\Traits\IsBaseModel;
 use App\Traits\IsFilterable;
 use App\Traits\IsSortable;
@@ -74,6 +75,11 @@ class User extends Authenticatable
     public function localizations() : HasOne
     {
         return $this->hasOne(Localization::class);
+    }
+
+    public function faqTemplate() : HasOne
+    {
+        return $this->hasOne(FaqTemplate::class);
     }
 
     #endregion

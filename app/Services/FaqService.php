@@ -25,11 +25,7 @@ class FaqService
         );
     }
 
-    #endregion
-
-    #region PRIVATE METHODS
-
-    private static function getDefaultColumns()
+    public static function getDefaultColumns()
     {
         return array(
             (object) [
@@ -60,7 +56,7 @@ class FaqService
         );
     }
 
-    private static function getDefaultOrder()
+    public static function getDefaultOrder()
     {
         return [
             Faq::FIELD_ID,
@@ -71,7 +67,7 @@ class FaqService
         ];
     }
 
-    private static function getDefaultSorting()
+    public static function getDefaultSorting()
     {
         return array(
             (object) [

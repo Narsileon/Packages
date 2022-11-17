@@ -11,21 +11,36 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    #region CONSTANTS
+
+    const TABLE_LANGUAGES = 'languages';
+
+    #endregion
+
     #region PUBLIC METHODS
 
     public function up()
     {
-        Schema::create('languages', function (Blueprint $table) {
+        self::createLanguageTable();
+    }
+
+    public function down()
+    {
+        Schema::dropIfExists(self::TABLE_LANGUAGES);
+    }
+
+    #endregion
+
+    #region PRIVATE METHODS
+
+    private static function createLanguageTable()
+    {
+        Schema::create(self::TABLE_LANGUAGES, function (Blueprint $table) {
             $table->id();
             $table->string(Language::FIELD_LOCALE);
             $table->boolean(Language::FIELD_ACTIVE);
             $table->timestamps();
         });
-    }
-
-    public function down()
-    {
-        Schema::dropIfExists('languages');
     }
 
     #endregion

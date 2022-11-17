@@ -3,6 +3,7 @@
 #region USE
 
 use App\Models\Frontend\FooterLink;
+use App\Models\Frontend\HeaderLink;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,31 +12,51 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    #region CONSTANTS
+
+    const TABLE_HEADER_LINKS = 'header_links';
+    const TABLE_FOOTER_LINKS = 'footer_links';
+
+    #endregion
+
     #region PUBLIC METHODS
 
     public function up()
     {
-        Schema::create('header_links', function (Blueprint $table) {
-            $table->id();
-            $table->string(FooterLink::FIELD_LABEL);
-            $table->string(FooterLink::FIELD_URL);
-            $table->boolean(FooterLink::FIELD_ACTIVE);
-            $table->timestamps();
-        });
-
-        Schema::create('footer_links', function (Blueprint $table) {
-            $table->id();
-            $table->string(FooterLink::FIELD_LABEL);
-            $table->string(FooterLink::FIELD_URL);
-            $table->boolean(FooterLink::FIELD_ACTIVE);
-            $table->timestamps();
-        });
+        self::createHeaderLinkTable();
+        self::createFooterLinkTable();
     }
 
     public function down()
     {
-        Schema::dropIfExists('header_links');
-        Schema::dropIfExists('footer_links');
+        Schema::dropIfExists(self::TABLE_HEADER_LINKS);
+        Schema::dropIfExists(self::TABLE_FOOTER_LINKS);
+    }
+
+    #endregion
+
+    #region PRIVATE METHODS
+
+    private static function createHeaderLinkTable()
+    {
+        Schema::create(self::TABLE_HEADER_LINKS, function (Blueprint $table) {
+            $table->id();
+            $table->string(HeaderLink::FIELD_LABEL);
+            $table->string(HeaderLink::FIELD_URL);
+            $table->boolean(HeaderLink::FIELD_ACTIVE);
+            $table->timestamps();
+        });
+    }
+
+    private static function createFooterLinkTable()
+    {
+        Schema::create(self::TABLE_FOOTER_LINKS, function (Blueprint $table) {
+            $table->id();
+            $table->string(FooterLink::FIELD_LABEL);
+            $table->string(FooterLink::FIELD_URL);
+            $table->boolean(FooterLink::FIELD_ACTIVE);
+            $table->timestamps();
+        });
     }
 
     #endregion

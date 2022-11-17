@@ -11,11 +11,31 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    #region CONSTANTS
+
+    const TABLE_ORDERS = 'orders';
+
+    #endregion
+
     #region PUBLIC METHODS
 
     public function up()
     {
-        Schema::create('orders', function (Blueprint $table) {
+        self::createOrderTable();
+    }
+
+    public function down()
+    {
+        Schema::dropIfExists(self::TABLE_ORDERS);
+    }
+
+    #endregion
+
+    #region PRIVATE METHODS
+
+    private static function createOrderTable()
+    {
+        Schema::create(self::TABLE_ORDERS, function (Blueprint $table) {
             $table->id();
             $table->string(Order::FIELD_TYPE);
             $table->string(Order::FIELD_STATUS);
@@ -28,11 +48,6 @@ return new class extends Migration
             $table->string(Order::FIELD_PAYMENT_METHOD);
             $table->timestamps();
         });
-    }
-
-    public function down()
-    {
-        Schema::dropIfExists('orders');
     }
 
     #endregion
