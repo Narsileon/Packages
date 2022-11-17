@@ -2,37 +2,17 @@ import { useState } from "react";
 import { useDrag, useDrop } from "react-dnd";
 import { flexRender, getCoreRowModel, getSortedRowModel, useReactTable } from "@tanstack/react-table";
 import { Head, Link } from "@inertiajs/inertia-react";
-import { trans, transChoice } from "@/narsil-localization";
+import { trans } from "@/narsil-localization";
 import Pagination from "@/Shared/Pagination";
 import SearchField from "@/Shared/SearchField";
 
-export default function Index({ faqs, filters }) {
+export default function Index({ faqs, filters, templates }) {
 	const [sorting, setSorting] = useState()
-
-	const defaultColumns = [
-		{
-			accessorKey: 'id',
-			id: 'id',
-			header: trans('common.id'),
-		},
-		{
-			accessorKey: 'question',
-			id: 'question',
-			header: transChoice('common.questions', 1),
-		},
-		{
-			accessorKey: 'answer',
-			id: 'answer',
-			header: transChoice('common.answers', 1),
-		},
-	];
 
 	const [data, setData] = useState(faqs.data);
 
-	const [columns] = useState(() => [...defaultColumns]);
-	const [columnOrder, setColumnOrder] = useState(
-		columns.map(column => column.id)
-	)
+	const [columns] = useState(() => [...templates.defaultColumns]);
+	const [columnOrder, setColumnOrder] = useState(templates.defaultOrder);
 
 	const table = useReactTable({
 		data,

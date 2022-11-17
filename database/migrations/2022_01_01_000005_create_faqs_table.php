@@ -21,11 +21,18 @@ return new class extends Migration
             $table->longText(Faq::FIELD_ANSWER);
             $table->timestamps();
         });
+
+        Schema::create('faqs_templates', function (Blueprint $table) {
+            $table->id();
+            $table->json(Faq::FIELD_QUESTION);
+            $table->timestamps();
+        });
     }
 
     public function down()
     {
         Schema::dropIfExists('faqs');
+        Schema::dropIfExists('faqs_templates');
     }
 
     #endregion

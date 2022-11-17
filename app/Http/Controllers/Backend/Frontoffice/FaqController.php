@@ -9,6 +9,7 @@ use App\Http\Requests\Backend\Frontoffice\FaqCreateRequest;
 use App\Http\Requests\Backend\Frontoffice\FaqUpdateRequest;
 use App\Http\Resources\Backend\Frontoffice\FaqCollection;
 use App\Models\Frontend\Faq;
+use App\Services\FaqService;
 use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
 
@@ -29,9 +30,12 @@ class FaqController extends Controller
             'search' => Request::input('search'),
         ];
 
+        $templates = FaqService::getDefaultTemplate();
+
         return Inertia::render('Backend/Faqs/Index', compact(
             'faqs',
             'filters',
+            'templates',
         ));
     }
 
