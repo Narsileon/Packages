@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Backend\Template;
 use App\Models\User;
 use App\Services\FaqService;
+use App\Services\LanguageService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -39,7 +40,8 @@ class TemplateController extends Controller
         {
             Template::create([
                 Template::FIELD_USER_ID => $user->{ User::FIELD_ID },
-                Template::FIELD_TEMPLATE_FAQ => FaqService::getDefaultTemplate(),
+                Template::FIELD_TEMPLATE_FAQ => FaqService::DEFAULT_TEMPLATE,
+                Template::FIELD_TEMPLATE_LANGUAGE => LanguageService::DEFAULT_TEMPLATE,
             ]);
         }
 

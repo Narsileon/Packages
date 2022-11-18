@@ -25,11 +25,11 @@ class FaqController extends Controller
 
     public function index()
     {
-        $header = FaqService::getColumns();
+        $header = FaqService::COLUMNS;
 
         $user = Auth::user();
 
-        $template = $user->{ User::ATTRIBUTE_TEMPLATES } ? $user->{ User::ATTRIBUTE_TEMPLATES }->{ Template::FIELD_TEMPLATE_FAQ } : FaqService::getDefaultTemplate();
+        $template = $user->{ User::ATTRIBUTE_TEMPLATES } ? $user->{ User::ATTRIBUTE_TEMPLATES }->{ Template::FIELD_TEMPLATE_FAQ } : FaqService::DEFAULT_TEMPLATE;
 
         $faqs = new FaqCollection(Faq::query()
             ->search(array_key_exists('globalSearch', $template) ? $template['globalSearch'] : '')

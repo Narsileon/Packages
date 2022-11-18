@@ -39,6 +39,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId(Template::FIELD_USER_ID)->constrained()->cascadeOnDelete();
             $table->text(Template::FIELD_TEMPLATE_FAQ)->nullable();
+            $table->text(Template::FIELD_TEMPLATE_LANGUAGE)->nullable();
             $table->timestamps();
         });
     }

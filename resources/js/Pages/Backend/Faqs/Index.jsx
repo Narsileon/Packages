@@ -13,6 +13,11 @@ import NewTable from "@/Components/Tables/NewTable";
 export default function Index({ faqs, header, template }) {
 	const [sorting, setSorting] = useState(template.sorting)
 
+	const defaultColumnSizing = {
+		minSize: 100,
+		maxSize: 300,
+	}
+
 	const [globalFilter, setGlobalFilter] = useState('');
 
 	const [data, setData] = useState(faqs.data);
@@ -57,6 +62,7 @@ export default function Index({ faqs, header, template }) {
 			globalFilter,
 			sorting,
 		},
+		defaultColumn: defaultColumnSizing,
 		columnResizeMode: 'onChange',
 		onGlobalFilterChange: setGlobalFilter,
 		globalFilterFn: fuzzyFilter,
@@ -158,4 +164,4 @@ const DebouncedInput = ({onChange, debounce = 500, ...props}) => {
 			/>
 		</div>
 	)
-  }
+}

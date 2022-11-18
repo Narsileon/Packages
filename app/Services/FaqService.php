@@ -4,90 +4,60 @@ namespace App\Services;
 
 #region USE
 
+use App\Constants\Tables;
 use App\Models\Frontend\Faq;
 
 #endregion
 
 class FaqService
 {
-    #region PUBLIC METHODS
+    #region CONSTANTS
 
-    public static function getColumns()
-    {
-        return array(
-            [
-                'accessorKey' => Faq::FIELD_ID,
-                'id' => Faq::FIELD_ID,
-                'header' => 'common.id',
-                'minSize' => 100,
-                'maxSize' => 300,
-            ],
-            [
-                'accessorKey' => Faq::FIELD_QUESTION,
-                'id' => Faq::FIELD_QUESTION,
-                'header' => 'common.questions',
-                'minSize' => 100,
-                'maxSize' => 300,
-            ],
-            [
-                'accessorKey' => Faq::FIELD_ANSWER,
-                'id' => Faq::FIELD_ANSWER,
-                'header' => 'common.answers',
-                'minSize' => 100,
-                'maxSize' => 300,
-            ],
-            [
-                'accessorKey' => Faq::CREATED_AT,
-                'id' => Faq::CREATED_AT,
-                'header' => 'validation.attributes.created_at',
-                'minSize' => 100,
-                'maxSize' => 300,
-            ],
-            [
-                'accessorKey' => Faq::UPDATED_AT,
-                'id' => Faq::UPDATED_AT,
-                'header' => 'validation.attributes.updated_at',
-                'minSize' => 100,
-                'maxSize' => 300,
-            ],
-        );
-    }
+    public const COLUMNS = array(
+        [
+            TABLES::FIELD_ACCESSOR_KEY => Faq::FIELD_ID,
+            TABLES::FIELD_ID => Faq::FIELD_ID,
+            Tables::FIELD_HEADER => 'common.id',
+        ],
+        [
+            TABLES::FIELD_ACCESSOR_KEY => Faq::FIELD_QUESTION,
+            TABLES::FIELD_ID => Faq::FIELD_QUESTION,
+            Tables::FIELD_HEADER => 'common.questions',
+        ],
+        [
+            TABLES::FIELD_ACCESSOR_KEY => Faq::FIELD_ANSWER,
+            TABLES::FIELD_ID => Faq::FIELD_ANSWER,
+            Tables::FIELD_HEADER => 'common.answers',
+        ],
+        [
+            TABLES::FIELD_ACCESSOR_KEY => Faq::CREATED_AT,
+            TABLES::FIELD_ID => Faq::CREATED_AT,
+            Tables::FIELD_HEADER => 'validation.attributes.created_at',
+        ],
+        [
+            TABLES::FIELD_ACCESSOR_KEY => Faq::UPDATED_AT,
+            TABLES::FIELD_ID => Faq::UPDATED_AT,
+            Tables::FIELD_HEADER => 'validation.attributes.updated_at',
+        ],
+    );
 
-    public static function getDefaultTemplate()
-    {
-        $order = self::getDefaultOrder();
-        $sorting = self::getDefaultSorting();
+    public const DEFAULT_TEMPLATE = [
+        Tables::ORDER => self::DEFAULT_ORDER,
+        Tables::SORTING => self::DEFAULT_SORTING,
+    ];
 
-        return compact(
-            'order',
-            'sorting',
-        );
-    }
+    private const DEFAULT_ORDER = [
+        Faq::FIELD_ID,
+        Faq::FIELD_QUESTION,
+        Faq::FIELD_ANSWER,
+        Faq::UPDATED_AT,
+        Faq::CREATED_AT,
+    ];
 
-    #endregion
-
-    #region PRIVATE METHODS
-
-    private static function getDefaultOrder()
-    {
-        return [
-            Faq::FIELD_ID,
-            Faq::FIELD_QUESTION,
-            Faq::FIELD_ANSWER,
-            Faq::UPDATED_AT,
-            Faq::CREATED_AT,
-        ];
-    }
-
-    private static function getDefaultSorting()
-    {
-        return array(
-            [
-                'id' => 'id',
-                'desc' => false,
-            ],
-        );
-    }
-
-    #endregion
+    private const DEFAULT_SORTING = array(
+        [
+            TABLES::FIELD_ID => Faq::FIELD_ID,
+            TABLES::FIELD_DESC => false,
+        ]
+    );
 }
