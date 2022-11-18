@@ -29,27 +29,20 @@ export default function Index({ faqs, header, template }) {
 	const [columnOrder, setColumnOrder] = useState(template.order);
 
 	const fuzzyFilter = (row, columnId, value, addMeta) => {
-		// Rank the item
 		const itemRank = rankItem(row.getValue(columnId), value)
 
-		// Store the itemRank info
-		addMeta({
-		  	itemRank,
-		})
+		addMeta({ itemRank })
 
-		// Return if the item should be filtered in/out
 		return itemRank.passed
 	}
 
 	const fuzzySort = (rowA, rowB, columnId) => {
 		let dir = 0
 
-		// Only sort by rank if the column has ranking information
 		if (rowA.columnFiltersMeta[columnId]) {
 		  	dir = compareItems(!rowA.columnFiltersMeta[columnId].itemRank, !rowB.columnFiltersMeta[columnId].itemRank)
 		}
 
-		// Provide an alphanumeric fallback for when the item ranks are equal
 		return dir === 0 ? sortingFns.alphanumeric(rowA, rowB, columnId) : dir
 	}
 
@@ -81,15 +74,19 @@ export default function Index({ faqs, header, template }) {
 
     useEffect(() => {
 		if (previous) {
-			Inertia.get(route('admin.templates'), {
-				'faq_template': {
-					'order': columnOrder,
-					'sorting': sorting,
-					'globalSearch': globalFilter,
-					'sizing': { ...template.sizing, ...table.getState().columnSizing },
-				},
-				'route': 'admin.faqs.index',
-			});
+			const timeout = setTimeout(() => {
+				Inertia.get(route('admin.templates'), {
+					'faq_template': {
+						'order': columnOrder,
+						'sorting': sorting,
+						'globalSearch': globalFilter,
+						'sizing': { ...template.sizing, ...table.getState().columnSizing },
+					},
+					'route': 'admin.faqs.index',
+				});
+			}, 0);
+
+			return () => clearTimeout(timeout)
 		}
 	}, [sorting]);
 
@@ -144,21 +141,7 @@ export default function Index({ faqs, header, template }) {
 }
 
 // A debounced input react component
-const DebouncedInput = ({initialValue, onChange, debounce = 500, ...props}) => {
-	const [value, setValue] = useState(initialValue)
-
-	useEffect(() => {
-	 	setValue(initialValue)
-	}, [initialValue])
-
-	useEffect(() => {
-		const timeout = setTimeout(() => {
-			onChange(value)
-	}, debounce)
-
-	  	return () => clearTimeout(timeout)
-	}, [value])
-
+const DebouncedInput = ({onChange, debounce = 500, ...props}) => {
 	return (
 		<div className="flex border-2 border-color rounded">
 			<div className="primary-background flex items-center w-min-fit justify-between">
@@ -166,11 +149,10 @@ const DebouncedInput = ({initialValue, onChange, debounce = 500, ...props}) => {
 			</div>
 
 			<input
-				value={ value }
 				type="text"
 				placeholder={ `${ upperFirst(trans('common.search')) }...` }
 				autoComplete="off"
-				onChange={ e => setValue(e.target.value) }
+				onChange={ e => onChange(e.target.value) }
 				className="bg-transparent focus:outline-none p-2 w-full"
 				{ ...props }
 			/>
