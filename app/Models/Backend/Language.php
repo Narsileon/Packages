@@ -17,9 +17,11 @@ class Language extends Model
 
     #region CONSTANTS
 
-    const FIELD_ID = 'id';
-    const FIELD_LOCALE = 'locale';
-    const FIELD_ACTIVE = 'active';
+    public const FIELD_ID = 'id';
+    public const FIELD_CODE = 'code';
+    public const FIELD_ACTIVE = 'active';
+
+    public const PROPERTY_LANGUAGE = 'language';
 
     #endregion
 
@@ -27,7 +29,7 @@ class Language extends Model
 
     protected $fillable =
     [
-        self::FIELD_LOCALE,
+        self::FIELD_CODE,
         self::FIELD_ACTIVE,
     ];
 

@@ -30,7 +30,7 @@ class SessionSeeder extends Seeder
             $active = (in_array($code, ['de', 'en', 'fr'])) ? true : false;
 
             Language::create([
-                Language::FIELD_LOCALE => $code,
+                Language::FIELD_CODE => $code,
                 Language::FIELD_ACTIVE => $active,
             ]);
         }

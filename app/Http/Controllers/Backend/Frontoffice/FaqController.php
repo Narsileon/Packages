@@ -36,10 +36,6 @@ class FaqController extends Controller
             ->newSort($template[Tables::SORTING])
             ->paginate(5));
 
-        $filters = [
-            'search' => Request::input('search'),
-        ];
-
         return Inertia::render('Backend/Faqs/Index', compact(
             'header',
             'template',

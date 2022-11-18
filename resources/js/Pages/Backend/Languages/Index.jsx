@@ -1,18 +1,97 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getCoreRowModel, getFilteredRowModel, getSortedRowModel, sortingFns, useReactTable } from "@tanstack/react-table";
 import { Inertia } from "@inertiajs/inertia";
 import { Head } from "@inertiajs/inertia-react";
 import { trans, transChoice } from "@/narsil-localization";
-import { useFrontSortableTable } from "@/narsil-react";
+import { usePrevious } from "react-use";
+import { rankItem, compareItems } from '@tanstack/match-sorter-utils'
+import NewTable from "@/Components/Tables/NewTable";
+import TableSearch from "@/Components/Tables/TableSearch";
 import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
-import SortButton from "@/Components/Elements/Buttons/SortButton";
-import Toggle from "@/Components/Elements/Toggle";
-import SearchField from "@/Shared/SearchField";
 
-export default function Index({ languages, filters }) {
-	const [tableData, setTableData, handleSorting] = useFrontSortableTable(languages)
+export default function Index({ languages, header, template }) {
+	const [sorting, setSorting] = useState(template.sorting)
 
-	const [sortField, setSortField] = useState("");
- 	const [order, setOrder] = useState("asc");
+	const defaultColumnSizing = {
+		minSize: 100,
+		maxSize: 300,
+	}
+
+	const [globalFilter, setGlobalFilter] = useState('');
+
+	const [data, setData] = useState(languages.data);
+
+	if (template.sizing) {
+		header.forEach(object => {
+			if (template.sizing[object.id]) {
+				object.size = template.sizing[object.id];
+			}
+		});
+	}
+
+	const [columns] = useState(() => [...header]);
+	const [columnOrder, setColumnOrder] = useState(template.order);
+
+	const fuzzyFilter = (row, columnId, value, addMeta) => {
+		const itemRank = rankItem(row.getValue(columnId), value)
+
+		addMeta({ itemRank })
+
+		return itemRank.passed
+	}
+
+	const fuzzySort = (rowA, rowB, columnId) => {
+		let dir = 0
+
+		if (rowA.columnFiltersMeta[columnId]) {
+		  	dir = compareItems(!rowA.columnFiltersMeta[columnId].itemRank, !rowB.columnFiltersMeta[columnId].itemRank)
+		}
+
+		return dir === 0 ? sortingFns.alphanumeric(rowA, rowB, columnId) : dir
+	}
+
+	const table = useReactTable({
+		data,
+		columns,
+		filterFns: {
+			fuzzy: fuzzyFilter,
+		},
+		state: {
+			columnOrder,
+			globalFilter,
+			sorting,
+		},
+		defaultColumn: defaultColumnSizing,
+		columnResizeMode: 'onChange',
+		onGlobalFilterChange: setGlobalFilter,
+		globalFilterFn: fuzzyFilter,
+		onColumnOrderChange: setColumnOrder,
+		onSortingChange: setSorting,
+		getCoreRowModel: getCoreRowModel(),
+		getSortedRowModel: getSortedRowModel(),
+		getFilteredRowModel: getFilteredRowModel(),
+	});
+
+	const previous = usePrevious(sorting);
+
+    useEffect(() => {
+		if (previous) {
+			const timeout = setTimeout(() => {
+				Inertia.get(route('admin.templates'), {
+					'language_template': {
+						'order': columnOrder,
+						'sorting': sorting,
+						'globalSearch': globalFilter,
+						'sizing': { ...template.sizing, ...table.getState().columnSizing },
+					},
+					'route': 'admin.languages',
+					'template': 'language_template',
+				});
+			}, 0);
+
+			return () => clearTimeout(timeout)
+		}
+	}, [sorting]);
 
 	function handleChange(event, id) {
 		let data = [...tableData];
@@ -21,13 +100,6 @@ export default function Index({ languages, filters }) {
 		result.active = !result.active;
 
 		setTableData(data);
-	}
-
-	const handleSortingChange = (accessor) => {
-		const sortOrder = accessor === sortField && order === "asc" ? "desc" : "asc";
-		setSortField(accessor);
-		setOrder(sortOrder);
-		handleSorting(accessor, sortOrder);
 	};
 
 	function update() {
@@ -38,7 +110,7 @@ export default function Index({ languages, filters }) {
 		<>
 			<Head title={ transChoice('common.languages', 2) } />
 
-			<div className="flex flex-col h-full space-y-4">
+			<div className="space-y-4">
 				<section id="table-header">
 					<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-4 md:gap-y-0 content-start place-content-between">
 						<div className="col-span-1 self-center place-self-start">
@@ -52,77 +124,19 @@ export default function Index({ languages, filters }) {
 								onClick={ update }
 							/>
 						</div>
+
 						<div className="col-span-1 sm:col-span-2 md:col-span-1 md:order-1 place-self-center w-full">
-							<SearchField filters={ filters } />
+							<TableSearch
+								value={ globalFilter ?? '' }
+								onChange={ value => setGlobalFilter(value) }
+							/>
 						</div>
 					</div>
 				</section>
 
-				<section id="table" className="min-h-0">
-					<div className="h-full border-2 border-color overflow-y-auto rounded overflow-y-scroll">
-						<table>
-							<thead className="
-								sticky top-0 z-10
-								bg-gray-400
-								dark:bg-gray-800
-							">
-								<tr>
-									<th>
-										<SortButton
-											label={ trans('common.id') }
-											accessor={ 'id' }
-											onClick={ () => handleSortingChange('id') }
-										/>
-									</th>
-									<th>
-										<SortButton
-											label={ trans('common.code') }
-											accessor={ 'locale' }
-											onClick={ () => handleSortingChange('locale') }
-										/>
-									</th>
-									<th>
-										<SortButton
-											label={ transChoice('locales.languages', 1) }
-											accessor={ 'locale' }
-											onClick={ () => handleSortingChange('locale') }
-										/>
-									</th>
-									<th>
-										<SortButton
-											label={ trans('common.active') }
-											accessor={ 'active' }
-											onClick={ () => handleSortingChange('active') }
-										/>
-									</th>
-								</tr>
-							</thead>
-							<tbody>
-								{
-									tableData.map((data) => {
-										return (
-											<tr key={ data.id }>
-												<td>
-													{ data.id }
-												</td>
-												<td>
-													{ data.locale }
-												</td>
-												<td>
-													{ trans(`locales.${ data.locale }`) }
-												</td>
-												<td>
-													<Toggle
-														value={ data['active'] }
-														onChange={ (event) => handleChange(event, data.id) }
-													/>
-												</td>
-											</tr>
-										);
-									})
-								}
-							</tbody>
-						</table>
+				<section id="table">
+					<div className={ `table-fixed w-fit max-w-full border-2 border-color rounded overflow-x-auto` }>
+						<NewTable table={ table } />
 					</div>
 				</section>
 			</div>

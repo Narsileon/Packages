@@ -41,7 +41,7 @@ return new class extends Migration
     {
         Schema::create(self::TABLE_LANGUAGES, function (Blueprint $table) {
             $table->id();
-            $table->string(Language::FIELD_LOCALE);
+            $table->string(Language::FIELD_CODE);
             $table->boolean(Language::FIELD_ACTIVE);
             $table->timestamps();
         });

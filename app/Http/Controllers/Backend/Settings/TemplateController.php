@@ -24,16 +24,16 @@ class TemplateController extends Controller
 
         if ($user->{ User::ATTRIBUTE_TEMPLATES} )
         {
-            $templates = $request[Template::FIELD_TEMPLATE_FAQ];
+            $template = $request[$request->template];
 
-            $templates['sorting'] = !array_key_exists('sorting', $templates) ? [] : array(
+            $template['sorting'] = !array_key_exists('sorting', $template) ? [] : array(
                 [
-                    'id' => $templates['sorting'][0]['id'],
-                    'desc' => $templates['sorting'][1]['desc'] == 'true' ? true : false,
+                    'id' => $template['sorting'][0]['id'],
+                    'desc' => $template['sorting'][1]['desc'] == 'true' ? true : false,
                 ]
             );
 
-            $user->{ User::ATTRIBUTE_TEMPLATES}->update([Template::FIELD_TEMPLATE_FAQ => $templates]);
+            $user->{ User::ATTRIBUTE_TEMPLATES}->update([$request->template => $template]);
         }
 
         else

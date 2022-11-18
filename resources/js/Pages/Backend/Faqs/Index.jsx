@@ -5,10 +5,9 @@ import { Head, Link } from "@inertiajs/inertia-react";
 import { trans } from "@/narsil-localization";
 import Pagination from "@/Shared/Pagination";
 import { usePrevious } from "react-use";
-import { upperFirst } from "lodash";
-import Icon from "@/Shared/Svg/Icon";
 import { rankItem, compareItems } from '@tanstack/match-sorter-utils'
 import NewTable from "@/Components/Tables/NewTable";
+import TableSearch from "@/Components/Tables/TableSearch";
 
 export default function Index({ faqs, header, template }) {
 	const [sorting, setSorting] = useState(template.sorting)
@@ -71,9 +70,6 @@ export default function Index({ faqs, header, template }) {
 		getCoreRowModel: getCoreRowModel(),
 		getSortedRowModel: getSortedRowModel(),
 		getFilteredRowModel: getFilteredRowModel(),
-		debugTable: true,
-		debugHeaders: true,
-		debugColumns: true,
 	});
 
 	const previous = usePrevious(sorting);
@@ -89,6 +85,7 @@ export default function Index({ faqs, header, template }) {
 						'sizing': { ...template.sizing, ...table.getState().columnSizing },
 					},
 					'route': 'admin.faqs.index',
+					'template': 'faq_template',
 				});
 			}, 0);
 
@@ -118,8 +115,8 @@ export default function Index({ faqs, header, template }) {
 						</div>
 
 						<div className="col-span-1 sm:col-span-2 md:col-span-1 md:order-1 place-self-center w-full">
-							<DebouncedInput
-								value={ globalFilter ?? '10' }
+							<TableSearch
+								value={ globalFilter ?? '' }
 								onChange={ value => setGlobalFilter(value) }
 							/>
 						</div>
@@ -144,24 +141,4 @@ export default function Index({ faqs, header, template }) {
 			</div>
 		</>
 	);
-}
-
-// A debounced input react component
-const DebouncedInput = ({onChange, debounce = 500, ...props}) => {
-	return (
-		<div className="flex border-2 border-color rounded">
-			<div className="primary-background flex items-center w-min-fit justify-between">
-				<Icon name="search" className="w-6 h-6 m-2" />
-			</div>
-
-			<input
-				type="text"
-				placeholder={ `${ upperFirst(trans('common.search')) }...` }
-				autoComplete="off"
-				onChange={ e => onChange(e.target.value) }
-				className="bg-transparent focus:outline-none p-2 w-full"
-				{ ...props }
-			/>
-		</div>
-	)
 }

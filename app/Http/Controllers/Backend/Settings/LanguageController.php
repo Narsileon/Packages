@@ -5,9 +5,13 @@ namespace App\Http\Controllers\Backend\Settings;
 #region USE
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Backend\Settings\LanguageResource;
 use App\Models\Backend\Language;
+use App\Models\Backend\Template;
+use App\Models\User;
+use App\Services\LanguageService;
 use Illuminate\Http\Request as HttpRequest;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 #endregion
@@ -18,15 +22,18 @@ class LanguageController extends Controller
 
     public function index()
     {
-        $languages = Language::search(request('search'))->get();
+        $header = LanguageService::COLUMNS;
 
-        $filters = [
-            'search' => Request::input('search'),
-        ];
+        $user = Auth::user();
+
+        $template = $user->{ User::ATTRIBUTE_TEMPLATES } ? $user->{ User::ATTRIBUTE_TEMPLATES }->{ Template::FIELD_TEMPLATE_LANGUAGE } : LanguageService::DEFAULT_TEMPLATE;
+
+        $languages = LanguageResource::collection(Language::search(array_key_exists('globalSearch', $template) ? $template['globalSearch'] : '')->get());
 
         return Inertia::render('Backend/Languages/Index', compact(
+            'header',
+            'template',
             'languages',
-            'filters',
         ));
     }
 

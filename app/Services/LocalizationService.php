@@ -38,7 +38,7 @@ class LocalizationService
     public static function get($customized = true)
     {
         $locale = App::getLocale();
-        $locales = Language::where(Language::FIELD_ACTIVE, 1)->pluck(Language::FIELD_LOCALE)->toArray();
+        $locales = Language::where(Language::FIELD_ACTIVE, 1)->pluck(Language::FIELD_CODE)->toArray();
         $dictionary = $customized ? self::getCustomizedLocalization($locale) : self::getLocalization($locale);
 
         return compact(

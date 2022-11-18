@@ -20,19 +20,19 @@ class LanguageService
             Tables::FIELD_HEADER => 'common.id',
         ],
         [
-            TABLES::FIELD_ACCESSOR_KEY => Language::FIELD_LOCALE,
-            TABLES::FIELD_ID => Language::FIELD_LOCALE,
-            Tables::FIELD_HEADER => 'common.questions',
+            TABLES::FIELD_ACCESSOR_KEY => Language::FIELD_CODE,
+            TABLES::FIELD_ID => Language::FIELD_CODE,
+            Tables::FIELD_HEADER => 'common.codes',
         ],
         [
-            TABLES::FIELD_ACCESSOR_KEY => 'language',
-            TABLES::FIELD_ID => 'language',
-            Tables::FIELD_HEADER => 'common.answers',
+            TABLES::FIELD_ACCESSOR_KEY => Language::PROPERTY_LANGUAGE,
+            TABLES::FIELD_ID => Language::PROPERTY_LANGUAGE,
+            Tables::FIELD_HEADER => 'common.languages',
         ],
         [
             TABLES::FIELD_ACCESSOR_KEY => Language::FIELD_ACTIVE,
             TABLES::FIELD_ID => Language::FIELD_ACTIVE,
-            Tables::FIELD_HEADER => 'validation.attributes.created_at',
+            Tables::FIELD_HEADER => 'common.active',
         ],
     );
 
@@ -43,8 +43,8 @@ class LanguageService
 
     private const DEFAULT_ORDER = [
         Language::FIELD_ID,
-        Language::FIELD_LOCALE,
-        'language',
+        Language::FIELD_CODE,
+        Language::PROPERTY_LANGUAGE,
         Language::FIELD_ACTIVE,
     ];
 
