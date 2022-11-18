@@ -25,10 +25,10 @@ class TemplateController extends Controller
         {
             $templates = $request[Template::FIELD_TEMPLATE_FAQ];
 
-            $templates['sorting'] = array(
+            $templates['sorting'] = !array_key_exists('sorting', $templates) ? [] : array(
                 [
-                    'id' => $request[Template::FIELD_TEMPLATE_FAQ]['sorting'][0]['id'],
-                    'desc' => $request[Template::FIELD_TEMPLATE_FAQ]['sorting'][1]['desc'],
+                    'id' => $templates['sorting'][0]['id'],
+                    'desc' => $templates['sorting'][1]['desc'] == 'true' ? true : false,
                 ]
             );
 

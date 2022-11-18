@@ -29,11 +29,11 @@ class FaqController extends Controller
 
         $user = Auth::user();
 
-        $templates = $user->{ User::ATTRIBUTE_TEMPLATES } ? $user->{ User::ATTRIBUTE_TEMPLATES }->{ Template::FIELD_TEMPLATE_FAQ } : FaqService::getDefaultTemplate();
+        $template = $user->{ User::ATTRIBUTE_TEMPLATES } ? $user->{ User::ATTRIBUTE_TEMPLATES }->{ Template::FIELD_TEMPLATE_FAQ } : FaqService::getDefaultTemplate();
 
         $faqs = new FaqCollection(Faq::query()
             ->search(request('search'))
-            ->newSort($templates[Tables::SORTING][0])
+            ->newSort($template[Tables::SORTING])
             ->paginate(5));
 
         $filters = [
@@ -42,7 +42,7 @@ class FaqController extends Controller
 
         return Inertia::render('Backend/Faqs/Index', compact(
             'header',
-            'templates',
+            'template',
             'faqs',
         ));
     }

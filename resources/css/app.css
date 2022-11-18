@@ -9,7 +9,6 @@
     }
 
     table { @apply
-        min-w-full
         divide-y-2 divide-color
     }
 
@@ -26,14 +25,6 @@
         divide-x divide-color
         bg-gray-200 odd:bg-gray-100
         dark:bg-gray-700 dark:odd:bg-gray-600
-    }
-
-    th { @apply
-        text-left
-    }
-
-    td { @apply
-        p-2 text-left truncate
     }
 
     form h1 { @apply

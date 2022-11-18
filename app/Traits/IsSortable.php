@@ -5,7 +5,6 @@ namespace App\Traits;
 #region USE
 
 use App\Constants\Tables;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Request;
 
 #endregion
@@ -23,9 +22,10 @@ trait IsSortable
 
     public function scopeNewSort($query, $sort)
     {
-        Log::debug($sort);
-
-        $query->orderBy($sort['id'], $sort['desc'] ? Tables::FIELD_DESC : Tables::FIELD_ASC);
+        if (!empty($sort))
+        {
+            $query->orderBy($sort[0]['id'], $sort[0]['desc'] ? Tables::FIELD_DESC : Tables::FIELD_ASC);
+        }
     }
 
     #endregion

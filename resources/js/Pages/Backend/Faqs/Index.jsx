@@ -11,15 +11,17 @@ import Icon from "@/Shared/Svg/Icon";
 import Sort from "@/Shared/Svg/Sort";
 import { rankItem, compareItems } from '@tanstack/match-sorter-utils'
 
-export default function Index({ faqs, header, templates }) {
-	const [sorting, setSorting] = useState(templates.sorting)
+export default function Index({ faqs, header, template }) {
+	const [sorting, setSorting] = useState(template.sorting)
+
+	const [columnResizeMode, setColumnResizeMode] = useState('onChange')
 
 	const [globalFilter, setGlobalFilter] = useState('');
 
 	const [data, setData] = useState(faqs.data);
 
 	const [columns] = useState(() => [...header]);
-	const [columnOrder, setColumnOrder] = useState(templates.order);
+	const [columnOrder, setColumnOrder] = useState(template.order);
 
 	const fuzzyFilter = (row, columnId, value, addMeta) => {
 		// Rank the item
@@ -57,6 +59,7 @@ export default function Index({ faqs, header, templates }) {
 			globalFilter,
 			sorting,
 		},
+		columnResizeMode,
 		onGlobalFilterChange: setGlobalFilter,
 		globalFilterFn: fuzzyFilter,
 		onColumnOrderChange: setColumnOrder,
@@ -64,18 +67,19 @@ export default function Index({ faqs, header, templates }) {
 		getCoreRowModel: getCoreRowModel(),
 		getSortedRowModel: getSortedRowModel(),
 		getFilteredRowModel: getFilteredRowModel(),
+		debugTable: true,
+		debugHeaders: true,
+		debugColumns: true,
 	});
 
 	const previous = usePrevious(sorting);
 
     useEffect(() => {
 		if (previous) {
-			console.log(sorting);
-
 			Inertia.get(route('admin.templates'), {
 				'faq_template': {
 					'order': columnOrder,
-					'sorting': JSON.stringify(sorting, null, 2),
+					'sorting': sorting,
 				},
 				'route': 'admin.faqs.index',
 			});
@@ -112,12 +116,13 @@ export default function Index({ faqs, header, templates }) {
 
 		return (
 			<th
+				className="relative"
 				ref={ dropRef }
 				colSpan={ header.colSpan }
-				style={{ opacity: isDragging ? 0.5 : 1 }}
+				style={{ opacity: isDragging ? 0.5 : 1, width: header.getSize() }}
 			>
 				<div
-					className="flex w-full"
+					className="flex"
 					ref={ previewRef }
 				>
 					<button
@@ -150,6 +155,20 @@ export default function Index({ faqs, header, templates }) {
 						}
 					</div>
 				</div>
+				<div
+					{...{
+						onMouseDown: header.getResizeHandler(),
+						onTouchStart: header.getResizeHandler(),
+						className: `absolute right-0 top-0 h-full w-2 cursor-col-resize ${
+						header.column.getIsResizing() ? 'bg-red-500' : 'bg-blue-500'
+						}`,
+						style: {
+							transform:
+								columnResizeMode === 'onEnd' && header.column.getIsResizing() ?
+								`translateX(${table.getState().columnSizingInfo.deltaOffset}px)` : '',
+						},
+					}}
+				/>
 			</th>
 		)
 	}
@@ -187,12 +206,14 @@ export default function Index({ faqs, header, templates }) {
 				{ faqs.meta.items > 0 ? (
 					<>
 						<section id="table">
-							<div className={ `border-2 border-color rounded overflow-x-auto ${ data[0] ? "" : "hidden" }` }>
-								<table>
+							<div className={ `table-fixed w-fit max-w-full border-2 border-color rounded overflow-x-auto ${ data[0] ? "" : "hidden" }` }>
+								<table
+									style={{ width: table.getCenterTotalSize() }}
+								>
 									<thead>
 										{
 											table.getHeaderGroups().map(headerGroup => (
-												<tr key={headerGroup.id}>
+												<tr key={ headerGroup.id }>
 													{
 														headerGroup.headers.map(header => (
 															<DraggableColumnHeader
@@ -212,7 +233,14 @@ export default function Index({ faqs, header, templates }) {
 												<tr key={ row.id }>
 													{
 														row.getVisibleCells().map(cell => (
-															<td key={ cell.id }>
+															<td
+															{...{
+															  	key: cell.id,
+															  	style: {
+																width: cell.column.getSize(),
+															  },
+															}}
+														  >
 																{ flexRender(cell.column.columnDef.cell, cell.getContext()) }
 															</td>
 														))
