@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getCoreRowModel, getFilteredRowModel, getSortedRowModel, sortingFns, useReactTable } from "@tanstack/react-table";
+import { createColumnHelper, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, sortingFns, useReactTable } from "@tanstack/react-table";
 import { Inertia } from "@inertiajs/inertia";
 import { Head } from "@inertiajs/inertia-react";
 import { trans, transChoice } from "@/narsil-localization";
@@ -8,8 +8,27 @@ import { rankItem, compareItems } from '@tanstack/match-sorter-utils'
 import NewTable from "@/Components/Tables/NewTable";
 import TableSearch from "@/Components/Tables/TableSearch";
 import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
+import Toggle from "@/Components/Elements/Toggle";
 
 export default function Index({ languages, header, template }) {
+	const columnHelper = createColumnHelper()
+
+	let newHeader = [...header].map(object => {
+		if (object.id === 'active') {
+		  	return {
+				...object,
+				cell: props => (
+					<Toggle
+						value={ props.getValue() }
+						onChange={ (event) => handleChange(event, props.row._valuesCache.id) }
+					/>
+				)
+			}
+		} else {
+			return object;
+		}
+	});
+
 	const [sorting, setSorting] = useState(template.sorting)
 
 	const defaultColumnSizing = {
@@ -22,14 +41,14 @@ export default function Index({ languages, header, template }) {
 	const [data, setData] = useState(languages.data);
 
 	if (template.sizing) {
-		header.forEach(object => {
+		newHeader.forEach(object => {
 			if (template.sizing[object.id]) {
 				object.size = template.sizing[object.id];
 			}
 		});
 	}
 
-	const [columns] = useState(() => [...header]);
+	const [columns] = useState(() => [...newHeader]);
 	const [columnOrder, setColumnOrder] = useState(template.order);
 
 	const fuzzyFilter = (row, columnId, value, addMeta) => {
@@ -94,16 +113,16 @@ export default function Index({ languages, header, template }) {
 	}, [sorting]);
 
 	function handleChange(event, id) {
-		let data = [...tableData];
+		let temp = [...data];
 
-		let result = data.find(x => x.id == id);
+		let result = temp.find(x => x.id == id);
 		result.active = !result.active;
 
-		setTableData(data);
+		setData(temp);
 	};
 
 	function update() {
-		Inertia.patch(route('admin.languages'), tableData);
+		Inertia.patch(route('admin.languages'), data);
 	};
 
 	return (
