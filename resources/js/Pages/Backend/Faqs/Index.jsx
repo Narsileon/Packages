@@ -16,9 +16,17 @@ export default function Index({ faqs, header, template }) {
 
 	const [columnResizeMode, setColumnResizeMode] = useState('onChange')
 
-	const [globalFilter, setGlobalFilter] = useState('10');
+	const [globalFilter, setGlobalFilter] = useState('');
 
 	const [data, setData] = useState(faqs.data);
+
+	if (template.sizing) {
+		header.forEach(object => {
+			if (template.sizing[object.id]) {
+				object.size = template.sizing[object.id];
+			}
+		});
+	}
 
 	const [columns] = useState(() => [...header]);
 	const [columnOrder, setColumnOrder] = useState(template.order);
@@ -80,7 +88,8 @@ export default function Index({ faqs, header, template }) {
 				'faq_template': {
 					'order': columnOrder,
 					'sorting': sorting,
-					'globalSearch': 10,
+					'globalSearch': globalFilter,
+					'sizing': { ...template.sizing, ...table.getState().columnSizing },
 				},
 				'route': 'admin.faqs.index',
 			});
