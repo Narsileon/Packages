@@ -5,13 +5,13 @@ import { Inertia } from "@inertiajs/inertia";
 import { Head, Link } from "@inertiajs/inertia-react";
 import { trans, transChoice } from "@/narsil-localization";
 import Pagination from "@/Shared/Pagination";
-import SearchField from "@/Shared/SearchField";
 import { usePrevious } from "react-use";
 import { upperFirst } from "lodash";
 import Icon from "@/Shared/Svg/Icon";
 import Sort from "@/Shared/Svg/Sort";
+import { rankItem, compareItems } from '@tanstack/match-sorter-utils'
 
-export default function Index({ faqs, filters, templates }) {
+export default function Index({ faqs, templates }) {
 	const [sorting, setSorting] = useState(templates.sorting)
 
 	const [globalFilter, setGlobalFilter] = useState('');
@@ -27,7 +27,7 @@ export default function Index({ faqs, filters, templates }) {
 
 		// Store the itemRank info
 		addMeta({
-		  itemRank,
+		  	itemRank,
 		})
 
 		// Return if the item should be filtered in/out
@@ -72,9 +72,11 @@ export default function Index({ faqs, filters, templates }) {
 		console.log(sorting);
 
 		if (previous) {
-			Inertia.get(route('templates.faq'), {
+			Inertia.get(route('admin.templates'), {
 				'order': columnOrder,
 				'sorting': sorting,
+				'globalFilter': globalFilter,
+				'route': 'admin.faqs.index',
 			});
 		}
 	}, [sorting]);
@@ -127,12 +129,11 @@ export default function Index({ faqs, filters, templates }) {
 					</button>
 					<div
                         {...{
-							className: header.column.getCanSort()
+							className: `flex justify-between w-full p-2 whitespace-nowrap space-x-2 ${ header.column.getCanSort()
 								? 'cursor-pointer select-none'
-								: '',
+								: '' }`,
 							onClick: header.column.getToggleSortingHandler(),
                         }}
-						className="flex justify-between w-full p-2 whitespace-nowrap space-x-2"
                     >
 						<span>
 							{
@@ -174,8 +175,12 @@ export default function Index({ faqs, filters, templates }) {
 								{ trans('Create :resource', { 'resource': trans('common.new_faq') }) }
 							</Link>
 						</div>
+
 						<div className="col-span-1 sm:col-span-2 md:col-span-1 md:order-1 place-self-center w-full">
-							<SearchField filters={ filters } />
+							<DebouncedInput
+								value={ globalFilter ?? '' }
+								onChange={value => setGlobalFilter(value)}
+							/>
 						</div>
 					</div>
 				</section>
@@ -235,3 +240,38 @@ export default function Index({ faqs, filters, templates }) {
 		</>
 	);
 }
+
+// A debounced input react component
+const DebouncedInput = ({initialValue, onChange, debounce = 500, ...props}) => {
+	const [value, setValue] = useState(initialValue)
+
+	useEffect(() => {
+	 	setValue(initialValue)
+	}, [initialValue])
+
+	useEffect(() => {
+		const timeout = setTimeout(() => {
+			onChange(value)
+	}, debounce)
+
+	  	return () => clearTimeout(timeout)
+	}, [value])
+
+	return (
+		<div className="flex border-2 border-color rounded">
+			<div className="primary-background flex items-center w-min-fit justify-between">
+				<Icon name="search" className="w-6 h-6 m-2" />
+			</div>
+
+			<input
+				value={ value }
+				type="text"
+				placeholder={ `${ upperFirst(trans('common.search')) }...` }
+				autoComplete="off"
+				onChange={ e => setValue(e.target.value) }
+				className="bg-transparent focus:outline-none p-2 w-full"
+				{ ...props }
+			/>
+		</div>
+	)
+  }

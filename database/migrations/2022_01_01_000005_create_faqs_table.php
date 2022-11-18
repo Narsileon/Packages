@@ -15,7 +15,6 @@ return new class extends Migration
     #region CONSTANTS
 
     const TABLE_FAQS = 'faqs';
-    const TABLE_FAQS_TEMPLATE = 'faq_templates';
 
     #endregion
 
@@ -24,13 +23,11 @@ return new class extends Migration
     public function up()
     {
         self::createFaqTable();
-        self::createTemplateTable();
     }
 
     public function down()
     {
         Schema::dropIfExists(self::TABLE_FAQS);
-        Schema::dropIfExists(self::TABLE_FAQS_TEMPLATE);
     }
 
     #endregion
@@ -43,17 +40,6 @@ return new class extends Migration
             $table->id();
             $table->longText(Faq::FIELD_QUESTION);
             $table->longText(Faq::FIELD_ANSWER);
-            $table->timestamps();
-        });
-    }
-
-    private static function createTemplateTable()
-    {
-        Schema::create(self::TABLE_FAQS_TEMPLATE, function (Blueprint $table) {
-            $table->id();
-            $table->foreignId(FaqTemplate::FIELD_USER_ID)->constrained()->cascadeOnDelete();
-            $table->json(FaqTemplate::FIELD_ORDER);
-            $table->json(FaqTemplate::FIELD_SORTING);
             $table->timestamps();
         });
     }

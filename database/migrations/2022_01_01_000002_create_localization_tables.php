@@ -3,6 +3,7 @@
 #region USE
 
 use App\Models\Backend\Language;
+use App\Models\Backend\Localization;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,6 +15,7 @@ return new class extends Migration
     #region CONSTANTS
 
     const TABLE_LANGUAGES = 'languages';
+    const TABLE_LOCALIZATIONS = 'localizations';
 
     #endregion
 
@@ -22,11 +24,13 @@ return new class extends Migration
     public function up()
     {
         self::createLanguageTable();
+        self::createLocalizationTable();
     }
 
     public function down()
     {
         Schema::dropIfExists(self::TABLE_LANGUAGES);
+        Schema::dropIfExists(self::TABLE_LOCALIZATIONS);
     }
 
     #endregion
@@ -39,6 +43,16 @@ return new class extends Migration
             $table->id();
             $table->string(Language::FIELD_LOCALE);
             $table->boolean(Language::FIELD_ACTIVE);
+            $table->timestamps();
+        });
+    }
+
+    private static function createLocalizationTable()
+    {
+        Schema::create(self::TABLE_LOCALIZATIONS, function (Blueprint $table) {
+            $table->id();
+            $table->foreignId(Localization::FIELD_USER_ID)->constrained()->cascadeOnDelete();
+            $table->json(Localization::FIELD_DICTIONARY)->nullable();
             $table->timestamps();
         });
     }

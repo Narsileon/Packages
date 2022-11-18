@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Backend\Templates;
+namespace App\Models\Backend;
 
 #region USE
 
@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 #endregion
 
-class FaqTemplate extends Model
+class Template extends Model
 {
     use HasFactory;
 
@@ -20,8 +20,7 @@ class FaqTemplate extends Model
 
     const FIELD_ID = 'id';
     const FIELD_USER_ID='user_id';
-    const FIELD_ORDER = 'order';
-    const FIELD_SORTING = 'sorting';
+    const FIELD_TEMPLATE_FAQ = 'faq_template';
 
     const PROPERTY_USER = 'user';
 
@@ -32,13 +31,11 @@ class FaqTemplate extends Model
     protected $fillable =
     [
         self::FIELD_USER_ID,
-        self::FIELD_ORDER,
-        self::FIELD_SORTING,
+        self::FIELD_TEMPLATE_FAQ,
     ];
 
     protected $casts = [
-        self::FIELD_ORDER => CastTypes::ARRAY,
-        self::FIELD_SORTING => CastTypes::ARRAY,
+        self::FIELD_TEMPLATE_FAQ => CastTypes::ARRAY,
     ];
 
     protected $perPage = 10;
@@ -52,15 +49,7 @@ class FaqTemplate extends Model
         return $this->belongsTo(User::class, self::FIELD_ID);
     }
 
-    protected function order(): Attribute
-    {
-        return Attribute::make(
-            get: fn ($value) => json_decode($value, true),
-            set: fn ($value) => json_encode($value),
-        );
-    }
-
-    protected function sorting(): Attribute
+    protected function faq_template(): Attribute
     {
         return Attribute::make(
             get: fn ($value) => json_decode($value, true),

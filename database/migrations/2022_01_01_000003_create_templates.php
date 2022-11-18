@@ -2,7 +2,7 @@
 
 #region USE
 
-use App\Models\Backend\Localization;
+use App\Models\Backend\Template;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,7 +13,7 @@ return new class extends Migration
 {
     #region CONSTANTS
 
-    const TABLE_LOCALIZATIONS = 'localizations';
+    const TABLE_TEMPLATES = 'templates';
 
     #endregion
 
@@ -21,24 +21,24 @@ return new class extends Migration
 
     public function up()
     {
-        self::createLocalizationTable();
+        self::createTemplateTable();
     }
 
     public function down()
     {
-        Schema::dropIfExists(self::TABLE_LOCALIZATIONS);
+        Schema::dropIfExists(self::TABLE_TEMPLATES);
     }
 
     #endregion
 
     #region PRIVATE METHODS
 
-    private static function createLocalizationTable()
+    private static function createTemplateTable()
     {
-        Schema::create(self::TABLE_LOCALIZATIONS, function (Blueprint $table) {
+        Schema::create(self::TABLE_TEMPLATES, function (Blueprint $table) {
             $table->id();
-            $table->foreignId(Localization::FIELD_USER_ID)->constrained()->cascadeOnDelete();
-            $table->json(Localization::FIELD_DICTIONARY)->nullable();
+            $table->foreignId(Template::FIELD_USER_ID)->constrained()->cascadeOnDelete();
+            $table->json(Template::FIELD_TEMPLATE_FAQ)->nullable();
             $table->timestamps();
         });
     }

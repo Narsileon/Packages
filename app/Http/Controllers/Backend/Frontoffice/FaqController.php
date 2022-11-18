@@ -9,7 +9,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Frontoffice\FaqCreateRequest;
 use App\Http\Requests\Backend\Frontoffice\FaqUpdateRequest;
 use App\Http\Resources\Backend\Frontoffice\FaqCollection;
+use App\Models\Backend\Template;
 use App\Models\Frontend\Faq;
+use App\Models\User;
 use App\Services\FaqService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -26,7 +28,9 @@ class FaqController extends Controller
     {
         $user = Auth::user();
 
-        $templates = FaqService::getDefaultTemplate();
+        $templates = $user->{ User::ATTRIBUTE_TEMPLATES } ? $user->{ User::ATTRIBUTE_TEMPLATES }->{ Template::FIELD_TEMPLATE_FAQ } : FaqService::getDefaultTemplate();
+
+        Log::debug($templates);
 
         $faqs = new FaqCollection(Faq::query()
             ->search(request('search'))
