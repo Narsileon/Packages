@@ -16,7 +16,7 @@ export default function Index({ faqs, header, template }) {
 
 	const [columnResizeMode, setColumnResizeMode] = useState('onChange')
 
-	const [globalFilter, setGlobalFilter] = useState('');
+	const [globalFilter, setGlobalFilter] = useState('10');
 
 	const [data, setData] = useState(faqs.data);
 
@@ -80,6 +80,7 @@ export default function Index({ faqs, header, template }) {
 				'faq_template': {
 					'order': columnOrder,
 					'sorting': sorting,
+					'globalSearch': 10,
 				},
 				'route': 'admin.faqs.index',
 			});
@@ -196,8 +197,8 @@ export default function Index({ faqs, header, template }) {
 
 						<div className="col-span-1 sm:col-span-2 md:col-span-1 md:order-1 place-self-center w-full">
 							<DebouncedInput
-								value={ globalFilter ?? '' }
-								onChange={value => setGlobalFilter(value)}
+								value={ globalFilter ?? '10' }
+								onChange={ value => setGlobalFilter(value) }
 							/>
 						</div>
 					</div>
