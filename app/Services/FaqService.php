@@ -12,43 +12,30 @@ class FaqService
 {
     #region PUBLIC METHODS
 
-    public static function getDefaultTemplate()
-    {
-        $columns = self::getDefaultColumns();
-        $order = self::getDefaultOrder();
-        $sorting = self::getDefaultSorting();
-
-        return compact(
-            'columns',
-            'order',
-            'sorting',
-        );
-    }
-
-    public static function getDefaultColumns()
+    public static function getColumns()
     {
         return array(
-            (object) [
+            [
                 'accessorKey' => Faq::FIELD_ID,
                 'id' => Faq::FIELD_ID,
                 'header' => 'common.id',
             ],
-            (object) [
+            [
                 'accessorKey' => Faq::FIELD_QUESTION,
                 'id' => Faq::FIELD_QUESTION,
                 'header' => 'common.questions',
             ],
-            (object) [
+            [
                 'accessorKey' => Faq::FIELD_ANSWER,
                 'id' => Faq::FIELD_ANSWER,
                 'header' => 'common.answers',
             ],
-            (object) [
+            [
                 'accessorKey' => Faq::CREATED_AT,
                 'id' => Faq::CREATED_AT,
                 'header' => 'validation.attributes.created_at',
             ],
-            (object) [
+            [
                 'accessorKey' => Faq::UPDATED_AT,
                 'id' => Faq::UPDATED_AT,
                 'header' => 'validation.attributes.updated_at',
@@ -56,7 +43,22 @@ class FaqService
         );
     }
 
-    public static function getDefaultOrder()
+    public static function getDefaultTemplate()
+    {
+        $order = self::getDefaultOrder();
+        $sorting = self::getDefaultSorting();
+
+        return compact(
+            'order',
+            'sorting',
+        );
+    }
+
+    #endregion
+
+    #region PRIVATE METHODS
+
+    private static function getDefaultOrder()
     {
         return [
             Faq::FIELD_ID,
@@ -67,11 +69,11 @@ class FaqService
         ];
     }
 
-    public static function getDefaultSorting()
+    private static function getDefaultSorting()
     {
         return array(
-            (object) [
-                'id' => Faq::FIELD_ID,
+            [
+                'id' => 'id',
                 'desc' => false,
             ],
         );

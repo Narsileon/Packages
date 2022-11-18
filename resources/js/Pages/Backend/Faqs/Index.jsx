@@ -11,14 +11,14 @@ import Icon from "@/Shared/Svg/Icon";
 import Sort from "@/Shared/Svg/Sort";
 import { rankItem, compareItems } from '@tanstack/match-sorter-utils'
 
-export default function Index({ faqs, templates }) {
+export default function Index({ faqs, header, templates }) {
 	const [sorting, setSorting] = useState(templates.sorting)
 
 	const [globalFilter, setGlobalFilter] = useState('');
 
 	const [data, setData] = useState(faqs.data);
 
-	const [columns] = useState(() => [...templates.columns]);
+	const [columns] = useState(() => [...header]);
 	const [columnOrder, setColumnOrder] = useState(templates.order);
 
 	const fuzzyFilter = (row, columnId, value, addMeta) => {
@@ -69,21 +69,20 @@ export default function Index({ faqs, templates }) {
 	const previous = usePrevious(sorting);
 
     useEffect(() => {
-		console.log(sorting);
-
 		if (previous) {
+			console.log(sorting);
+
 			Inertia.get(route('admin.templates'), {
-				'order': columnOrder,
-				'sorting': sorting,
-				'globalFilter': globalFilter,
+				'faq_template': {
+					'order': columnOrder,
+					'sorting': JSON.stringify(sorting, null, 2),
+				},
 				'route': 'admin.faqs.index',
 			});
 		}
 	}, [sorting]);
 
 	const reorderColumn = (draggedColumnId, targetColumnId, columnOrder) => {
-		console.log(draggedColumnId);
-
 		columnOrder.splice(columnOrder.indexOf(targetColumnId), 0, columnOrder.splice(columnOrder.indexOf(draggedColumnId), 1)[0]);
 
 		return [...columnOrder];
@@ -188,10 +187,7 @@ export default function Index({ faqs, templates }) {
 				{ faqs.meta.items > 0 ? (
 					<>
 						<section id="table">
-							<div
-								className={ `border-2 border-color rounded overflow-x-auto ${ data[0] ? "" : "hidden" }` }
-								ref={ table }
-							>
+							<div className={ `border-2 border-color rounded overflow-x-auto ${ data[0] ? "" : "hidden" }` }>
 								<table>
 									<thead>
 										{

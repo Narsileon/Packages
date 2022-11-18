@@ -14,7 +14,6 @@ use App\Models\Frontend\Faq;
 use App\Models\User;
 use App\Services\FaqService;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
 
@@ -26,11 +25,11 @@ class FaqController extends Controller
 
     public function index()
     {
+        $header = FaqService::getColumns();
+
         $user = Auth::user();
 
         $templates = $user->{ User::ATTRIBUTE_TEMPLATES } ? $user->{ User::ATTRIBUTE_TEMPLATES }->{ Template::FIELD_TEMPLATE_FAQ } : FaqService::getDefaultTemplate();
-
-        Log::debug($templates);
 
         $faqs = new FaqCollection(Faq::query()
             ->search(request('search'))
@@ -42,9 +41,9 @@ class FaqController extends Controller
         ];
 
         return Inertia::render('Backend/Faqs/Index', compact(
+            'header',
             'templates',
             'faqs',
-            'filters',
         ));
     }
 

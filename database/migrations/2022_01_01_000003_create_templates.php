@@ -38,7 +38,7 @@ return new class extends Migration
         Schema::create(self::TABLE_TEMPLATES, function (Blueprint $table) {
             $table->id();
             $table->foreignId(Template::FIELD_USER_ID)->constrained()->cascadeOnDelete();
-            $table->json(Template::FIELD_TEMPLATE_FAQ)->nullable();
+            $table->text(Template::FIELD_TEMPLATE_FAQ)->nullable();
             $table->timestamps();
         });
     }
