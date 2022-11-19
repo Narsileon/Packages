@@ -7,6 +7,7 @@ abstract class Tables
     #region CONSTANTS
 
     public const FIELD_ACCESSOR_KEY = 'accessorKey';
+    public const FIELD_DESC = 'desc';
     public const FIELD_HEADER = 'header';
     public const FIELD_ID = 'id';
 

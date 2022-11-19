@@ -6,8 +6,8 @@ abstract class CastTypes
 {
     #region CONSTANTS
 
-    const ARRAY = 'array';
-    const DATETIME = 'datetime';
+    public const ARRAY = 'array';
+    public const DATETIME = 'datetime';
 
     #endregion
 }

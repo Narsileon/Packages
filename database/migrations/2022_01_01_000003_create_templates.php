@@ -13,7 +13,7 @@ return new class extends Migration
 {
     #region CONSTANTS
 
-    const TABLE_TEMPLATES = 'templates';
+    private const TABLE_TEMPLATES = 'templates';
 
     #endregion
 

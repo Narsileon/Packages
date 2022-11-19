@@ -18,16 +18,16 @@ class Order extends Model
 
     #region CONSTANTS
 
-    const FIELD_ID = 'id';
-    const FIELD_TYPE = 'type';
-    const FIELD_STATUS = 'status';
-    const FIELD_ORDER_NUMBER = 'order_number';
-    const FIELD_ORDER_DATE = 'order_date';
-    const FIELD_START_DATE = 'start_date';
-    const FIELD_END_DATE = 'end_date';
-    const FIELD_START_LOCATION = 'start_location';
-    const FIELD_END_LOCATION = 'end_location';
-    const FIELD_PAYMENT_METHOD = 'payment_method';
+    public const FIELD_ID = 'id';
+    public const FIELD_TYPE = 'type';
+    public const FIELD_STATUS = 'status';
+    public const FIELD_ORDER_NUMBER = 'order_number';
+    public const FIELD_ORDER_DATE = 'order_date';
+    public const FIELD_START_DATE = 'start_date';
+    public const FIELD_END_DATE = 'end_date';
+    public const FIELD_START_LOCATION = 'start_location';
+    public const FIELD_END_LOCATION = 'end_location';
+    public const FIELD_PAYMENT_METHOD = 'payment_method';
 
     #endregion
 

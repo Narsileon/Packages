@@ -2,7 +2,6 @@
 
 #region USE
 
-use App\Models\Backend\Templates\FaqTemplate;
 use App\Models\Frontend\Faq;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -14,7 +13,7 @@ return new class extends Migration
 {
     #region CONSTANTS
 
-    const TABLE_FAQS = 'faqs';
+    private const TABLE_FAQS = 'faqs';
 
     #endregion
 

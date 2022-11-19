@@ -13,7 +13,7 @@ return new class extends Migration
 {
     #region CONSTANTS
 
-    const TABLE_ORDERS = 'orders';
+    private const TABLE_ORDERS = 'orders';
 
     #endregion
 

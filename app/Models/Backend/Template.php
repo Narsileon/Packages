@@ -17,19 +17,19 @@ class Template extends Model
 
     #region CONSTANTS
 
-    const FIELD_ID = 'id';
-    const FIELD_USER_ID='user_id';
+    public const FIELD_ID = 'id';
+    public const FIELD_USER_ID='user_id';
 
-    const FIELD_DICTIONARIES = 'dictionaries';
-    const FIELD_FAQS = 'faqs';
-    const FIELD_FOOTER_LINKS = 'footer_links';
-    const FIELD_HEADER_LINKS = 'header_links';
-    const FIELD_LANGUAGES = 'languages';
-    const FIELD_ORDERS = 'orders';
-    const FIELD_ROLES = 'roles';
-    const FIELD_USERS = 'users';
+    public const FIELD_DICTIONARIES = 'dictionaries';
+    public const FIELD_FAQS = 'faqs';
+    public const FIELD_FOOTER_LINKS = 'footer_links';
+    public const FIELD_HEADER_LINKS = 'header_links';
+    public const FIELD_LANGUAGES = 'languages';
+    public const FIELD_ORDERS = 'orders';
+    public const FIELD_ROLES = 'roles';
+    public const FIELD_USERS = 'users';
 
-    const PROPERTY_USER = 'user';
+    public const PROPERTY_USER = 'user';
 
     #endregion
 

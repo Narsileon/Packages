@@ -12,7 +12,7 @@ return new class extends Migration
 {
     #region CONSTANTS
 
-    const TABLE_FAILED_JOBS = 'failed_jobs';
+    private const TABLE_FAILED_JOBS = 'failed_jobs';
 
     #endregion
 

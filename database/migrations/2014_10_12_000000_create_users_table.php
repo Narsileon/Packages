@@ -13,7 +13,7 @@ return new class extends Migration
 {
     #region CONSTANTS
 
-    const TABLE_USERS = 'users';
+    private const TABLE_USERS = 'users';
 
     #endregion
 

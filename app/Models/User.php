@@ -25,20 +25,20 @@ class User extends Authenticatable
 
     #region CONSTANTS
 
-    const FIELD_ID = 'id';
-    const FIELD_USERNAME = 'username';
-    const FIELD_EMAIL = 'email';
-    const FIELD_EMAIL_VERIFIED_AT = 'email_verified_at';
-    const FIELD_PASSWORD = 'password';
-    const FIELD_LAST_NAME = 'last_name';
-    const FIELD_FIRST_NAME = 'first_name';
-    const FIELD_REMEMBER_TOKEN = 'remember_token';
+    public const FIELD_ID = 'id';
+    public const FIELD_USERNAME = 'username';
+    public const FIELD_EMAIL = 'email';
+    public const FIELD_EMAIL_VERIFIED_AT = 'email_verified_at';
+    public const FIELD_PASSWORD = 'password';
+    public const FIELD_LAST_NAME = 'last_name';
+    public const FIELD_FIRST_NAME = 'first_name';
+    public const FIELD_REMEMBER_TOKEN = 'remember_token';
 
-    const ATTRIBUTE_ROLES = 'roles';
-    const ATTRIBUTE_PERMISSIONS = 'permissions';
+    public const ATTRIBUTE_ROLES = 'roles';
+    public const ATTRIBUTE_PERMISSIONS = 'permissions';
 
-    const ATTRIBUTE_LOCALIZATIONS = 'localizations';
-    const ATTRIBUTE_TEMPLATES = 'templates';
+    public const ATTRIBUTE_LOCALIZATIONS = 'localizations';
+    public const ATTRIBUTE_TEMPLATES = 'templates';
 
     #endregion
 

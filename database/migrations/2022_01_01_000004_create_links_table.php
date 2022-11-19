@@ -14,8 +14,8 @@ return new class extends Migration
 {
     #region CONSTANTS
 
-    const TABLE_HEADER_LINKS = 'header_links';
-    const TABLE_FOOTER_LINKS = 'footer_links';
+    private const TABLE_HEADER_LINKS = 'header_links';
+    private const TABLE_FOOTER_LINKS = 'footer_links';
 
     #endregion
 

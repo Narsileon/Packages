@@ -12,7 +12,7 @@ return new class extends Migration
 {
     #region CONSTANTS
 
-    const TABLE_PERSONAL_ACCESS_TOKENS = 'personal_access_tokens';
+    private const TABLE_PERSONAL_ACCESS_TOKENS = 'personal_access_tokens';
 
     #endregion
 

@@ -12,18 +12,18 @@ class UserPermission extends Permission
 {
     #region CONSTANTS
 
-    const FIELD_ID = 'id';
-    const FIELD_NAME = 'name';
-    const FIELD_GUARD ='guard_name';
+    public const FIELD_ID = 'id';
+    public const FIELD_NAME = 'name';
+    public const FIELD_GUARD ='guard_name';
 
     #endregion
 
     #region FIELDS
 
-    protected $fillable = 
+    protected $fillable =
     [
-        self::FIELD_NAME, 
-        self::FIELD_GUARD,   
+        self::FIELD_NAME,
+        self::FIELD_GUARD,
     ];
 
     protected $perPage = 100;

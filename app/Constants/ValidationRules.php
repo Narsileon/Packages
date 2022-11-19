@@ -12,17 +12,17 @@ abstract class ValidationRules
 {
     #region CONSTANTS
 
-    const CONFIRMED = 'confirmed';
-    const OPTIONAL = 'nullable';
-    const REQUIRED = 'required';
+    public const CONFIRMED = 'confirmed';
+    public const OPTIONAL = 'nullable';
+    public const REQUIRED = 'required';
 
-    const TYPE_ARRAY = 'array';
-    const TYPE_BOOLEAN = 'boolean';
-    const TYPE_DATE = 'date';
-    const TYPE_EMAIL = 'email';
-    const TYPE_IMAGE = 'image';
-    const TYPE_INTEGER = 'int';
-    const TYPE_STRING = 'string';
+    public const TYPE_ARRAY = 'array';
+    public const TYPE_BOOLEAN = 'boolean';
+    public const TYPE_DATE = 'date';
+    public const TYPE_EMAIL = 'email';
+    public const TYPE_IMAGE = 'image';
+    public const TYPE_INTEGER = 'int';
+    public const TYPE_STRING = 'string';
 
     #endregion
 

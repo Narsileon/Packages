@@ -18,10 +18,10 @@ class HeaderLink extends Model
 
     #region CONSTANTS
 
-    const FIELD_ID = 'id';
-    const FIELD_LABEL = 'label';
-    const FIELD_URL = 'url';
-    const FIELD_ACTIVE = 'active';
+    public const FIELD_ID = 'id';
+    public const FIELD_LABEL = 'label';
+    public const FIELD_URL = 'url';
+    public const FIELD_ACTIVE = 'active';
 
     #endregion
 

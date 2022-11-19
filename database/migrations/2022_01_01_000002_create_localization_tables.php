@@ -14,8 +14,8 @@ return new class extends Migration
 {
     #region CONSTANTS
 
-    const TABLE_LANGUAGES = 'languages';
-    const TABLE_LOCALIZATIONS = 'localizations';
+    private const TABLE_LANGUAGES = 'languages';
+    private const TABLE_LOCALIZATIONS = 'localizations';
 
     #endregion
 

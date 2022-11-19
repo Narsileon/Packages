@@ -20,11 +20,11 @@ class Localization extends Model
 
     #region CONSTANTS
 
-    const FIELD_ID = 'id';
-    const FIELD_USER_ID='user_id';
-    const FIELD_DICTIONARY = 'dictionary';
+    public const FIELD_ID = 'id';
+    public const FIELD_USER_ID='user_id';
+    public const FIELD_DICTIONARY = 'dictionary';
 
-    const PROPERTY_USER = 'user';
+    public const PROPERTY_USER = 'user';
 
     #endregion
 

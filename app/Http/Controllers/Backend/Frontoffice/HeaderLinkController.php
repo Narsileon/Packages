@@ -12,6 +12,7 @@ use App\Http\Resources\Backend\Frontoffice\HeaderLinkCollection;
 use App\Models\Backend\Template;
 use App\Models\Frontend\HeaderLink;
 use App\Models\User;
+use App\Services\HeaderLinkService;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
@@ -23,11 +24,11 @@ class HeaderLinkController extends Controller
 
     public function index()
     {
-        $header = FooterLinkService::COLUMNS;
+        $header = HeaderLinkService::COLUMNS;
 
         $user = Auth::user();
 
-        $template = $user->{ User::ATTRIBUTE_TEMPLATES } ? $user->{ User::ATTRIBUTE_TEMPLATES }->{ Template::FIELD_FOOTER_LINKS } : FooterLinkService::DEFAULT_TEMPLATE;
+        $template = $user->{ User::ATTRIBUTE_TEMPLATES } ? $user->{ User::ATTRIBUTE_TEMPLATES }->{ Template::FIELD_FOOTER_LINKS } : HeaderLinkService::DEFAULT_TEMPLATE;
 
         $headerLinks = new HeaderLinkCollection(HeaderLink::query()
             ->search(array_key_exists('globalSearch', $template) ? $template['globalSearch'] : '')
