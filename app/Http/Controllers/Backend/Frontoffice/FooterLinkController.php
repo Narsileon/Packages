@@ -12,7 +12,7 @@ use App\Http\Resources\Backend\Frontoffice\FooterLinkCollection;
 use App\Models\Backend\Template;
 use App\Models\Frontend\FooterLink;
 use App\Models\User;
-use App\Services\FooterLinkService;
+use App\Templates\FooterLinkTemplate;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
@@ -24,11 +24,11 @@ class FooterLinkController extends Controller
 
     public function index()
     {
-        $header = FooterLinkService::COLUMNS;
+        $header = FooterLinkTemplate::COLUMNS;
 
         $user = Auth::user();
 
-        $template = $user->{ User::ATTRIBUTE_TEMPLATES } ? $user->{ User::ATTRIBUTE_TEMPLATES }->{ Template::FIELD_FOOTER_LINKS } : FooterLinkService::DEFAULT_TEMPLATE;
+        $template = $user->{ User::ATTRIBUTE_TEMPLATES } ? $user->{ User::ATTRIBUTE_TEMPLATES }->{ Template::FIELD_FOOTER_LINKS } : FooterLinkTemplate::DEFAULT_TEMPLATE;
 
         $footerLinks = new FooterLinkCollection(FooterLink::query()
             ->search(array_key_exists('globalSearch', $template) ? $template['globalSearch'] : '')

@@ -7,10 +7,10 @@ namespace App\Http\Controllers\Backend\Settings;
 use App\Http\Controllers\Controller;
 use App\Models\Backend\Template;
 use App\Models\User;
-use App\Services\FaqService;
-use App\Services\FooterLinkService;
-use App\Services\HeaderLinkService;
-use App\Services\LanguageService;
+use App\Templates\FaqTemplate;
+use App\Templates\FooterLinkTemplate;
+use App\Templates\HeaderLinkTemplate;
+use App\Templates\LanguageTemplate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -42,10 +42,10 @@ class TemplateController extends Controller
         {
             Template::create([
                 Template::FIELD_USER_ID => $user->{ User::FIELD_ID },
-                Template::FIELD_FAQS => FaqService::DEFAULT_TEMPLATE,
-                Template::FIELD_FOOTER_LINKS => FooterLinkService::DEFAULT_TEMPLATE,
-                Template::FIELD_HEADER_LINKS => HeaderLinkService::DEFAULT_TEMPLATE,
-                Template::FIELD_LANGUAGES => LanguageService::DEFAULT_TEMPLATE,
+                Template::FIELD_FAQS => FaqTemplate::DEFAULT_TEMPLATE,
+                Template::FIELD_FOOTER_LINKS => FooterLinkTemplate::DEFAULT_TEMPLATE,
+                Template::FIELD_HEADER_LINKS => HeaderLinkTemplate::DEFAULT_TEMPLATE,
+                Template::FIELD_LANGUAGES => LanguageTemplate::DEFAULT_TEMPLATE,
             ]);
         }
 

@@ -12,7 +12,7 @@ use App\Http\Resources\Backend\Frontoffice\FaqCollection;
 use App\Models\Backend\Template;
 use App\Models\Frontend\Faq;
 use App\Models\User;
-use App\Services\FaqService;
+use App\Templates\FaqTemplate;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
@@ -24,11 +24,11 @@ class FaqController extends Controller
 
     public function index()
     {
-        $header = FaqService::COLUMNS;
+        $header = FaqTemplate::COLUMNS;
 
         $user = Auth::user();
 
-        $template = $user->{ User::ATTRIBUTE_TEMPLATES } ? $user->{ User::ATTRIBUTE_TEMPLATES }->{ Template::FIELD_FAQS } : FaqService::DEFAULT_TEMPLATE;
+        $template = $user->{ User::ATTRIBUTE_TEMPLATES } ? $user->{ User::ATTRIBUTE_TEMPLATES }->{ Template::FIELD_FAQS } : FaqTemplate::DEFAULT_TEMPLATE;
 
         $faqs = new FaqCollection(Faq::query()
             ->search(array_key_exists('globalSearch', $template) ? $template['globalSearch'] : '')

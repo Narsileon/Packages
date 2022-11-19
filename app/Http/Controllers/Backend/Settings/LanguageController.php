@@ -9,7 +9,7 @@ use App\Http\Resources\Backend\Settings\LanguageResource;
 use App\Models\Backend\Language;
 use App\Models\Backend\Template;
 use App\Models\User;
-use App\Services\LanguageService;
+use App\Templates\LanguageTemplate;
 use Illuminate\Http\Request as HttpRequest;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
@@ -22,11 +22,11 @@ class LanguageController extends Controller
 
     public function index()
     {
-        $header = LanguageService::COLUMNS;
+        $header = LanguageTemplate::COLUMNS;
 
         $user = Auth::user();
 
-        $template = $user->{ User::ATTRIBUTE_TEMPLATES } ? $user->{ User::ATTRIBUTE_TEMPLATES }->{ Template::FIELD_LANGUAGES } : LanguageService::DEFAULT_TEMPLATE;
+        $template = $user->{ User::ATTRIBUTE_TEMPLATES } ? $user->{ User::ATTRIBUTE_TEMPLATES }->{ Template::FIELD_LANGUAGES } : LanguageTemplate::DEFAULT_TEMPLATE;
 
         $languages = LanguageResource::collection(Language::search(array_key_exists('globalSearch', $template) ? $template['globalSearch'] : '')->get());
 

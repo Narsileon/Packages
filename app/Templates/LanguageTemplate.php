@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services;
+namespace App\Templates;
 
 #region USE
 
@@ -10,7 +10,7 @@ use App\Models\Backend\Template;
 
 #endregion
 
-class LanguageService
+class LanguageTemplate
 {
     #region CONSTANTS
 
