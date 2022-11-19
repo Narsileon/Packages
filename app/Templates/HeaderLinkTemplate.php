@@ -54,13 +54,13 @@ class HeaderLinkTemplate
     ];
 
     private const DEFAULT_ORDER = [
-        'menu',
+        Tables::FIELD_MENU,
         HeaderLink::FIELD_ID,
         HeaderLink::FIELD_LABEL,
         HeaderLink::FIELD_URL,
         HeaderLink::FIELD_ACTIVE,
-        HeaderLink::UPDATED_AT,
         HeaderLink::CREATED_AT,
+        HeaderLink::UPDATED_AT,
     ];
 
     private const DEFAULT_SORTING = [

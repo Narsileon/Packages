@@ -59,6 +59,7 @@ class UserTemplate
     ];
 
     private const DEFAULT_ORDER = [
+        Tables::FIELD_MENU,
         User::FIELD_ID,
         User::FIELD_USERNAME,
         User::FIELD_EMAIL,

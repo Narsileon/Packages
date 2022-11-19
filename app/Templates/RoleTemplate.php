@@ -44,6 +44,7 @@ class RoleTemplate
     ];
 
     private const DEFAULT_ORDER = [
+        Tables::FIELD_MENU,
         UserRole::FIELD_ID,
         UserRole::FIELD_NAME,
         UserRole::CREATED_AT,

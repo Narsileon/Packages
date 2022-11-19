@@ -49,11 +49,12 @@ class FaqTemplate
     ];
 
     private const DEFAULT_ORDER = [
+        Tables::FIELD_MENU,
         Faq::FIELD_ID,
         Faq::FIELD_QUESTION,
         Faq::FIELD_ANSWER,
-        Faq::UPDATED_AT,
         Faq::CREATED_AT,
+        Faq::UPDATED_AT,
     ];
 
     private const DEFAULT_SORTING = [
