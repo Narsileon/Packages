@@ -1,11 +1,13 @@
 <?php
 
 return [
-    "calendar"  => "Kalender",
-
-    "yesterday" => "Gestern",
-    "today"     => "Heute",
-    "tomorrow"  => "Morgen",
+    'calendar'      => 'Kalender',
+    'dates'         => 'Datum|Daten',
+    'end_dates'     => 'Enddatum|Enddaten',
+    'start_dates'   => 'Startdatum|Startdaten',
+    'today'         => 'Heute',
+    'tomorrow'      => 'Morgen',
+    'yesterday'     => 'Gestern',
 
     'units' => [
         'years'     => 'Jahr|Jahre',

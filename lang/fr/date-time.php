@@ -1,20 +1,22 @@
 <?php
 
 return [
-    'calendar'  => 'Calendrier',
-
-    "yesterday" => "Hier",
-    "today"     => "Aujourd'hui",
-    "tomorrow"  => "Demain",
+    'calendar'      => 'calendrier',
+    'dates'         => 'date|dates',
+    'end_dates'     => 'end date|end dates',
+    'start_dates'   => 'start date|start dates',
+    'today'         => 'aujourd\'hui',
+    'tomorrow'      => 'demain',
+    'yesterday'     => 'hier',
 
     'units' => [
-        'years'     => 'Année|Années',
-        'months'    => 'Mois|Mois',
-        'weeks'     => 'Semaine|Semaines',
-        'days'      => 'Jour|Jours',
-        'hours'     => 'Heure|Heures',
-        'minutes'   => 'Minute|Minutes',
-        'secondes'  => 'Seconde|Secondes',
+        'years'     => 'année|années',
+        'months'    => 'mois|mois',
+        'weeks'     => 'semaine|semaines',
+        'days'      => 'jour|jours',
+        'hours'     => 'heure|heures',
+        'minutes'   => 'minute|minutes',
+        'secondes'  => 'seconde|secondes',
     ],
 
     'days' => [

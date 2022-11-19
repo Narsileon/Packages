@@ -23,22 +23,22 @@ class FooterLinkTemplate
         [
             TABLES::FIELD_ACCESSOR_KEY => Order::FIELD_TYPE,
             TABLES::FIELD_ID => Order::FIELD_TYPE,
-            Tables::FIELD_HEADER => 'validation.attributes.label',
+            Tables::FIELD_HEADER => 'common.types',
         ],
         [
             TABLES::FIELD_ACCESSOR_KEY => Order::FIELD_STATUS,
             TABLES::FIELD_ID => Order::FIELD_STATUS,
-            Tables::FIELD_HEADER => 'validation.attributes.url',
+            Tables::FIELD_HEADER => 'common.status',
         ],
         [
             TABLES::FIELD_ACCESSOR_KEY => Order::FIELD_ORDER_NUMBER,
             TABLES::FIELD_ID => Order::FIELD_ORDER_NUMBER,
-            Tables::FIELD_HEADER => 'common.active',
+            Tables::FIELD_HEADER => 'common.order_numbers',
         ],
         [
             TABLES::FIELD_ACCESSOR_KEY => Order::FIELD_ORDER_DATE,
             TABLES::FIELD_ID => Order::FIELD_ORDER_DATE,
-            Tables::FIELD_HEADER => 'common.active',
+            Tables::FIELD_HEADER => 'common.order_dates',
         ],
         [
             TABLES::FIELD_ACCESSOR_KEY => Order::FIELD_START_DATE,
