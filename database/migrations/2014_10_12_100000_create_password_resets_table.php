@@ -12,7 +12,7 @@ return new class extends Migration
 {
     #region CONSTANTS
 
-    const TABLE_PASSWORD_RESETS = 'password_resets';
+    private const TABLE_PASSWORD_RESETS = 'password_resets';
 
     #endregion
 
