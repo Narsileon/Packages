@@ -25,8 +25,8 @@ class Order extends Model
     public const FIELD_ORDER_DATE = 'order_date';
     public const FIELD_START_DATE = 'start_date';
     public const FIELD_END_DATE = 'end_date';
-    public const FIELD_START_LOCATION = 'start_location';
-    public const FIELD_END_LOCATION = 'end_location';
+    public const FIELD_LOCATION_DEPARTURE = 'location_departure';
+    public const FIELD_LOCATION_ARRIVAL = 'location_arrival';
     public const FIELD_PAYMENT_METHOD = 'payment_method';
 
     #endregion
@@ -41,8 +41,8 @@ class Order extends Model
         self::FIELD_ORDER_DATE,
         self::FIELD_START_DATE,
         self::FIELD_END_DATE,
-        self::FIELD_START_LOCATION,
-        self::FIELD_END_LOCATION,
+        self::FIELD_LOCATION_DEPARTURE,
+        self::FIELD_LOCATION_ARRIVAL,
         self::FIELD_PAYMENT_METHOD,
     ];
 

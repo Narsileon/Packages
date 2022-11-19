@@ -43,8 +43,8 @@ return new class extends Migration
             $table->date(Order::FIELD_ORDER_DATE);
             $table->date(Order::FIELD_START_DATE);
             $table->date(Order::FIELD_END_DATE);
-            $table->string(Order::FIELD_START_LOCATION);
-            $table->string(Order::FIELD_END_LOCATION);
+            $table->string(Order::FIELD_LOCATION_DEPARTURE);
+            $table->string(Order::FIELD_LOCATION_ARRIVAL);
             $table->string(Order::FIELD_PAYMENT_METHOD);
             $table->timestamps();
         });

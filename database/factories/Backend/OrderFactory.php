@@ -22,8 +22,8 @@ class OrderFactory extends Factory
             Order::FIELD_ORDER_DATE => fake()->date(),
             Order::FIELD_START_DATE => fake()->date(),
             Order::FIELD_END_DATE => fake()->date(),
-            Order::FIELD_START_LOCATION => fake()->address(),
-            Order::FIELD_END_LOCATION => fake()->address(),
+            Order::FIELD_LOCATION_DEPARTURE => fake()->address(),
+            Order::FIELD_LOCATION_ARRIVAL => fake()->address(),
             Order::FIELD_PAYMENT_METHOD => fake()->creditCardType(),
         ];
     }
