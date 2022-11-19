@@ -10,7 +10,7 @@ use App\Models\Backend\Template;
 
 #endregion
 
-class FooterLinkTemplate
+class OrderTemplate
 {
     #region CONSTANTS
 

@@ -6,7 +6,7 @@ abstract class Locales
 {
     #region CONSTANTS
 
-    const CODES = [
+    public const CODES = [
         'aa',
         'ab',
         'ae',
