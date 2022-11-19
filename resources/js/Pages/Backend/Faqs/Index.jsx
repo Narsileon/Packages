@@ -97,7 +97,7 @@ export default function Index({ faqs, header, template }) {
 		<>
 			<Head title={ trans('FAQ') } />
 
-			<div className="space-y-4">
+			<div className="flex flex-col h-full space-y-4">
 				<section id="table-header">
 					<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-4 md:gap-y-0 content-start place-content-between">
 						<div className="col-span-1 self-center place-self-start">
@@ -125,11 +125,7 @@ export default function Index({ faqs, header, template }) {
 
 				{ faqs.meta.items > 0 ? (
 					<>
-						<section id="table">
-							<div className={ `table-fixed w-fit max-w-full border-2 border-color rounded overflow-x-auto ${ data[0] ? "" : "hidden" }` }>
-								<NewTable table={ table } />
-							</div>
-						</section>
+						<NewTable table={ table } />
 
 						<Pagination data={ faqs.meta } />
 					</>
