@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { createColumnHelper, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, sortingFns, useReactTable } from "@tanstack/react-table";
+import { getCoreRowModel, getFilteredRowModel, getSortedRowModel, sortingFns, useReactTable } from "@tanstack/react-table";
 import { Inertia } from "@inertiajs/inertia";
 import { Head } from "@inertiajs/inertia-react";
 import { trans, transChoice } from "@/narsil-localization";
@@ -11,8 +11,6 @@ import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 import Toggle from "@/Components/Elements/Toggle";
 
 export default function Index({ languages, header, template }) {
-	const columnHelper = createColumnHelper()
-
 	let newHeader = [...header].map(object => {
 		if (object.id === 'active') {
 		  	return {

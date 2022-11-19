@@ -54,6 +54,7 @@ class FooterLinkService
     ];
 
     private const DEFAULT_ORDER = [
+        'menu',
         FooterLink::FIELD_ID,
         FooterLink::FIELD_LABEL,
         FooterLink::FIELD_URL,

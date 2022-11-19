@@ -8,8 +8,42 @@ import { usePrevious } from "react-use";
 import { rankItem, compareItems } from '@tanstack/match-sorter-utils'
 import NewTable from "@/Components/Tables/NewTable";
 import TableSearch from "@/Components/Tables/TableSearch";
+import DropdownPanel from "@/Components/Elements/Dropdowns/DropdownPanel";
+import Dropdown from "@/Components/Elements/Dropdowns/Dropdown";
+import DropdownItem from "@/Components/Elements/Dropdowns/DropdownItem";
+import Icon from "@/Shared/Svg/Icon";
 
 export default function Index({ footerLinks, header, template }) {
+	let newHeader = [...header];
+
+	newHeader.push({
+		id: 'menu',
+		header: '',
+		cell: props => (
+			<Dropdown
+				trigger={ <Icon name="menu" className="w-6 h-6" /> }
+				childrenClasses="left-0"
+				showChevron ={ true }
+				width="12"
+			>
+				<DropdownPanel>
+					<div>
+						<DropdownItem
+							href={ 'footer_links/' + props.row._valuesCache.id + '/edit' }
+							label="Edit"
+							type="link"
+						/>
+					</div>
+					<div>
+						<DropdownItem
+							label="Delete"
+						/>
+					</div>
+				</DropdownPanel>
+			</Dropdown>
+		)
+	})
+
 	const [sorting, setSorting] = useState(template.sorting)
 
 	const defaultColumnSizing = {
@@ -22,14 +56,14 @@ export default function Index({ footerLinks, header, template }) {
 	const [data, setData] = useState(footerLinks.data);
 
 	if (template.sizing) {
-		header.forEach(object => {
+		newHeader.forEach(object => {
 			if (template.sizing[object.id]) {
 				object.size = template.sizing[object.id];
 			}
 		});
 	}
 
-	const [columns] = useState(() => [...header]);
+	const [columns] = useState(() => [...newHeader]);
 	const [columnOrder, setColumnOrder] = useState(template.order);
 
 	const fuzzyFilter = (row, columnId, value, addMeta) => {
