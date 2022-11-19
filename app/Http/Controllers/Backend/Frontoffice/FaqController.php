@@ -14,7 +14,6 @@ use App\Models\Frontend\Faq;
 use App\Models\User;
 use App\Services\FaqService;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
 
 #endregion
@@ -29,7 +28,7 @@ class FaqController extends Controller
 
         $user = Auth::user();
 
-        $template = $user->{ User::ATTRIBUTE_TEMPLATES } ? $user->{ User::ATTRIBUTE_TEMPLATES }->{ Template::FIELD_TEMPLATE_FAQ } : FaqService::DEFAULT_TEMPLATE;
+        $template = $user->{ User::ATTRIBUTE_TEMPLATES } ? $user->{ User::ATTRIBUTE_TEMPLATES }->{ Template::FIELD_FAQS } : FaqService::DEFAULT_TEMPLATE;
 
         $faqs = new FaqCollection(Faq::query()
             ->search(array_key_exists('globalSearch', $template) ? $template['globalSearch'] : '')

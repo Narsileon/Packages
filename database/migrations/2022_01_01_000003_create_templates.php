@@ -38,8 +38,16 @@ return new class extends Migration
         Schema::create(self::TABLE_TEMPLATES, function (Blueprint $table) {
             $table->id();
             $table->foreignId(Template::FIELD_USER_ID)->constrained()->cascadeOnDelete();
-            $table->text(Template::FIELD_TEMPLATE_FAQ)->nullable();
-            $table->text(Template::FIELD_TEMPLATE_LANGUAGE)->nullable();
+
+            $table->text(Template::FIELD_DICTIONARIES)->nullable();
+            $table->text(Template::FIELD_FAQS)->nullable();
+            $table->text(Template::FIELD_FOOTER_LINKS)->nullable();
+            $table->text(Template::FIELD_HEADER_LINKS)->nullable();
+            $table->text(Template::FIELD_LANGUAGES)->nullable();
+            $table->text(Template::FIELD_ORDERS)->nullable();
+            $table->text(Template::FIELD_ROLES)->nullable();
+            $table->text(Template::FIELD_USERS)->nullable();
+
             $table->timestamps();
         });
     }

@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Backend\Template;
 use App\Models\User;
 use App\Services\FaqService;
+use App\Services\FooterLinkService;
 use App\Services\LanguageService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,7 +25,7 @@ class TemplateController extends Controller
 
         if ($user->{ User::ATTRIBUTE_TEMPLATES} )
         {
-            $template = $request[$request->template];
+            $template = $request['template'];
 
             $template['sorting'] = !array_key_exists('sorting', $template) ? [] : array(
                 [
@@ -33,15 +34,16 @@ class TemplateController extends Controller
                 ]
             );
 
-            $user->{ User::ATTRIBUTE_TEMPLATES}->update([$request->template => $template]);
+            $user->{ User::ATTRIBUTE_TEMPLATES}->update([$template['name'] => $template]);
         }
 
         else
         {
             Template::create([
                 Template::FIELD_USER_ID => $user->{ User::FIELD_ID },
-                Template::FIELD_TEMPLATE_FAQ => FaqService::DEFAULT_TEMPLATE,
-                Template::FIELD_TEMPLATE_LANGUAGE => LanguageService::DEFAULT_TEMPLATE,
+                Template::FIELD_FAQS => FaqService::DEFAULT_TEMPLATE,
+                Template::FIELD_FOOTER_LINKS => FooterLinkService::DEFAULT_TEMPLATE,
+                Template::FIELD_LANGUAGES => LanguageService::DEFAULT_TEMPLATE,
             ]);
         }
 

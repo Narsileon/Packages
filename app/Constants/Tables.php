@@ -7,6 +7,7 @@ abstract class Tables
     #region CONSTANTS
 
     public const COLUMNS = 'columns';
+    public const NAME = 'name';
     public const ORDER = 'order';
     public const SORTING = 'sorting';
 

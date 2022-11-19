@@ -4,12 +4,16 @@ namespace App\Http\Controllers\Backend\Frontoffice;
 
 #region USE
 
+use App\Constants\Tables;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Frontoffice\FooterLinkCreateRequest;
 use App\Http\Requests\Backend\Frontoffice\FooterLinkUpdateRequest;
 use App\Http\Resources\Backend\Frontoffice\FooterLinkCollection;
+use App\Models\Backend\Template;
 use App\Models\Frontend\FooterLink;
-use Illuminate\Support\Facades\Request;
+use App\Models\User;
+use App\Services\FooterLinkService;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 #endregion
@@ -20,18 +24,21 @@ class FooterLinkController extends Controller
 
     public function index()
     {
-        $footerLinks = new FooterLinkCollection(FooterLink::query()
-            ->search(request('search'))
-            ->sort()
-            ->paginate());
+        $header = FooterLinkService::COLUMNS;
 
-        $filters = [
-            'search' => Request::input('search'),
-        ];
+        $user = Auth::user();
+
+        $template = $user->{ User::ATTRIBUTE_TEMPLATES } ? $user->{ User::ATTRIBUTE_TEMPLATES }->{ Template::FIELD_FOOTER_LINKS } : FooterLinkService::DEFAULT_TEMPLATE;
+
+        $footerLinks = new FooterLinkCollection(FooterLink::query()
+            ->search(array_key_exists('globalSearch', $template) ? $template['globalSearch'] : '')
+            ->newSort($template[Tables::SORTING])
+            ->paginate(5));
 
         return Inertia::render('Backend/FooterLinks/Index', compact(
+            'header',
+            'template',
             'footerLinks',
-            'filters',
         ));
     }
 

@@ -78,14 +78,14 @@ export default function Index({ faqs, header, template }) {
 		if (previous) {
 			const timeout = setTimeout(() => {
 				Inertia.get(route('admin.templates'), {
-					'faq_template': {
+					'template': {
+						'name': template.name,
 						'order': columnOrder,
 						'sorting': sorting,
 						'globalSearch': globalFilter,
 						'sizing': { ...template.sizing, ...table.getState().columnSizing },
 					},
 					'route': 'admin.faqs.index',
-					'template': 'faq_template',
 				});
 			}, 0);
 

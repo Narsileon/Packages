@@ -5,6 +5,7 @@ namespace App\Services;
 #region USE
 
 use App\Constants\Tables;
+use App\Models\Backend\Template;
 use App\Models\Frontend\Faq;
 
 #endregion
@@ -13,7 +14,7 @@ class FaqService
 {
     #region CONSTANTS
 
-    public const COLUMNS = array(
+    public const COLUMNS = [
         [
             TABLES::FIELD_ACCESSOR_KEY => Faq::FIELD_ID,
             TABLES::FIELD_ID => Faq::FIELD_ID,
@@ -39,9 +40,10 @@ class FaqService
             TABLES::FIELD_ID => Faq::UPDATED_AT,
             Tables::FIELD_HEADER => 'validation.attributes.updated_at',
         ],
-    );
+    ];
 
     public const DEFAULT_TEMPLATE = [
+        Tables::NAME => Template::FIELD_FAQS,
         Tables::ORDER => self::DEFAULT_ORDER,
         Tables::SORTING => self::DEFAULT_SORTING,
     ];
@@ -54,10 +56,12 @@ class FaqService
         Faq::CREATED_AT,
     ];
 
-    private const DEFAULT_SORTING = array(
+    private const DEFAULT_SORTING = [
         [
             TABLES::FIELD_ID => Faq::FIELD_ID,
             TABLES::FIELD_DESC => false,
-        ]
-    );
+        ],
+    ];
+
+    #endregion
 }

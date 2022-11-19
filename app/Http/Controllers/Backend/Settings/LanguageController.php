@@ -26,7 +26,7 @@ class LanguageController extends Controller
 
         $user = Auth::user();
 
-        $template = $user->{ User::ATTRIBUTE_TEMPLATES } ? $user->{ User::ATTRIBUTE_TEMPLATES }->{ Template::FIELD_TEMPLATE_LANGUAGE } : LanguageService::DEFAULT_TEMPLATE;
+        $template = $user->{ User::ATTRIBUTE_TEMPLATES } ? $user->{ User::ATTRIBUTE_TEMPLATES }->{ Template::FIELD_LANGUAGES } : LanguageService::DEFAULT_TEMPLATE;
 
         $languages = LanguageResource::collection(Language::search(array_key_exists('globalSearch', $template) ? $template['globalSearch'] : '')->get());
 

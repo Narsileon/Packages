@@ -13,7 +13,7 @@ class LanguageService
 {
     #region CONSTANTS
 
-    public const COLUMNS = array(
+    public const COLUMNS = [
         [
             TABLES::FIELD_ACCESSOR_KEY => Language::FIELD_ID,
             TABLES::FIELD_ID => Language::FIELD_ID,
@@ -34,7 +34,7 @@ class LanguageService
             TABLES::FIELD_ID => Language::FIELD_ACTIVE,
             Tables::FIELD_HEADER => 'common.active',
         ],
-    );
+    ];
 
     public const DEFAULT_TEMPLATE = [
         Tables::ORDER => self::DEFAULT_ORDER,
@@ -48,10 +48,12 @@ class LanguageService
         Language::FIELD_ACTIVE,
     ];
 
-    private const DEFAULT_SORTING = array(
+    private const DEFAULT_SORTING = [
         [
             TABLES::FIELD_ID => Language::FIELD_ID,
             TABLES::FIELD_DESC => false,
-        ]
-    );
+        ],
+    ];
+
+    #endregion
 }
