@@ -40,7 +40,10 @@ class LanguageController extends Controller
     public function update(HttpRequest $request)
     {
         $request->collect()->each(function($locale) {
-            Language::where(Language::FIELD_ID, $locale[Language::FIELD_ID])->update($locale);
+            Language::where(Language::FIELD_ID, $locale[Language::FIELD_ID])
+                ->update([
+                    Language::FIELD_ACTIVE => $locale[Language::FIELD_ACTIVE],
+                ]);
         });
 
         return redirect(route('admin.languages'));
