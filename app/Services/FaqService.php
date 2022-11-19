@@ -43,9 +43,9 @@ class FaqService
     ];
 
     public const DEFAULT_TEMPLATE = [
-        Tables::NAME => Template::FIELD_FAQS,
-        Tables::ORDER => self::DEFAULT_ORDER,
-        Tables::SORTING => self::DEFAULT_SORTING,
+        Tables::PROPERTY_NAME => Template::FIELD_FAQS,
+        Tables::PROPERTY_ORDER => self::DEFAULT_ORDER,
+        Tables::PROPERTY_SORTING => self::DEFAULT_SORTING,
     ];
 
     private const DEFAULT_ORDER = [
@@ -59,7 +59,7 @@ class FaqService
     private const DEFAULT_SORTING = [
         [
             TABLES::FIELD_ID => Faq::FIELD_ID,
-            TABLES::FIELD_DESC => false,
+            Tables::ORDER_DESC => false,
         ],
     ];
 

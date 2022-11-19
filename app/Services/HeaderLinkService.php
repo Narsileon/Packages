@@ -6,43 +6,43 @@ namespace App\Services;
 
 use App\Constants\Tables;
 use App\Models\Backend\Template;
-use App\Models\Frontend\FooterLink;
+use App\Models\Frontend\HeaderLink;
 
 #endregion
 
-class FooterLinkService
+class HeaderLinkService
 {
     #region CONSTANTS
 
     public const COLUMNS = [
         [
-            TABLES::FIELD_ACCESSOR_KEY => FooterLink::FIELD_ID,
-            TABLES::FIELD_ID => FooterLink::FIELD_ID,
+            TABLES::FIELD_ACCESSOR_KEY => HeaderLink::FIELD_ID,
+            TABLES::FIELD_ID => HeaderLink::FIELD_ID,
             Tables::FIELD_HEADER => 'common.id',
         ],
         [
-            TABLES::FIELD_ACCESSOR_KEY => FooterLink::FIELD_LABEL,
-            TABLES::FIELD_ID => FooterLink::FIELD_LABEL,
+            TABLES::FIELD_ACCESSOR_KEY => HeaderLink::FIELD_LABEL,
+            TABLES::FIELD_ID => HeaderLink::FIELD_LABEL,
             Tables::FIELD_HEADER => 'validation.attributes.label',
         ],
         [
-            TABLES::FIELD_ACCESSOR_KEY => FooterLink::FIELD_URL,
-            TABLES::FIELD_ID => FooterLink::FIELD_URL,
+            TABLES::FIELD_ACCESSOR_KEY => HeaderLink::FIELD_URL,
+            TABLES::FIELD_ID => HeaderLink::FIELD_URL,
             Tables::FIELD_HEADER => 'validation.attributes.url',
         ],
         [
-            TABLES::FIELD_ACCESSOR_KEY => FooterLink::FIELD_ACTIVE,
-            TABLES::FIELD_ID => FooterLink::FIELD_ACTIVE,
+            TABLES::FIELD_ACCESSOR_KEY => HeaderLink::FIELD_ACTIVE,
+            TABLES::FIELD_ID => HeaderLink::FIELD_ACTIVE,
             Tables::FIELD_HEADER => 'common.active',
         ],
         [
-            TABLES::FIELD_ACCESSOR_KEY => FooterLink::CREATED_AT,
-            TABLES::FIELD_ID => FooterLink::CREATED_AT,
+            TABLES::FIELD_ACCESSOR_KEY => HeaderLink::CREATED_AT,
+            TABLES::FIELD_ID => HeaderLink::CREATED_AT,
             Tables::FIELD_HEADER => 'validation.attributes.created_at',
         ],
         [
-            TABLES::FIELD_ACCESSOR_KEY => FooterLink::UPDATED_AT,
-            TABLES::FIELD_ID => FooterLink::UPDATED_AT,
+            TABLES::FIELD_ACCESSOR_KEY => HeaderLink::UPDATED_AT,
+            TABLES::FIELD_ID => HeaderLink::UPDATED_AT,
             Tables::FIELD_HEADER => 'validation.attributes.updated_at',
         ],
     ];
@@ -55,17 +55,17 @@ class FooterLinkService
 
     private const DEFAULT_ORDER = [
         'menu',
-        FooterLink::FIELD_ID,
-        FooterLink::FIELD_LABEL,
-        FooterLink::FIELD_URL,
-        FooterLink::FIELD_ACTIVE,
-        FooterLink::UPDATED_AT,
-        FooterLink::CREATED_AT,
+        HeaderLink::FIELD_ID,
+        HeaderLink::FIELD_LABEL,
+        HeaderLink::FIELD_URL,
+        HeaderLink::FIELD_ACTIVE,
+        HeaderLink::UPDATED_AT,
+        HeaderLink::CREATED_AT,
     ];
 
     private const DEFAULT_SORTING = [
         [
-            TABLES::FIELD_ID => FooterLink::FIELD_ID,
+            TABLES::FIELD_ID => HeaderLink::FIELD_ID,
             Tables::ORDER_DESC => false,
         ],
     ];

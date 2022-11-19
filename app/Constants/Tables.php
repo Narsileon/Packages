@@ -6,16 +6,16 @@ abstract class Tables
 {
     #region CONSTANTS
 
-    public const COLUMNS = 'columns';
-    public const NAME = 'name';
-    public const ORDER = 'order';
-    public const SORTING = 'sorting';
-
     public const FIELD_ACCESSOR_KEY = 'accessorKey';
-    public const FIELD_ASC = 'asc';
-    public const FIELD_DESC = 'desc';
     public const FIELD_HEADER = 'header';
     public const FIELD_ID = 'id';
+
+    public const PROPERTY_NAME = 'name';
+    public const PROPERTY_ORDER = 'order';
+    public const PROPERTY_SORTING = 'sorting';
+
+    public const ORDER_ASC = 'asc';
+    public const ORDER_DESC = 'desc';
 
     #endregion
 }

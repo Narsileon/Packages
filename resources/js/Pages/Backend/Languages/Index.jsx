@@ -1,14 +1,13 @@
-import { useEffect, useState } from "react";
-import { getCoreRowModel, getFilteredRowModel, getSortedRowModel, sortingFns, useReactTable } from "@tanstack/react-table";
+import { useEffect } from "react";
 import { Inertia } from "@inertiajs/inertia";
 import { Head } from "@inertiajs/inertia-react";
 import { trans, transChoice } from "@/narsil-localization";
 import { usePrevious } from "react-use";
-import { rankItem, compareItems } from '@tanstack/match-sorter-utils'
 import NewTable from "@/Components/Tables/NewTable";
 import TableSearch from "@/Components/Tables/TableSearch";
 import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 import Toggle from "@/Components/Elements/Toggle";
+import { useTable } from "@/narsil-table";
 
 export default function Index({ languages, header, template }) {
 	let newHeader = [...header].map(object => {
@@ -27,88 +26,22 @@ export default function Index({ languages, header, template }) {
 		}
 	});
 
-	const [sorting, setSorting] = useState(template.sorting)
+	const [table, data, setData, globalFilter, setGlobalFilter, newTemplate, sorting] = useTable(languages.data, newHeader, template);
 
-	const defaultColumnSizing = {
-		minSize: 100,
-		maxSize: 300,
-	}
-
-	const [globalFilter, setGlobalFilter] = useState('');
-
-	const [data, setData] = useState(languages.data);
-
-	if (template.sizing) {
-		newHeader.forEach(object => {
-			if (template.sizing[object.id]) {
-				object.size = template.sizing[object.id];
-			}
-		});
-	}
-
-	const [columns] = useState(() => [...newHeader]);
-	const [columnOrder, setColumnOrder] = useState(template.order);
-
-	const fuzzyFilter = (row, columnId, value, addMeta) => {
-		const itemRank = rankItem(row.getValue(columnId), value)
-
-		addMeta({ itemRank })
-
-		return itemRank.passed
-	}
-
-	const fuzzySort = (rowA, rowB, columnId) => {
-		let dir = 0
-
-		if (rowA.columnFiltersMeta[columnId]) {
-		  	dir = compareItems(!rowA.columnFiltersMeta[columnId].itemRank, !rowB.columnFiltersMeta[columnId].itemRank)
-		}
-
-		return dir === 0 ? sortingFns.alphanumeric(rowA, rowB, columnId) : dir
-	}
-
-	const table = useReactTable({
-		data,
-		columns,
-		filterFns: {
-			fuzzy: fuzzyFilter,
-		},
-		state: {
-			columnOrder,
-			globalFilter,
-			sorting,
-		},
-		defaultColumn: defaultColumnSizing,
-		columnResizeMode: 'onChange',
-		onGlobalFilterChange: setGlobalFilter,
-		globalFilterFn: fuzzyFilter,
-		onColumnOrderChange: setColumnOrder,
-		onSortingChange: setSorting,
-		getCoreRowModel: getCoreRowModel(),
-		getSortedRowModel: getSortedRowModel(),
-		getFilteredRowModel: getFilteredRowModel(),
-	});
-
-	const previous = usePrevious(sorting);
+	const previous = usePrevious(data);
 
     useEffect(() => {
 		if (previous) {
 			const timeout = setTimeout(() => {
 				Inertia.get(route('admin.templates'), {
-					'language_template': {
-						'order': columnOrder,
-						'sorting': sorting,
-						'globalSearch': globalFilter,
-						'sizing': { ...template.sizing, ...table.getState().columnSizing },
-					},
+					'template': newTemplate,
 					'route': 'admin.languages',
-					'template': 'language_template',
 				});
 			}, 0);
 
 			return () => clearTimeout(timeout)
 		}
-	}, [sorting]);
+	}, [data]);
 
 	function handleChange(event, id) {
 		let temp = [...data];

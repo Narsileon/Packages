@@ -6,6 +6,7 @@ namespace App\Services;
 
 use App\Constants\Tables;
 use App\Models\Backend\Language;
+use App\Models\Backend\Template;
 
 #endregion
 
@@ -37,8 +38,9 @@ class LanguageService
     ];
 
     public const DEFAULT_TEMPLATE = [
-        Tables::ORDER => self::DEFAULT_ORDER,
-        Tables::SORTING => self::DEFAULT_SORTING,
+        Tables::PROPERTY_NAME => Template::FIELD_LANGUAGES,
+        Tables::PROPERTY_ORDER => self::DEFAULT_ORDER,
+        Tables::PROPERTY_SORTING => self::DEFAULT_SORTING,
     ];
 
     private const DEFAULT_ORDER = [
@@ -51,7 +53,7 @@ class LanguageService
     private const DEFAULT_SORTING = [
         [
             TABLES::FIELD_ID => Language::FIELD_ID,
-            TABLES::FIELD_DESC => false,
+            Tables::ORDER_DESC => false,
         ],
     ];
 

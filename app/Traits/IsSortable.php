@@ -24,7 +24,7 @@ trait IsSortable
     {
         if (!empty($sort))
         {
-            $query->orderBy($sort[0]['id'], $sort[0]['desc'] ? Tables::FIELD_DESC : Tables::FIELD_ASC);
+            $query->orderBy($sort[0]['id'], $sort[0]['desc'] ? Tables::ORDER_DESC : Tables::ORDER_ASC);
         }
     }
 

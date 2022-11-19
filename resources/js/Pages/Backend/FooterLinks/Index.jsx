@@ -1,16 +1,13 @@
-import { useEffect, useState } from "react";
-import { getCoreRowModel, getFilteredRowModel, getSortedRowModel, sortingFns, useReactTable } from "@tanstack/react-table";
+import { useEffect } from "react";
+import { usePrevious } from "react-use";
 import { Inertia } from "@inertiajs/inertia";
 import { Head, Link } from "@inertiajs/inertia-react";
 import { trans, transChoice } from "@/narsil-localization";
-import Pagination from "@/Shared/Pagination";
-import { usePrevious } from "react-use";
-import { rankItem, compareItems } from '@tanstack/match-sorter-utils'
+import { useTable } from "@/narsil-table";
+import { Dropdown, DropdownItem, DropdownPanel} from "@/Components/Elements/Dropdowns";
 import NewTable from "@/Components/Tables/NewTable";
 import TableSearch from "@/Components/Tables/TableSearch";
-import DropdownPanel from "@/Components/Elements/Dropdowns/DropdownPanel";
-import Dropdown from "@/Components/Elements/Dropdowns/Dropdown";
-import DropdownItem from "@/Components/Elements/Dropdowns/DropdownItem";
+import Pagination from "@/Shared/Pagination";
 import Icon from "@/Shared/Svg/Icon";
 
 export default function Index({ footerLinks, header, template }) {
@@ -44,67 +41,7 @@ export default function Index({ footerLinks, header, template }) {
 		)
 	})
 
-	const [sorting, setSorting] = useState(template.sorting)
-
-	const defaultColumnSizing = {
-		minSize: 100,
-		maxSize: 300,
-	}
-
-	const [globalFilter, setGlobalFilter] = useState('');
-
-	const [data, setData] = useState(footerLinks.data);
-
-	if (template.sizing) {
-		newHeader.forEach(object => {
-			if (template.sizing[object.id]) {
-				object.size = template.sizing[object.id];
-			}
-		});
-	}
-
-	const [columns] = useState(() => [...newHeader]);
-	const [columnOrder, setColumnOrder] = useState(template.order);
-
-	const fuzzyFilter = (row, columnId, value, addMeta) => {
-		const itemRank = rankItem(row.getValue(columnId), value)
-
-		addMeta({ itemRank })
-
-		return itemRank.passed
-	}
-
-	const fuzzySort = (rowA, rowB, columnId) => {
-		let dir = 0
-
-		if (rowA.columnFiltersMeta[columnId]) {
-		  	dir = compareItems(!rowA.columnFiltersMeta[columnId].itemRank, !rowB.columnFiltersMeta[columnId].itemRank)
-		}
-
-		return dir === 0 ? sortingFns.alphanumeric(rowA, rowB, columnId) : dir
-	}
-
-	const table = useReactTable({
-		data,
-		columns,
-		filterFns: {
-			fuzzy: fuzzyFilter,
-		},
-		state: {
-			columnOrder,
-			globalFilter,
-			sorting,
-		},
-		defaultColumn: defaultColumnSizing,
-		columnResizeMode: 'onChange',
-		onGlobalFilterChange: setGlobalFilter,
-		globalFilterFn: fuzzyFilter,
-		onColumnOrderChange: setColumnOrder,
-		onSortingChange: setSorting,
-		getCoreRowModel: getCoreRowModel(),
-		getSortedRowModel: getSortedRowModel(),
-		getFilteredRowModel: getFilteredRowModel(),
-	});
+	const [table, data, setData, globalFilter, setGlobalFilter, newTemplate, sorting] = useTable(footerLinks.data, newHeader, template);
 
 	const previous = usePrevious(sorting);
 
@@ -112,13 +49,7 @@ export default function Index({ footerLinks, header, template }) {
 		if (previous) {
 			const timeout = setTimeout(() => {
 				Inertia.get(route('admin.templates'), {
-					'template': {
-						'name': template.name,
-						'order': columnOrder,
-						'sorting': sorting,
-						'globalSearch': globalFilter,
-						'sizing': { ...template.sizing, ...table.getState().columnSizing },
-					},
+					'template': newTemplate,
 					'route': 'admin.footer_links.index',
 				});
 			}, 0);

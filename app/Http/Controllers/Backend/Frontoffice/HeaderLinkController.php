@@ -4,12 +4,15 @@ namespace App\Http\Controllers\Backend\Frontoffice;
 
 #region USE
 
+use App\Constants\Tables;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Frontoffice\HeaderLinkCreateRequest;
 use App\Http\Requests\Backend\Frontoffice\HeaderLinkUpdateRequest;
 use App\Http\Resources\Backend\Frontoffice\HeaderLinkCollection;
+use App\Models\Backend\Template;
 use App\Models\Frontend\HeaderLink;
-use Illuminate\Support\Facades\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 #endregion
@@ -20,18 +23,21 @@ class HeaderLinkController extends Controller
 
     public function index()
     {
-        $headerLinks = new HeaderLinkCollection(HeaderLink::query()
-            ->search(request('search'))
-            ->sort()
-            ->paginate());
+        $header = FooterLinkService::COLUMNS;
 
-        $filters = [
-            'search' => Request::input('search'),
-        ];
+        $user = Auth::user();
+
+        $template = $user->{ User::ATTRIBUTE_TEMPLATES } ? $user->{ User::ATTRIBUTE_TEMPLATES }->{ Template::FIELD_FOOTER_LINKS } : FooterLinkService::DEFAULT_TEMPLATE;
+
+        $headerLinks = new HeaderLinkCollection(HeaderLink::query()
+            ->search(array_key_exists('globalSearch', $template) ? $template['globalSearch'] : '')
+            ->newSort($template[Tables::PROPERTY_SORTING])
+            ->paginate(5));
 
         return Inertia::render('Backend/HeaderLinks/Index', compact(
+            'header',
+            'template',
             'headerLinks',
-            'filters',
         ));
     }
 

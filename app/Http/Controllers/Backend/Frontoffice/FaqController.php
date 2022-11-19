@@ -32,7 +32,7 @@ class FaqController extends Controller
 
         $faqs = new FaqCollection(Faq::query()
             ->search(array_key_exists('globalSearch', $template) ? $template['globalSearch'] : '')
-            ->newSort($template[Tables::SORTING])
+            ->newSort($template[Tables::PROPERTY_SORTING])
             ->paginate(5));
 
         return Inertia::render('Backend/Faqs/Index', compact(

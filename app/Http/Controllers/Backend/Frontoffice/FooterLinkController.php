@@ -32,7 +32,7 @@ class FooterLinkController extends Controller
 
         $footerLinks = new FooterLinkCollection(FooterLink::query()
             ->search(array_key_exists('globalSearch', $template) ? $template['globalSearch'] : '')
-            ->newSort($template[Tables::SORTING])
+            ->newSort($template[Tables::PROPERTY_SORTING])
             ->paginate(5));
 
         return Inertia::render('Backend/FooterLinks/Index', compact(
