@@ -12,6 +12,7 @@ use App\Templates\FaqTemplate;
 use App\Templates\FooterLinkTemplate;
 use App\Templates\HeaderLinkTemplate;
 use App\Templates\LanguageTemplate;
+use App\Templates\LocalizationTemplate;
 use App\Templates\OrderTemplate;
 use App\Templates\RoleTemplate;
 use App\Templates\UserTemplate;
@@ -50,6 +51,7 @@ class TemplateController extends Controller
                 Template::FIELD_FOOTER_LINKS => FooterLinkTemplate::DEFAULT_TEMPLATE,
                 Template::FIELD_HEADER_LINKS => HeaderLinkTemplate::DEFAULT_TEMPLATE,
                 Template::FIELD_LANGUAGES => LanguageTemplate::DEFAULT_TEMPLATE,
+                Template::FIELD_LOCALIZATIONS => LocalizationTemplate::DEFAULT_TEMPLATE,
                 Template::FIELD_ORDERS => OrderTemplate::DEFAULT_TEMPLATE,
                 Template::FIELD_ROLES => RoleTemplate::DEFAULT_TEMPLATE,
                 Template::FIELD_USERS => UserTemplate::DEFAULT_TEMPLATE,

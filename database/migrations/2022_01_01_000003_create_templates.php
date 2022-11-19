@@ -39,11 +39,11 @@ return new class extends Migration
             $table->id();
             $table->foreignId(Template::FIELD_USER_ID)->constrained()->cascadeOnDelete();
 
-            $table->text(Template::FIELD_DICTIONARIES)->nullable();
             $table->text(Template::FIELD_FAQS)->nullable();
             $table->text(Template::FIELD_FOOTER_LINKS)->nullable();
             $table->text(Template::FIELD_HEADER_LINKS)->nullable();
             $table->text(Template::FIELD_LANGUAGES)->nullable();
+            $table->text(Template::FIELD_LOCALIZATIONS)->nullable();
             $table->text(Template::FIELD_ORDERS)->nullable();
             $table->text(Template::FIELD_ROLES)->nullable();
             $table->text(Template::FIELD_USERS)->nullable();

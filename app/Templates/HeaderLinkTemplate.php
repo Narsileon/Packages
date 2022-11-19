@@ -48,7 +48,7 @@ class HeaderLinkTemplate
     ];
 
     public const DEFAULT_TEMPLATE = [
-        Tables::PROPERTY_NAME => Template::FIELD_FOOTER_LINKS,
+        Tables::PROPERTY_NAME => Template::FIELD_HEADER_LINKS,
         Tables::PROPERTY_ORDER => self::DEFAULT_ORDER,
         Tables::PROPERTY_SORTING => self::DEFAULT_SORTING,
     ];

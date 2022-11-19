@@ -20,11 +20,11 @@ class Template extends Model
     public const FIELD_ID = 'id';
     public const FIELD_USER_ID='user_id';
 
-    public const FIELD_DICTIONARIES = 'dictionaries';
     public const FIELD_FAQS = 'faqs';
     public const FIELD_FOOTER_LINKS = 'footer_links';
     public const FIELD_HEADER_LINKS = 'header_links';
     public const FIELD_LANGUAGES = 'languages';
+    public const FIELD_LOCALIZATIONS = 'localizations';
     public const FIELD_ORDERS = 'orders';
     public const FIELD_ROLES = 'roles';
     public const FIELD_USERS = 'users';
@@ -39,22 +39,22 @@ class Template extends Model
     [
         self::FIELD_USER_ID,
 
-        self::FIELD_DICTIONARIES,
         self::FIELD_FAQS,
         self::FIELD_FOOTER_LINKS,
         self::FIELD_HEADER_LINKS,
         self::FIELD_LANGUAGES,
+        self::FIELD_LOCALIZATIONS,
         self::FIELD_ORDERS,
         self::FIELD_ROLES,
         self::FIELD_USERS,
     ];
 
     protected $casts = [
-        self::FIELD_DICTIONARIES => CastTypes::ARRAY,
         self::FIELD_FAQS => CastTypes::ARRAY,
         self::FIELD_FOOTER_LINKS => CastTypes::ARRAY,
         self::FIELD_HEADER_LINKS => CastTypes::ARRAY,
         self::FIELD_LANGUAGES => CastTypes::ARRAY,
+        self::FIELD_LOCALIZATIONS => CastTypes::ARRAY,
         self::FIELD_ORDERS => CastTypes::ARRAY,
         self::FIELD_ROLES => CastTypes::ARRAY,
         self::FIELD_USERS => CastTypes::ARRAY,

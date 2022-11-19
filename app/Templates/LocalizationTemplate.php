@@ -9,7 +9,7 @@ use App\Models\Backend\Template;
 
 #endregion
 
-class LanguageTemplate
+class LocalizationTemplate
 {
     #region CONSTANTS
 
@@ -32,7 +32,7 @@ class LanguageTemplate
     ];
 
     public const DEFAULT_TEMPLATE = [
-        Tables::PROPERTY_NAME => Template::FIELD_LANGUAGES,
+        Tables::PROPERTY_NAME => Template::FIELD_LOCALIZATIONS,
         Tables::PROPERTY_ORDER => self::DEFAULT_ORDER,
         Tables::PROPERTY_SORTING => self::DEFAULT_SORTING,
     ];
