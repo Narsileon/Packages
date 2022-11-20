@@ -5,7 +5,7 @@ import { useTable } from "@/narsil-table";
 import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 import Toggle from "@/Components/Elements/Toggle";
 import Table from "@/Components/Tables/Table";
-import TableSearch from "@/Components/Tables/TableSearch";
+import TableSearch from "@/Components/Tables/TableFilter";
 
 export default function Index({ languages, header, template }) {
 	let newHeader = [...header].map(object => {

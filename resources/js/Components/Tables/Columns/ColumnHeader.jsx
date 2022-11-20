@@ -4,7 +4,7 @@ import { transChoice } from "@/narsil-localization";
 import { upperFirst } from "lodash";
 import Icon from "@/Shared/Svg/Icon";
 import Sort from "@/Shared/Svg/Sort";
-import TableSearch from "./TableSearch";
+import ColumnFilter from "@/Components/Tables/Columns/ColumnFilter";
 
 export default function ColumnHeader ({ header, table }) {
     const { getState, setColumnOrder } = table
@@ -87,7 +87,10 @@ export default function ColumnHeader ({ header, table }) {
                 {
                     header.column.getCanFilter() && (
                         <div className="block mr-2">
-                            <TableSearch />
+                            <ColumnFilter
+                                table={ table }
+                                column={ column }
+                            />
                         </div>
                     )
                 }

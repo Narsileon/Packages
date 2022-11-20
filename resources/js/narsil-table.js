@@ -1,8 +1,22 @@
 import { useEffect, useState } from "react";
 import { usePrevious } from "react-use";
 import { Inertia } from "@inertiajs/inertia";
-import { getCoreRowModel, getFilteredRowModel, getSortedRowModel, sortingFns, useReactTable } from "@tanstack/react-table";
-import { rankItem, compareItems } from '@tanstack/match-sorter-utils'
+
+import {
+	getCoreRowModel,
+	getFacetedMinMaxValues,
+	getFacetedRowModel,
+	getFacetedUniqueValues,
+	getFilteredRowModel,
+	getSortedRowModel,
+	sortingFns,
+	useReactTable
+} from "@tanstack/react-table";
+
+import {
+	rankItem,
+	compareItems
+} from '@tanstack/match-sorter-utils'
 
 export const useTable = (
 	tableData,
@@ -65,12 +79,16 @@ export const useTable = (
 		defaultColumn: defaultColumn,
 		columnResizeMode: columnResizeMode,
 		onGlobalFilterChange: setGlobalFilter,
+		onColumnFiltersChange: setColumnFilters,
 		globalFilterFn: backend ? fuzzyFilter : null,
 		getCoreRowModel: getCoreRowModel(),
         getFilteredRowModel: getFilteredRowModel(),
 		getSortedRowModel: getSortedRowModel(),
         onColumnOrderChange: setOrder,
         onSortingChange: setSorting,
+		getFacetedRowModel: getFacetedRowModel(),
+		getFacetedUniqueValues: getFacetedUniqueValues(),
+		getFacetedMinMaxValues: getFacetedMinMaxValues(),
 	});
 
     const tableTemplate = {

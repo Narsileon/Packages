@@ -3,7 +3,7 @@ import { trans, transChoice } from "@/narsil-localization";
 import { useTable } from "@/narsil-table";
 import Table from "@/Components/Tables/Table";
 import TableMenu from "@/Components/Tables/TableMenu";
-import TableSearch from "@/Components/Tables/TableSearch";
+import TableSearch from "@/Components/Tables/TableFilter";
 import Pagination from "@/Shared/Pagination";
 
 export default function Index({ footerLinks, header, template }) {

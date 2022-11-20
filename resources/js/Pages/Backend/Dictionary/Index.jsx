@@ -7,7 +7,7 @@ import { useTable } from "@/narsil-table";
 import { upperFirst } from "lodash";
 import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 import Table from "@/Components/Tables/Table";
-import TableSearch from "@/Components/Tables/TableSearch";
+import TableSearch from "@/Components/Tables/TableFilter";
 
 export default function Index({ customLocalization, header, template }) {
 	let newHeader = [...header].map(object => {

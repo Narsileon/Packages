@@ -1,4 +1,4 @@
-import ColumnHeader from "@/Components/Tables/ColumnHeader";
+import ColumnHeader from "@/Components/Tables/Columns/ColumnHeader";
 
 export default function TableHead({ table }) {
     return (
