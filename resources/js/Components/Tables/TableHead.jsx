@@ -1,36 +1,23 @@
-import { useSort } from "@/narsil-react";
-import { trans } from "@/narsil-localization";
-import SortButton from "@/Components/Elements/Buttons/SortButton";
+import ColumnHeader from "@/Components/Tables/ColumnHeader";
 
-export default function TableHead({ data }) {
-	const [values, handleChange] = useSort();
-
+export default function TableHead({ table }) {
     return (
-        <thead className="
-            bg-gray-400
-            dark:bg-gray-800
-        ">
-            <tr>
-                <th className="w-16"/>
-                {
-                    data[0] != null && Object.keys(data[0]).map((key) => {
-                        return (
-                            <th
-                                className="text-left min-w-sm max-w-lg"
-                                key={ key }
-                            >
-                                <SortButton
-                                    label={ trans(`validation.attributes.${ key }`) }
-                                    accessor={ key }
-                                    field={ values.field }
-                                    order={ values.sort }
-                                    onClick={ () => handleChange(key) }
+        <thead>
+            {
+                table.getHeaderGroups().map(headerGroup => (
+                    <tr key={ headerGroup.id }>
+                        {
+                            headerGroup.headers.map(header => (
+                                <ColumnHeader
+                                    key={ header.id }
+                                    header={ header }
+                                    table={ table }
                                 />
-                            </th>
-                        );
-                    })
-                }
-            </tr>
-       </thead>
+                            ))
+                        }
+                    </tr>
+                ))
+            }
+        </thead>
     );
 }

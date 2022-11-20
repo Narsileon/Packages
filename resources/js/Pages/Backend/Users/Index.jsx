@@ -5,7 +5,7 @@ import { Head, Link } from "@inertiajs/inertia-react";
 import { trans, transChoice } from "@/narsil-localization";
 import { useTable } from "@/narsil-table";
 import { Dropdown, DropdownItem, DropdownPanel} from "@/Components/Elements/Dropdowns";
-import NewTable from "@/Components/Tables/NewTable";
+import Table from "@/Components/Tables/Table";
 import Pagination from "@/Shared/Pagination";
 import Icon from "@/Shared/Svg/Icon";
 import TableSearch from "@/Components/Tables/TableSearch";
@@ -89,7 +89,7 @@ export default function Index({ users, header, template }) {
 
 				{ users.meta.items > 0 ? (
 					<>
-						<NewTable table={ table } />
+						<Table table={ table } />
 
 						<Pagination data={ users.meta } />
 					</>

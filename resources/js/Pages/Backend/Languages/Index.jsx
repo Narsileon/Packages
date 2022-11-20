@@ -3,7 +3,7 @@ import { Inertia } from "@inertiajs/inertia";
 import { Head } from "@inertiajs/inertia-react";
 import { trans, transChoice } from "@/narsil-localization";
 import { usePrevious } from "react-use";
-import NewTable from "@/Components/Tables/NewTable";
+import Table from "@/Components/Tables/Table";
 import TableSearch from "@/Components/Tables/TableSearch";
 import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 import Toggle from "@/Components/Elements/Toggle";
@@ -84,7 +84,7 @@ export default function Index({ languages, header, template }) {
 					</div>
 				</section>
 
-				<NewTable table={ table } />
+				<Table table={ table } />
 			</div>
 		</>
 	);

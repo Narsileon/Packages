@@ -4,7 +4,7 @@ import { Head, Link } from "@inertiajs/inertia-react";
 import { trans } from "@/narsil-localization";
 import Pagination from "@/Shared/Pagination";
 import { usePrevious } from "react-use";
-import NewTable from "@/Components/Tables/NewTable";
+import Table from "@/Components/Tables/Table";
 import TableSearch from "@/Components/Tables/TableSearch";
 import { useTable } from "@/narsil-table";
 
@@ -58,7 +58,7 @@ export default function Index({ faqs, header, template }) {
 
 				{ faqs.meta.items > 0 ? (
 					<>
-						<NewTable table={ table } />
+						<Table table={ table } />
 
 						<Pagination data={ faqs.meta } />
 					</>
