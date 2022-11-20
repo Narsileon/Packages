@@ -1,11 +1,10 @@
 import { Head, Link } from "@inertiajs/inertia-react";
 import { trans, transChoice } from "@/narsil-localization";
 import { useTable } from "@/narsil-table";
-import { Dropdown, DropdownItem, DropdownPanel} from "@/Components/Elements/Dropdowns";
 import Table from "@/Components/Tables/Table";
+import TableMenu from "@/Components/Tables/TableMenu";
 import TableSearch from "@/Components/Tables/TableSearch";
 import Pagination from "@/Shared/Pagination";
-import Icon from "@/Shared/Svg/Icon";
 
 export default function Index({ orders, header, template }) {
 	let newHeader = [...header];
@@ -14,27 +13,7 @@ export default function Index({ orders, header, template }) {
 		id: 'menu',
 		header: '',
 		cell: props => (
-			<Dropdown
-				trigger={ <Icon name="menu" className="w-6 h-6" /> }
-				childrenClasses="left-0"
-				showChevron ={ true }
-				width="12"
-			>
-				<DropdownPanel>
-					<div>
-						<DropdownItem
-							href={ 'footer_links/' + props.row._valuesCache.id + '/edit' }
-							label="Edit"
-							type="link"
-						/>
-					</div>
-					<div>
-						<DropdownItem
-							label="Delete"
-						/>
-					</div>
-				</DropdownPanel>
-			</Dropdown>
+			<TableMenu id={ props.row._valuesCache.id } />
 		)
 	})
 
