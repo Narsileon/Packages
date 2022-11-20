@@ -17,7 +17,7 @@ export default function Index({ customLocalization, header, template }) {
 				cell: props => (
 					<CustomValue
 						value={ props.getValue() }
-						handleChange={ (event) => handleChange(event, props.row._valuesCache.key) }
+						handleChange={ (event) => handleChange(event, props.row.original.key) }
 					/>
 				)
 			}

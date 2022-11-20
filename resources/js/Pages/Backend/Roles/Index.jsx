@@ -13,7 +13,7 @@ export default function Index({ roles, header, template }) {
 		id: 'menu',
 		header: '',
 		cell: props => (
-			<TableMenu id={ props.row._valuesCache.id } />
+			<TableMenu id={ props.row.original.id } />
 		)
 	})
 

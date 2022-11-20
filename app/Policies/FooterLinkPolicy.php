@@ -11,7 +11,7 @@ use Illuminate\Auth\Access\HandlesAuthorization;
 
 #endregion
 
-class HeaderLinkPolicy
+class FooterLinkPolicy
 {
     use HandlesAuthorization;
 
