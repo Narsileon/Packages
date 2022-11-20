@@ -1,6 +1,3 @@
-import { useEffect } from "react";
-import { usePrevious } from "react-use";
-import { Inertia } from "@inertiajs/inertia";
 import { Head, Link } from "@inertiajs/inertia-react";
 import { trans, transChoice } from "@/narsil-localization";
 import { useTable } from "@/narsil-table";
@@ -42,21 +39,6 @@ export default function Index({ headerLinks, header, template }) {
 	})
 
 	const [table, data, setData, globalFilter, setGlobalFilter, newTemplate, sorting] = useTable(headerLinks.data, newHeader, template);
-
-	const previous = usePrevious(sorting);
-
-    useEffect(() => {
-		if (previous) {
-			const timeout = setTimeout(() => {
-				Inertia.get(route('admin.templates'), {
-					'template': newTemplate,
-					'route': 'admin.header_links.index',
-				});
-			}, 0);
-
-			return () => clearTimeout(timeout)
-		}
-	}, [sorting]);
 
 	return (
 		<>

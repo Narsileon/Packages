@@ -1,13 +1,13 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
+import { useClickAway, useToggle } from "react-use";
 import { Inertia } from "@inertiajs/inertia";
 import { Head } from "@inertiajs/inertia-react";
 import { trans, transChoice } from "@/narsil-localization";
-import { useClickAway, usePrevious, useToggle } from "react-use";
-import Table from "@/Components/Tables/Table";
-import TableSearch from "@/Components/Tables/TableSearch";
-import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 import { useTable } from "@/narsil-table";
 import { upperFirst } from "lodash";
+import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
+import Table from "@/Components/Tables/Table";
+import TableSearch from "@/Components/Tables/TableSearch";
 
 export default function Index({ customLocalization, header, template }) {
 	let newHeader = [...header].map(object => {
@@ -28,8 +28,6 @@ export default function Index({ customLocalization, header, template }) {
 
 	const [table, data, setData, globalFilter, setGlobalFilter, newTemplate, sorting] = useTable(customLocalization.dictionary, newHeader, template);
 
-	const previous = usePrevious(sorting);
-
 	const handleChange = (event, key) => {
 		let temp = [...data];
 
@@ -43,19 +41,6 @@ export default function Index({ customLocalization, header, template }) {
 
 		setData(temp);
 	}
-
-    useEffect(() => {
-		if (previous) {
-			const timeout = setTimeout(() => {
-				Inertia.get(route('admin.templates'), {
-					'template': newTemplate,
-					'route': 'admin.dictionary.index',
-				});
-			}, 0);
-
-			return () => clearTimeout(timeout)
-		}
-	}, [sorting]);
 
 	function update() {
 		Inertia.patch(`dictionary/${ customLocalization.user_id }`, { dictionary: data});

@@ -1,13 +1,11 @@
-import { useEffect } from "react";
 import { Inertia } from "@inertiajs/inertia";
 import { Head } from "@inertiajs/inertia-react";
 import { trans, transChoice } from "@/narsil-localization";
-import { usePrevious } from "react-use";
-import Table from "@/Components/Tables/Table";
-import TableSearch from "@/Components/Tables/TableSearch";
+import { useTable } from "@/narsil-table";
 import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 import Toggle from "@/Components/Elements/Toggle";
-import { useTable } from "@/narsil-table";
+import Table from "@/Components/Tables/Table";
+import TableSearch from "@/Components/Tables/TableSearch";
 
 export default function Index({ languages, header, template }) {
 	let newHeader = [...header].map(object => {
@@ -27,21 +25,6 @@ export default function Index({ languages, header, template }) {
 	});
 
 	const [table, data, setData, globalFilter, setGlobalFilter, newTemplate, sorting] = useTable(languages.data, newHeader, template);
-
-	const previous = usePrevious(data);
-
-    useEffect(() => {
-		if (previous) {
-			const timeout = setTimeout(() => {
-				Inertia.get(route('admin.templates'), {
-					'template': newTemplate,
-					'route': 'admin.languages',
-				});
-			}, 0);
-
-			return () => clearTimeout(timeout)
-		}
-	}, [data]);
 
 	function handleChange(event, id) {
 		let temp = [...data];

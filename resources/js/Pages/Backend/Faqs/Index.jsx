@@ -1,30 +1,44 @@
-import { useEffect } from "react";
-import { Inertia } from "@inertiajs/inertia";
 import { Head, Link } from "@inertiajs/inertia-react";
 import { trans } from "@/narsil-localization";
-import Pagination from "@/Shared/Pagination";
-import { usePrevious } from "react-use";
+import { useTable } from "@/narsil-table";
+import { Dropdown, DropdownItem, DropdownPanel} from "@/Components/Elements/Dropdowns";
 import Table from "@/Components/Tables/Table";
 import TableSearch from "@/Components/Tables/TableSearch";
-import { useTable } from "@/narsil-table";
+import Pagination from "@/Shared/Pagination";
+import Icon from "@/Shared/Svg/Icon";
 
 export default function Index({ faqs, header, template }) {
-	const [table, data, setData, globalFilter, setGlobalFilter, newTemplate, sorting] = useTable(faqs.data, header, template);
+	let newHeader = [...header];
 
-	const previous = usePrevious(sorting);
+	newHeader.push({
+		id: 'menu',
+		header: '',
+		cell: props => (
+			<Dropdown
+				trigger={ <Icon name="menu" className="w-6 h-6" /> }
+				childrenClasses="left-0"
+				showChevron ={ true }
+				width="12"
+			>
+				<DropdownPanel>
+					<div>
+						<DropdownItem
+							href={ 'footer_links/' + props.row._valuesCache.id + '/edit' }
+							label="Edit"
+							type="link"
+						/>
+					</div>
+					<div>
+						<DropdownItem
+							label="Delete"
+						/>
+					</div>
+				</DropdownPanel>
+			</Dropdown>
+		)
+	})
 
-    useEffect(() => {
-		if (previous) {
-			const timeout = setTimeout(() => {
-				Inertia.get(route('admin.templates'), {
-					'template': newTemplate,
-					'route': 'admin.faqs.index',
-				});
-			}, 0);
-
-			return () => clearTimeout(timeout)
-		}
-	}, [sorting]);
+	const [table, data, setData, globalFilter, setGlobalFilter, newTemplate, sorting] = useTable(faqs.data, newHeader, template);
 
 	return (
 		<>
