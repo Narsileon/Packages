@@ -33,7 +33,6 @@ class HeaderLinkUpdateRequest extends FormRequest
                 ValidationRules::unique('header_links', HeaderLink::FIELD_URL, $this->header_link->id),
             ],
             HeaderLink::FIELD_ACTIVE => [
-                ValidationRules::REQUIRED,
                 ValidationRules::TYPE_BOOLEAN,
             ],
         ];

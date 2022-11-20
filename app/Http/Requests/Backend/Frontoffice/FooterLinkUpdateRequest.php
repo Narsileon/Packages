@@ -33,7 +33,6 @@ class FooterLinkUpdateRequest extends FormRequest
                 ValidationRules::unique('footer_links', FooterLink::FIELD_URL, $this->footer_link->id),
             ],
             FooterLink::FIELD_ACTIVE => [
-                ValidationRules::REQUIRED,
                 ValidationRules::TYPE_BOOLEAN,
             ],
         ];

@@ -33,7 +33,6 @@ class HeaderLinkCreateRequest extends FormRequest
                 ValidationRules::unique('header_links', HeaderLink::FIELD_URL),
             ],
             HeaderLink::FIELD_ACTIVE => [
-                ValidationRules::REQUIRED,
                 ValidationRules::TYPE_BOOLEAN,
             ],
         ];
