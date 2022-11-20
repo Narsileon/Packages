@@ -21,6 +21,7 @@ export const useTable = (
 	const [data, setTableData] = useState(tableData);
     const [columns] = useState(() => [...tableColumns]);
     const [globalFilter, setGlobalFilter] = useState(template.globalFilter);
+	const [columnFilters, setColumnFilters] = useState([]);
     const [columnOrder, setOrder] = useState(template.order);
     const [sorting, setSorting] = useState(template.sorting)
 
@@ -56,8 +57,9 @@ export const useTable = (
 			fuzzy: fuzzyFilter,
 		},
 		state: {
-            globalFilter,
 			columnOrder,
+			columnFilters,
+			globalFilter,
 			sorting,
 		},
 		defaultColumn: defaultColumn,

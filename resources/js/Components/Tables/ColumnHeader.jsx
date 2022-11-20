@@ -4,6 +4,7 @@ import { transChoice } from "@/narsil-localization";
 import { upperFirst } from "lodash";
 import Icon from "@/Shared/Svg/Icon";
 import Sort from "@/Shared/Svg/Sort";
+import TableSearch from "./TableSearch";
 
 export default function ColumnHeader ({ header, table }) {
     const { getState, setColumnOrder } = table
@@ -38,56 +39,63 @@ export default function ColumnHeader ({ header, table }) {
             className="relative"
             ref={ dropRef }
             colSpan={ header.colSpan }
-            style={{ opacity: isDragging ? 0.5 : 1, width: header.getSize() }}
+            style={{
+                opacity: isDragging ? 0.5 : 1,
+                width: header.getSize()
+            }}
         >
             <div
-                className="flex"
+                className="grid grid-cols-1"
                 ref={ previewRef }
             >
-                <button
-                    className="ml-2"
-                    ref={ dragRef }
-                >
-                    <Icon className="w-6 h-6" name="sort-horizontal" />
-                </button>
-                <div
-                    {...{
-                        className: `flex justify-between w-full p-2 whitespace-nowrap space-x-2 ${ header.column.getCanSort()
-                            ? 'cursor-pointer select-none'
-                            : '' }`,
-                        onClick: header.column.getToggleSortingHandler(),
-                    }}
-                >
-                    <span>
+                <div className="span-col-1 flex">
+                    <button
+                        className="ml-2"
+                        ref={ dragRef }
+                    >
+                        <Icon
+                            className="w-6 h-6"
+                            name="sort-horizontal"
+                        />
+                    </button>
+                    <div
+                        className={ `flex justify-between w-full p-2 whitespace-nowrap space-x-2 ${ header.column.getCanSort() ? 'cursor-pointer select-none' : '' }` }
+                        onClick={ header.column.getToggleSortingHandler() }
+                    >
+                        <span>
+                            {
+                                flexRender(
+                                    upperFirst(transChoice(header.column.columnDef.header, 1)),
+                                    header.getContext()
+                                )
+                            }
+                        </span>
                         {
-                            flexRender(
-                                upperFirst(transChoice(header.column.columnDef.header, 1)),
-                                header.getContext()
+                            header.column.getCanSort() && (
+                                <span>
+                                    {
+                                        {
+                                            asc: <Sort className="w-5 h-5" order="asc" />,
+                                            desc: <Sort className="w-5 h-5" order="desc" />,
+                                        } [header.column.getIsSorted()] ?? <Sort className="w-5 h-5" />
+                                    }
+                                </span>
                             )
                         }
-                    </span>
-                    {
-                        header.column.getCanSort() && (
-                            <span>
-                                {
-                                    {
-                                        asc: <Sort className="w-5 h-5" order="asc" />,
-                                        desc: <Sort className="w-5 h-5" order="desc" />,
-                                    } [header.column.getIsSorted()] ?? <Sort className="w-5 h-5" />
-                                }
-                            </span>
-                        )
-                    }
+                    </div>
                 </div>
+                {
+                    header.column.getCanFilter() && (
+                        <div className="block mr-2">
+                            <TableSearch />
+                        </div>
+                    )
+                }
             </div>
             <div
-                {...{
-                    onMouseDown: header.getResizeHandler(),
-                    onTouchStart: header.getResizeHandler(),
-                    className: `absolute right-0 top-0 h-full w-2 cursor-col-resize ${
-                    header.column.getIsResizing() ? 'bg-red-500' : 'bg-blue-500'
-                    }`,
-                }}
+                className={ `absolute right-0 top-0 h-full w-2 cursor-col-resize ${ header.column.getIsResizing() ? 'bg-red-500' : 'bg-blue-500'}` }
+                onMouseDown={ header.getResizeHandler() }
+                onTouchStart={ header.getResizeHandler() }
             />
         </th>
     )
