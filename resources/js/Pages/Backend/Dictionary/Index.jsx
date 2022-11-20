@@ -1,26 +1,61 @@
-import { useRef, useState } from "react";
-import { useClickAway, useToggle } from "react-use";
+import { useEffect, useRef } from "react";
 import { Inertia } from "@inertiajs/inertia";
 import { Head } from "@inertiajs/inertia-react";
 import { trans, transChoice } from "@/narsil-localization";
-import { useFrontSortableTable } from "@/narsil-react";
-import { upperFirst } from "lodash";
-import SortButton from "@/Components/Elements/Buttons/SortButton";
-import SearchField from "@/Shared/SearchField";
+import { useClickAway, usePrevious, useToggle } from "react-use";
+import NewTable from "@/Components/Tables/NewTable";
+import TableSearch from "@/Components/Tables/TableSearch";
 import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
+import { useTable } from "@/narsil-table";
+import { upperFirst } from "lodash";
 
-export default function Index({ defaultLocalization, customLocalization, filters }) {
-	const [tableData, setTableData, handleSorting] = useFrontSortableTable(customLocalization.dictionary)
+export default function Index({ test, header, template }) {
+	let newHeader = [...header].map(object => {
+		if (object.id === 'custom_value') {
+		  	return {
+				...object,
+				cell: props => (
+					<CustomValue
+						value={ props.getValue() }
+						handleChange={ (event) => handleChange(event, props.row._valuesCache.key) }
+					/>
+				)
+			}
+		} else {
+			return object;
+		}
+	});
 
-	const [sortField, setSortField] = useState("");
- 	const [order, setOrder] = useState("asc");
+	const [table, data, setData, globalFilter, setGlobalFilter, newTemplate, sorting] = useTable(test, newHeader, template);
 
-	const handleSortingChange = (accessor) => {
-		const sortOrder = accessor === sortField && order === "asc" ? "desc" : "asc";
-		setSortField(accessor);
-		setOrder(sortOrder);
-		handleSorting(accessor, sortOrder);
-	};
+	const previous = usePrevious(sorting);
+
+	const handleChange = (event, key) => {
+		let temp = [...data];
+
+		temp.find((object, index) => {
+			if (object.key === key) {
+				object.custom_value = event.target.value;
+				temp[index] = object;
+				return true;
+			}
+		});
+
+		setData(temp);
+	}
+
+    useEffect(() => {
+		if (previous) {
+			const timeout = setTimeout(() => {
+				Inertia.get(route('admin.templates'), {
+					'template': newTemplate,
+					'route': 'admin.dictionary.index',
+				});
+			}, 0);
+
+			return () => clearTimeout(timeout)
+		}
+	}, [sorting]);
 
 	function update() {
 		Inertia.patch(`dictionary/${ customLocalization.user_id }`, { dictionary: tableData});
@@ -44,69 +79,17 @@ export default function Index({ defaultLocalization, customLocalization, filters
 								onClick={ update }
 							/>
 						</div>
+
 						<div className="col-span-1 sm:col-span-2 md:col-span-1 md:order-1 place-self-center w-full">
-							<SearchField filters={ filters } />
+							<TableSearch
+								value={ globalFilter ?? '' }
+								onChange={ value => setGlobalFilter(value) }
+							/>
 						</div>
 					</div>
 				</section>
 
-				<section id="table" className="min-h-0">
-					<div className="min-h-0 h-full border-2 border-color rounded overflow-y-scroll">
-						<table>
-							<thead className="
-								sticky top-0 z-10
-								bg-gray-400
-								dark:bg-gray-800
-							">
-								<tr>
-									<th>
-										<SortButton
-											label={ transChoice('common.keys', 1) }
-											accessor={ 'locale' }
-											onClick={ () => handleSortingChange('locale') }
-										/>
-									</th>
-									<th>
-										<SortButton
-											label={ transChoice('common.values', 1) }
-											accessor={ 'locale' }
-											onClick={ () => handleSortingChange('locale') }
-										/>
-									</th>
-									<th>
-										<SortButton
-											label={ transChoice('common.custom_values', 1) }
-											accessor={ 'active' }
-											onClick={ () => handleSortingChange('active') }
-										/>
-									</th>
-								</tr>
-							</thead>
-							<tbody>
-								{
-									Object.entries(tableData).map(([key, value]) => {
-										return (
-											<tr key={ key }>
-												<td>
-													{ key }
-												</td>
-												<td>
-													{ defaultLocalization[key] }
-												</td>
-												<td>
-													<CustomValue
-														value={ value }
-														handleChange={ (event) => setTableData({...tableData, [key]: event.target.value}) }
-													/>
-												</td>
-											</tr>
-										);
-									})
-								}
-							</tbody>
-						</table>
-					</div>
-				</section>
+				<NewTable table={ table } />
 			</div>
 		</>
 	);
