@@ -8,7 +8,7 @@ export const useTable = (
 	tableData,
 	tableColumns,
 	template,
-	filtering = 'backend',
+	backend = true,
 ) => {
 	if (template.sizing) {
 		tableColumns.forEach(object => {
@@ -63,7 +63,7 @@ export const useTable = (
 		defaultColumn: defaultColumn,
 		columnResizeMode: columnResizeMode,
 		onGlobalFilterChange: setGlobalFilter,
-		globalFilterFn: filtering == 'frontend' ? fuzzyFilter : null,
+		globalFilterFn: backend ? fuzzyFilter : null,
 		getCoreRowModel: getCoreRowModel(),
         getFilteredRowModel: getFilteredRowModel(),
 		getSortedRowModel: getSortedRowModel(),

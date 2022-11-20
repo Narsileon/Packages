@@ -36,7 +36,7 @@ class UserController extends Controller
         $template = $user->{ User::ATTRIBUTE_TEMPLATES } ? $user->{ User::ATTRIBUTE_TEMPLATES }->{ Template::FIELD_USERS } : UserTemplate::DEFAULT_TEMPLATE;
 
         $users = new UserCollection(User::query()
-            ->search(array_key_exists('globalFilter', $template) ? $template['globalFilter'] : '')
+            ->search(array_key_exists(Tables::PROPERTY_GLOBAL_FILTER, $template) ? $template[Tables::PROPERTY_GLOBAL_FILTER] : '')
             ->newSort($template[Tables::PROPERTY_SORTING])
             ->paginate(5));
 

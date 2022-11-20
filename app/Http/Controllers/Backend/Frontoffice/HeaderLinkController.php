@@ -31,7 +31,7 @@ class HeaderLinkController extends Controller
         $template = $user->{ User::ATTRIBUTE_TEMPLATES } ? $user->{ User::ATTRIBUTE_TEMPLATES }->{ Template::FIELD_FOOTER_LINKS } : HeaderLinkTemplate::DEFAULT_TEMPLATE;
 
         $headerLinks = new HeaderLinkCollection(HeaderLink::query()
-            ->search(array_key_exists('globalFilter', $template) ? $template['globalFilter'] : '')
+            ->search(array_key_exists(Tables::PROPERTY_GLOBAL_FILTER, $template) ? $template[Tables::PROPERTY_GLOBAL_FILTER] : '')
             ->newSort($template[Tables::PROPERTY_SORTING])
             ->paginate(5));
 
