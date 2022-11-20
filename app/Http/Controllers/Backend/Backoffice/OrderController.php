@@ -4,13 +4,17 @@ namespace App\Http\Controllers\Backend\Backoffice;
 
 #region USE
 
+use App\Constants\Tables;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Backoffice\OrderCreateRequest;
 use App\Http\Requests\Backend\Backoffice\OrderUpdateRequest;
 use App\Http\Resources\Backend\Backoffice\OrderCollection;
 use App\Models\Backend\Order;
+use App\Models\Backend\Template;
 use App\Models\Frontend\Faq;
-use Illuminate\Support\Facades\Request;
+use App\Models\User;
+use App\Templates\OrderTemplate;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 #endregion
@@ -19,18 +23,21 @@ class OrderController extends Controller
 {
     public function index()
     {
-        $orders = new OrderCollection(Order::query()
-            ->search(request('search'))
-            ->sort()
-            ->paginate());
+        $header = OrderTemplate::COLUMNS;
 
-        $filters = [
-            'search' => Request::input('search'),
-        ];
+        $user = Auth::user();
+
+        $template = $user->{ User::ATTRIBUTE_TEMPLATES } ? $user->{ User::ATTRIBUTE_TEMPLATES }->{ Template::FIELD_ORDERS } : OrderTemplate::DEFAULT_TEMPLATE;
+
+        $orders = new OrderCollection(Order::query()
+            ->search(array_key_exists('globalSearch', $template) ? $template['globalSearch'] : '')
+            ->newSort($template[Tables::PROPERTY_SORTING])
+            ->paginate(5));
 
         return Inertia::render('Backend/Orders/Index', compact(
+            'header',
+            'template',
             'orders',
-            'filters',
         ));
     }
 
