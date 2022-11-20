@@ -4,15 +4,19 @@ namespace App\Http\Controllers\Backend\Management;
 
 #region USE
 
+use App\Constants\Tables;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Management\UserRoleCreateRequest;
 use App\Http\Requests\Backend\Management\UserRoleUpdateRequest;
 use App\Http\Resources\Backend\Management\UserPermissionCollection;
 use App\Http\Resources\Backend\Management\UserRoleCollection;
 use App\Http\Resources\Backend\Management\UserRoleResource;
+use App\Models\Backend\Template;
+use App\Models\User;
 use App\Models\UserPermission;
 use App\Models\UserRole;
-use Illuminate\Support\Facades\Request;
+use App\Templates\RoleTemplate;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Spatie\Permission\Models\Role;
 
@@ -24,19 +28,21 @@ class RoleController extends Controller
 
     public function index()
     {
-        $roles = new UserRoleCollection(UserRole::query()
-            ->search(request('search'))
-            ->sort()
-            ->paginate(10)
-        );
+        $header = RoleTemplate::COLUMNS;
 
-        $filters = [
-            'search' => Request::input('search'),
-        ];
+        $user = Auth::user();
+
+        $template = $user->{ User::ATTRIBUTE_TEMPLATES } ? $user->{ User::ATTRIBUTE_TEMPLATES }->{ Template::FIELD_ROLES } : RoleTemplate::DEFAULT_TEMPLATE;
+
+        $roles = new UserRoleCollection(UserRole::query()
+            ->search(array_key_exists('globalSearch', $template) ? $template['globalSearch'] : '')
+            ->newSort($template[Tables::PROPERTY_SORTING])
+            ->paginate(5));
 
         return Inertia::render('Backend/Roles/Index', compact(
+            'header',
+            'template',
             'roles',
-            'filters',
         ));
     }
 

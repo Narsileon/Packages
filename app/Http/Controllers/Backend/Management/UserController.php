@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend\Management;
 
 #region USE
 
+use App\Constants\Tables;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Management\UserCreateRequest;
 use App\Http\Requests\Backend\Management\UserUpdateRequest;
@@ -11,9 +12,12 @@ use App\Http\Resources\Backend\Management\UserCollection;
 use App\Http\Resources\Backend\Management\UserPermissionCollection;
 use App\Http\Resources\Backend\Management\UserResource;
 use App\Http\Resources\Backend\Management\UserRoleCollection;
+use App\Models\Backend\Template;
 use App\Models\User;
 use App\Models\UserPermission;
 use App\Models\UserRole;
+use App\Templates\UserTemplate;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
 
@@ -25,19 +29,21 @@ class UserController extends Controller
 
     public function index()
     {
-        $users = new UserCollection(User::query()
-            ->search(request('search'))
-            ->sort()
-            ->paginate(10)
-        );
+        $header = UserTemplate::COLUMNS;
 
-        $filters = [
-            'search' => Request::input('search'),
-        ];
+        $user = Auth::user();
+
+        $template = $user->{ User::ATTRIBUTE_TEMPLATES } ? $user->{ User::ATTRIBUTE_TEMPLATES }->{ Template::FIELD_USERS } : UserTemplate::DEFAULT_TEMPLATE;
+
+        $users = new UserCollection(User::query()
+            ->search(array_key_exists('globalSearch', $template) ? $template['globalSearch'] : '')
+            ->newSort($template[Tables::PROPERTY_SORTING])
+            ->paginate(5));
 
         return Inertia::render('Backend/Users/Index', compact(
+            'header',
+            'template',
             'users',
-            'filters',
         ));
     }
 

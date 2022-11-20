@@ -1,21 +1,69 @@
+import { useEffect } from "react";
+import { usePrevious } from "react-use";
+import { Inertia } from "@inertiajs/inertia";
 import { Head, Link } from "@inertiajs/inertia-react";
 import { trans, transChoice } from "@/narsil-localization";
-import Table from "@/Components/Tables/Table";
+import { useTable } from "@/narsil-table";
+import { Dropdown, DropdownItem, DropdownPanel} from "@/Components/Elements/Dropdowns";
+import NewTable from "@/Components/Tables/NewTable";
 import Pagination from "@/Shared/Pagination";
-import SearchField from "@/Shared/SearchField";
-export default function Index({ users, fields, filters }) {
-	const settings = {
-		link: "/admin/users/",
-		editable: true,
-		deletable: true,
-	};
+import Icon from "@/Shared/Svg/Icon";
+import TableSearch from "@/Components/Tables/TableSearch";
+
+export default function Index({ users, header, template }) {
+	let newHeader = [...header];
+
+	newHeader.push({
+		id: 'menu',
+		header: '',
+		cell: props => (
+			<Dropdown
+				trigger={ <Icon name="menu" className="w-6 h-6" /> }
+				childrenClasses="left-0"
+				showChevron ={ true }
+				width="12"
+			>
+				<DropdownPanel>
+					<div>
+						<DropdownItem
+							href={ 'users/' + props.row._valuesCache.id + '/edit' }
+							label="Edit"
+							type="link"
+						/>
+					</div>
+					<div>
+						<DropdownItem
+							label="Delete"
+						/>
+					</div>
+				</DropdownPanel>
+			</Dropdown>
+		)
+	})
+
+	const [table, data, setData, globalFilter, setGlobalFilter, newTemplate, sorting] = useTable(users.data, newHeader, template);
+
+	const previous = usePrevious(sorting);
+
+    useEffect(() => {
+		if (previous) {
+			const timeout = setTimeout(() => {
+				Inertia.get(route('admin.templates'), {
+					'template': newTemplate,
+					'route': 'admin.users.index',
+				});
+			}, 0);
+
+			return () => clearTimeout(timeout)
+		}
+	}, [sorting]);
 
 	return (
 		<>
-			<Head title={ transChoice('common.users', 2) } />
+			<Head title={ transChoice('common.users', 1) } />
 
-			<div className="space-y-4">
-				<section id="table-header">
+			<div className="flex flex-col h-full space-y-4">
+			<section id="table-header">
 					<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-4 md:gap-y-0 content-start place-content-between">
 						<div className="col-span-1 self-center place-self-start">
 							<span className="text-xl">
@@ -31,17 +79,17 @@ export default function Index({ users, fields, filters }) {
 							</Link>
 						</div>
 						<div className="col-span-1 sm:col-span-2 md:col-span-1 md:order-1 place-self-center w-full">
-							<SearchField filters={ filters } />
+							<TableSearch
+								value={ globalFilter ?? '' }
+								onChange={ value => setGlobalFilter(value) }
+							/>
 						</div>
 					</div>
 				</section>
 
 				{ users.meta.items > 0 ? (
 					<>
-						<Table
-							data={ users.data }
-							settings={ settings }
-						/>
+						<NewTable table={ table } />
 
 						<Pagination data={ users.meta } />
 					</>
