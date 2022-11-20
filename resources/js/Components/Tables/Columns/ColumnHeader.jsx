@@ -48,7 +48,7 @@ export default function ColumnHeader ({ header, table }) {
                 className="grid grid-cols-1"
                 ref={ previewRef }
             >
-                <div className="span-col-1 flex">
+                <div className="col-span-1 flex">
                     <button
                         className="ml-2"
                         ref={ dragRef }
@@ -86,7 +86,7 @@ export default function ColumnHeader ({ header, table }) {
                 </div>
                 {
                     header.column.getCanFilter() && (
-                        <div className="block mr-2">
+                        <div className="col-span-1 mr-2">
                             <ColumnFilter
                                 table={ table }
                                 column={ column }
