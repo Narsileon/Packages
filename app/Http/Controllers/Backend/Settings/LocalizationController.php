@@ -41,16 +41,26 @@ class LocalizationController extends Controller
             ]);
         }
 
+        $customLocalization['dictionary'] = $test;
+
         return Inertia::render('Backend/Dictionary/Index', compact(
             'header',
             'template',
-            'test',
+            'customLocalization',
         ));
     }
 
     public function update(LocalizationUpdateRequest $request, Localization $localization)
     {
         $attributes = $request->validated();
+
+        $customLocalization = (object)[];
+
+        foreach($attributes['dictionary'] as $item) {
+            $customLocalization->{ $item['key'] } = $item['custom_value'];
+        }
+
+        $attributes['dictionary'] = (object)$customLocalization;
 
         $localization->update($attributes);
 

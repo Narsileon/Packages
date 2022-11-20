@@ -9,7 +9,7 @@ import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 import { useTable } from "@/narsil-table";
 import { upperFirst } from "lodash";
 
-export default function Index({ test, header, template }) {
+export default function Index({ customLocalization, header, template }) {
 	let newHeader = [...header].map(object => {
 		if (object.id === 'custom_value') {
 		  	return {
@@ -26,7 +26,7 @@ export default function Index({ test, header, template }) {
 		}
 	});
 
-	const [table, data, setData, globalFilter, setGlobalFilter, newTemplate, sorting] = useTable(test, newHeader, template);
+	const [table, data, setData, globalFilter, setGlobalFilter, newTemplate, sorting] = useTable(customLocalization.dictionary, newHeader, template);
 
 	const previous = usePrevious(sorting);
 
@@ -58,7 +58,7 @@ export default function Index({ test, header, template }) {
 	}, [sorting]);
 
 	function update() {
-		Inertia.patch(`dictionary/${ customLocalization.user_id }`, { dictionary: tableData});
+		Inertia.patch(`dictionary/${ customLocalization.user_id }`, { dictionary: data});
 	};
 
 	return (
@@ -112,6 +112,7 @@ const CustomValue = ({ value, handleChange }) => {
 				show ? (
 					<textarea
 						className="field h-8 w-full p-0 m-0"
+						value={ value }
 						onChange={ (event) => handleChange(event) }
 						autoFocus
 					/>
