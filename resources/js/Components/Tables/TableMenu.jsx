@@ -1,8 +1,10 @@
 import { usePage } from "@inertiajs/inertia-react";
 import { Dropdown, DropdownItem, DropdownPanel} from "@/Components/Elements/Dropdowns";
 import Icon from "@/Shared/Svg/Icon";
+import { trans } from "@/narsil-localization";
 
 export default function TableMenu({ id, options = {
+    showable: true,
     editable: true,
     deletable: true,
 }}) {
@@ -17,10 +19,19 @@ export default function TableMenu({ id, options = {
         >
             <DropdownPanel>
                 {
+                    options.showable && (
+                        <DropdownItem
+                            href={ `${ url }/${ id }` }
+                            label={ trans('common.view') }
+                            type="link"
+                        />
+                    )
+                }
+                {
                     options.editable && (
                         <DropdownItem
                             href={ `${ url }/${ id }/edit` }
-                            label="Edit"
+                            label={ trans('common.edit') }
                             type="link"
                         />
                     )
@@ -28,7 +39,7 @@ export default function TableMenu({ id, options = {
                 {
                     options.deletable && (
                         <DropdownItem
-                            label="Delete"
+                            label={ trans('common.delete') }
                         />
                     )
                 }

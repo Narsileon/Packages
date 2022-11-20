@@ -55,5 +55,6 @@ return [
     'update'                => 'mettre à jour',
     'users'                 => 'utilisateur|utilisateurs',
     'values'                => 'valeur|valeurs',
+    'view'                  => 'voir',
     'yes'                   => 'oui',
 ];

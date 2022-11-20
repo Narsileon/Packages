@@ -1,5 +1,4 @@
 import { Link } from "@inertiajs/inertia-react";
-import { trans } from "@/narsil-localization";
 import { upperFirst } from "lodash";
 
 export default function DropdownItem({
@@ -8,7 +7,7 @@ export default function DropdownItem({
     children,
     ...props
 }) {
-    children = label != null ? upperFirst(trans(label)) : children
+    children = label != null ? upperFirst(label) : children
 
     switch (type) {
         case "button":

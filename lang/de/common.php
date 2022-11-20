@@ -55,5 +55,6 @@ return [
     'update'                => 'aktualisieren',
     'users'                 => 'Benutzer|Benutzer',
     'values'                => 'Wert|Werte',
+    'view'                  => 'anzeigen',
     'yes'                   => 'ja',
 ];

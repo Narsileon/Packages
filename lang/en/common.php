@@ -55,5 +55,6 @@ return [
     'update'                => 'update',
     'users'                 => 'user|users',
     'values'                => 'value|values',
+    'view'                  => 'view',
     'yes'                   => 'yes',
 ];
