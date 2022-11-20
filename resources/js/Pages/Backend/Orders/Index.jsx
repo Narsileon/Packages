@@ -17,7 +17,7 @@ export default function Index({ orders, header, template }) {
 		)
 	})
 
-	const [table, data, setData, globalFilter, setGlobalFilter, newTemplate, sorting] = useTable(orders.data, newHeader, template);
+	const [table, data, setData, globalFilter, setGlobalFilter] = useTable(orders.data, newHeader, template);
 
 	return (
 		<>

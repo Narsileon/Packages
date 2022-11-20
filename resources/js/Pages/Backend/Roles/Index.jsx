@@ -17,7 +17,7 @@ export default function Index({ roles, header, template }) {
 		)
 	})
 
-	const [table, data, setData, globalFilter, setGlobalFilter, newTemplate, sorting] = useTable(roles.data, newHeader, template);
+	const [table, data, setData, globalFilter, setGlobalFilter] = useTable(roles.data, newHeader, template);
 
 	return (
 		<>

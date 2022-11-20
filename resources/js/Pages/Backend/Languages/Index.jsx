@@ -24,7 +24,7 @@ export default function Index({ languages, header, template }) {
 		}
 	});
 
-	const [table, data, setData, globalFilter, setGlobalFilter, newTemplate, sorting] = useTable(languages.data, newHeader, template);
+	const [table, data, setData, globalFilter, setGlobalFilter] = useTable(languages.data, newHeader, template);
 
 	function handleChange(event, id) {
 		let temp = [...data];

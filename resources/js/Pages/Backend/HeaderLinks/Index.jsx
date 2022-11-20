@@ -17,7 +17,7 @@ export default function Index({ headerLinks, header, template }) {
 		)
 	})
 
-	const [table, data, setData, globalFilter, setGlobalFilter, newTemplate, sorting] = useTable(headerLinks.data, newHeader, template);
+	const [table, data, setData, globalFilter, setGlobalFilter] = useTable(headerLinks.data, newHeader, template);
 
 	return (
 		<>

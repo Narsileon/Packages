@@ -93,5 +93,5 @@ export const useTable = (
 		}
 	}, [sorting, globalFilter]);
 
-    return [table, data, setTableData, globalFilter, setGlobalFilter, tableTemplate, sorting];
+    return [table, data, setTableData, globalFilter, setGlobalFilter];
 }

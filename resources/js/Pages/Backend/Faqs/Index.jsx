@@ -5,7 +5,6 @@ import Table from "@/Components/Tables/Table";
 import TableMenu from "@/Components/Tables/TableMenu";
 import TableSearch from "@/Components/Tables/TableSearch";
 import Pagination from "@/Shared/Pagination";
-import { trueGray } from "tailwindcss/colors";
 
 export default function Index({ faqs, header, template }) {
 	let newHeader = [...header];
@@ -20,7 +19,7 @@ export default function Index({ faqs, header, template }) {
 		disableSortBy: true,
 	})
 
-	const [table, data, setData, globalFilter, setGlobalFilter, newTemplate, sorting] = useTable(faqs.data, newHeader, template);
+	const [table, data, setData, globalFilter, setGlobalFilter] = useTable(faqs.data, newHeader, template);
 
 	return (
 		<>
