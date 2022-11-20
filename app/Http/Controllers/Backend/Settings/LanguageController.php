@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend\Settings;
 
 #region USE
 
+use App\Constants\Tables;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Backend\Settings\LanguageResource;
 use App\Models\Backend\Language;
