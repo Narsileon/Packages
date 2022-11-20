@@ -67,10 +67,16 @@ export default function ColumnHeader ({ header, table }) {
                         }
                     </span>
                     {
-                        {
-                            asc: <Sort className="w-5 h-5" order="asc" />,
-                            desc: <Sort className="w-5 h-5" order="desc" />,
-                        } [header.column.getIsSorted()] ?? <Sort className="w-5 h-5" />
+                        header.column.getCanSort() && (
+                            <span>
+                                {
+                                    {
+                                        asc: <Sort className="w-5 h-5" order="asc" />,
+                                        desc: <Sort className="w-5 h-5" order="desc" />,
+                                    } [header.column.getIsSorted()] ?? <Sort className="w-5 h-5" />
+                                }
+                            </span>
+                        )
                     }
                 </div>
             </div>

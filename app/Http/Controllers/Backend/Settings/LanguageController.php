@@ -28,7 +28,7 @@ class LanguageController extends Controller
 
         $template = $user->{ User::ATTRIBUTE_TEMPLATES } ? $user->{ User::ATTRIBUTE_TEMPLATES }->{ Template::FIELD_LANGUAGES } : LanguageTemplate::DEFAULT_TEMPLATE;
 
-        $languages = LanguageResource::collection(Language::search(array_key_exists('globalSearch', $template) ? $template['globalSearch'] : '')->get());
+        $languages = LanguageResource::collection(Language::search(array_key_exists('globalFilter', $template) ? $template['globalFilter'] : '')->get());
 
         return Inertia::render('Backend/Languages/Index', compact(
             'header',

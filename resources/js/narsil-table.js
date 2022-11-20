@@ -4,7 +4,12 @@ import { Inertia } from "@inertiajs/inertia";
 import { getCoreRowModel, getFilteredRowModel, getSortedRowModel, sortingFns, useReactTable } from "@tanstack/react-table";
 import { rankItem, compareItems } from '@tanstack/match-sorter-utils'
 
-export const useTable = (tableData, tableColumns, template) => {
+export const useTable = (
+	tableData,
+	tableColumns,
+	template,
+	filtering = 'backend',
+) => {
 	if (template.sizing) {
 		tableColumns.forEach(object => {
 			if (template.sizing[object.id]) {
@@ -58,7 +63,7 @@ export const useTable = (tableData, tableColumns, template) => {
 		defaultColumn: defaultColumn,
 		columnResizeMode: columnResizeMode,
 		onGlobalFilterChange: setGlobalFilter,
-		globalFilterFn: fuzzyFilter,
+		globalFilterFn: filtering == 'frontend' ? fuzzyFilter : null,
 		getCoreRowModel: getCoreRowModel(),
         getFilteredRowModel: getFilteredRowModel(),
 		getSortedRowModel: getSortedRowModel(),
@@ -71,7 +76,7 @@ export const useTable = (tableData, tableColumns, template) => {
         'order': columnOrder,
         'sizing': { ...template.sizing, ...table.getState().columnSizing },
         'sorting': sorting,
-        'globalSearch': globalFilter,
+        'globalFilter': globalFilter,
     };
 
 	const previous = usePrevious(sorting);
@@ -86,7 +91,7 @@ export const useTable = (tableData, tableColumns, template) => {
 
 			return () => clearTimeout(timeout)
 		}
-	}, [sorting]);
+	}, [sorting, globalFilter]);
 
     return [table, data, setTableData, globalFilter, setGlobalFilter, tableTemplate, sorting];
 }

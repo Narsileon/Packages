@@ -10,7 +10,6 @@ use App\Models\Backend\Template;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
 
 #endregion
 
@@ -43,7 +42,7 @@ class TemplateController extends Controller
             ]);
         }
 
-        return Redirect::back();
+        return back();
     }
 
     #endregion
