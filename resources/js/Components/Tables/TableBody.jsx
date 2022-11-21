@@ -9,7 +9,7 @@ export default function TableBody({ table }) {
                         {
                             row.getVisibleCells().map(cell => (
                                 <td
-                                    className={ `${ cell.column.id === 'menu' ? 'sticky left-0 z-10 ' : '' }` }
+                                    className={ `${ cell.column.id === 'menu' ? 'sticky left-0 z-10' : '' }` }
                                     key={ cell.id }
                                     style={{
                                         width: cell.column.getSize(),
@@ -17,7 +17,7 @@ export default function TableBody({ table }) {
                                         background: 'inherit',
                                     }}
                                 >
-                                    <div className="w-full truncate">
+                                    <div className="h-full w-full truncate">
                                         { flexRender(cell.column.columnDef.cell, cell.getContext()) }
                                     </div>
                                 </td>
