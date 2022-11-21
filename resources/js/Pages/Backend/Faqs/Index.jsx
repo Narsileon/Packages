@@ -2,9 +2,9 @@ import { Head, Link } from "@inertiajs/inertia-react";
 import { trans } from "@/narsil-localization";
 import { useTable } from "@/narsil-table";
 import Table from "@/Components/Tables/Table";
+import TableHeader from "@/Components/Tables/TableHeader";
 import TableMenu from "@/Components/Tables/TableMenu";
 import Pagination from "@/Shared/Pagination";
-import TableHeader from "@/Components/Tables/TableHeader";
 
 export default function Index({ faqs, header, template }) {
 	let newHeader = [...header];
