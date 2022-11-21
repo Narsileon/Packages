@@ -33,14 +33,14 @@ export const useTable = (
     const [globalFilter, setGlobalFilter] = useState(template.globalFilter);
 	const [columnFilters, setColumnFilters] = useState([]);
     const [columnOrder, setOrder] = useState(template.order);
-    const [sorting, setSorting] = useState(template.sorting)
+    const [sorting, setSorting] = useState(template.sorting);
 
 	const defaultColumn = {
 		minSize: 100,
 		maxSize: 300,
-	}
+	};
 
-    const columnResizeMode = 'onChange'
+    const columnResizeMode = 'onChange';
 
     const fuzzyFilter = (row, columnId, value, addMeta) => {
 		const itemRank = rankItem(row.getValue(columnId), value)
@@ -48,7 +48,7 @@ export const useTable = (
 		addMeta({ itemRank })
 
 		return itemRank.passed
-	}
+	};
 
     const fuzzySort = (rowA, rowB, columnId) => {
 		let dir = 0
@@ -58,7 +58,7 @@ export const useTable = (
 		}
 
 		return dir === 0 ? sortingFns.alphanumeric(rowA, rowB, columnId) : dir
-	}
+	};
 
 	const table = useReactTable({
 		data,
@@ -98,6 +98,11 @@ export const useTable = (
 	const previousOrder = usePrevious(columnOrder);
 	const previousSorting = usePrevious(sorting);
 	const previousGlobalFilter = usePrevious(globalFilter);
+
+	useEffect(() => {
+		setTableData(tableData);
+	}, [tableData]);
+
 
 	useEffect(() => {
 		if (previousGlobalFilter || previousOrder || previousSorting) {
