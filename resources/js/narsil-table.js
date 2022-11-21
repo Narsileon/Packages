@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { usePrevious } from "react-use";
 import { Inertia } from "@inertiajs/inertia";
+import { rankItem, compareItems } from '@tanstack/match-sorter-utils'
 
 import {
 	getCoreRowModel,
@@ -12,11 +13,6 @@ import {
 	sortingFns,
 	useReactTable
 } from "@tanstack/react-table";
-
-import {
-	rankItem,
-	compareItems
-} from '@tanstack/match-sorter-utils'
 
 export const useTable = (
 	tableData,
@@ -99,19 +95,21 @@ export const useTable = (
         'globalFilter': globalFilter,
     };
 
-	const previous = usePrevious(sorting);
+	const previousOrder = usePrevious(columnOrder);
+	const previousSorting = usePrevious(sorting);
+	const previousGlobalFilter = usePrevious(globalFilter);
 
 	useEffect(() => {
-		if (previous) {
+		if (previousGlobalFilter || previousOrder || previousSorting) {
 			const timeout = setTimeout(() => {
 				Inertia.get(route('admin.templates'), {
 					'template': tableTemplate,
 				});
-			}, 0);
+			}, 500);
 
 			return () => clearTimeout(timeout)
 		}
-	}, [sorting, globalFilter]);
+	}, [columnOrder, globalFilter, sorting, table.getState().columnSizing]);
 
     return [table, data, setTableData, globalFilter, setGlobalFilter];
 }
