@@ -104,6 +104,9 @@ export const useTable = (
 			const timeout = setTimeout(() => {
 				Inertia.get(route('admin.templates'), {
 					'template': tableTemplate,
+				}, {
+					preserveScroll: true,
+					preserveState: true,
 				});
 			}, 500);
 

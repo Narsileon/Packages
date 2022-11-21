@@ -14,7 +14,10 @@ export default function Index({ orders, header, template }) {
 		header: '',
 		cell: props => (
 			<TableMenu id={ props.row.original.id } />
-		)
+		),
+		maxSize: 50,
+		disableOrderBy: true,
+		disableSortBy: true,
 	})
 
 	const [table, data, setData, globalFilter, setGlobalFilter] = useTable(orders.data, newHeader, template);

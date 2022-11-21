@@ -15,6 +15,7 @@ export default function Index({ faqs, header, template }) {
 		cell: props => (
 			<TableMenu id={ props.row.original.id } />
 		),
+		maxSize: 50,
 		disableOrderBy: true,
 		disableSortBy: true,
 	})
