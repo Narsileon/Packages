@@ -29,10 +29,13 @@ export const useTable = (
     }
 
 	const [data, setTableData] = useState(tableData);
+
     const [columns] = useState(() => [...tableColumns]);
-    const [globalFilter, setGlobalFilter] = useState(template.globalFilter);
+
 	const [columnFilters, setColumnFilters] = useState([]);
     const [columnOrder, setOrder] = useState(template.order);
+	const [columnVisibility, setColumnVisibility] = useState(template.visibility);
+	const [globalFilter, setGlobalFilter] = useState(template.globalFilter);
     const [sorting, setSorting] = useState(template.sorting);
 
 	const defaultColumn = {
@@ -67,24 +70,26 @@ export const useTable = (
 			fuzzy: fuzzyFilter,
 		},
 		state: {
-			columnOrder,
 			columnFilters,
+			columnOrder,
+			columnVisibility,
 			globalFilter,
 			sorting,
 		},
 		defaultColumn: defaultColumn,
 		columnResizeMode: columnResizeMode,
-		onGlobalFilterChange: setGlobalFilter,
-		onColumnFiltersChange: setColumnFilters,
 		globalFilterFn: backend ? fuzzyFilter : null,
 		getCoreRowModel: getCoreRowModel(),
         getFilteredRowModel: getFilteredRowModel(),
 		getSortedRowModel: getSortedRowModel(),
-        onColumnOrderChange: setOrder,
-        onSortingChange: setSorting,
 		getFacetedRowModel: getFacetedRowModel(),
 		getFacetedUniqueValues: getFacetedUniqueValues(),
 		getFacetedMinMaxValues: getFacetedMinMaxValues(),
+		onColumnFiltersChange: setColumnFilters,
+		onColumnOrderChange: setOrder,
+		onColumnVisibilityChange: setColumnVisibility,
+		onGlobalFilterChange: setGlobalFilter,
+        onSortingChange: setSorting,
 	});
 
     const tableTemplate = {
@@ -92,10 +97,12 @@ export const useTable = (
         'order': columnOrder,
         'sizing': { ...template.sizing, ...table.getState().columnSizing },
         'sorting': sorting,
+		'visibility': columnVisibility,
         'globalFilter': globalFilter,
     };
 
 	const previousOrder = usePrevious(columnOrder);
+	const previousVisiblity = usePrevious(columnVisibility);
 	const previousSorting = usePrevious(sorting);
 	const previousGlobalFilter = usePrevious(globalFilter);
 
@@ -103,9 +110,8 @@ export const useTable = (
 		setTableData(tableData);
 	}, [tableData]);
 
-
 	useEffect(() => {
-		if (previousGlobalFilter || previousOrder || previousSorting) {
+		if (previousGlobalFilter || previousOrder || previousSorting || previousVisiblity) {
 			const timeout = setTimeout(() => {
 				Inertia.get(route('admin.templates'), {
 					'template': tableTemplate,
@@ -117,7 +123,7 @@ export const useTable = (
 
 			return () => clearTimeout(timeout)
 		}
-	}, [columnOrder, globalFilter, sorting, table.getState().columnSizing]);
+	}, [columnOrder, columnVisibility, globalFilter, sorting, table.getState().columnSizing]);
 
     return [table, data, setTableData, globalFilter, setGlobalFilter];
 }

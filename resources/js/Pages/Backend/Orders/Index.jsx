@@ -4,8 +4,8 @@ import { useTable } from "@/narsil-table";
 import Table from "@/Components/Tables/Table";
 import TableHeader from "@/Components/Tables/TableHeader";
 import TableMenu from "@/Components/Tables/TableMenu";
+import ColumnVisibility from "@/Components/Tables/Columns/ColumnVisibility";
 import Pagination from "@/Shared/Pagination";
-
 
 export default function Index({ orders, header, template }) {
 	let newHeader = [...header];
@@ -39,6 +39,7 @@ export default function Index({ orders, header, template }) {
 					>
 						{ trans('Create :resource', { 'resource': trans('common.new_order') }) }
 					</Link>
+					<ColumnVisibility table={ table } />
 				</TableHeader>
 
 				{ orders.meta.items > 0 ? (

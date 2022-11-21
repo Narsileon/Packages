@@ -19,6 +19,7 @@ abstract class Tables
     public const PROPERTY_NAME = 'name';
     public const PROPERTY_ORDER = 'order';
     public const PROPERTY_SORTING = 'sorting';
+    public const PROPERTY_VISIBILITY = 'visibility';
 
     public const ORDER_ASC = 'asc';
     public const ORDER_DESC = 'desc';

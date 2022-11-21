@@ -32,6 +32,18 @@ class TemplateController extends Controller
                 ]
             );
 
+            if (array_key_exists(Tables::PROPERTY_VISIBILITY, $template))
+            {
+                $visibility =  $template[Tables::PROPERTY_VISIBILITY];
+
+                foreach($visibility as $key=>$value)
+                {
+                    $visibility[$key] = $value == 'true' ? true : false;
+                }
+
+                $template[Tables::PROPERTY_VISIBILITY] = $visibility;
+            }
+
             $user->{ User::ATTRIBUTE_TEMPLATES}->update([$template[Tables::PROPERTY_NAME] => $template]);
         }
 

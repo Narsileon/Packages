@@ -1,5 +1,4 @@
 import TableSearch from "@/Components/Tables/TableFilter";
-import Icon from "@/Shared/Svg/Icon";
 
 export default function TableHeader({
     title,
@@ -17,12 +16,6 @@ export default function TableHeader({
                 </div>
                 <div className="flex items-center space-x-2 col-span-1 md:order-2 self-center place-self-end">
                     { children }
-                    <button className="primary-button">
-                        <Icon
-                            className="w-6 h-6"
-                            name="cog"
-                        />
-                    </button>
                 </div>
 
                 <div className="col-span-1 sm:col-span-2 md:col-span-1 md:order-1 place-self-center w-full">
