@@ -4,7 +4,7 @@ import { useTable } from "@/narsil-table";
 import Table from "@/Components/Tables/Table";
 import TableHeader from "@/Components/Tables/TableHeader";
 import TableMenu from "@/Components/Tables/TableMenu";
-import ColumnVisibility from "@/Components/Tables/Columns/ColumnVisibility";
+import TableSettings from "@/Components/Tables/TableSettings";
 import Pagination from "@/Shared/Pagination";
 
 export default function Index({ footerLinks, header, template }) {
@@ -39,7 +39,7 @@ export default function Index({ footerLinks, header, template }) {
 					>
 						{ trans('Create :resource', { 'resource': trans('common.new_footer_link') }) }
 					</Link>
-					<ColumnVisibility table={ table } />
+					<TableSettings table={ table } />
 				</TableHeader>
 
 				{ footerLinks.meta.items > 0 ? (
