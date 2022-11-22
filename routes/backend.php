@@ -26,17 +26,17 @@ Route::group([
     Route::get('dashboard', DashboardController::class)->name('dashboard');
 
     // Management
-    Route::resource('users', UserController::class)->can(Permissions::USERS_VIEW);
-    Route::resource('roles', RoleController::class)->can(Permissions::ROLES_VIEW);
+    Route::resource('users', UserController::class);
+    Route::resource('roles', RoleController::class);
 
     // Back office
     Route::get('calendar', CalendarController::class)->name('calendar');
-    Route::resource('orders', OrderController::class)->can(Permissions::ORDERS_VIEW);
+    Route::resource('orders', OrderController::class);
 
     // Front office
-    Route::resource('header_links', HeaderLinkController::class)->can(Permissions::HEADER_LINKS_VIEW);
-    Route::resource('footer_links', FooterLinkController::class)->can(Permissions::FOOTER_LINKS_VIEW);
-    Route::resource('faqs', FaqController::class)->can(Permissions::FAQS_VIEW);
+    Route::resource('header_links', HeaderLinkController::class);
+    Route::resource('footer_links', FooterLinkController::class);
+    Route::resource('faqs', FaqController::class);
 
     // Settings
     Route::controller(LanguageController::class)->group(function () {

@@ -21,8 +21,12 @@ use Inertia\Inertia;
 
 class OrderController extends Controller
 {
+    #region PUBLIC METHODS
+
     public function index()
     {
+        $this->authorize('view', Order::class);
+
         $header = OrderTemplate::COLUMNS;
 
         $user = Auth::user();
@@ -43,11 +47,15 @@ class OrderController extends Controller
 
     public function create()
     {
+        $this->authorize('create', Order::class);
+
         return Inertia::render('Backend/Orders/Create');
     }
 
     public function store(OrderCreateRequest $request)
     {
+        $this->authorize('create', Order::class);
+
         $attributes = $request->validated();
 
         Faq::create($attributes);
@@ -57,6 +65,8 @@ class OrderController extends Controller
 
     public function show(Order $order)
     {
+        $this->authorize('view', Order::class);
+
         return Inertia::render('Backend/Orders/Show', compact(
             'order',
         ));
@@ -64,6 +74,8 @@ class OrderController extends Controller
 
     public function edit(Order $order)
     {
+        $this->authorize('update', Order::class);
+
         return Inertia::render('Backend/Orders/Edit', compact(
             'order'
         ));
@@ -71,6 +83,8 @@ class OrderController extends Controller
 
     public function update(OrderUpdateRequest $request, Order $order)
     {
+        $this->authorize('update', Order::class);
+
         $attributes = $request->validated();
 
         $order->update($attributes);
@@ -80,8 +94,12 @@ class OrderController extends Controller
 
     public function destroy(Order $order)
     {
+        $this->authorize('delete', Order::class);
+
         $order->delete();
 
         return back();
     }
+
+    #endregion
 }

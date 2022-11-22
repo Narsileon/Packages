@@ -54,14 +54,18 @@ export default function Formular({
                         error={ errors.email}
                         setData={ setData }
                     />
-                    <FormInput
-                        id="password"
-                        label={ trans('validation.attributes.password') }
-                        type="password"
-                        value={ data.password}
-                        error={ errors.password}
-                        setData={ setData }
-                    />
+                    {
+                        data.password && (
+                            <FormInput
+                                id="password"
+                                label={ trans('validation.attributes.password') }
+                                type="password"
+                                value={ data.password}
+                                error={ errors.password}
+                                setData={ setData }
+                            />
+                        )
+                    }
                     <FormInput
                         id="last_name"
                         label={ trans('validation.attributes.last_name') }

@@ -28,7 +28,6 @@ export default function Edit({ user, roles, permissions }) {
     const { data, setData, transform, patch, processing, errors } = useForm({
         username: user.data.username,
         email: user.data.email,
-		password: user.data.password,
         last_name: user.data.last_name,
         first_name: user.data.first_name,
 		roles: initializeRoles(),

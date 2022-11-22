@@ -22,6 +22,11 @@ class FaqPolicy
         return $user->hasRole(Roles::SUPER_ADMIN) ? true : false;
     }
 
+    public function view(User $user) : bool
+    {
+        return $user->hasPermissionTo(Permissions::FAQS_VIEW) ? true : false;
+    }
+
     public function create(User $user) : bool
     {
         return $user->hasPermissionTo(Permissions::FAQS_CREATE) ? true : false;

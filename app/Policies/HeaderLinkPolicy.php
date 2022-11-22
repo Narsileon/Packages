@@ -22,6 +22,11 @@ class HeaderLinkPolicy
         return $user->hasRole(Roles::SUPER_ADMIN) ? true : false;
     }
 
+    public function view(User $user) : bool
+    {
+        return $user->hasPermissionTo(Permissions::FOOTER_LINKS_VIEW) ? true : false;
+    }
+
     public function create(User $user) : bool
     {
         return $user->hasPermissionTo(Permissions::HEADER_LINKS_CREATE) ? true : false;

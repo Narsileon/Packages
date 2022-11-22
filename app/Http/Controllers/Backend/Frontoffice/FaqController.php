@@ -24,6 +24,8 @@ class FaqController extends Controller
 
     public function index()
     {
+        $this->authorize('view', Faq::class);
+
         $header = FaqTemplate::COLUMNS;
 
         $user = Auth::user();
@@ -44,11 +46,15 @@ class FaqController extends Controller
 
     public function create()
     {
+        $this->authorize('create', Faq::class);
+
         return Inertia::render('Backend/Faqs/Create');
     }
 
     public function store(FaqCreateRequest $request)
     {
+        $this->authorize('create', Faq::class);
+
         $attributes = $request->validated();
 
         Faq::create($attributes);
@@ -58,6 +64,8 @@ class FaqController extends Controller
 
     public function show(Faq $faq)
     {
+        $this->authorize('view', Faq::class);
+
         return Inertia::render('Backend/Faqs/Show', compact(
             'faq',
         ));
@@ -65,6 +73,8 @@ class FaqController extends Controller
 
     public function edit(Faq $faq)
     {
+        $this->authorize('update', Faq::class);
+
         return Inertia::render('Backend/Faqs/Edit', compact(
             'faq'
         ));
@@ -72,6 +82,8 @@ class FaqController extends Controller
 
     public function update(FaqUpdateRequest $request, Faq $faq)
     {
+        $this->authorize('update', Faq::class);
+
         $attributes = $request->validated();
 
         $faq->update($attributes);
@@ -81,6 +93,8 @@ class FaqController extends Controller
 
     public function destroy(Faq $faq)
     {
+        $this->authorize('delete', Faq::class);
+
         $faq->delete();
 
         return back();

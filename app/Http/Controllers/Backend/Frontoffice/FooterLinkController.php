@@ -24,6 +24,8 @@ class FooterLinkController extends Controller
 
     public function index()
     {
+        $this->authorize('view', FooterLink::class);
+
         $header = FooterLinkTemplate::COLUMNS;
 
         $user = Auth::user();
@@ -44,11 +46,15 @@ class FooterLinkController extends Controller
 
     public function create()
     {
+        $this->authorize('create', FooterLink::class);
+
         return Inertia::render('Backend/FooterLinks/Create');
     }
 
     public function store(FooterLinkCreateRequest $request)
     {
+        $this->authorize('create', FooterLink::class);
+
         $attributes = $request->validated();
 
         FooterLink::create($attributes);
@@ -58,6 +64,8 @@ class FooterLinkController extends Controller
 
     public function show(FooterLink $footerLink)
     {
+        $this->authorize('view', FooterLink::class);
+
         return Inertia::render('Backend/FooterLinks/Show', compact(
             'footerLink',
         ));
@@ -65,6 +73,8 @@ class FooterLinkController extends Controller
 
     public function edit(FooterLink $footerLink)
     {
+        $this->authorize('update', FooterLink::class);
+
         return Inertia::render('Backend/FooterLinks/Edit', compact(
             'footerLink'
         ));
@@ -72,6 +82,8 @@ class FooterLinkController extends Controller
 
     public function update(FooterLinkUpdateRequest $request, FooterLink $footerLink)
     {
+        $this->authorize('update', FooterLink::class);
+
         $attributes = $request->validated();
 
         $footerLink->update($attributes);
@@ -81,6 +93,8 @@ class FooterLinkController extends Controller
 
     public function destroy(FooterLink $footerLink)
     {
+        $this->authorize('delete', FooterLink::class);
+
         $footerLink->delete();
 
         return back();

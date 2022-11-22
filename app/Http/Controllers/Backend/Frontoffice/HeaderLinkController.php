@@ -24,6 +24,8 @@ class HeaderLinkController extends Controller
 
     public function index()
     {
+        $this->authorize('view', HeaderLink::class);
+
         $header = HeaderLinkTemplate::COLUMNS;
 
         $user = Auth::user();
@@ -44,11 +46,15 @@ class HeaderLinkController extends Controller
 
     public function create()
     {
+        $this->authorize('create', HeaderLink::class);
+
         return Inertia::render('Backend/HeaderLinks/Create');
     }
 
     public function store(HeaderLinkCreateRequest $request)
     {
+        $this->authorize('create', HeaderLink::class);
+
         $attributes = $request->validated();
 
         HeaderLink::create($attributes);
@@ -58,6 +64,8 @@ class HeaderLinkController extends Controller
 
     public function show(HeaderLink $headerLink)
     {
+        $this->authorize('view', HeaderLink::class);
+
         return Inertia::render('Backend/HeaderLinks/Show', compact(
             'headerLink',
         ));
@@ -65,6 +73,8 @@ class HeaderLinkController extends Controller
 
     public function edit(HeaderLink $headerLink)
     {
+        $this->authorize('update', HeaderLink::class);
+
         return Inertia::render('Backend/HeaderLinks/Edit', compact(
             'headerLink'
         ));
@@ -72,6 +82,8 @@ class HeaderLinkController extends Controller
 
     public function update(HeaderLinkUpdateRequest $request, HeaderLink $headerLink)
     {
+        $this->authorize('update', HeaderLink::class);
+
         $attributes = $request->validated();
 
         $headerLink->update($attributes);
@@ -81,6 +93,8 @@ class HeaderLinkController extends Controller
 
     public function destroy(HeaderLink $headerLink)
     {
+        $this->authorize('delete', HeaderLink::class);
+
         $headerLink->delete();
 
         return back();

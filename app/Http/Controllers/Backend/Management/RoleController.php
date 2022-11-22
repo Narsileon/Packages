@@ -28,6 +28,8 @@ class RoleController extends Controller
 
     public function index()
     {
+        $this->authorize('view', UserRole::class);
+
         $header = RoleTemplate::COLUMNS;
 
         $user = Auth::user();
@@ -48,6 +50,8 @@ class RoleController extends Controller
 
     public function create()
     {
+        $this->authorize('create', UserRole::class);
+
         $permissions = $this->getAllPermissions();
 
         return Inertia::render('Backend/Roles/Create', compact(
@@ -57,6 +61,8 @@ class RoleController extends Controller
 
     public function store(UserRoleCreateRequest $request)
     {
+        $this->authorize('create', UserRole::class);
+
         $attributes = $request->validated();
 
         $role = Role::create($attributes);
@@ -68,6 +74,8 @@ class RoleController extends Controller
 
     public function show(Role $role)
     {
+        $this->authorize('view', UserRole::class);
+
         $role = new UserRoleResource($role);
 
         return Inertia::render('Backend/Roles/Show', compact(
@@ -77,6 +85,8 @@ class RoleController extends Controller
 
     public function edit(Role $role)
     {
+        $this->authorize('update', UserRole::class);
+
         $role = new UserRoleResource($role);
         $permissions = $this->getAllPermissions();
 
@@ -88,6 +98,8 @@ class RoleController extends Controller
 
     public function update(UserRoleUpdateRequest $request, Role $role)
     {
+        $this->authorize('update', UserRole::class);
+
         $attributes = $request->validated();
 
         $role->update($attributes);
@@ -98,6 +110,8 @@ class RoleController extends Controller
 
     public function destroy(Role $role)
     {
+        $this->authorize('delete', UserRole::class);
+
         $role->delete();
 
         return back()->with('success', 'role_deleted');;

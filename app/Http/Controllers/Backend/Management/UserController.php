@@ -17,8 +17,9 @@ use App\Models\User;
 use App\Models\UserPermission;
 use App\Models\UserRole;
 use App\Templates\UserTemplate;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
 
 #endregion
@@ -29,6 +30,8 @@ class UserController extends Controller
 
     public function index()
     {
+        $this->authorize('view', User::class);
+
         $header = UserTemplate::COLUMNS;
 
         $user = Auth::user();
@@ -49,6 +52,8 @@ class UserController extends Controller
 
     public function create()
     {
+        $this->authorize('create', User::class);
+
         $roles = $this->getAllRoles();
         $permissions = $this->getAllPermissions();
 
@@ -60,6 +65,8 @@ class UserController extends Controller
 
     public function store(UserCreateRequest $request)
     {
+        $this->authorize('create', User::class);
+
         $attributes = $request->validated();
 
         $user = User::create($attributes);
@@ -71,6 +78,8 @@ class UserController extends Controller
 
     public function show(User $user)
     {
+        $this->authorize('view', User::class);
+
         $user = new UserResource($user);
 
         return Inertia::render('Backend/Users/Show', compact(
@@ -80,6 +89,8 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
+        $this->authorize('update', User::class);
+
         $user = new UserResource($user);
 
         $roles = $this->getAllRoles();
@@ -94,18 +105,24 @@ class UserController extends Controller
 
     public function update(UserUpdateRequest $request, User $user)
     {
+        $this->authorize('update', User::class);
+
         $attributes = $request->validated();
 
         $user->update($attributes);
 
-        $user->syncRoles($request->get('roles', []));
-        $user->syncPermissions($request->get('permissions', []));
+        Log::debug($attributes);
+
+        $user->syncRoles(Arr::pluck($attributes['roles'], 'name'));
+        $user->syncPermissions(Arr::pluck($attributes['permissions'], 'name'));
 
         return redirect(route('admin.users.index'))->with('success', 'user_updated');
     }
 
     public function destroy(User $user)
     {
+        $this->authorize('delete', User::class);
+
         $user->delete();
 
         return back()->with('success', 'user_deleted');;

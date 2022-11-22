@@ -22,6 +22,11 @@ class UserPolicy
         return $user->hasRole(Roles::SUPER_ADMIN) ? true : false;
     }
 
+    public function view(User $user) : bool
+    {
+        return $user->hasPermissionTo(Permissions::USERS_VIEW) ? true : false;
+    }
+
     public function create(User $user) : bool
     {
         return $user->hasPermissionTo(Permissions::USERS_CREATE) ? true : false;
