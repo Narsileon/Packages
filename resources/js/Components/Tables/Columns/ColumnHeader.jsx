@@ -54,12 +54,12 @@ export default function ColumnHeader ({ header, table }) {
                     }}
                 >
                     <div
-                        className="grid grid-cols-1 mr-2"
+                        className="grid grid-cols-1 min-h-0"
                         ref={ previewRef }
                     >
                         <div className="col-span-1 flex items-center justify-between overflow-hidden" >
                             <button
-                                className="ml-2"
+                                className="ml-2 cursor-move"
                                 ref={ dragRef }
                             >
                                 <Icon
@@ -67,31 +67,32 @@ export default function ColumnHeader ({ header, table }) {
                                     name="sort-horizontal"
                                 />
                             </button>
-                            <div
-                                className={ `flex flex-grow justify-start p-2 space-x-2 truncate ${ header.column.getCanSort() ? 'cursor-pointer select-none' : '' }` }
+                            <div className={ `flex flex-grow items-center truncate ${ header.column.getCanSort() ? 'cursor-pointer select-none' : '' }` }
                                 onClick={ header.column.getToggleSortingHandler() }
                             >
-                                <span className="truncate">
-                                    {
-                                        flexRender(
-                                            upperFirst(transChoice(header.column.columnDef.header, 1)),
-                                            header.getContext()
-                                        )
-                                    }
-                                </span>
-                            </div>
-                            {
-                                header.column.getCanSort() && (
-                                    <span>
+                                <div className="flex flex-grow justify-start p-2 space-x-2 truncate">
+                                    <span className="truncate">
                                         {
-                                            {
-                                                asc: <Sort className="w-5 h-5" order="asc" />,
-                                                desc: <Sort className="w-5 h-5" order="desc" />,
-                                            } [header.column.getIsSorted()] ?? <Sort className="w-5 h-5" />
+                                            flexRender(
+                                                upperFirst(transChoice(header.column.columnDef.header, 1)),
+                                                header.getContext()
+                                            )
                                         }
                                     </span>
-                                )
-                            }
+                                </div>
+                                {
+                                    header.column.getCanSort() && (
+                                        <span>
+                                            {
+                                                {
+                                                    asc: <Sort className="w-5 h-5" order="asc" />,
+                                                    desc: <Sort className="w-5 h-5" order="desc" />,
+                                                } [header.column.getIsSorted()] ?? <Sort className="w-5 h-5" />
+                                            }
+                                        </span>
+                                    )
+                                }
+                            </div>
                         </div>
                         {
                             header.column.getCanFilter() && (

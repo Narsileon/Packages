@@ -30,10 +30,14 @@ class TemplateController extends Controller
         {
             Template::factory()->create([
                 Template::FIELD_USER_ID => $user->{ User::FIELD_ID },
+                $template[Tables::PROPERTY_NAME] => $template,
             ]);
         }
 
-        $user->{ User::ATTRIBUTE_TEMPLATES}->update([$template[Tables::PROPERTY_NAME] => $template]);
+        else
+        {
+            $user->{ User::ATTRIBUTE_TEMPLATES}->update([$template[Tables::PROPERTY_NAME] => $template]);
+        }
 
         return back();
     }

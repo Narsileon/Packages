@@ -79,7 +79,11 @@ class LocalizationService
 
     private static function getPhpLocalization($locale) : array
     {
-        return Cache::rememberForever(self::CACHE_PREFIX . 'php_' . $locale, function () use($locale)
+        $key = self::CACHE_PREFIX . 'php_' . $locale;
+
+        //Cache::forget($key);
+
+        return Cache::rememberForever($key, function () use($locale)
         {
             $files = null;
 
@@ -114,7 +118,11 @@ class LocalizationService
 
     private static function getJsonLocalization($locale) : array
     {
-        return Cache::rememberForever(self::CACHE_PREFIX . 'json_' . $locale, function () use($locale)
+        $key = self::CACHE_PREFIX . 'json_' . $locale;
+
+        //Cache::forget($key);
+
+        return Cache::rememberForever($key, function () use($locale)
         {
             $file = null;
 
