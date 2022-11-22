@@ -5,6 +5,7 @@ import { upperFirst } from "lodash";
 import Icon from "@/Shared/Svg/Icon";
 import Sort from "@/Shared/Svg/Sort";
 import ColumnFilter from "@/Components/Tables/Columns/ColumnFilter";
+import { addDays } from "@/Components/Calendars/narsil-calendar";
 
 export default function ColumnHeader ({ header, table }) {
     const { getState, setColumnOrder } = table
@@ -35,71 +36,81 @@ export default function ColumnHeader ({ header, table }) {
 	}
 
     return (
-        <th
-            className={ `relative ${ column.id === 'menu' ? 'sticky left-0' : '' } `}
-            ref={ dropRef }
-            colSpan={ header.colSpan }
-            style={{
-                opacity: isDragging ? 0.5 : 1,
-                width: header.getSize()
-            }}
-        >
-            <div
-                className="grid grid-cols-1 mr-2"
-                ref={ previewRef }
-            >
-                <div className="col-span-1 flex items-center justify-between overflow-hidden" >
-                    <button
-                        className="ml-2"
-                        ref={ dragRef }
-                    >
-                        <Icon
-                            className="w-6 h-6"
-                            name="sort-horizontal"
-                        />
-                    </button>
+        <>
+            { column.id === 'menu' ? (
+                <th
+                    className="sticky left-0 z-10"
+                    colSpan={ header.colSpan }
+                    style={{ width: header.getSize() }}
+                />
+            ) : (
+                <th
+                    className="relative"
+                    ref={ dropRef }
+                    colSpan={ header.colSpan }
+                    style={{
+                        opacity: isDragging ? 0.5 : 1,
+                        width: header.getSize()
+                    }}
+                >
                     <div
-                        className={ `flex flex-grow justify-start p-2 space-x-2 truncate ${ header.column.getCanSort() ? 'cursor-pointer select-none' : '' }` }
-                        onClick={ header.column.getToggleSortingHandler() }
+                        className="grid grid-cols-1 mr-2"
+                        ref={ previewRef }
                     >
-                        <span className="truncate">
+                        <div className="col-span-1 flex items-center justify-between overflow-hidden" >
+                            <button
+                                className="ml-2"
+                                ref={ dragRef }
+                            >
+                                <Icon
+                                    className="w-6 h-6"
+                                    name="sort-horizontal"
+                                />
+                            </button>
+                            <div
+                                className={ `flex flex-grow justify-start p-2 space-x-2 truncate ${ header.column.getCanSort() ? 'cursor-pointer select-none' : '' }` }
+                                onClick={ header.column.getToggleSortingHandler() }
+                            >
+                                <span className="truncate">
+                                    {
+                                        flexRender(
+                                            upperFirst(transChoice(header.column.columnDef.header, 1)),
+                                            header.getContext()
+                                        )
+                                    }
+                                </span>
+                            </div>
                             {
-                                flexRender(
-                                    upperFirst(transChoice(header.column.columnDef.header, 1)),
-                                    header.getContext()
+                                header.column.getCanSort() && (
+                                    <span>
+                                        {
+                                            {
+                                                asc: <Sort className="w-5 h-5" order="asc" />,
+                                                desc: <Sort className="w-5 h-5" order="desc" />,
+                                            } [header.column.getIsSorted()] ?? <Sort className="w-5 h-5" />
+                                        }
+                                    </span>
                                 )
                             }
-                        </span>
-                    </div>
-                    {
-                        header.column.getCanSort() && (
-                            <span>
-                                {
-                                    {
-                                        asc: <Sort className="w-5 h-5" order="asc" />,
-                                        desc: <Sort className="w-5 h-5" order="desc" />,
-                                    } [header.column.getIsSorted()] ?? <Sort className="w-5 h-5" />
-                                }
-                            </span>
-                        )
-                    }
-                </div>
-                {
-                    header.column.getCanFilter() && (
-                        <div className="col-span-1 mr-2">
-                            <ColumnFilter
-                                table={ table }
-                                column={ column }
-                            />
                         </div>
-                    )
-                }
-            </div>
-            <div
-                className={ `absolute right-0 top-0 h-full w-2 cursor-col-resize ${ header.column.getIsResizing() ? 'bg-red-500' : 'bg-blue-500'}` }
-                onMouseDown={ header.getResizeHandler() }
-                onTouchStart={ header.getResizeHandler() }
-            />
-        </th>
+                        {
+                            header.column.getCanFilter() && (
+                                <div className="col-span-1 mr-2">
+                                    <ColumnFilter
+                                        table={ table }
+                                        column={ column }
+                                    />
+                                </div>
+                            )
+                        }
+                    </div>
+                    <div
+                        className={ `absolute right-0 top-0 h-full w-2 cursor-col-resize ${ header.column.getIsResizing() ? 'bg-red-500' : 'bg-blue-500'}` }
+                        onMouseDown={ header.getResizeHandler() }
+                        onTouchStart={ header.getResizeHandler() }
+                    />
+                </th>
+            )}
+        </>
     )
 }
