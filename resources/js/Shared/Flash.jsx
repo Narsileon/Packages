@@ -15,20 +15,22 @@ export default function Flash() {
 
     return (
         <>
+            {/* Flash success */}
             { flash.success && visible && (
                 <Message
-                    message={ trans(`messages.success.${ flash.success }`) }
+                    className="bg-green-500 text-white"
                     icon="check"
-                    color="bg-green-500"
+                    message={ trans(`messages.success.${ flash.success }`) }
                     setVisible={ setVisible }
                 />
             )}
 
+            {/* Flash error */}
             { flash.error && visible && (
                 <Message
-                    message={ trans(`messages.errors.${ flash.error }`) }
+                    className="bg-red-500 text-white"
                     icon="danger"
-                    color="bg-red-500"
+                    message={ trans(`messages.errors.${ flash.error }`) }
                     setVisible={ setVisible }
                 />
             )}
@@ -36,25 +38,27 @@ export default function Flash() {
     );
 }
 
-const Message = ({ message, icon, color, setVisible }) => {
+const Message = ({ icon, message, setVisible, ...props }) => {
     return (
-        <div className={ `fixed bottom-4 right-4 text-white rounded ${ color }` }>
-            <div className={ `relative flex items-center justify-between` }>
-                <div className="flex items-center ml-2 mr-6 space-x-2">
-                    <Icon
-                        name={ icon }
-                        className="w-6 h-6"
-                    />
-                    <div className="py-2">
-                        { message }
+        <section id="flash-message">
+            <div { ...props}>
+                <div className={ `relative flex items-center justify-between` }>
+                    <div className="flex items-center ml-2 mr-6 space-x-2">
+                        <Icon
+                            name={ icon }
+                            className="w-6 h-6"
+                        />
+                        <div className="py-2">
+                            { message }
+                        </div>
                     </div>
-                </div>
 
-                <CloseButton
-                    className="absolute top-0 right-0 m-1 w-4 h-4"
-                    onClick={ () => setVisible(false) }
-                />
+                    <CloseButton
+                        className="absolute top-0 right-0 m-1 w-4 h-4"
+                        onClick={ () => setVisible(false) }
+                    />
+                </div>
             </div>
-        </div>
+        </section>
     );
 };

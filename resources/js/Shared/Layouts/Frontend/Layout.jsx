@@ -22,7 +22,9 @@ export default function Layout({ children }) {
                 { children }
             </section>
 
-            <Flash />
+            <div className="fixed bottom-4 right-4 rounded">
+                <Flash />
+            </div>
 
             <Footer
                 textLinks={ footerTextLinks }
