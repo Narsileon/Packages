@@ -112,19 +112,21 @@ export const useTable = (
 	}, [tableData]);
 
 	useEffect(() => {
-		if (previousGlobalFilter || previousOrder || previousSorting || previousVisiblity) {
-			console.log(columnFilters);
+		if (!frontend)
+		{
+			if (previousGlobalFilter || previousOrder || previousSorting || previousVisiblity) {
 
-			const timeout = setTimeout(() => {
-				Inertia.get(route('admin.templates'), {
-					'template': tableTemplate,
-				}, {
-					preserveScroll: true,
-					preserveState: true,
-				});
-			}, 500);
+				const timeout = setTimeout(() => {
+					Inertia.get(route('admin.templates'), {
+						'template': tableTemplate,
+					}, {
+						preserveScroll: true,
+						preserveState: true,
+					});
+				}, 500);
 
-			return () => clearTimeout(timeout)
+				return () => clearTimeout(timeout)
+			}
 		}
 	}, [columnOrder, columnVisibility, globalFilter, sorting, table.getState().columnSizing]);
 

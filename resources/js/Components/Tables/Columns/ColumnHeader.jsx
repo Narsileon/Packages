@@ -8,8 +8,16 @@ import ColumnFilter from "@/Components/Tables/Columns/ColumnFilter";
 
 export default function ColumnHeader ({ header, table }) {
     const { getState, setColumnOrder } = table
-    const { columnOrder } = getState()
     const { column } = header
+    const { columnOrder } = getState()
+
+    const [{ isDragging }, dragRef, previewRef] = useDrag({
+        collect: monitor => ({
+            isDragging: monitor.isDragging(),
+        }),
+        item: () => column,
+        type: 'column',
+    })
 
     const [, dropRef] = useDrop({
         accept: 'column',
@@ -26,14 +34,6 @@ export default function ColumnHeader ({ header, table }) {
 		return [...columnOrder];
 	}
 
-    const [{ isDragging }, dragRef, previewRef] = useDrag({
-        collect: monitor => ({
-            isDragging: monitor.isDragging(),
-        }),
-        item: () => column,
-        type: 'column',
-    })
-
     return (
         <th
             className={ `relative ${ column.id === 'menu' ? 'sticky left-0 z-10' : '' } `}
@@ -45,10 +45,10 @@ export default function ColumnHeader ({ header, table }) {
             }}
         >
             <div
-                className="grid grid-cols-1"
+                className="grid grid-cols-1 mr-2"
                 ref={ previewRef }
             >
-                <div className="col-span-1 flex">
+                <div className="col-span-1 flex items-center justify-between overflow-hidden" >
                     <button
                         className="ml-2"
                         ref={ dragRef }
@@ -59,10 +59,10 @@ export default function ColumnHeader ({ header, table }) {
                         />
                     </button>
                     <div
-                        className={ `flex justify-between w-full p-2 whitespace-nowrap space-x-2 ${ header.column.getCanSort() ? 'cursor-pointer select-none' : '' }` }
+                        className={ `flex flex-grow justify-start p-2 space-x-2 truncate ${ header.column.getCanSort() ? 'cursor-pointer select-none' : '' }` }
                         onClick={ header.column.getToggleSortingHandler() }
                     >
-                        <span>
+                        <span className="truncate">
                             {
                                 flexRender(
                                     upperFirst(transChoice(header.column.columnDef.header, 1)),
@@ -70,19 +70,19 @@ export default function ColumnHeader ({ header, table }) {
                                 )
                             }
                         </span>
-                        {
-                            header.column.getCanSort() && (
-                                <span>
-                                    {
-                                        {
-                                            asc: <Sort className="w-5 h-5" order="asc" />,
-                                            desc: <Sort className="w-5 h-5" order="desc" />,
-                                        } [header.column.getIsSorted()] ?? <Sort className="w-5 h-5" />
-                                    }
-                                </span>
-                            )
-                        }
                     </div>
+                    {
+                        header.column.getCanSort() && (
+                            <span>
+                                {
+                                    {
+                                        asc: <Sort className="w-5 h-5" order="asc" />,
+                                        desc: <Sort className="w-5 h-5" order="desc" />,
+                                    } [header.column.getIsSorted()] ?? <Sort className="w-5 h-5" />
+                                }
+                            </span>
+                        )
+                    }
                 </div>
                 {
                     header.column.getCanFilter() && (
