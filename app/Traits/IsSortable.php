@@ -5,7 +5,6 @@ namespace App\Traits;
 #region USE
 
 use App\Constants\Tables;
-use Illuminate\Support\Facades\Request;
 
 #endregion
 
@@ -13,18 +12,13 @@ trait IsSortable
 {
     #region PUBLIC METHODS
 
-    public function scopeSort($query)
+    public function scopeSort($query, $template)
     {
-        $query->when(Request::input('sort'), function ($query, $sort) {
-            $query->orderBy(Request::input('field'), $sort);
-        });
-    }
-
-    public function scopeNewSort($query, $sort)
-    {
-        if (!empty($sort))
+        if (array_key_exists(Tables::PROPERTY_SORTING, $template))
         {
-            $query->orderBy($sort[0]['id'], $sort[0]['desc'] ? Tables::ORDER_DESC : Tables::ORDER_ASC);
+            $sorting = $template[Tables::PROPERTY_SORTING][0];
+
+            $query->orderBy($sorting[Tables::FIELD_ID], $sorting[Tables::FIELD_DESC] ? Tables::ORDER_DESC : Tables::ORDER_ASC);
         }
     }
 

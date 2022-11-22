@@ -36,7 +36,7 @@ class RoleController extends Controller
 
         $roles = new UserRoleCollection(UserRole::query()
             ->search(array_key_exists(Tables::PROPERTY_GLOBAL_FILTER, $template) ? $template[Tables::PROPERTY_GLOBAL_FILTER] : '')
-            ->newSort($template[Tables::PROPERTY_SORTING])
+            ->sort($template)
             ->paginate(5));
 
         return Inertia::render('Backend/Roles/Index', compact(

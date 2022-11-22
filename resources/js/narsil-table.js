@@ -18,7 +18,7 @@ export const useTable = (
 	tableData,
 	tableColumns,
 	template,
-	backend = true,
+	frontend = false,
 ) => {
 	if (template.sizing) {
 		tableColumns.forEach(object => {
@@ -32,7 +32,7 @@ export const useTable = (
 
     const [columns] = useState(() => [...tableColumns]);
 
-	const [columnFilters, setColumnFilters] = useState([]);
+	const [columnFilters, setColumnFilters] = useState(template.columnFilters);
     const [columnOrder, setOrder] = useState(template.order);
 	const [columnVisibility, setColumnVisibility] = useState(template.visibility);
 	const [globalFilter, setGlobalFilter] = useState(template.globalFilter);
@@ -78,10 +78,10 @@ export const useTable = (
 		},
 		defaultColumn: defaultColumn,
 		columnResizeMode: columnResizeMode,
-		globalFilterFn: backend ? fuzzyFilter : null,
+		globalFilterFn: frontend ? fuzzyFilter : null,
 		getCoreRowModel: getCoreRowModel(),
         getFilteredRowModel: getFilteredRowModel(),
-		getSortedRowModel: getSortedRowModel(),
+		getSortedRowModel: frontend ? getSortedRowModel() : null,
 		getFacetedRowModel: getFacetedRowModel(),
 		getFacetedUniqueValues: getFacetedUniqueValues(),
 		getFacetedMinMaxValues: getFacetedMinMaxValues(),
@@ -94,11 +94,12 @@ export const useTable = (
 
     const tableTemplate = {
         'name': template.name,
+		'columnFilters': { ...table.getState().columnFilters },
+		'globalFilter': globalFilter,
         'order': columnOrder,
         'sizing': { ...template.sizing, ...table.getState().columnSizing },
-        'sorting': sorting,
+        'sorting': { ...table.getState().sorting },
 		'visibility': columnVisibility,
-        'globalFilter': globalFilter,
     };
 
 	const previousOrder = usePrevious(columnOrder);
@@ -112,6 +113,8 @@ export const useTable = (
 
 	useEffect(() => {
 		if (previousGlobalFilter || previousOrder || previousSorting || previousVisiblity) {
+			console.log(columnFilters);
+
 			const timeout = setTimeout(() => {
 				Inertia.get(route('admin.templates'), {
 					'template': tableTemplate,

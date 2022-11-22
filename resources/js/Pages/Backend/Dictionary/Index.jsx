@@ -26,7 +26,7 @@ export default function Index({ customLocalization, header, template }) {
 		}
 	});
 
-	const [table, data, setData, globalFilter, setGlobalFilter] = useTable(customLocalization.dictionary, newHeader, template);
+	const [table, data, setData, globalFilter, setGlobalFilter] = useTable(customLocalization.dictionary, newHeader, template, frontend = true);
 
 	const handleChange = (event, key) => {
 		let temp = [...data];

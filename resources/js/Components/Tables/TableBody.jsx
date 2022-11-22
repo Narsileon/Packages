@@ -9,7 +9,7 @@ export default function TableBody({ table }) {
                         {
                             row.getVisibleCells().map(cell => (
                                 <td
-                                    className={ `${ cell.column.id === 'menu' ? 'sticky left-0 z-10' : '' }` }
+                                    className={ `${ cell.column.id === 'menu' ? 'sticky left-0' : '' }` }
                                     key={ cell.id }
                                     style={{
                                         width: cell.column.getSize(),
