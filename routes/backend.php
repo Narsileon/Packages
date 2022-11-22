@@ -2,6 +2,7 @@
 
 #region USE
 
+use App\Acl\Permissions;
 use App\Http\Controllers\Backend\Backoffice\CalendarController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\Frontoffice\FaqController;
@@ -20,22 +21,22 @@ use Illuminate\Support\Facades\Route;
 Route::group([
     'prefix' => 'admin',
     'as' => 'admin.',
-    'middleware' => 'auth',
+    'middleware' => 'can:' . Permissions::BACKEND_VIEW,
 ], function () {
     Route::get('dashboard', DashboardController::class)->name('dashboard');
 
     // Management
-    Route::resource('users', UserController::class);
-    Route::resource('roles', RoleController::class);
+    Route::resource('users', UserController::class)->can(Permissions::USERS_VIEW);
+    Route::resource('roles', RoleController::class)->can(Permissions::ROLES_VIEW);
 
     // Back office
     Route::get('calendar', CalendarController::class)->name('calendar');
-    Route::resource('orders', OrderController::class);
+    Route::resource('orders', OrderController::class)->can(Permissions::ORDERS_VIEW);
 
     // Front office
-    Route::resource('header_links', HeaderLinkController::class);
-    Route::resource('footer_links', FooterLinkController::class);
-    Route::resource('faqs', FaqController::class);
+    Route::resource('header_links', HeaderLinkController::class)->can(Permissions::HEADER_LINKS_VIEW);
+    Route::resource('footer_links', FooterLinkController::class)->can(Permissions::FOOTER_LINKS_VIEW);
+    Route::resource('faqs', FaqController::class)->can(Permissions::FAQS_VIEW);
 
     // Settings
     Route::controller(LanguageController::class)->group(function () {

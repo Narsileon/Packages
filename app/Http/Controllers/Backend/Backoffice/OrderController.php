@@ -32,7 +32,7 @@ class OrderController extends Controller
         $orders = new OrderCollection(Order::query()
             ->search(array_key_exists(Tables::PROPERTY_GLOBAL_FILTER, $template) ? $template[Tables::PROPERTY_GLOBAL_FILTER] : '')
             ->sort($template)
-            ->paginate(5));
+            ->paginate(10));
 
         return Inertia::render('Backend/Orders/Index', compact(
             'header',

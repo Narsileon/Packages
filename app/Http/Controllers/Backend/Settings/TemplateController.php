@@ -42,6 +42,21 @@ class TemplateController extends Controller
 
     #region PRIVATE METHODS
 
+    private static function tryParseSorting($template, $array)
+    {
+        if (array_key_exists(Tables::PROPERTY_SORTING, $template))
+        {
+            $template[Tables::PROPERTY_SORTING] = array(
+                [
+                    Tables::FIELD_ID => $template[Tables::PROPERTY_SORTING][0][Tables::FIELD_ID],
+                    Tables::FIELD_DESC => $template[Tables::PROPERTY_SORTING][0][Tables::FIELD_DESC] == 'true' ? true : false,
+                ]
+            );
+        }
+
+        return $template;
+    }
+
     private static function tryParseVisiblity($template, $array)
     {
         if (array_key_exists($array, $template))
@@ -54,21 +69,6 @@ class TemplateController extends Controller
             }
 
             $template[$array] = $object;
-        }
-
-        return $template;
-    }
-
-    private static function tryParseSorting($template, $array)
-    {
-        if (array_key_exists(Tables::PROPERTY_SORTING, $template))
-        {
-            $template[Tables::PROPERTY_SORTING] = array(
-                [
-                    Tables::FIELD_ID => $template[Tables::PROPERTY_SORTING][0][Tables::FIELD_ID],
-                    Tables::FIELD_DESC => $template[Tables::PROPERTY_SORTING][0][Tables::FIELD_DESC] == 'true' ? true : false,
-                ]
-            );
         }
 
         return $template;
