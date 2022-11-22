@@ -36,7 +36,7 @@ export default function ColumnHeader ({ header, table }) {
 
     return (
         <th
-            className={ `relative ${ column.id === 'menu' ? 'sticky left-0 z-10' : '' } `}
+            className={ `relative ${ column.id === 'menu' ? 'sticky left-0' : '' } `}
             ref={ dropRef }
             colSpan={ header.colSpan }
             style={{

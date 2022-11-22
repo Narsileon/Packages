@@ -10,43 +10,42 @@ export default function ModalWindow({ text, action, actionLabel, setShow }) {
     useClickAway(modal, () => setShow(false));
 
     return (
-        // Transparent background
-        <section className="absolute top-0 left-0 bg-white/30 w-screen h-screen z-50">
+        <div className="fixed top-0 left-0 bg-white/30 w-screen h-screen z-50">
             <div className="flex items-center h-screen w-96 m-auto">
-
-                {/* // Modal Window */}
-                <div
-                    className="relative primary-background border-2 border-color align-center h-min rounded-lg shadow-xl"
+                <section
+                    id="modal-window"
                     ref={ modal }
                 >
-                    <CloseButton
-                        className="absolute top-0 right-0 m-2 w-5 h-5"
-                        onClick={ () => setShow(false) }
-                    />
+                    <div className="relative primary-background border-2 border-color align-center h-min rounded-lg shadow-xl">
+                        <CloseButton
+                            className="absolute top-0 right-0 m-2 w-5 h-5"
+                            onClick={ () => setShow(false) }
+                        />
 
-                    <div className="p-8 text-center">
-                        {/* Content */}
-                        <h3 className="my-8">
-                            { text }
-                        </h3>
+                        <div className="p-8 text-center">
+                            {/* Content */}
+                            <h3 className="my-8">
+                                { text }
+                            </h3>
 
-                        {/* Footer */}
-                        <div className="flex items-center justify-between">
-                            <PrimaryButton
-                                label={ trans("Cancel") }
-                                onClick={ () => setShow(false) }
-                            />
-                            <PrimaryButton
-                                label={ actionLabel }
-                                onClick={ () => {
-                                    action();
-                                    setShow(false);
-                                }}
-                            />
+                            {/* Footer */}
+                            <div className="flex items-center justify-between">
+                                <PrimaryButton
+                                    label={ trans("Cancel") }
+                                    onClick={ () => setShow(false) }
+                                />
+                                <PrimaryButton
+                                    label={ actionLabel }
+                                    onClick={ () => {
+                                        action();
+                                        setShow(false);
+                                    }}
+                                />
+                            </div>
                         </div>
                     </div>
-                </div>
+                </section>
             </div>
-        </section>
+        </div>
     );
 }
