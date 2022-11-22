@@ -15,8 +15,6 @@ class DashboardController extends Controller
 
     public function __invoke()
     {
-        $this->authorize('view', );
-
         return Inertia::render('Backend/Dashboard/Index');
     }
 
