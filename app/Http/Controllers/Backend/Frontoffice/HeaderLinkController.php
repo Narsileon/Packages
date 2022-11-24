@@ -27,9 +27,7 @@ class HeaderLinkController extends Controller
 
         $columns = HeaderLinkTemplate::COLUMNS;
 
-        $user = Auth::user();
-
-        $template = $user->{ User::ATTRIBUTE_TEMPLATES } ? $user->{ User::ATTRIBUTE_TEMPLATES }->{ Template::FIELD_FOOTER_LINKS } : HeaderLinkTemplate::DEFAULT_TEMPLATE;
+        $template = Auth::user()->{ User::ATTRIBUTE_TEMPLATES } ? Auth::user()->{ User::ATTRIBUTE_TEMPLATES }->{ Template::FIELD_FOOTER_LINKS } : HeaderLinkTemplate::DEFAULT_TEMPLATE;
 
         $headerLinks = new HeaderLinkCollection(HeaderLink::query()
             ->search($template)

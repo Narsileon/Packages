@@ -19,24 +19,22 @@ class TemplateController extends Controller
 
     public function __invoke(Request $request)
     {
-        $user = Auth::user();
-
         $template = $request['template'];
 
         $template = self::tryParseSorting($template, Tables::PROPERTY_SORTING);
         $template = self::tryParseVisiblity($template, Tables::PROPERTY_VISIBILITY);
 
-        if (!$user->{ User::ATTRIBUTE_TEMPLATES})
+        if (!Auth::user()->{ User::ATTRIBUTE_TEMPLATES})
         {
             Template::factory()->create([
-                Template::FIELD_USER_ID => $user->{ User::FIELD_ID },
+                Template::FIELD_USER_ID => Auth::user()->{ User::FIELD_ID },
                 $template[Tables::PROPERTY_NAME] => $template,
             ]);
         }
 
         else
         {
-            $user->{ User::ATTRIBUTE_TEMPLATES}->update([$template[Tables::PROPERTY_NAME] => $template]);
+            Auth::user()->{ User::ATTRIBUTE_TEMPLATES}->update([$template[Tables::PROPERTY_NAME] => $template]);
         }
 
         return back();

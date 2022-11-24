@@ -33,9 +33,7 @@ class UserController extends Controller
 
         $columns = UserTemplate::COLUMNS;
 
-        $user = Auth::user();
-
-        $template = $user->{ User::ATTRIBUTE_TEMPLATES } ? $user->{ User::ATTRIBUTE_TEMPLATES }->{ Template::FIELD_USERS } : UserTemplate::DEFAULT_TEMPLATE;
+        $template = Auth::user()->{ User::ATTRIBUTE_TEMPLATES } ? Auth::user()->{ User::ATTRIBUTE_TEMPLATES }->{ Template::FIELD_USERS } : UserTemplate::DEFAULT_TEMPLATE;
 
         $users = new UserCollection(User::query()
             ->search($template)

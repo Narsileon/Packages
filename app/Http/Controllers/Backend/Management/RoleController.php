@@ -31,9 +31,7 @@ class RoleController extends Controller
 
         $columns = RoleTemplate::COLUMNS;
 
-        $user = Auth::user();
-
-        $template = $user->{ User::ATTRIBUTE_TEMPLATES } ? $user->{ User::ATTRIBUTE_TEMPLATES }->{ Template::FIELD_ROLES } : RoleTemplate::DEFAULT_TEMPLATE;
+        $template = Auth::user()->{ User::ATTRIBUTE_TEMPLATES } ? Auth::user()->{ User::ATTRIBUTE_TEMPLATES }->{ Template::FIELD_ROLES } : RoleTemplate::DEFAULT_TEMPLATE;
 
         $roles = new UserRoleCollection(UserRole::query()
             ->search($template)

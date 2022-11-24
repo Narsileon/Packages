@@ -28,9 +28,7 @@ class OrderController extends Controller
 
         $columns = OrderTemplate::COLUMNS;
 
-        $user = Auth::user();
-
-        $template = $user->{ User::ATTRIBUTE_TEMPLATES } ? $user->{ User::ATTRIBUTE_TEMPLATES }->{ Template::FIELD_ORDERS } : OrderTemplate::DEFAULT_TEMPLATE;
+        $template = Auth::user()->{ User::ATTRIBUTE_TEMPLATES } ? Auth::user()->{ User::ATTRIBUTE_TEMPLATES }->{ Template::FIELD_ORDERS } : OrderTemplate::DEFAULT_TEMPLATE;
 
         $orders = new OrderCollection(Order::query()
             ->search($template)

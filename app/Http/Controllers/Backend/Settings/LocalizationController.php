@@ -24,9 +24,7 @@ class LocalizationController extends Controller
     {
         $columns = LocalizationTemplate::COLUMNS;
 
-        $user = Auth::user();
-
-        $template = $user->{ User::ATTRIBUTE_TEMPLATES } ? $user->{ User::ATTRIBUTE_TEMPLATES }->{ Template::FIELD_LOCALIZATIONS } : LocalizationTemplate::DEFAULT_TEMPLATE;
+        $template = Auth::user()->{ User::ATTRIBUTE_TEMPLATES } ? Auth::user()->{ User::ATTRIBUTE_TEMPLATES }->{ Template::FIELD_LOCALIZATIONS } : LocalizationTemplate::DEFAULT_TEMPLATE;
 
         $defaultLocalization = collect(LocalizationService::get(false))['dictionary']['common'];
         $customLocalization = collect(json_decode(Auth::user()->localizations, true));
