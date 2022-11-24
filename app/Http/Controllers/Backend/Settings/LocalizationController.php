@@ -29,17 +29,17 @@ class LocalizationController extends Controller
         $defaultLocalization = collect(LocalizationService::get(false))['dictionary']['common'];
         $customLocalization = collect(json_decode(Auth::user()->localizations, true));
 
-        $test = [];
+        $dictionary = [];
 
         foreach($defaultLocalization as $key => $value) {
-            array_push($test, [
+            array_push($dictionary, [
                 'key' => $key,
                 'value' => $value,
                 'custom_value' => $customLocalization['dictionary'][$key],
             ]);
         }
 
-        $customLocalization['dictionary'] = $test;
+        $customLocalization['dictionary'] = $dictionary;
 
         return Inertia::render('Backend/Dictionary/Index', compact(
             'columns',
