@@ -39,7 +39,11 @@ export default function Index({ headerLinks, columns, template }) {
 					>
 						{ trans('Create :resource', { 'resource': trans('common.new_header_link') }) }
 					</Link>
-					<TableSettings table={ table } />
+					<TableSettings
+						table={ table }
+						autoUpdate={ autoUpdate }
+						setAutoUpdate={ setAutoUpdate }
+					/>
 				</TableHeader>
 
 				{ headerLinks.meta.items > 0 ? (

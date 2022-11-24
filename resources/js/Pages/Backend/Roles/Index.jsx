@@ -21,7 +21,7 @@ export default function Index({ roles, columns, template }) {
 		disableSortBy: true,
 	})
 
-	const [table, , , globalFilter, setGlobalFilter] = useTable(roles.data, newHeader, template);
+	const [table, , , globalFilter, setGlobalFilter, autoUpdate, setAutoUpdate] = useTable(roles.data, newHeader, template);
 
 	return (
 		<>
@@ -39,7 +39,11 @@ export default function Index({ roles, columns, template }) {
 					>
 						{ trans('Create :resource', {'resource': trans('permissions.new_role')}) }
 					</Link>
-					<TableSettings table={ table } />
+					<TableSettings
+						table={ table }
+						autoUpdate={ autoUpdate }
+						setAutoUpdate={ setAutoUpdate }
+					/>
 				</TableHeader>
 
 				{ roles.meta.items > 0 ? (

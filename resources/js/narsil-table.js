@@ -37,6 +37,7 @@ export const useTable = (
 	const [columnVisibility, setColumnVisibility] = useState(template.visibility);
 	const [globalFilter, setGlobalFilter] = useState(template.globalFilter);
     const [sorting, setSorting] = useState(template.sorting);
+	const [autoUpdate, setAutoUpdate] = useState(template.autoUpdate ? template.autoUpdate : 10);
 
 	const defaultColumn = {
 		minSize: 100,
@@ -80,7 +81,7 @@ export const useTable = (
 		columnResizeMode: columnResizeMode,
 		globalFilterFn: frontend ? fuzzyFilter : null,
 		getCoreRowModel: getCoreRowModel(),
-        getFilteredRowModel: getFilteredRowModel(),
+        getFilteredRowModel: frontend ? getFilteredRowModel() : null,
 		getSortedRowModel: frontend ? getSortedRowModel() : null,
 		getFacetedRowModel: getFacetedRowModel(),
 		getFacetedUniqueValues: getFacetedUniqueValues(),
@@ -100,8 +101,10 @@ export const useTable = (
         'sizing': { ...template.sizing, ...table.getState().columnSizing },
         'sorting': { ...table.getState().sorting },
 		'visibility': columnVisibility,
+		'autoUpdate': autoUpdate,
     };
 
+	const previousColumnFilters = usePrevious(columnFilters);
 	const previousOrder = usePrevious(columnOrder);
 	const previousVisiblity = usePrevious(columnVisibility);
 	const previousSorting = usePrevious(sorting);
@@ -114,7 +117,7 @@ export const useTable = (
 	useEffect(() => {
 		if (!frontend)
 		{
-			if (previousGlobalFilter || previousOrder || previousSorting || previousVisiblity) {
+			if (previousColumnFilters, previousGlobalFilter || previousOrder || previousSorting || previousVisiblity) {
 
 				const timeout = setTimeout(() => {
 					Inertia.get(route('admin.templates'), {
@@ -128,7 +131,7 @@ export const useTable = (
 				return () => clearTimeout(timeout)
 			}
 		}
-	}, [columnOrder, columnVisibility, globalFilter, sorting, table.getState().columnSizing]);
+	}, [autoUpdate, columnFilters, columnOrder, columnVisibility, globalFilter, sorting, table.getState().columnSizing]);
 
-    return [table, data, setTableData, globalFilter, setGlobalFilter];
+    return [table, data, setTableData, globalFilter, setGlobalFilter, autoUpdate, setAutoUpdate];
 }

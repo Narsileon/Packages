@@ -33,7 +33,7 @@ class FaqController extends Controller
         $template = $user->{ User::ATTRIBUTE_TEMPLATES } ? $user->{ User::ATTRIBUTE_TEMPLATES }->{ Template::FIELD_FAQS } : FaqTemplate::DEFAULT_TEMPLATE;
 
         $faqs = new FaqCollection(Faq::query()
-            ->search(array_key_exists(Tables::PROPERTY_GLOBAL_FILTER, $template) ? $template[Tables::PROPERTY_GLOBAL_FILTER] : '')
+            ->search($template)
             ->sort($template)
             ->paginate(10));
 

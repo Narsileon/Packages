@@ -37,7 +37,7 @@ class RoleController extends Controller
         $template = $user->{ User::ATTRIBUTE_TEMPLATES } ? $user->{ User::ATTRIBUTE_TEMPLATES }->{ Template::FIELD_ROLES } : RoleTemplate::DEFAULT_TEMPLATE;
 
         $roles = new UserRoleCollection(UserRole::query()
-            ->search(array_key_exists(Tables::PROPERTY_GLOBAL_FILTER, $template) ? $template[Tables::PROPERTY_GLOBAL_FILTER] : '')
+            ->search($template)
             ->sort($template)
             ->paginate(10));
 

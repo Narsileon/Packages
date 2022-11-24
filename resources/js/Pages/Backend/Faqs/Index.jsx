@@ -21,7 +21,7 @@ export default function Index({ faqs, columns, template }) {
 		disableSortBy: true,
 	})
 
-	let [table, , , globalFilter, setGlobalFilter] = useTable(faqs.data, newHeader, template);
+	const [table, , , globalFilter, setGlobalFilter, autoUpdate, setAutoUpdate] = useTable(faqs.data, newHeader, template);
 
 	return (
 		<>
@@ -39,7 +39,11 @@ export default function Index({ faqs, columns, template }) {
 					>
 						{ trans('Create :resource', { 'resource': trans('common.new_faq') }) }
 					</Link>
-					<TableSettings table={ table } />
+					<TableSettings
+						table={ table }
+						autoUpdate={ autoUpdate }
+						setAutoUpdate={ setAutoUpdate }
+					/>
 				</TableHeader>
 
 				{ faqs.meta.items > 0 ? (

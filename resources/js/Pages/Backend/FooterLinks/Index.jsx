@@ -39,7 +39,11 @@ export default function Index({ footerLinks, columns, template }) {
 					>
 						{ trans('Create :resource', { 'resource': trans('common.new_footer_link') }) }
 					</Link>
-					<TableSettings table={ table } />
+					<TableSettings
+						table={ table }
+						autoUpdate={ autoUpdate }
+						setAutoUpdate={ setAutoUpdate }
+					/>
 				</TableHeader>
 
 				{ footerLinks.meta.items > 0 ? (

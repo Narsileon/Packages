@@ -34,7 +34,7 @@ class OrderController extends Controller
         $template = $user->{ User::ATTRIBUTE_TEMPLATES } ? $user->{ User::ATTRIBUTE_TEMPLATES }->{ Template::FIELD_ORDERS } : OrderTemplate::DEFAULT_TEMPLATE;
 
         $orders = new OrderCollection(Order::query()
-            ->search(array_key_exists(Tables::PROPERTY_GLOBAL_FILTER, $template) ? $template[Tables::PROPERTY_GLOBAL_FILTER] : '')
+            ->search($template)
             ->sort($template)
             ->paginate(10));
 

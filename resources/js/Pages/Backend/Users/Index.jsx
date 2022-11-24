@@ -21,7 +21,7 @@ export default function Index({ users, columns, template }) {
 		disableSortBy: true,
 	})
 
-	const [table, , , globalFilter, setGlobalFilter] = useTable(users.data, newHeader, template);
+	const [table, , , globalFilter, setGlobalFilter, autoUpdate, setAutoUpdate] = useTable(users.data, newHeader, template);
 
 	return (
 		<>
@@ -39,7 +39,11 @@ export default function Index({ users, columns, template }) {
 					>
 						{ trans('Create :resource', {'resource': trans('common.new_user')}) }
 					</Link>
-					<TableSettings table={ table } />
+					<TableSettings
+						table={ table }
+						autoUpdate={ autoUpdate }
+						setAutoUpdate={ setAutoUpdate }
+					/>
 				</TableHeader>
 
 				{ users.meta.items > 0 ? (

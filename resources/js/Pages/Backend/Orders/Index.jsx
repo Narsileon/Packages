@@ -21,7 +21,7 @@ export default function Index({ orders, columns, template }) {
 		disableSortBy: true,
 	})
 
-	const [table, , , globalFilter, setGlobalFilter] = useTable(orders.data, newHeader, template);
+	const [table, , , globalFilter, setGlobalFilter, autoUpdate, setAutoUpdate] = useTable(orders.data, newHeader, template);
 
 	return (
 		<>
@@ -39,7 +39,11 @@ export default function Index({ orders, columns, template }) {
 					>
 						{ trans('Create :resource', { 'resource': trans('common.new_order') }) }
 					</Link>
-					<TableSettings table={ table } />
+					<TableSettings
+						table={ table }
+						autoUpdate={ autoUpdate }
+						setAutoUpdate={ setAutoUpdate }
+					/>
 				</TableHeader>
 
 				{ orders.meta.items > 0 ? (

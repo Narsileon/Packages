@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { useClickAway, useInterval, useToggle } from "react-use";
 import { Inertia } from "@inertiajs/inertia";
 import { usePage } from "@inertiajs/inertia-react";
@@ -6,9 +6,8 @@ import { transChoice } from "@/narsil-localization";
 import { upperFirst } from "lodash";
 import Icon from "@/Shared/Svg/Icon";
 
-export default function TableSettings({ table }) {
+export default function TableSettings({ table, autoUpdate, setAutoUpdate }) {
     const [show, setShow] = useToggle(false);
-    const [timer, setTimer] = useState(2);
 
     const element = useRef();
 
@@ -25,7 +24,7 @@ export default function TableSettings({ table }) {
                 preserveState: true,
             });
         },
-        timer > 0 ? timer * 1000 : null
+        autoUpdate > 0 ? autoUpdate * 1000 : null
     );
 
     return (
@@ -80,8 +79,8 @@ export default function TableSettings({ table }) {
                                 <input
                                     className="field"
                                     type="number"
-                                    value={ timer }
-                                    onChange={ (event) => setTimer(event.target.value) }
+                                    value={ autoUpdate }
+                                    onChange={ (event) => setAutoUpdate(event.target.value) }
                                 />
                             </label>
                         </div>
