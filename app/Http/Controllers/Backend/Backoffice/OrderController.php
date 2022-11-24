@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Backend\Backoffice;
 
 #region USE
 
-use App\Constants\Tables;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Backoffice\OrderCreateRequest;
 use App\Http\Requests\Backend\Backoffice\OrderUpdateRequest;
@@ -36,7 +35,7 @@ class OrderController extends Controller
         $orders = new OrderCollection(Order::query()
             ->search($template)
             ->sort($template)
-            ->paginate(10));
+            ->paginate(5));
 
         return Inertia::render('Backend/Orders/Index', compact(
             'columns',

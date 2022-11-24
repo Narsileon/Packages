@@ -21,7 +21,7 @@ export default function Index({ headerLinks, columns, template }) {
 		disableSortBy: true,
 	})
 
-	const [table, , , globalFilter, setGlobalFilter] = useTable(headerLinks.data, newHeader, template);
+	const [table, , , globalFilter, setGlobalFilter, autoUpdate, setAutoUpdate] = useTable(headerLinks.data, newHeader, template);
 
 	return (
 		<>

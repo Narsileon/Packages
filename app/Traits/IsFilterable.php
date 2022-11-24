@@ -26,32 +26,34 @@ trait IsFilterable
 
             foreach($localFilter as $columnFilter)
             {
-                $query->where($columnFilter[Tables::FIELD_ID], 'like', '%' . $columnFilter[Tables::FIELD_VALUE] . '%');
+                if (is_array($columnFilter[Tables::FIELD_VALUE]))
+                {
+                    $this->scopeMinMax($query, $columnFilter[Tables::FIELD_ID], $columnFilter[Tables::FIELD_VALUE]);
+                }
+
+                else
+                {
+                    $query->where($columnFilter[Tables::FIELD_ID], 'like', '%' . $columnFilter[Tables::FIELD_VALUE] . '%');
+                }
             }
         }
     }
 
-    public function scopeFilter($query, array $filters)
+    #endregion
+
+    #region PRIVATE METHODS
+
+    private function scopeMinMax($query, $key, $values)
     {
-        foreach($filters as $key=>$value)
+        if (array_key_exists(0, $values) && $values[0])
         {
-            if (Schema::hasColumn($this->getTable(), $key))
-            {
-                $query->when($value ?? false, fn ($query, $search) =>
-                    $query->where($key, 'like', '%' . $search . '%')
-                );
-            }
-
-            else
-            {
-                $this->foreignScopeFilter($query, $key, $value);
-            }
+            $query->where($key, '>=', $values[0]);
         }
-    }
 
-    public function foreignScopeFilter($query, $key, $value)
-    {
-
+        if (array_key_exists(1, $values) && $values[1])
+        {
+            $query->where($key, '<=', $values[1]);
+        }
     }
 
     #endregion

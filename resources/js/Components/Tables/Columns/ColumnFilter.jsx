@@ -20,31 +20,15 @@ export default function ColumnFilter({column, table}) {
                 <div>
                     <TableFilter
                         type="number"
-                        min={ column.getFacetedMinMaxValues()?.[0] ?? '' }
-                        max={ column.getFacetedMinMaxValues()?.[1] ?? '' }
-                        value={(columnFilterValue)?.[0] ?? ''}
-                        onChange={value =>
-                        column.setFilterValue((old) => [value, old?.[1]])
-                        }
-                        placeholder={`Min ${
-                        column.getFacetedMinMaxValues()?.[0]
-                            ? `(${column.getFacetedMinMaxValues()?.[0]})`
-                            : ''
-                        }`}
+                        value={ (columnFilterValue)?.[0] ?? '' }
+                        onChange={ value => column.setFilterValue((old) => [value, old?.[1]]) }
+                        placeholder={ `Min ${ column.getFacetedMinMaxValues()?.[0] ? `(${column.getFacetedMinMaxValues()?.[0]})` : '' }` }
                     />
                     <TableFilter
                         type="number"
-                        min={ column.getFacetedMinMaxValues()?.[0] ?? '' }
-                        max={ column.getFacetedMinMaxValues()?.[1] ?? '' }
-                        value={(columnFilterValue)?.[1] ?? ''}
-                        onChange={value =>
-                        column.setFilterValue((old) => [old?.[0], value])
-                        }
-                        placeholder={`Max ${
-                        column.getFacetedMinMaxValues()?.[1]
-                            ? `(${column.getFacetedMinMaxValues()?.[1]})`
-                            : ''
-                        }`}
+                        value={ (columnFilterValue)?.[1] ?? '' }
+                        onChange={ value => column.setFilterValue((old) => [old?.[0], value]) }
+                        placeholder={ `Max ${ column.getFacetedMinMaxValues()?.[1] ? `(${column.getFacetedMinMaxValues()?.[1]})` : '' }` }
                     />
                 </div>
                 <div className="h-1" />

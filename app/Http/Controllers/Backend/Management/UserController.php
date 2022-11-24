@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Backend\Management;
 
 #region USE
 
-use App\Constants\Tables;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Management\UserCreateRequest;
 use App\Http\Requests\Backend\Management\UserUpdateRequest;

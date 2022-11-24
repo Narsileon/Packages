@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Backend\Frontoffice;
 
 #region USE
 
-use App\Constants\Tables;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Frontoffice\HeaderLinkCreateRequest;
 use App\Http\Requests\Backend\Frontoffice\HeaderLinkUpdateRequest;
