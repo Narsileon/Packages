@@ -33,10 +33,16 @@ class RoleController extends Controller
 
         $template = Auth::user()->{ User::ATTRIBUTE_TEMPLATES } ? Auth::user()->{ User::ATTRIBUTE_TEMPLATES }->{ Template::FIELD_ROLES } : RoleTemplate::DEFAULT_TEMPLATE;
 
-        $roles = new UserRoleCollection(UserRole::query()
+        $collection = UserRole::query()
             ->search($template)
-            ->sort($template)
-            ->paginate(10));
+            ->sort($template);
+
+        if (array_key_exists('current', $template) && $template['current'] != null)
+        {
+            $template['list'][$template['current']] = $collection->pluck($template['current'])->toArray();
+        }
+
+        $roles = new UserRoleCollection($collection->paginate(10));
 
         return Inertia::render('Backend/Roles/Index', compact(
             'columns',

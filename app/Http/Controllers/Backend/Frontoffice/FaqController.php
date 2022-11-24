@@ -29,10 +29,16 @@ class FaqController extends Controller
 
         $template = Auth::user()->{ User::ATTRIBUTE_TEMPLATES } ? Auth::user()->{ User::ATTRIBUTE_TEMPLATES }->{ Template::FIELD_FAQS } : FaqTemplate::DEFAULT_TEMPLATE;
 
-        $faqs = new FaqCollection(Faq::query()
+        $collection = Faq::query()
             ->search($template)
-            ->sort($template)
-            ->paginate(10));
+            ->sort($template);
+
+        if (array_key_exists('current', $template) && $template['current'] != null)
+        {
+            $template['list'][$template['current']] = $collection->pluck($template['current'])->toArray();
+        }
+
+        $faqs = new FaqCollection($collection->paginate(10));
 
         return Inertia::render('Backend/Faqs/Index', compact(
             'columns',

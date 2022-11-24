@@ -38,17 +38,23 @@ export default function ColumnFilter({
         ) : (
             <>
                 {
-                    table.options.manualFiltering && table.getState().current == column.id && table.getState().list ? (
-                        <datalist id={ column.id + 'list' }>
+                    table.options.manualFiltering ? (
+                        <>
                             {
-                                table.getState().list.slice(0, 5000).map((value, index) => (
-                                    <option
-                                        key={ index }
-                                        value={ value }
-                                    />
-                                ))
+                                table.getState().list && table.getState().list[column.id] ? (
+                                    <datalist id={ column.id + 'list' }>
+                                        {
+                                            table.getState().list[column.id].slice(0, 5000).map((value, index) => (
+                                                <option
+                                                    key={ index }
+                                                    value={ value }
+                                                />
+                                            ))
+                                        }
+                                    </datalist>
+                                ) : null
                             }
-                        </datalist>
+                        </>
                     ) : (
                         <datalist id={ column.id + 'list' }>
                             {
@@ -66,9 +72,12 @@ export default function ColumnFilter({
                 <TableFilter
                     type="text"
                     value={ columnFilterValue ?? '' }
-                    onChange={ value => column.setFilterValue(value) }
-                    onFocus={ () => table.options.meta.setCurrent(column.id) }
-                    placeholder={ `Search... (${ column.getFacetedUniqueValues().size })` }
+                    onChange={ value =>
+                    {
+                        column.setFilterValue(value)
+                        table.options.meta.setCurrent(value ? column.id : null)
+                    }}
+                    placeholder={ `Search...` }
                     list={ column.id + 'list' }
                 />
             </>

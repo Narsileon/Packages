@@ -35,10 +35,16 @@ class UserController extends Controller
 
         $template = Auth::user()->{ User::ATTRIBUTE_TEMPLATES } ? Auth::user()->{ User::ATTRIBUTE_TEMPLATES }->{ Template::FIELD_USERS } : UserTemplate::DEFAULT_TEMPLATE;
 
-        $users = new UserCollection(User::query()
+        $collection = User::query()
             ->search($template)
-            ->sort($template)
-            ->paginate(10));
+            ->sort($template);
+
+        if (array_key_exists('current', $template) && $template['current'] != null)
+        {
+            $template['list'][$template['current']] = $collection->pluck($template['current'])->toArray();
+        }
+
+        $users = new UserCollection($collection->paginate(10));
 
         return Inertia::render('Backend/Users/Index', compact(
             'columns',

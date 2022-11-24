@@ -29,10 +29,16 @@ class FooterLinkController extends Controller
 
         $template = Auth::user()->{ User::ATTRIBUTE_TEMPLATES } ? Auth::user()->{ User::ATTRIBUTE_TEMPLATES }->{ Template::FIELD_FOOTER_LINKS } : FooterLinkTemplate::DEFAULT_TEMPLATE;
 
-        $footerLinks = new FooterLinkCollection(FooterLink::query()
+        $collection = FooterLink::query()
             ->search($template)
-            ->sort($template)
-            ->paginate(10));
+            ->sort($template);
+
+        if (array_key_exists('current', $template) && $template['current'] != null)
+        {
+            $template['list'][$template['current']] = $collection->pluck($template['current'])->toArray();
+        }
+
+        $footerLinks = new FooterLinkCollection($collection->paginate(10));
 
         return Inertia::render('Backend/FooterLinks/Index', compact(
             'columns',

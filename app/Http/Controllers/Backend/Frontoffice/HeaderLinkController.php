@@ -29,10 +29,16 @@ class HeaderLinkController extends Controller
 
         $template = Auth::user()->{ User::ATTRIBUTE_TEMPLATES } ? Auth::user()->{ User::ATTRIBUTE_TEMPLATES }->{ Template::FIELD_FOOTER_LINKS } : HeaderLinkTemplate::DEFAULT_TEMPLATE;
 
-        $headerLinks = new HeaderLinkCollection(HeaderLink::query()
+        $collection = HeaderLink::query()
             ->search($template)
-            ->sort($template)
-            ->paginate(10));
+            ->sort($template);
+
+        if (array_key_exists('current', $template) && $template['current'] != null)
+        {
+            $template['list'][$template['current']] = $collection->pluck($template['current'])->toArray();
+        }
+
+        $headerLinks = new HeaderLinkCollection($collection->paginate(10));
 
         return Inertia::render('Backend/HeaderLinks/Index', compact(
             'columns',

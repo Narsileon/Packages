@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "react";
-import { usePrevious } from "react-use";
+import { useEffect, useState } from "react";
+import { usePrevious, useToggle } from "react-use";
 import { Inertia } from "@inertiajs/inertia";
 import { rankItem, compareItems } from '@tanstack/match-sorter-utils'
 
@@ -103,7 +103,7 @@ export const useTable = (
 		meta: {
 			setAutoUpdate,
 			setCurrent,
-			setData
+			setData,
 		},
 	});
 
