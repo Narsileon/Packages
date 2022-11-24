@@ -2,8 +2,7 @@ import TableSearch from "@/Components/Tables/TableFilter";
 
 export default function TableHeader({
     title,
-    filter,
-    setFilter,
+    table,
     children,
 }) {
     return (
@@ -20,8 +19,8 @@ export default function TableHeader({
 
                 <div className="col-span-1 sm:col-span-2 md:col-span-1 md:order-1 place-self-center w-full">
                     <TableSearch
-                        value={ filter ? filter : '' }
-                        onChange={ (value) => setFilter(value) }
+                        value={ table.getState().globalFilter ?? '' }
+                        onChange={ (value) => table.setGlobalFilter(value) }
                     />
                 </div>
             </div>

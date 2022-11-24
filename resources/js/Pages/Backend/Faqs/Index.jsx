@@ -21,7 +21,7 @@ export default function Index({ faqs, columns, template }) {
 		disableSortBy: true,
 	})
 
-	const [table, , , globalFilter, setGlobalFilter, autoUpdate, setAutoUpdate] = useTable(faqs.data, newHeader, template);
+	const [table] = useTable(faqs.data, newHeader, template);
 
 	return (
 		<>
@@ -30,8 +30,7 @@ export default function Index({ faqs, columns, template }) {
 			<div className="flex flex-col h-full space-y-4">
 				<TableHeader
 					title={ trans('List of :resource', { 'resource': trans('common.faq') }) }
-					filter={ globalFilter }
-					setFilter={ setGlobalFilter }
+					table={ table }
 				>
 					<Link
 						className="primary-button whitespace-nowrap"
@@ -39,11 +38,8 @@ export default function Index({ faqs, columns, template }) {
 					>
 						{ trans('Create :resource', { 'resource': trans('common.new_faq') }) }
 					</Link>
-					<TableSettings
-						table={ table }
-						autoUpdate={ autoUpdate }
-						setAutoUpdate={ setAutoUpdate }
-					/>
+
+					<TableSettings table={ table } />
 				</TableHeader>
 
 				{ faqs.meta.items > 0 ? (

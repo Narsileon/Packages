@@ -26,10 +26,10 @@ export default function Index({ customLocalization, columns, template }) {
 		}
 	});
 
-	const [table, data, setData, globalFilter, setGlobalFilter] = useTable(customLocalization.dictionary, newHeader, template, true);
+	const [table] = useTable(customLocalization.dictionary, newHeader, template, false);
 
 	const handleChange = (event, key) => {
-		let temp = [...data];
+		let temp = [...table.options.data];
 
 		temp.find((object, index) => {
 			if (object.key === key) {
@@ -39,11 +39,11 @@ export default function Index({ customLocalization, columns, template }) {
 			}
 		});
 
-		setData(temp);
+		table.options.meta.setData(temp);
 	}
 
 	function update() {
-		Inertia.patch(`dictionary/${ customLocalization.user_id }`, { dictionary: data});
+		Inertia.patch(`dictionary/${ customLocalization.user_id }`, { dictionary: table.options.data});
 	};
 
 	return (
@@ -53,8 +53,7 @@ export default function Index({ customLocalization, columns, template }) {
 			<div className="flex flex-col h-full space-y-4">
 				<TableHeader
 					title={ upperFirst(transChoice('common.dictionaries', 1)) }
-					filter={ globalFilter }
-					setFilter={ setGlobalFilter }
+					table={ table }
 				>
 					<PrimaryButton
 						label={ trans('common.update') }

@@ -5,9 +5,11 @@ import { upperFirst } from "lodash";
 import Icon from "@/Shared/Svg/Icon";
 import Sort from "@/Shared/Svg/Sort";
 import ColumnFilter from "@/Components/Tables/Columns/ColumnFilter";
-import { addDays } from "@/Components/Calendars/narsil-calendar";
 
-export default function ColumnHeader ({ header, table }) {
+export default function ColumnHeader ({
+    table,
+    header,
+}) {
     const { getState, setColumnOrder } = table
     const { column } = header
     const { columnOrder } = getState()

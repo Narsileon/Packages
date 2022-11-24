@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePrevious } from "react-use";
 import { Inertia } from "@inertiajs/inertia";
 import { rankItem, compareItems } from '@tanstack/match-sorter-utils'
@@ -18,7 +18,7 @@ export const useTable = (
 	tableData,
 	tableColumns,
 	template,
-	frontend = false,
+	manual = true,
 ) => {
 	if (template.sizing) {
 		tableColumns.forEach(object => {
@@ -28,16 +28,18 @@ export const useTable = (
 	    });
     }
 
-	const [data, setTableData] = useState(tableData);
+	const [data, setData] = useState(tableData);
 
     const [columns] = useState(() => [...tableColumns]);
 
 	const [columnFilters, setColumnFilters] = useState(template.columnFilters ? template.columnFilters : []);
-    const [columnOrder, setOrder] = useState(template.order);
+    const [columnOrder, setOrder] = useState(template.order ?? []);
 	const [columnVisibility, setColumnVisibility] = useState(template.visibility);
-	const [globalFilter, setGlobalFilter] = useState(template.globalFilter);
-    const [sorting, setSorting] = useState(template.sorting);
-	const [autoUpdate, setAutoUpdate] = useState(template.autoUpdate ? template.autoUpdate : 10);
+	const [globalFilter, setGlobalFilter] = useState(template.globalFilter ?? '');
+    const [sorting, setSorting] = useState(template.sorting ?? []);
+
+	const [current, setCurrent] = useState(template.current ?? '');
+	const [autoUpdate, setAutoUpdate] = useState(template.autoUpdate ?? 10);
 
 	const defaultColumn = {
 		minSize: 100,
@@ -71,6 +73,8 @@ export const useTable = (
 			fuzzy: fuzzyFilter,
 		},
 		state: {
+			autoUpdate,
+			current,
 			columnFilters,
 			columnOrder,
 			columnVisibility,
@@ -79,10 +83,10 @@ export const useTable = (
 		},
 		defaultColumn: defaultColumn,
 		columnResizeMode: columnResizeMode,
-		globalFilterFn: frontend ? fuzzyFilter : null,
+		globalFilterFn: fuzzyFilter,
 		getCoreRowModel: getCoreRowModel(),
-        getFilteredRowModel: frontend ? getFilteredRowModel() : null,
-		getSortedRowModel: frontend ? getSortedRowModel() : null,
+        getFilteredRowModel: getFilteredRowModel(),
+		getSortedRowModel: getSortedRowModel(),
 		getFacetedRowModel: getFacetedRowModel(),
 		getFacetedUniqueValues: getFacetedUniqueValues(),
 		getFacetedMinMaxValues: getFacetedMinMaxValues(),
@@ -91,11 +95,19 @@ export const useTable = (
 		onColumnVisibilityChange: setColumnVisibility,
 		onGlobalFilterChange: setGlobalFilter,
         onSortingChange: setSorting,
+		manualFiltering: manual,
+		manualSorting: manual,
+		meta: {
+			setAutoUpdate,
+			setCurrent,
+			setData
+		},
 	});
 
     const tableTemplate = {
         'name': template.name,
 		'columnFilters': { ...table.getState().columnFilters },
+		'current': current,
 		'globalFilter': globalFilter,
         'order': columnOrder,
         'sizing': { ...template.sizing, ...table.getState().columnSizing },
@@ -105,19 +117,20 @@ export const useTable = (
     };
 
 	const previousColumnFilters = usePrevious(columnFilters);
+	const previousCurrent = usePrevious(current);
 	const previousOrder = usePrevious(columnOrder);
 	const previousVisiblity = usePrevious(columnVisibility);
 	const previousSorting = usePrevious(sorting);
 	const previousGlobalFilter = usePrevious(globalFilter);
 
 	useEffect(() => {
-		setTableData(tableData);
+		setData(tableData);
 	}, [tableData]);
 
 	useEffect(() => {
-		if (!frontend)
+		if (manual)
 		{
-			if (previousColumnFilters, previousGlobalFilter || previousOrder || previousSorting || previousVisiblity) {
+			if (previousColumnFilters || previousCurrent || previousGlobalFilter || previousOrder || previousSorting || previousVisiblity) {
 
 				const timeout = setTimeout(() => {
 					Inertia.get(route('admin.templates'), {
@@ -131,7 +144,16 @@ export const useTable = (
 				return () => clearTimeout(timeout)
 			}
 		}
-	}, [autoUpdate, columnFilters, columnOrder, columnVisibility, globalFilter, sorting, table.getState().columnSizing]);
+	}, [
+		autoUpdate,
+		columnFilters,
+		columnOrder,
+		columnVisibility,
+		current,
+		globalFilter,
+		sorting,
+		table.getState().columnSizing
+	]);
 
-    return [table, data, setTableData, globalFilter, setGlobalFilter, autoUpdate, setAutoUpdate];
+    return [table];
 }

@@ -1,6 +1,8 @@
 import ColumnHeader from "@/Components/Tables/Columns/ColumnHeader";
 
-export default function TableHead({ table }) {
+export default function TableHead({
+    table,
+}) {
     return (
         <thead>
             {
@@ -10,8 +12,8 @@ export default function TableHead({ table }) {
                             headerGroup.headers.map(header => (
                                 <ColumnHeader
                                     key={ header.id }
-                                    header={ header }
                                     table={ table }
+                                    header={ header }
                                 />
                             ))
                         }

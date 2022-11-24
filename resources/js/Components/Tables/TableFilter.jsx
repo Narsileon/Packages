@@ -2,11 +2,18 @@ import { trans } from "@/narsil-localization";
 import { upperFirst } from "lodash";
 import Icon from "@/Shared/Svg/Icon";
 
-export default function TableSearch({onChange, debounce = 500, ...props}) {
+export default function TableSearch({
+	onChange,
+	debounce = 500,
+	...props
+}) {
 	return (
 		<div className="flex border-2 border-color rounded font-normal">
 			<div className="primary-background flex items-center w-min-fit justify-between">
-				<Icon name="search" className="w-6 h-6 m-2" />
+				<Icon
+					name="search"
+					className="w-6 h-6 m-2"
+				/>
 			</div>
 
 			<input

@@ -24,19 +24,19 @@ export default function Index({ languages, columns, template }) {
 		}
 	});
 
-	const [table, data, setData, globalFilter, setGlobalFilter] = useTable(languages.data, newHeader, template, true);
+	const [table] = useTable(languages.data, newHeader, template, false);
 
 	function handleChange(event, id) {
-		let temp = [...data];
+		let temp = [...table.options.data];
 
 		let result = temp.find(x => x.id == id);
 		result.active = !result.active;
 
-		setData(temp);
+		table.options.meta.setData(temp);
 	};
 
 	function update() {
-		Inertia.patch(route('admin.languages'), data);
+		Inertia.patch(route('admin.languages'), table.options.data);
 	};
 
 	return (
@@ -46,8 +46,7 @@ export default function Index({ languages, columns, template }) {
 			<div className="flex flex-col h-full space-y-4">
 				<TableHeader
 					title={ trans('List of :resource', { 'resource': transChoice('locales.languages', 2) }) }
-					filter={ globalFilter }
-					setFilter={ setGlobalFilter }
+					table={ table }
 				>
 					<PrimaryButton
 						label={ trans('common.update') }

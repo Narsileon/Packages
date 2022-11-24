@@ -21,7 +21,7 @@ export default function Index({ headerLinks, columns, template }) {
 		disableSortBy: true,
 	})
 
-	const [table, , , globalFilter, setGlobalFilter, autoUpdate, setAutoUpdate] = useTable(headerLinks.data, newHeader, template);
+	const [table] = useTable(headerLinks.data, newHeader, template);
 
 	return (
 		<>
@@ -30,8 +30,7 @@ export default function Index({ headerLinks, columns, template }) {
 			<div className="flex flex-col h-full space-y-4">
 				<TableHeader
 					title={ trans('List of :resource', { 'resource': transChoice('common.header_links', 2) }) }
-					filter={ globalFilter }
-					setFilter={ setGlobalFilter }
+					table={ table }
 				>
 					<Link
 						className="primary-button whitespace-nowrap"
@@ -39,11 +38,8 @@ export default function Index({ headerLinks, columns, template }) {
 					>
 						{ trans('Create :resource', { 'resource': trans('common.new_header_link') }) }
 					</Link>
-					<TableSettings
-						table={ table }
-						autoUpdate={ autoUpdate }
-						setAutoUpdate={ setAutoUpdate }
-					/>
+
+					<TableSettings table={ table } />
 				</TableHeader>
 
 				{ headerLinks.meta.items > 0 ? (

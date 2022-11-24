@@ -7,7 +7,7 @@ import TableMenu from "@/Components/Tables/TableMenu";
 import TableSettings from "@/Components/Tables/TableSettings";
 import Pagination from "@/Shared/Pagination";
 
-export default function Index({ orders, columns, template }) {
+export default function Index({ orders, columns, template, list }) {
 	let newHeader = [...columns];
 
 	newHeader.push({
@@ -21,7 +21,7 @@ export default function Index({ orders, columns, template }) {
 		disableSortBy: true,
 	})
 
-	const [table, , , globalFilter, setGlobalFilter, autoUpdate, setAutoUpdate] = useTable(orders.data, newHeader, template);
+	const [table] = useTable(orders.data, newHeader, template);
 
 	return (
 		<>
@@ -30,8 +30,7 @@ export default function Index({ orders, columns, template }) {
 			<div className="flex flex-col h-full space-y-4">
 				<TableHeader
 					title={ trans('List of :resource', { 'resource': transChoice('common.orders', 2) }) }
-					filter={ globalFilter }
-					setFilter={ setGlobalFilter }
+					table={ table }
 				>
 					<Link
 						className="primary-button whitespace-nowrap"
@@ -39,11 +38,8 @@ export default function Index({ orders, columns, template }) {
 					>
 						{ trans('Create :resource', { 'resource': trans('common.new_order') }) }
 					</Link>
-					<TableSettings
-						table={ table }
-						autoUpdate={ autoUpdate }
-						setAutoUpdate={ setAutoUpdate }
-					/>
+
+					<TableSettings table={ table } />
 				</TableHeader>
 
 				{ orders.meta.items > 0 ? (

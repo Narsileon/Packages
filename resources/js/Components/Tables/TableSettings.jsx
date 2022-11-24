@@ -6,7 +6,7 @@ import { transChoice } from "@/narsil-localization";
 import { upperFirst } from "lodash";
 import Icon from "@/Shared/Svg/Icon";
 
-export default function TableSettings({ table, autoUpdate, setAutoUpdate }) {
+export default function TableSettings({ table }) {
     const [show, setShow] = useToggle(false);
 
     const element = useRef();
@@ -14,18 +14,16 @@ export default function TableSettings({ table, autoUpdate, setAutoUpdate }) {
     useClickAway(element, () => setShow(false));
 
     const url = usePage().url;
+    const autoUpdate = table.getState().autoUpdate;
 
-    useInterval(
-        () => {
-            console.log('update');
+    useInterval(() => {
+        console.log('update');
 
-            Inertia.visit(url, {
-                preserveScroll: true,
-                preserveState: true,
-            });
-        },
-        autoUpdate > 0 ? autoUpdate * 1000 : null
-    );
+        Inertia.visit(url, {
+            preserveScroll: true,
+            preserveState: true,
+        });
+    }, autoUpdate > 0 ? autoUpdate * 1000 : null);
 
     return (
         <div
@@ -79,8 +77,8 @@ export default function TableSettings({ table, autoUpdate, setAutoUpdate }) {
                                 <input
                                     className="field"
                                     type="number"
-                                    value={ autoUpdate }
-                                    onChange={ (event) => setAutoUpdate(event.target.value) }
+                                    value={ table.getState().autoUpdate }
+                                    onChange={ (event) => table.options.meta.setAutoUpdate(event.target.value) }
                                 />
                             </label>
                         </div>

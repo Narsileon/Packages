@@ -30,13 +30,17 @@ class OrderController extends Controller
 
         $template = Auth::user()->{ User::ATTRIBUTE_TEMPLATES } ? Auth::user()->{ User::ATTRIBUTE_TEMPLATES }->{ Template::FIELD_ORDERS } : OrderTemplate::DEFAULT_TEMPLATE;
 
-        $orders = new OrderCollection(Order::query()
+        $collection = Order::query()
             ->search($template)
-            ->sort($template)
-            ->paginate(5));
+            ->sort($template);
+
+        //$list = $collection->pluck($template['current'])->toArray();
+
+        $orders = new OrderCollection($collection->paginate(5));
 
         return Inertia::render('Backend/Orders/Index', compact(
             'columns',
+            //'list',
             'template',
             'orders',
         ));
