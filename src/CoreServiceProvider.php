@@ -1,6 +1,6 @@
 <?php
 
-namespace BondarDe\LaravelToolbox;
+namespace Narsil\Core;
 
 #region USE
 
