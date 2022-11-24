@@ -34,7 +34,10 @@ class OrderController extends Controller
             ->search($template)
             ->sort($template);
 
-        //$list = $collection->pluck($template['current'])->toArray();
+        if (array_key_exists('current', $template))
+        {
+            $template['list'] = $collection->pluck($template['current'])->toArray();
+        }
 
         $orders = new OrderCollection($collection->paginate(5));
 

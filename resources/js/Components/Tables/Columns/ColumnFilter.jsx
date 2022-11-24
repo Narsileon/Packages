@@ -38,10 +38,10 @@ export default function ColumnFilter({
         ) : (
             <>
                 {
-                    table.options.manualFiltering && table.options.current == column.id && list ? (
+                    table.options.manualFiltering && table.getState().current == column.id && table.getState().list ? (
                         <datalist id={ column.id + 'list' }>
                             {
-                                list.slice(0, 5000).map((value, index) => (
+                                table.getState().list.slice(0, 5000).map((value, index) => (
                                     <option
                                         key={ index }
                                         value={ value }

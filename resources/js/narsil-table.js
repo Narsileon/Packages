@@ -41,6 +41,8 @@ export const useTable = (
 	const [current, setCurrent] = useState(template.current ?? '');
 	const [autoUpdate, setAutoUpdate] = useState(template.autoUpdate ?? 10);
 
+	const list = template.list ?? [];
+
 	const defaultColumn = {
 		minSize: 100,
 		maxSize: 300,
@@ -78,6 +80,7 @@ export const useTable = (
 			columnFilters,
 			columnOrder,
 			columnVisibility,
+			list,
 			globalFilter,
 			sorting,
 		},
