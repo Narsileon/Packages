@@ -7,8 +7,8 @@ import TableMenu from "@/Components/Tables/TableMenu";
 import TableSettings from "@/Components/Tables/TableSettings";
 import Pagination from "@/Shared/Pagination";
 
-export default function Index({ orders, header, template }) {
-	let newHeader = [...header];
+export default function Index({ orders, columns, template }) {
+	let newHeader = [...columns];
 
 	newHeader.push({
 		id: 'menu',

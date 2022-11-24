@@ -27,7 +27,7 @@ class OrderController extends Controller
     {
         $this->authorize('view', Order::class);
 
-        $header = OrderTemplate::COLUMNS;
+        $columns = OrderTemplate::COLUMNS;
 
         $user = Auth::user();
 
@@ -39,7 +39,7 @@ class OrderController extends Controller
             ->paginate(10));
 
         return Inertia::render('Backend/Orders/Index', compact(
-            'header',
+            'columns',
             'template',
             'orders',
         ));

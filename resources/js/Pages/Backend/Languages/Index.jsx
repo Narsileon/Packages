@@ -7,8 +7,8 @@ import Toggle from "@/Components/Elements/Toggle";
 import Table from "@/Components/Tables/Table";
 import TableHeader from "@/Components/Tables/TableHeader";
 
-export default function Index({ languages, header, template }) {
-	let newHeader = [...header].map(object => {
+export default function Index({ languages, columns, template }) {
+	let newHeader = [...columns].map(object => {
 		if (object.id === 'active') {
 		  	return {
 				...object,

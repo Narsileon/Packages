@@ -32,7 +32,7 @@ class UserController extends Controller
     {
         $this->authorize('view', User::class);
 
-        $header = UserTemplate::COLUMNS;
+        $columns = UserTemplate::COLUMNS;
 
         $user = Auth::user();
 
@@ -44,7 +44,7 @@ class UserController extends Controller
             ->paginate(10));
 
         return Inertia::render('Backend/Users/Index', compact(
-            'header',
+            'columns',
             'template',
             'users',
         ));

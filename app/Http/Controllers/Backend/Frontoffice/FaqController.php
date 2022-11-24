@@ -26,7 +26,7 @@ class FaqController extends Controller
     {
         $this->authorize('view', Faq::class);
 
-        $header = FaqTemplate::COLUMNS;
+        $columns = FaqTemplate::COLUMNS;
 
         $user = Auth::user();
 
@@ -38,7 +38,7 @@ class FaqController extends Controller
             ->paginate(10));
 
         return Inertia::render('Backend/Faqs/Index', compact(
-            'header',
+            'columns',
             'template',
             'faqs',
         ));

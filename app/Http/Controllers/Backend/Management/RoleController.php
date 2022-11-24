@@ -30,7 +30,7 @@ class RoleController extends Controller
     {
         $this->authorize('view', UserRole::class);
 
-        $header = RoleTemplate::COLUMNS;
+        $columns = RoleTemplate::COLUMNS;
 
         $user = Auth::user();
 
@@ -42,7 +42,7 @@ class RoleController extends Controller
             ->paginate(10));
 
         return Inertia::render('Backend/Roles/Index', compact(
-            'header',
+            'columns',
             'template',
             'roles',
         ));

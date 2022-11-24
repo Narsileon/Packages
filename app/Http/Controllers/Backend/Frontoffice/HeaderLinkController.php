@@ -26,7 +26,7 @@ class HeaderLinkController extends Controller
     {
         $this->authorize('view', HeaderLink::class);
 
-        $header = HeaderLinkTemplate::COLUMNS;
+        $columns = HeaderLinkTemplate::COLUMNS;
 
         $user = Auth::user();
 
@@ -38,7 +38,7 @@ class HeaderLinkController extends Controller
             ->paginate(10));
 
         return Inertia::render('Backend/HeaderLinks/Index', compact(
-            'header',
+            'columns',
             'template',
             'headerLinks',
         ));

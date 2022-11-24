@@ -26,7 +26,7 @@ class FooterLinkController extends Controller
     {
         $this->authorize('view', FooterLink::class);
 
-        $header = FooterLinkTemplate::COLUMNS;
+        $columns = FooterLinkTemplate::COLUMNS;
 
         $user = Auth::user();
 
@@ -38,7 +38,7 @@ class FooterLinkController extends Controller
             ->paginate(10));
 
         return Inertia::render('Backend/FooterLinks/Index', compact(
-            'header',
+            'columns',
             'template',
             'footerLinks',
         ));

@@ -23,7 +23,7 @@ class LanguageController extends Controller
 
     public function index()
     {
-        $header = LanguageTemplate::COLUMNS;
+        $columns = LanguageTemplate::COLUMNS;
 
         $user = Auth::user();
 
@@ -32,7 +32,7 @@ class LanguageController extends Controller
         $languages = LanguageResource::collection(Language::search(array_key_exists(Tables::PROPERTY_GLOBAL_FILTER, $template) ? $template[Tables::PROPERTY_GLOBAL_FILTER] : '')->get());
 
         return Inertia::render('Backend/Languages/Index', compact(
-            'header',
+            'columns',
             'template',
             'languages',
         ));

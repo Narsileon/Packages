@@ -22,7 +22,7 @@ class LocalizationController extends Controller
 
     public function index()
     {
-        $header = LocalizationTemplate::COLUMNS;
+        $columns = LocalizationTemplate::COLUMNS;
 
         $user = Auth::user();
 
@@ -44,7 +44,7 @@ class LocalizationController extends Controller
         $customLocalization['dictionary'] = $test;
 
         return Inertia::render('Backend/Dictionary/Index', compact(
-            'header',
+            'columns',
             'template',
             'customLocalization',
         ));

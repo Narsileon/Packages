@@ -9,8 +9,8 @@ import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 import Table from "@/Components/Tables/Table";
 import TableHeader from "@/Components/Tables/TableHeader";
 
-export default function Index({ customLocalization, header, template }) {
-	let newHeader = [...header].map(object => {
+export default function Index({ customLocalization, columns, template }) {
+	let newHeader = [...columns].map(object => {
 		if (object.id === 'custom_value') {
 		  	return {
 				...object,
