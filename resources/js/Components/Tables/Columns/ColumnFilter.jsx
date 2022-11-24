@@ -52,9 +52,11 @@ export default function ColumnFilter({column, table}) {
         ) : (
         <>
             <datalist id={column.id + 'list'}>
-                {sortedUniqueValues.slice(0, 5000).map((value) => (
-                    <option value={value} key={value} />
-                ))}
+                {
+                    sortedUniqueValues.slice(0, 5000).map((value) => (
+                        <option value={value} key={value} />
+                    ))
+                }
             </datalist>
             <TableFilter
                 type="text"

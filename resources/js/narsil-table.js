@@ -32,7 +32,7 @@ export const useTable = (
 
     const [columns] = useState(() => [...tableColumns]);
 
-	const [columnFilters, setColumnFilters] = useState(template.columnFilters);
+	const [columnFilters, setColumnFilters] = useState(template.columnFilters ? template.columnFilters : []);
     const [columnOrder, setOrder] = useState(template.order);
 	const [columnVisibility, setColumnVisibility] = useState(template.visibility);
 	const [globalFilter, setGlobalFilter] = useState(template.globalFilter);
