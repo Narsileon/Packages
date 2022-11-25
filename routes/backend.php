@@ -42,7 +42,7 @@ Route::group([
     // Settings
     Route::controller(GeneralSettingsController::class)->group(function () {
         Route::get('general_settings', 'index')->name('general_settings');
-        Route::patch('general_settings', 'update');
+        Route::patch('general_settings/{general_setting}', 'update');
     });
     Route::controller(LanguageController::class)->group(function () {
         Route::get('languages', 'index')->name('languages');

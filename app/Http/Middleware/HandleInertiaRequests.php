@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 #region USE
 
-use App\Models\Backend\Settings;
+use App\Models\Backend\GeneralSettings;
 use App\Services\LocalizationService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -82,7 +82,7 @@ class HandleInertiaRequests extends Middleware
     private function initializeSettings($request)
     {
         $app = [
-            'name' => DB::table('settings')->first()->{ Settings::FIELD_APP_NAME }
+            'name' => DB::table('general_settings')->first()->{ GeneralSettings::FIELD_APP_NAME }
         ];
 
         return compact(

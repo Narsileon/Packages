@@ -5,7 +5,7 @@ namespace Database\Seeders\Subseeders;
 #region USE
 
 use App\Models\Backend\Order;
-use App\Models\Backend\Settings;
+use App\Models\Backend\GeneralSettings;
 use Illuminate\Database\Seeder;
 
 #endregion
@@ -31,8 +31,8 @@ class BackendSeeder extends Seeder
 
     private function createSettings()
     {
-        Settings::create([
-            Settings::FIELD_APP_NAME => 'PIA-Framework',
+        GeneralSettings::create([
+            GeneralSettings::FIELD_APP_NAME => 'PIA-Framework',
         ]);
     }
 

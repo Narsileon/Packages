@@ -9,14 +9,13 @@ use Illuminate\Database\Eloquent\Model;
 
 #endregion
 
-class Settings extends Model
+class GeneralSettings extends Model
 {
     use HasFactory;
 
     #region CONSTANTS
 
     public const FIELD_ID = 'id';
-
     public const FIELD_APP_NAME = 'app_name';
 
     #endregion

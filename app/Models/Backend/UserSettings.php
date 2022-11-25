@@ -38,7 +38,6 @@ class UserSettings extends Model
     protected $fillable =
     [
         self::FIELD_USER_ID,
-
         self::FIELD_FAQS,
         self::FIELD_FOOTER_LINKS,
         self::FIELD_HEADER_LINKS,

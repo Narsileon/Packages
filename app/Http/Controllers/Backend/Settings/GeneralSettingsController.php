@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Backend\Settings;
 #region USE
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\Backend\Settings\GeneralSettingsUpdateRequest;
+use App\Models\Backend\GeneralSettings;
+use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 
 #endregion
@@ -16,15 +18,21 @@ class GeneralSettingsController extends Controller
 
     public function index()
     {
-        $generalSettings = null;
+        $generalSettings = DB::table('general_settings')->first();
 
         return Inertia::render('Backend/GeneralSettings/Index', compact(
             'generalSettings'
         ));
     }
 
-    public function update(Request $request)
+    public function update(GeneralSettingsUpdateRequest $request)
     {
+        $attributes = $request->validated();
+
+        DB::table('general_settings')
+            ->where(GeneralSettings::FIELD_ID, $request->{ GeneralSettings::FIELD_ID })
+            ->update($attributes);
+
         return redirect(route('admin.general_settings'));
     }
 
