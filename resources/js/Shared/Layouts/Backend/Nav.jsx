@@ -40,7 +40,7 @@ export default function Nav() {
                 >
                     <NavLink
                         href={ route('admin.calendar') }
-                        label={ trans('date-time.calendar') }
+                        label={ transChoice('date-time.calendars', 1) }
                         icon="calendar"
                     />
                     <NavLink
@@ -67,7 +67,7 @@ export default function Nav() {
                     />
                     <NavLink
                         href={ route('admin.faqs.index') }
-                        label={ trans('common.faq') }
+                        label={ transChoice('common.faqs', 2) }
                         icon="question"
                     />
                 </Section>
@@ -77,6 +77,11 @@ export default function Nav() {
                     label={ transChoice('common.settings', 2) }
                     icon="cog"
                 >
+                    <NavLink
+                        href={ route('admin.general_settings') }
+                        label={ transChoice('common.general_settings', 2) }
+                        icon="cog"
+                    />
                     <NavLink
                         href={ route('admin.languages') }
                         label={ transChoice('common.languages', 2) }

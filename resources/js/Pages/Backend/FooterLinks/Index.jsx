@@ -25,7 +25,7 @@ export default function Index({ footerLinks, columns, template }) {
 
 	return (
 		<>
-			<Head title={ transChoice('common.footer_links', 1) } />
+			<Head title={ transChoice('common.footer_links', 2) } />
 
 			<div className="flex flex-col h-full space-y-4">
 				<TableHeader

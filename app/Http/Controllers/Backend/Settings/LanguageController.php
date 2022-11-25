@@ -4,11 +4,10 @@ namespace App\Http\Controllers\Backend\Settings;
 
 #region USE
 
-use App\Constants\Tables;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Backend\Settings\LanguageResource;
 use App\Models\Backend\Language;
-use App\Models\Backend\Template;
+use App\Models\Backend\UserSettings;
 use App\Models\User;
 use App\Templates\LanguageTemplate;
 use Illuminate\Http\Request as HttpRequest;
@@ -25,7 +24,7 @@ class LanguageController extends Controller
     {
         $columns = LanguageTemplate::COLUMNS;
 
-        $template = Auth::user()->{ User::ATTRIBUTE_TEMPLATES } ? Auth::user()->{ User::ATTRIBUTE_TEMPLATES }->{ Template::FIELD_LANGUAGES } : LanguageTemplate::DEFAULT_TEMPLATE;
+        $template = Auth::user()->{ User::ATTRIBUTE_TEMPLATES } ? Auth::user()->{ User::ATTRIBUTE_TEMPLATES }->{ UserSettings::FIELD_LANGUAGES } : LanguageTemplate::DEFAULT_TEMPLATE;
 
         $languages = LanguageResource::collection(Language::all());
 

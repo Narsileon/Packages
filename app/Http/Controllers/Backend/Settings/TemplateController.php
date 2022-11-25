@@ -6,7 +6,7 @@ namespace App\Http\Controllers\Backend\Settings;
 
 use App\Constants\Tables;
 use App\Http\Controllers\Controller;
-use App\Models\Backend\Template;
+use App\Models\Backend\UserSettings;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,8 +26,8 @@ class TemplateController extends Controller
 
         if (!Auth::user()->{ User::ATTRIBUTE_TEMPLATES})
         {
-            Template::factory()->create([
-                Template::FIELD_USER_ID => Auth::user()->{ User::FIELD_ID },
+            UserSettings::factory()->create([
+                UserSettings::FIELD_USER_ID => Auth::user()->{ User::FIELD_ID },
                 $template[Tables::PROPERTY_NAME] => $template,
             ]);
         }

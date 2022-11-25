@@ -23,7 +23,7 @@ export default function Calendar({ tasks }) {
             id="Calendar"
         >
             <h1 className="text-xl">
-                { trans('date-time.calendar')}
+                { transChoice('date-time.calendars', 1) }
             </h1>
 
             <div className="primary-background border-2 border-color flex flex-grow w-full h-fit overflow-auto">

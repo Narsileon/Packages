@@ -10,7 +10,7 @@ use App\Http\Requests\Backend\Management\UserRoleUpdateRequest;
 use App\Http\Resources\Backend\Management\UserPermissionCollection;
 use App\Http\Resources\Backend\Management\UserRoleCollection;
 use App\Http\Resources\Backend\Management\UserRoleResource;
-use App\Models\Backend\Template;
+use App\Models\Backend\UserSettings;
 use App\Models\User;
 use App\Models\UserPermission;
 use App\Models\UserRole;
@@ -31,7 +31,7 @@ class RoleController extends Controller
 
         $columns = RoleTemplate::COLUMNS;
 
-        $template = Auth::user()->{ User::ATTRIBUTE_TEMPLATES } ? Auth::user()->{ User::ATTRIBUTE_TEMPLATES }->{ Template::FIELD_ROLES } : RoleTemplate::DEFAULT_TEMPLATE;
+        $template = Auth::user()->{ User::ATTRIBUTE_TEMPLATES } ? Auth::user()->{ User::ATTRIBUTE_TEMPLATES }->{ UserSettings::FIELD_ROLES } : RoleTemplate::DEFAULT_TEMPLATE;
 
         $collection = UserRole::query()
             ->search($template)

@@ -5,7 +5,7 @@ namespace App\Templates;
 #region USE
 
 use App\Constants\Tables;
-use App\Models\Backend\Template;
+use App\Models\Backend\UserSettings;
 use App\Models\Frontend\HeaderLink;
 
 #endregion
@@ -48,7 +48,7 @@ class HeaderLinkTemplate
     ];
 
     public const DEFAULT_TEMPLATE = [
-        Tables::PROPERTY_NAME => Template::FIELD_HEADER_LINKS,
+        Tables::PROPERTY_NAME => UserSettings::FIELD_HEADER_LINKS,
         Tables::PROPERTY_COLUMN_ORDER => self::DEFAULT_ORDER,
         Tables::PROPERTY_SORTING => self::DEFAULT_SORTING,
     ];

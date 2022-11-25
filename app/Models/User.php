@@ -6,7 +6,7 @@ namespace App\Models;
 
 use App\Constants\CastTypes;
 use App\Models\Backend\Localization;
-use App\Models\Backend\Template;
+use App\Models\Backend\UserSettings;
 use App\Traits\IsBaseModel;
 use App\Traits\IsFilterable;
 use App\Traits\IsSortable;
@@ -38,7 +38,7 @@ class User extends Authenticatable
     public const ATTRIBUTE_PERMISSIONS = 'permissions';
 
     public const ATTRIBUTE_LOCALIZATIONS = 'localizations';
-    public const ATTRIBUTE_TEMPLATES = 'templates';
+    public const ATTRIBUTE_TEMPLATES = 'settings';
 
     #endregion
 
@@ -80,9 +80,9 @@ class User extends Authenticatable
         return $this->hasOne(Localization::class);
     }
 
-    public function templates() : HasOne
+    public function settings() : HasOne
     {
-        return $this->hasOne(Template::class);
+        return $this->hasOne(UserSettings::class);
     }
 
     #endregion

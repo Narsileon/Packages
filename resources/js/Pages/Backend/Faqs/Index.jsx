@@ -1,5 +1,5 @@
 import { Head, Link } from "@inertiajs/inertia-react";
-import { trans } from "@/narsil-localization";
+import { trans, transChoice } from "@/narsil-localization";
 import { useTable } from "@/narsil-table";
 import Table from "@/Components/Tables/Table";
 import TableHeader from "@/Components/Tables/TableHeader";
@@ -29,7 +29,7 @@ export default function Index({ faqs, columns, template }) {
 
 			<div className="flex flex-col h-full space-y-4">
 				<TableHeader
-					title={ trans('List of :resource', { 'resource': trans('common.faq') }) }
+					title={ trans('List of :resource', { 'resource': transChoice('common.faqs', 1) }) }
 					table={ table }
 				>
 					<Link
@@ -53,7 +53,7 @@ export default function Index({ faqs, columns, template }) {
 					</>
 				) : (
 					<div>
-						{ trans('No :resource was found in the database', { 'resource': trans('common.faq') }) }
+						{ trans('No :resource was found in the database', { 'resource': transChoice('common.faqs', 1) }) }
 					</div>
 				)}
 			</div>

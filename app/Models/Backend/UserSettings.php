@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 #endregion
 
-class Template extends Model
+class UserSettings extends Model
 {
     use HasFactory;
 

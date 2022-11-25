@@ -11,7 +11,7 @@ use App\Http\Resources\Backend\Management\UserCollection;
 use App\Http\Resources\Backend\Management\UserPermissionCollection;
 use App\Http\Resources\Backend\Management\UserResource;
 use App\Http\Resources\Backend\Management\UserRoleCollection;
-use App\Models\Backend\Template;
+use App\Models\Backend\UserSettings;
 use App\Models\User;
 use App\Models\UserPermission;
 use App\Models\UserRole;
@@ -33,7 +33,7 @@ class UserController extends Controller
 
         $columns = UserTemplate::COLUMNS;
 
-        $template = Auth::user()->{ User::ATTRIBUTE_TEMPLATES } ? Auth::user()->{ User::ATTRIBUTE_TEMPLATES }->{ Template::FIELD_USERS } : UserTemplate::DEFAULT_TEMPLATE;
+        $template = Auth::user()->{ User::ATTRIBUTE_TEMPLATES } ? Auth::user()->{ User::ATTRIBUTE_TEMPLATES }->{ UserSettings::FIELD_USERS } : UserTemplate::DEFAULT_TEMPLATE;
 
         $collection = User::query()
             ->search($template)

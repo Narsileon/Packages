@@ -7,7 +7,7 @@ namespace App\Http\Controllers\Backend\Settings;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Settings\LocalizationUpdateRequest;
 use App\Models\Backend\Localization;
-use App\Models\Backend\Template;
+use App\Models\Backend\UserSettings;
 use App\Models\User;
 use App\Services\LocalizationService;
 use App\Templates\LocalizationTemplate;
@@ -24,7 +24,7 @@ class LocalizationController extends Controller
     {
         $columns = LocalizationTemplate::COLUMNS;
 
-        $template = Auth::user()->{ User::ATTRIBUTE_TEMPLATES } ? Auth::user()->{ User::ATTRIBUTE_TEMPLATES }->{ Template::FIELD_LOCALIZATIONS } : LocalizationTemplate::DEFAULT_TEMPLATE;
+        $template = Auth::user()->{ User::ATTRIBUTE_TEMPLATES } ? Auth::user()->{ User::ATTRIBUTE_TEMPLATES }->{ UserSettings::FIELD_LOCALIZATIONS } : LocalizationTemplate::DEFAULT_TEMPLATE;
 
         $defaultLocalization = collect(LocalizationService::get(false))['dictionary']['common'];
         $customLocalization = collect(json_decode(Auth::user()->localizations, true));

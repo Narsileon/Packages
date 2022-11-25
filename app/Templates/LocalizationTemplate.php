@@ -5,7 +5,7 @@ namespace App\Templates;
 #region USE
 
 use App\Constants\Tables;
-use App\Models\Backend\Template;
+use App\Models\Backend\UserSettings;
 
 #endregion
 
@@ -37,7 +37,7 @@ class LocalizationTemplate
     ];
 
     public const DEFAULT_TEMPLATE = [
-        Tables::PROPERTY_NAME => Template::FIELD_LOCALIZATIONS,
+        Tables::PROPERTY_NAME => UserSettings::FIELD_LOCALIZATIONS,
         Tables::PROPERTY_COLUMN_ORDER => self::DEFAULT_ORDER,
         Tables::PROPERTY_SORTING => self::DEFAULT_SORTING,
     ];

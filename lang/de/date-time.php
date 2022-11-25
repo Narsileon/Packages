@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'calendar'      => 'Kalender',
+    'calendars'     => 'Kalender|Kalender',
     'dates'         => 'Datum|Daten',
     'end_dates'     => 'Enddatum|Enddaten',
     'start_dates'   => 'Startdatum|Startdaten',

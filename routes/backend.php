@@ -13,6 +13,7 @@ use App\Http\Controllers\Backend\Settings\LocalizationController;
 use App\Http\Controllers\Backend\Backoffice\OrderController;
 use App\Http\Controllers\Backend\Management\RoleController;
 use App\Http\Controllers\Backend\Management\UserController;
+use App\Http\Controllers\Backend\Settings\GeneralSettingsController;
 use App\Http\Controllers\Backend\Settings\TemplateController;
 use Illuminate\Support\Facades\Route;
 
@@ -39,6 +40,10 @@ Route::group([
     Route::resource('faqs', FaqController::class);
 
     // Settings
+    Route::controller(GeneralSettingsController::class)->group(function () {
+        Route::get('general_settings', 'index')->name('general_settings');
+        Route::patch('general_settings', 'update');
+    });
     Route::controller(LanguageController::class)->group(function () {
         Route::get('languages', 'index')->name('languages');
         Route::patch('languages', 'update');

@@ -25,7 +25,7 @@ export default function Index({ users, columns, template }) {
 
 	return (
 		<>
-			<Head title={ transChoice('common.users', 1) } />
+			<Head title={ transChoice('common.users', 2) } />
 
 			<div className="flex flex-col h-full space-y-4">
 				<TableHeader

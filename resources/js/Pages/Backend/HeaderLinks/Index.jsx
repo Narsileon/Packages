@@ -25,7 +25,7 @@ export default function Index({ headerLinks, columns, template }) {
 
 	return (
 		<>
-			<Head title={ transChoice('common.header_links', 1) } />
+			<Head title={ transChoice('common.header_links', 2) } />
 
 			<div className="flex flex-col h-full space-y-4">
 				<TableHeader

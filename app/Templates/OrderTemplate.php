@@ -6,7 +6,7 @@ namespace App\Templates;
 
 use App\Constants\Tables;
 use App\Models\Backend\Order;
-use App\Models\Backend\Template;
+use App\Models\Backend\UserSettings;
 
 #endregion
 
@@ -78,7 +78,7 @@ class OrderTemplate
     ];
 
     public const DEFAULT_TEMPLATE = [
-        Tables::PROPERTY_NAME => Template::FIELD_ORDERS,
+        Tables::PROPERTY_NAME => UserSettings::FIELD_ORDERS,
         Tables::PROPERTY_COLUMN_ORDER => self::DEFAULT_ORDER,
         Tables::PROPERTY_SORTING => self::DEFAULT_SORTING,
     ];
