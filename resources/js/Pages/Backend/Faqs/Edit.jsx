@@ -1,7 +1,7 @@
 import { useForm } from "@inertiajs/inertia-react";
 import { trans } from "@/narsil-localization";
-import Formular from "./Formular";
 import AppHead from "@/Shared/AppHead";
+import Formular from "./Formular";
 
 export default function Edit({ faq }) {
 	const title = trans('Edit :resource', { 'resource': trans('FAQ') });
