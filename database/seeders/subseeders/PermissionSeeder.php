@@ -18,16 +18,17 @@ class PermissionSeeder extends Seeder
 
     public function run()
     {
-        $this->CreateRoles();
-        $this->CreatePermissions();
-        $this->InitSuperAdmin();
+        $this->createRoles();
+        $this->createPermissions();
+
+        $this->initSuperAdmin();
     }
 
     #endregion
 
     #region PRIVATE METHODS
 
-    private function CreateRoles()
+    private function createRoles()
     {
         $roles = Roles::getConstants();
 
@@ -39,7 +40,7 @@ class PermissionSeeder extends Seeder
         }
     }
 
-    private function CreatePermissions() 
+    private function createPermissions()
     {
         $permissions = Permissions::getConstants();
 
@@ -51,7 +52,7 @@ class PermissionSeeder extends Seeder
         }
     }
 
-    private function InitSuperAdmin()
+    private function initSuperAdmin()
     {
         $role = Role::findByName(Roles::SUPER_ADMIN);
 

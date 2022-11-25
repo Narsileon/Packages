@@ -17,14 +17,14 @@ class UserSeeder extends Seeder
 
     public function run()
     {
-        $this->CreateSuperAdmin();
+        $this->createSuperAdmin();
     }
 
     #endregion
 
     #region PRIVATE METHODS
 
-    private function CreateSuperAdmin()
+    private function createSuperAdmin()
     {
         $user = User::factory()->create([
             User::FIELD_USERNAME => 'Narsilien',

@@ -1,4 +1,4 @@
-import { Head, Link } from "@inertiajs/inertia-react";
+import { Link } from "@inertiajs/inertia-react";
 import { trans, transChoice } from "@/narsil-localization";
 import { useTable } from "@/narsil-table";
 import Table from "@/Components/Tables/Table";
@@ -6,6 +6,7 @@ import TableHeader from "@/Components/Tables/TableHeader";
 import TableMenu from "@/Components/Tables/TableMenu";
 import TableSettings from "@/Components/Tables/TableSettings";
 import BackendPagination from "@/Components/Pagination/BackendPagination";
+import AppHead from "@/Shared/AppHead";
 
 export default function Index({ orders, columns, template, list }) {
 	let newHeader = [...columns];
@@ -25,7 +26,7 @@ export default function Index({ orders, columns, template, list }) {
 
 	return (
 		<>
-			<Head title={ transChoice('common.orders', 2) } />
+			<AppHead title={ transChoice('common.orders', 2) } />
 
 			<div className="flex flex-col h-full space-y-4">
 				<TableHeader

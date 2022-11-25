@@ -16,14 +16,14 @@ class SessionSeeder extends Seeder
 
     public function run()
     {
-        $this->CreateLocales();
+        $this->createLocales();
     }
 
     #endregion
 
     #region PRIVATE METHODS
 
-    private function CreateLocales()
+    private function createLocales()
     {
         foreach(Locales::CODES as $code)
         {

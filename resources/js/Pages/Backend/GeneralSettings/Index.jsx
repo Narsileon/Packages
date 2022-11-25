@@ -1,10 +1,10 @@
-import { Head } from "@inertiajs/inertia-react";
 import { transChoice } from "@/narsil-localization";
+import AppHead from "@/Shared/AppHead";
 
 export default function Index() {
     return(
         <>
-			<Head title={ transChoice('common.general_settings', 2) } />
+			<AppHead title={ transChoice('common.general_settings', 2) } />
         </>
     );
 }

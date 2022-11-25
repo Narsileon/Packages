@@ -1,8 +1,9 @@
-import { Head, useForm } from "@inertiajs/inertia-react";
+import { useForm } from "@inertiajs/inertia-react";
 import { trans, transChoice } from "@/narsil-localization";
 import { Form, FormBody, FormFooter, FormHeader, FormInput } from "@/Components/Forms";
 import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 import BackButton from "@/Components/Elements/Buttons/BackButton";
+import AppHead from "@/Shared/AppHead";
 
 export default function Create() {
     const { data, setData, post, processing, errors } = useForm({
@@ -12,7 +13,7 @@ export default function Create() {
 
 	return (
         <>
-            <Head title={ trans('Connection') } />
+            <AppHead title={ trans('Connection') } />
 
             <Form
                 className="w-9/12 lg:w-6/12 mx-auto"

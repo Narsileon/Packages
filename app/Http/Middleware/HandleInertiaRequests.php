@@ -4,9 +4,11 @@ namespace App\Http\Middleware;
 
 #region USE
 
+use App\Models\Backend\Settings;
 use App\Services\LocalizationService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Inertia\Middleware;
 use Tightenco\Ziggy\Ziggy;
 
@@ -31,6 +33,7 @@ class HandleInertiaRequests extends Middleware
     {
         $auth = $this->initializeAuth($request);
         $flash = $this->initializeFlash($request);
+        $settings = $this->initializeSettings($request);
         $ziggy = $this->initializeZiggy($request);
 
         $localization = LocalizationService::get();
@@ -38,6 +41,7 @@ class HandleInertiaRequests extends Middleware
         return array_merge(parent::share($request), compact(
             'auth',
             'flash',
+            'settings',
             'ziggy',
 
             'localization',
@@ -72,6 +76,17 @@ class HandleInertiaRequests extends Middleware
         return compact(
             'success',
             'error',
+        );
+    }
+
+    private function initializeSettings($request)
+    {
+        $app = [
+            'name' => DB::table('settings')->first()->{ Settings::FIELD_APP_NAME }
+        ];
+
+        return compact(
+            'app',
         );
     }
 

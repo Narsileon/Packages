@@ -1,14 +1,14 @@
-import { Head } from "@inertiajs/inertia-react";
 import { trans, transChoice } from "@/narsil-localization";
 import { upperFirst } from "lodash";
 import ShowTable from "@/Components/Backend/ShowTable";
+import AppHead from "@/Shared/AppHead";
 
 export default function Show({ user }) {
     const title = upperFirst(transChoice('common.users', 1));
 
     return (
         <>
-            <Head title={ title } />
+            <AppHead title={ title } />
 
             <ShowTable
                 title={ title }

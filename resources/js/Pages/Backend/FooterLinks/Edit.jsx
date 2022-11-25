@@ -1,6 +1,7 @@
-import { Head, useForm } from "@inertiajs/inertia-react";
+import { useForm } from "@inertiajs/inertia-react";
 import { trans, transChoice } from "@/narsil-localization";
 import Formular from "./Formular";
+import AppHead from "@/Shared/AppHead";
 
 export default function Edit({ footerLink }) {
 	const title = trans('Edit :resource', { 'resource': transChoice('common.footer_links', 1) });
@@ -13,7 +14,7 @@ export default function Edit({ footerLink }) {
 
     return (
         <>
-            <Head title={ title } />
+            <AppHead title={ title } />
 
 			<Formular
 				title= { title }

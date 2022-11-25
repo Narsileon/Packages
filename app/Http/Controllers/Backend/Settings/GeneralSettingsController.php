@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Backend\Settings;
 #region USE
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request as HttpRequest;
+use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 #endregion
@@ -23,7 +23,7 @@ class GeneralSettingsController extends Controller
         ));
     }
 
-    public function update(HttpRequest $request)
+    public function update(Request $request)
     {
         return redirect(route('admin.general_settings'));
     }

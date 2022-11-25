@@ -1,6 +1,7 @@
-import { Head, useForm } from "@inertiajs/inertia-react";
+import { useForm } from "@inertiajs/inertia-react";
 import { trans, transChoice } from "@/narsil-localization";
 import Formular from "./Formular";
+import AppHead from "@/Shared/AppHead";
 
 export default function Edit({ role, permissions }) {
 	const title = trans('Edit :resource', { 'resource': transChoice('permissions.roles', 1) });
@@ -31,7 +32,7 @@ export default function Edit({ role, permissions }) {
 
     return (
         <>
-			<Head title={ title } />
+			<AppHead title={ title } />
 
 			<Formular
 				title= { title }

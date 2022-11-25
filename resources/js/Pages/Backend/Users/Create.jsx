@@ -1,6 +1,7 @@
-import { Head, useForm } from "@inertiajs/inertia-react";
+import { useForm } from "@inertiajs/inertia-react";
 import { trans } from "@/narsil-localization";
 import Formular from "./Formular";
+import AppHead from "@/Shared/AppHead";
 
 export default function Create({ roles, permissions }) {
 	const title = trans('Create :resource', {'resource': trans('common.new_user')});
@@ -47,7 +48,7 @@ export default function Create({ roles, permissions }) {
 
 	return (
 		<>
-			<Head title={ title } />
+			<AppHead title={ title } />
 
 			<Formular
 				title= { title }

@@ -16,15 +16,15 @@ class FrontendSeeder extends Seeder
 
     public function run()
     {
-        $this->CreateFooterLinks();
-        $this->CreateQuestions();
+        $this->createFooterLinks();
+        $this->createQuestions();
     }
 
     #endregion
 
     #region PRIVATE METHODS
 
-    private function CreateFooterLinks()
+    private function createFooterLinks()
     {
         FooterLink::create([
             FooterLink::FIELD_LABEL => 'FAQ',
@@ -33,7 +33,7 @@ class FrontendSeeder extends Seeder
         ]);
     }
 
-    private function CreateQuestions()
+    private function createQuestions()
     {
         Faq::factory(10)->create();
     }

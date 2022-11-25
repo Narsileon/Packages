@@ -1,11 +1,11 @@
-import { Head } from '@inertiajs/inertia-react';
 import { transChoice } from '@/narsil-localization';
 import Accordion from '@/Components/Elements/Accordion';
+import AppHead from '@/Shared/AppHead';
 
 export default function Index({ faqs }) {
     return (
         <>
-            <Head title={ transChoice('common.faqs', 2) } />
+            <AppHead title={ transChoice('common.faqs', 2) } />
 
             <Accordion collection={ faqs } />
         </>

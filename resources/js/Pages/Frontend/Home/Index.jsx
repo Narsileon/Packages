@@ -1,10 +1,10 @@
-import { Head } from "@inertiajs/inertia-react";
 import { trans } from "@/narsil-localization";
+import AppHead from "@/Shared/AppHead";
 
 export default function Index() {
     return (
         <>
-            <Head title={ trans('common.home') } />
+            <AppHead title={ trans('common.home') } />
         </>
     );
 }

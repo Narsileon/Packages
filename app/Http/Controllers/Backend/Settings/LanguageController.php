@@ -10,7 +10,7 @@ use App\Models\Backend\Language;
 use App\Models\Backend\UserSettings;
 use App\Models\User;
 use App\Templates\LanguageTemplate;
-use Illuminate\Http\Request as HttpRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
@@ -35,7 +35,7 @@ class LanguageController extends Controller
         ));
     }
 
-    public function update(HttpRequest $request)
+    public function update(Request $request)
     {
         $request->collect()->each(function($locale) {
             Language::where(Language::FIELD_ID, $locale[Language::FIELD_ID])

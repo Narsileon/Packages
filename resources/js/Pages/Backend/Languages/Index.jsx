@@ -1,5 +1,4 @@
 import { Inertia } from "@inertiajs/inertia";
-import { Head } from "@inertiajs/inertia-react";
 import { trans, transChoice } from "@/narsil-localization";
 import { useTable } from "@/narsil-table";
 import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
@@ -7,6 +6,7 @@ import Toggle from "@/Components/Elements/Toggle";
 import Table from "@/Components/Tables/Table";
 import TableHeader from "@/Components/Tables/TableHeader";
 import FrontendPagination from "@/Components/Pagination/FrontendPagination";
+import AppHead from "@/Shared/AppHead";
 
 export default function Index({ languages, columns, template }) {
 	let newHeader = [...columns].map(object => {
@@ -42,7 +42,7 @@ export default function Index({ languages, columns, template }) {
 
 	return (
 		<>
-			<Head title={ transChoice('common.languages', 2) } />
+			<AppHead title={ transChoice('common.languages', 2) } />
 
 			<div className="flex flex-col h-full space-y-4">
 				<TableHeader
