@@ -25,22 +25,22 @@ class LocalizationTemplate
             Tables::FIELD_HEADER => 'common.values',
         ],
         [
-            TABLES::FIELD_ACCESSOR_KEY => Tables::CUSTOM_VALUE,
-            TABLES::FIELD_ID => Tables::CUSTOM_VALUE,
+            TABLES::FIELD_ACCESSOR_KEY => Tables::FIELD_CUSTOM_VALUE,
+            TABLES::FIELD_ID => Tables::FIELD_CUSTOM_VALUE,
             Tables::FIELD_HEADER => 'common.custom_values',
         ],
     ];
 
     public const DEFAULT_TEMPLATE = [
         Tables::PROPERTY_NAME => Template::FIELD_LOCALIZATIONS,
-        Tables::PROPERTY_ORDER => self::DEFAULT_ORDER,
+        Tables::PROPERTY_COLUMN_ORDER => self::DEFAULT_ORDER,
         Tables::PROPERTY_SORTING => self::DEFAULT_SORTING,
     ];
 
     private const DEFAULT_ORDER = [
         Tables::FIELD_KEY,
         Tables::FIELD_VALUE,
-        Tables::CUSTOM_VALUE,
+        Tables::FIELD_CUSTOM_VALUE,
     ];
 
     private const DEFAULT_SORTING = [

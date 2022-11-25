@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { usePrevious, useToggle } from "react-use";
+import { usePrevious } from "react-use";
 import { Inertia } from "@inertiajs/inertia";
-import { rankItem, compareItems } from '@tanstack/match-sorter-utils'
+import { rankItem } from '@tanstack/match-sorter-utils'
 
 import {
 	getCoreRowModel,
@@ -10,7 +10,6 @@ import {
 	getFacetedUniqueValues,
 	getFilteredRowModel,
 	getSortedRowModel,
-	sortingFns,
 	useReactTable
 } from "@tanstack/react-table";
 
@@ -20,72 +19,44 @@ export const useTable = (
 	template,
 	manual = true,
 ) => {
-	if (template.sizing) {
-		tableColumns.forEach(object => {
-			if (template.sizing[object.id]) {
-				object.size = template.sizing[object.id];
-			}
-	    });
-    }
-
-	const [data, setData] = useState(tableData);
+  	const [data, setData] = useState(tableData);
 
     const [columns] = useState(() => [...tableColumns]);
 
-	const [columnFilters, setColumnFilters] = useState(template.columnFilters ? template.columnFilters : []);
-    const [columnOrder, setOrder] = useState(template.order ?? []);
-	const [columnVisibility, setColumnVisibility] = useState(template.visibility);
+	const [columnFilters, setColumnFilters] = useState(template.columnFilters ?? []);
+    const [columnOrder, setColumnOrder] = useState(template.columnOrder ?? []);
+	const [columnSizing, setColumnSizing] = useState(template.columnSizing ?? {});
+	const [columnVisibility, setColumnVisibility] = useState(template.columnVisibility ?? {});
 	const [globalFilter, setGlobalFilter] = useState(template.globalFilter ?? '');
     const [sorting, setSorting] = useState(template.sorting ?? []);
 
-	const [current, setCurrent] = useState(template.current ?? '');
 	const [autoUpdate, setAutoUpdate] = useState(template.autoUpdate ?? 10);
+	const [current, setCurrent] = useState(template.current ?? '');
 
 	const list = template.list ?? [];
-
-	const defaultColumn = {
-		minSize: 100,
-		maxSize: 300,
-	};
-
-    const columnResizeMode = 'onChange';
-
-    const fuzzyFilter = (row, columnId, value, addMeta) => {
-		const itemRank = rankItem(row.getValue(columnId), value)
-
-		addMeta({ itemRank })
-
-		return itemRank.passed
-	};
-
-    const fuzzySort = (rowA, rowB, columnId) => {
-		let dir = 0
-
-		if (rowA.columnFiltersMeta[columnId]) {
-		  	dir = compareItems(!rowA.columnFiltersMeta[columnId].itemRank, !rowB.columnFiltersMeta[columnId].itemRank)
-		}
-
-		return dir === 0 ? sortingFns.alphanumeric(rowA, rowB, columnId) : dir
-	};
 
 	const table = useReactTable({
 		data,
 		columns,
-		filterFns: {
-			fuzzy: fuzzyFilter,
-		},
 		state: {
 			autoUpdate,
 			current,
 			columnFilters,
 			columnOrder,
+			columnSizing,
 			columnVisibility,
 			list,
 			globalFilter,
 			sorting,
 		},
-		defaultColumn: defaultColumn,
-		columnResizeMode: columnResizeMode,
+		defaultColumn: {
+			minSize: 100,
+			maxSize: 300,
+		},
+		columnResizeMode: 'onChange',
+		filterFns: {
+			fuzzy: fuzzyFilter,
+		},
 		globalFilterFn: fuzzyFilter,
 		getCoreRowModel: getCoreRowModel(),
         getFilteredRowModel: getFilteredRowModel(),
@@ -94,7 +65,8 @@ export const useTable = (
 		getFacetedUniqueValues: getFacetedUniqueValues(),
 		getFacetedMinMaxValues: getFacetedMinMaxValues(),
 		onColumnFiltersChange: setColumnFilters,
-		onColumnOrderChange: setOrder,
+		onColumnOrderChange: setColumnOrder,
+		onColumnSizingChange: setColumnSizing,
 		onColumnVisibilityChange: setColumnVisibility,
 		onGlobalFilterChange: setGlobalFilter,
         onSortingChange: setSorting,
@@ -107,45 +79,47 @@ export const useTable = (
 		},
 	});
 
-    const tableTemplate = {
-        'name': template.name,
-		'columnFilters': { ...table.getState().columnFilters },
-		'current': current,
-		'globalFilter': globalFilter,
-        'order': columnOrder,
-        'sizing': { ...template.sizing, ...table.getState().columnSizing },
-        'sorting': { ...table.getState().sorting },
-		'visibility': columnVisibility,
-		'autoUpdate': autoUpdate,
-    };
-
 	const previousColumnFilters = usePrevious(columnFilters);
-	const previousCurrent = usePrevious(current);
-	const previousOrder = usePrevious(columnOrder);
-	const previousVisiblity = usePrevious(columnVisibility);
-	const previousSorting = usePrevious(sorting);
+	const previousColumnOrder = usePrevious(columnOrder);
+	const previousColumnVisiblity = usePrevious(columnVisibility);
 	const previousGlobalFilter = usePrevious(globalFilter);
+	const previousSorting = usePrevious(sorting);
+
+	const previousCurrent = usePrevious(current);
 
 	useEffect(() => {
 		setData(tableData);
 	}, [tableData]);
 
 	useEffect(() => {
-		if (manual)
-		{
-			if (previousColumnFilters || previousCurrent || previousGlobalFilter || previousOrder || previousSorting || previousVisiblity) {
+		if (
+			previousColumnFilters ||
+			previousColumnOrder ||
+			previousColumnVisiblity ||
+			previousGlobalFilter ||
+			previousSorting ||
+			previousCurrent
+		) {
+			const timeout = setTimeout(() => {
+				Inertia.get(route('admin.templates'), {
+					'template': {
+						'name': template.name,
+						'columnFilters': { ...table.getState().columnFilters },
+						'columnOrder': columnOrder,
+						'columnSizing': { ...template.sizing, ...table.getState().columnSizing },
+						'columnVisibility': columnVisibility,
+						'globalFilter': globalFilter,
+						'sorting': { ...table.getState().sorting },
+						'autoUpdate': autoUpdate,
+						'current': current,
+					},
+				}, {
+					preserveScroll: true,
+					preserveState: true,
+				});
+			}, 500);
 
-				const timeout = setTimeout(() => {
-					Inertia.get(route('admin.templates'), {
-						'template': tableTemplate,
-					}, {
-						preserveScroll: true,
-						preserveState: true,
-					});
-				}, 500);
-
-				return () => clearTimeout(timeout)
-			}
+			return () => clearTimeout(timeout)
 		}
 	}, [
 		autoUpdate,
@@ -160,3 +134,11 @@ export const useTable = (
 
     return [table];
 }
+
+function fuzzyFilter(row, columnId, value, addMeta) {
+	const itemRank = rankItem(row.getValue(columnId), value)
+
+	addMeta({ itemRank })
+
+	return itemRank.passed
+};

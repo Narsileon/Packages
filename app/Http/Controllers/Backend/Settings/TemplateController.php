@@ -22,7 +22,7 @@ class TemplateController extends Controller
         $template = $request['template'];
 
         $template = self::tryParseSorting($template, Tables::PROPERTY_SORTING);
-        $template = self::tryParseVisiblity($template, Tables::PROPERTY_VISIBILITY);
+        $template = self::tryParseVisiblity($template, Tables::PROPERTY_COLUMN_VISIBILITY);
 
         if (!Auth::user()->{ User::ATTRIBUTE_TEMPLATES})
         {

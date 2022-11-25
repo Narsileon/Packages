@@ -44,7 +44,10 @@ export default function Index({ footerLinks, columns, template }) {
 
 				{ footerLinks.meta.items > 0 ? (
 					<>
-						<Table table={ table } />
+						<Table
+							table={ table }
+							horizontalScrolling={ true }
+						/>
 
 						<Pagination data={ footerLinks.meta } />
 					</>

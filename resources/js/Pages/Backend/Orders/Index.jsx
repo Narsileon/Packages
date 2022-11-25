@@ -44,7 +44,10 @@ export default function Index({ orders, columns, template, list }) {
 
 				{ orders.meta.items > 0 ? (
 					<>
-						<Table table={ table } />
+						<Table
+							table={ table }
+							horizontalScrolling={ true }
+						/>
 
 						<Pagination data={ orders.meta } />
 					</>

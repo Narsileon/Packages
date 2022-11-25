@@ -44,7 +44,10 @@ export default function Index({ users, columns, template }) {
 
 				{ users.meta.items > 0 ? (
 					<>
-						<Table table={ table } />
+						<Table
+							table={ table }
+							horizontalScrolling={ true }
+						/>
 
 						<Pagination data={ users.meta } />
 					</>

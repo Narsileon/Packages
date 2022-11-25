@@ -44,7 +44,10 @@ export default function Index({ faqs, columns, template }) {
 
 				{ faqs.meta.items > 0 ? (
 					<>
-						<Table table={ table } />
+						<Table
+							table={ table }
+							horizontalScrolling={ true }
+						/>
 
 						<Pagination data={ faqs.meta } />
 					</>
