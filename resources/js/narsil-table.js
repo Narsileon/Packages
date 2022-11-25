@@ -9,6 +9,7 @@ import {
 	getFacetedRowModel,
 	getFacetedUniqueValues,
 	getFilteredRowModel,
+	getPaginationRowModel,
 	getSortedRowModel,
 	useReactTable
 } from "@tanstack/react-table";
@@ -57,13 +58,14 @@ export const useTable = (
 		filterFns: {
 			fuzzy: fuzzyFilter,
 		},
-		globalFilterFn: fuzzyFilter,
 		getCoreRowModel: getCoreRowModel(),
-        getFilteredRowModel: getFilteredRowModel(),
-		getSortedRowModel: getSortedRowModel(),
 		getFacetedRowModel: getFacetedRowModel(),
 		getFacetedUniqueValues: getFacetedUniqueValues(),
 		getFacetedMinMaxValues: getFacetedMinMaxValues(),
+		getFilteredRowModel: getFilteredRowModel(),
+		getPaginationRowModel: getPaginationRowModel(),
+		getSortedRowModel: getSortedRowModel(),
+		globalFilterFn: fuzzyFilter,
 		onColumnFiltersChange: setColumnFilters,
 		onColumnOrderChange: setColumnOrder,
 		onColumnSizingChange: setColumnSizing,
@@ -71,6 +73,7 @@ export const useTable = (
 		onGlobalFilterChange: setGlobalFilter,
         onSortingChange: setSorting,
 		manualFiltering: manual,
+		manualPagination: manual,
 		manualSorting: manual,
 		meta: {
 			setAutoUpdate,

@@ -5,7 +5,7 @@ import Table from "@/Components/Tables/Table";
 import TableHeader from "@/Components/Tables/TableHeader";
 import TableMenu from "@/Components/Tables/TableMenu";
 import TableSettings from "@/Components/Tables/TableSettings";
-import Pagination from "@/Shared/Pagination";
+import BackendPagination from "@/Components/Pagination/BackendPagination";
 
 export default function Index({ footerLinks, columns, template }) {
 	let newHeader = [...columns];
@@ -49,7 +49,7 @@ export default function Index({ footerLinks, columns, template }) {
 							horizontalScrolling={ true }
 						/>
 
-						<Pagination data={ footerLinks.meta } />
+						<BackendPagination data={ footerLinks.meta } />
 					</>
 				) : (
 					<div>

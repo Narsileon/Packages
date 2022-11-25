@@ -15,6 +15,11 @@ class LocalizationTemplate
 
     public const COLUMNS = [
         [
+            TABLES::FIELD_ACCESSOR_KEY => Tables::FIELD_TYPE,
+            TABLES::FIELD_ID => Tables::FIELD_TYPE,
+            Tables::FIELD_HEADER => 'common.types',
+        ],
+        [
             TABLES::FIELD_ACCESSOR_KEY => Tables::FIELD_KEY,
             TABLES::FIELD_ID => Tables::FIELD_KEY,
             Tables::FIELD_HEADER => 'common.keys',
@@ -38,6 +43,7 @@ class LocalizationTemplate
     ];
 
     private const DEFAULT_ORDER = [
+        Tables::FIELD_TYPE,
         Tables::FIELD_KEY,
         Tables::FIELD_VALUE,
         Tables::FIELD_CUSTOM_VALUE,

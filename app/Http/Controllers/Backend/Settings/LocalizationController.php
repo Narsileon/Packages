@@ -33,6 +33,7 @@ class LocalizationController extends Controller
 
         foreach($defaultLocalization as $key => $value) {
             array_push($dictionary, [
+                'type' => 'common',
                 'key' => $key,
                 'value' => $value,
                 'custom_value' => $customLocalization['dictionary'][$key] ?? '',

@@ -13,6 +13,7 @@ abstract class Tables
     public const FIELD_ID = 'id';
     public const FIELD_KEY = 'key';
     public const FIELD_MENU = 'menu';
+    public const FIELD_TYPE = 'type';
     public const FIELD_VALUE = 'value';
 
     public const PROPERTY_NAME = 'name';

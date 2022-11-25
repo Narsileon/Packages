@@ -6,6 +6,7 @@ import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 import Toggle from "@/Components/Elements/Toggle";
 import Table from "@/Components/Tables/Table";
 import TableHeader from "@/Components/Tables/TableHeader";
+import FrontendPagination from "@/Components/Pagination/FrontendPagination";
 
 export default function Index({ languages, columns, template }) {
 	let newHeader = [...columns].map(object => {
@@ -55,6 +56,8 @@ export default function Index({ languages, columns, template }) {
 				</TableHeader>
 
 				<Table table={ table } />
+
+				<FrontendPagination table={ table } />
 			</div>
 		</>
 	);
