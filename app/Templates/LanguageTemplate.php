@@ -18,7 +18,7 @@ class LanguageTemplate
         [
             TABLES::FIELD_ACCESSOR_KEY => Language::FIELD_ID,
             TABLES::FIELD_ID => Language::FIELD_ID,
-            Tables::FIELD_HEADER => 'common.id',
+            Tables::FIELD_HEADER => 'common.ids',
         ],
         [
             TABLES::FIELD_ACCESSOR_KEY => Language::FIELD_CODE,

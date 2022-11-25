@@ -18,17 +18,17 @@ class HeaderLinkTemplate
         [
             TABLES::FIELD_ACCESSOR_KEY => HeaderLink::FIELD_ID,
             TABLES::FIELD_ID => HeaderLink::FIELD_ID,
-            Tables::FIELD_HEADER => 'common.id',
+            Tables::FIELD_HEADER => 'common.ids',
         ],
         [
             TABLES::FIELD_ACCESSOR_KEY => HeaderLink::FIELD_LABEL,
             TABLES::FIELD_ID => HeaderLink::FIELD_LABEL,
-            Tables::FIELD_HEADER => 'validation.attributes.label',
+            Tables::FIELD_HEADER => 'common.designations',
         ],
         [
             TABLES::FIELD_ACCESSOR_KEY => HeaderLink::FIELD_URL,
             TABLES::FIELD_ID => HeaderLink::FIELD_URL,
-            Tables::FIELD_HEADER => 'validation.attributes.url',
+            Tables::FIELD_HEADER => 'common.urls',
         ],
         [
             TABLES::FIELD_ACCESSOR_KEY => HeaderLink::FIELD_ACTIVE,

@@ -1,5 +1,5 @@
 import { Head } from "@inertiajs/inertia-react";
-import { trans } from "@/narsil-localization";
+import { trans, transChoice } from "@/narsil-localization";
 import { upperFirst } from "lodash";
 import ShowTable from "@/Components/Backend/ShowTable";
 
@@ -18,7 +18,7 @@ export default function Show({ faq }) {
                 <div className="grid grid-cols-2 gap-y-4">
                     <div className="col-span-2 flex items-center space-x-1">
                         <span>
-                            { upperFirst(trans('validation.attributes.id')) + trans(':') }
+                            { upperFirst(transChoice('common.ids', 1)) + trans(':') }
                         </span>
                         <span>
                             { faq.id }
@@ -26,7 +26,7 @@ export default function Show({ faq }) {
                     </div>
                     <div className="col-span-2">
                         <span>
-                            { upperFirst(trans('validation.attributes.question')) + trans(':') }
+                            { upperFirst(transChoice('common.questions', 1)) + trans(':') }
                         </span>
                     </div>
                     <div className="col-span-2">
@@ -35,7 +35,7 @@ export default function Show({ faq }) {
                         </span>
                     </div>
                     <div className="col-span-2">
-                        { upperFirst(trans('validation.attributes.answer')) + trans(':') }
+                        { upperFirst(transChoice('common.answers', 1)) + trans(':') }
                     </div>
                     <div className="col-span-2">
                         { faq.answer }

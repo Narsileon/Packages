@@ -37,6 +37,8 @@ class LocalizationService
 
     public static function get($customized = true)
     {
+        Cache::flush();
+
         $locale = App::getLocale();
         $locales = Language::where(Language::FIELD_ACTIVE, 1)->pluck(Language::FIELD_CODE)->toArray();
         $dictionary = $customized ? self::getCustomizedLocalization($locale) : self::getLocalization($locale);
@@ -81,8 +83,6 @@ class LocalizationService
     {
         $key = self::CACHE_PREFIX . 'php_' . $locale;
 
-        //Cache::forget($key);
-
         return Cache::rememberForever($key, function () use($locale)
         {
             $files = null;
@@ -119,8 +119,6 @@ class LocalizationService
     private static function getJsonLocalization($locale) : array
     {
         $key = self::CACHE_PREFIX . 'json_' . $locale;
-
-        //Cache::forget($key);
 
         return Cache::rememberForever($key, function () use($locale)
         {

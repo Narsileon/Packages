@@ -18,7 +18,7 @@ export default function Show({ footerLink }) {
                 <div className="grid grid-cols-2 gap-y-4">
                     <div className="col-span-2 flex items-center space-x-1">
                         <span>
-                            { upperFirst(trans('validation.attributes.id')) + trans(':') }
+                            { upperFirst(transChoice('common.ids', 1)) + trans(':') }
                         </span>
                         <span>
                             { footerLink.id }
@@ -26,7 +26,7 @@ export default function Show({ footerLink }) {
                     </div>
                     <div className="col-span-2">
                         <span>
-                            { upperFirst(trans('validation.attributes.label')) + trans(':') }
+                            { upperFirst(transChoice('common.designations', 1)) + trans(':') }
                         </span>
                     </div>
                     <div className="col-span-2">
@@ -36,7 +36,7 @@ export default function Show({ footerLink }) {
                     </div>
                     <div className="col-span-2">
                         <span>
-                            { upperFirst(trans('validation.attributes.url')) + trans(':') }
+                            { upperFirst(transChoice('common.urls', 1)) + trans(':') }
                         </span>
                     </div>
                     <div className="col-span-2">

@@ -1,5 +1,5 @@
 import { Head, useForm } from "@inertiajs/inertia-react";
-import { trans } from "@/narsil-localization";
+import { trans, transChoice } from "@/narsil-localization";
 import { Form, FormBody, FormFooter, FormHeader, FormInput } from "@/Components/Forms";
 import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 import BackButton from "@/Components/Elements/Buttons/BackButton";
@@ -29,7 +29,7 @@ export default function Create() {
                     {/* Email */}
                     <FormInput
                         id="email"
-                        label={ trans('validation.attributes.email') }
+                        label={ transChoice('common.emails', 1) }
                         type="email"
                         value={ data.email}
                         error={ errors.email}
@@ -38,7 +38,7 @@ export default function Create() {
                     {/* Password */}
                     <FormInput
                         id="password"
-                        label={ trans('validation.attributes.password') }
+                        label={ transChoice('common.passwords', 1) }
                         type="password"
                         value={ data.password}
                         error={ errors.password}

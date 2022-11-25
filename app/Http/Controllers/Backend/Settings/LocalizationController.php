@@ -35,7 +35,7 @@ class LocalizationController extends Controller
             array_push($dictionary, [
                 'key' => $key,
                 'value' => $value,
-                'custom_value' => $customLocalization['dictionary'][$key],
+                'custom_value' => $customLocalization['dictionary'][$key] ?? '',
             ]);
         }
 

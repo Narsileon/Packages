@@ -18,27 +18,27 @@ class UserTemplate
         [
             TABLES::FIELD_ACCESSOR_KEY => User::FIELD_ID,
             TABLES::FIELD_ID => User::FIELD_ID,
-            Tables::FIELD_HEADER => 'common.id',
+            Tables::FIELD_HEADER => 'common.ids',
         ],
         [
             TABLES::FIELD_ACCESSOR_KEY => User::FIELD_USERNAME,
             TABLES::FIELD_ID => User::FIELD_USERNAME,
-            Tables::FIELD_HEADER => 'validation.attributes.username',
+            Tables::FIELD_HEADER => 'common.usernames',
         ],
         [
             TABLES::FIELD_ACCESSOR_KEY => User::FIELD_EMAIL,
             TABLES::FIELD_ID => User::FIELD_EMAIL,
-            Tables::FIELD_HEADER => 'validation.attributes.email',
+            Tables::FIELD_HEADER => 'common.emails',
         ],
         [
             TABLES::FIELD_ACCESSOR_KEY => User::FIELD_LAST_NAME,
             TABLES::FIELD_ID => User::FIELD_LAST_NAME,
-            Tables::FIELD_HEADER => 'validation.attributes.last_name',
+            Tables::FIELD_HEADER => 'common.last_names',
         ],
         [
             TABLES::FIELD_ACCESSOR_KEY => User::FIELD_FIRST_NAME,
             TABLES::FIELD_ID => User::FIELD_FIRST_NAME,
-            Tables::FIELD_HEADER => 'validation.attributes.first_name',
+            Tables::FIELD_HEADER => 'common.first_names',
         ],
         [
             TABLES::FIELD_ACCESSOR_KEY => User::CREATED_AT,

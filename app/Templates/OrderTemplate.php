@@ -18,7 +18,7 @@ class OrderTemplate
         [
             TABLES::FIELD_ACCESSOR_KEY => Order::FIELD_ID,
             TABLES::FIELD_ID => Order::FIELD_ID,
-            Tables::FIELD_HEADER => 'common.id',
+            Tables::FIELD_HEADER => 'common.ids',
         ],
         [
             TABLES::FIELD_ACCESSOR_KEY => Order::FIELD_TYPE,
@@ -28,7 +28,7 @@ class OrderTemplate
         [
             TABLES::FIELD_ACCESSOR_KEY => Order::FIELD_STATUS,
             TABLES::FIELD_ID => Order::FIELD_STATUS,
-            Tables::FIELD_HEADER => 'common.status',
+            Tables::FIELD_HEADER => 'common.statuses',
         ],
         [
             TABLES::FIELD_ACCESSOR_KEY => Order::FIELD_ORDER_NUMBER,

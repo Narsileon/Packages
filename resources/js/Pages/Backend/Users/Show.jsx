@@ -18,7 +18,7 @@ export default function Show({ user }) {
                 <div className="grid grid-cols-4 gap-y-4">
                     <div className="col-span-4 space-x-1">
                         <span>
-                            { upperFirst(trans('validation.attributes.id')) + trans(':') }
+                            { upperFirst(transChoice('common.ids', 1)) + trans(':') }
                         </span>
                         <span>
                             { user.data.id }
@@ -26,7 +26,7 @@ export default function Show({ user }) {
                     </div>
                     <div className="col-span-2 space-x-1">
                         <span>
-                            { upperFirst(trans('validation.attributes.username')) + trans(':') }
+                            { upperFirst(transChoice('common.usernames', 1)) + trans(':') }
                         </span>
                         <span>
                             { user.data.username }
@@ -34,7 +34,7 @@ export default function Show({ user }) {
                     </div>
                     <div className="col-span-2 space-x-1">
                         <span>
-                            { upperFirst(trans('validation.attributes.last_name')) + trans(':') }
+                            { upperFirst(transChoice('common.last_names', 1)) + trans(':') }
                         </span>
                         <span>
                             { user.data.last_name }
@@ -42,7 +42,7 @@ export default function Show({ user }) {
                     </div>
                     <div className="col-span-2 space-x-1">
                         <span>
-                            { upperFirst(trans('validation.attributes.email')) + trans(':') }
+                            { upperFirst(transChoice('common.emails', 1)) + trans(':') }
                         </span>
                         <span>
                             { user.data.email }
@@ -50,7 +50,7 @@ export default function Show({ user }) {
                     </div>
                     <div className="col-span-2 space-x-1">
                         <span>
-                            { upperFirst(trans('validation.attributes.first_name')) + trans(':') }
+                            { upperFirst(transChoice('common.first_names', 1)) + trans(':') }
                         </span>
                         <span>
                             { user.data.first_name }

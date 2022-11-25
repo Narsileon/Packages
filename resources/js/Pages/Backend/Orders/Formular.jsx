@@ -1,4 +1,4 @@
-import { trans } from "@/narsil-localization";
+import { transChoice } from "@/narsil-localization";
 import { Form, FormBody, FormFooter, FormHeader, FormInput } from "@/Components/Forms";
 import BackButton from "@/Components/Elements/Buttons/BackButton";
 import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
@@ -25,14 +25,14 @@ export default function Formular({
             <FormBody>
                 <FormInput
                     id="type"
-                    label={ trans('validation.attributes.type') }
+                    label={ transChoice('common.types', 1) }
                     value={ data.type }
                     error={ errors.type }
                     setData={ setData }
                 />
                 <FormInput
                     id="status"
-                    label={ trans('validation.attributes.status') }
+                    label={ transChoice('common.statuses', 1) }
                     value={ data.status }
                     error={ errors.status }
                     setData={ setData }

@@ -41,14 +41,14 @@ export default function Formular({
                 <FormBody>
                     <FormInput
                         id="username"
-                        label={ trans('validation.attributes.username') }
+                        label={ transChoice('common.usernames', 1) }
                         value={ data.username }
                         error={ errors.username }
                         setData={ setData }
                     />
                     <FormInput
                         id="email"
-                        label={ trans('validation.attributes.email') }
+                        label={ transChoice('common.emails', 1) }
                         type="email"
                         value={ data.email}
                         error={ errors.email}
@@ -58,7 +58,7 @@ export default function Formular({
                         data.password && (
                             <FormInput
                                 id="password"
-                                label={ trans('validation.attributes.password') }
+                                label={ transChoice('common.passwords', 1) }
                                 type="password"
                                 value={ data.password}
                                 error={ errors.password}
@@ -68,14 +68,14 @@ export default function Formular({
                     }
                     <FormInput
                         id="last_name"
-                        label={ trans('validation.attributes.last_name') }
+                        label={ transChoice('common.last_names', 1) }
                         value={ data.last_name }
                         error={ errors.last_name }
                         setData={ setData }
                     />
                     <FormInput
                         id="first_name"
-                        label={ trans('validation.attributes.first_name') }
+                        label={ transChoice('common.first_names', 1) }
                         value={ data.first_name }
                         error={ errors.first_name }
                         setData={ setData }

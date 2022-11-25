@@ -18,7 +18,7 @@ export default function Show({ order }) {
                 <div className="grid grid-cols-2 gap-y-4">
                     <div className="col-span-2 flex items-center space-x-1">
                         <span>
-                            { upperFirst(trans('validation.attributes.id')) + trans(':') }
+                            { upperFirst(transChoice('common.ids', 1)) + trans(':') }
                         </span>
                         <span>
                             { order.id }
@@ -26,7 +26,7 @@ export default function Show({ order }) {
                     </div>
                     <div className="col-span-2">
                         <span>
-                            { upperFirst(trans('validation.attributes.type')) + trans(':') }
+                            { upperFirst(transChoice('common.types', 1)) + trans(':') }
                         </span>
                     </div>
                     <div className="col-span-2">
@@ -35,7 +35,7 @@ export default function Show({ order }) {
                         </span>
                     </div>
                     <div className="col-span-2">
-                        { upperFirst(trans('validation.attributes.status')) + trans(':') }
+                        { upperFirst(transChoice('common.statuses', 1)) + trans(':') }
                     </div>
                     <div className="col-span-2">
                         { order.status }

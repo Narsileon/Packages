@@ -18,7 +18,7 @@ class FaqTemplate
         [
             TABLES::FIELD_ACCESSOR_KEY => Faq::FIELD_ID,
             TABLES::FIELD_ID => Faq::FIELD_ID,
-            Tables::FIELD_HEADER => 'common.id',
+            Tables::FIELD_HEADER => 'common.ids',
         ],
         [
             TABLES::FIELD_ACCESSOR_KEY => Faq::FIELD_QUESTION,

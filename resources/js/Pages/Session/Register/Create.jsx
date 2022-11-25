@@ -1,5 +1,5 @@
 import { Head, useForm } from "@inertiajs/inertia-react";
-import { trans } from "@/narsil-localization";
+import { trans, transChoice } from "@/narsil-localization";
 import { Form, FormBody, FormFooter, FormHeader, FormInput } from "@/Components/Forms";
 import BackButton from "@/Components/Elements/Buttons/BackButton";
 import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
@@ -34,7 +34,7 @@ export default function Create() {
                     {/* Username */}
                     <FormInput
                         id="username"
-                        label={ trans('validation.attributes.username') }
+                        label={ transChoice('common.usernames', 1) }
                         value={ data.username }
                         error={ errors.username }
                         setData={ setData }
@@ -42,7 +42,7 @@ export default function Create() {
                     {/* Email */}
                     <FormInput
                         id="email"
-                        label={ trans('validation.attributes.email') }
+                        label={ transChoice('common.emails', 1) }
                         type="email"
                         value={ data.email}
                         error={ errors.email}
@@ -51,7 +51,7 @@ export default function Create() {
                     {/* Password */}
                     <FormInput
                         id="password"
-                        label={ trans('validation.attributes.password') }
+                        label={ transChoice('common.passwords', 1) }
                         type="password"
                         value={ data.password}
                         error={ errors.password}
@@ -71,7 +71,7 @@ export default function Create() {
                     {/* Last Name */}
                     <FormInput
                         id="last_name"
-                        label={ trans('validation.attributes.last_name') }
+                        label={ transChoice('common.last_names', 1) }
                         value={ data.last_name }
                         error={ errors.last_name }
                         setData={ setData }
@@ -79,7 +79,7 @@ export default function Create() {
                     {/* First Name */}
                     <FormInput
                         id="first_name"
-                        label={ trans('validation.attributes.first_name') }
+                        label={ transChoice('common.first_names', 1) }
                         value={ data.first_name }
                         error={ errors.first_name }
                         setData={ setData }

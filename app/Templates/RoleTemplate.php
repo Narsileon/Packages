@@ -18,12 +18,12 @@ class RoleTemplate
         [
             TABLES::FIELD_ACCESSOR_KEY => UserRole::FIELD_ID,
             TABLES::FIELD_ID => UserRole::FIELD_ID,
-            Tables::FIELD_HEADER => 'common.id',
+            Tables::FIELD_HEADER => 'common.ids',
         ],
         [
             TABLES::FIELD_ACCESSOR_KEY => UserRole::FIELD_NAME,
             TABLES::FIELD_ID => UserRole::FIELD_NAME,
-            Tables::FIELD_HEADER => 'validation.attributes.name',
+            Tables::FIELD_HEADER => 'common.names',
         ],
         [
             TABLES::FIELD_ACCESSOR_KEY => UserRole::CREATED_AT,
