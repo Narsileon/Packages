@@ -1,10 +1,9 @@
 import { Inertia } from "@inertiajs/inertia";
 import { trans, transChoice } from "@/narsil-localization";
 import { useTable } from "@/narsil-table";
+import { Table, TableContainer } from "@/Components/Tables";
 import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 import Toggle from "@/Components/Elements/Toggle";
-import Table from "@/Components/Tables/Table";
-import TableHeader from "@/Components/Tables/TableHeader";
 import FrontendPagination from "@/Components/Pagination/FrontendPagination";
 import AppHead from "@/Shared/AppHead";
 
@@ -44,21 +43,20 @@ export default function Index({ languages, columns, template }) {
 		<>
 			<AppHead title={ transChoice('common.languages', 2) } />
 
-			<div className="flex flex-col h-full space-y-4">
-				<TableHeader
-					title={ trans('List of :resource', { 'resource': transChoice('locales.languages', 2) }) }
-					table={ table }
-				>
+			<TableContainer
+				title={ trans('List of :resource', { 'resource': transChoice('locales.languages', 2) }) }
+				table={ table }
+				buttons={
 					<PrimaryButton
 						label={ trans('common.update') }
 						onClick={ update }
 					/>
-				</TableHeader>
-
+				}
+			>
 				<Table table={ table } />
 
 				<FrontendPagination table={ table } />
-			</div>
+			</TableContainer>
 		</>
 	);
 }

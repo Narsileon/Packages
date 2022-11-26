@@ -9,7 +9,10 @@ export default function Table({
     const hozirontalScrollSection = useHorizontalScroll(horizontalScrolling)
 
     return (
-        <section id="table" className="min-h-0">
+        <section
+            id="table"
+            className="min-h-0"
+        >
             <div
                 className="w-fit max-w-full min-h-0 h-full border-2 border-color rounded overflow-auto"
                 ref={ hozirontalScrollSection }

@@ -1,10 +1,7 @@
 import { Link } from "@inertiajs/inertia-react";
 import { trans, transChoice } from "@/narsil-localization";
 import { useTable } from "@/narsil-table";
-import Table from "@/Components/Tables/Table";
-import TableHeader from "@/Components/Tables/TableHeader";
-import TableMenu from "@/Components/Tables/TableMenu";
-import TableSettings from "@/Components/Tables/TableSettings";
+import { Table, TableContainer, TableMenu, TableSettings } from "@/Components/Tables";
 import BackendPagination from "@/Components/Pagination/BackendPagination";
 import AppHead from "@/Shared/AppHead";
 
@@ -28,21 +25,22 @@ export default function Index({ roles, columns, template }) {
 		<>
 			<AppHead title={ transChoice('permissions.roles', 2) } />
 
-			<div className="flex flex-col h-full space-y-4">
-				<TableHeader
-					title={ trans('List of :resource', {'resource': transChoice('permissions.roles', 2)}) }
-					table={ table }
-				>
-					<Link
-						className="primary-button whitespace-nowrap"
-						href={ route('admin.roles.create') }
-					>
-						{ trans('Create :resource', {'resource': trans('permissions.new_role')}) }
-					</Link>
+			<TableContainer
+				title={ trans('List of :resource', {'resource': transChoice('permissions.roles', 2)}) }
+				table={ table }
+				buttons={
+					<>
+						<Link
+							className="primary-button whitespace-nowrap"
+							href={ route('admin.roles.create') }
+						>
+							{ trans('Create :resource', {'resource': trans('permissions.new_role')}) }
+						</Link>
 
-					<TableSettings table={ table } />
-				</TableHeader>
-
+						<TableSettings table={ table } />
+					</>
+				}
+			>
 				{ roles.meta.items > 0 ? (
 					<>
 						<Table
@@ -57,7 +55,7 @@ export default function Index({ roles, columns, template }) {
 						{ trans('No :resource was found in the database', { 'resource': transChoice('permissions.roles', 1) }) }
 					</div>
 				)}
-			</div>
+			</TableContainer>
 		</>
 	);
 }

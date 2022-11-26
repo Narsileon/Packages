@@ -4,9 +4,8 @@ import { Inertia } from "@inertiajs/inertia";
 import { trans, transChoice } from "@/narsil-localization";
 import { useTable } from "@/narsil-table";
 import { upperFirst } from "lodash";
+import { Table, TableContainer } from "@/Components/Tables";
 import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
-import Table from "@/Components/Tables/Table";
-import TableHeader from "@/Components/Tables/TableHeader";
 import FrontendPagination from "@/Components/Pagination/FrontendPagination";
 import AppHead from "@/Shared/AppHead";
 
@@ -51,21 +50,20 @@ export default function Index({ customLocalization, columns, template }) {
 		<>
 			<AppHead title={ transChoice('common.dictionaries', 1) } />
 
-			<div className="flex flex-col h-full space-y-4">
-				<TableHeader
-					title={ upperFirst(transChoice('common.dictionaries', 1)) }
-					table={ table }
-				>
+			<TableContainer
+				title={ upperFirst(transChoice('common.dictionaries', 1)) }
+				table={ table }
+				buttons={
 					<PrimaryButton
 						label={ trans('common.update') }
 						onClick={ update }
 					/>
-				</TableHeader>
-
+				}
+			>
 				<Table table={ table } />
 
 				<FrontendPagination table={ table } />
-			</div>
+			</TableContainer>
 		</>
 	);
 }
