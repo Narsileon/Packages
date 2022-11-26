@@ -1,5 +1,5 @@
 import { useRef, useEffect } from "react";
-import { useToggle } from "react-use";
+import { useFullscreen, useToggle } from "react-use";
 
 // Horizontal Scroll
 export function useHorizontalScroll(
@@ -52,6 +52,16 @@ export const useScrollTo = () => {
 
     return [ref, scrollTo];
 };
+
+export const useFullscreenable = () => {
+    const container = useRef();
+
+    const [fullscreen, setFullScreen] = useToggle(false);
+
+    useFullscreen(container, fullscreen, { onClose: () => setFullScreen(false) });
+
+    return [container, fullscreen, setFullScreen];
+}
 
 // Scroll to...
 export const useEllipsis = () => {
