@@ -5,6 +5,7 @@ namespace App\Templates;
 #region USE
 
 use App\Constants\Tables;
+use App\Constants\Types;
 use App\Models\Backend\Order;
 use App\Models\Backend\UserSettings;
 
@@ -16,63 +17,75 @@ class OrderTemplate
 
     public const COLUMNS = [
         [
-            TABLES::FIELD_ACCESSOR_KEY => Order::FIELD_ID,
-            TABLES::FIELD_ID => Order::FIELD_ID,
+            Tables::FIELD_ACCESSOR_KEY => Order::FIELD_ID,
+            Tables::FIELD_ID => Order::FIELD_ID,
+            Tables::FIELD_TYPE => Types::INTEGER,
             Tables::FIELD_HEADER => 'common.ids',
         ],
         [
-            TABLES::FIELD_ACCESSOR_KEY => Order::FIELD_TYPE,
-            TABLES::FIELD_ID => Order::FIELD_TYPE,
+            Tables::FIELD_ACCESSOR_KEY => Order::FIELD_TYPE,
+            Tables::FIELD_ID => Order::FIELD_TYPE,
+            Tables::FIELD_TYPE => Types::STRING,
             Tables::FIELD_HEADER => 'common.types',
         ],
         [
-            TABLES::FIELD_ACCESSOR_KEY => Order::FIELD_STATUS,
-            TABLES::FIELD_ID => Order::FIELD_STATUS,
+            Tables::FIELD_ACCESSOR_KEY => Order::FIELD_STATUS,
+            Tables::FIELD_ID => Order::FIELD_STATUS,
+            Tables::FIELD_TYPE => Types::STRING,
             Tables::FIELD_HEADER => 'common.statuses',
         ],
         [
-            TABLES::FIELD_ACCESSOR_KEY => Order::FIELD_ORDER_NUMBER,
-            TABLES::FIELD_ID => Order::FIELD_ORDER_NUMBER,
+            Tables::FIELD_ACCESSOR_KEY => Order::FIELD_ORDER_NUMBER,
+            Tables::FIELD_ID => Order::FIELD_ORDER_NUMBER,
+            Tables::FIELD_TYPE => Types::INTEGER,
             Tables::FIELD_HEADER => 'common.order_numbers',
         ],
         [
-            TABLES::FIELD_ACCESSOR_KEY => Order::FIELD_ORDER_DATE,
-            TABLES::FIELD_ID => Order::FIELD_ORDER_DATE,
+            Tables::FIELD_ACCESSOR_KEY => Order::FIELD_ORDER_DATE,
+            Tables::FIELD_ID => Order::FIELD_ORDER_DATE,
+            Tables::FIELD_TYPE => Types::DATETIME,
             Tables::FIELD_HEADER => 'common.order_dates',
         ],
         [
-            TABLES::FIELD_ACCESSOR_KEY => Order::FIELD_START_DATE,
-            TABLES::FIELD_ID => Order::FIELD_START_DATE,
+            Tables::FIELD_ACCESSOR_KEY => Order::FIELD_START_DATE,
+            Tables::FIELD_ID => Order::FIELD_START_DATE,
+            Tables::FIELD_TYPE => Types::DATE,
             Tables::FIELD_HEADER => 'date-time.start_dates',
         ],
         [
-            TABLES::FIELD_ACCESSOR_KEY => Order::FIELD_END_DATE,
-            TABLES::FIELD_ID => Order::FIELD_END_DATE,
+            Tables::FIELD_ACCESSOR_KEY => Order::FIELD_END_DATE,
+            Tables::FIELD_ID => Order::FIELD_END_DATE,
+            Tables::FIELD_TYPE => Types::DATE,
             Tables::FIELD_HEADER => 'date-time.end_dates',
         ],
         [
-            TABLES::FIELD_ACCESSOR_KEY => Order::FIELD_LOCATION_DEPARTURE,
-            TABLES::FIELD_ID => Order::FIELD_LOCATION_DEPARTURE,
+            Tables::FIELD_ACCESSOR_KEY => Order::FIELD_LOCATION_DEPARTURE,
+            Tables::FIELD_ID => Order::FIELD_LOCATION_DEPARTURE,
+            Tables::FIELD_TYPE => Types::STRING,
             Tables::FIELD_HEADER => 'common.locations_departure',
         ],
         [
-            TABLES::FIELD_ACCESSOR_KEY => Order::FIELD_LOCATION_ARRIVAL,
-            TABLES::FIELD_ID => Order::FIELD_LOCATION_ARRIVAL,
+            Tables::FIELD_ACCESSOR_KEY => Order::FIELD_LOCATION_ARRIVAL,
+            Tables::FIELD_ID => Order::FIELD_LOCATION_ARRIVAL,
+            Tables::FIELD_TYPE => Types::STRING,
             Tables::FIELD_HEADER => 'common.locations_arrival',
         ],
         [
-            TABLES::FIELD_ACCESSOR_KEY => Order::FIELD_PAYMENT_METHOD,
-            TABLES::FIELD_ID => Order::FIELD_PAYMENT_METHOD,
+            Tables::FIELD_ACCESSOR_KEY => Order::FIELD_PAYMENT_METHOD,
+            Tables::FIELD_ID => Order::FIELD_PAYMENT_METHOD,
+            Tables::FIELD_TYPE => Types::STRING,
             Tables::FIELD_HEADER => 'common.payment_methods',
         ],
         [
-            TABLES::FIELD_ACCESSOR_KEY => Order::CREATED_AT,
-            TABLES::FIELD_ID => Order::CREATED_AT,
+            Tables::FIELD_ACCESSOR_KEY => Order::CREATED_AT,
+            Tables::FIELD_ID => Order::CREATED_AT,
+            Tables::FIELD_TYPE => Types::DATETIME,
             Tables::FIELD_HEADER => 'validation.attributes.created_at',
         ],
         [
-            TABLES::FIELD_ACCESSOR_KEY => Order::UPDATED_AT,
-            TABLES::FIELD_ID => Order::UPDATED_AT,
+            Tables::FIELD_ACCESSOR_KEY => Order::UPDATED_AT,
+            Tables::FIELD_ID => Order::UPDATED_AT,
+            Tables::FIELD_TYPE => Types::DATETIME,
             Tables::FIELD_HEADER => 'validation.attributes.updated_at',
         ],
     ];
@@ -101,7 +114,7 @@ class OrderTemplate
 
     private const DEFAULT_SORTING = [
         [
-            TABLES::FIELD_ID => Order::FIELD_ID,
+            Tables::FIELD_ID => Order::FIELD_ID,
             Tables::ORDER_DESC => false,
         ],
     ];

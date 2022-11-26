@@ -4,7 +4,7 @@ namespace App\Models\Backend;
 
 #region USE
 
-use App\Constants\CastTypes;
+use App\Constants\Types;
 use App\Traits\IsFilterable;
 use App\Traits\IsSortable;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -37,7 +37,7 @@ class Localization extends Model
     ];
 
     protected $casts = [
-        self::FIELD_DICTIONARY => CastTypes::ARRAY,
+        self::FIELD_DICTIONARY => Types::ARRAY,
     ];
 
     protected $perPage = 10;

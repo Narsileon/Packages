@@ -5,6 +5,7 @@ namespace App\Templates;
 #region USE
 
 use App\Constants\Tables;
+use App\Constants\Types;
 use App\Models\Backend\UserSettings;
 
 #endregion
@@ -15,23 +16,27 @@ class LocalizationTemplate
 
     public const COLUMNS = [
         [
-            TABLES::FIELD_ACCESSOR_KEY => Tables::FIELD_TYPE,
-            TABLES::FIELD_ID => Tables::FIELD_TYPE,
+            Tables::FIELD_ACCESSOR_KEY => Tables::FIELD_TYPE,
+            Tables::FIELD_ID => Tables::FIELD_TYPE,
+            Tables::FIELD_TYPE => Types::STRING,
             Tables::FIELD_HEADER => 'common.types',
         ],
         [
-            TABLES::FIELD_ACCESSOR_KEY => Tables::FIELD_KEY,
-            TABLES::FIELD_ID => Tables::FIELD_KEY,
+            Tables::FIELD_ACCESSOR_KEY => Tables::FIELD_KEY,
+            Tables::FIELD_ID => Tables::FIELD_KEY,
+            Tables::FIELD_TYPE => Types::STRING,
             Tables::FIELD_HEADER => 'common.keys',
         ],
         [
-            TABLES::FIELD_ACCESSOR_KEY => Tables::FIELD_VALUE,
-            TABLES::FIELD_ID => Tables::FIELD_VALUE,
+            Tables::FIELD_ACCESSOR_KEY => Tables::FIELD_VALUE,
+            Tables::FIELD_ID => Tables::FIELD_VALUE,
+            Tables::FIELD_TYPE => Types::STRING,
             Tables::FIELD_HEADER => 'common.values',
         ],
         [
-            TABLES::FIELD_ACCESSOR_KEY => Tables::FIELD_CUSTOM_VALUE,
-            TABLES::FIELD_ID => Tables::FIELD_CUSTOM_VALUE,
+            Tables::FIELD_ACCESSOR_KEY => Tables::FIELD_CUSTOM_VALUE,
+            Tables::FIELD_ID => Tables::FIELD_CUSTOM_VALUE,
+            Tables::FIELD_TYPE => Types::STRING,
             Tables::FIELD_HEADER => 'common.custom_values',
         ],
     ];
@@ -51,7 +56,7 @@ class LocalizationTemplate
 
     private const DEFAULT_SORTING = [
         [
-            TABLES::FIELD_ID => Tables::FIELD_KEY,
+            Tables::FIELD_ID => Tables::FIELD_KEY,
             Tables::ORDER_DESC => false,
         ],
     ];

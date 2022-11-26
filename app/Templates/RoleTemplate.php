@@ -5,6 +5,7 @@ namespace App\Templates;
 #region USE
 
 use App\Constants\Tables;
+use App\Constants\Types;
 use App\Models\Backend\UserSettings;
 use App\Models\UserRole;
 
@@ -16,23 +17,27 @@ class RoleTemplate
 
     public const COLUMNS = [
         [
-            TABLES::FIELD_ACCESSOR_KEY => UserRole::FIELD_ID,
-            TABLES::FIELD_ID => UserRole::FIELD_ID,
+            Tables::FIELD_ACCESSOR_KEY => UserRole::FIELD_ID,
+            Tables::FIELD_ID => UserRole::FIELD_ID,
+            Tables::FIELD_TYPE => Types::INTEGER,
             Tables::FIELD_HEADER => 'common.ids',
         ],
         [
-            TABLES::FIELD_ACCESSOR_KEY => UserRole::FIELD_NAME,
-            TABLES::FIELD_ID => UserRole::FIELD_NAME,
+            Tables::FIELD_ACCESSOR_KEY => UserRole::FIELD_NAME,
+            Tables::FIELD_ID => UserRole::FIELD_NAME,
+            Tables::FIELD_TYPE => Types::STRING,
             Tables::FIELD_HEADER => 'common.names',
         ],
         [
-            TABLES::FIELD_ACCESSOR_KEY => UserRole::CREATED_AT,
-            TABLES::FIELD_ID => UserRole::CREATED_AT,
+            Tables::FIELD_ACCESSOR_KEY => UserRole::CREATED_AT,
+            Tables::FIELD_ID => UserRole::CREATED_AT,
+            Tables::FIELD_TYPE => Types::DATETIME,
             Tables::FIELD_HEADER => 'validation.attributes.created_at',
         ],
         [
-            TABLES::FIELD_ACCESSOR_KEY => UserRole::UPDATED_AT,
-            TABLES::FIELD_ID => UserRole::UPDATED_AT,
+            Tables::FIELD_ACCESSOR_KEY => UserRole::UPDATED_AT,
+            Tables::FIELD_ID => UserRole::UPDATED_AT,
+            Tables::FIELD_TYPE => Types::DATETIME,
             Tables::FIELD_HEADER => 'validation.attributes.updated_at',
         ],
     ];
@@ -53,7 +58,7 @@ class RoleTemplate
 
     private const DEFAULT_SORTING = [
         [
-            TABLES::FIELD_ID => UserRole::FIELD_ID,
+            Tables::FIELD_ID => UserRole::FIELD_ID,
             Tables::ORDER_DESC => false,
         ],
     ];

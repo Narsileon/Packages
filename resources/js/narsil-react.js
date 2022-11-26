@@ -1,4 +1,5 @@
 import { useRef, useEffect } from "react";
+import { useToggle } from "react-use";
 
 // Horizontal Scroll
 export function useHorizontalScroll(
@@ -51,3 +52,19 @@ export const useScrollTo = () => {
 
     return [ref, scrollTo];
 };
+
+// Scroll to...
+export const useEllipsis = () => {
+    const label = useRef(null);
+
+    const [ellipsed, setEllipsed] = useToggle(false);
+
+    useEffect(() => {
+        if(label?.current?.offsetWidth < label?.current?.scrollWidth) {
+            setEllipsed(true);
+        }
+    }, [label?.current]);
+
+    return [label];
+};
+

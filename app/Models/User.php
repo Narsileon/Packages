@@ -4,7 +4,7 @@ namespace App\Models;
 
 #region USE
 
-use App\Constants\CastTypes;
+use App\Constants\Types;
 use App\Models\Backend\Localization;
 use App\Models\Backend\UserSettings;
 use App\Traits\IsBaseModel;
@@ -61,7 +61,7 @@ class User extends Authenticatable
 
     protected $casts =
     [
-        self::FIELD_EMAIL_VERIFIED_AT => CastTypes::DATETIME,
+        self::FIELD_EMAIL_VERIFIED_AT => Types::DATETIME,
     ];
 
     protected $perPage = 100;

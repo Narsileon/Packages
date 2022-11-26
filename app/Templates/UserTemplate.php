@@ -5,6 +5,7 @@ namespace App\Templates;
 #region USE
 
 use App\Constants\Tables;
+use App\Constants\Types;
 use App\Models\Backend\UserSettings;
 use App\Models\User;
 
@@ -16,38 +17,45 @@ class UserTemplate
 
     public const COLUMNS = [
         [
-            TABLES::FIELD_ACCESSOR_KEY => User::FIELD_ID,
-            TABLES::FIELD_ID => User::FIELD_ID,
+            Tables::FIELD_ACCESSOR_KEY => User::FIELD_ID,
+            Tables::FIELD_ID => User::FIELD_ID,
+            Tables::FIELD_TYPE => Types::INTEGER,
             Tables::FIELD_HEADER => 'common.ids',
         ],
         [
-            TABLES::FIELD_ACCESSOR_KEY => User::FIELD_USERNAME,
-            TABLES::FIELD_ID => User::FIELD_USERNAME,
+            Tables::FIELD_ACCESSOR_KEY => User::FIELD_USERNAME,
+            Tables::FIELD_ID => User::FIELD_USERNAME,
+            Tables::FIELD_TYPE => Types::STRING,
             Tables::FIELD_HEADER => 'common.usernames',
         ],
         [
-            TABLES::FIELD_ACCESSOR_KEY => User::FIELD_EMAIL,
-            TABLES::FIELD_ID => User::FIELD_EMAIL,
+            Tables::FIELD_ACCESSOR_KEY => User::FIELD_EMAIL,
+            Tables::FIELD_ID => User::FIELD_EMAIL,
+            Tables::FIELD_TYPE => Types::STRING,
             Tables::FIELD_HEADER => 'common.emails',
         ],
         [
-            TABLES::FIELD_ACCESSOR_KEY => User::FIELD_LAST_NAME,
-            TABLES::FIELD_ID => User::FIELD_LAST_NAME,
+            Tables::FIELD_ACCESSOR_KEY => User::FIELD_LAST_NAME,
+            Tables::FIELD_ID => User::FIELD_LAST_NAME,
+            Tables::FIELD_TYPE => Types::STRING,
             Tables::FIELD_HEADER => 'common.last_names',
         ],
         [
-            TABLES::FIELD_ACCESSOR_KEY => User::FIELD_FIRST_NAME,
-            TABLES::FIELD_ID => User::FIELD_FIRST_NAME,
+            Tables::FIELD_ACCESSOR_KEY => User::FIELD_FIRST_NAME,
+            Tables::FIELD_ID => User::FIELD_FIRST_NAME,
+            Tables::FIELD_TYPE => Types::STRING,
             Tables::FIELD_HEADER => 'common.first_names',
         ],
         [
-            TABLES::FIELD_ACCESSOR_KEY => User::CREATED_AT,
-            TABLES::FIELD_ID => User::CREATED_AT,
+            Tables::FIELD_ACCESSOR_KEY => User::CREATED_AT,
+            Tables::FIELD_ID => User::CREATED_AT,
+            Tables::FIELD_TYPE => Types::DATETIME,
             Tables::FIELD_HEADER => 'validation.attributes.created_at',
         ],
         [
-            TABLES::FIELD_ACCESSOR_KEY => User::UPDATED_AT,
-            TABLES::FIELD_ID => User::UPDATED_AT,
+            Tables::FIELD_ACCESSOR_KEY => User::UPDATED_AT,
+            Tables::FIELD_ID => User::UPDATED_AT,
+            Tables::FIELD_TYPE => Types::DATETIME,
             Tables::FIELD_HEADER => 'validation.attributes.updated_at',
         ],
     ];
@@ -71,7 +79,7 @@ class UserTemplate
 
     private const DEFAULT_SORTING = [
         [
-            TABLES::FIELD_ID => User::FIELD_ID,
+            Tables::FIELD_ID => User::FIELD_ID,
             Tables::ORDER_DESC => false,
         ],
     ];

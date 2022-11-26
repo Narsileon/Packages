@@ -4,7 +4,7 @@ namespace App\Models\Backend;
 
 #region USE
 
-use App\Constants\CastTypes;
+use App\Constants\Types;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -49,14 +49,14 @@ class UserSettings extends Model
     ];
 
     protected $casts = [
-        self::FIELD_FAQS => CastTypes::ARRAY,
-        self::FIELD_FOOTER_LINKS => CastTypes::ARRAY,
-        self::FIELD_HEADER_LINKS => CastTypes::ARRAY,
-        self::FIELD_LANGUAGES => CastTypes::ARRAY,
-        self::FIELD_LOCALIZATIONS => CastTypes::ARRAY,
-        self::FIELD_ORDERS => CastTypes::ARRAY,
-        self::FIELD_ROLES => CastTypes::ARRAY,
-        self::FIELD_USERS => CastTypes::ARRAY,
+        self::FIELD_FAQS => Types::ARRAY,
+        self::FIELD_FOOTER_LINKS => Types::ARRAY,
+        self::FIELD_HEADER_LINKS => Types::ARRAY,
+        self::FIELD_LANGUAGES => Types::ARRAY,
+        self::FIELD_LOCALIZATIONS => Types::ARRAY,
+        self::FIELD_ORDERS => Types::ARRAY,
+        self::FIELD_ROLES => Types::ARRAY,
+        self::FIELD_USERS => Types::ARRAY,
     ];
 
     protected $perPage = 10;

@@ -5,6 +5,7 @@ namespace App\Templates;
 #region USE
 
 use App\Constants\Tables;
+use App\Constants\Types;
 use App\Models\Backend\UserSettings;
 use App\Models\Frontend\HeaderLink;
 
@@ -16,33 +17,39 @@ class HeaderLinkTemplate
 
     public const COLUMNS = [
         [
-            TABLES::FIELD_ACCESSOR_KEY => HeaderLink::FIELD_ID,
-            TABLES::FIELD_ID => HeaderLink::FIELD_ID,
+            Tables::FIELD_ACCESSOR_KEY => HeaderLink::FIELD_ID,
+            Tables::FIELD_ID => HeaderLink::FIELD_ID,
+            Tables::FIELD_TYPE => Types::INTEGER,
             Tables::FIELD_HEADER => 'common.ids',
         ],
         [
-            TABLES::FIELD_ACCESSOR_KEY => HeaderLink::FIELD_LABEL,
-            TABLES::FIELD_ID => HeaderLink::FIELD_LABEL,
+            Tables::FIELD_ACCESSOR_KEY => HeaderLink::FIELD_LABEL,
+            Tables::FIELD_ID => HeaderLink::FIELD_LABEL,
+            Tables::FIELD_TYPE => Types::STRING,
             Tables::FIELD_HEADER => 'common.designations',
         ],
         [
-            TABLES::FIELD_ACCESSOR_KEY => HeaderLink::FIELD_URL,
-            TABLES::FIELD_ID => HeaderLink::FIELD_URL,
+            Tables::FIELD_ACCESSOR_KEY => HeaderLink::FIELD_URL,
+            Tables::FIELD_ID => HeaderLink::FIELD_URL,
+            Tables::FIELD_TYPE => Types::STRING,
             Tables::FIELD_HEADER => 'common.urls',
         ],
         [
-            TABLES::FIELD_ACCESSOR_KEY => HeaderLink::FIELD_ACTIVE,
-            TABLES::FIELD_ID => HeaderLink::FIELD_ACTIVE,
+            Tables::FIELD_ACCESSOR_KEY => HeaderLink::FIELD_ACTIVE,
+            Tables::FIELD_ID => HeaderLink::FIELD_ACTIVE,
+            Tables::FIELD_TYPE => Types::BOOLEAN,
             Tables::FIELD_HEADER => 'common.active',
         ],
         [
-            TABLES::FIELD_ACCESSOR_KEY => HeaderLink::CREATED_AT,
-            TABLES::FIELD_ID => HeaderLink::CREATED_AT,
+            Tables::FIELD_ACCESSOR_KEY => HeaderLink::CREATED_AT,
+            Tables::FIELD_ID => HeaderLink::CREATED_AT,
+            Tables::FIELD_TYPE => Types::DATETIME,
             Tables::FIELD_HEADER => 'validation.attributes.created_at',
         ],
         [
-            TABLES::FIELD_ACCESSOR_KEY => HeaderLink::UPDATED_AT,
-            TABLES::FIELD_ID => HeaderLink::UPDATED_AT,
+            Tables::FIELD_ACCESSOR_KEY => HeaderLink::UPDATED_AT,
+            Tables::FIELD_ID => HeaderLink::UPDATED_AT,
+            Tables::FIELD_TYPE => Types::DATETIME,
             Tables::FIELD_HEADER => 'validation.attributes.updated_at',
         ],
     ];
@@ -65,7 +72,7 @@ class HeaderLinkTemplate
 
     private const DEFAULT_SORTING = [
         [
-            TABLES::FIELD_ID => HeaderLink::FIELD_ID,
+            Tables::FIELD_ID => HeaderLink::FIELD_ID,
             Tables::ORDER_DESC => false,
         ],
     ];

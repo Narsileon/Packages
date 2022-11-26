@@ -5,6 +5,7 @@ namespace App\Templates;
 #region USE
 
 use App\Constants\Tables;
+use App\Constants\Types;
 use App\Models\Backend\Language;
 use App\Models\Backend\UserSettings;
 
@@ -16,23 +17,27 @@ class LanguageTemplate
 
     public const COLUMNS = [
         [
-            TABLES::FIELD_ACCESSOR_KEY => Language::FIELD_ID,
-            TABLES::FIELD_ID => Language::FIELD_ID,
+            Tables::FIELD_ACCESSOR_KEY => Language::FIELD_ID,
+            Tables::FIELD_ID => Language::FIELD_ID,
+            Tables::FIELD_TYPE => Types::INTEGER,
             Tables::FIELD_HEADER => 'common.ids',
         ],
         [
-            TABLES::FIELD_ACCESSOR_KEY => Language::FIELD_CODE,
-            TABLES::FIELD_ID => Language::FIELD_CODE,
+            Tables::FIELD_ACCESSOR_KEY => Language::FIELD_CODE,
+            Tables::FIELD_ID => Language::FIELD_CODE,
+            Tables::FIELD_TYPE => Types::STRING,
             Tables::FIELD_HEADER => 'common.codes',
         ],
         [
-            TABLES::FIELD_ACCESSOR_KEY => Language::PROPERTY_LANGUAGE,
-            TABLES::FIELD_ID => Language::PROPERTY_LANGUAGE,
+            Tables::FIELD_ACCESSOR_KEY => Language::PROPERTY_LANGUAGE,
+            Tables::FIELD_ID => Language::PROPERTY_LANGUAGE,
+            Tables::FIELD_TYPE => Types::STRING,
             Tables::FIELD_HEADER => 'common.languages',
         ],
         [
-            TABLES::FIELD_ACCESSOR_KEY => Language::FIELD_ACTIVE,
-            TABLES::FIELD_ID => Language::FIELD_ACTIVE,
+            Tables::FIELD_ACCESSOR_KEY => Language::FIELD_ACTIVE,
+            Tables::FIELD_ID => Language::FIELD_ACTIVE,
+            Tables::FIELD_TYPE => Types::BOOLEAN,
             Tables::FIELD_HEADER => 'common.active',
         ],
     ];
@@ -52,7 +57,7 @@ class LanguageTemplate
 
     private const DEFAULT_SORTING = [
         [
-            TABLES::FIELD_ID => Language::FIELD_ID,
+            Tables::FIELD_ID => Language::FIELD_ID,
             Tables::ORDER_DESC => false,
         ],
     ];
