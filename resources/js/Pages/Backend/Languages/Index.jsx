@@ -15,7 +15,7 @@ export default function Index({ languages, columns, template }) {
 				cell: props => (
 					<Toggle
 						value={ props.getValue() }
-						onChange={ (event) => handleChange(event, props.row._valuesCache.id) }
+						onChange={ () => handleChange(props.row._valuesCache.id) }
 					/>
 				)
 			}
@@ -26,7 +26,7 @@ export default function Index({ languages, columns, template }) {
 
 	const [table] = useTable(languages.data, newHeader, template, false);
 
-	function handleChange(event, id) {
+	function handleChange(id) {
 		let temp = [...table.options.data];
 
 		let result = temp.find(x => x.id == id);
