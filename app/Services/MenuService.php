@@ -7,6 +7,7 @@ namespace App\Services;
 use App\Constants\Menus;
 use App\Models\Menu;
 use App\Models\MenuItem;
+use Illuminate\Support\Facades\Auth;
 
 #endregion
 
@@ -16,10 +17,10 @@ class MenuService
 
     public static function get()
     {
+        $backend = Auth::user()->menus->where(Menu::FIELD_TITLE, '=', 'backend')->pluck(Menu::FIELD_TEMPLATE)->toArray()[0];
+
         return compact(
-            'locale',
-            'locales',
-            'dictionary',
+            'backend',
         );
     }
 

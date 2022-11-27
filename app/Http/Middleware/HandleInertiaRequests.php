@@ -6,6 +6,7 @@ namespace App\Http\Middleware;
 
 use App\Models\Backend\GeneralSettings;
 use App\Services\LocalizationService;
+use App\Services\MenuService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -37,11 +38,13 @@ class HandleInertiaRequests extends Middleware
         $ziggy = $this->initializeZiggy($request);
 
         $localization = LocalizationService::get();
+        $menus = MenuService::get();
 
         $shared = compact(
             'auth',
             'flash',
             'localization',
+            'menus',
             'settings',
             'ziggy',
         );

@@ -37,10 +37,10 @@ class User extends Authenticatable
     public const FIELD_FIRST_NAME = 'first_name';
     public const FIELD_REMEMBER_TOKEN = 'remember_token';
 
-    public const ATTRIBUTE_ROLES = 'roles';
-    public const ATTRIBUTE_PERMISSIONS = 'permissions';
-
+    public const ATTRIBUTE_MENUS = 'menus';
     public const ATTRIBUTE_LOCALIZATIONS = 'localizations';
+    public const ATTRIBUTE_PERMISSIONS = 'permissions';
+    public const ATTRIBUTE_ROLES = 'roles';
     public const ATTRIBUTE_TEMPLATES = 'settings';
 
     #endregion
