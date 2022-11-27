@@ -17,7 +17,7 @@ class MenuService
 
     public static function get()
     {
-        $backend = Auth::user()->menus->where(Menu::FIELD_TITLE, '=', 'backend')->pluck(Menu::FIELD_TEMPLATE)->toArray()[0];
+        $backend = self::getBackendMenu();
 
         return compact(
             'backend',
@@ -52,7 +52,9 @@ class MenuService
                         MenuItem::FIELD_URL => $subitem[MenuItem::FIELD_URL],
                     ]);
 
-                    $menuItem[Menus::FIELD_CHILDREN][] = $page->id;
+                    $menuItem[Menus::FIELD_CHILDREN][] = [
+                        MenuItem::FIELD_ID => $page->id,
+                    ];
                 }
 
                 $menu[] = $menuItem;
@@ -86,9 +88,37 @@ class MenuService
 
     #region PRIVATE METHODS
 
-    private function getBackendMenu()
+    public static function getBackendMenu()
     {
+        $backendMenu = Auth::user()->menus->where(Menu::FIELD_TITLE, '=', 'backend')->pluck(Menu::FIELD_TEMPLATE)->toArray()[0];
 
+        $menu = [];
+
+        foreach($backendMenu as $item)
+        {
+            $menuItem = MenuItem::find($item[MenuItem::FIELD_ID]);
+
+            if ($menuItem[MenuItem::FIELD_TYPE] == 'category')
+            {
+                $children = [];
+
+                foreach($item[Menus::FIELD_CHILDREN] as $subitem)
+                {
+                    $children[] = MenuItem::find($subitem[MenuItem::FIELD_ID]);
+                }
+
+                $menuItem[Menus::FIELD_CHILDREN] = $children;
+
+                $menu[] = $menuItem;
+            }
+
+            else
+            {
+                $menu[] = $menuItem;
+            }
+        }
+
+        return $menu;
     }
 
     #endregion

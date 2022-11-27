@@ -18,7 +18,7 @@ class MenuItem extends Model
     public const FIELD_ID = 'id';
 
     public const FIELD_ICON = 'icon';
-    public const FIELD_LABEL = 'title';
+    public const FIELD_LABEL = 'label';
     public const FIELD_TYPE = 'type';
     public const FIELD_URL = 'url';
 

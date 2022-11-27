@@ -1,109 +1,53 @@
 import { useToggle } from "react-use";
+import { usePage } from "@inertiajs/inertia-react";
 import { trans, transChoice } from "@/narsil-localization";
 import { upperFirst } from "lodash";
 import NavLink from "@/Components/Elements/Links/NavLink";
 import Icon from "@/Shared/Svg/Icon";
 import Chevron from "@/Shared/Svg/Chevron";
-
 export default function Nav() {
+    const menuItems = usePage().props.shared.menus.backend
+
     return (
         <nav className="font-semibold">
-            <ul>
-                <NavLink
-                    href={ route('admin.dashboard') }
-                    label={ trans('common.dashboard') }
-                    icon="dashboard"
-                />
-
-                {/* Management */}
-                <Section
-                    label={ trans('common.management') }
-                    icon="user"
-                >
-                    <NavLink
-                        href={ route('admin.users.index') }
-                        label={ transChoice('common.users', 2) }
-                        icon="users"
-                    />
-                    <NavLink
-                        href={ route('admin.roles.index') }
-                        label={ transChoice('permissions.roles', 2) }
-                        icon="group"
-                    />
-                </Section>
-
-                {/* Backoffice */}
-                <Section
-                    label={ trans('common.backoffice') }
-                    icon="office"
-                    visibility={ true }
-                >
-                    <NavLink
-                        href={ route('admin.calendar') }
-                        label={ transChoice('date-time.calendars', 1) }
-                        icon="calendar"
-                    />
-                    <NavLink
-                        href={ route('admin.orders.index') }
-                        label={ transChoice('common.orders', 2) }
-                        icon="clipboard"
-                    />
-                </Section>
-
-                {/* Web */}
-                <Section
-                    label={ trans('common.frontoffice') }
-                    icon="home"
-                >
-                    <NavLink
-                        href={ route('admin.header_links.index') }
-                        label={ transChoice('common.header_links', 2) }
-                        icon="link"
-                    />
-                    <NavLink
-                        href={ route('admin.footer_links.index') }
-                        label={ transChoice('common.footer_links', 2) }
-                        icon="link"
-                    />
-                    <NavLink
-                        href={ route('admin.faqs.index') }
-                        label={ transChoice('common.faqs', 2) }
-                        icon="question"
-                    />
-                </Section>
-
-                {/* Settings */}
-                <Section
-                    label={ transChoice('common.settings', 2) }
-                    icon="cog"
-                >
-                    <NavLink
-                        href={ route('admin.general_settings') }
-                        label={ transChoice('common.general_settings', 2) }
-                        icon="cog"
-                    />
-                    <NavLink
-                        href={ route('admin.menus') }
-                        label={ transChoice('common.menus', 2) }
-                        icon="cog"
-                    />
-                    <NavLink
-                        href={ route('admin.templates') }
-                        label={ transChoice('common.templates', 2) }
-                        icon="cog"
-                    />
-                    <NavLink
-                        href={ route('admin.languages') }
-                        label={ transChoice('common.languages', 2) }
-                        icon="language"
-                    />
-                    <NavLink
-                        href={ route('admin.dictionary.index') }
-                        label={ transChoice('common.dictionaries', 1) }
-                        icon="book"
-                    />
-                </Section>
-            </ul>
+            {
+                menuItems.map((menuItem) => {
+                    console.log(menuItem)
+                    return (
+                        <ul>
+                            {
+                                menuItem.type == 'category' ? (
+                                    <Section
+                                        label={ transChoice(menuItem.label) }
+                                        icon={ menuItem.icon }
+                                        key={ menuItem.id }
+                                    >
+                                        {
+                                            menuItem.children && menuItem.children.map((page) => {
+                                                return (
+                                                    <NavLink
+                                                        href={ route(page.url) }
+                                                        label={ transChoice(page.label) }
+                                                        icon={ page.icon }
+                                                        key={ page.id }
+                                                    />
+                                                );
+                                            })
+                                        }
+                                    </Section>
+                                ) : (
+                                    <NavLink
+                                        href={ route(menuItem.url) }
+                                        label={ transChoice(menuItem.label) }
+                                        icon={ menuItem.icon }
+                                        key={ menuItem.id }
+                                    />
+                                )
+                            }
+                        </ul>
+                    )
+                })
+            }
         </nav>
     );
 }
