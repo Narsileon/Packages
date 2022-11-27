@@ -41,7 +41,7 @@ class OrderController extends Controller
 
         $orders = new OrderCollection($collection->paginate(5));
 
-        return Inertia::render('Backend/Orders/Index', compact(
+        return Inertia::render('Backend/Backoffice/Orders/Index', compact(
             'columns',
             //'list',
             'template',
@@ -53,7 +53,7 @@ class OrderController extends Controller
     {
         $this->authorize('create', Order::class);
 
-        return Inertia::render('Backend/Orders/Create');
+        return Inertia::render('Backend/Backoffice/Orders/Create');
     }
 
     public function store(OrderCreateRequest $request)
@@ -71,7 +71,7 @@ class OrderController extends Controller
     {
         $this->authorize('view', Order::class);
 
-        return Inertia::render('Backend/Orders/Show', compact(
+        return Inertia::render('Backend/Backoffice/Orders/Show', compact(
             'order',
         ));
     }
@@ -80,7 +80,7 @@ class OrderController extends Controller
     {
         $this->authorize('update', Order::class);
 
-        return Inertia::render('Backend/Orders/Edit', compact(
+        return Inertia::render('Backend/Backoffice/Orders/Edit', compact(
             'order'
         ));
     }

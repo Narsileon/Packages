@@ -42,7 +42,7 @@ class LocalizationController extends Controller
 
         $customLocalization['dictionary'] = $dictionary;
 
-        return Inertia::render('Backend/Dictionary/Index', compact(
+        return Inertia::render('Backend/Settings/Dictionary/Index', compact(
             'columns',
             'template',
             'customLocalization',

@@ -20,7 +20,7 @@ class GeneralSettingsController extends Controller
     {
         $generalSettings = DB::table('general_settings')->first();
 
-        return Inertia::render('Backend/GeneralSettings/Index', compact(
+        return Inertia::render('Backend/Settings/GeneralSettings/Index', compact(
             'generalSettings'
         ));
     }

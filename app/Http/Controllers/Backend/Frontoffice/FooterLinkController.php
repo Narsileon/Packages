@@ -40,7 +40,7 @@ class FooterLinkController extends Controller
 
         $footerLinks = new FooterLinkCollection($collection->paginate(10));
 
-        return Inertia::render('Backend/FooterLinks/Index', compact(
+        return Inertia::render('Backend/Frontoffice/FooterLinks/Index', compact(
             'columns',
             'template',
             'footerLinks',
@@ -51,7 +51,7 @@ class FooterLinkController extends Controller
     {
         $this->authorize('create', FooterLink::class);
 
-        return Inertia::render('Backend/FooterLinks/Create');
+        return Inertia::render('Backend/Frontoffice/FooterLinks/Create');
     }
 
     public function store(FooterLinkCreateRequest $request)
@@ -69,7 +69,7 @@ class FooterLinkController extends Controller
     {
         $this->authorize('view', FooterLink::class);
 
-        return Inertia::render('Backend/FooterLinks/Show', compact(
+        return Inertia::render('Backend/Frontoffice/FooterLinks/Show', compact(
             'footerLink',
         ));
     }
@@ -78,7 +78,7 @@ class FooterLinkController extends Controller
     {
         $this->authorize('update', FooterLink::class);
 
-        return Inertia::render('Backend/FooterLinks/Edit', compact(
+        return Inertia::render('Backend/Frontoffice/FooterLinks/Edit', compact(
             'footerLink'
         ));
     }

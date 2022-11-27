@@ -46,7 +46,7 @@ class UserController extends Controller
 
         $users = new UserCollection($collection->paginate(10));
 
-        return Inertia::render('Backend/Users/Index', compact(
+        return Inertia::render('Backend/Management/Users/Index', compact(
             'columns',
             'template',
             'users',
@@ -60,7 +60,7 @@ class UserController extends Controller
         $roles = $this->getAllRoles();
         $permissions = $this->getAllPermissions();
 
-        return Inertia::render('Backend/Users/Create', compact(
+        return Inertia::render('Backend/Management/Users/Create', compact(
             'roles',
             'permissions',
         ));
@@ -85,7 +85,7 @@ class UserController extends Controller
 
         $user = new UserResource($user);
 
-        return Inertia::render('Backend/Users/Show', compact(
+        return Inertia::render('Backend/Management/Users/Show', compact(
             'user',
         ));
     }
@@ -99,7 +99,7 @@ class UserController extends Controller
         $roles = $this->getAllRoles();
         $permissions = $this->getAllPermissions();
 
-        return Inertia::render('Backend/Users/Edit', compact(
+        return Inertia::render('Backend/Management/Users/Edit', compact(
             'user',
             'roles',
             'permissions',

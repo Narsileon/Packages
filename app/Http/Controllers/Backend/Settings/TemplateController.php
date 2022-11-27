@@ -10,6 +10,7 @@ use App\Models\Backend\UserSettings;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Inertia\Inertia;
 
 #endregion
 
@@ -17,7 +18,16 @@ class TemplateController extends Controller
 {
     #region PUBLIC METHODS
 
-    public function __invoke(Request $request)
+    public function index()
+    {
+        $template = [];
+
+        return Inertia::render('Backend/Settings/Templates/Index', compact(
+            'template'
+        ));
+    }
+
+    public function update(Request $request)
     {
         $template = $request['template'];
 

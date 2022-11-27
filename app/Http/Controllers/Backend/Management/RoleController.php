@@ -44,7 +44,7 @@ class RoleController extends Controller
 
         $roles = new UserRoleCollection($collection->paginate(10));
 
-        return Inertia::render('Backend/Roles/Index', compact(
+        return Inertia::render('Backend/Management/Roles/Index', compact(
             'columns',
             'template',
             'roles',
@@ -57,7 +57,7 @@ class RoleController extends Controller
 
         $permissions = $this->getAllPermissions();
 
-        return Inertia::render('Backend/Roles/Create', compact(
+        return Inertia::render('Backend/Management/Roles/Create', compact(
             'permissions',
         ));
     }
@@ -81,7 +81,7 @@ class RoleController extends Controller
 
         $role = new UserRoleResource($role);
 
-        return Inertia::render('Backend/Roles/Show', compact(
+        return Inertia::render('Backend/Management/Roles/Show', compact(
             'role',
         ));
     }
@@ -93,7 +93,7 @@ class RoleController extends Controller
         $role = new UserRoleResource($role);
         $permissions = $this->getAllPermissions();
 
-        return Inertia::render('Backend/Roles/Edit', compact(
+        return Inertia::render('Backend/Management/Roles/Edit', compact(
             'role',
             'permissions',
         ));

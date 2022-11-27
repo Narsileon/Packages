@@ -40,7 +40,7 @@ class FaqController extends Controller
 
         $faqs = new FaqCollection($collection->paginate(10));
 
-        return Inertia::render('Backend/Faqs/Index', compact(
+        return Inertia::render('Backend/Frontoffice/Faqs/Index', compact(
             'columns',
             'template',
             'faqs',
@@ -51,7 +51,7 @@ class FaqController extends Controller
     {
         $this->authorize('create', Faq::class);
 
-        return Inertia::render('Backend/Faqs/Create');
+        return Inertia::render('Backend/Frontoffice/Faqs/Create');
     }
 
     public function store(FaqCreateRequest $request)
@@ -69,7 +69,7 @@ class FaqController extends Controller
     {
         $this->authorize('view', Faq::class);
 
-        return Inertia::render('Backend/Faqs/Show', compact(
+        return Inertia::render('Backend/Frontoffice/Faqs/Show', compact(
             'faq',
         ));
     }
@@ -78,7 +78,7 @@ class FaqController extends Controller
     {
         $this->authorize('update', Faq::class);
 
-        return Inertia::render('Backend/Faqs/Edit', compact(
+        return Inertia::render('Backend/Frontoffice/Faqs/Edit', compact(
             'faq'
         ));
     }

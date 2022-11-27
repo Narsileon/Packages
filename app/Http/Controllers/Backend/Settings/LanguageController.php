@@ -28,7 +28,7 @@ class LanguageController extends Controller
 
         $languages = LanguageResource::collection(Language::all());
 
-        return Inertia::render('Backend/Languages/Index', compact(
+        return Inertia::render('Backend/Settings/Languages/Index', compact(
             'columns',
             'template',
             'languages',

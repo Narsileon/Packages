@@ -40,7 +40,7 @@ class HeaderLinkController extends Controller
 
         $headerLinks = new HeaderLinkCollection($collection->paginate(10));
 
-        return Inertia::render('Backend/HeaderLinks/Index', compact(
+        return Inertia::render('Backend/Frontoffice/HeaderLinks/Index', compact(
             'columns',
             'template',
             'headerLinks',
@@ -51,7 +51,7 @@ class HeaderLinkController extends Controller
     {
         $this->authorize('create', HeaderLink::class);
 
-        return Inertia::render('Backend/HeaderLinks/Create');
+        return Inertia::render('Backend/Frontoffice/HeaderLinks/Create');
     }
 
     public function store(HeaderLinkCreateRequest $request)
@@ -69,7 +69,7 @@ class HeaderLinkController extends Controller
     {
         $this->authorize('view', HeaderLink::class);
 
-        return Inertia::render('Backend/HeaderLinks/Show', compact(
+        return Inertia::render('Backend/Frontoffice/HeaderLinks/Show', compact(
             'headerLink',
         ));
     }
@@ -78,7 +78,7 @@ class HeaderLinkController extends Controller
     {
         $this->authorize('update', HeaderLink::class);
 
-        return Inertia::render('Backend/HeaderLinks/Edit', compact(
+        return Inertia::render('Backend/Frontoffice/HeaderLinks/Edit', compact(
             'headerLink'
         ));
     }
