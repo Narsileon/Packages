@@ -6,7 +6,6 @@ namespace Database\Seeders;
 
 use Database\Seeders\Subseeders\BackendSeeder;
 use Database\Seeders\Subseeders\FrontendSeeder;
-use Database\Seeders\Subseeders\MenuSeeder;
 use Database\Seeders\Subseeders\PermissionSeeder;
 use Database\Seeders\Subseeders\SessionSeeder;
 use Database\Seeders\Subseeders\UserSeeder;
@@ -21,7 +20,6 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            MenuSeeder::class,
             PermissionSeeder::class,
             SessionSeeder::class,
             UserSeeder::class,

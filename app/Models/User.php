@@ -5,12 +5,14 @@ namespace App\Models;
 #region USE
 
 use App\Constants\Types;
+use App\Models\Menu;
 use App\Models\Backend\Localization;
 use App\Models\Backend\UserSettings;
 use App\Traits\IsBaseModel;
 use App\Traits\IsFilterable;
 use App\Traits\IsSortable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -26,6 +28,7 @@ class User extends Authenticatable
     #region CONSTANTS
 
     public const FIELD_ID = 'id';
+
     public const FIELD_USERNAME = 'username';
     public const FIELD_EMAIL = 'email';
     public const FIELD_EMAIL_VERIFIED_AT = 'email_verified_at';
@@ -78,6 +81,11 @@ class User extends Authenticatable
     public function localizations() : HasOne
     {
         return $this->hasOne(Localization::class);
+    }
+
+    public function menus() : HasMany
+    {
+        return $this->hasMany(Menu::class);
     }
 
     public function settings() : HasOne

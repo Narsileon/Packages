@@ -19,6 +19,7 @@ class FooterLink extends Model
     #region CONSTANTS
 
     public const FIELD_ID = 'id';
+
     public const FIELD_LABEL = 'label';
     public const FIELD_URL = 'url';
     public const FIELD_ACTIVE = 'active';

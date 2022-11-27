@@ -1,30 +1,29 @@
 <?php
 
-namespace Database\Seeders\Subseeders;
+namespace App\Services;
 
 #region USE
 
 use App\Constants\Menus;
 use App\Models\Menu;
 use App\Models\MenuItem;
-use Illuminate\Database\Seeder;
 
 #endregion
 
-class MenuSeeder extends Seeder
+class MenuService
 {
     #region PUBLIC METHODS
 
-    public function run()
+    public static function get()
     {
-        $this->createBackendMenu();
+        return compact(
+            'locale',
+            'locales',
+            'dictionary',
+        );
     }
 
-    #endregion
-
-    #region PRIVATE METHODS
-
-    private function createBackendMenu()
+    public static function createBackendMenu($user_id)
     {
         $menu = [];
 
@@ -76,9 +75,19 @@ class MenuSeeder extends Seeder
         }
 
         Menu::create([
+            Menu::FIELD_USER_ID => $user_id,
             Menu::FIELD_TITLE => 'backend',
             Menu::FIELD_TEMPLATE => $menu,
         ]);
+    }
+
+    #endregion
+
+    #region PRIVATE METHODS
+
+    private function getBackendMenu()
+    {
+
     }
 
     #endregion

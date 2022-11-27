@@ -16,6 +16,7 @@ class GeneralSettings extends Model
     #region CONSTANTS
 
     public const FIELD_ID = 'id';
+
     public const FIELD_APP_NAME = 'app_name';
 
     #endregion

@@ -16,6 +16,7 @@ class MenuItem extends Model
     #region CONSTANTS
 
     public const FIELD_ID = 'id';
+
     public const FIELD_ICON = 'icon';
     public const FIELD_LABEL = 'title';
     public const FIELD_TYPE = 'type';

@@ -19,6 +19,7 @@ class Faq extends Model
     #region CONSTANTS
 
     public const FIELD_ID = 'id';
+
     public const FIELD_QUESTION = 'question';
     public const FIELD_ANSWER = 'answer';
 

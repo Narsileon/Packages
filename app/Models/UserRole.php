@@ -18,6 +18,7 @@ class UserRole extends Role
     #region CONSTANTS
 
     public const FIELD_ID = 'id';
+
     public const FIELD_NAME = 'name';
     public const FIELD_GUARD ='guard_name';
 

@@ -19,6 +19,7 @@ class Order extends Model
     #region CONSTANTS
 
     public const FIELD_ID = 'id';
+
     public const FIELD_TYPE = 'type';
     public const FIELD_STATUS = 'status';
     public const FIELD_ORDER_NUMBER = 'order_number';

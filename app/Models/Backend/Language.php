@@ -18,6 +18,7 @@ class Language extends Model
     #region CONSTANTS
 
     public const FIELD_ID = 'id';
+
     public const FIELD_CODE = 'code';
     public const FIELD_ACTIVE = 'active';
 

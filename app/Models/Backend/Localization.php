@@ -22,6 +22,7 @@ class Localization extends Model
 
     public const FIELD_ID = 'id';
     public const FIELD_USER_ID='user_id';
+
     public const FIELD_DICTIONARY = 'dictionary';
 
     public const PROPERTY_USER = 'user';
