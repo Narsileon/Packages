@@ -72,7 +72,7 @@ export default function Nav() {
                     />
                 </Section>
 
-                {/* Localization */}
+                {/* Settings */}
                 <Section
                     label={ transChoice('common.settings', 2) }
                     icon="cog"

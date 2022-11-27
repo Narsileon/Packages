@@ -7,7 +7,7 @@ import NavLink from "@/Components/Elements/Links/NavLink";
 import { useRef } from "react";
 
 export default function Nav() {
-    const auth = usePage().props.auth;
+    const auth = usePage().props.shared.auth;
 
     const links = [
         { route: route('home'), label: trans('common.home'), icon: 'home' },

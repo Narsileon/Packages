@@ -5,7 +5,7 @@ import { Dropdown, DropdownItem, DropdownPanel } from "@/Components/Elements/Dro
 import Flag from "@/Shared/Svg/Flag";
 
 export default function LocaleDropdown() {
-    const { locale, locales } = usePage().props.localization;
+    const { locale, locales } = usePage().props.shared.localization;
 
     return (
         <Dropdown trigger={ upperCase(locale) }>

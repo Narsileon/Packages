@@ -7,7 +7,7 @@ import Icon from "@/Shared/Svg/Icon";
 export default function Flash() {
     const [visible, setVisible] = useState(true);
 
-    const { flash } = usePage().props;
+    const { flash } = usePage().props.shared;
 
     useEffect(() => {
         setVisible(true);

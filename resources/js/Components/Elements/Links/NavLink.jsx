@@ -9,7 +9,7 @@ export default function NavLink({
 	children,
     ...props
 }) {
-	const active = props.href ? props.href == usePage().props.ziggy.location ? true : false : false;
+	const active = props.href ? props.href == usePage().props.shared.ziggy.location ? true : false : false;
 
 	return (
 		<li>

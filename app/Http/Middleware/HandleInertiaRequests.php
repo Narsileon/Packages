@@ -38,13 +38,16 @@ class HandleInertiaRequests extends Middleware
 
         $localization = LocalizationService::get();
 
-        return array_merge(parent::share($request), compact(
+        $shared = compact(
             'auth',
             'flash',
+            'localization',
             'settings',
             'ziggy',
+        );
 
-            'localization',
+        return array_merge(parent::share($request), compact(
+            'shared',
         ));
     }
 
