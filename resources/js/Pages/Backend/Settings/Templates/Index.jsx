@@ -4,7 +4,7 @@ import AppHead from "@/Shared/AppHead";
 export default function Index() {
     return (
         <>
-        	<AppHead title={ transChoice('common.menus', 2) } />
+        	<AppHead title={ transChoice('common.templates', 2) } />
         </>
     );
 }

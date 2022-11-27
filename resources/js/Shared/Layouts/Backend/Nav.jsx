@@ -83,6 +83,16 @@ export default function Nav() {
                         icon="cog"
                     />
                     <NavLink
+                        href={ route('admin.menus') }
+                        label={ transChoice('common.menus', 2) }
+                        icon="cog"
+                    />
+                    <NavLink
+                        href={ route('admin.templates') }
+                        label={ transChoice('common.templates', 2) }
+                        icon="cog"
+                    />
+                    <NavLink
                         href={ route('admin.languages') }
                         label={ transChoice('common.languages', 2) }
                         icon="language"
