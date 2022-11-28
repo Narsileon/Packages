@@ -65,4 +65,7 @@
     .link-icon { @apply
         hover:text-blue-500
     }
+    .link-text { @apply
+        text-blue-500
+    }
 }

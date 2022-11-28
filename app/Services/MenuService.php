@@ -18,9 +18,11 @@ class MenuService
     public static function get()
     {
         $backend = self::getBackendMenu();
+        $footer = [];
 
         return compact(
             'backend',
+            'footer',
         );
     }
 
