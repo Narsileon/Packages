@@ -56,6 +56,7 @@ return new class extends Migration
             $table->string(MenuItem::FIELD_ICON);
             $table->string(MenuItem::FIELD_LABEL);
             $table->string(MenuItem::FIELD_URL)->nullable();
+            $table->text(MenuItem::FIELD_CHILDREN)->nullable();
             $table->timestamps();
         });
     }

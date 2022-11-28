@@ -4,6 +4,7 @@ namespace App\Models;
 
 #region USE
 
+use App\Constants\Types;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -21,6 +22,7 @@ class MenuItem extends Model
     public const FIELD_LABEL = 'label';
     public const FIELD_TYPE = 'type';
     public const FIELD_URL = 'url';
+    public const FIELD_CHILDREN = 'children';
 
     #endregion
 
@@ -33,6 +35,19 @@ class MenuItem extends Model
         self::FIELD_TYPE,
         self::FIELD_URL,
     ];
+
+    #endregion
+
+    #region PUBLIC METHODS
+
+    public function getChildrenAttribute($value)
+    {
+        if (is_null($value)) {
+            $value = [];
+        }
+
+        return $value;
+    }
 
     #endregion
 }

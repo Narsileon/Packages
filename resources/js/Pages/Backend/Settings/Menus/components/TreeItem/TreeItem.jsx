@@ -42,7 +42,7 @@ export const TreeItem = forwardRef(
         style={
           {
             '--spacing': `${indentationWidth * depth}px`,
-          } as React.CSSProperties
+          }
         }
         {...props}
       >

@@ -24,7 +24,6 @@ abstract class Menus
             MenuItem::FIELD_TYPE => self::TYPE_CATEGORY,
             MenuItem::FIELD_ICON => 'user',
             MenuItem::FIELD_LABEL => 'common.management',
-
             self::FIELD_CHILDREN => [
                 [
                     MenuItem::FIELD_TYPE => self::TYPE_PAGE,
@@ -44,7 +43,6 @@ abstract class Menus
             MenuItem::FIELD_TYPE => self::TYPE_CATEGORY,
             MenuItem::FIELD_ICON => 'office',
             MenuItem::FIELD_LABEL => 'common.backoffice',
-
             self::FIELD_CHILDREN => [
                 [
                     MenuItem::FIELD_TYPE => self::TYPE_PAGE,
@@ -64,7 +62,6 @@ abstract class Menus
             MenuItem::FIELD_TYPE => self::TYPE_CATEGORY,
             MenuItem::FIELD_ICON => 'home',
             MenuItem::FIELD_LABEL => 'common.frontoffice',
-
             self::FIELD_CHILDREN => [
                 [
                     MenuItem::FIELD_TYPE => self::TYPE_PAGE,
@@ -90,7 +87,6 @@ abstract class Menus
             MenuItem::FIELD_TYPE => self::TYPE_CATEGORY,
             MenuItem::FIELD_ICON => 'cog',
             MenuItem::FIELD_LABEL => 'common.settings',
-
             self::FIELD_CHILDREN => [
                 [
                     MenuItem::FIELD_TYPE => self::TYPE_PAGE,

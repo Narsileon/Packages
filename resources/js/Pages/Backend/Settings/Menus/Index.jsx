@@ -1,84 +1,35 @@
 import { transChoice } from "@/narsil-localization";
-import AppHead from "@/Shared/AppHead";
+import { usePage } from "@inertiajs/inertia-react";
+import SortableItems from "./SortableItems";
 import SortableTree from "./SortableTree";
+import AppHead from "@/Shared/AppHead";
 
 export default function Index({ menuItems }) {
-    const items = {
-        root1: {
-            index: 'root1',
-            canMove: true,
-            isFolder: true,
-            children: ['child1', 'child2'],
-            data: 'root1',
-        },
-            child1: {
-            index: 'child1',
-            canMove: true,
-            children: [],
-            data: 'Child item 1',
-        },
-            child2: {
-            index: 'child2',
-            canMove: true,
-            isFolder: true,
-            children: ['child3'],
-            data: 'Child item 2',
-        },
-            child3: {
-            index: 'child3',
-            canMove: true,
-            children: [],
-            data: 'Child item 3',
-        },
-            root2: {
-            index: 'root2',
-            canMove: true,
-            isFolder: true,
-            children: ['child4', 'child5'],
-            data: 'root2',
-        },
-            child4: {
-            index: 'child4',
-            canMove: true,
-            children: [],
-            data: 'Child item 4',
-        },
-            child5: {
-            index: 'child5',
-            canMove: true,
-            isFolder: true,
-            children: ['child6'],
-            data: 'Child item 5',
-        },
-            child6: {
-            index: 'child6',
-            canMove: true,
-            children: [],
-            data: 'Child item 6',
-        },
-    };
-
-    const Wrapper = ({children}) => (
-        <div
-          style={{
-            maxWidth: 600,
-            padding: 10,
-            margin: '0 auto',
-            marginTop: '10%',
-          }}
-        >
-          {children}
-        </div>
-      );
-
+    const backendMenu = usePage().props.shared.menus.backend
 
     return (
         <>
         	<AppHead title={ transChoice('common.menus', 2) } />
 
-            <Wrapper>
-                <SortableTree collapsible indicator removable />
-            </Wrapper>
+            <div className="grid grid-cols-2 h-full gap-x-8">
+                <div className="col-span-1 min-h-0 overflow-y-auto">
+                    <section id="sortable-items">
+                        <SortableItems
+                            items={ menuItems.data }
+                        />
+                    </section>
+                </div>
+                <div className="col-span-1 min-h-0 overflow-y-auto">
+                    <section id="sortable-tree">
+                        <SortableTree
+                            data={ backendMenu }
+                            collapsible
+                            indicator
+                            removable
+                        />
+                    </section>
+                </div>
+            </div>
         </>
     );
 }

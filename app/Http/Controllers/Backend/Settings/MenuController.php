@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Backend\Settings;
 #region USE
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Backend\Settings\MenuItemCollection;
+use App\Http\Resources\Backend\Settings\MenuItemResource;
 use App\Models\MenuItem;
 use Inertia\Inertia;
 
@@ -17,7 +17,7 @@ class MenuController extends Controller
 
     public function index()
     {
-        $menuItems = new MenuItemCollection(MenuItem::all());
+        $menuItems = MenuItemResource::collection(MenuItem::all());
 
         return Inertia::render('Backend/Settings/Menus/Index', compact(
             'menuItems'

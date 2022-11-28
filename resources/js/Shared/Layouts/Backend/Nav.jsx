@@ -21,7 +21,7 @@ export default function Nav() {
                                     key={ menuItem.id }
                                 >
                                     {
-                                        menuItem.children && menuItem.children.map((page) => {
+                                        menuItem.children.length > 0 && menuItem.children.map((page) => {
                                             return (
                                                 <NavLink
                                                     href={ route(page.url) }
