@@ -9,7 +9,7 @@ export default function SortableItems({
     const types = [...new Set(items.map(item => item.type))]
 
     return (
-        <div>
+        <div className="space-y-2">
         {
             types.map((type) => {
                 return(
@@ -34,31 +34,32 @@ const SortableCategory = ({
     const[dropdown, open, setOpen] = useDropdown()
 
     return (
-        <div ref={ dropdown }>
-            <button
-                className="w-full border border-color p-2 rounded"
-                onClick={ setOpen }
-            >
-                { type }
-            </button>
-            {
-                open ? (
-                    <ul>
-                        {
-                            items.map((item) => {
-                                return(
-                                    <SortableItem
-                                        item={ item }
-                                        addToList={ addToList }
-                                        key={ item.id }
-                                    />
-                                )
-                            })
-                        }
-                    </ul>
-                ) : null
-            }
-
+        <div className="primary-background">
+            <div ref={ dropdown }>
+                <button
+                    className="w-full border border-color p-2 rounded"
+                    onClick={ setOpen }
+                >
+                    { type }
+                </button>
+                {
+                    open ? (
+                        <ul>
+                            {
+                                items.map((item) => {
+                                    return(
+                                        <SortableItem
+                                            item={ item }
+                                            addToList={ addToList }
+                                            key={ item.id }
+                                        />
+                                    )
+                                })
+                            }
+                        </ul>
+                    ) : null
+                }
+            </div>
         </div>
     )
 };

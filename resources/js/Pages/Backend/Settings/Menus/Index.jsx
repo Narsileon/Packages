@@ -4,6 +4,7 @@ import { trans, transChoice } from "@/narsil-localization";
 import SortableItems from "./SortableItems";
 import SortableTree from "./SortableTree";
 import AppHead from "@/Shared/AppHead";
+import { lowerFirst } from "lodash";
 
 export default function Index({ menuItems }) {
     const menus = usePage().props.shared.menus;
@@ -18,39 +19,34 @@ export default function Index({ menuItems }) {
         <>
         	<AppHead title={ transChoice('common.menus', 2) } />
 
-            <div class="menu">
-                <button
-                    className="link-text"
-                    onClick={ () => setMenu([]) }
-                >
-                    { `${ trans('Create a new menu') } ` }
-                </button>
-                <span>
-                    { ` ${ trans('or') } ${ trans('Select a menu to edit') + trans(':')} ` }
-                </span>
-                <select
-                    className="field"
-                    onChange={ (event) => setMenu(menus[event.target.value]) }
-                >
-                    {
-                        Object.keys(menus).map((key) => {
-                            return (
-                                <option
-                                    value={ key }
-                                    key={ key }
-                                >
-                                    { key }
-                                </option>
-                            );
-                        })
-                    }
-                </select>
-            </div>
-
-            <div className="grid grid-cols-4 h-full gap-x-8">
-                <div class="col-span-4">
-
-
+            <div className="grid grid-cols-4 h-full gap-x-8 gap-y-4">
+                <div className="col-span-4">
+                    <button
+                        className="link-text"
+                        onClick={ () => setMenu([]) }
+                    >
+                        { `${ trans('Create :resource', { 'resource': trans('common.new_menu') }) } ` }
+                    </button>
+                    <span>
+                        { ` ${ trans('or select a menu to edit:') } ` }
+                    </span>
+                    <select
+                        className="field"
+                        onChange={ (event) => setMenu(menus[event.target.value]) }
+                    >
+                        {
+                            Object.keys(menus).map((key) => {
+                                return (
+                                    <option
+                                        value={ key }
+                                        key={ key }
+                                    >
+                                        { key }
+                                    </option>
+                                );
+                            })
+                        }
+                    </select>
                 </div>
                 <div className="col-span-1 min-h-0 overflow-y-auto">
                     <section id="sortable-items">

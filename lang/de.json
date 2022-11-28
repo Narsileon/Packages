@@ -4,11 +4,13 @@
     "Add :resource": ":Resource hinzufügen",
     "All rights reserved.": "Alle Rechte vorbehalten.",
     "Connection": "Anmeldung",
-    "Create :resource": ":Resource erstellen",
+    "Create :resource": "Erstellen Sie :resource",
     "Delete :resource": ":Resource löschen",
     "Edit :resource": ":Resource bearbeiten",
     "List of :resource": "Liste der :resource",
     "No :resource was found in the database": "Kein(e) :resource wurde in der Datenbank gefunden.",
+    "or": "oder",
+    "or select a menu to edit:": "oder wählen Sie ein Menü zum Bearbeiten aus:",
     "Registration": "Registrierung",
     "Update :resource": ":Resource aktualisieren"
 }

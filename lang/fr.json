@@ -9,6 +9,8 @@
     "Edit :resource": "Modifier :resource",
     "List of :resource": "Liste des :resource",
     "No :resource was found in the database": "Aucun(e) :resource n'a été trouvé dans la base de donnée.",
+    "or": "ou",
+    "or select a menu to edit:": "ou sélectionner un menu à éditer :",
     "Registration": "Inscription",
     "Update :resource": "Mettre à jour :resource"
 }
