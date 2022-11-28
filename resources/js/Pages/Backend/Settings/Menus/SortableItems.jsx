@@ -1,6 +1,7 @@
 import { transChoice } from "@/narsil-localization";
-import { useDropdown } from "@/narsil-react";
 import { upperFirst } from "lodash";
+import Dropdown from "@/Components/Elements/Dropdowns/Dropdown";
+import DropdownItem from "@/Components/Elements/Dropdowns/DropdownItem";
 
 export default function SortableItems({
     items,
@@ -13,66 +14,26 @@ export default function SortableItems({
         {
             types.map((type) => {
                 return(
-                    <SortableCategory
-                        type={ type}
-                        items={ items.filter(item => item.type == type) }
-                        addToList={ addToList }
-                        key={ type }
-                    />
+                    <div className="primary-background">
+                        <Dropdown trigger={ type }>
+                            <ul className="p-2">
+                                {
+                                    items.map((item) => {
+                                        return(
+                                            <DropdownItem
+                                                label={ upperFirst(transChoice(item.label)) }
+                                                onClick={ () => addToList(item) }
+                                                key={ item.id }
+                                            />
+                                        )
+                                    })
+                                }
+                            </ul>
+                        </Dropdown>
+                    </div>
                 );
             })
         }
         </div>
     );
 }
-
-const SortableCategory = ({
-    type,
-    items,
-    addToList,
-}) => {
-    const[dropdown, open, setOpen] = useDropdown()
-
-    return (
-        <div className="primary-background">
-            <div ref={ dropdown }>
-                <button
-                    className="w-full border border-color p-2 rounded"
-                    onClick={ setOpen }
-                >
-                    { type }
-                </button>
-                {
-                    open ? (
-                        <ul>
-                            {
-                                items.map((item) => {
-                                    return(
-                                        <SortableItem
-                                            item={ item }
-                                            addToList={ addToList }
-                                            key={ item.id }
-                                        />
-                                    )
-                                })
-                            }
-                        </ul>
-                    ) : null
-                }
-            </div>
-        </div>
-    )
-};
-
-const SortableItem = ({
-    item,
-    addToList
-}) => {
-    return (
-        <li>
-            <button onClick={ () => addToList(item) }>
-                { upperFirst(transChoice(item.label)) }
-            </button>
-        </li>
-    )
-};

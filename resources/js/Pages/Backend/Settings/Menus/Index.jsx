@@ -4,7 +4,6 @@ import { trans, transChoice } from "@/narsil-localization";
 import SortableItems from "./SortableItems";
 import SortableTree from "./SortableTree";
 import AppHead from "@/Shared/AppHead";
-import { lowerFirst } from "lodash";
 
 export default function Index({ menuItems }) {
     const menus = usePage().props.shared.menus;
