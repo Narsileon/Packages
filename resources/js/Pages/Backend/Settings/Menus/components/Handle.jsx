@@ -1,6 +1,5 @@
-import React, {forwardRef} from 'react';
-
-import {Action} from './Action';
+import { forwardRef } from 'react';
+import { Action } from './Action';
 
 export const Handle = forwardRef(
   (props, ref) => {
