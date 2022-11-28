@@ -3,7 +3,7 @@ import { CSS } from '@dnd-kit/utilities';
 
 import { TreeItem } from './TreeItem';
 
-const animateLayoutChanges = ({isSorting, wasDragging}) =>
+const animateLayoutChanges = ({ isSorting, wasDragging }) =>
   	isSorting || wasDragging ? false : true;
 
 export function SortableTreeItem({

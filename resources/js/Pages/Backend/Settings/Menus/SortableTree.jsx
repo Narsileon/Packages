@@ -62,19 +62,19 @@ const dropAnimationConfig = {
 
 export default function SortableTree({
 	data,
+	setData,
 	collapsible,
 	indicator = false,
 	indentationWidth = 50,
 	removable,
 }) {
-	const [items, setItems] = useState(data);
 	const [activeId, setActiveId] = useState(null);
 	const [overId, setOverId] = useState(null);
 	const [offsetLeft, setOffsetLeft] = useState(0);
 	const [currentPosition, setCurrentPosition] = useState(null);
 
 	const flattenedItems = useMemo(() => {
-		const flattenedTree = flattenTree(items);
+		const flattenedTree = flattenTree(data);
 		const collapsedItems = flattenedTree.reduce((acc, {children, collapsed, id}) =>
 			collapsed && children.length ? [...acc, id] : acc,
 		[]
@@ -84,7 +84,7 @@ export default function SortableTree({
 			flattenedTree,
 			activeId ? [activeId, ...collapsedItems] : collapsedItems
 		);
-	}, [activeId, items]);
+	}, [activeId, data]);
 	const projected =
 		activeId && overId
 		? getProjection(
@@ -184,7 +184,7 @@ export default function SortableTree({
 										id={'activeId'}
 										depth={activeItem.depth}
 										clone
-										childCount={ getChildCount(items, activeId) + 1 }
+										childCount={ getChildCount(data, activeId) + 1 }
 										value={ activeId.toString() }
 										indentationWidth={indentationWidth}
 									/>
@@ -227,7 +227,7 @@ export default function SortableTree({
 		if (projected && over) {
 		const {depth, parentId} = projected;
 		const clonedItems = JSON.parse(
-			JSON.stringify(flattenTree(items))
+			JSON.stringify(flattenTree(data))
 		);
 		const overIndex = clonedItems.findIndex(({id}) => id === over.id);
 		const activeIndex = clonedItems.findIndex(({id}) => id === active.id);
@@ -238,7 +238,7 @@ export default function SortableTree({
 		const sortedItems = arrayMove(clonedItems, activeIndex, overIndex);
 		const newItems = buildTree(sortedItems);
 
-		setItems(newItems);
+		setData(newItems);
 		}
 	}
 
@@ -256,11 +256,11 @@ export default function SortableTree({
 	}
 
 	function handleRemove(id) {
-		setItems((items) => removeItem(items, id));
+		setData((items) => removeItem(items, id));
 	}
 
 	function handleCollapse(id) {
-		setItems((items) =>
+		setData((items) =>
 		setProperty(items, id, 'collapsed', (value) => {
 			return !value;
 		})
@@ -289,7 +289,7 @@ export default function SortableTree({
 		}
 
 		const clonedItems = JSON.parse(
-			JSON.stringify(flattenTree(items))
+			JSON.stringify(flattenTree(data))
 		);
 		const overIndex = clonedItems.findIndex(({id}) => id === overId);
 		const activeIndex = clonedItems.findIndex(({id}) => id === activeId);

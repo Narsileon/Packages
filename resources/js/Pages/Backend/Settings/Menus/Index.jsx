@@ -1,11 +1,17 @@
-import { transChoice } from "@/narsil-localization";
+import { useState } from "react";
 import { usePage } from "@inertiajs/inertia-react";
+import { transChoice } from "@/narsil-localization";
 import SortableItems from "./SortableItems";
 import SortableTree from "./SortableTree";
 import AppHead from "@/Shared/AppHead";
 
 export default function Index({ menuItems }) {
-    const backendMenu = usePage().props.shared.menus.backend
+    const [menu, setMenu] = useState(usePage().props.shared.menus.backend)
+
+    function addToList(item)
+    {
+        setMenu(previousMenu => [...previousMenu, item])
+    }
 
     return (
         <>
@@ -16,13 +22,15 @@ export default function Index({ menuItems }) {
                     <section id="sortable-items">
                         <SortableItems
                             items={ menuItems.data }
+                            addToList={ addToList }
                         />
                     </section>
                 </div>
                 <div className="col-span-1 min-h-0 overflow-y-auto">
                     <section id="sortable-tree">
                         <SortableTree
-                            data={ backendMenu }
+                            data={ menu }
+                            setData={ setMenu }
                             collapsible
                             indicator
                             removable

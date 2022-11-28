@@ -2,7 +2,10 @@ import { transChoice } from "@/narsil-localization";
 import { useDropdown } from "@/narsil-react";
 import { upperFirst } from "lodash";
 
-export default function SortableItems({ items }) {
+export default function SortableItems({
+    items,
+    addToList,
+}) {
     const types = [...new Set(items.map(item => item.type))]
 
     return (
@@ -13,6 +16,7 @@ export default function SortableItems({ items }) {
                     <SortableCategory
                         type={ type}
                         items={ items.filter(item => item.type == type) }
+                        addToList={ addToList }
                         key={ type }
                     />
                 );
@@ -22,7 +26,11 @@ export default function SortableItems({ items }) {
     );
 }
 
-const SortableCategory = ({ type, items }) => {
+const SortableCategory = ({
+    type,
+    items,
+    addToList,
+}) => {
     const[dropdown, open, setOpen] = useDropdown()
 
     return (
@@ -41,6 +49,7 @@ const SortableCategory = ({ type, items }) => {
                                 return(
                                     <SortableItem
                                         item={ item }
+                                        addToList={ addToList }
                                         key={ item.id }
                                     />
                                 )
@@ -54,10 +63,13 @@ const SortableCategory = ({ type, items }) => {
     )
 };
 
-const SortableItem = ({ item }) => {
+const SortableItem = ({
+    item,
+    addToList
+}) => {
     return (
         <li>
-            <button>
+            <button onClick={ () => addToList(item) }>
                 { upperFirst(transChoice(item.label)) }
             </button>
         </li>
