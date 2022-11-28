@@ -1,5 +1,5 @@
 import { useRef, useEffect } from "react";
-import { useFullscreen, useToggle } from "react-use";
+import { useClickAway, useFullscreen, useToggle } from "react-use";
 
 // Horizontal Scroll
 export function useHorizontalScroll(
@@ -78,3 +78,12 @@ export const useEllipsis = () => {
     return [label];
 };
 
+export const useDropdown = (defaultVisibility) => {
+    const dropdown = useRef(null);
+
+    const [open, setOpen] = useToggle(defaultVisibility);
+
+    useClickAway(dropdown, () => setOpen(false));
+
+    return [dropdown, open, setOpen];
+}

@@ -1,6 +1,6 @@
 import { useToggle } from "react-use";
 import { usePage } from "@inertiajs/inertia-react";
-import { trans, transChoice } from "@/narsil-localization";
+import { transChoice } from "@/narsil-localization";
 import { upperFirst } from "lodash";
 import NavLink from "@/Components/Elements/Links/NavLink";
 import Icon from "@/Shared/Svg/Icon";
@@ -10,44 +10,41 @@ export default function Nav() {
 
     return (
         <nav className="font-semibold">
-            {
-                menuItems.map((menuItem) => {
-                    console.log(menuItem)
-                    return (
-                        <ul>
-                            {
-                                menuItem.type == 'category' ? (
-                                    <Section
-                                        label={ transChoice(menuItem.label) }
-                                        icon={ menuItem.icon }
-                                        key={ menuItem.id }
-                                    >
-                                        {
-                                            menuItem.children && menuItem.children.map((page) => {
-                                                return (
-                                                    <NavLink
-                                                        href={ route(page.url) }
-                                                        label={ transChoice(page.label) }
-                                                        icon={ page.icon }
-                                                        key={ page.id }
-                                                    />
-                                                );
-                                            })
-                                        }
-                                    </Section>
-                                ) : (
-                                    <NavLink
-                                        href={ route(menuItem.url) }
-                                        label={ transChoice(menuItem.label) }
-                                        icon={ menuItem.icon }
-                                        key={ menuItem.id }
-                                    />
-                                )
-                            }
-                        </ul>
-                    )
-                })
-            }
+            <ul>
+                {
+                    menuItems.map((menuItem) => {
+                        return (
+                            menuItem.type == 'category' ? (
+                                <Section
+                                    label={ transChoice(menuItem.label) }
+                                    icon={ menuItem.icon }
+                                    key={ menuItem.id }
+                                >
+                                    {
+                                        menuItem.children && menuItem.children.map((page) => {
+                                            return (
+                                                <NavLink
+                                                    href={ route(page.url) }
+                                                    label={ transChoice(page.label) }
+                                                    icon={ page.icon }
+                                                    key={ page.id }
+                                                />
+                                            );
+                                        })
+                                    }
+                                </Section>
+                            ) : (
+                                <NavLink
+                                    href={ route(menuItem.url) }
+                                    label={ transChoice(menuItem.label) }
+                                    icon={ menuItem.icon }
+                                    key={ menuItem.id }
+                                />
+                            )
+                        )
+                    })
+                }
+            </ul>
         </nav>
     );
 }
