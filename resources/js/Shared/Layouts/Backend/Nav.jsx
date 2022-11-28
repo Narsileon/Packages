@@ -14,7 +14,7 @@ export default function Nav() {
                 {
                     menuItems.map((menuItem) => {
                         return (
-                            menuItem.type == 'category' ? (
+                            menuItem.type == 'categories' ? (
                                 <Section
                                     label={ transChoice(menuItem.label) }
                                     icon={ menuItem.icon }

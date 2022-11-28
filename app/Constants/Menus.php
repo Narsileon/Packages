@@ -10,8 +10,8 @@ abstract class Menus
 
     public const FIELD_CHILDREN = 'children';
 
-    public const TYPE_CATEGORY = 'category';
-    public const TYPE_PAGE = 'page';
+    public const TYPE_CATEGORY = 'categories';
+    public const TYPE_PAGE = 'pages';
 
     public const DEFAULT_BACKEND_MENU = [
         [

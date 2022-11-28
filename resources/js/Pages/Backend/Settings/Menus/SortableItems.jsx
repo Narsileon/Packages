@@ -7,14 +7,17 @@ export default function SortableItems({
     items,
     addToList,
 }) {
-    const types = [...new Set(items.map(item => item.type))]
+    const types = [...new Set(items.map(item => item.type))].sort();
 
     return (
         <div className="space-y-2">
         {
             types.map((type) => {
                 return(
-                    <div className="primary-background">
+                    <div
+                        className="primary-background"
+                        key={ type }
+                    >
                         <Dropdown trigger={ type }>
                             <ul className="p-2">
                                 {
