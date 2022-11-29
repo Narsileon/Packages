@@ -26,7 +26,7 @@ export default function Index({ menus, menuItems }) {
         <>
         	<AppHead title={ transChoice('common.menus', 2) } />
 
-            <div className="grid grid-cols-4 h-full gap-x-8 gap-y-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 h-full gap-x-8 gap-y-4">
                 <div className="col-span-2">
                     <button
                         className="link-text"
@@ -61,7 +61,7 @@ export default function Index({ menus, menuItems }) {
                         onClick={ update }
                     />
                 </div>
-                <div className="col-span-1 min-h-0 overflow-y-auto">
+                <div className="col-span-2 md:col-span-1 min-h-0 overflow-y-auto">
                     <section id="sortable-items">
                         <div className="space-y-2">
                             <SortableItems
@@ -77,7 +77,7 @@ export default function Index({ menus, menuItems }) {
                         </div>
                     </section>
                 </div>
-                <div className="col-span-3 min-h-0 overflow-y-auto">
+                <div className="col-span-2 md:col-span-3 min-h-0 overflow-y-auto">
                     <section id="sortable-tree">
                         {
                             layout ? (
