@@ -14,22 +14,23 @@ export default function Layout({ children }) {
         <main className="flex flex-row min-h-screen max-w-screen">
             <aside
                 className={`
-                    md:relative overflow-hidden primary-background top-0 h-screen md:w-10 p-1 space-y-4 z-40 md:hover:w-64
+                    md:relative primary-background top-0 h-screen md:w-10 md:hover:w-64 p-1 space-y-4 overflow-hidden z-40
                     md:transition-all md:duration-300
                     ${ visible ? 'absolute w-full' : 'w-10' }
                 `}
                 onClick={ () => !visible ? setVisible(true) : null }
             >
-                {
-                    visible ? (
-                        <CloseButton
-                            className="absolute primary-background top-4 right-4 w-6 h-6 md:hidden"
-                            onClick={ () => setVisible(false) }
-                        />
-                    ) : null
-                }
-
-                <WebsiteLogo />
+                <div>
+                    <WebsiteLogo />
+                    {
+                        visible ? (
+                            <CloseButton
+                                className="absolute primary-background top-2 right-2 w-6 h-6 md:hidden"
+                                onClick={ () => setVisible(false) }
+                            />
+                        ) : null
+                    }
+                </div>
 
                 <Nav />
             </aside>
