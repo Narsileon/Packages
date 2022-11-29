@@ -34,12 +34,12 @@ return [
         'order_updated'             => 'Der Auftrag wurde erfolgreich aktualisiert.',
         'order_deleted'             => 'Der Auftrag wurde erfolgreich gelöscht.',
 
-        'general_settings_update'   => 'Die allgemeinen Einstellungen wurden erfolgreich aktualisiert.',
-        'languages_update'          => 'Die Sprachen wurden erfolgreich aktualisiert.',
+        'general_settings_updated'  => 'Die allgemeinen Einstellungen wurden erfolgreich aktualisiert.',
+        'languages_updated'         => 'Die Sprachen wurden erfolgreich aktualisiert.',
 
-        'dictionary_update'         => 'Das Wörterbuch wurde erfolgreich erstellt.',
-        'menu_update'               => 'Das Menü wurde erfolgreich erstellt.',
-        'template_update'           => 'Das Template wurde erfolgreich erstellt.',
+        'dictionary_updated'        => 'Das Wörterbuch wurde erfolgreich erstellt.',
+        'menu_updated'              => 'Das Menü wurde erfolgreich erstellt.',
+        'template_updated'          => 'Das Template wurde erfolgreich erstellt.',
     ],
 
     'error' => [

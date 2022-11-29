@@ -26,7 +26,9 @@ export default function Layout({ children }) {
                 </div>
             </section>
 
-            <Flash />
+            <section id="flash_message">
+                <Flash />
+            </section>
         </main>
     );
 }

@@ -14,7 +14,7 @@ export default function Flash() {
     }, [flash]);
 
     return (
-        <>
+        <div className="fixed bottom-4 right-4 rounded">
             {/* Flash success */}
             { flash.success && visible && (
                 <Message
@@ -34,31 +34,29 @@ export default function Flash() {
                     setVisible={ setVisible }
                 />
             )}
-        </>
+        </div>
     );
 }
 
 const Message = ({ icon, message, setVisible, ...props }) => {
     return (
-        <section id="flash-message">
-            <div { ...props}>
-                <div className={ `relative flex items-center justify-between` }>
-                    <div className="flex items-center ml-2 mr-6 space-x-2">
-                        <Icon
-                            name={ icon }
-                            className="w-6 h-6"
-                        />
-                        <div className="py-2">
-                            { message }
-                        </div>
-                    </div>
-
-                    <CloseButton
-                        className="absolute top-0 right-0 m-1 w-4 h-4"
-                        onClick={ () => setVisible(false) }
+        <div { ...props}>
+            <div className={ `relative flex items-center justify-between` }>
+                <div className="flex items-center ml-2 mr-6 space-x-2">
+                    <Icon
+                        name={ icon }
+                        className="w-6 h-6"
                     />
+                    <div className="py-2">
+                        { message }
+                    </div>
                 </div>
+
+                <CloseButton
+                    className="absolute top-0 right-0 m-1 w-4 h-4"
+                    onClick={ () => setVisible(false) }
+                />
             </div>
-        </section>
+        </div>
     );
 };

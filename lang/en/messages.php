@@ -34,12 +34,12 @@ return [
         'order_updated'             => 'The order has been successfully updated.',
         'order_deleted'             => 'The order has been successfully deleted.',
 
-        'general_settings_update'   => 'The general settings have been successfully updated.',
-        'languages_update'          => 'The languages have been successfully updated.',
+        'general_settings_updated'  => 'The general settings have been successfully updated.',
+        'languages_updated'         => 'The languages have been successfully updated.',
 
-        'dictionary_update'         => 'The dictionary has been successfully updated.',
-        'menu_update'               => 'The menu has been successfully updated.',
-        'template_update'           => 'The template has been successfully updated.',
+        'dictionary_updated'        => 'The dictionary has been successfully updated.',
+        'menu_updated'              => 'The menu has been successfully updated.',
+        'template_updated'          => 'The template has been successfully updated.',
     ],
 
     'error' => [
