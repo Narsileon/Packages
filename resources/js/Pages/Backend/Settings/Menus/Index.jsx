@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Inertia } from "@inertiajs/inertia";
-import { useRemember } from "@inertiajs/inertia-react";
 import { trans, transChoice } from "@/narsil-localization";
 import { upperFirst } from "lodash";
 import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";

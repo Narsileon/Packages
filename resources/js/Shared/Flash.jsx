@@ -14,11 +14,11 @@ export default function Flash() {
     }, [flash]);
 
     return (
-        <div className="fixed bottom-4 right-4 rounded">
+        <div className="fixed bottom-4 right-4">
             {
                 flash.success && visible ? (
                     <Message
-                        className="bg-green-500 text-white"
+                        className="bg-green-500 text-white rounded"
                         icon="check"
                         message={ trans(`messages.success.${ flash.success }`) }
                         setVisible={ setVisible }
@@ -29,7 +29,7 @@ export default function Flash() {
             {
                 flash.error && visible ? (
                     <Message
-                        className="bg-red-500 text-white"
+                        className="bg-red-500 text-white rounded"
                         icon="danger"
                         message={ trans(`messages.errors.${ flash.error }`) }
                         setVisible={ setVisible }
