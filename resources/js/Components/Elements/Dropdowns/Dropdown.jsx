@@ -3,9 +3,10 @@ import { useClickAway, useToggle } from "react-use";
 import Chevron from "@/Shared/Svg/Chevron";
 
 export default function Dropdown({
-    triggerClasses="",
     trigger,
-    visibility=false,
+    triggerClasses = "",
+    visibility = false,
+    closeOnClickAway = false,
     children
 }) {
     const dropdown = useRef(null);

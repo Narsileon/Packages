@@ -1,42 +1,63 @@
 import { transChoice } from "@/narsil-localization";
 import { upperFirst } from "lodash";
-import Dropdown from "@/Components/Elements/Dropdowns/Dropdown";
-import DropdownItem from "@/Components/Elements/Dropdowns/DropdownItem";
+import { useDropdown } from "@/narsil-react";
+import AddButton from "@/Components/Elements/Buttons/AddButton";
+import Chevron from "@/Shared/Svg/Chevron";
 
 export default function SortableItems({
+    label,
     items,
-    addToList,
+    onClick,
+    defaultVisibility = false
 }) {
-    const types = [...new Set(items.map(item => item.type))].sort();
+    const[dropdown, open, setOpen] = useDropdown(defaultVisibility, false);
 
     return (
-        <div className="space-y-2">
-        {
-            types.map((type) => {
-                return(
-                    <div
-                        className="primary-background"
-                        key={ type }
+        <div className="primary-background rounded">
+            <div
+                className="w-full"
+                ref={ dropdown }
+            >
+                <div className={ `flex justify-between p-2 ${ open ? 'border-b-2 border-color' : '' }` }>
+                    <button
+                        className="flex items-center space-x-1"
+                        onClick={ setOpen }
                     >
-                        <Dropdown trigger={ type }>
+                        <Chevron
+                            className="w-4 h-4"
+                            direction={ open ? 'down' : 'right' }
+                        />
+                        <span>
+                            { label }
+                        </span>
+                    </button>
+                    <AddButton
+                        className="bg-blue-500 w-6 h-6 rounded"
+                    />
+                </div>
+                {
+                    open ? (
+                        <div>
                             <ul className="p-2">
                                 {
                                     items.map((item) => {
                                         return(
-                                            <DropdownItem
-                                                label={ upperFirst(transChoice(item.label)) }
-                                                onClick={ () => addToList(item) }
+                                            <li
+                                                className="p-2"
+                                                onClick={ () => onClick(item) }
                                                 key={ item.id }
-                                            />
+                                            >
+                                                { upperFirst(transChoice(item.label)) }
+                                            </li>
                                         )
                                     })
                                 }
                             </ul>
-                        </Dropdown>
-                    </div>
-                );
-            })
-        }
+                        </div>
+                    ) : null
+                }
+            </div>
         </div>
     );
+
 }

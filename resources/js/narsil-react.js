@@ -78,12 +78,19 @@ export const useEllipsis = () => {
     return [label];
 };
 
-export const useDropdown = (defaultVisibility) => {
+export const useDropdown = (
+    defaultVisibility = false,
+    closeOnClickAway = false,
+) => {
     const dropdown = useRef(null);
 
     const [open, setOpen] = useToggle(defaultVisibility);
 
-    useClickAway(dropdown, () => setOpen(false));
+    useClickAway(dropdown, () => {
+        if (closeOnClickAway) {
+            setOpen(false);
+        }
+    });
 
     return [dropdown, open, setOpen];
 }

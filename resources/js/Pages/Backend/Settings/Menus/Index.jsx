@@ -4,6 +4,7 @@ import { trans, transChoice } from "@/narsil-localization";
 import SortableItems from "./SortableItems";
 import SortableTree from "./SortableTree";
 import AppHead from "@/Shared/AppHead";
+import { upperFirst } from "lodash";
 
 export default function Index({ menuItems }) {
     const menus = usePage().props.shared.menus;
@@ -49,10 +50,18 @@ export default function Index({ menuItems }) {
                 </div>
                 <div className="col-span-1 min-h-0 overflow-y-auto">
                     <section id="sortable-items">
-                        <SortableItems
-                            items={ menuItems.data }
-                            addToList={ addToList }
-                        />
+                        <div className="space-y-2">
+                            <SortableItems
+                                label={ upperFirst(transChoice('common.categories', 2)) }
+                                items={ menuItems.data.filter(item => item.type == "category") }
+                                onClick={ addToList }
+                            />
+                            <SortableItems
+                                label={ upperFirst(transChoice('common.pages', 2)) }
+                                items={ menuItems.data.filter(item => item.type == "page") }
+                                onClick={ addToList }
+                            />
+                        </div>
                     </section>
                 </div>
                 <div className="col-span-3 min-h-0 overflow-y-auto">
