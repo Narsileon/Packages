@@ -55,7 +55,7 @@ export default function Formular({
                         setData={ setData }
                     />
                     {
-                        data.password && (
+                        data.password ? (
                             <FormInput
                                 id="password"
                                 label={ transChoice('common.passwords', 1) }
@@ -64,7 +64,7 @@ export default function Formular({
                                 error={ errors.password}
                                 setData={ setData }
                             />
-                        )
+                        ) : null
                     }
                     <FormInput
                         id="last_name"

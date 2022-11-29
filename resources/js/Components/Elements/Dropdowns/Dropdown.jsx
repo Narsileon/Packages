@@ -31,12 +31,7 @@ export default function Dropdown({
                 </div>
             </button>
 
-            {/* Content */}
-            { open && (
-                <>
-                    { children }
-                </>
-            )}
+            { open ? children : null }
         </div>
     );
 }

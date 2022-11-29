@@ -38,7 +38,7 @@ export default function TableSettings({ table }) {
                 />
             </button>
             {
-                show && (
+                show ? (
                     <div
                         className="absolute top-12 right-0 primary-background border border-color rounded z-10"
                     >
@@ -46,7 +46,7 @@ export default function TableSettings({ table }) {
                             {
                                 table.getAllLeafColumns().map(column => {
                                     return (
-                                        column.columnDef.header && (
+                                        column.columnDef.header ? (
                                             <div
                                                 className="flex px-1 whitespace-nowrap"
                                                 key={ column.id }
@@ -62,7 +62,7 @@ export default function TableSettings({ table }) {
                                                     </span>
                                                 </label>
                                             </div>
-                                        )
+                                        ) : null
                                     )
                                 })
                             }
@@ -81,7 +81,7 @@ export default function TableSettings({ table }) {
                             </label>
                         </div>
                     </div>
-                )
+                ) : null
             }
         </div>
     );

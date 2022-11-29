@@ -33,13 +33,15 @@ export default function Accordion({ collection }) {
                                     <Chevron direction={ items[id] ? "up" : "down" } className="w-6 h-6" />
                                 </button>
                             </h1>
-                            { items[id] && (
-                                <div className="bg-gray-100 dark:bg-gray-800">
-                                    <div className="p-4 text-left">
-                                        { answer }
+                            {
+                                items[id] ? (
+                                    <div className="bg-gray-100 dark:bg-gray-800">
+                                        <div className="p-4 text-left">
+                                            { answer }
+                                        </div>
                                     </div>
-                                </div>
-                            )}
+                                ) : null
+                            }
                         </div>
                     );
                 })

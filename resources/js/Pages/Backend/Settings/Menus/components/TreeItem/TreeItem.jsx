@@ -47,7 +47,7 @@ export const TreeItem = forwardRef(({
 			>
 				<Handle {...handleProps} />
 				{
-					onCollapse && (
+					onCollapse ? (
 						<Action
 							onClick={onCollapse}
 							className={classNames(
@@ -57,7 +57,7 @@ export const TreeItem = forwardRef(({
 						>
 							{collapseIcon}
 						</Action>
-					)
+					) : null
 				}
 				<span className={ styles.Text }>
 					{ value }

@@ -5,9 +5,9 @@ import CloseButton from "@/Components/Elements/Buttons/CloseButton";
 import Icon from "@/Shared/Svg/Icon";
 
 export default function Flash() {
-    const [visible, setVisible] = useState(true);
-
     const { flash } = usePage().props.shared;
+
+    const [visible, setVisible] = useState(true);
 
     useEffect(() => {
         setVisible(true);
@@ -15,33 +15,40 @@ export default function Flash() {
 
     return (
         <div className="fixed bottom-4 right-4 rounded">
-            {/* Flash success */}
-            { flash.success && visible && (
-                <Message
-                    className="bg-green-500 text-white"
-                    icon="check"
-                    message={ trans(`messages.success.${ flash.success }`) }
-                    setVisible={ setVisible }
-                />
-            )}
+            {
+                flash.success && visible ? (
+                    <Message
+                        className="bg-green-500 text-white"
+                        icon="check"
+                        message={ trans(`messages.success.${ flash.success }`) }
+                        setVisible={ setVisible }
+                    />
+                ) : null
+            }
 
-            {/* Flash error */}
-            { flash.error && visible && (
-                <Message
-                    className="bg-red-500 text-white"
-                    icon="danger"
-                    message={ trans(`messages.errors.${ flash.error }`) }
-                    setVisible={ setVisible }
-                />
-            )}
+            {
+                flash.error && visible ? (
+                    <Message
+                        className="bg-red-500 text-white"
+                        icon="danger"
+                        message={ trans(`messages.errors.${ flash.error }`) }
+                        setVisible={ setVisible }
+                    />
+                ) : null
+            }
         </div>
     );
 }
 
-const Message = ({ icon, message, setVisible, ...props }) => {
+const Message = ({
+    icon,
+    message,
+    setVisible,
+    ...props
+}) => {
     return (
         <div { ...props}>
-            <div className={ `relative flex items-center justify-between` }>
+            <div className="relative flex items-center justify-between">
                 <div className="flex items-center ml-2 mr-6 space-x-2">
                     <Icon
                         name={ icon }

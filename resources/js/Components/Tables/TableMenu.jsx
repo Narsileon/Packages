@@ -64,14 +64,14 @@ export default function TableMenu({ id, options = {
             </Dropdown>
 
             {
-                show && (
+                show ? (
                     <ModalWindow
                         text={ window.message }
                         action={ window.action }
                         actionLabel={ window.label }
                         setShow={ setShow }
                     />
-                )
+                ) : null
             }
         </>
     );

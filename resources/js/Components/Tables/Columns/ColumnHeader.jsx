@@ -83,7 +83,7 @@ export default function ColumnHeader ({
                                     </span>
                                 </div>
                                 {
-                                    header.column.getCanSort() && (
+                                    header.column.getCanSort() ? (
                                         <span>
                                             {
                                                 {
@@ -92,19 +92,19 @@ export default function ColumnHeader ({
                                                 } [header.column.getIsSorted()] ?? <Sort className="w-5 h-5" />
                                             }
                                         </span>
-                                    )
+                                    ) : null
                                 }
                             </div>
                         </div>
                         {
-                            header.column.getCanFilter() && (
+                            header.column.getCanFilter() ? (
                                 <div className="col-span-1 mr-2">
                                     <ColumnFilter
                                         table={ table }
                                         column={ column }
                                     />
                                 </div>
-                            )
+                            ) : null
                         }
                     </div>
                     <div
