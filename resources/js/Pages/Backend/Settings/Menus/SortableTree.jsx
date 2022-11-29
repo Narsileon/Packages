@@ -221,8 +221,6 @@ export default function SortableTree({
 			const sortedItems = arrayMove(clonedItems, activeIndex, overIndex);
 			const newItems = buildTree(sortedItems);
 
-			console.log(newItems)
-
 			if (!validateTree(newItems)) {
 				handleDragCancel;
 
@@ -329,7 +327,6 @@ function validateTree(items)
 	items.map((item) => {
 		if (!validateChildren(item))
 		{
-			console.log(item)
 			return false;
 		}
 	})
@@ -341,7 +338,6 @@ function validateChildren(item)
 {
 	if (item.children.length > 0) {
 		if (item.type == 'page') {
-			console.log(item)
 			return false;
 		}
 

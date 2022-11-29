@@ -8,7 +8,6 @@ use App\Constants\MenuConstants;
 use App\Models\Menu;
 use App\Models\MenuItem;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 
 #endregion
 
@@ -111,8 +110,6 @@ class MenuService
             if (!empty($item[MenuConstants::FIELD_CHILDREN]))
             {
                 $menuItem[MenuConstants::FIELD_CHILDREN] = self::getMenuItem($item[MenuConstants::FIELD_CHILDREN]);
-
-                Log::debug($menuItem);
             }
 
             $menu[] = $menuItem;

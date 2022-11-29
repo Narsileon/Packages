@@ -2,6 +2,7 @@ import { useState } from "react";
 import { trans, transChoice } from "@/narsil-localization";
 import AppHead from "@/Shared/AppHead";
 import TemplateTable from "./TemplateTable";
+import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 
 export default function Index({ templates }) {
     const [template, setTemplate] = useState(null);
@@ -20,8 +21,8 @@ export default function Index({ templates }) {
         <>
         	<AppHead title={ transChoice('common.templates', 2) } />
 
-            <div className="grid grid-cols-4 h-full gap-x-8 gap-y-4">
-                <div className="col-span-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 h-full gap-x-8 gap-y-4">
+                <div className="col-span-2">
                     <span>
                         { ` ${ trans('Select a template to edit:') } ` }
                     </span>
@@ -43,7 +44,12 @@ export default function Index({ templates }) {
                         }
                     </select>
                 </div>
-                <div className="col-span-4">
+                <div className="col-span-2 flex justify-end">
+                    <PrimaryButton
+                        label={ trans('common.update') }
+                    />
+                </div>
+                <div className="col-span-2 md:col-span-4">
                     {
                         template ? (
                             <TemplateTable

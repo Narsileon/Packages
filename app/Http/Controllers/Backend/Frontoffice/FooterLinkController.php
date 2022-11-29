@@ -10,9 +10,8 @@ use App\Http\Requests\Backend\Frontoffice\FooterLinkUpdateRequest;
 use App\Http\Resources\Backend\Frontoffice\FooterLinkCollection;
 use App\Models\Backend\UserSettings;
 use App\Models\Frontend\FooterLink;
-use App\Models\User;
+use App\Services\TemplateService;
 use App\Templates\FooterLinkTemplate;
-use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 #endregion
@@ -26,8 +25,7 @@ class FooterLinkController extends Controller
         $this->authorize('view', FooterLink::class);
 
         $columns = FooterLinkTemplate::COLUMNS;
-
-        $template = Auth::user()->{ User::ATTRIBUTE_SETTINGS } ? Auth::user()->{ User::ATTRIBUTE_SETTINGS }->{ UserSettings::FIELD_TEMPLATE_FOOTER_LINKS } : FooterLinkTemplate::DEFAULT_TEMPLATE;
+        $template = TemplateService::get(UserSettings::FIELD_TEMPLATE_FOOTER_LINKS, UserSettings::TYPE_CUSTOM, FooterLinkTemplate::DEFAULT_TEMPLATE);
 
         $collection = FooterLink::query()
             ->search($template)

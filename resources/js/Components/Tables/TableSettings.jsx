@@ -17,8 +17,6 @@ export default function TableSettings({ table }) {
     const autoUpdate = table.getState().autoUpdate;
 
     useInterval(() => {
-        console.log('update');
-
         Inertia.visit(url, {
             preserveScroll: true,
             preserveState: true,
