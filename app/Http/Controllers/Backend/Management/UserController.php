@@ -18,7 +18,6 @@ use App\Models\UserRole;
 use App\Services\TemplateService;
 use App\Templates\UserTemplate;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
 
 #endregion
@@ -112,8 +111,6 @@ class UserController extends Controller
         $attributes = $request->validated();
 
         $user->update($attributes);
-
-        Log::debug($attributes);
 
         $user->syncRoles(Arr::pluck($attributes['roles'], 'name'));
         $user->syncPermissions(Arr::pluck($attributes['permissions'], 'name'));
