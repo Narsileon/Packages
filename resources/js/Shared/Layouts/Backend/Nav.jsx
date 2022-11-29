@@ -3,10 +3,11 @@ import { usePage } from "@inertiajs/inertia-react";
 import { transChoice } from "@/narsil-localization";
 import { upperFirst } from "lodash";
 import NavLink from "@/Components/Elements/Links/NavLink";
-import Icon from "@/Shared/Svg/Icon";
 import Chevron from "@/Shared/Svg/Chevron";
+import Icon from "@/Shared/Svg/Icon";
+
 export default function Nav() {
-    const menuItems = usePage().props.shared.menus.backend
+    const menuItems = usePage().props.shared.menus.backend;
 
     return (
         <nav className="font-semibold">
@@ -81,7 +82,7 @@ const Section = ({
             </button>
 
             <div className="ml-8">
-                { show && children }
+                { show ? children : null }
             </div>
         </ul>
     );

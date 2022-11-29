@@ -1,18 +1,34 @@
-import Nav from "./Nav";
+import { useToggle } from "react-use";
+import CloseButton from "@/Components/Elements/Buttons/CloseButton";
+import Flash from "@/Shared/Flash";
 import LocaleDropdown from "@/Shared/Layouts/LocaleDropdown";
 import ThemeButton from "@/Shared/Layouts/ThemeButton";
 import WebsiteLogo from "@/Shared/Layouts/WebsiteLogo";
-import Flash from "@/Shared/Flash";
 import Icon from "@/Shared/Svg/Icon";
+import Nav from "./Nav";
 
 export default function Layout({ children }) {
+    const [visible, setVisible] = useToggle(false);
+
     return (
-        <main className="flex max-h-screen max-w-screen">
-            <aside className="flex-none
-                sticky overflow-hidden primary-background top-0 h-screen w-10 p-1 space-y-4
-                hover:absolute md:hover:sticky hover:w-64 hover:overflow-visible
-                md:transition-all md:duration-300
-            ">
+        <main className="flex flex-row min-h-screen max-w-screen">
+            <aside
+                className={`
+                    md:relative overflow-hidden primary-background top-0 h-screen md:w-10 p-1 space-y-4 z-40 md:hover:w-64
+                    md:transition-all md:duration-300
+                    ${ visible ? 'absolute w-full' : 'w-10' }
+                `}
+                onClick={ () => !visible ? setVisible(true) : null }
+            >
+                {
+                    visible ? (
+                        <CloseButton
+                            className="absolute primary-background top-4 right-4 w-6 h-6 md:hidden"
+                            onClick={ () => setVisible(false) }
+                        />
+                    ) : null
+                }
+
                 <WebsiteLogo />
 
                 <Nav />
