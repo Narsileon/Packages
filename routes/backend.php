@@ -15,6 +15,7 @@ use App\Http\Controllers\Backend\Settings\GeneralSettingsController;
 use App\Http\Controllers\Backend\Settings\LanguageController;
 use App\Http\Controllers\Backend\Settings\LocalizationController;
 use App\Http\Controllers\Backend\Settings\MenuController;
+use App\Http\Controllers\Backend\Settings\MenuItemController;
 use App\Http\Controllers\Backend\Settings\TemplateController;
 use Illuminate\Support\Facades\Route;
 
@@ -48,6 +49,10 @@ Route::group([
     Route::controller(MenuController::class)->group(function () {
         Route::get('menus', 'index')->name('menus');
         Route::patch('menus/{menu}', 'update');
+    });
+    Route::controller(MenuItemController::class)->group(function () {
+        Route::get('menu_items', 'store')->name('menu_items');
+        Route::patch('menu_items/{menu_item}', 'update');
     });
     Route::controller(TemplateController::class)->group(function () {
         Route::get('templates', 'index')->name('templates');

@@ -24,7 +24,7 @@ class LanguageController extends Controller
     {
         $columns = LanguageTemplate::COLUMNS;
 
-        $template = Auth::user()->{ User::ATTRIBUTE_TEMPLATES } ? Auth::user()->{ User::ATTRIBUTE_TEMPLATES }->{ UserSettings::FIELD_LANGUAGES } : LanguageTemplate::DEFAULT_TEMPLATE;
+        $template = Auth::user()->{ User::ATTRIBUTE_SETTINGS } ? Auth::user()->{ User::ATTRIBUTE_SETTINGS }->{ UserSettings::FIELD_LANGUAGES } : LanguageTemplate::DEFAULT_TEMPLATE;
 
         $languages = LanguageResource::collection(Language::all());
 

@@ -24,7 +24,7 @@ export default function Index({ menuItems }) {
                         className="link-text"
                         onClick={ () => setMenu([]) }
                     >
-                        { `${ trans('Create :resource', { 'resource': trans('common.new_menu') }) } ` }
+                        { `${ trans('Create a new menu') } ` }
                     </button>
                     <span>
                         { ` ${ trans('or select a menu to edit:') } ` }

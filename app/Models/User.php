@@ -41,7 +41,7 @@ class User extends Authenticatable
     public const ATTRIBUTE_LOCALIZATIONS = 'localizations';
     public const ATTRIBUTE_PERMISSIONS = 'permissions';
     public const ATTRIBUTE_ROLES = 'roles';
-    public const ATTRIBUTE_TEMPLATES = 'settings';
+    public const ATTRIBUTE_SETTINGS = 'settings';
 
     #endregion
 

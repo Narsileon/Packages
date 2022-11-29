@@ -20,6 +20,10 @@ export const useTable = (
 	template,
 	manual = true,
 ) => {
+	if (!tableColumns) {
+		return [];
+	}
+
   	const [data, setData] = useState(tableData);
 
     const [columns] = useState(() => [...tableColumns]);

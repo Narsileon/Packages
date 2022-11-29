@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Backend\Settings;
 
 use App\Constants\Tables;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Backend\Settings\TemplateResource;
 use App\Models\Backend\UserSettings;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -20,10 +21,10 @@ class TemplateController extends Controller
 
     public function index()
     {
-        $template = [];
+        $templates = new TemplateResource(Auth::user()->{ User::ATTRIBUTE_SETTINGS });
 
         return Inertia::render('Backend/Settings/Templates/Index', compact(
-            'template'
+            'templates'
         ));
     }
 
@@ -34,7 +35,7 @@ class TemplateController extends Controller
         $template = self::tryParseSorting($template, Tables::PROPERTY_SORTING);
         $template = self::tryParseVisiblity($template, Tables::PROPERTY_COLUMN_VISIBILITY);
 
-        if (!Auth::user()->{ User::ATTRIBUTE_TEMPLATES})
+        if (!Auth::user()->{ User::ATTRIBUTE_SETTINGS})
         {
             UserSettings::factory()->create([
                 UserSettings::FIELD_USER_ID => Auth::user()->{ User::FIELD_ID },
@@ -44,7 +45,7 @@ class TemplateController extends Controller
 
         else
         {
-            Auth::user()->{ User::ATTRIBUTE_TEMPLATES}->update([$template[Tables::PROPERTY_NAME] => $template]);
+            Auth::user()->{ User::ATTRIBUTE_SETTINGS}->update([$template[Tables::PROPERTY_NAME] => $template]);
         }
 
         return back();

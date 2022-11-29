@@ -139,11 +139,11 @@ export default function SortableTree({
 			onDragCancel={ handleDragCancel }
 		>
 			<SortableContext
-				items={sortedIds}
-				strategy={verticalListSortingStrategy}
+				items={ sortedIds }
+				strategy={ verticalListSortingStrategy }
 			>
 				{
-					flattenedItems.map(({id, label, children, collapsed, depth}) => (
+					flattenedItems.map(({ id, label, children, collapsed, depth }) => (
 						<SortableTreeItem
 							key={ id }
 							id={ id }
@@ -210,20 +210,26 @@ export default function SortableTree({
 		resetState();
 
 		if (projected && over) {
-		const {depth, parentId} = projected;
-		const clonedItems = JSON.parse(
-			JSON.stringify(flattenTree(data))
-		);
-		const overIndex = clonedItems.findIndex(({id}) => id === over.id);
-		const activeIndex = clonedItems.findIndex(({id}) => id === active.id);
-		const activeTreeItem = clonedItems[activeIndex];
+			const { depth, parentId } = projected;
+			const clonedItems = JSON.parse(JSON.stringify(flattenTree(data)));
+			const overIndex = clonedItems.findIndex(({ id }) => id === over.id);
+			const activeIndex = clonedItems.findIndex(({ id }) => id === active.id);
+			const activeTreeItem = clonedItems[activeIndex];
 
-		clonedItems[activeIndex] = {...activeTreeItem, depth, parentId};
+			clonedItems[activeIndex] = {...activeTreeItem, depth, parentId};
 
-		const sortedItems = arrayMove(clonedItems, activeIndex, overIndex);
-		const newItems = buildTree(sortedItems);
+			const sortedItems = arrayMove(clonedItems, activeIndex, overIndex);
+			const newItems = buildTree(sortedItems);
 
-		setData(newItems);
+			console.log(newItems)
+
+			if (!validateTree(newItems)) {
+				handleDragCancel;
+
+				return;
+			}
+
+			setData(newItems);
 		}
 	}
 
@@ -317,3 +323,37 @@ const adjustTranslate = ({transform}) => {
 		y: transform.y - 25,
 	};
 };
+
+function validateTree(items)
+{
+	items.map((item) => {
+		if (!validateChildren(item))
+		{
+			console.log(item)
+			return false;
+		}
+	})
+
+	return true;
+}
+
+function validateChildren(item)
+{
+	if (item.children.length > 0) {
+		if (item.type == 'page') {
+			console.log(item)
+			return false;
+		}
+
+		else
+		{
+			item.children.map((child) => {
+				if (!validateChildren(child)) {
+					return false;
+				}
+			})
+		}
+	}
+
+	return true;
+}

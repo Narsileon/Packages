@@ -5,6 +5,8 @@
     "All rights reserved.": "All rights reserved.",
     "Connection": "Connection",
     "Create :resource": "Create :resource",
+    "Create a new menu": "Create a new menu",
+    "Create a new template": "Create a new template",
     "Delete :resource": "Delete :resource",
     "Edit :resource": "Edit :resource",
     "List of :resource": "List of :resource",
@@ -12,5 +14,6 @@
     "or": "or",
     "or select a menu to edit:": "or select a menu to edit:",
     "Registration": "Registration",
+    "Select a template to edit:": "Select a template to edit:",
     "Update :resource": "Update :resource"
 }

@@ -27,39 +27,51 @@ export const TreeItem = forwardRef(({
 	return (
 		<li
 			className={classNames(
-			styles.Wrapper,
-			clone && styles.clone,
-			ghost && styles.ghost,
-			indicator && styles.indicator,
-			disableSelection && styles.disableSelection,
-			disableInteraction && styles.disableInteraction
+				styles.Wrapper,
+				clone && styles.clone,
+				ghost && styles.ghost,
+				indicator && styles.indicator,
+				disableSelection && styles.disableSelection,
+				disableInteraction && styles.disableInteraction
 			)}
 			ref={wrapperRef}
-			style={
-			{
+			style={{
 				'--spacing': `${indentationWidth * depth}px`,
-			}
-			}
+			}}
 			{...props}
 		>
-			<div className={styles.TreeItem} ref={ref} style={style}>
-			<Handle {...handleProps} />
-			{onCollapse && (
-				<Action
-				onClick={onCollapse}
-				className={classNames(
-					styles.Collapse,
-					collapsed && styles.collapsed
-				)}
-				>
-				{collapseIcon}
-				</Action>
-			)}
-			<span className={styles.Text}>{value}</span>
-			{!clone && onRemove && <Remove onClick={onRemove} />}
-			{clone && childCount && childCount > 1 ? (
-				<span className={styles.Count}>{childCount}</span>
-			) : null}
+			<div
+				className={ styles.TreeItem }
+				ref={ ref }
+				style={ style }
+			>
+				<Handle {...handleProps} />
+				{
+					onCollapse && (
+						<Action
+							onClick={onCollapse}
+							className={classNames(
+								styles.Collapse,
+								collapsed && styles.collapsed
+							)}
+						>
+							{collapseIcon}
+						</Action>
+					)
+				}
+				<span className={ styles.Text }>
+					{ value }
+				</span>
+				{
+					!clone && onRemove && <Remove onClick={ onRemove } />
+				}
+				{
+					clone && childCount && childCount > 1 ? (
+						<span className={ styles.Count }>
+							{ childCount }
+						</span>
+					) : null
+				}
 			</div>
 		</li>
 		);

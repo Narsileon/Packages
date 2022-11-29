@@ -27,7 +27,7 @@ class FaqController extends Controller
 
         $columns = FaqTemplate::COLUMNS;
 
-        $template = Auth::user()->{ User::ATTRIBUTE_TEMPLATES } ? Auth::user()->{ User::ATTRIBUTE_TEMPLATES }->{ UserSettings::FIELD_FAQS } : FaqTemplate::DEFAULT_TEMPLATE;
+        $template = Auth::user()->{ User::ATTRIBUTE_SETTINGS } ? Auth::user()->{ User::ATTRIBUTE_SETTINGS }->{ UserSettings::FIELD_FAQS } : FaqTemplate::DEFAULT_TEMPLATE;
 
         $collection = Faq::query()
             ->search($template)

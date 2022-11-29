@@ -45,7 +45,6 @@ return [
     'new_faq'               => 'a new FAQ',
     'new_footer_link'       => 'a new footer link',
     'new_header_link'       => 'a new header link',
-    'new_menu'              => 'a new menu',
     'new_order'             => 'a new order',
     'new_user'              => 'a new user',
     'no'                    => 'no',

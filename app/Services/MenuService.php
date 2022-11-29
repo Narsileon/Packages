@@ -8,6 +8,7 @@ use App\Constants\Menus;
 use App\Models\Menu;
 use App\Models\MenuItem;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 #endregion
 
@@ -90,34 +91,31 @@ class MenuService
 
     #region PRIVATE METHODS
 
-    public static function getBackendMenu()
+    private static function getBackendMenu()
     {
         $backendMenu = Auth::user()->menus->where(Menu::FIELD_TITLE, '=', 'backend')->pluck(Menu::FIELD_TEMPLATE)->toArray()[0];
 
+        $menu = self::getMenuItem($backendMenu);
+
+        return $menu;
+    }
+
+    private static function getMenuItem($items)
+    {
         $menu = [];
 
-        foreach($backendMenu as $item)
+        foreach($items as $item)
         {
             $menuItem = MenuItem::find($item[MenuItem::FIELD_ID]);
 
-            if ($menuItem[MenuItem::FIELD_TYPE] == 'category')
+            if (!empty($item[Menus::FIELD_CHILDREN]))
             {
-                $children = [];
+                $menuItem[Menus::FIELD_CHILDREN] = self::getMenuItem($item[Menus::FIELD_CHILDREN]);
 
-                foreach($item[Menus::FIELD_CHILDREN] as $subitem)
-                {
-                    $children[] = MenuItem::find($subitem[MenuItem::FIELD_ID]);
-                }
-
-                $menuItem[Menus::FIELD_CHILDREN] = $children;
-
-                $menu[] = $menuItem;
+                Log::debug($menuItem);
             }
 
-            else
-            {
-                $menu[] = $menuItem;
-            }
+            $menu[] = $menuItem;
         }
 
         return $menu;

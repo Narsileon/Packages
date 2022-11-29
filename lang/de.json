@@ -4,7 +4,9 @@
     "Add :resource": ":Resource hinzufügen",
     "All rights reserved.": "Alle Rechte vorbehalten.",
     "Connection": "Anmeldung",
-    "Create :resource": "Erstellen Sie :resource",
+    "Create :resource": ":resource erstellen",
+    "Create a new menu": "Erstellen Sie ein neues Menü",
+    "Create a new template": "Erstellen Sie ein neues Template",
     "Delete :resource": ":Resource löschen",
     "Edit :resource": ":Resource bearbeiten",
     "List of :resource": "Liste der :resource",
@@ -12,5 +14,6 @@
     "or": "oder",
     "or select a menu to edit:": "oder wählen Sie ein Menü zum Bearbeiten aus:",
     "Registration": "Registrierung",
+    "Select a template to edit:": "Select a template to edit:",
     "Update :resource": ":Resource aktualisieren"
 }
