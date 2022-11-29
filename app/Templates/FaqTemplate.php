@@ -49,7 +49,7 @@ class FaqTemplate
     ];
 
     public const DEFAULT_TEMPLATE = [
-        TableConstants::PROPERTY_NAME => UserSettings::FIELD_FAQS,
+        TableConstants::PROPERTY_NAME => UserSettings::FIELD_TEMPLATE_FAQS,
         TableConstants::PROPERTY_COLUMN_ORDER => self::DEFAULT_ORDER,
         TableConstants::PROPERTY_SORTING => self::DEFAULT_SORTING,
     ];

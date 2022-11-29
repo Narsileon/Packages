@@ -11,9 +11,8 @@ use App\Http\Resources\Backend\Backoffice\OrderCollection;
 use App\Models\Backend\Order;
 use App\Models\Backend\UserSettings;
 use App\Models\Frontend\Faq;
-use App\Models\User;
+use App\Services\TemplateService;
 use App\Templates\OrderTemplate;
-use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 #endregion
@@ -27,8 +26,7 @@ class OrderController extends Controller
         $this->authorize('view', Order::class);
 
         $columns = OrderTemplate::COLUMNS;
-
-        $template = Auth::user()->{ User::ATTRIBUTE_SETTINGS } ? Auth::user()->{ User::ATTRIBUTE_SETTINGS }->{ UserSettings::FIELD_ORDERS } : OrderTemplate::DEFAULT_TEMPLATE;
+        $template = TemplateService::get(UserSettings::FIELD_TEMPLATE_ORDERS, UserSettings::TYPE_CUSTOM, OrderTemplate::DEFAULT_TEMPLATE);
 
         $collection = Order::query()
             ->search($template)

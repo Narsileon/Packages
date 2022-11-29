@@ -11,11 +11,10 @@ use App\Http\Resources\Backend\Management\UserPermissionCollection;
 use App\Http\Resources\Backend\Management\UserRoleCollection;
 use App\Http\Resources\Backend\Management\UserRoleResource;
 use App\Models\Backend\UserSettings;
-use App\Models\User;
 use App\Models\UserPermission;
 use App\Models\UserRole;
+use App\Services\TemplateService;
 use App\Templates\RoleTemplate;
-use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Spatie\Permission\Models\Role;
 
@@ -30,8 +29,7 @@ class RoleController extends Controller
         $this->authorize('view', UserRole::class);
 
         $columns = RoleTemplate::COLUMNS;
-
-        $template = Auth::user()->{ User::ATTRIBUTE_SETTINGS } ? Auth::user()->{ User::ATTRIBUTE_SETTINGS }->{ UserSettings::FIELD_ROLES } : RoleTemplate::DEFAULT_TEMPLATE;
+        $template = TemplateService::get(UserSettings::FIELD_TEMPLATE_ROLES, UserSettings::TYPE_CUSTOM, RoleTemplate::DEFAULT_TEMPLATE);
 
         $collection = UserRole::query()
             ->search($template)

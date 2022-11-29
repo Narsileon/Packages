@@ -10,9 +10,8 @@ use App\Http\Requests\Backend\Frontoffice\HeaderLinkUpdateRequest;
 use App\Http\Resources\Backend\Frontoffice\HeaderLinkCollection;
 use App\Models\Backend\UserSettings;
 use App\Models\Frontend\HeaderLink;
-use App\Models\User;
+use App\Services\TemplateService;
 use App\Templates\HeaderLinkTemplate;
-use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 #endregion
@@ -26,8 +25,7 @@ class HeaderLinkController extends Controller
         $this->authorize('view', HeaderLink::class);
 
         $columns = HeaderLinkTemplate::COLUMNS;
-
-        $template = Auth::user()->{ User::ATTRIBUTE_SETTINGS } ? Auth::user()->{ User::ATTRIBUTE_SETTINGS }->{ UserSettings::FIELD_FOOTER_LINKS } : HeaderLinkTemplate::DEFAULT_TEMPLATE;
+        $template = TemplateService::get(UserSettings::FIELD_TEMPLATE_HEADER_LINKS, UserSettings::TYPE_CUSTOM, HeaderLinkTemplate::DEFAULT_TEMPLATE);
 
         $collection = HeaderLink::query()
             ->search($template)

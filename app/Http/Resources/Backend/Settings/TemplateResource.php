@@ -24,14 +24,14 @@ class TemplateResource extends JsonResource
     public function toArray($request)
     {
         return [
-            UserSettings::FIELD_FAQS => $this->{ UserSettings::FIELD_FAQS },
-            UserSettings::FIELD_FOOTER_LINKS => $this->{ UserSettings::FIELD_FOOTER_LINKS },
-            UserSettings::FIELD_HEADER_LINKS => $this->{ UserSettings::FIELD_HEADER_LINKS },
-            UserSettings::FIELD_LANGUAGES => $this->{ UserSettings::FIELD_LANGUAGES },
-            UserSettings::FIELD_LOCALIZATIONS => $this->{ UserSettings::FIELD_LOCALIZATIONS },
-            UserSettings::FIELD_ORDERS => $this->{ UserSettings::FIELD_ORDERS },
-            UserSettings::FIELD_ROLES => $this->{ UserSettings::FIELD_ROLES },
-            UserSettings::FIELD_USERS => $this->{ UserSettings::FIELD_USERS },
+            UserSettings::FIELD_TEMPLATE_FAQS => $this->{ UserSettings::FIELD_TEMPLATE_FAQS },
+            UserSettings::FIELD_TEMPLATE_FOOTER_LINKS => $this->{ UserSettings::FIELD_TEMPLATE_FOOTER_LINKS },
+            UserSettings::FIELD_TEMPLATE_HEADER_LINKS => $this->{ UserSettings::FIELD_TEMPLATE_HEADER_LINKS },
+            UserSettings::FIELD_TEMPLATE_LANGUAGES => $this->{ UserSettings::FIELD_TEMPLATE_LANGUAGES },
+            UserSettings::FIELD_TEMPLATE_LOCALIZATIONS => $this->{ UserSettings::FIELD_TEMPLATE_LOCALIZATIONS },
+            UserSettings::FIELD_TEMPLATE_ORDERS => $this->{ UserSettings::FIELD_TEMPLATE_ORDERS },
+            UserSettings::FIELD_TEMPLATE_ROLES => $this->{ UserSettings::FIELD_TEMPLATE_ROLES },
+            UserSettings::FIELD_TEMPLATE_USERS => $this->{ UserSettings::FIELD_TEMPLATE_USERS },
         ];
     }
 
@@ -39,14 +39,14 @@ class TemplateResource extends JsonResource
     {
         return [
             'columns' => [
-                UserSettings::FIELD_FAQS => FaqTemplate::COLUMNS,
-                UserSettings::FIELD_FOOTER_LINKS => FooterLinkTemplate::COLUMNS,
-                UserSettings::FIELD_HEADER_LINKS => HeaderLinkTemplate::COLUMNS,
-                UserSettings::FIELD_LANGUAGES => LanguageTemplate::COLUMNS,
-                UserSettings::FIELD_LOCALIZATIONS => LocalizationTemplate::COLUMNS,
-                UserSettings::FIELD_ORDERS => OrderTemplate::COLUMNS,
-                UserSettings::FIELD_ROLES => RoleTemplate::COLUMNS,
-                UserSettings::FIELD_USERS => UserTemplate::COLUMNS,
+                UserSettings::FIELD_TEMPLATE_FAQS => FaqTemplate::COLUMNS,
+                UserSettings::FIELD_TEMPLATE_FOOTER_LINKS => FooterLinkTemplate::COLUMNS,
+                UserSettings::FIELD_TEMPLATE_HEADER_LINKS => HeaderLinkTemplate::COLUMNS,
+                UserSettings::FIELD_TEMPLATE_LANGUAGES => LanguageTemplate::COLUMNS,
+                UserSettings::FIELD_TEMPLATE_LOCALIZATIONS => LocalizationTemplate::COLUMNS,
+                UserSettings::FIELD_TEMPLATE_ORDERS => OrderTemplate::COLUMNS,
+                UserSettings::FIELD_TEMPLATE_ROLES => RoleTemplate::COLUMNS,
+                UserSettings::FIELD_TEMPLATE_USERS => UserTemplate::COLUMNS,
             ]
         ];
     }

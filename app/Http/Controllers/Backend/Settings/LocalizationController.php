@@ -8,8 +8,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Settings\LocalizationUpdateRequest;
 use App\Models\Backend\Localization;
 use App\Models\Backend\UserSettings;
-use App\Models\User;
 use App\Services\LocalizationService;
+use App\Services\TemplateService;
 use App\Templates\LocalizationTemplate;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
@@ -23,8 +23,7 @@ class LocalizationController extends Controller
     public function index()
     {
         $columns = LocalizationTemplate::COLUMNS;
-
-        $template = Auth::user()->{ User::ATTRIBUTE_SETTINGS } ? Auth::user()->{ User::ATTRIBUTE_SETTINGS }->{ UserSettings::FIELD_LOCALIZATIONS } : LocalizationTemplate::DEFAULT_TEMPLATE;
+        $template = TemplateService::get(UserSettings::FIELD_TEMPLATE_LOCALIZATIONS, UserSettings::TYPE_CUSTOM, LocalizationTemplate::DEFAULT_TEMPLATE);
 
         $defaultLocalization = collect(LocalizationService::get(false))['dictionary']['common'];
         $customLocalization = collect(json_decode(Auth::user()->localizations, true));

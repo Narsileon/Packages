@@ -8,10 +8,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\Backend\Settings\LanguageResource;
 use App\Models\Backend\Language;
 use App\Models\Backend\UserSettings;
-use App\Models\User;
+use App\Services\TemplateService;
 use App\Templates\LanguageTemplate;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 #endregion
@@ -23,8 +22,7 @@ class LanguageController extends Controller
     public function index()
     {
         $columns = LanguageTemplate::COLUMNS;
-
-        $template = Auth::user()->{ User::ATTRIBUTE_SETTINGS } ? Auth::user()->{ User::ATTRIBUTE_SETTINGS }->{ UserSettings::FIELD_LANGUAGES } : LanguageTemplate::DEFAULT_TEMPLATE;
+        $template = TemplateService::get(UserSettings::FIELD_TEMPLATE_LANGUAGES, UserSettings::TYPE_CUSTOM, LanguageTemplate::DEFAULT_TEMPLATE);
 
         $languages = LanguageResource::collection(Language::all());
 

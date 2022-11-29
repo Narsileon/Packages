@@ -10,9 +10,8 @@ use App\Http\Requests\Backend\Frontoffice\FaqUpdateRequest;
 use App\Http\Resources\Backend\Frontoffice\FaqCollection;
 use App\Models\Backend\UserSettings;
 use App\Models\Frontend\Faq;
-use App\Models\User;
+use App\Services\TemplateService;
 use App\Templates\FaqTemplate;
-use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 #endregion
@@ -26,8 +25,7 @@ class FaqController extends Controller
         $this->authorize('view', Faq::class);
 
         $columns = FaqTemplate::COLUMNS;
-
-        $template = Auth::user()->{ User::ATTRIBUTE_SETTINGS } ? Auth::user()->{ User::ATTRIBUTE_SETTINGS }->{ UserSettings::FIELD_FAQS } : FaqTemplate::DEFAULT_TEMPLATE;
+        $template = TemplateService::get(UserSettings::FIELD_TEMPLATE_FAQS, UserSettings::TYPE_CUSTOM, FaqTemplate::DEFAULT_TEMPLATE);
 
         $collection = Faq::query()
             ->search($template)

@@ -24,14 +24,14 @@ class UserSettingsFactory extends Factory
     public function definition()
     {
         return [
-            UserSettings::FIELD_FAQS => FaqTemplate::DEFAULT_TEMPLATE,
-            UserSettings::FIELD_FOOTER_LINKS => FooterLinkTemplate::DEFAULT_TEMPLATE,
-            UserSettings::FIELD_HEADER_LINKS => HeaderLinkTemplate::DEFAULT_TEMPLATE,
-            UserSettings::FIELD_LANGUAGES => LanguageTemplate::DEFAULT_TEMPLATE,
-            UserSettings::FIELD_LOCALIZATIONS => LocalizationTemplate::DEFAULT_TEMPLATE,
-            UserSettings::FIELD_ORDERS => OrderTemplate::DEFAULT_TEMPLATE,
-            UserSettings::FIELD_ROLES => RoleTemplate::DEFAULT_TEMPLATE,
-            UserSettings::FIELD_USERS => UserTemplate::DEFAULT_TEMPLATE,
+            UserSettings::FIELD_TEMPLATE_FAQS => FaqTemplate::DEFAULT_TEMPLATE,
+            UserSettings::FIELD_TEMPLATE_FOOTER_LINKS => FooterLinkTemplate::DEFAULT_TEMPLATE,
+            UserSettings::FIELD_TEMPLATE_HEADER_LINKS => HeaderLinkTemplate::DEFAULT_TEMPLATE,
+            UserSettings::FIELD_TEMPLATE_LANGUAGES => LanguageTemplate::DEFAULT_TEMPLATE,
+            UserSettings::FIELD_TEMPLATE_LOCALIZATIONS => LocalizationTemplate::DEFAULT_TEMPLATE,
+            UserSettings::FIELD_TEMPLATE_ORDERS => OrderTemplate::DEFAULT_TEMPLATE,
+            UserSettings::FIELD_TEMPLATE_ROLES => RoleTemplate::DEFAULT_TEMPLATE,
+            UserSettings::FIELD_TEMPLATE_USERS => UserTemplate::DEFAULT_TEMPLATE,
         ];
     }
 

@@ -20,16 +20,22 @@ class UserSettings extends Model
     public const FIELD_ID = 'id';
     public const FIELD_USER_ID='user_id';
 
-    public const FIELD_FAQS = 'faqs';
-    public const FIELD_FOOTER_LINKS = 'footer_links';
-    public const FIELD_HEADER_LINKS = 'header_links';
-    public const FIELD_LANGUAGES = 'languages';
-    public const FIELD_LOCALIZATIONS = 'localizations';
-    public const FIELD_ORDERS = 'orders';
-    public const FIELD_ROLES = 'roles';
-    public const FIELD_USERS = 'users';
+    public const FIELD_TYPE = 'type';
+    public const FIELD_SETTINGS = 'settings';
+
+    public const FIELD_TEMPLATE_FAQS = 'template_faqs';
+    public const FIELD_TEMPLATE_FOOTER_LINKS = 'template_footer_links';
+    public const FIELD_TEMPLATE_HEADER_LINKS = 'template_header_links';
+    public const FIELD_TEMPLATE_LANGUAGES = 'template_languages';
+    public const FIELD_TEMPLATE_LOCALIZATIONS = 'template_localizations';
+    public const FIELD_TEMPLATE_ORDERS = 'template_orders';
+    public const FIELD_TEMPLATE_ROLES = 'template_roles';
+    public const FIELD_TEMPLATE_USERS = 'template_users';
 
     public const PROPERTY_USER = 'user';
+
+    public const TYPE_DEFAULT = 'default';
+    public const TYPE_CUSTOM = 'custom';
 
     #endregion
 
@@ -38,25 +44,28 @@ class UserSettings extends Model
     protected $fillable =
     [
         self::FIELD_USER_ID,
-        self::FIELD_FAQS,
-        self::FIELD_FOOTER_LINKS,
-        self::FIELD_HEADER_LINKS,
-        self::FIELD_LANGUAGES,
-        self::FIELD_LOCALIZATIONS,
-        self::FIELD_ORDERS,
-        self::FIELD_ROLES,
-        self::FIELD_USERS,
+        self::FIELD_TYPE,
+        self::FIELD_SETTINGS,
+        self::FIELD_TEMPLATE_FAQS,
+        self::FIELD_TEMPLATE_FOOTER_LINKS,
+        self::FIELD_TEMPLATE_HEADER_LINKS,
+        self::FIELD_TEMPLATE_LANGUAGES,
+        self::FIELD_TEMPLATE_LOCALIZATIONS,
+        self::FIELD_TEMPLATE_ORDERS,
+        self::FIELD_TEMPLATE_ROLES,
+        self::FIELD_TEMPLATE_USERS,
     ];
 
     protected $casts = [
-        self::FIELD_FAQS => Types::ARRAY,
-        self::FIELD_FOOTER_LINKS => Types::ARRAY,
-        self::FIELD_HEADER_LINKS => Types::ARRAY,
-        self::FIELD_LANGUAGES => Types::ARRAY,
-        self::FIELD_LOCALIZATIONS => Types::ARRAY,
-        self::FIELD_ORDERS => Types::ARRAY,
-        self::FIELD_ROLES => Types::ARRAY,
-        self::FIELD_USERS => Types::ARRAY,
+        self::FIELD_SETTINGS => Types::ARRAY,
+        self::FIELD_TEMPLATE_FAQS => Types::ARRAY,
+        self::FIELD_TEMPLATE_FOOTER_LINKS => Types::ARRAY,
+        self::FIELD_TEMPLATE_HEADER_LINKS => Types::ARRAY,
+        self::FIELD_TEMPLATE_LANGUAGES => Types::ARRAY,
+        self::FIELD_TEMPLATE_LOCALIZATIONS => Types::ARRAY,
+        self::FIELD_TEMPLATE_ORDERS => Types::ARRAY,
+        self::FIELD_TEMPLATE_ROLES => Types::ARRAY,
+        self::FIELD_TEMPLATE_USERS => Types::ARRAY,
     ];
 
     protected $perPage = 10;

@@ -43,7 +43,7 @@ class LanguageTemplate
     ];
 
     public const DEFAULT_TEMPLATE = [
-        TableConstants::PROPERTY_NAME => UserSettings::FIELD_LANGUAGES,
+        TableConstants::PROPERTY_NAME => UserSettings::FIELD_TEMPLATE_LANGUAGES,
         TableConstants::PROPERTY_COLUMN_ORDER => self::DEFAULT_ORDER,
         TableConstants::PROPERTY_SORTING => self::DEFAULT_SORTING,
     ];

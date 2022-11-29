@@ -27,7 +27,7 @@ class FooterLinkController extends Controller
 
         $columns = FooterLinkTemplate::COLUMNS;
 
-        $template = Auth::user()->{ User::ATTRIBUTE_SETTINGS } ? Auth::user()->{ User::ATTRIBUTE_SETTINGS }->{ UserSettings::FIELD_FOOTER_LINKS } : FooterLinkTemplate::DEFAULT_TEMPLATE;
+        $template = Auth::user()->{ User::ATTRIBUTE_SETTINGS } ? Auth::user()->{ User::ATTRIBUTE_SETTINGS }->{ UserSettings::FIELD_TEMPLATE_FOOTER_LINKS } : FooterLinkTemplate::DEFAULT_TEMPLATE;
 
         $collection = FooterLink::query()
             ->search($template)

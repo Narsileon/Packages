@@ -61,7 +61,7 @@ class UserTemplate
     ];
 
     public const DEFAULT_TEMPLATE = [
-        TableConstants::PROPERTY_NAME => UserSettings::FIELD_USERS,
+        TableConstants::PROPERTY_NAME => UserSettings::FIELD_TEMPLATE_USERS,
         TableConstants::PROPERTY_COLUMN_ORDER => self::DEFAULT_ORDER,
         TableConstants::PROPERTY_SORTING => self::DEFAULT_SORTING,
     ];

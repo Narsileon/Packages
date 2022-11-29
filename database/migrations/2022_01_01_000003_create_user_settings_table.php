@@ -39,14 +39,17 @@ return new class extends Migration
             $table->id();
             $table->foreignId(UserSettings::FIELD_USER_ID)->constrained()->cascadeOnDelete();
 
-            $table->text(UserSettings::FIELD_FAQS)->nullable();
-            $table->text(UserSettings::FIELD_FOOTER_LINKS)->nullable();
-            $table->text(UserSettings::FIELD_HEADER_LINKS)->nullable();
-            $table->text(UserSettings::FIELD_LANGUAGES)->nullable();
-            $table->text(UserSettings::FIELD_LOCALIZATIONS)->nullable();
-            $table->text(UserSettings::FIELD_ORDERS)->nullable();
-            $table->text(UserSettings::FIELD_ROLES)->nullable();
-            $table->text(UserSettings::FIELD_USERS)->nullable();
+            $table->string(UserSettings::FIELD_TYPE);
+
+            $table->text(UserSettings::FIELD_SETTINGS)->nullable();
+            $table->text(UserSettings::FIELD_TEMPLATE_FAQS)->nullable();
+            $table->text(UserSettings::FIELD_TEMPLATE_FOOTER_LINKS)->nullable();
+            $table->text(UserSettings::FIELD_TEMPLATE_HEADER_LINKS)->nullable();
+            $table->text(UserSettings::FIELD_TEMPLATE_LANGUAGES)->nullable();
+            $table->text(UserSettings::FIELD_TEMPLATE_LOCALIZATIONS)->nullable();
+            $table->text(UserSettings::FIELD_TEMPLATE_ORDERS)->nullable();
+            $table->text(UserSettings::FIELD_TEMPLATE_ROLES)->nullable();
+            $table->text(UserSettings::FIELD_TEMPLATE_USERS)->nullable();
 
             $table->timestamps();
         });

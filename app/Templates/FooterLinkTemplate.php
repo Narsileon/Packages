@@ -55,7 +55,7 @@ class FooterLinkTemplate
     ];
 
     public const DEFAULT_TEMPLATE = [
-        TableConstants::PROPERTY_NAME => UserSettings::FIELD_FOOTER_LINKS,
+        TableConstants::PROPERTY_NAME => UserSettings::FIELD_TEMPLATE_FOOTER_LINKS,
         TableConstants::PROPERTY_COLUMN_ORDER => self::DEFAULT_ORDER,
         TableConstants::PROPERTY_SORTING => self::DEFAULT_SORTING,
     ];

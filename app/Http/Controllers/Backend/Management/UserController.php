@@ -15,9 +15,9 @@ use App\Models\Backend\UserSettings;
 use App\Models\User;
 use App\Models\UserPermission;
 use App\Models\UserRole;
+use App\Services\TemplateService;
 use App\Templates\UserTemplate;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
 
@@ -32,8 +32,7 @@ class UserController extends Controller
         $this->authorize('view', User::class);
 
         $columns = UserTemplate::COLUMNS;
-
-        $template = Auth::user()->{ User::ATTRIBUTE_SETTINGS } ? Auth::user()->{ User::ATTRIBUTE_SETTINGS }->{ UserSettings::FIELD_USERS } : UserTemplate::DEFAULT_TEMPLATE;
+        $template = TemplateService::get(UserSettings::FIELD_TEMPLATE_USERS, UserSettings::TYPE_CUSTOM, UserTemplate::DEFAULT_TEMPLATE);
 
         $collection = User::query()
             ->search($template)

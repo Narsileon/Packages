@@ -42,7 +42,7 @@ class LocalizationTemplate
     ];
 
     public const DEFAULT_TEMPLATE = [
-        TableConstants::PROPERTY_NAME => UserSettings::FIELD_LOCALIZATIONS,
+        TableConstants::PROPERTY_NAME => UserSettings::FIELD_TEMPLATE_LOCALIZATIONS,
         TableConstants::PROPERTY_COLUMN_ORDER => self::DEFAULT_ORDER,
         TableConstants::PROPERTY_SORTING => self::DEFAULT_SORTING,
     ];

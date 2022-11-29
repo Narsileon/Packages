@@ -21,7 +21,7 @@ class TemplateController extends Controller
 
     public function index()
     {
-        $templates = new TemplateResource(Auth::user()->{ User::ATTRIBUTE_SETTINGS });
+        $templates = new TemplateResource(Auth::user()->{ User::ATTRIBUTE_SETTINGS }->where(UserSettings::FIELD_TYPE, '=', UserSettings::TYPE_DEFAULT)->first());
 
         return Inertia::render('Backend/Settings/Templates/Index', compact(
             'templates'
@@ -39,13 +39,21 @@ class TemplateController extends Controller
         {
             UserSettings::factory()->create([
                 UserSettings::FIELD_USER_ID => Auth::user()->{ User::FIELD_ID },
+                UserSettings::FIELD_TYPE => UserSettings::TYPE_DEFAULT,
+            ]);
+
+            UserSettings::factory()->create([
+                UserSettings::FIELD_USER_ID => Auth::user()->{ User::FIELD_ID },
+                UserSettings::FIELD_TYPE => UserSettings::TYPE_CUSTOM,
                 $template[TableConstants::PROPERTY_NAME] => $template,
             ]);
         }
 
         else
         {
-            Auth::user()->{ User::ATTRIBUTE_SETTINGS}->update([$template[TableConstants::PROPERTY_NAME] => $template]);
+            Auth::user()->{ User::ATTRIBUTE_SETTINGS}->where(UserSettings::FIELD_TYPE, '=', UserSettings::TYPE_CUSTOM)->update([
+                $template[TableConstants::PROPERTY_NAME] => $template
+            ]);
         }
 
         return back();
