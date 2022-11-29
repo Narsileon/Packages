@@ -4,7 +4,7 @@ namespace App\Constants;
 
 use App\Models\MenuItem;
 
-abstract class Menus
+abstract class MenuConstants
 {
     #region CONSTANTS
 

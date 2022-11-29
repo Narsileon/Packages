@@ -4,7 +4,7 @@ namespace App\Templates;
 
 #region USE
 
-use App\Constants\Tables;
+use App\Constants\TableConstants;
 use App\Constants\Types;
 use App\Models\Backend\UserSettings;
 use App\Models\User;
@@ -17,57 +17,57 @@ class UserTemplate
 
     public const COLUMNS = [
         [
-            Tables::FIELD_ACCESSOR_KEY => User::FIELD_ID,
-            Tables::FIELD_ID => User::FIELD_ID,
-            Tables::FIELD_TYPE => Types::INTEGER,
-            Tables::FIELD_HEADER => 'common.ids',
+            TableConstants::FIELD_ACCESSOR_KEY => User::FIELD_ID,
+            TableConstants::FIELD_ID => User::FIELD_ID,
+            TableConstants::FIELD_TYPE => Types::INTEGER,
+            TableConstants::FIELD_HEADER => 'common.ids',
         ],
         [
-            Tables::FIELD_ACCESSOR_KEY => User::FIELD_USERNAME,
-            Tables::FIELD_ID => User::FIELD_USERNAME,
-            Tables::FIELD_TYPE => Types::STRING,
-            Tables::FIELD_HEADER => 'common.usernames',
+            TableConstants::FIELD_ACCESSOR_KEY => User::FIELD_USERNAME,
+            TableConstants::FIELD_ID => User::FIELD_USERNAME,
+            TableConstants::FIELD_TYPE => Types::STRING,
+            TableConstants::FIELD_HEADER => 'common.usernames',
         ],
         [
-            Tables::FIELD_ACCESSOR_KEY => User::FIELD_EMAIL,
-            Tables::FIELD_ID => User::FIELD_EMAIL,
-            Tables::FIELD_TYPE => Types::STRING,
-            Tables::FIELD_HEADER => 'common.emails',
+            TableConstants::FIELD_ACCESSOR_KEY => User::FIELD_EMAIL,
+            TableConstants::FIELD_ID => User::FIELD_EMAIL,
+            TableConstants::FIELD_TYPE => Types::STRING,
+            TableConstants::FIELD_HEADER => 'common.emails',
         ],
         [
-            Tables::FIELD_ACCESSOR_KEY => User::FIELD_LAST_NAME,
-            Tables::FIELD_ID => User::FIELD_LAST_NAME,
-            Tables::FIELD_TYPE => Types::STRING,
-            Tables::FIELD_HEADER => 'common.last_names',
+            TableConstants::FIELD_ACCESSOR_KEY => User::FIELD_LAST_NAME,
+            TableConstants::FIELD_ID => User::FIELD_LAST_NAME,
+            TableConstants::FIELD_TYPE => Types::STRING,
+            TableConstants::FIELD_HEADER => 'common.last_names',
         ],
         [
-            Tables::FIELD_ACCESSOR_KEY => User::FIELD_FIRST_NAME,
-            Tables::FIELD_ID => User::FIELD_FIRST_NAME,
-            Tables::FIELD_TYPE => Types::STRING,
-            Tables::FIELD_HEADER => 'common.first_names',
+            TableConstants::FIELD_ACCESSOR_KEY => User::FIELD_FIRST_NAME,
+            TableConstants::FIELD_ID => User::FIELD_FIRST_NAME,
+            TableConstants::FIELD_TYPE => Types::STRING,
+            TableConstants::FIELD_HEADER => 'common.first_names',
         ],
         [
-            Tables::FIELD_ACCESSOR_KEY => User::CREATED_AT,
-            Tables::FIELD_ID => User::CREATED_AT,
-            Tables::FIELD_TYPE => Types::DATETIME,
-            Tables::FIELD_HEADER => 'validation.attributes.created_at',
+            TableConstants::FIELD_ACCESSOR_KEY => User::CREATED_AT,
+            TableConstants::FIELD_ID => User::CREATED_AT,
+            TableConstants::FIELD_TYPE => Types::DATETIME,
+            TableConstants::FIELD_HEADER => 'validation.attributes.created_at',
         ],
         [
-            Tables::FIELD_ACCESSOR_KEY => User::UPDATED_AT,
-            Tables::FIELD_ID => User::UPDATED_AT,
-            Tables::FIELD_TYPE => Types::DATETIME,
-            Tables::FIELD_HEADER => 'validation.attributes.updated_at',
+            TableConstants::FIELD_ACCESSOR_KEY => User::UPDATED_AT,
+            TableConstants::FIELD_ID => User::UPDATED_AT,
+            TableConstants::FIELD_TYPE => Types::DATETIME,
+            TableConstants::FIELD_HEADER => 'validation.attributes.updated_at',
         ],
     ];
 
     public const DEFAULT_TEMPLATE = [
-        Tables::PROPERTY_NAME => UserSettings::FIELD_USERS,
-        Tables::PROPERTY_COLUMN_ORDER => self::DEFAULT_ORDER,
-        Tables::PROPERTY_SORTING => self::DEFAULT_SORTING,
+        TableConstants::PROPERTY_NAME => UserSettings::FIELD_USERS,
+        TableConstants::PROPERTY_COLUMN_ORDER => self::DEFAULT_ORDER,
+        TableConstants::PROPERTY_SORTING => self::DEFAULT_SORTING,
     ];
 
     private const DEFAULT_ORDER = [
-        Tables::FIELD_MENU,
+        TableConstants::FIELD_MENU,
         User::FIELD_ID,
         User::FIELD_USERNAME,
         User::FIELD_EMAIL,
@@ -79,8 +79,8 @@ class UserTemplate
 
     private const DEFAULT_SORTING = [
         [
-            Tables::FIELD_ID => User::FIELD_ID,
-            Tables::ORDER_DESC => false,
+            TableConstants::FIELD_ID => User::FIELD_ID,
+            TableConstants::ORDER_DESC => false,
         ],
     ];
 

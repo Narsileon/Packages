@@ -4,7 +4,7 @@ namespace App\Templates;
 
 #region USE
 
-use App\Constants\Tables;
+use App\Constants\TableConstants;
 use App\Constants\Types;
 use App\Models\Backend\Order;
 use App\Models\Backend\UserSettings;
@@ -17,87 +17,87 @@ class OrderTemplate
 
     public const COLUMNS = [
         [
-            Tables::FIELD_ACCESSOR_KEY => Order::FIELD_ID,
-            Tables::FIELD_ID => Order::FIELD_ID,
-            Tables::FIELD_TYPE => Types::INTEGER,
-            Tables::FIELD_HEADER => 'common.ids',
+            TableConstants::FIELD_ACCESSOR_KEY => Order::FIELD_ID,
+            TableConstants::FIELD_ID => Order::FIELD_ID,
+            TableConstants::FIELD_TYPE => Types::INTEGER,
+            TableConstants::FIELD_HEADER => 'common.ids',
         ],
         [
-            Tables::FIELD_ACCESSOR_KEY => Order::FIELD_TYPE,
-            Tables::FIELD_ID => Order::FIELD_TYPE,
-            Tables::FIELD_TYPE => Types::STRING,
-            Tables::FIELD_HEADER => 'common.types',
+            TableConstants::FIELD_ACCESSOR_KEY => Order::FIELD_TYPE,
+            TableConstants::FIELD_ID => Order::FIELD_TYPE,
+            TableConstants::FIELD_TYPE => Types::STRING,
+            TableConstants::FIELD_HEADER => 'common.types',
         ],
         [
-            Tables::FIELD_ACCESSOR_KEY => Order::FIELD_STATUS,
-            Tables::FIELD_ID => Order::FIELD_STATUS,
-            Tables::FIELD_TYPE => Types::STRING,
-            Tables::FIELD_HEADER => 'common.statuses',
+            TableConstants::FIELD_ACCESSOR_KEY => Order::FIELD_STATUS,
+            TableConstants::FIELD_ID => Order::FIELD_STATUS,
+            TableConstants::FIELD_TYPE => Types::STRING,
+            TableConstants::FIELD_HEADER => 'common.statuses',
         ],
         [
-            Tables::FIELD_ACCESSOR_KEY => Order::FIELD_ORDER_NUMBER,
-            Tables::FIELD_ID => Order::FIELD_ORDER_NUMBER,
-            Tables::FIELD_TYPE => Types::INTEGER,
-            Tables::FIELD_HEADER => 'common.order_numbers',
+            TableConstants::FIELD_ACCESSOR_KEY => Order::FIELD_ORDER_NUMBER,
+            TableConstants::FIELD_ID => Order::FIELD_ORDER_NUMBER,
+            TableConstants::FIELD_TYPE => Types::INTEGER,
+            TableConstants::FIELD_HEADER => 'common.order_numbers',
         ],
         [
-            Tables::FIELD_ACCESSOR_KEY => Order::FIELD_ORDER_DATE,
-            Tables::FIELD_ID => Order::FIELD_ORDER_DATE,
-            Tables::FIELD_TYPE => Types::DATETIME,
-            Tables::FIELD_HEADER => 'common.order_dates',
+            TableConstants::FIELD_ACCESSOR_KEY => Order::FIELD_ORDER_DATE,
+            TableConstants::FIELD_ID => Order::FIELD_ORDER_DATE,
+            TableConstants::FIELD_TYPE => Types::DATETIME,
+            TableConstants::FIELD_HEADER => 'common.order_dates',
         ],
         [
-            Tables::FIELD_ACCESSOR_KEY => Order::FIELD_START_DATE,
-            Tables::FIELD_ID => Order::FIELD_START_DATE,
-            Tables::FIELD_TYPE => Types::DATE,
-            Tables::FIELD_HEADER => 'date-time.start_dates',
+            TableConstants::FIELD_ACCESSOR_KEY => Order::FIELD_START_DATE,
+            TableConstants::FIELD_ID => Order::FIELD_START_DATE,
+            TableConstants::FIELD_TYPE => Types::DATE,
+            TableConstants::FIELD_HEADER => 'date-time.start_dates',
         ],
         [
-            Tables::FIELD_ACCESSOR_KEY => Order::FIELD_END_DATE,
-            Tables::FIELD_ID => Order::FIELD_END_DATE,
-            Tables::FIELD_TYPE => Types::DATE,
-            Tables::FIELD_HEADER => 'date-time.end_dates',
+            TableConstants::FIELD_ACCESSOR_KEY => Order::FIELD_END_DATE,
+            TableConstants::FIELD_ID => Order::FIELD_END_DATE,
+            TableConstants::FIELD_TYPE => Types::DATE,
+            TableConstants::FIELD_HEADER => 'date-time.end_dates',
         ],
         [
-            Tables::FIELD_ACCESSOR_KEY => Order::FIELD_LOCATION_DEPARTURE,
-            Tables::FIELD_ID => Order::FIELD_LOCATION_DEPARTURE,
-            Tables::FIELD_TYPE => Types::STRING,
-            Tables::FIELD_HEADER => 'common.locations_departure',
+            TableConstants::FIELD_ACCESSOR_KEY => Order::FIELD_LOCATION_DEPARTURE,
+            TableConstants::FIELD_ID => Order::FIELD_LOCATION_DEPARTURE,
+            TableConstants::FIELD_TYPE => Types::STRING,
+            TableConstants::FIELD_HEADER => 'common.locations_departure',
         ],
         [
-            Tables::FIELD_ACCESSOR_KEY => Order::FIELD_LOCATION_ARRIVAL,
-            Tables::FIELD_ID => Order::FIELD_LOCATION_ARRIVAL,
-            Tables::FIELD_TYPE => Types::STRING,
-            Tables::FIELD_HEADER => 'common.locations_arrival',
+            TableConstants::FIELD_ACCESSOR_KEY => Order::FIELD_LOCATION_ARRIVAL,
+            TableConstants::FIELD_ID => Order::FIELD_LOCATION_ARRIVAL,
+            TableConstants::FIELD_TYPE => Types::STRING,
+            TableConstants::FIELD_HEADER => 'common.locations_arrival',
         ],
         [
-            Tables::FIELD_ACCESSOR_KEY => Order::FIELD_PAYMENT_METHOD,
-            Tables::FIELD_ID => Order::FIELD_PAYMENT_METHOD,
-            Tables::FIELD_TYPE => Types::STRING,
-            Tables::FIELD_HEADER => 'common.payment_methods',
+            TableConstants::FIELD_ACCESSOR_KEY => Order::FIELD_PAYMENT_METHOD,
+            TableConstants::FIELD_ID => Order::FIELD_PAYMENT_METHOD,
+            TableConstants::FIELD_TYPE => Types::STRING,
+            TableConstants::FIELD_HEADER => 'common.payment_methods',
         ],
         [
-            Tables::FIELD_ACCESSOR_KEY => Order::CREATED_AT,
-            Tables::FIELD_ID => Order::CREATED_AT,
-            Tables::FIELD_TYPE => Types::DATETIME,
-            Tables::FIELD_HEADER => 'validation.attributes.created_at',
+            TableConstants::FIELD_ACCESSOR_KEY => Order::CREATED_AT,
+            TableConstants::FIELD_ID => Order::CREATED_AT,
+            TableConstants::FIELD_TYPE => Types::DATETIME,
+            TableConstants::FIELD_HEADER => 'validation.attributes.created_at',
         ],
         [
-            Tables::FIELD_ACCESSOR_KEY => Order::UPDATED_AT,
-            Tables::FIELD_ID => Order::UPDATED_AT,
-            Tables::FIELD_TYPE => Types::DATETIME,
-            Tables::FIELD_HEADER => 'validation.attributes.updated_at',
+            TableConstants::FIELD_ACCESSOR_KEY => Order::UPDATED_AT,
+            TableConstants::FIELD_ID => Order::UPDATED_AT,
+            TableConstants::FIELD_TYPE => Types::DATETIME,
+            TableConstants::FIELD_HEADER => 'validation.attributes.updated_at',
         ],
     ];
 
     public const DEFAULT_TEMPLATE = [
-        Tables::PROPERTY_NAME => UserSettings::FIELD_ORDERS,
-        Tables::PROPERTY_COLUMN_ORDER => self::DEFAULT_ORDER,
-        Tables::PROPERTY_SORTING => self::DEFAULT_SORTING,
+        TableConstants::PROPERTY_NAME => UserSettings::FIELD_ORDERS,
+        TableConstants::PROPERTY_COLUMN_ORDER => self::DEFAULT_ORDER,
+        TableConstants::PROPERTY_SORTING => self::DEFAULT_SORTING,
     ];
 
     private const DEFAULT_ORDER = [
-        Tables::FIELD_MENU,
+        TableConstants::FIELD_MENU,
         Order::FIELD_ID,
         Order::FIELD_TYPE,
         Order::FIELD_STATUS,
@@ -114,8 +114,8 @@ class OrderTemplate
 
     private const DEFAULT_SORTING = [
         [
-            Tables::FIELD_ID => Order::FIELD_ID,
-            Tables::ORDER_DESC => false,
+            TableConstants::FIELD_ID => Order::FIELD_ID,
+            TableConstants::ORDER_DESC => false,
         ],
     ];
 

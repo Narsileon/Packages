@@ -4,7 +4,7 @@ namespace App\Services;
 
 #region USE
 
-use App\Constants\Menus;
+use App\Constants\MenuConstants;
 use App\Models\Menu;
 use App\Models\MenuItem;
 use Illuminate\Support\Facades\Auth;
@@ -31,9 +31,9 @@ class MenuService
     {
         $menu = [];
 
-        foreach(Menus::DEFAULT_BACKEND_MENU as $item)
+        foreach(MenuConstants::DEFAULT_BACKEND_MENU as $item)
         {
-            if ($item[MenuItem::FIELD_TYPE] == Menus::TYPE_CATEGORY)
+            if ($item[MenuItem::FIELD_TYPE] == MenuConstants::TYPE_CATEGORY)
             {
                 $category = MenuItem::create([
                     MenuItem::FIELD_TYPE => $item[MenuItem::FIELD_TYPE],
@@ -43,10 +43,10 @@ class MenuService
 
                 $menuItem = [
                     MenuItem::FIELD_ID => $category->id,
-                    Menus::FIELD_CHILDREN => [],
+                    MenuConstants::FIELD_CHILDREN => [],
                 ];
 
-                foreach($item[Menus::FIELD_CHILDREN] as $subitem)
+                foreach($item[MenuConstants::FIELD_CHILDREN] as $subitem)
                 {
                     $page = MenuItem::create([
                         MenuItem::FIELD_TYPE => $subitem[MenuItem::FIELD_TYPE],
@@ -55,7 +55,7 @@ class MenuService
                         MenuItem::FIELD_URL => $subitem[MenuItem::FIELD_URL],
                     ]);
 
-                    $menuItem[Menus::FIELD_CHILDREN][] = [
+                    $menuItem[MenuConstants::FIELD_CHILDREN][] = [
                         MenuItem::FIELD_ID => $page->id,
                     ];
                 }
@@ -108,9 +108,9 @@ class MenuService
         {
             $menuItem = MenuItem::find($item[MenuItem::FIELD_ID]);
 
-            if (!empty($item[Menus::FIELD_CHILDREN]))
+            if (!empty($item[MenuConstants::FIELD_CHILDREN]))
             {
-                $menuItem[Menus::FIELD_CHILDREN] = self::getMenuItem($item[Menus::FIELD_CHILDREN]);
+                $menuItem[MenuConstants::FIELD_CHILDREN] = self::getMenuItem($item[MenuConstants::FIELD_CHILDREN]);
 
                 Log::debug($menuItem);
             }

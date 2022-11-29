@@ -4,7 +4,7 @@ namespace App\Templates;
 
 #region USE
 
-use App\Constants\Tables;
+use App\Constants\TableConstants;
 use App\Constants\Types;
 use App\Models\Backend\UserSettings;
 
@@ -16,48 +16,48 @@ class LocalizationTemplate
 
     public const COLUMNS = [
         [
-            Tables::FIELD_ACCESSOR_KEY => Tables::FIELD_TYPE,
-            Tables::FIELD_ID => Tables::FIELD_TYPE,
-            Tables::FIELD_TYPE => Types::STRING,
-            Tables::FIELD_HEADER => 'common.types',
+            TableConstants::FIELD_ACCESSOR_KEY => TableConstants::FIELD_TYPE,
+            TableConstants::FIELD_ID => TableConstants::FIELD_TYPE,
+            TableConstants::FIELD_TYPE => Types::STRING,
+            TableConstants::FIELD_HEADER => 'common.types',
         ],
         [
-            Tables::FIELD_ACCESSOR_KEY => Tables::FIELD_KEY,
-            Tables::FIELD_ID => Tables::FIELD_KEY,
-            Tables::FIELD_TYPE => Types::STRING,
-            Tables::FIELD_HEADER => 'common.keys',
+            TableConstants::FIELD_ACCESSOR_KEY => TableConstants::FIELD_KEY,
+            TableConstants::FIELD_ID => TableConstants::FIELD_KEY,
+            TableConstants::FIELD_TYPE => Types::STRING,
+            TableConstants::FIELD_HEADER => 'common.keys',
         ],
         [
-            Tables::FIELD_ACCESSOR_KEY => Tables::FIELD_VALUE,
-            Tables::FIELD_ID => Tables::FIELD_VALUE,
-            Tables::FIELD_TYPE => Types::STRING,
-            Tables::FIELD_HEADER => 'common.values',
+            TableConstants::FIELD_ACCESSOR_KEY => TableConstants::FIELD_VALUE,
+            TableConstants::FIELD_ID => TableConstants::FIELD_VALUE,
+            TableConstants::FIELD_TYPE => Types::STRING,
+            TableConstants::FIELD_HEADER => 'common.values',
         ],
         [
-            Tables::FIELD_ACCESSOR_KEY => Tables::FIELD_CUSTOM_VALUE,
-            Tables::FIELD_ID => Tables::FIELD_CUSTOM_VALUE,
-            Tables::FIELD_TYPE => Types::STRING,
-            Tables::FIELD_HEADER => 'common.custom_values',
+            TableConstants::FIELD_ACCESSOR_KEY => TableConstants::FIELD_CUSTOM_VALUE,
+            TableConstants::FIELD_ID => TableConstants::FIELD_CUSTOM_VALUE,
+            TableConstants::FIELD_TYPE => Types::STRING,
+            TableConstants::FIELD_HEADER => 'common.custom_values',
         ],
     ];
 
     public const DEFAULT_TEMPLATE = [
-        Tables::PROPERTY_NAME => UserSettings::FIELD_LOCALIZATIONS,
-        Tables::PROPERTY_COLUMN_ORDER => self::DEFAULT_ORDER,
-        Tables::PROPERTY_SORTING => self::DEFAULT_SORTING,
+        TableConstants::PROPERTY_NAME => UserSettings::FIELD_LOCALIZATIONS,
+        TableConstants::PROPERTY_COLUMN_ORDER => self::DEFAULT_ORDER,
+        TableConstants::PROPERTY_SORTING => self::DEFAULT_SORTING,
     ];
 
     private const DEFAULT_ORDER = [
-        Tables::FIELD_TYPE,
-        Tables::FIELD_KEY,
-        Tables::FIELD_VALUE,
-        Tables::FIELD_CUSTOM_VALUE,
+        TableConstants::FIELD_TYPE,
+        TableConstants::FIELD_KEY,
+        TableConstants::FIELD_VALUE,
+        TableConstants::FIELD_CUSTOM_VALUE,
     ];
 
     private const DEFAULT_SORTING = [
         [
-            Tables::FIELD_ID => Tables::FIELD_KEY,
-            Tables::ORDER_DESC => false,
+            TableConstants::FIELD_ID => TableConstants::FIELD_KEY,
+            TableConstants::ORDER_DESC => false,
         ],
     ];
 

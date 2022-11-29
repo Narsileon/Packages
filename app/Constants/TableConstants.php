@@ -2,7 +2,7 @@
 
 namespace App\Constants;
 
-abstract class Tables
+abstract class TableConstants
 {
     #region CONSTANTS
 

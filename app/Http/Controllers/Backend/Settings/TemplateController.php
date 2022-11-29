@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Backend\Settings;
 
 #region USE
 
-use App\Constants\Tables;
+use App\Constants\TableConstants;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Backend\Settings\TemplateResource;
 use App\Models\Backend\UserSettings;
@@ -32,20 +32,20 @@ class TemplateController extends Controller
     {
         $template = $request['template'];
 
-        $template = self::tryParseSorting($template, Tables::PROPERTY_SORTING);
-        $template = self::tryParseVisiblity($template, Tables::PROPERTY_COLUMN_VISIBILITY);
+        $template = self::tryParseSorting($template, TableConstants::PROPERTY_SORTING);
+        $template = self::tryParseVisiblity($template, TableConstants::PROPERTY_COLUMN_VISIBILITY);
 
         if (!Auth::user()->{ User::ATTRIBUTE_SETTINGS})
         {
             UserSettings::factory()->create([
                 UserSettings::FIELD_USER_ID => Auth::user()->{ User::FIELD_ID },
-                $template[Tables::PROPERTY_NAME] => $template,
+                $template[TableConstants::PROPERTY_NAME] => $template,
             ]);
         }
 
         else
         {
-            Auth::user()->{ User::ATTRIBUTE_SETTINGS}->update([$template[Tables::PROPERTY_NAME] => $template]);
+            Auth::user()->{ User::ATTRIBUTE_SETTINGS}->update([$template[TableConstants::PROPERTY_NAME] => $template]);
         }
 
         return back();
@@ -57,12 +57,12 @@ class TemplateController extends Controller
 
     private static function tryParseSorting($template, $array)
     {
-        if (array_key_exists(Tables::PROPERTY_SORTING, $template))
+        if (array_key_exists(TableConstants::PROPERTY_SORTING, $template))
         {
-            $template[Tables::PROPERTY_SORTING] = array(
+            $template[TableConstants::PROPERTY_SORTING] = array(
                 [
-                    Tables::FIELD_ID => $template[Tables::PROPERTY_SORTING][0][Tables::FIELD_ID],
-                    Tables::FIELD_DESC => $template[Tables::PROPERTY_SORTING][0][Tables::FIELD_DESC] == 'true' ? true : false,
+                    TableConstants::FIELD_ID => $template[TableConstants::PROPERTY_SORTING][0][TableConstants::FIELD_ID],
+                    TableConstants::FIELD_DESC => $template[TableConstants::PROPERTY_SORTING][0][TableConstants::FIELD_DESC] == 'true' ? true : false,
                 ]
             );
         }

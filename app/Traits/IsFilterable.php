@@ -4,7 +4,7 @@ namespace App\Traits;
 
 #region USE
 
-use App\Constants\Tables;
+use App\Constants\TableConstants;
 use Illuminate\Support\Facades\Schema;
 
 #endregion
@@ -15,8 +15,8 @@ trait IsFilterable
 
     public function scopeSearch($query, $template)
     {
-        $globalFilter = array_key_exists(Tables::PROPERTY_GLOBAL_FILTER, $template) ? $template[Tables::PROPERTY_GLOBAL_FILTER] : '';
-        $localFilter = array_key_exists(Tables::PROPERTY_COLUMN_FILTERS, $template) ? $template[Tables::PROPERTY_COLUMN_FILTERS] : [];
+        $globalFilter = array_key_exists(TableConstants::PROPERTY_GLOBAL_FILTER, $template) ? $template[TableConstants::PROPERTY_GLOBAL_FILTER] : '';
+        $localFilter = array_key_exists(TableConstants::PROPERTY_COLUMN_FILTERS, $template) ? $template[TableConstants::PROPERTY_COLUMN_FILTERS] : [];
 
         $columns = Schema::getColumnListing($this->getTable());
 
@@ -26,14 +26,14 @@ trait IsFilterable
 
             foreach($localFilter as $columnFilter)
             {
-                if (is_array($columnFilter[Tables::FIELD_VALUE]))
+                if (is_array($columnFilter[TableConstants::FIELD_VALUE]))
                 {
-                    $this->scopeMinMax($query, $columnFilter[Tables::FIELD_ID], $columnFilter[Tables::FIELD_VALUE]);
+                    $this->scopeMinMax($query, $columnFilter[TableConstants::FIELD_ID], $columnFilter[TableConstants::FIELD_VALUE]);
                 }
 
                 else
                 {
-                    $query->where($columnFilter[Tables::FIELD_ID], 'like', '%' . $columnFilter[Tables::FIELD_VALUE] . '%');
+                    $query->where($columnFilter[TableConstants::FIELD_ID], 'like', '%' . $columnFilter[TableConstants::FIELD_VALUE] . '%');
                 }
             }
         }

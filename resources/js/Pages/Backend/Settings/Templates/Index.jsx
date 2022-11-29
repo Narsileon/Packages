@@ -6,12 +6,12 @@ import TemplateTable from "./TemplateTable";
 export default function Index({ templates }) {
     const [template, setTemplate] = useState(null);
 
-    function changeTable(value) {
+    function displayTable(key) {
         setTemplate(null);
 
         const timeout = setTimeout(() => {
-            setTemplate(value);
-        }, 200);
+            setTemplate(key);
+        }, 300);
 
         return () => clearTimeout(timeout)
     }
@@ -27,7 +27,7 @@ export default function Index({ templates }) {
                     </span>
                     <select
                         className="field"
-                        onChange={ (event) => changeTable(templates.data[event.target.value]) }
+                        onChange={ (event) => displayTable(templates.data[event.target.value]) }
                     >
                         {
                             templates && Object.keys(templates.data).map((key) => {
@@ -47,7 +47,7 @@ export default function Index({ templates }) {
                     {
                         template ? (
                             <TemplateTable
-                                columns={ templates.data.columns[template.name] }
+                                columns={ templates.columns[template.name] }
                                 template={ template }
                             />
                         ) : null

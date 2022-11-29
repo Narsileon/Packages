@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 #region USE
 
-use App\Constants\Menus;
+use App\Constants\MenuConstants;
 use App\Models\Backend\GeneralSettings;
 use App\Services\LocalizationService;
 use App\Services\MenuService;
@@ -39,7 +39,7 @@ class HandleInertiaRequests extends Middleware
         $ziggy = $this->initializeZiggy($request);
 
         $localization = LocalizationService::get();
-        $menus = Auth::user() ? MenuService::get() : Menus::DEFAULT_BACKEND_MENU;
+        $menus = Auth::user() ? MenuService::get() : MenuConstants::DEFAULT_BACKEND_MENU;
 
         $shared = compact(
             'auth',

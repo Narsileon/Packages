@@ -32,7 +32,12 @@ class TemplateResource extends JsonResource
             UserSettings::FIELD_ORDERS => $this->{ UserSettings::FIELD_ORDERS },
             UserSettings::FIELD_ROLES => $this->{ UserSettings::FIELD_ROLES },
             UserSettings::FIELD_USERS => $this->{ UserSettings::FIELD_USERS },
+        ];
+    }
 
+    public function with($request)
+    {
+        return [
             'columns' => [
                 UserSettings::FIELD_FAQS => FaqTemplate::COLUMNS,
                 UserSettings::FIELD_FOOTER_LINKS => FooterLinkTemplate::COLUMNS,

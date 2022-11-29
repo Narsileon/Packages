@@ -4,7 +4,7 @@ namespace App\Traits;
 
 #region USE
 
-use App\Constants\Tables;
+use App\Constants\TableConstants;
 
 #endregion
 
@@ -14,11 +14,11 @@ trait IsSortable
 
     public function scopeSort($query, $template)
     {
-        if (array_key_exists(Tables::PROPERTY_SORTING, $template))
+        if (array_key_exists(TableConstants::PROPERTY_SORTING, $template))
         {
-            $sorting = $template[Tables::PROPERTY_SORTING][0];
+            $sorting = $template[TableConstants::PROPERTY_SORTING][0];
 
-            $query->orderBy($sorting[Tables::FIELD_ID], $sorting[Tables::FIELD_DESC] ? Tables::ORDER_DESC : Tables::ORDER_ASC);
+            $query->orderBy($sorting[TableConstants::FIELD_ID], $sorting[TableConstants::FIELD_DESC] ? TableConstants::ORDER_DESC : TableConstants::ORDER_ASC);
         }
     }
 
