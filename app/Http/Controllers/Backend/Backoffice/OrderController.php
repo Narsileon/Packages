@@ -37,11 +37,10 @@ class OrderController extends Controller
             $template['list'][$template['current']] = $collection->pluck($template['current'])->toArray();
         }
 
-        $orders = new OrderCollection($collection->paginate(5));
+        $orders = new OrderCollection($collection->paginate(10));
 
         return Inertia::render('Backend/Backoffice/Orders/Index', compact(
             'columns',
-            //'list',
             'template',
             'orders',
         ));
@@ -62,7 +61,8 @@ class OrderController extends Controller
 
         Faq::create($attributes);
 
-        return redirect(route('admin.orders.index'));
+        return redirect(route('admin.orders.index'))
+            ->with('success', 'order_created');
     }
 
     public function show(Order $order)
@@ -91,7 +91,8 @@ class OrderController extends Controller
 
         $order->update($attributes);
 
-        return redirect(route('admin.orders.index'));
+        return redirect(route('admin.orders.index'))
+            ->with('success', 'order_updated');
     }
 
     public function destroy(Order $order)
@@ -100,7 +101,8 @@ class OrderController extends Controller
 
         $order->delete();
 
-        return back();
+        return back()
+            ->with('success', 'order_deleted');
     }
 
     #endregion

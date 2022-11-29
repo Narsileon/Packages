@@ -60,7 +60,8 @@ class FooterLinkController extends Controller
 
         FooterLink::create($attributes);
 
-        return redirect(route('admin.footer_links.index'));
+        return redirect(route('admin.footer_links.index'))
+            ->with('success', 'footer_link_created');
     }
 
     public function show(FooterLink $footerLink)
@@ -89,7 +90,8 @@ class FooterLinkController extends Controller
 
         $footerLink->update($attributes);
 
-        return redirect(route('admin.footer_links.index'));
+        return redirect(route('admin.footer_links.index'))
+            ->with('success', 'footer_link_updated');
     }
 
     public function destroy(FooterLink $footerLink)
@@ -98,7 +100,8 @@ class FooterLinkController extends Controller
 
         $footerLink->delete();
 
-        return back();
+        return back()
+            ->with('success', 'footer_link_deleted');
     }
 
     #endregion

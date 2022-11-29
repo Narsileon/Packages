@@ -70,7 +70,8 @@ class RoleController extends Controller
 
         $role->syncPermissions($attributes['permissions']);
 
-        return redirect(route('admin.roles.index'))->with('success', 'role_created');
+        return redirect(route('admin.roles.index'))
+            ->with('success', 'role_created');
     }
 
     public function show(Role $role)
@@ -106,7 +107,8 @@ class RoleController extends Controller
         $role->update($attributes);
         $role->syncPermissions($attributes['permissions']);
 
-        return redirect(route('admin.roles.index'))->with('success', 'role_updated');
+        return redirect(route('admin.roles.index'))
+            ->with('success', 'role_updated');
     }
 
     public function destroy(Role $role)
@@ -115,7 +117,8 @@ class RoleController extends Controller
 
         $role->delete();
 
-        return back()->with('success', 'role_deleted');;
+        return back()
+            ->with('success', 'role_deleted');;
     }
 
     #endregion

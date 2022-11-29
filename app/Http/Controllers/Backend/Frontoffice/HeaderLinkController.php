@@ -60,7 +60,8 @@ class HeaderLinkController extends Controller
 
         HeaderLink::create($attributes);
 
-        return redirect(route('admin.header_links.index'));
+        return redirect(route('admin.header_links.index'))
+            ->with('success', 'header_link_created');
     }
 
     public function show(HeaderLink $headerLink)
@@ -89,7 +90,8 @@ class HeaderLinkController extends Controller
 
         $headerLink->update($attributes);
 
-        return redirect(route('admin.header_links.index'));
+        return redirect(route('admin.header_links.index'))
+            ->with('success', 'header_link_updated');
     }
 
     public function destroy(HeaderLink $headerLink)
@@ -98,7 +100,8 @@ class HeaderLinkController extends Controller
 
         $headerLink->delete();
 
-        return back();
+        return back()
+            ->with('success', 'header_link_deleted');
     }
 
     #endregion

@@ -74,7 +74,8 @@ class UserController extends Controller
 
         $user->syncPermissions($request->get('permissions', []));
 
-        return redirect(route('admin.users.index'))->with('success', 'user_created');
+        return redirect(route('admin.users.index'))
+            ->with('success', 'user_created');
     }
 
     public function show(User $user)
@@ -115,7 +116,8 @@ class UserController extends Controller
         $user->syncRoles(Arr::pluck($attributes['roles'], 'name'));
         $user->syncPermissions(Arr::pluck($attributes['permissions'], 'name'));
 
-        return redirect(route('admin.users.index'))->with('success', 'user_updated');
+        return redirect(route('admin.users.index'))
+            ->with('success', 'user_updated');
     }
 
     public function destroy(User $user)
@@ -124,7 +126,8 @@ class UserController extends Controller
 
         $user->delete();
 
-        return back()->with('success', 'user_deleted');;
+        return back()
+            ->with('success', 'user_deleted');;
     }
 
     #endregion

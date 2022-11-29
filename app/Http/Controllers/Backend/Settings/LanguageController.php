@@ -42,7 +42,8 @@ class LanguageController extends Controller
                 ]);
         });
 
-        return redirect(route('admin.languages'));
+        return redirect(route('admin.languages'))
+            ->with('success', 'languages_updated');
     }
 
     #endregion

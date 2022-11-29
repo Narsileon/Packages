@@ -62,7 +62,8 @@ class LocalizationController extends Controller
 
         $localization->update($attributes);
 
-        return redirect(route('admin.dictionary.index'));
+        return redirect(route('admin.dictionary.index'))
+            ->with('success', 'dictionary_updated');
     }
 
     #endregion

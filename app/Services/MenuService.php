@@ -86,24 +86,47 @@ class MenuService
         ]);
     }
 
-    #endregion
-
-    #region PRIVATE METHODS
-
-    private static function getBackendMenu()
+    public static function getMenuID($layout)
     {
-        $backendMenu = Auth::user()->menus->where(Menu::FIELD_TITLE, '=', 'backend')->pluck(Menu::FIELD_TEMPLATE)->toArray()[0];
+        $menu = [];
 
-        $menu = self::getMenuItem($backendMenu);
+        foreach($layout as $item)
+        {
+            if ($item[MenuItem::FIELD_TYPE] == MenuConstants::TYPE_CATEGORY)
+            {
+                $menuItem = [
+                    MenuItem::FIELD_ID => $item[MenuItem::FIELD_ID],
+                    MenuConstants::FIELD_CHILDREN => [],
+                ];
+
+                foreach($item[MenuConstants::FIELD_CHILDREN] as $subitem)
+                {
+                    $menuItem[MenuConstants::FIELD_CHILDREN][] = [
+                        MenuItem::FIELD_ID => $subitem[MenuItem::FIELD_ID],
+                    ];
+                }
+
+                $menu[] = $menuItem;
+            }
+
+            else
+            {
+                $menuItem = [
+                    MenuItem::FIELD_ID => $item[MenuItem::FIELD_ID],
+                ];
+
+                $menu[] = $menuItem;
+            }
+        }
 
         return $menu;
     }
 
-    private static function getMenuItem($items)
+    public static function getMenuItem($layout)
     {
         $menu = [];
 
-        foreach($items as $item)
+        foreach($layout as $item)
         {
             $menuItem = MenuItem::find($item[MenuItem::FIELD_ID]);
 
@@ -114,6 +137,19 @@ class MenuService
 
             $menu[] = $menuItem;
         }
+
+        return $menu;
+    }
+
+    #endregion
+
+    #region PRIVATE METHODS
+
+    private static function getBackendMenu()
+    {
+        $backendMenu = Auth::user()->menus->where(Menu::FIELD_TITLE, '=', 'backend')->pluck(Menu::FIELD_TEMPLATE)->toArray()[0];
+
+        $menu = self::getMenuItem($backendMenu);
 
         return $menu;
     }

@@ -1,18 +1,25 @@
 import { useState } from "react";
-import { usePage } from "@inertiajs/inertia-react";
+import { Inertia } from "@inertiajs/inertia";
+import { useRemember } from "@inertiajs/inertia-react";
 import { trans, transChoice } from "@/narsil-localization";
+import { upperFirst } from "lodash";
+import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
+import AppHead from "@/Shared/AppHead";
 import SortableItems from "./SortableItems";
 import SortableTree from "./SortableTree";
-import AppHead from "@/Shared/AppHead";
-import { upperFirst } from "lodash";
 
-export default function Index({ menuItems }) {
-    const menus = usePage().props.shared.menus;
-
-    const [menu, setMenu] = useState(usePage().props.shared.menus.backend)
+export default function Index({ menus, menuItems }) {
+    const [menu, setMenu] = useState(menus[0] ?? null)
+    const [layout, setLayout] = useState(menu ? menu.template : null);
 
     function addToList(item) {
-        setMenu(previousMenu => [...previousMenu, item])
+        setLayout(previousMenu => [...previousMenu, item])
+    }
+
+    function update() {
+        Inertia.patch('/admin/menus/' + menu.id, {
+            template: layout,
+        });
     }
 
     return (
@@ -20,10 +27,10 @@ export default function Index({ menuItems }) {
         	<AppHead title={ transChoice('common.menus', 2) } />
 
             <div className="grid grid-cols-4 h-full gap-x-8 gap-y-4">
-                <div className="col-span-4">
+                <div className="col-span-2">
                     <button
                         className="link-text"
-                        onClick={ () => setMenu([]) }
+                        onClick={ () => setLayout([]) }
                     >
                         { `${ trans('Create a new menu') } ` }
                     </button>
@@ -35,18 +42,24 @@ export default function Index({ menuItems }) {
                         onChange={ (event) => setMenu(menus[event.target.value]) }
                     >
                         {
-                            Object.keys(menus).map((key) => {
+                            menus.map((menu, index) => {
                                 return (
                                     <option
-                                        value={ key }
-                                        key={ key }
+                                        value={ index }
+                                        key={ menu.title }
                                     >
-                                        { key }
+                                        { upperFirst(trans(`common.${ menu.title }`)) }
                                     </option>
                                 );
                             })
                         }
                     </select>
+                </div>
+                <div className="col-span-2 flex justify-end">
+                    <PrimaryButton
+                        label={ trans('common.update') }
+                        onClick={ update }
+                    />
                 </div>
                 <div className="col-span-1 min-h-0 overflow-y-auto">
                     <section id="sortable-items">
@@ -66,13 +79,18 @@ export default function Index({ menuItems }) {
                 </div>
                 <div className="col-span-3 min-h-0 overflow-y-auto">
                     <section id="sortable-tree">
-                        <SortableTree
-                            data={ menu }
-                            setData={ setMenu }
-                            collapsible
-                            indicator
-                            removable
-                        />
+                        {
+                            layout ? (
+                                <SortableTree
+                                    data={ layout }
+                                    setData={ setLayout }
+                                    collapsible
+                                    indicator
+                                    removable
+                                />
+                            ) : null
+                        }
+
                     </section>
                 </div>
             </div>

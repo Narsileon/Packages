@@ -33,7 +33,8 @@ class GeneralSettingsController extends Controller
             ->where(GeneralSettings::FIELD_ID, $request->{ GeneralSettings::FIELD_ID })
             ->update($attributes);
 
-        return redirect(route('admin.general_settings'));
+        return redirect(route('admin.general_settings'))
+            ->with('success', 'general_settings_updated');
     }
 
     #endregion

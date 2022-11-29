@@ -60,7 +60,8 @@ class FaqController extends Controller
 
         Faq::create($attributes);
 
-        return redirect(route('admin.faqs.index'));
+        return redirect(route('admin.faqs.index'))
+            ->with('success', 'faq_created');
     }
 
     public function show(Faq $faq)
@@ -89,7 +90,8 @@ class FaqController extends Controller
 
         $faq->update($attributes);
 
-        return redirect(route('admin.faqs.index'));
+        return redirect(route('admin.faqs.index'))
+            ->with('success', 'faq_updated');
     }
 
     public function destroy(Faq $faq)
@@ -98,7 +100,8 @@ class FaqController extends Controller
 
         $faq->delete();
 
-        return back();
+        return back()
+            ->with('success', 'faq_deleted');
     }
 
     #endregion
