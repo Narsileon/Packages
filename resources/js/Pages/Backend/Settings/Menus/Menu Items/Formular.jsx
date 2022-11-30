@@ -3,6 +3,7 @@ import { upperFirst } from "lodash";
 import { Form, FormBody, FormFooter, FormHeader, FormInput, FormSelect } from "@/Components/Forms";
 import BackButton from "@/Components/Elements/Buttons/BackButton";
 import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
+import Icon from "@/Shared/Svg/Icon";
 
 export default function Formular({
     title,
@@ -13,6 +14,7 @@ export default function Formular({
     processing,
     errors,
     options,
+    icons,
     setVisible,
 }) {
     return (
@@ -26,20 +28,6 @@ export default function Formular({
             </FormHeader>
 
             <FormBody>
-                <FormInput
-                    id="label"
-                    label={ transChoice('common.designations', 1) }
-                    value={ data.label }
-                    error={ errors.label }
-                    setData={ setData }
-                />
-                <FormInput
-                    id="url"
-                    label={ transChoice('common.urls', 1) }
-                    value={ data.url }
-                    error={ errors.url }
-                    setData={ setData }
-                />
                 <FormSelect
                     id="type"
                     label={ transChoice('common.types', 1) }
@@ -60,6 +48,40 @@ export default function Formular({
                         })
                     }
                 </FormSelect>
+                <FormSelect
+                    id="icon"
+                    label={ transChoice('common.icons', 1) }
+                    value={ data.icon }
+                    error={ errors.icon }
+                    setData={ setData }
+                >
+                    {
+                        icons.map((icon) => {
+                            return (
+                                <option
+                                    value={ icon }
+                                    key={ icon }
+                                >
+                                    { icon }
+                                </option>
+                            );
+                        })
+                    }
+                </FormSelect>
+                <FormInput
+                    id="label"
+                    label={ transChoice('common.designations', 1) }
+                    value={ data.label }
+                    error={ errors.label }
+                    setData={ setData }
+                />
+                <FormInput
+                    id="url"
+                    label={ transChoice('common.urls', 1) }
+                    value={ data.url }
+                    error={ errors.url }
+                    setData={ setData }
+                />
             </FormBody>
 
             <FormFooter>

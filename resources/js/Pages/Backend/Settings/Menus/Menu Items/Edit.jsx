@@ -3,12 +3,13 @@ import { trans } from "@/narsil-localization";
 import Window from "@/Shared/Window";
 import Formular from "./Formular";
 
-export default function Edit({ menuItem, options, showEdit }) {
+export default function Edit({ menuItem, options, icons, showEdit }) {
 	const title = trans('Editing the menu item:');
 
     const { data, setData, patch, processing, errors } = useForm({
         type: menuItem.type,
         label: menuItem.label,
+        icon: menuItem.icon,
         url: menuItem.url,
     });
 
@@ -26,6 +27,7 @@ export default function Edit({ menuItem, options, showEdit }) {
                 processing={ processing }
                 errors={ errors }
                 options={ options }
+                icons={ icons }
                 setVisible={ showEdit }
             />
         </Window>

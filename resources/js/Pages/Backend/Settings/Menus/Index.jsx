@@ -11,7 +11,7 @@ import Create from "./Menu Items/Create";
 import Edit from "./Menu Items/Edit";
 import Toggle from "@/Components/Elements/Toggle";
 
-export default function Index({ menus, menuItems }) {
+export default function Index({ menus, menuItems, icons }) {
     const [menu, setMenu] = useState(menus[0] ?? null);
     const [layout, setLayout] = useState(menu ? menu.template : null);
     const [create, showCreate] = useToggle(false);
@@ -154,6 +154,7 @@ export default function Index({ menus, menuItems }) {
                 create ? (
                     <Create
                         options={ options }
+                        icons={ icons }
                         showCreate={ showCreate }
                     />
                 ) : null
@@ -164,6 +165,7 @@ export default function Index({ menus, menuItems }) {
                     <Edit
                         menuItem={ menuItem }
                         options={ options }
+                        icons={ icons }
                         showEdit={ showEdit }
                     />
                 ) : null

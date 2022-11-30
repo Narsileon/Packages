@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend\Settings;
 
 #region USE
 
+use App\Constants\IconConstants;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Settings\MenuUpdateRequest;
 use App\Http\Resources\Backend\Settings\MenuItemResource;
@@ -30,9 +31,12 @@ class MenuController extends Controller
 
         $menuItems = MenuItemResource::collection(MenuItem::all());
 
+        $icons = IconConstants::NAMES;
+
         return Inertia::render('Backend/Settings/Menus/Index', compact(
             'menus',
             'menuItems',
+            'icons',
         ));
     }
 

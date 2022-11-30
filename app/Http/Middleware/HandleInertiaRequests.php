@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 #region USE
 
+use App\Acl\Permissions;
 use App\Constants\MenuConstants;
 use App\Models\Backend\GeneralSettings;
 use App\Services\LocalizationService;
@@ -71,6 +72,7 @@ class HandleInertiaRequests extends Middleware
         return [
             'user' => [
                 'username' => $user->username,
+                Permissions::BACKEND_VIEW => $user->can(Permissions::BACKEND_VIEW),
             ]
         ];
     }

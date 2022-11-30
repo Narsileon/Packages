@@ -48,7 +48,7 @@ export default function Nav() {
                         className={ `${ open ? "md:absolute relative md:primary-background md:border-2 md:p-2 md:border-color md:top-8 md:right-0 space-y-2 z-40 rounded" : "md:hidden" }` }
                         ref={ dropdown }
                     >
-                        { auth ? <NavAuth /> : <NavGuest /> }
+                        { auth ? <NavAuth auth={ auth } /> : <NavGuest /> }
                     </ul>
                 </li>
             </ul>
@@ -75,15 +75,22 @@ const renderLinks = (links) => {
     );
 }
 
-const NavAuth = () => {
-    const links = [
-        { route: route('admin.dashboard'), label: trans('common.dashboard'), icon: 'dashboard' },
-    ];
+const NavAuth = ({ auth }) => {
+    function links() {
+        if (auth.user['backend-view'])
+        {
+            return [
+                { route: route('admin.dashboard'), label: trans('common.dashboard'), icon: 'dashboard' },
+            ];
+        } else {
+            return [];
+        }
+    }
 
     return (
         <>
             <div>
-                { renderLinks(links) }
+                { renderLinks(links()) }
             </div>
 
             <div>
