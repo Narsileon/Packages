@@ -15,7 +15,7 @@ class MenuItemController extends Controller
 {
     #region PUBLIC METHODS
 
-    public function store(MenuItemCreateRequest $request, MenuItem $menuItem)
+    public function store(MenuItemCreateRequest $request)
     {
         $attributes = $request->validated();
 
