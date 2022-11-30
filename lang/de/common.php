@@ -52,6 +52,7 @@ return [
     'order_dates'           => 'Bestelldatum|Bestelldaten',
     'order_numbers'         => 'Bestellnummer|Bestellnummern',
     'orders'                => 'Auftrag|Aufträge',
+    'pages'                 => 'Seite|Seiten',
     'passwords'             => 'Passwort|Passwörter',
     'payment_methods'       => 'Zahlungsart|Zahlungsarten',
     'questions'             => 'Frage|Fragen',

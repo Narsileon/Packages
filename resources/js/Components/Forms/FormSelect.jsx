@@ -5,8 +5,8 @@ export default function FormSelect({
     error,
     setData,
     children,
-    className="", 
-    ...props 
+    className="",
+    ...props
 }) {
     const onChange = (event) => {
         setData(event.target.id, event.target.value);
@@ -16,14 +16,14 @@ export default function FormSelect({
         <div>
             <FormLabel label={ label } />
             <select
-                className={ `field ${className}` }
+                className={ `field ${ className }` }
                 onChange={ onchange }
                 required={ true }
                 { ...props }
-            >            
+            >
                 { children }
-            </select>  
+            </select>
             <FormError message={ error } />
-        </div>         
+        </div>
     );
 }

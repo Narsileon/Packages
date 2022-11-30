@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useToggle } from "react-use";
 import { Inertia } from "@inertiajs/inertia";
 import { trans, transChoice } from "@/narsil-localization";
 import { upperFirst } from "lodash";
@@ -6,10 +7,15 @@ import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 import AppHead from "@/Shared/AppHead";
 import SortableItems from "./SortableItems";
 import SortableTree from "./SortableTree";
+import Create from "./Menu Items/Create";
+import Edit from "./Menu Items/Edit";
 
 export default function Index({ menus, menuItems }) {
     const [menu, setMenu] = useState(menus[0] ?? null)
     const [layout, setLayout] = useState(menu ? menu.template : null);
+
+    const [create, showCreate] = useToggle(false);
+    const [edit, showEdit] = useToggle(false);
 
     function addToList(item) {
         setLayout(previousMenu => [...previousMenu, item])
@@ -20,6 +26,17 @@ export default function Index({ menus, menuItems }) {
             template: layout,
         });
     }
+
+    const options = [
+        {
+            label: 'common.categories',
+            type: 'category',
+        },
+        {
+            label: 'common.pages',
+            type: 'page',
+        },
+    ]
 
     return (
         <>
@@ -64,14 +81,10 @@ export default function Index({ menus, menuItems }) {
                     <section id="sortable-items">
                         <div className="space-y-2">
                             <SortableItems
-                                label={ upperFirst(transChoice('common.categories', 2)) }
-                                items={ menuItems.data.filter(item => item.type == "category") }
+                                items={ menuItems.data }
+                                options={ options }
                                 onClick={ addToList }
-                            />
-                            <SortableItems
-                                label={ upperFirst(transChoice('common.pages', 2)) }
-                                items={ menuItems.data.filter(item => item.type == "page") }
-                                onClick={ addToList }
+                                onCreate={ showCreate }
                             />
                         </div>
                     </section>
@@ -89,10 +102,17 @@ export default function Index({ menus, menuItems }) {
                                 />
                             ) : null
                         }
-
                     </section>
                 </div>
             </div>
+
+            {
+                create ? <Create /> : null
+            }
+
+            {
+                edit ? <Edit /> : null
+            }
         </>
     );
 }

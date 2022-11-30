@@ -5,12 +5,32 @@ import AddButton from "@/Components/Elements/Buttons/AddButton";
 import Chevron from "@/Shared/Svg/Chevron";
 
 export default function SortableItems({
-    label,
     items,
+    options,
     onClick,
-    defaultVisibility = false
+    onCreate,
 }) {
-    const[dropdown, open, setOpen] = useDropdown(defaultVisibility, false);
+    return (
+        <>
+            {
+                options.map((option) => {
+                    return (
+                        <SortableCategory
+                            items={ items.filter(item => item.type == option.type) }
+                            option={ option }
+                            onClick={ onClick }
+                            onCreate={ onCreate }
+                            key={ option.type }
+                        />
+                    );
+                })
+            }
+        </>
+    );
+}
+
+const SortableCategory = ({ items, option, onClick, onCreate }) => {
+    const[dropdown, open, setOpen] = useDropdown(false, false);
 
     return (
         <div className="primary-background rounded">
@@ -28,11 +48,13 @@ export default function SortableItems({
                             direction={ open ? 'down' : 'right' }
                         />
                         <span>
-                            { label }
+                            { upperFirst(transChoice(option.label, 2)) }
                         </span>
                     </button>
+
                     <AddButton
                         className="bg-blue-500 w-6 h-6 rounded"
+                        onClick={ onCreate }
                     />
                 </div>
                 {
@@ -59,5 +81,4 @@ export default function SortableItems({
             </div>
         </div>
     );
-
-}
+};

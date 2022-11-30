@@ -52,6 +52,7 @@ return [
     'order_dates'           => 'order date|order dates',
     'order_numbers'         => 'order number|order numbers',
     'orders'                => 'order|orders',
+    'pages'                 => 'page|pages',
     'passwords'             => 'password|passwords',
     'payment_methods'       => 'payment method|payment methods',
     'questions'             => 'question|questions',

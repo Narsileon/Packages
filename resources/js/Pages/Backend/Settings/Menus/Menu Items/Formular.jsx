@@ -1,5 +1,5 @@
 import { transChoice } from "@/narsil-localization";
-import { Form, FormBody, FormFooter, FormHeader, FormInput } from "@/Components/Forms";
+import { Form, FormBody, FormFooter, FormHeader, FormInput, FormSelect } from "@/Components/Forms";
 import BackButton from "@/Components/Elements/Buttons/BackButton";
 import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 
@@ -37,6 +37,14 @@ export default function Formular({
                     error={ errors.url }
                     setData={ setData }
                 />
+                <FormSelect
+                    id="type"
+                    label={ transChoice('common.types', 1) }
+                    value={ data.type }
+                    error={ errors.type }
+                    setData={ setData }
+                >
+                </FormSelect>
             </FormBody>
 
             <FormFooter>
