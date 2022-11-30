@@ -17,7 +17,7 @@ export default function FormSelect({
             <FormLabel label={ label } />
             <select
                 className={ `field ${ className }` }
-                onChange={ onchange }
+                onChange={ onChange }
                 required={ true }
                 { ...props }
             >

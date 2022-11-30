@@ -1,4 +1,5 @@
 import { transChoice } from "@/narsil-localization";
+import { upperFirst } from "lodash";
 import { Form, FormBody, FormFooter, FormHeader, FormInput, FormSelect } from "@/Components/Forms";
 import BackButton from "@/Components/Elements/Buttons/BackButton";
 import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
@@ -11,6 +12,7 @@ export default function Formular({
     setData,
     processing,
     errors,
+    options,
 }) {
     return (
         <Form submit={ submit }>
@@ -44,6 +46,18 @@ export default function Formular({
                     error={ errors.type }
                     setData={ setData }
                 >
+                    {
+                        options.map((option) => {
+                            return (
+                                <option
+                                    value={ option.type }
+                                    key={ option.type }
+                                >
+                                    { upperFirst(transChoice(option.label, 1)) }
+                                </option>
+                            );
+                        })
+                    }
                 </FormSelect>
             </FormBody>
 

@@ -11,7 +11,6 @@ use App\Models\Menu;
 use App\Models\MenuItem;
 use App\Services\MenuService;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
 
 #endregion
@@ -42,8 +41,6 @@ class MenuController extends Controller
         $attributes = $request->validated();
 
         $attributes[Menu::FIELD_TEMPLATE] = MenuService::getMenuID($attributes[Menu::FIELD_TEMPLATE]);
-
-        Log::debug($attributes);
 
         $menu->update($attributes);
 

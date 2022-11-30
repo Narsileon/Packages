@@ -107,7 +107,7 @@ export default function Index({ menus, menuItems }) {
             </div>
 
             {
-                create ? <Create /> : null
+                create ? <Create options={ options } /> : null
             }
 
             {
