@@ -7,13 +7,14 @@ import Chevron from "@/Shared/Svg/Chevron";
 import Icon from "@/Shared/Svg/Icon";
 
 export default function Nav() {
-    const menuItems = usePage().props.shared.menus.backend;
+    const menu = usePage().props.shared.settings.menus.backend;
 
+    console.log(menu)
     return (
         <nav className="font-semibold">
             <ul>
                 {
-                    menuItems.map((menuItem) => {
+                    menu.map((menuItem) => {
                         return (
                             menuItem.type == 'category' ? (
                                 <Section

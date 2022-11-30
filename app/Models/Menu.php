@@ -19,13 +19,15 @@ class Menu extends Model
     #region CONSTANTS
 
     public const FIELD_ID = 'id';
-    public const FIELD_USER_ID='user_id';
+    public const FIELD_USER_ID ='user_id';
     public const FIELD_ACTIVE = 'active';
 
     public const FIELD_CATEGORY = 'category';
     public const FIELD_TEMPLATE = 'template';
 
     public const PROPERTY_USER = 'user';
+
+    public const CATEGORY_BACKEND = 'backend';
 
     #endregion
 

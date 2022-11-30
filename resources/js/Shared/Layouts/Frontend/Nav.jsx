@@ -77,7 +77,7 @@ const renderLinks = (links) => {
 
 const NavAuth = ({ auth }) => {
     function links() {
-        if (auth.user['backend-view'])
+        if (auth.permissions.includes('backend-view'))
         {
             return [
                 { route: route('admin.dashboard'), label: trans('common.dashboard'), icon: 'dashboard' },

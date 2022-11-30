@@ -17,6 +17,10 @@ class MenuUpdateRequest extends FormRequest
     public function rules() : array
     {
         return [
+            Menu::FIELD_ACTIVE => [
+                ValidationRules::REQUIRED,
+                ValidationRules::TYPE_BOOLEAN,
+            ],
             Menu::FIELD_TEMPLATE => [
                 ValidationRules::REQUIRED,
                 ValidationRules::TYPE_ARRAY,

@@ -29,6 +29,7 @@ export default function Index({ menus, menuItems, icons }) {
 
     function update() {
         Inertia.patch('/admin/menus/' + menu.id, {
+            active: menu.active,
             template: layout,
         });
     }

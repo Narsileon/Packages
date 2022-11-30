@@ -8,23 +8,13 @@ use App\Constants\MenuConstants;
 use App\Models\Menu;
 use App\Models\MenuItem;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 #endregion
 
 class MenuService
 {
     #region PUBLIC METHODS
-
-    public static function get()
-    {
-        $backend = self::getBackendMenu();
-        $footer = [];
-
-        return compact(
-            'backend',
-            'footer',
-        );
-    }
 
     public static function createBackendMenu($user_id)
     {
@@ -141,17 +131,16 @@ class MenuService
         return $menu;
     }
 
-    #endregion
-
-    #region PRIVATE METHODS
-
-    private static function getBackendMenu()
+    public static function getBackendMenu()
     {
-        $backendMenu = Auth::user()->menus->where(Menu::FIELD_CATEGORY, '=', 'backend')->pluck(Menu::FIELD_TEMPLATE)->toArray()[0];
+        $backendMenu = Auth::user()->menus
+            ->where(Menu::FIELD_ACTIVE, '=', true)
+            ->where(Menu::FIELD_CATEGORY, '=', Menu::CATEGORY_BACKEND)
+            ->first();
 
-        $menu = self::getMenuItem($backendMenu);
+            Log::debug($backendMenu);
 
-        return $menu;
+        return $backendMenu ? self::getMenuItem($backendMenu->{ Menu::FIELD_TEMPLATE }) : MenuConstants::DEFAULT_BACKEND_MENU;
     }
 
     #endregion

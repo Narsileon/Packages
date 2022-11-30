@@ -40,13 +40,11 @@ class HandleInertiaRequests extends Middleware
         $ziggy = $this->initializeZiggy($request);
 
         $localization = LocalizationService::get();
-        $menus = Auth::user() ? MenuService::get() : MenuConstants::DEFAULT_BACKEND_MENU;
 
         $shared = compact(
             'auth',
             'flash',
             'localization',
-            'menus',
             'settings',
             'ziggy',
         );
@@ -70,10 +68,8 @@ class HandleInertiaRequests extends Middleware
         }
 
         return [
-            'user' => [
-                'username' => $user->username,
-                Permissions::BACKEND_VIEW => $user->can(Permissions::BACKEND_VIEW),
-            ]
+            'username' => $user->username,
+            'permissions' => $user->getAllPermissions()->pluck('name')->toArray(),
         ];
     }
 
@@ -94,8 +90,13 @@ class HandleInertiaRequests extends Middleware
             'name' => DB::table('general_settings')->first()->{ GeneralSettings::FIELD_APP_NAME }
         ];
 
+        $menus = [
+            'backend' => Auth::user() ? MenuService::getBackendMenu() : MenuConstants::DEFAULT_BACKEND_MENU,
+        ];
+
         return compact(
             'app',
+            'menus'
         );
     }
 
