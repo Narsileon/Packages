@@ -42,7 +42,8 @@ return new class extends Migration
         Schema::create(self::TABLE_MENUS, function (Blueprint $table) {
             $table->id();
             $table->foreignId(Menu::FIELD_USER_ID)->constrained()->cascadeOnDelete();
-            $table->string(Menu::FIELD_TITLE);
+            $table->boolean(Menu::FIELD_ACTIVE)->default(true);
+            $table->string(Menu::FIELD_CATEGORY);
             $table->text(Menu::FIELD_TEMPLATE);
             $table->timestamps();
         });

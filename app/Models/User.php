@@ -8,6 +8,7 @@ use App\Constants\Types;
 use App\Models\Menu;
 use App\Models\Backend\Localization;
 use App\Models\Backend\UserSettings;
+use App\Services\TemplateService;
 use App\Traits\IsBaseModel;
 use App\Traits\IsFilterable;
 use App\Traits\IsSortable;
@@ -90,6 +91,11 @@ class User extends Authenticatable
 
     public function settings() : HasOne
     {
+        if (!$this->hasOne(UserSettings::class)->exists())
+        {
+            TemplateService::create($this->id);
+        }
+
         return $this->hasOne(UserSettings::class);
     }
 

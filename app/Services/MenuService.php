@@ -81,7 +81,7 @@ class MenuService
 
         Menu::create([
             Menu::FIELD_USER_ID => $user_id,
-            Menu::FIELD_TITLE => 'backend',
+            Menu::FIELD_CATEGORY => 'backend',
             Menu::FIELD_TEMPLATE => $menu,
         ]);
     }
@@ -147,7 +147,7 @@ class MenuService
 
     private static function getBackendMenu()
     {
-        $backendMenu = Auth::user()->menus->where(Menu::FIELD_TITLE, '=', 'backend')->pluck(Menu::FIELD_TEMPLATE)->toArray()[0];
+        $backendMenu = Auth::user()->menus->where(Menu::FIELD_CATEGORY, '=', 'backend')->pluck(Menu::FIELD_TEMPLATE)->toArray()[0];
 
         $menu = self::getMenuItem($backendMenu);
 

@@ -35,26 +35,9 @@ class TemplateController extends Controller
         $template = self::tryParseSorting($template, TableConstants::PROPERTY_SORTING);
         $template = self::tryParseVisiblity($template, TableConstants::PROPERTY_COLUMN_VISIBILITY);
 
-        if (!Auth::user()->{ User::ATTRIBUTE_SETTINGS})
-        {
-            UserSettings::factory()->create([
-                UserSettings::FIELD_USER_ID => Auth::user()->{ User::FIELD_ID },
-                UserSettings::FIELD_TYPE => UserSettings::TYPE_DEFAULT,
-            ]);
-
-            UserSettings::factory()->create([
-                UserSettings::FIELD_USER_ID => Auth::user()->{ User::FIELD_ID },
-                UserSettings::FIELD_TYPE => UserSettings::TYPE_CUSTOM,
-                $template[TableConstants::PROPERTY_NAME] => $template,
-            ]);
-        }
-
-        else
-        {
-            Auth::user()->{ User::ATTRIBUTE_SETTINGS}->where(UserSettings::FIELD_TYPE, '=', UserSettings::TYPE_CUSTOM)->update([
-                $template[TableConstants::PROPERTY_NAME] => $template
-            ]);
-        }
+        Auth::user()->{ User::ATTRIBUTE_SETTINGS}->where(UserSettings::FIELD_TYPE, '=', UserSettings::TYPE_CUSTOM)->update([
+            $template[TableConstants::PROPERTY_NAME] => $template
+        ]);
 
         return back();
     }

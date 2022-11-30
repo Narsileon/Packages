@@ -80,16 +80,15 @@ export default function SortableTree({
 			activeId ? [activeId, ...collapsedItems] : collapsedItems
 		);
 	}, [activeId, data]);
-	const projected =
-		activeId && overId
-		? getProjection(
-			flattenedItems,
-			activeId,
-			overId,
-			offsetLeft,
-			indentationWidth
-			)
-		: null;
+
+	const projected = activeId && overId ? getProjection(
+		flattenedItems,
+		activeId,
+		overId,
+		offsetLeft,
+		indentationWidth
+	) : null;
+
 	const sensorContext = useRef({
 		items: flattenedItems,
 		offset: offsetLeft,
@@ -98,9 +97,10 @@ export default function SortableTree({
 	const sortedIds = useMemo(() => flattenedItems.map(({id}) => id), [
 		flattenedItems,
 	]);
-	const activeItem = activeId
-		? flattenedItems.find(({id}) => id === activeId)
-		: null;
+
+	const activeItem = activeId ? flattenedItems.find(({id}) =>
+		id === activeId
+	) : null;
 
 	useEffect(() => {
 		sensorContext.current = {

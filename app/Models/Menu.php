@@ -20,8 +20,9 @@ class Menu extends Model
 
     public const FIELD_ID = 'id';
     public const FIELD_USER_ID='user_id';
+    public const FIELD_ACTIVE = 'active';
 
-    public const FIELD_TITLE = 'title';
+    public const FIELD_CATEGORY = 'category';
     public const FIELD_TEMPLATE = 'template';
 
     public const PROPERTY_USER = 'user';
@@ -33,11 +34,13 @@ class Menu extends Model
     protected $fillable =
     [
         self::FIELD_USER_ID,
-        self::FIELD_TITLE,
+        self::FIELD_ACTIVE,
+        self::FIELD_CATEGORY,
         self::FIELD_TEMPLATE,
     ];
 
     protected $casts = [
+        self::FIELD_ACTIVE => Types::BOOLEAN,
         self::FIELD_TEMPLATE => Types::ARRAY,
     ];
 

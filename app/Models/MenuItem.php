@@ -4,7 +4,6 @@ namespace App\Models;
 
 #region USE
 
-use App\Constants\Types;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 

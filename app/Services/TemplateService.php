@@ -15,6 +15,19 @@ class TemplateService
 {
     #region PUBLIC METHODS
 
+    public static function create($user_id)
+    {
+        UserSettings::factory()->create([
+            UserSettings::FIELD_USER_ID => $user_id,
+            UserSettings::FIELD_TYPE => UserSettings::TYPE_DEFAULT,
+        ]);
+
+        UserSettings::factory()->create([
+            UserSettings::FIELD_USER_ID => $user_id,
+            UserSettings::FIELD_TYPE => UserSettings::TYPE_CUSTOM,
+        ]);
+    }
+
     public static function get($name, $type, $default)
     {
         $user = Auth::user();
