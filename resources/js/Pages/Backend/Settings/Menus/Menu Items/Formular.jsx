@@ -24,17 +24,17 @@ export default function Formular({
 
             <FormBody>
                 <FormInput
-                    id="type"
-                    label={ transChoice('common.types', 1) }
-                    value={ data.type }
-                    error={ errors.type }
+                    id="label"
+                    label={ transChoice('common.designations', 1) }
+                    value={ data.label }
+                    error={ errors.label }
                     setData={ setData }
                 />
                 <FormInput
-                    id="status"
-                    label={ transChoice('common.statuses', 1) }
-                    value={ data.status }
-                    error={ errors.status }
+                    id="url"
+                    label={ transChoice('common.urls', 1) }
+                    value={ data.url }
+                    error={ errors.url }
                     setData={ setData }
                 />
             </FormBody>
