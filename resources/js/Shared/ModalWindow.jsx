@@ -23,12 +23,10 @@ export default function ModalWindow({ text, action, actionLabel, setShow }) {
                         />
 
                         <div className="p-8 text-center">
-                            {/* Content */}
                             <h3 className="my-8">
                                 { text }
                             </h3>
 
-                            {/* Footer */}
                             <div className="flex items-center justify-between">
                                 <PrimaryButton
                                     label={ trans("Cancel") }

@@ -14,7 +14,7 @@ export default function Index({ templates }) {
             setTemplate(key);
         }, 300);
 
-        return () => clearTimeout(timeout)
+        return () => clearTimeout(timeout);
     }
 
     return (
