@@ -1,5 +1,5 @@
 import { useForm } from "@inertiajs/inertia-react";
-import { trans, transChoice } from "@/narsil-localization";
+import { trans } from "@/narsil-localization";
 import Window from "@/Shared/Window";
 import Formular from "./Formular";
 
@@ -13,7 +13,7 @@ export default function Create({ options, showCreate }) {
     });
 
 	return (
-        <Window>
+        <Window setVisible={ showCreate }>
             <Formular
                 title= { title }
                 label= { trans('common.create') }

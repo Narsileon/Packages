@@ -13,7 +13,7 @@ export default function Formular({
     processing,
     errors,
     options,
-    showCreate,
+    setVisible,
 }) {
     return (
         <Form submit={ submit }>
@@ -65,7 +65,7 @@ export default function Formular({
             <FormFooter>
                 <BackButton
                     className="primary-button"
-                    onClick={ showCreate }
+                    onClick={ setVisible }
                 />
                 <PrimaryButton
                     label={ label }
