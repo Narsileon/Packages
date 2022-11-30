@@ -6,30 +6,11 @@ import Chevron from "@/Shared/Svg/Chevron";
 
 export default function SortableItems({
     items,
-    options,
+    option,
     onClick,
-    onCreate,
+    showCreate,
+    editMenuItem,
 }) {
-    return (
-        <>
-            {
-                options.map((option) => {
-                    return (
-                        <SortableCategory
-                            items={ items.filter(item => item.type == option.type) }
-                            option={ option }
-                            onClick={ onClick }
-                            onCreate={ onCreate }
-                            key={ option.type }
-                        />
-                    );
-                })
-            }
-        </>
-    );
-}
-
-const SortableCategory = ({ items, option, onClick, onCreate }) => {
     const[dropdown, open, setOpen] = useDropdown(false, false);
 
     return (
@@ -54,7 +35,7 @@ const SortableCategory = ({ items, option, onClick, onCreate }) => {
 
                     <AddButton
                         className="bg-blue-500 w-6 h-6 rounded"
-                        onClick={ onCreate }
+                        onClick={ showCreate }
                     />
                 </div>
                 {
@@ -69,7 +50,13 @@ const SortableCategory = ({ items, option, onClick, onCreate }) => {
                                                 onClick={ () => onClick(item) }
                                                 key={ item.id }
                                             >
-                                                { upperFirst(transChoice(item.label)) }
+                                                <span>
+                                                    { upperFirst(transChoice(item.label)) }
+                                                </span>
+                                                <AddButton
+                                                    className="bg-blue-500 w-6 h-6 rounded"
+                                                    onClick={ () => editMenuItem(item) }
+                                                />
                                             </li>
                                         )
                                     })
@@ -81,4 +68,4 @@ const SortableCategory = ({ items, option, onClick, onCreate }) => {
             </div>
         </div>
     );
-};
+}

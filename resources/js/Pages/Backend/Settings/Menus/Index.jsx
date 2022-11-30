@@ -11,11 +11,16 @@ import Create from "./Menu Items/Create";
 import Edit from "./Menu Items/Edit";
 
 export default function Index({ menus, menuItems }) {
-    const [menu, setMenu] = useState(menus[0] ?? null)
+    const [menu, setMenu] = useState(menus[0] ?? null);
     const [layout, setLayout] = useState(menu ? menu.template : null);
-
     const [create, showCreate] = useToggle(false);
-    const [edit, showEdit] = useToggle(false);
+    const [edit, showEdit] = useState(false);
+    const [menuItem, setMenuItem] = useState(null);
+
+    function editMenuItem(menuItem) {
+        setMenuItem(menuItem);
+        showEdit(true);
+    };
 
     function addToList(item) {
         setLayout(previousMenu => [...previousMenu, item])
@@ -80,12 +85,20 @@ export default function Index({ menus, menuItems }) {
                 <div className="col-span-2 md:col-span-1 min-h-0 overflow-y-auto">
                     <section id="sortable-items">
                         <div className="space-y-2">
-                            <SortableItems
-                                items={ menuItems.data }
-                                options={ options }
-                                onClick={ addToList }
-                                onCreate={ showCreate }
-                            />
+                            {
+                                options.map((option) => {
+                                    return (
+                                        <SortableItems
+                                            items={ menuItems.data.filter(item => item.type == option.type) }
+                                            option={ option }
+                                            onClick={ addToList }
+                                            showCreate={ showCreate }
+                                            editMenuItem={ editMenuItem }
+                                            key={ option.type }
+                                        />
+                                    );
+                                })
+                            }
                         </div>
                     </section>
                 </div>
@@ -118,6 +131,7 @@ export default function Index({ menus, menuItems }) {
             {
                 edit ? (
                     <Edit
+                        menuItem={ menuItem }
                         options={ options }
                         showEdit={ showEdit }
                     />

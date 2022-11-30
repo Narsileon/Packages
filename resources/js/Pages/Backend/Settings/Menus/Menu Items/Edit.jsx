@@ -3,7 +3,7 @@ import { trans } from "@/narsil-localization";
 import Window from "@/Shared/Window";
 import Formular from "./Formular";
 
-export default function Edit({ menuItem, showEdit }) {
+export default function Edit({ menuItem, options, showEdit }) {
 	const title = trans('Editing the menu item:');
 
     const { data, setData, patch, processing, errors } = useForm({
@@ -18,13 +18,14 @@ export default function Edit({ menuItem, showEdit }) {
                 title= { title }
                 label= { trans('common.update') }
                 submit= { () => {
-                    showCreate(false)
+                    showEdit(false)
                     patch('/admin/menu_items/' + menuItem.id)
                 }}
                 data={ data }
                 setData={ setData }
                 processing={ processing }
                 errors={ errors }
+                options={ options }
                 setVisible={ showEdit }
             />
         </Window>
