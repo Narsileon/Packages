@@ -51,7 +51,7 @@ Route::group([
         Route::patch('menus/{menu}', 'update');
     });
     Route::controller(MenuItemController::class)->group(function () {
-        Route::get('menu_items', 'store')->name('menu_items');
+        Route::post('menu_items', 'store')->name('menu_items');
         Route::patch('menu_items/{menu_item}', 'update');
     });
     Route::controller(TemplateController::class)->group(function () {

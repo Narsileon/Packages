@@ -4,7 +4,7 @@ import AppHead from "@/Shared/AppHead";
 import Formular from "./Formular";
 
 export default function Edit({ faq }) {
-	const title = trans('Edit :resource', { 'resource': trans('FAQ') });
+	const title = trans('Editing the FAQ:');
 
     const { data, setData, patch, processing, errors } = useForm({
         question: faq.question,

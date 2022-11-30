@@ -1,10 +1,10 @@
 import { useForm } from "@inertiajs/inertia-react";
-import { trans, transChoice } from "@/narsil-localization";
+import { trans } from "@/narsil-localization";
 import AppHead from "@/Shared/AppHead";
 import Formular from "./Formular";
 
 export default function Edit({ user, roles, permissions }) {
-	const title = trans('Edit :resource', {'resource': transChoice('common.users', 1)});
+	const title = trans('Editing the user:');
 
 	function initializeRoles() {
 		let object = {};

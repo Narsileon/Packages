@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Backend\Settings;
 #region USE
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Backend\Management\MenuItemCreateRequest;
+use App\Http\Requests\Backend\Settings\MenuItemCreateRequest;
 use App\Http\Requests\Backend\Settings\MenuItemUpdateRequest;
 use App\Models\MenuItem;
 
@@ -21,8 +21,8 @@ class MenuItemController extends Controller
 
         MenuItem::create($attributes);
 
-        return back()
-            ->with('success', 'menu_item_created');;
+        return redirect(route('admin.menus'))
+            ->with('success', 'menu_item_created');
     }
 
     public function update(MenuItemUpdateRequest $request, MenuItem $menuItem)

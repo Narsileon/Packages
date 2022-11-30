@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Backend\Management;
+namespace App\Http\Requests\Backend\Settings;
 
 #region USE
 

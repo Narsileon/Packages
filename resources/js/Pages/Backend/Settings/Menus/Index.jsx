@@ -107,11 +107,21 @@ export default function Index({ menus, menuItems }) {
             </div>
 
             {
-                create ? <Create options={ options } /> : null
+                create ? (
+                    <Create
+                        options={ options }
+                        showCreate={ showCreate }
+                    />
+                ) : null
             }
 
             {
-                edit ? <Edit /> : null
+                edit ? (
+                    <Edit
+                        options={ options }
+                        showEdit={ showEdit }
+                    />
+                ) : null
             }
         </>
     );

@@ -1,10 +1,10 @@
 import { useForm } from "@inertiajs/inertia-react";
-import { trans, transChoice } from "@/narsil-localization";
+import { trans } from "@/narsil-localization";
 import AppHead from "@/Shared/AppHead";
 import Formular from "./Formular";
 
 export default function Edit({ order }) {
-	const title = trans('Edit :resource', { 'resource': transChoice('common.orders', 1) });
+	const title = trans('Editing the order:');
 
     const { data, setData, patch, processing, errors } = useForm({
         type: order.type,

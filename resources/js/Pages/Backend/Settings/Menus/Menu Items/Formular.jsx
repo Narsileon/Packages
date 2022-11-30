@@ -13,6 +13,7 @@ export default function Formular({
     processing,
     errors,
     options,
+    showCreate,
 }) {
     return (
         <Form submit={ submit }>
@@ -64,7 +65,7 @@ export default function Formular({
             <FormFooter>
                 <BackButton
                     className="primary-button"
-                    href={ route('admin.orders.index') }
+                    onClick={ showCreate }
                 />
                 <PrimaryButton
                     label={ label }

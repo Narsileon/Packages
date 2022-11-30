@@ -1,9 +1,9 @@
 import { useForm } from "@inertiajs/inertia-react";
-import { trans, transChoice } from "@/narsil-localization";
+import { trans } from "@/narsil-localization";
 import Formular from "./Formular";
 
 export default function Edit({ menuItem }) {
-	const title = trans('Edit :resource', { 'resource': transChoice('common.menu_items', 1) });
+	const title = trans('Editing the menu item:');
 
     const { data, setData, patch, processing, errors } = useForm({
         type: menuItem.type,

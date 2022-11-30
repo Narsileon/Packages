@@ -4,7 +4,7 @@ import AppHead from "@/Shared/AppHead";
 import Formular from "./Formular";
 
 export default function Create({ permissions }) {
-	const title = trans('Create :resource', {'resource': trans('permissions.new_role')});
+	const title = trans('Creating a new role:');
 
 	function initializeObject(collection) {
 		let object = {};

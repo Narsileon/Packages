@@ -4,7 +4,7 @@ import AppHead from "@/Shared/AppHead";
 import Formular from "./Formular";
 
 export default function Create() {
-	const title = trans('Create :resource', { 'resource': trans('FAQ') });
+	const title = trans('Creating a new FAQ:');
 
 	const { data, setData, post, processing, errors } = useForm({
         question: '',

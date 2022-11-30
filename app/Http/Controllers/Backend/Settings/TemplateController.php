@@ -56,8 +56,7 @@ class TemplateController extends Controller
             ]);
         }
 
-        return back()
-            ->with('success', 'template_updated');
+        return back();
     }
 
     #endregion

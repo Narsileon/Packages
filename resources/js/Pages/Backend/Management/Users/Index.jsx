@@ -4,6 +4,7 @@ import { useTable } from "@/narsil-table";
 import { Table, TableContainer, TableMenu, TableSettings } from "@/Components/Tables";
 import BackendPagination from "@/Components/Pagination/BackendPagination";
 import AppHead from "@/Shared/AppHead";
+import Icon from "@/Shared/Svg/Icon";
 
 export default function Index({ users, columns, template }) {
 	let newHeader = [...columns];
@@ -34,7 +35,7 @@ export default function Index({ users, columns, template }) {
 							className="primary-button whitespace-nowrap"
 							href={ route('admin.users.create') }
 						>
-							{ trans('Create :resource', {'resource': trans('common.new_user')}) }
+							<Icon className="w-6 h-6" name="plus" />
 						</Link>
 
 						<TableSettings table={ table } />
