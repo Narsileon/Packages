@@ -16,22 +16,22 @@ abstract class Permissions
 
     public const BACKEND_VIEW = 'backend-view';
 
-    public const FOOTER_LINKS_VIEW = 'footer-link-view';
-    public const FOOTER_LINKS_CREATE = 'footer-link-create';
-    public const FOOTER_LINKS_UPDATE = 'footer-link-update';
-    public const FOOTER_LINKS_DELETE = 'footer-link-delete';
-
-    public const HEADER_LINKS_VIEW = 'header-link-view';
-    public const HEADER_LINKS_CREATE = 'header-link-create';
-    public const HEADER_LINKS_UPDATE = 'header-link-update';
-    public const HEADER_LINKS_DELETE = 'header-link-delete';
-
     public const FAQS_VIEW = 'faqs-view';
     public const FAQS_CREATE = 'faqs-create';
     public const FAQS_UPDATE = 'faqs-update';
     public const FAQS_DELETE = 'faqs-delete';
 
+    public const FOOTER_LINKS_VIEW = 'footer-link-view';
+    public const FOOTER_LINKS_CREATE = 'footer-link-create';
+    public const FOOTER_LINKS_UPDATE = 'footer-link-update';
+    public const FOOTER_LINKS_DELETE = 'footer-link-delete';
+
     public const GENERAL_SETTINGS_VIEW = 'general-settings-view';
+
+    public const HEADER_LINKS_VIEW = 'header-link-view';
+    public const HEADER_LINKS_CREATE = 'header-link-create';
+    public const HEADER_LINKS_UPDATE = 'header-link-update';
+    public const HEADER_LINKS_DELETE = 'header-link-delete';
 
     public const LANGUAGES_VIEW = 'languages-view';
 
