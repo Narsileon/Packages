@@ -1,8 +1,8 @@
 import { transChoice } from "@/narsil-localization";
 import { upperFirst } from "lodash";
 import { useDropdown } from "@/narsil-react";
-import AddButton from "@/Components/Elements/Buttons/AddButton";
 import Chevron from "@/Shared/Svg/Chevron";
+import IconButton from "@/Components/Elements/Buttons/IconButton";
 
 export default function SortableItems({
     items,
@@ -33,28 +33,30 @@ export default function SortableItems({
                         </span>
                     </button>
 
-                    <AddButton
+                    <IconButton
                         className="bg-blue-500 w-6 h-6 rounded"
+                        icon="plus"
                         onClick={ showCreate }
                     />
                 </div>
                 {
                     open ? (
                         <div>
-                            <ul className="p-2">
+                            <ul className="p-1">
                                 {
                                     items.map((item) => {
                                         return(
                                             <li
-                                                className="p-2"
+                                                className="flex items-center justify-between p-2"
                                                 onClick={ () => onClick(item) }
                                                 key={ item.id }
                                             >
                                                 <span>
                                                     { upperFirst(transChoice(item.label)) }
                                                 </span>
-                                                <AddButton
-                                                    className="bg-blue-500 w-6 h-6 rounded"
+                                                <IconButton
+                                                    className="w-6 h-6 rounded"
+                                                    icon="pencil"
                                                     onClick={ () => editMenuItem(item) }
                                                 />
                                             </li>

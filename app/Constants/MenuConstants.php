@@ -96,13 +96,13 @@ abstract class MenuConstants
                 ],
                 [
                     MenuItem::FIELD_TYPE => self::TYPE_PAGE,
-                    MenuItem::FIELD_ICON => 'cog',
+                    MenuItem::FIELD_ICON => 'template',
                     MenuItem::FIELD_LABEL => 'common.menus',
                     MenuItem::FIELD_URL => 'admin.menus',
                 ],
                 [
                     MenuItem::FIELD_TYPE => self::TYPE_PAGE,
-                    MenuItem::FIELD_ICON => 'cog',
+                    MenuItem::FIELD_ICON => 'template',
                     MenuItem::FIELD_LABEL => 'common.templates',
                     MenuItem::FIELD_URL => 'admin.templates',
                 ],
