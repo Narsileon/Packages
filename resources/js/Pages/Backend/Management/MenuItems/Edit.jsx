@@ -10,9 +10,11 @@ export default function Edit({
 	const title = trans('Editing the menu item:');
 
     const { data, setData, patch, processing, errors } = useForm({
-        label: menuItem.label,
+		slug: menuItem.slug,
+		type: menuItem.type,
+		icon: menuItem.icon,
+		label: menuItem.label,
         url: menuItem.url,
-		active: menuItem.active,
     });
 
     return (

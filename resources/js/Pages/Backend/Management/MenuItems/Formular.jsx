@@ -36,6 +36,13 @@ export default function Formular({
             </FormHeader>
 
             <FormBody>
+                <FormInput
+                    id="slug"
+                    label={ transChoice('common.slugs', 1) }
+                    value={ data.slug }
+                    error={ errors.slug }
+                    setData={ setData }
+                />
                 <FormSelect
                     id="type"
                     label={ transChoice('common.types', 1) }

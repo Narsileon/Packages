@@ -9,9 +9,11 @@ export default function Create({
 	const title = trans('Creating a new menu item:');
 
 	const { data, setData, post, processing, errors } = useForm({
-        label: '',
+        slug: '',
+		type: '',
+		icon: '',
+		label: '',
         url: '',
-		active: '',
     });
 
 	return (

@@ -39,7 +39,7 @@ class MenuItemController extends Controller
 
         $menuItems = new MenuItemCollection($collection->paginate(10));
 
-        return Inertia::render('Backend/Frontoffice/MenuItems/Index', compact(
+        return Inertia::render('Backend/Management/MenuItems/Index', compact(
             'columns',
             'template',
             'menuItems',
@@ -52,7 +52,7 @@ class MenuItemController extends Controller
 
         $icons = IconConstants::NAMES;
 
-        return Inertia::render('Backend/Frontoffice/MenuItems/Create', compact(
+        return Inertia::render('Backend/Management/MenuItems/Create', compact(
             'icons',
         ));
     }
@@ -73,7 +73,7 @@ class MenuItemController extends Controller
     {
         $this->authorize('view', HeaderLink::class);
 
-        return Inertia::render('Backend/Frontoffice/MenuItems/Show', compact(
+        return Inertia::render('Backend/Management/MenuItems/Show', compact(
             'menuItem',
         ));
     }
@@ -84,7 +84,7 @@ class MenuItemController extends Controller
 
         $icons = IconConstants::NAMES;
 
-        return Inertia::render('Backend/Frontoffice/MenuItems/Edit', compact(
+        return Inertia::render('Backend/Management/MenuItems/Edit', compact(
             'menuItem',
             'icons',
         ));
