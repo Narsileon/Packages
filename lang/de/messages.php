@@ -19,7 +19,6 @@ return [
         'menu_item_created'         => 'Der Menüpunkt wurde erfolgreich erstellt.',
         'menu_item_updated'         => 'Der Menüpunkt wurde erfolgreich aktualisiert.',
         'menu_item_deleted'         => 'Der Menüpunkt wurde erfolgreich gelöscht.',
-        'menu_updated'              => 'Das Menü wurde erfolgreich erstellt.',
         'order_created'             => 'Der Auftrag wurde erfolgreich erstellt.',
         'order_updated'             => 'Der Auftrag wurde erfolgreich aktualisiert.',
         'order_deleted'             => 'Der Auftrag wurde erfolgreich gelöscht.',
@@ -30,6 +29,9 @@ return [
         'user_created'              => 'Der Benutzer wurde erfolgreich erstellt.',
         'user_updated'              => 'Der Benutzer wurde erfolgreich aktualisiert.',
         'user_deleted'              => 'Der Benutzer wurde erfolgreich gelöscht.',
+        'user_menu_created'         => 'Das Menü wurde erfolgreich erstellt.',
+        'user_menu_updated'         => 'Das Menü wurde erfolgreich aktualisiert.',
+        'user_menu_deleted'         => 'Das Menü wurde erfolgreich gelöscht.',
     ],
 
     'error' => [

@@ -30,6 +30,9 @@ return [
         'user_created'              => 'The user has been successfully created.',
         'user_updated'              => 'The user has been successfully updated.',
         'user_deleted'              => 'The user has been successfully deleted.',
+        'user_menu_created'         => 'The menu has been successfully created.',
+        'user_menu_updated'         => 'The menu has been successfully updated.',
+        'user_menu_deleted'         => 'The menu has been successfully deleted.',
     ],
 
     'error' => [

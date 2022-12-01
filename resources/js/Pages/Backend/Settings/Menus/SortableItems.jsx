@@ -6,9 +6,15 @@ import Chevron from "@/Shared/Svg/Chevron";
 export default function SortableItems({
     items,
     option,
-    onClick,
+    setData,
 }) {
     const[dropdown, open, setOpen] = useDropdown(false, false);
+
+    function addToList(item) {
+        setData((previousData) => ({
+            template: [...previousData.template, item]
+        }));
+    }
 
     return (
         <div className="primary-background rounded">
@@ -39,7 +45,7 @@ export default function SortableItems({
                                         return(
                                             <li
                                                 className="p-2"
-                                                onClick={ () => onClick(item) }
+                                                onClick={ () => addToList(item) }
                                                 key={ item.id }
                                             >
                                                 <span>

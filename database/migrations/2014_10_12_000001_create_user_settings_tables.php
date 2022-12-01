@@ -50,7 +50,9 @@ return new class extends Migration
         Schema::create(self::TABLE_USER_LOCALIZATIONS, function (Blueprint $table) {
             $table->id();
             $table->foreignId(UserLocalization::FIELD_USER_ID)->constrained()->cascadeOnDelete();
+
             $table->json(UserLocalization::FIELD_DICTIONARY)->nullable();
+
             $table->timestamps();
         });
     }
@@ -60,10 +62,11 @@ return new class extends Migration
         Schema::create(self::TABLE_USER_MENUS, function (Blueprint $table) {
             $table->id();
             $table->foreignId(UserMenu::FIELD_USER_ID)->constrained()->cascadeOnDelete();
+
             $table->boolean(UserMenu::FIELD_ACTIVE)->default(true);
+            $table->string(UserMenu::FIELD_CATEGORY);
 
             $table->string(UserMenu::FIELD_TITLE);
-            $table->string(UserMenu::FIELD_CATEGORY);
             $table->text(UserMenu::FIELD_TEMPLATE);
 
             $table->timestamps();

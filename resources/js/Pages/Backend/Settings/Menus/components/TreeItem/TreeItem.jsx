@@ -49,13 +49,16 @@ export const TreeItem = forwardRef(({
 				{
 					onCollapse ? (
 						<Action
-							onClick={onCollapse}
+							onClick={ (event) => {
+								event.preventDefault();
+								onCollapse();
+							}}
 							className={classNames(
 								styles.Collapse,
 								collapsed && styles.collapsed
 							)}
 						>
-							{collapseIcon}
+							{ collapseIcon }
 						</Action>
 					) : null
 				}

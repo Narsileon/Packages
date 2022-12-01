@@ -3,6 +3,7 @@
 namespace App\Constants;
 
 use App\Models\MenuItem;
+use App\Models\UserMenu;
 
 abstract class MenuConstants
 {

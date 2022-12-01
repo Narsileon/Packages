@@ -245,15 +245,13 @@ export default function SortableTree({
 	}
 
 	function handleRemove(id) {
-		setData((items) => removeItem(items, id));
+		setData(removeItem(data, id));
 	}
 
 	function handleCollapse(id) {
-		setData((items) =>
-		setProperty(items, id, 'collapsed', (value) => {
+		setData(setProperty(data, id, 'collapsed', (value) => {
 			return !value;
-		})
-		);
+		}));
 	}
 
 	function getMovementAnnouncement(

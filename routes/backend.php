@@ -53,6 +53,7 @@ Route::group([
     });
     Route::controller(UserMenuController::class)->group(function () {
         Route::get('user_menus', 'index')->name('user_menus.index');
+        Route::post('user_menus', 'store')->name('user_menus.store');
         Route::patch('user_menus/{user_menu}', 'update')->name('user_menus.update');
     });
     Route::controller(UserTemplateController::class)->group(function () {
