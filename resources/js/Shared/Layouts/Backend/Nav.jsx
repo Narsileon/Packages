@@ -25,7 +25,7 @@ export default function Nav() {
                         </Section>
                     ) : (
                         <NavLink
-                            href={ route(menuItem.url) }
+                            href={ menuItem.url }
                             label={ transChoice(menuItem.label) }
                             icon={ menuItem.icon }
                             key={ index }

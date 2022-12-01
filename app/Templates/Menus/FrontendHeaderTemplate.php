@@ -10,16 +10,18 @@ use App\Models\MenuItem;
 
 class FrontendHeaderTemplate
 {
-    #region CONSTANTS
+    #region PUBLIC METHODS
 
-    public const DEFAULT = [
-        [
-            MenuItem::FIELD_TYPE => MenuItem::TYPE_PAGE,
-            MenuItem::FIELD_ICON => 'home',
-            MenuItem::FIELD_LABEL => 'common.home',
-            MenuItem::FIELD_URL => 'home',
-        ],
-    ];
+    public static function get() {
+        return [
+            [
+                MenuItem::FIELD_TYPE => MenuItem::TYPE_PAGE,
+                MenuItem::FIELD_ICON => 'home',
+                MenuItem::FIELD_LABEL => 'common.home',
+                MenuItem::FIELD_URL => route('home'),
+            ],
+        ];
+    }
 
     #endregion
 }

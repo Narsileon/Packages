@@ -36,7 +36,7 @@ const UpperFooter = () => {
                                 return (
                                     <Link
                                         className="hover:underline"
-                                        href={ route(item.url) }
+                                        href={ item.url }
                                         key={ index }
                                     >
                                         { transChoice(item.label, 1) }

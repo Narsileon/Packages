@@ -94,14 +94,14 @@ class HandleInertiaRequests extends Middleware
 
         $menus = [
             'backend_menu' => Auth::user()
-                ? MenuService::getBackendMenu(UserMenu::TYPE_BACKEND_MENU, BackendMenuTemplate::DEFAULT)
-                : BackendMenuTemplate::DEFAULT,
+                ? MenuService::getBackendMenu(UserMenu::TYPE_BACKEND_MENU, BackendMenuTemplate::get())
+                : BackendMenuTemplate::get(),
             'frontend_footer' => Auth::user()
-                ? MenuService::getBackendMenu(UserMenu::TYPE_FRONTEND_FOOTER, FrontendFooterTemplate::DEFAULT)
-                : FrontendFooterTemplate::DEFAULT,
+                ? MenuService::getBackendMenu(UserMenu::TYPE_FRONTEND_FOOTER, FrontendFooterTemplate::get())
+                : FrontendFooterTemplate::get(),
             'frontend_header' => Auth::user()
-                ? MenuService::getBackendMenu(UserMenu::TYPE_FRONTEND_HEADER, FrontendHeaderTemplate::DEFAULT)
-                : FrontendHeaderTemplate::DEFAULT,
+                ? MenuService::getBackendMenu(UserMenu::TYPE_FRONTEND_HEADER, FrontendHeaderTemplate::get())
+                : FrontendHeaderTemplate::get(),
         ];
 
         return compact(

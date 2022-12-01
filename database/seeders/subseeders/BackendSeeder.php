@@ -18,7 +18,7 @@ class BackendSeeder extends Seeder
 
     public function run()
     {
-        MenuService::createMenuItem(BackendMenuTemplate::DEFAULT);
+        MenuService::createMenuItem(BackendMenuTemplate::get());
 
         $this->createOrders();
         $this->createSettings();

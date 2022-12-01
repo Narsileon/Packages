@@ -18,8 +18,8 @@ class FrontendSeeder extends Seeder
 
     public function run()
     {
-        MenuService::createMenuItem(FrontendFooterTemplate::DEFAULT);
-        MenuService::createMenuItem(FrontendHeaderTemplate::DEFAULT);
+        MenuService::createMenuItem(FrontendFooterTemplate::get());
+        MenuService::createMenuItem(FrontendHeaderTemplate::get());
 
         $this->createQuestions();
     }

@@ -62,7 +62,7 @@ const renderLinks = (links) => {
                 links.map(({ url, label, icon }) => {
                     return (
                         <NavLink
-                            href={ route(url) }
+                            href={ url }
                             label={ transChoice(label, 1) }
                             icon={ icon }
                             key={ label }
@@ -79,7 +79,7 @@ const NavAuth = ({ auth }) => {
         if (auth.permissions.includes('backend-view'))
         {
             return [
-                { url: 'admin.dashboard', label: 'common.dashboard', icon: 'dashboard' },
+                { url: route('admin.dashboard'), label: 'common.dashboard', icon: 'dashboard' },
             ];
         } else {
             return [];
@@ -107,8 +107,8 @@ const NavAuth = ({ auth }) => {
 
 const NavGuest = () => {
     const links = [
-        { url: 'register', label: 'common.register', icon: 'register' },
-        { url: 'login', label: 'common.login', icon: 'login' },
+        { url: route('register'), label: 'common.register', icon: 'register' },
+        { url: route('login'), label: 'common.login', icon: 'login' },
     ];
 
     return (
