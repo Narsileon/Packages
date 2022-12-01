@@ -20,7 +20,7 @@ export default function TableMenu({ id, options = {
     return (
         <>
             <Dropdown
-                trigger={ <Icon name="menu" className="w-6 h-6" /> }
+                trigger={ <Icon name="menu" /> }
                 childrenClasses="left-0"
                 showChevron ={ true }
                 width="12"

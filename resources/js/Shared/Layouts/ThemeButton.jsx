@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useMount, useUpdateEffect } from "react-use";
-import Theme from "@/Shared/Svg/Theme";
+import Icon from "@/Shared/Svg/Icon";
 
 export default function ThemeButton() {
     const hasValue = () => localStorage.hasOwnProperty("darkMode");
@@ -32,10 +32,7 @@ export default function ThemeButton() {
             }
             onClick={ () => toggle(isDark = !isDark) }
         >
-            <Theme
-                className="w-6 h-6"
-                theme={ isDark ? "dark" : "light" }
-            />
+            <Icon name={ isDark ? 'moon' : 'sun' } />
         </button>
     );
 }

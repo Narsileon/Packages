@@ -55,7 +55,7 @@ export default function Datepicker({ setExternalDate, getExternalDate }) {
                     setDate(getExternalDate);
                 }}
             >
-                <Icon name="calendar" className="w-6 h-6"/>
+                <Icon name="calendar" />
             </button>
 
             {

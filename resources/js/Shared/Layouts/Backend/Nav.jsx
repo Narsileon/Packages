@@ -15,7 +15,7 @@ export default function Nav() {
                 return (
                     menuItem.type == 'category' ? (
                         <Section
-                            label={ transChoice(menuItem.label) }
+                            label={ transChoice(menuItem.label, 2) }
                             icon={ menuItem.icon }
                             key={ index }
                         >
@@ -26,7 +26,7 @@ export default function Nav() {
                     ) : (
                         <NavLink
                             href={ menuItem.url }
-                            label={ transChoice(menuItem.label) }
+                            label={ transChoice(menuItem.label, 2) }
                             icon={ menuItem.icon }
                             key={ index }
                         />
@@ -62,10 +62,7 @@ const Section = ({
                 onClick={ setShow }
             >
                 <div className="flex items-center selectable p-1 space-x-2">
-                    <Icon
-                        name={ icon }
-                        className="w-6 h-6"
-                    />
+                    <Icon name={ icon } />
                     <h1>
                         { upperFirst(label) }
                     </h1>

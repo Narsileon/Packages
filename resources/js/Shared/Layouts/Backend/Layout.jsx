@@ -59,10 +59,7 @@ const Header = () => {
                 <ThemeButton />
 
                 <button>
-                    <Icon
-                        className="w-6 h-6"
-                        name="menu"
-                    />
+                    <Icon name="menu" />
                 </button>
             </div>
         </header>

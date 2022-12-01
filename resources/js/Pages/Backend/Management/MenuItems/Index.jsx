@@ -35,7 +35,7 @@ export default function Index({ menuItems, columns, template }) {
 							className="primary-button whitespace-nowrap"
 							href={ route('admin.menu_items.create') }
 						>
-							<Icon className="w-6 h-6" name="plus" />
+							<Icon name="plus" />
 						</Link>
 
 						<TableSettings table={ table } />

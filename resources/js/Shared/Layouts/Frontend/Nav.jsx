@@ -79,7 +79,7 @@ const NavAuth = ({ auth }) => {
         if (auth.permissions.includes('backend-view'))
         {
             return [
-                { url: route('admin.dashboard'), label: 'common.dashboard', icon: 'dashboard' },
+                { url: route('admin.dashboard'), label: 'common.dashboard', icon: 'chart' },
             ];
         } else {
             return [];
@@ -107,8 +107,8 @@ const NavAuth = ({ auth }) => {
 
 const NavGuest = () => {
     const links = [
-        { url: route('register'), label: 'common.register', icon: 'register' },
-        { url: route('login'), label: 'common.login', icon: 'login' },
+        { url: route('register'), label: 'common.register', icon: 'user-plus' },
+        { url: route('login'), label: 'common.login', icon: 'identification' },
     ];
 
     return (

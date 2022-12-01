@@ -64,10 +64,7 @@ export default function ColumnHeader ({
                                 className="ml-2 cursor-move"
                                 ref={ dragRef }
                             >
-                                <Icon
-                                    className="w-6 h-6"
-                                    name="sort-horizontal"
-                                />
+                                <Icon name="sort-horizontal" />
                             </button>
                             <div className={ `flex flex-grow items-center truncate ${ header.column.getCanSort() ? 'cursor-pointer select-none' : '' }` }
                                 onClick={ header.column.getToggleSortingHandler() }

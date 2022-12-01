@@ -33,7 +33,7 @@ export default function SearchField({ filters }) {
 	return (
         <div className="flex border-2 border-color rounded">
             <div className="primary-background flex items-center w-min-fit justify-between">
-                <Icon name="search" className="w-6 h-6 m-2" />
+                <Icon name="search" className="m-2" />
             </div>
 
             <input

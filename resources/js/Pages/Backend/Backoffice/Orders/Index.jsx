@@ -35,7 +35,7 @@ export default function Index({ orders, columns, template, list }) {
 							className="primary-button"
 							href={ route('admin.orders.create') }
 						>
-							<Icon className="w-6 h-6" name="plus" />
+							<Icon name="plus" />
 						</Link>
 
 						<TableSettings table={ table } />

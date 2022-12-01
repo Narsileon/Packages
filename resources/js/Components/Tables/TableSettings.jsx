@@ -32,10 +32,7 @@ export default function TableSettings({ table }) {
                 className="primary-button"
                 onClick={ setShow }
             >
-                <Icon
-                    className="w-6 h-6"
-                    name="cog"
-                />
+                <Icon name="cog" />
             </button>
             {
                 show ? (

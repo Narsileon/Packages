@@ -17,7 +17,7 @@ class BackendMenuTemplate
             [
                 MenuItem::FIELD_SLUG => 'page_backend_dashboard',
                 MenuItem::FIELD_TYPE => MenuItem::TYPE_PAGE,
-                MenuItem::FIELD_ICON => 'dashboard',
+                MenuItem::FIELD_ICON => 'chart',
                 MenuItem::FIELD_LABEL => 'common.dashboard',
                 MenuItem::FIELD_URL => route('admin.dashboard'),
             ],

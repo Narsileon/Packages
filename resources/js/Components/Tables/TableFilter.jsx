@@ -12,7 +12,7 @@ export default function TableSearch({
 			<div className="primary-background flex items-center w-min-fit justify-between">
 				<Icon
 					name="search"
-					className="w-6 h-6 m-2"
+					className="m-2"
 				/>
 			</div>
 

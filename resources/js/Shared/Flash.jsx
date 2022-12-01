@@ -50,10 +50,7 @@ const Message = ({
         <div { ...props}>
             <div className="relative flex items-center justify-between">
                 <div className="flex items-center ml-2 mr-6 space-x-2">
-                    <Icon
-                        name={ icon }
-                        className="w-6 h-6"
-                    />
+                    <Icon name={ icon } />
                     <div className="py-2">
                         { message }
                     </div>

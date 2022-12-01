@@ -1,7 +1,7 @@
 import { Link, usePage } from "@inertiajs/inertia-react";
 import { trans, transChoice } from "@/narsil-localization";
 import WebsiteLogo from "@/Shared/Layouts/WebsiteLogo";
-import Logo from "@/Shared/Svg/Logo";
+import Icon from "@/Shared/Svg/Icon";
 
 export default function Footer() {
     return (
@@ -72,7 +72,7 @@ const LowerFooter = () => {
                                         href={ route }
                                         key={ name }
                                     >
-                                        <Logo name={ name } />
+                                        <Icon name={ name } />
                                     </Link>
                                 );
                             })

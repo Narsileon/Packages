@@ -30,7 +30,10 @@ export default function Accordion({ collection }) {
                                     <span>
                                         { question }
                                     </span>
-                                    <Chevron direction={ items[id] ? "up" : "down" } className="w-6 h-6" />
+                                    <Chevron
+                                        className="w-6 h-6"
+                                        direction={ items[id] ? "up" : "down" }
+                                    />
                                 </button>
                             </h1>
                             {

@@ -62,7 +62,10 @@ export default function Calendar({ tasks }) {
                                         : null
                                     }
                                 >
-                                    <Chevron direction="left" className="w-6 h-6" />
+                                    <Chevron
+                                        className="w-6 h-6"
+                                        direction="left"
+                                    />
                                 </PrimaryButton>
                                 <PrimaryButton
                                     onClick={ () =>
@@ -75,7 +78,10 @@ export default function Calendar({ tasks }) {
                                         : null
                                     }
                                 >
-                                    <Chevron direction="right" className="w-6 h-6" />
+                                    <Chevron
+                                        className="w-6 h-6"
+                                        direction="right"
+                                    />
                                 </PrimaryButton>
                             </div>
                         </div>
