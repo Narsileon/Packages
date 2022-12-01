@@ -4,6 +4,9 @@ namespace App\Models;
 
 #region USE
 
+use App\Traits\IsBaseModel;
+use App\Traits\IsFilterable;
+use App\Traits\IsSortable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,11 +14,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class MenuItem extends Model
 {
-    use HasFactory;
+    use HasFactory, IsBaseModel, IsFilterable, IsSortable;
 
     #region CONSTANTS
 
     public const FIELD_ID = 'id';
+    public const FIELD_ACTIVE = 'active';
 
     public const FIELD_ICON = 'icon';
     public const FIELD_LABEL = 'label';
@@ -29,6 +33,7 @@ class MenuItem extends Model
 
     protected $fillable =
     [
+        self::FIELD_ACTIVE,
         self::FIELD_ICON,
         self::FIELD_LABEL,
         self::FIELD_TYPE,

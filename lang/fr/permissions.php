@@ -13,23 +13,14 @@ return [
     Permissions::FAQS_UPDATE            => 'Modifier une FAQ',
     Permissions::FAQS_DELETE            => 'Supprimer une FAQ',
 
-    Permissions::FOOTER_LINKS_VIEW      => 'Voir les liens de pied de page',
-    Permissions::FOOTER_LINKS_CREATE    => 'Créer un lien de pied de page',
-    Permissions::FOOTER_LINKS_UPDATE    => 'Modifier un lien de pied de page',
-    Permissions::FOOTER_LINKS_DELETE    => 'Supprimer un lien de pied de page',
-
     Permissions::GENERAL_SETTINGS_VIEW  => 'Voir les paramètres généraux',
-
-    Permissions::HEADER_LINKS_VIEW      => 'Voir les liens d\'en-tête',
-    Permissions::HEADER_LINKS_CREATE    => 'Créer un lien d\'en-tête',
-    Permissions::HEADER_LINKS_UPDATE    => 'Modifier un lien d\'en-tête',
-    Permissions::HEADER_LINKS_DELETE    => 'Supprimer un lien d\'en-tête',
 
     Permissions::LANGUAGES_VIEW         => 'Voir les langues',
 
-    Permissions::MENU_ITEM_CREATE       => 'Créer un élément de menu',
-    Permissions::MENU_ITEM_UPDATE       => 'Modifier un élément de menu',
-    Permissions::MENU_ITEM_DELETE       => 'Supprimer un élément de menu',
+    Permissions::MENU_ITEMS_VIEW        => 'Voir les éléments de menu',
+    Permissions::MENU_ITEMS_CREATE      => 'Créer un élémént de menu',
+    Permissions::MENU_ITEMS_UPDATE      => 'Modifier un élément de menu',
+    Permissions::MENU_ITEMS_DELETE      => 'Supprimer un élément de menu',
 
     Permissions::ORDERS_VIEW            => 'Voir les commandes',
     Permissions::ORDERS_CREATE          => 'Créer une commande',

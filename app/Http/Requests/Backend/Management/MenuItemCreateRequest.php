@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Backend\Settings;
+namespace App\Http\Requests\Backend\Management;
 
 #region USE
 
@@ -10,7 +10,7 @@ use Illuminate\Foundation\Http\FormRequest;
 
 #endregion
 
-class MenuItemUpdateRequest extends FormRequest
+class MenuItemCreateRequest extends FormRequest
 {
     #region PUBLIC METHODS
 
@@ -36,5 +36,5 @@ class MenuItemUpdateRequest extends FormRequest
         ];
     }
 
-    #endregion PUBLIC METHODS
+    #endregion
 }

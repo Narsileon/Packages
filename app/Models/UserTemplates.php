@@ -24,10 +24,9 @@ class UserTemplates extends Model
     public const FIELD_SETTINGS = 'settings';
 
     public const FIELD_TEMPLATE_FAQS = 'template_faqs';
-    public const FIELD_TEMPLATE_FOOTER_LINKS = 'template_footer_links';
-    public const FIELD_TEMPLATE_HEADER_LINKS = 'template_header_links';
     public const FIELD_TEMPLATE_LANGUAGES = 'template_languages';
     public const FIELD_TEMPLATE_LOCALIZATIONS = 'template_localizations';
+    public const FIELD_TEMPLATE_MENU_ITEMS = 'template_menu_items';
     public const FIELD_TEMPLATE_ORDERS = 'template_orders';
     public const FIELD_TEMPLATE_ROLES = 'template_roles';
     public const FIELD_TEMPLATE_USERS = 'template_users';
@@ -47,10 +46,9 @@ class UserTemplates extends Model
         self::FIELD_TYPE,
         self::FIELD_SETTINGS,
         self::FIELD_TEMPLATE_FAQS,
-        self::FIELD_TEMPLATE_FOOTER_LINKS,
-        self::FIELD_TEMPLATE_HEADER_LINKS,
         self::FIELD_TEMPLATE_LANGUAGES,
         self::FIELD_TEMPLATE_LOCALIZATIONS,
+        self::FIELD_TEMPLATE_MENU_ITEMS,
         self::FIELD_TEMPLATE_ORDERS,
         self::FIELD_TEMPLATE_ROLES,
         self::FIELD_TEMPLATE_USERS,
@@ -59,10 +57,9 @@ class UserTemplates extends Model
     protected $casts = [
         self::FIELD_SETTINGS => Types::ARRAY,
         self::FIELD_TEMPLATE_FAQS => Types::ARRAY,
-        self::FIELD_TEMPLATE_FOOTER_LINKS => Types::ARRAY,
-        self::FIELD_TEMPLATE_HEADER_LINKS => Types::ARRAY,
         self::FIELD_TEMPLATE_LANGUAGES => Types::ARRAY,
         self::FIELD_TEMPLATE_LOCALIZATIONS => Types::ARRAY,
+        self::FIELD_TEMPLATE_MENU_ITEMS => Types::ARRAY,
         self::FIELD_TEMPLATE_ORDERS => Types::ARRAY,
         self::FIELD_TEMPLATE_ROLES => Types::ARRAY,
         self::FIELD_TEMPLATE_USERS => Types::ARRAY,

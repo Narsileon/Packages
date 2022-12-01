@@ -12,10 +12,19 @@ export default function Formular({
     setData,
     processing,
     errors,
-    options,
     icons,
-    setVisible,
 }) {
+    const options = [
+        {
+            label: 'common.categories',
+            type: 'category',
+        },
+        {
+            label: 'common.pages',
+            type: 'page',
+        },
+    ]
+
     return (
         <Form submit={ submit }>
             <FormHeader>
@@ -86,7 +95,7 @@ export default function Formular({
             <FormFooter>
                 <BackButton
                     className="primary-button"
-                    onClick={ setVisible }
+                    href={ route('admin.menu_items.index') }
                 />
                 <PrimaryButton
                     label={ label }

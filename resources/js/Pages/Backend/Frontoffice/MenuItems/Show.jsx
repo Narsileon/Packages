@@ -3,8 +3,8 @@ import { upperFirst } from "lodash";
 import ShowTable from "@/Components/Backend/ShowTable";
 import AppHead from "@/Shared/AppHead";
 
-export default function Show({ footerLink }) {
-    const title = upperFirst(transChoice('common.footer_links', 1));
+export default function Show({ menuItem }) {
+    const title = upperFirst(transChoice('common.menu_items', 1));
 
     return (
         <>
@@ -12,8 +12,8 @@ export default function Show({ footerLink }) {
 
             <ShowTable
                 title={ title }
-                href={ `/admin/footer_links/${ footerLink.id }/edit` }
-                data={ footerLink }
+                href={ `/admin/menu_items/${ menuItem.id }/edit` }
+                data={ menuItem }
             >
                 <div className="grid grid-cols-2 gap-y-4">
                     <div className="col-span-2 flex items-center space-x-1">
@@ -21,7 +21,7 @@ export default function Show({ footerLink }) {
                             { upperFirst(transChoice('common.ids', 1)) + trans(':') }
                         </span>
                         <span>
-                            { footerLink.id }
+                            { menuItem.id }
                         </span>
                     </div>
                     <div className="col-span-2">
@@ -31,7 +31,7 @@ export default function Show({ footerLink }) {
                     </div>
                     <div className="col-span-2">
                         <span>
-                            { footerLink.label }
+                            { menuItem.label }
                         </span>
                     </div>
                     <div className="col-span-2">
@@ -41,7 +41,7 @@ export default function Show({ footerLink }) {
                     </div>
                     <div className="col-span-2">
                         <span>
-                            { footerLink.url }
+                            { menuItem.url }
                         </span>
                     </div>
                 </div>

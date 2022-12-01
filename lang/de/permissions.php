@@ -13,23 +13,15 @@ return [
     Permissions::FAQS_UPDATE            => 'Bearbeiten einer FAQ',
     Permissions::FAQS_DELETE            => 'Löschen einer FAQ',
 
-    Permissions::FOOTER_LINKS_VIEW      => 'Anzeigen von Footer-Links',
-    Permissions::FOOTER_LINKS_CREATE    => 'Erstellen eines Footer-Links',
-    Permissions::FOOTER_LINKS_UPDATE    => 'Bearbeiten eines Footer-Linksk',
-    Permissions::FOOTER_LINKS_DELETE    => 'Löschen eines Footer-Links',
-
     Permissions::GENERAL_SETTINGS_VIEW  => 'Anzeigen von allgemeinen Einstellungen',
-
-    Permissions::HEADER_LINKS_VIEW      => 'Anzeigen von Header-Links',
-    Permissions::HEADER_LINKS_CREATE    => 'Erstellen eines Header-Links',
-    Permissions::HEADER_LINKS_UPDATE    => 'Bearbeiten eines Header-Links',
-    Permissions::HEADER_LINKS_DELETE    => 'Löschen eines Header-Links',
 
     Permissions::LANGUAGES_VIEW         => 'Anzeigen von Sprachen',
 
-    Permissions::MENU_ITEM_CREATE       => 'Erstellen eines Menüpunkts',
-    Permissions::MENU_ITEM_UPDATE       => 'Bearbeiten eines Menüpunkts',
-    Permissions::MENU_ITEM_DELETE       => 'Löschen eines Menüpunkts',
+    Permissions::MENU_ITEMS_VIEW        => 'Anzeigen von Menüpunkte',
+    Permissions::MENU_ITEMS_CREATE      => 'Erstellen eines Menüpunkts',
+    Permissions::MENU_ITEMS_UPDATE      => 'Bearbeiten eines Menüpunkts',
+    Permissions::MENU_ITEMS_DELETE      => 'Löschen eines Menüpunkts',
+
 
     Permissions::ORDERS_VIEW            => 'Anzeigen von Aufträgen',
     Permissions::ORDERS_CREATE          => 'Erstellen eines Auftrags',

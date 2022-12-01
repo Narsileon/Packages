@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useToggle } from "react-use";
 import { Inertia } from "@inertiajs/inertia";
 import { trans, transChoice } from "@/narsil-localization";
 import { upperFirst } from "lodash";
@@ -7,16 +6,11 @@ import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 import AppHead from "@/Shared/AppHead";
 import SortableItems from "./SortableItems";
 import SortableTree from "./SortableTree";
-import Create from "./Menu Items/Create";
-import Edit from "./Menu Items/Edit";
 import Toggle from "@/Components/Elements/Toggle";
 
-export default function Index({ menus, menuItems, icons }) {
+export default function Index({ menus, menuItems }) {
     const [menu, setMenu] = useState(null);
     const [layout, setLayout] = useState(null);
-    const [create, showCreate] = useToggle(false);
-    const [edit, showEdit] = useState(false);
-    const [menuItem, setMenuItem] = useState(null);
 
     function editMenuItem(menuItem) {
         setMenuItem(menuItem);
@@ -110,8 +104,6 @@ export default function Index({ menus, menuItems, icons }) {
                                             items={ menuItems.data.filter(item => item.type == option.type) }
                                             option={ option }
                                             onClick={ addToList }
-                                            showCreate={ showCreate }
-                                            editMenuItem={ editMenuItem }
                                             key={ option.type }
                                         />
                                     );
@@ -171,27 +163,6 @@ export default function Index({ menus, menuItems, icons }) {
                     }
                 </div>
             </div>
-
-            {
-                create ? (
-                    <Create
-                        options={ options }
-                        icons={ icons }
-                        showCreate={ showCreate }
-                    />
-                ) : null
-            }
-
-            {
-                edit ? (
-                    <Edit
-                        menuItem={ menuItem }
-                        options={ options }
-                        icons={ icons }
-                        showEdit={ showEdit }
-                    />
-                ) : null
-            }
         </>
     );
 }

@@ -90,10 +90,9 @@ return new class extends Migration
             $table->string(UserTemplates::FIELD_TYPE);
 
             $table->text(UserTemplates::FIELD_TEMPLATE_FAQS)->nullable();
-            $table->text(UserTemplates::FIELD_TEMPLATE_FOOTER_LINKS)->nullable();
-            $table->text(UserTemplates::FIELD_TEMPLATE_HEADER_LINKS)->nullable();
             $table->text(UserTemplates::FIELD_TEMPLATE_LANGUAGES)->nullable();
             $table->text(UserTemplates::FIELD_TEMPLATE_LOCALIZATIONS)->nullable();
+            $table->text(UserTemplates::FIELD_TEMPLATE_MENU_ITEMS)->nullable();
             $table->text(UserTemplates::FIELD_TEMPLATE_ORDERS)->nullable();
             $table->text(UserTemplates::FIELD_TEMPLATE_ROLES)->nullable();
             $table->text(UserTemplates::FIELD_TEMPLATE_USERS)->nullable();

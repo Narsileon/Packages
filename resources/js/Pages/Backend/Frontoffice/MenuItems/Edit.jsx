@@ -3,13 +3,16 @@ import { trans } from "@/narsil-localization";
 import AppHead from "@/Shared/AppHead";
 import Formular from "./Formular";
 
-export default function Edit({ headerLink }) {
-	const title = trans('Editing the header link:');
+export default function Edit({
+	menuItem,
+	icons,
+}) {
+	const title = trans('Editing the menu item:');
 
     const { data, setData, patch, processing, errors } = useForm({
-        label: headerLink.label,
-        url: headerLink.url,
-		active: headerLink.active,
+        label: menuItem.label,
+        url: menuItem.url,
+		active: menuItem.active,
     });
 
     return (
@@ -19,11 +22,12 @@ export default function Edit({ headerLink }) {
 			<Formular
 				title= { title }
 				label= { trans('common.update') }
-				submit= { () => patch('/admin/header_links/' + headerLink.id) }
+				submit= { () => patch('/admin/menu_items/' + menuItem.id) }
 				data={ data }
 				setData={ setData }
 				processing={ processing }
 				errors={ errors }
+				icons={ icons }
 			/>
         </>
     );

@@ -13,23 +13,14 @@ return [
     Permissions::FAQS_UPDATE            => 'Update a FAQ',
     Permissions::FAQS_DELETE            => 'Delete a FAQ',
 
-    Permissions::FOOTER_LINKS_VIEW      => 'View footer links',
-    Permissions::FOOTER_LINKS_CREATE    => 'Create a footer link',
-    Permissions::FOOTER_LINKS_UPDATE    => 'Update a footer link',
-    Permissions::FOOTER_LINKS_DELETE    => 'Delete a footer link',
-
     Permissions::GENERAL_SETTINGS_VIEW  => 'View general settings',
-
-    Permissions::HEADER_LINKS_VIEW      => 'View header links',
-    Permissions::HEADER_LINKS_CREATE    => 'Create a header link',
-    Permissions::HEADER_LINKS_UPDATE    => 'Update a header link',
-    Permissions::HEADER_LINKS_DELETE    => 'Delete a header link',
 
     Permissions::LANGUAGES_VIEW         => 'View languages',
 
-    Permissions::MENU_ITEM_CREATE       => 'Create a menu item',
-    Permissions::MENU_ITEM_UPDATE       => 'Delete a menu item',
-    Permissions::MENU_ITEM_DELETE       => 'Create a menu item',
+    Permissions::MENU_ITEMS_VIEW        => 'View menu items',
+    Permissions::MENU_ITEMS_CREATE      => 'Create a menu item',
+    Permissions::MENU_ITEMS_UPDATE      => 'Update a menu item',
+    Permissions::MENU_ITEMS_DELETE      => 'Delete a menu item',
 
     Permissions::ORDERS_VIEW            => 'View orders',
     Permissions::ORDERS_CREATE          => 'Create an order',

@@ -16,7 +16,7 @@ use Inertia\Inertia;
 
 #endregion
 
-class LocalizationController extends Controller
+class UserLocalizationController extends Controller
 {
     #region PUBLIC METHODS
 

@@ -6,7 +6,7 @@ import BackendPagination from "@/Components/Pagination/BackendPagination";
 import AppHead from "@/Shared/AppHead";
 import Icon from "@/Shared/Svg/Icon";
 
-export default function Index({ footerLinks, columns, template }) {
+export default function Index({ menuItems, columns, template }) {
 	let newHeader = [...columns];
 
 	newHeader.push({
@@ -20,20 +20,20 @@ export default function Index({ footerLinks, columns, template }) {
 		disableSortBy: true,
 	})
 
-	const [table] = useTable(footerLinks.data, newHeader, template);
+	const [table] = useTable(menuItems.data, newHeader, template);
 
 	return (
 		<>
-			<AppHead title={ transChoice('common.footer_links', 2) } />
+			<AppHead title={ transChoice('common.menu_items', 2) } />
 
 			<TableContainer
-				title={ trans('List of :resource', { 'resource': transChoice('common.footer_links', 2) }) }
+				title={ trans('List of :resource', { 'resource': transChoice('common.menu_items', 2) }) }
 				table={ table }
 				buttons={
 					<>
 						<Link
 							className="primary-button whitespace-nowrap"
-							href={ route('admin.footer_links.create') }
+							href={ route('admin.menu_items.create') }
 						>
 							<Icon className="w-6 h-6" name="plus" />
 						</Link>
@@ -42,18 +42,18 @@ export default function Index({ footerLinks, columns, template }) {
 					</>
 				}
 			>
-				{ footerLinks.meta.items > 0 ? (
+				{ menuItems.meta.items > 0 ? (
 					<>
 						<Table
 							table={ table }
 							horizontalScrolling={ true }
 						/>
 
-						<BackendPagination data={ footerLinks.meta } />
+						<BackendPagination data={ menuItems.meta } />
 					</>
 				) : (
 					<div>
-						{ trans('No :resource was found in the database', { 'resource': transChoice('common.footer_links', 1) }) }
+						{ trans('No :resource was found in the database', { 'resource': transChoice('common.menu_items', 1) }) }
 					</div>
 				)}
 			</TableContainer>

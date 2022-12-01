@@ -3,8 +3,10 @@ import { trans } from "@/narsil-localization";
 import AppHead from "@/Shared/AppHead";
 import Formular from "./Formular";
 
-export default function Create() {
-	const title = trans('Creating a new footer link:');
+export default function Create({
+	icons,
+}) {
+	const title = trans('Creating a new menu item:');
 
 	const { data, setData, post, processing, errors } = useForm({
         label: '',
@@ -19,11 +21,12 @@ export default function Create() {
 			<Formular
 				title= { title }
 				label= { trans('common.create') }
-				submit= { () => post('/admin/footer_links') }
+				submit= { () => post('/admin/menu_items') }
 				data={ data }
 				setData={ setData }
 				processing={ processing }
 				errors={ errors }
+				icons={ icons }
 			/>
 		</>
 	);

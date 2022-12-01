@@ -21,23 +21,14 @@ abstract class Permissions
     public const FAQS_UPDATE = 'faqs-update';
     public const FAQS_DELETE = 'faqs-delete';
 
-    public const FOOTER_LINKS_VIEW = 'footer-link-view';
-    public const FOOTER_LINKS_CREATE = 'footer-link-create';
-    public const FOOTER_LINKS_UPDATE = 'footer-link-update';
-    public const FOOTER_LINKS_DELETE = 'footer-link-delete';
-
     public const GENERAL_SETTINGS_VIEW = 'general-settings-view';
-
-    public const HEADER_LINKS_VIEW = 'header-link-view';
-    public const HEADER_LINKS_CREATE = 'header-link-create';
-    public const HEADER_LINKS_UPDATE = 'header-link-update';
-    public const HEADER_LINKS_DELETE = 'header-link-delete';
 
     public const LANGUAGES_VIEW = 'languages-view';
 
-    public const MENU_ITEM_CREATE = 'menu-items-create';
-    public const MENU_ITEM_UPDATE = 'menu-items-update';
-    public const MENU_ITEM_DELETE = 'menu-items-delete';
+    public const MENU_ITEMS_VIEW = 'header-link-view';
+    public const MENU_ITEMS_CREATE = 'header-link-create';
+    public const MENU_ITEMS_UPDATE = 'header-link-update';
+    public const MENU_ITEMS_DELETE = 'header-link-delete';
 
     public const ORDERS_VIEW = 'orders-view';
     public const ORDERS_CREATE = 'orders-create';

@@ -37,6 +37,12 @@ abstract class MenuConstants
                     MenuItem::FIELD_LABEL => 'permissions.roles',
                     MenuItem::FIELD_URL => 'admin.roles.index',
                 ],
+                [
+                    MenuItem::FIELD_TYPE => self::TYPE_PAGE,
+                    MenuItem::FIELD_ICON => 'link',
+                    MenuItem::FIELD_LABEL => 'common.menu_items',
+                    MenuItem::FIELD_URL => 'admin.menu_items.index',
+                ],
             ]
         ],
         [
@@ -65,18 +71,6 @@ abstract class MenuConstants
             self::FIELD_CHILDREN => [
                 [
                     MenuItem::FIELD_TYPE => self::TYPE_PAGE,
-                    MenuItem::FIELD_ICON => 'link',
-                    MenuItem::FIELD_LABEL => 'common.header_links',
-                    MenuItem::FIELD_URL => 'admin.header_links.index',
-                ],
-                [
-                    MenuItem::FIELD_TYPE => self::TYPE_PAGE,
-                    MenuItem::FIELD_ICON => 'link',
-                    MenuItem::FIELD_LABEL => 'common.footer_links',
-                    MenuItem::FIELD_URL => 'admin.footer_links.index',
-                ],
-                [
-                    MenuItem::FIELD_TYPE => self::TYPE_PAGE,
                     MenuItem::FIELD_ICON => 'question',
                     MenuItem::FIELD_LABEL => 'common.faqs',
                     MenuItem::FIELD_URL => 'admin.faqs.index',
@@ -96,18 +90,6 @@ abstract class MenuConstants
                 ],
                 [
                     MenuItem::FIELD_TYPE => self::TYPE_PAGE,
-                    MenuItem::FIELD_ICON => 'template',
-                    MenuItem::FIELD_LABEL => 'common.menus',
-                    MenuItem::FIELD_URL => 'admin.user_menus.index',
-                ],
-                [
-                    MenuItem::FIELD_TYPE => self::TYPE_PAGE,
-                    MenuItem::FIELD_ICON => 'template',
-                    MenuItem::FIELD_LABEL => 'common.templates',
-                    MenuItem::FIELD_URL => 'admin.user_templates.index',
-                ],
-                [
-                    MenuItem::FIELD_TYPE => self::TYPE_PAGE,
                     MenuItem::FIELD_ICON => 'language',
                     MenuItem::FIELD_LABEL => 'common.languages',
                     MenuItem::FIELD_URL => 'admin.languages',
@@ -117,6 +99,18 @@ abstract class MenuConstants
                     MenuItem::FIELD_ICON => 'book',
                     MenuItem::FIELD_LABEL => 'common.dictionaries',
                     MenuItem::FIELD_URL => 'admin.user_localizations.index',
+                ],
+                [
+                    MenuItem::FIELD_TYPE => self::TYPE_PAGE,
+                    MenuItem::FIELD_ICON => 'template',
+                    MenuItem::FIELD_LABEL => 'common.menus',
+                    MenuItem::FIELD_URL => 'admin.user_menus.index',
+                ],
+                [
+                    MenuItem::FIELD_TYPE => self::TYPE_PAGE,
+                    MenuItem::FIELD_ICON => 'template',
+                    MenuItem::FIELD_LABEL => 'common.templates',
+                    MenuItem::FIELD_URL => 'admin.user_templates.index',
                 ],
             ]
         ],

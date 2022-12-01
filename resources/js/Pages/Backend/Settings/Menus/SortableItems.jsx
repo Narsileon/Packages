@@ -2,14 +2,11 @@ import { transChoice } from "@/narsil-localization";
 import { upperFirst } from "lodash";
 import { useDropdown } from "@/narsil-react";
 import Chevron from "@/Shared/Svg/Chevron";
-import IconButton from "@/Components/Elements/Buttons/IconButton";
 
 export default function SortableItems({
     items,
     option,
     onClick,
-    showCreate,
-    editMenuItem,
 }) {
     const[dropdown, open, setOpen] = useDropdown(false, false);
 
@@ -19,7 +16,7 @@ export default function SortableItems({
                 className="w-full"
                 ref={ dropdown }
             >
-                <div className={ `flex justify-between p-2 ${ open ? 'border-b-2 border-color' : '' }` }>
+                <div className={ `p-2 ${ open ? 'border-b-2 border-color' : '' }` }>
                     <button
                         className="flex items-center space-x-1"
                         onClick={ setOpen }
@@ -32,12 +29,6 @@ export default function SortableItems({
                             { upperFirst(transChoice(option.label, 2)) }
                         </span>
                     </button>
-
-                    <IconButton
-                        className="bg-blue-500 w-6 h-6 rounded"
-                        icon="plus"
-                        onClick={ showCreate }
-                    />
                 </div>
                 {
                     open ? (
@@ -47,18 +38,14 @@ export default function SortableItems({
                                     items.map((item) => {
                                         return(
                                             <li
-                                                className="flex items-center justify-between p-2"
+                                                className="p-2"
                                                 onClick={ () => onClick(item) }
                                                 key={ item.id }
                                             >
                                                 <span>
                                                     { upperFirst(transChoice(item.label)) }
                                                 </span>
-                                                <IconButton
-                                                    className="w-6 h-6 rounded"
-                                                    icon="pencil"
-                                                    onClick={ () => editMenuItem(item) }
-                                                />
+
                                             </li>
                                         )
                                     })

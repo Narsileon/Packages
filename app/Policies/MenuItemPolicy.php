@@ -11,7 +11,7 @@ use Illuminate\Auth\Access\HandlesAuthorization;
 
 #endregion
 
-class HeaderLinkPolicy
+class LinkPolicy
 {
     use HandlesAuthorization;
 
@@ -22,19 +22,24 @@ class HeaderLinkPolicy
         return $user->hasRole(Roles::SUPER_ADMIN) ? true : false;
     }
 
+    public function view(User $user) : bool
+    {
+        return $user->hasPermissionTo(Permissions::MENU_ITEMS_VIEW) ? true : false;
+    }
+
     public function create(User $user) : bool
     {
-        return $user->hasPermissionTo(Permissions::HEADER_LINKS_CREATE) ? true : false;
+        return $user->hasPermissionTo(Permissions::MENU_ITEMS_CREATE) ? true : false;
     }
 
     public function update(User $user) : bool
     {
-        return $user->hasPermissionTo(Permissions::HEADER_LINKS_UPDATE) ? true : false;
+        return $user->hasPermissionTo(Permissions::MENU_ITEMS_UPDATE) ? true : false;
     }
 
     public function delete(User $user) : bool
     {
-        return $user->hasPermissionTo(Permissions::HEADER_LINKS_DELETE) ? true : false;
+        return $user->hasPermissionTo(Permissions::MENU_ITEMS_DELETE) ? true : false;
     }
 
     #endregion

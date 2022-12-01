@@ -7,14 +7,12 @@ use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\Backoffice\CalendarController;
 use App\Http\Controllers\Backend\Backoffice\OrderController;
 use App\Http\Controllers\Backend\Frontoffice\FaqController;
-use App\Http\Controllers\Backend\Frontoffice\FooterLinkController;
-use App\Http\Controllers\Backend\Frontoffice\HeaderLinkController;
+use App\Http\Controllers\Backend\Management\MenuItemController;
 use App\Http\Controllers\Backend\Management\RoleController;
 use App\Http\Controllers\Backend\Management\UserController;
 use App\Http\Controllers\Backend\Settings\GeneralSettingsController;
 use App\Http\Controllers\Backend\Settings\LanguageController;
-use App\Http\Controllers\Backend\Settings\LocalizationController;
-use App\Http\Controllers\Backend\Settings\MenuItemController;
+use App\Http\Controllers\Backend\Settings\UserLocalizationController;
 use App\Http\Controllers\Backend\Settings\UserMenuController;
 use App\Http\Controllers\Backend\Settings\UserTemplateController;
 use Illuminate\Support\Facades\Route;
@@ -29,6 +27,7 @@ Route::group([
     Route::get('dashboard', DashboardController::class)->name('dashboard');
 
     // Management
+    Route::resource('menu_items', MenuItemController::class);
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
 
@@ -38,8 +37,6 @@ Route::group([
 
     // Front office
     Route::resource('faqs', FaqController::class);
-    Route::resource('footer_links', FooterLinkController::class);
-    Route::resource('header_links', HeaderLinkController::class);
 
     // Settings
     Route::controller(GeneralSettingsController::class)->group(function () {
@@ -50,11 +47,7 @@ Route::group([
         Route::get('languages', 'index')->name('languages');
         Route::patch('languages', 'update');
     });
-    Route::controller(MenuItemController::class)->group(function () {
-        Route::post('menu_items', 'store')->name('menu_items');
-        Route::patch('menu_items/{menu_item}', 'update');
-    });
-    Route::controller(LocalizationController::class)->group(function () {
+    Route::controller(UserLocalizationController::class)->group(function () {
         Route::get('user_localizations', 'index')->name('user_localizations.index');
         Route::patch('user_localizations/{localization}', 'update')->name('user_localizations.update');
     });
@@ -64,6 +57,6 @@ Route::group([
     });
     Route::controller(UserTemplateController::class)->group(function () {
         Route::get('user_templates', 'index')->name('user_templates.index');
-        Route::patch('user_templates', 'update')->name('user_menus.update');
+        Route::patch('user_templates', 'update')->name('user_templates.update');
     });
 });
