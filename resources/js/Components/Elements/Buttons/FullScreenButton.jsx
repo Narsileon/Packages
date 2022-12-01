@@ -1,9 +1,9 @@
-import Arrow from "@/Shared/Svg/Arrow";
+import Icon from "@/Shared/Svg/Icon";
 
 export default function FullScreenButton({ isFullScreen, ...props }) {
     return (
         <button { ...props }>
-            <Arrow name={ isFullScreen ? 'arrows_in' : 'arrows_out' } />
+            <Icon name={ isFullScreen ? 'arrows_in' : 'arrows_out' } />
         </button>
     );
 }
