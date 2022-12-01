@@ -21,6 +21,7 @@ class MenuService
             if ($item[MenuItem::FIELD_TYPE] == MenuItem::TYPE_CATEGORY)
             {
                 MenuItem::create([
+                    MenuItem::FIELD_SLUG => $item[MenuItem::FIELD_SLUG],
                     MenuItem::FIELD_TYPE => $item[MenuItem::FIELD_TYPE],
                     MenuItem::FIELD_ICON => $item[MenuItem::FIELD_ICON],
                     MenuItem::FIELD_LABEL => $item[MenuItem::FIELD_LABEL],
@@ -48,14 +49,14 @@ class MenuService
             if ($item[MenuItem::FIELD_TYPE] == MenuItem::TYPE_CATEGORY)
             {
                 $menuItem = [
-                    MenuItem::FIELD_ID => $item[MenuItem::FIELD_ID],
+                    MenuItem::FIELD_ID => MenuItem::where(MenuItem::FIELD_SLUG, $item[MenuItem::FIELD_SLUG])->first()->{ MenuItem::FIELD_ID },
                     MenuItem::FIELD_CHILDREN => [],
                 ];
 
                 foreach($item[MenuItem::FIELD_CHILDREN] as $subitem)
                 {
                     $menuItem[MenuItem::FIELD_CHILDREN][] = [
-                        MenuItem::FIELD_ID => $subitem[MenuItem::FIELD_ID],
+                        MenuItem::FIELD_ID => MenuItem::where(MenuItem::FIELD_SLUG, $subitem[MenuItem::FIELD_SLUG])->first()->{ MenuItem::FIELD_ID },
                     ];
                 }
 
@@ -65,7 +66,7 @@ class MenuService
             else
             {
                 $menuItem = [
-                    MenuItem::FIELD_ID => $item[MenuItem::FIELD_ID],
+                    MenuItem::FIELD_ID => MenuItem::where(MenuItem::FIELD_SLUG, $item[MenuItem::FIELD_SLUG])->first()->{ MenuItem::FIELD_ID },
                 ];
 
                 $menu[] = $menuItem;

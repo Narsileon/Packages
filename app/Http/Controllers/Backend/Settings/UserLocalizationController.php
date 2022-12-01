@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Backend\Settings;
 #region USE
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Backend\Settings\LocalizationUpdateRequest;
+use App\Http\Requests\Backend\Settings\UserLocalizationUpdateRequest;
 use App\Models\UserLocalization;
 use App\Models\UserTemplates;
 use App\Services\LocalizationService;
@@ -48,7 +48,7 @@ class UserLocalizationController extends Controller
         ));
     }
 
-    public function update(LocalizationUpdateRequest $request, UserLocalization $localization)
+    public function update(UserLocalizationUpdateRequest $request, UserLocalization $localization)
     {
         $attributes = $request->validated();
 

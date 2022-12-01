@@ -6,7 +6,7 @@ namespace App\Http\Controllers\Backend\Settings;
 
 use App\Constants\TableConstants;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Backend\Settings\TemplateResource;
+use App\Http\Resources\Backend\Settings\UserTemplateResource;
 use App\Models\UserTemplates;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -21,7 +21,7 @@ class UserTemplateController extends Controller
 
     public function index()
     {
-        $templates = new TemplateResource(Auth::user()->{ User::ATTRIBUTE_TEMPLATES }->where(UserTemplates::FIELD_TYPE, '=', UserTemplates::TYPE_DEFAULT)->first());
+        $templates = new UserTemplateResource(Auth::user()->{ User::ATTRIBUTE_TEMPLATES }->where(UserTemplates::FIELD_TYPE, '=', UserTemplates::TYPE_DEFAULT)->first());
 
         return Inertia::render('Backend/Settings/Templates/Index', compact(
             'templates'

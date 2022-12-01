@@ -16,7 +16,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 #endregion
 
-class TemplateResource extends JsonResource
+class UserTemplateResource extends JsonResource
 {
     #region PUBLIC METHODS
 

@@ -37,6 +37,7 @@ return new class extends Migration
     {
         Schema::create(self::TABLE_MENU_ITEMS, function (Blueprint $table) {
             $table->id();
+            $table->string(MenuItem::FIELD_SLUG);
             $table->boolean(MenuItem::FIELD_ACTIVE)->default(true);
             $table->string(MenuItem::FIELD_TYPE);
             $table->string(MenuItem::FIELD_ICON)->nullable();

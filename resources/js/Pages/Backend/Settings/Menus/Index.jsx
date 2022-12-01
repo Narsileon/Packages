@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useTimeout } from "react-use";
 import { trans, transChoice } from "@/narsil-localization";
 import { upperFirst } from "lodash";
 import AppHead from "@/Shared/AppHead";
@@ -7,6 +8,16 @@ import Edit from "./Edit";
 
 export default function Index({ menus, menuItems }) {
     const [menu, setMenu] = useState(null);
+
+    function onMenuChange(menu) {
+        setMenu(null);
+
+        const timeout = setTimeout(() => {
+            setMenu(menu);
+        }, 300);
+
+        return () => clearTimeout(timeout);
+    }
 
     return (
         <>
@@ -25,7 +36,7 @@ export default function Index({ menus, menuItems }) {
                     </span>
                     <select
                         className="field"
-                        onChange={ (event) => setMenu(event.target.value != 'none' ? menus[event.target.value] : null) }
+                        onChange={ (event) => onMenuChange(event.target.value != 'none' ? menus[event.target.value] : null) }
                     >
                         <option
                             value={ 'none' }

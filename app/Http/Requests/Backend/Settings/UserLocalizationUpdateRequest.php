@@ -10,7 +10,7 @@ use Illuminate\Foundation\Http\FormRequest;
 
 #endregion
 
-class LocalizationUpdateRequest extends FormRequest
+class UserLocalizationUpdateRequest extends FormRequest
 {
     #region PUBLIC METHODS
 

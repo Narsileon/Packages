@@ -24,6 +24,7 @@ class MenuItem extends Model
     public const FIELD_CHILDREN = 'children';
     public const FIELD_ICON = 'icon';
     public const FIELD_LABEL = 'label';
+    public const FIELD_SLUG = 'slug';
     public const FIELD_TYPE = 'type';
     public const FIELD_URL = 'url';
 
@@ -39,6 +40,7 @@ class MenuItem extends Model
         self::FIELD_ACTIVE,
         self::FIELD_ICON,
         self::FIELD_LABEL,
+        self::FIELD_SLUG,
         self::FIELD_TYPE,
         self::FIELD_URL,
     ];
