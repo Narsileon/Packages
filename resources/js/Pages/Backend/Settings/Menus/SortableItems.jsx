@@ -12,6 +12,7 @@ export default function SortableItems({
 
     function addToList(item) {
         setData((previousData) => ({
+            ...previousData,
             template: [...previousData.template, item]
         }));
     }
