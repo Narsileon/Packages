@@ -4,11 +4,13 @@ namespace App\Http\Middleware;
 
 #region USE
 
-use App\Acl\Permissions;
-use App\Constants\MenuConstants;
 use App\Models\Backend\GeneralSettings;
+use App\Models\UserMenu;
 use App\Services\LocalizationService;
 use App\Services\MenuService;
+use App\Templates\Menus\BackendMenuTemplate;
+use App\Templates\Menus\FrontendFooterTemplate;
+use App\Templates\Menus\FrontendHeaderTemplate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -91,7 +93,15 @@ class HandleInertiaRequests extends Middleware
         ];
 
         $menus = [
-            'backend' => Auth::user() ? MenuService::getBackendMenu() : MenuConstants::DEFAULT_BACKEND_MENU,
+            'backend_menu' => Auth::user()
+                ? MenuService::getBackendMenu(UserMenu::TYPE_BACKEND_MENU, BackendMenuTemplate::DEFAULT)
+                : BackendMenuTemplate::DEFAULT,
+            'frontend_footer' => Auth::user()
+                ? MenuService::getBackendMenu(UserMenu::TYPE_FRONTEND_FOOTER, FrontendFooterTemplate::DEFAULT)
+                : FrontendFooterTemplate::DEFAULT,
+            'frontend_header' => Auth::user()
+                ? MenuService::getBackendMenu(UserMenu::TYPE_FRONTEND_HEADER, FrontendHeaderTemplate::DEFAULT)
+                : FrontendHeaderTemplate::DEFAULT,
         ];
 
         return compact(

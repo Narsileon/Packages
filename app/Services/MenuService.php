@@ -4,11 +4,10 @@ namespace App\Services;
 
 #region USE
 
-use App\Constants\MenuConstants;
 use App\Models\MenuItem;
 use App\Models\UserMenu;
+use App\Templates\Menus\BackendMenuTemplate;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 
 #endregion
 
@@ -20,9 +19,9 @@ class MenuService
     {
         $menu = [];
 
-        foreach(MenuConstants::DEFAULT_BACKEND_MENU as $item)
+        foreach(BackendMenuTemplate::DEFAULT as $item)
         {
-            if ($item[MenuItem::FIELD_TYPE] == MenuConstants::TYPE_CATEGORY)
+            if ($item[MenuItem::FIELD_TYPE] == MenuItem::TYPE_CATEGORY)
             {
                 $category = MenuItem::create([
                     MenuItem::FIELD_TYPE => $item[MenuItem::FIELD_TYPE],
@@ -32,10 +31,10 @@ class MenuService
 
                 $menuItem = [
                     MenuItem::FIELD_ID => $category->id,
-                    MenuConstants::FIELD_CHILDREN => [],
+                    MenuItem::FIELD_CHILDREN => [],
                 ];
 
-                foreach($item[MenuConstants::FIELD_CHILDREN] as $subitem)
+                foreach($item[MenuItem::FIELD_CHILDREN] as $subitem)
                 {
                     $page = MenuItem::create([
                         MenuItem::FIELD_TYPE => $subitem[MenuItem::FIELD_TYPE],
@@ -44,7 +43,7 @@ class MenuService
                         MenuItem::FIELD_URL => $subitem[MenuItem::FIELD_URL],
                     ]);
 
-                    $menuItem[MenuConstants::FIELD_CHILDREN][] = [
+                    $menuItem[MenuItem::FIELD_CHILDREN][] = [
                         MenuItem::FIELD_ID => $page->id,
                     ];
                 }
@@ -83,16 +82,16 @@ class MenuService
 
         foreach($layout as $item)
         {
-            if ($item[MenuItem::FIELD_TYPE] == MenuConstants::TYPE_CATEGORY)
+            if ($item[MenuItem::FIELD_TYPE] == MenuItem::TYPE_CATEGORY)
             {
                 $menuItem = [
                     MenuItem::FIELD_ID => $item[MenuItem::FIELD_ID],
-                    MenuConstants::FIELD_CHILDREN => [],
+                    MenuItem::FIELD_CHILDREN => [],
                 ];
 
-                foreach($item[MenuConstants::FIELD_CHILDREN] as $subitem)
+                foreach($item[MenuItem::FIELD_CHILDREN] as $subitem)
                 {
-                    $menuItem[MenuConstants::FIELD_CHILDREN][] = [
+                    $menuItem[MenuItem::FIELD_CHILDREN][] = [
                         MenuItem::FIELD_ID => $subitem[MenuItem::FIELD_ID],
                     ];
                 }
@@ -121,9 +120,9 @@ class MenuService
         {
             $menuItem = MenuItem::find($item[MenuItem::FIELD_ID]);
 
-            if (!empty($item[MenuConstants::FIELD_CHILDREN]))
+            if (!empty($item[MenuItem::FIELD_CHILDREN]))
             {
-                $menuItem[MenuConstants::FIELD_CHILDREN] = self::getMenuItem($item[MenuConstants::FIELD_CHILDREN]);
+                $menuItem[MenuItem::FIELD_CHILDREN] = self::getMenuItem($item[MenuItem::FIELD_CHILDREN]);
             }
 
             $menu[] = $menuItem;
@@ -132,16 +131,14 @@ class MenuService
         return $menu;
     }
 
-    public static function getBackendMenu()
+    public static function getBackendMenu($type, $default)
     {
-        $backendMenu = Auth::user()->menus
+        $menu = Auth::user()->menus
             ->where(UserMenu::FIELD_ACTIVE, '=', true)
-            ->where(UserMenu::FIELD_TYPE, '=', UserMenu::TYPE_BACKEND_MENU)
+            ->where(UserMenu::FIELD_TYPE, '=', $type)
             ->first();
 
-            Log::debug($backendMenu);
-
-        return $backendMenu ? self::getMenuItem($backendMenu->{ UserMenu::FIELD_TEMPLATE }) : MenuConstants::DEFAULT_BACKEND_MENU;
+        return $menu ? self::getMenuItem($menu->{ UserMenu::FIELD_TEMPLATE }) : $default;
     }
 
     #endregion

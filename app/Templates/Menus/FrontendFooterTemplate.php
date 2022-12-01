@@ -8,7 +8,7 @@ use App\Models\MenuItem;
 
 #endregion
 
-class BackendMenuTemplate
+class FrontendFooterTemplate
 {
     #region CONSTANTS
 

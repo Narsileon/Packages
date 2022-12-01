@@ -4,7 +4,6 @@ namespace App\Http\Resources\Backend\Settings;
 
 #region USE
 
-use App\Constants\MenuConstants;
 use App\Models\MenuItem;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -22,7 +21,7 @@ class MenuItemResource extends JsonResource
             MenuItem::FIELD_ICON => $this->{ MenuItem::FIELD_ICON },
             MenuItem::FIELD_LABEL => $this->{ MenuItem::FIELD_LABEL },
             MenuItem::FIELD_URL => $this->{ MenuItem::FIELD_URL },
-            MenuConstants::FIELD_CHILDREN => [],
+            MenuItem::FIELD_CHILDREN => [],
         ];
     }
 

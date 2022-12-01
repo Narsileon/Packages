@@ -7,7 +7,7 @@ import Chevron from "@/Shared/Svg/Chevron";
 import Icon from "@/Shared/Svg/Icon";
 
 export default function Nav() {
-    const menu = usePage().props.shared.settings.menus.backend;
+    const menu = usePage().props.shared.settings.menus.backend_menu;
 
     function renderLinks(menuItems) {
         return (
