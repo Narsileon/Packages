@@ -9,42 +9,38 @@ import Icon from "@/Shared/Svg/Icon";
 export default function Nav() {
     const menu = usePage().props.shared.settings.menus.backend;
 
-    console.log(menu)
+    function renderLinks(menuItems) {
+        return (
+            menuItems.map((menuItem, index) => {
+                return (
+                    menuItem.type == 'category' ? (
+                        <Section
+                            label={ transChoice(menuItem.label) }
+                            icon={ menuItem.icon }
+                            key={ index }
+                        >
+                            {
+                                renderLinks(menuItem.children)
+                            }
+                        </Section>
+                    ) : (
+                        <NavLink
+                            href={ route(menuItem.url) }
+                            label={ transChoice(menuItem.label) }
+                            icon={ menuItem.icon }
+                            key={ index }
+                        />
+                    )
+                )
+            })
+        )
+    }
+
     return (
         <nav className="font-semibold">
             <ul>
                 {
-                    menu.map((menuItem) => {
-                        return (
-                            menuItem.type == 'category' ? (
-                                <Section
-                                    label={ transChoice(menuItem.label) }
-                                    icon={ menuItem.icon }
-                                    key={ menuItem.id }
-                                >
-                                    {
-                                        menuItem.children.length > 0 && menuItem.children.map((page) => {
-                                            return (
-                                                <NavLink
-                                                    href={ route(page.url) }
-                                                    label={ transChoice(page.label) }
-                                                    icon={ page.icon }
-                                                    key={ page.id }
-                                                />
-                                            );
-                                        })
-                                    }
-                                </Section>
-                            ) : (
-                                <NavLink
-                                    href={ route(menuItem.url) }
-                                    label={ transChoice(menuItem.label) }
-                                    icon={ menuItem.icon }
-                                    key={ menuItem.id }
-                                />
-                            )
-                        )
-                    })
+                    renderLinks(menu)
                 }
             </ul>
         </nav>

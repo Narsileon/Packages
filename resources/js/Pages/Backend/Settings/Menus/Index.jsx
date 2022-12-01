@@ -12,8 +12,8 @@ import Edit from "./Menu Items/Edit";
 import Toggle from "@/Components/Elements/Toggle";
 
 export default function Index({ menus, menuItems, icons }) {
-    const [menu, setMenu] = useState(menus[0] ?? null);
-    const [layout, setLayout] = useState(menu ? menu.template : null);
+    const [menu, setMenu] = useState(null);
+    const [layout, setLayout] = useState(null);
     const [create, showCreate] = useToggle(false);
     const [edit, showEdit] = useState(false);
     const [menuItem, setMenuItem] = useState(null);
@@ -45,6 +45,16 @@ export default function Index({ menus, menuItems, icons }) {
         },
     ]
 
+    function onMenuChanged(value) {
+        if (value == 'none') {
+            setMenu(null);
+            setLayout(null);
+        } else {
+            setMenu(menus[value]);
+            setLayout(menus[value].template);
+        }
+    }
+
     return (
         <>
         	<AppHead title={ transChoice('common.menus', 2) } />
@@ -62,8 +72,14 @@ export default function Index({ menus, menuItems, icons }) {
                     </span>
                     <select
                         className="field"
-                        onChange={ (event) => setMenu(menus[event.target.value]) }
+                        onChange={ (event) => onMenuChanged(event.target.value) }
                     >
+                        <option
+                            value={ 'none' }
+                            key={ 'none' }
+                        >
+                            { '---' }
+                        </option>
                         {
                             menus.map((menu, index) => {
                                 return (
@@ -71,7 +87,7 @@ export default function Index({ menus, menuItems, icons }) {
                                         value={ index }
                                         key={ index }
                                     >
-                                        { upperFirst(trans(`common.${ menu.title }`)) }
+                                        { upperFirst(trans(`common.${ menu.category }`)) }
                                     </option>
                                 );
                             })
@@ -104,50 +120,55 @@ export default function Index({ menus, menuItems, icons }) {
                         </div>
                     </section>
                 </div>
+
                 <div className="col-span-2 md:col-span-3 min-h-0 overflow-y-auto">
-                    <section id="edit-section">
-                        <div className="flex flex-col space-y-4">
-                            <section id="header">
-                                <div className="grid grid-cols-1 md:grid-cols-2 mr-4">
-                                    <div className="col-span-1">
-                                        <div className="flex items-center justify-start space-x-2">
-                                            <span>
-                                                { upperFirst(transChoice('common.menu', 1)) + trans(':') }
-                                            </span>
-                                            <span>
-                                                { upperFirst(trans(`common.${ menu.category }`)) }
-                                            </span>
+                    {
+                        menu ? (
+                            <section id="edit-section">
+                                <div className="flex flex-col space-y-4">
+                                    <section id="header">
+                                        <div className="grid grid-cols-1 md:grid-cols-2 mr-4">
+                                            <div className="col-span-1">
+                                                <div className="flex items-center justify-start space-x-2">
+                                                    <span>
+                                                        { upperFirst(transChoice('common.menu', 1)) + trans(':') }
+                                                    </span>
+                                                    <span>
+                                                        { upperFirst(trans(`common.${ menu.category }`)) }
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div className="col-span-1">
+                                                <div className="flex items-center justify-end space-x-2">
+                                                    <span>
+                                                        { upperFirst(trans('common.active')) + trans(':') }
+                                                    </span>
+                                                    <Toggle
+                                                        value={ menu.active }
+                                                        onChange={ () => setMenu({ ...menu, active: !menu.active }) }
+                                                    />
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className="col-span-1">
-                                        <div className="flex items-center justify-end space-x-2">
-                                            <span>
-                                                { upperFirst(trans('common.active')) + trans(':') }
-                                            </span>
-                                            <Toggle
-                                                value={ menu.active }
-                                                onChange={ () => setMenu({ ...menu, active: !menu.active }) }
-                                            />
-                                        </div>
-                                    </div>
+                                    </section>
+                                    <hr className="border-color" />
+                                    <section id="sortable-tree">
+                                        {
+                                            layout ? (
+                                                <SortableTree
+                                                    data={ layout }
+                                                    setData={ setLayout }
+                                                    collapsible
+                                                    indicator
+                                                    removable
+                                                />
+                                            ) : null
+                                        }
+                                    </section>
                                 </div>
                             </section>
-                            <hr className="border-color" />
-                            <section id="sortable-tree">
-                                {
-                                    layout ? (
-                                        <SortableTree
-                                            data={ layout }
-                                            setData={ setLayout }
-                                            collapsible
-                                            indicator
-                                            removable
-                                        />
-                                    ) : null
-                                }
-                            </section>
-                        </div>
-                    </section>
+                        ) : null
+                    }
                 </div>
             </div>
 
