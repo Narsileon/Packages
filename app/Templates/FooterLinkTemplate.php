@@ -6,7 +6,7 @@ namespace App\Templates;
 
 use App\Constants\TableConstants;
 use App\Constants\Types;
-use App\Models\Backend\UserSettings;
+use App\Models\UserTemplates;
 use App\Models\Frontend\FooterLink;
 
 #endregion
@@ -55,7 +55,7 @@ class FooterLinkTemplate
     ];
 
     public const DEFAULT_TEMPLATE = [
-        TableConstants::PROPERTY_NAME => UserSettings::FIELD_TEMPLATE_FOOTER_LINKS,
+        TableConstants::PROPERTY_NAME => UserTemplates::FIELD_TEMPLATE_FOOTER_LINKS,
         TableConstants::PROPERTY_COLUMN_ORDER => self::DEFAULT_ORDER,
         TableConstants::PROPERTY_SORTING => self::DEFAULT_SORTING,
     ];

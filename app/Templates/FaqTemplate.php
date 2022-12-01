@@ -6,7 +6,7 @@ namespace App\Templates;
 
 use App\Constants\TableConstants;
 use App\Constants\Types;
-use App\Models\Backend\UserSettings;
+use App\Models\UserTemplates;
 use App\Models\Frontend\Faq;
 
 #endregion
@@ -49,7 +49,7 @@ class FaqTemplate
     ];
 
     public const DEFAULT_TEMPLATE = [
-        TableConstants::PROPERTY_NAME => UserSettings::FIELD_TEMPLATE_FAQS,
+        TableConstants::PROPERTY_NAME => UserTemplates::FIELD_TEMPLATE_FAQS,
         TableConstants::PROPERTY_COLUMN_ORDER => self::DEFAULT_ORDER,
         TableConstants::PROPERTY_SORTING => self::DEFAULT_SORTING,
     ];

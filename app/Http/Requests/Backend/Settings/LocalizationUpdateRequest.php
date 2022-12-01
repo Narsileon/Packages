@@ -5,7 +5,7 @@ namespace App\Http\Requests\Backend\Settings;
 #region USE
 
 use App\Constants\ValidationRules;
-use App\Models\Backend\Localization;
+use App\Models\UserLocalization;
 use Illuminate\Foundation\Http\FormRequest;
 
 #endregion
@@ -17,7 +17,7 @@ class LocalizationUpdateRequest extends FormRequest
     public function rules() : array
     {
         return [
-            Localization::FIELD_DICTIONARY => [
+            UserLocalization::FIELD_DICTIONARY => [
                 ValidationRules::REQUIRED,
                 ValidationRules::TYPE_ARRAY,
             ],

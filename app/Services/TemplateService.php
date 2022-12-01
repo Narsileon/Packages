@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Models\Backend\UserSettings;
+use App\Models\UserTemplates;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,14 +17,14 @@ class TemplateService
 
     public static function create($user_id)
     {
-        UserSettings::factory()->create([
-            UserSettings::FIELD_USER_ID => $user_id,
-            UserSettings::FIELD_TYPE => UserSettings::TYPE_DEFAULT,
+        UserTemplates::factory()->create([
+            UserTemplates::FIELD_USER_ID => $user_id,
+            UserTemplates::FIELD_TYPE => UserTemplates::TYPE_DEFAULT,
         ]);
 
-        UserSettings::factory()->create([
-            UserSettings::FIELD_USER_ID => $user_id,
-            UserSettings::FIELD_TYPE => UserSettings::TYPE_CUSTOM,
+        UserTemplates::factory()->create([
+            UserTemplates::FIELD_USER_ID => $user_id,
+            UserTemplates::FIELD_TYPE => UserTemplates::TYPE_CUSTOM,
         ]);
     }
 
@@ -32,14 +32,14 @@ class TemplateService
     {
         $user = Auth::user();
 
-        if (!$user || !$user->{ User::ATTRIBUTE_SETTINGS })
+        if (!$user || !$user->{ User::ATTRIBUTE_TEMPLATES })
         {
             return $default;
         }
 
         else
         {
-            return $user->{ User::ATTRIBUTE_SETTINGS }->where(UserSettings::FIELD_TYPE, '=', $type)->first()->$name;
+            return $user->{ User::ATTRIBUTE_TEMPLATES }->where(UserTemplates::FIELD_TYPE, '=', $type)->first()->$name;
         }
     }
 

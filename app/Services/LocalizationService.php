@@ -5,7 +5,7 @@ namespace App\Services;
 #region USE
 
 use App\Models\Backend\Language;
-use App\Models\Backend\Localization;
+use App\Models\UserLocalization;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
@@ -29,9 +29,9 @@ class LocalizationService
 
     public static function createTable($user)
     {
-        Localization::create([
-            Localization::FIELD_USER_ID => $user->id,
-            Localization::FIELD_DICTIONARY => self::getCustomizableLocalization(),
+        UserLocalization::create([
+            UserLocalization::FIELD_USER_ID => $user->id,
+            UserLocalization::FIELD_DICTIONARY => self::getCustomizableLocalization(),
         ]);
     }
 

@@ -6,17 +6,17 @@ namespace App\Http\Controllers\Backend\Settings;
 
 use App\Constants\IconConstants;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Backend\Settings\MenuUpdateRequest;
+use App\Http\Requests\Backend\Settings\UserMenuUpdateRequest;
 use App\Http\Resources\Backend\Settings\MenuItemResource;
-use App\Models\Menu;
 use App\Models\MenuItem;
+use App\Models\UserMenu;
 use App\Services\MenuService;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 #endregion
 
-class MenuController extends Controller
+class UserMenuController extends Controller
 {
     #region PUBLIC METHODS
 
@@ -26,7 +26,7 @@ class MenuController extends Controller
 
         foreach($menus as $key => $value)
         {
-            $menus[$key]->{ Menu::FIELD_TEMPLATE } = MenuService::getMenuItem($menus[$key]->{ Menu::FIELD_TEMPLATE });
+            $menus[$key]->{ UserMenu::FIELD_TEMPLATE } = MenuService::getMenuItem($menus[$key]->{ UserMenu::FIELD_TEMPLATE });
         }
 
         $menuItems = MenuItemResource::collection(MenuItem::all());
@@ -40,15 +40,15 @@ class MenuController extends Controller
         ));
     }
 
-    public function update(MenuUpdateRequest $request, Menu $menu)
+    public function update(UserMenuUpdateRequest $request, UserMenu $menu)
     {
         $attributes = $request->validated();
 
-        $attributes[Menu::FIELD_TEMPLATE] = MenuService::getMenuID($attributes[Menu::FIELD_TEMPLATE]);
+        $attributes[UserMenu::FIELD_TEMPLATE] = MenuService::getMenuID($attributes[UserMenu::FIELD_TEMPLATE]);
 
         $menu->update($attributes);
 
-        return redirect(route('admin.menus'))
+        return redirect(route('admin.user_menus.index'))
             ->with('success', 'menu_updated');
     }
 

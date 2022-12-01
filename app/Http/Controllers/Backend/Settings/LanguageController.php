@@ -7,7 +7,7 @@ namespace App\Http\Controllers\Backend\Settings;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Backend\Settings\LanguageResource;
 use App\Models\Backend\Language;
-use App\Models\Backend\UserSettings;
+use App\Models\UserTemplates;
 use App\Services\TemplateService;
 use App\Templates\LanguageTemplate;
 use Illuminate\Http\Request;
@@ -22,7 +22,7 @@ class LanguageController extends Controller
     public function index()
     {
         $columns = LanguageTemplate::COLUMNS;
-        $template = TemplateService::get(UserSettings::FIELD_TEMPLATE_LANGUAGES, UserSettings::TYPE_CUSTOM, LanguageTemplate::DEFAULT_TEMPLATE);
+        $template = TemplateService::get(UserTemplates::FIELD_TEMPLATE_LANGUAGES, UserTemplates::TYPE_CUSTOM, LanguageTemplate::DEFAULT_TEMPLATE);
 
         $languages = LanguageResource::collection(Language::all());
 

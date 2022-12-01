@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Frontoffice\FaqCreateRequest;
 use App\Http\Requests\Backend\Frontoffice\FaqUpdateRequest;
 use App\Http\Resources\Backend\Frontoffice\FaqCollection;
-use App\Models\Backend\UserSettings;
+use App\Models\UserTemplates;
 use App\Models\Frontend\Faq;
 use App\Services\TemplateService;
 use App\Templates\FaqTemplate;
@@ -25,7 +25,7 @@ class FaqController extends Controller
         $this->authorize('view', Faq::class);
 
         $columns = FaqTemplate::COLUMNS;
-        $template = TemplateService::get(UserSettings::FIELD_TEMPLATE_FAQS, UserSettings::TYPE_CUSTOM, FaqTemplate::DEFAULT_TEMPLATE);
+        $template = TemplateService::get(UserTemplates::FIELD_TEMPLATE_FAQS, UserTemplates::TYPE_CUSTOM, FaqTemplate::DEFAULT_TEMPLATE);
 
         $collection = Faq::query()
             ->search($template)

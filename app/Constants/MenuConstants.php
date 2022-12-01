@@ -98,13 +98,13 @@ abstract class MenuConstants
                     MenuItem::FIELD_TYPE => self::TYPE_PAGE,
                     MenuItem::FIELD_ICON => 'template',
                     MenuItem::FIELD_LABEL => 'common.menus',
-                    MenuItem::FIELD_URL => 'admin.menus',
+                    MenuItem::FIELD_URL => 'admin.user_menus.index',
                 ],
                 [
                     MenuItem::FIELD_TYPE => self::TYPE_PAGE,
                     MenuItem::FIELD_ICON => 'template',
                     MenuItem::FIELD_LABEL => 'common.templates',
-                    MenuItem::FIELD_URL => 'admin.templates',
+                    MenuItem::FIELD_URL => 'admin.user_templates.index',
                 ],
                 [
                     MenuItem::FIELD_TYPE => self::TYPE_PAGE,
@@ -116,7 +116,7 @@ abstract class MenuConstants
                     MenuItem::FIELD_TYPE => self::TYPE_PAGE,
                     MenuItem::FIELD_ICON => 'book',
                     MenuItem::FIELD_LABEL => 'common.dictionaries',
-                    MenuItem::FIELD_URL => 'admin.dictionary.index',
+                    MenuItem::FIELD_URL => 'admin.user_localizations.index',
                 ],
             ]
         ],

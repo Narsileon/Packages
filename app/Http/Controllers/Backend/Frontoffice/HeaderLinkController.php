@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Frontoffice\HeaderLinkCreateRequest;
 use App\Http\Requests\Backend\Frontoffice\HeaderLinkUpdateRequest;
 use App\Http\Resources\Backend\Frontoffice\HeaderLinkCollection;
-use App\Models\Backend\UserSettings;
+use App\Models\UserTemplates;
 use App\Models\Frontend\HeaderLink;
 use App\Services\TemplateService;
 use App\Templates\HeaderLinkTemplate;
@@ -25,7 +25,7 @@ class HeaderLinkController extends Controller
         $this->authorize('view', HeaderLink::class);
 
         $columns = HeaderLinkTemplate::COLUMNS;
-        $template = TemplateService::get(UserSettings::FIELD_TEMPLATE_HEADER_LINKS, UserSettings::TYPE_CUSTOM, HeaderLinkTemplate::DEFAULT_TEMPLATE);
+        $template = TemplateService::get(UserTemplates::FIELD_TEMPLATE_HEADER_LINKS, UserTemplates::TYPE_CUSTOM, HeaderLinkTemplate::DEFAULT_TEMPLATE);
 
         $collection = HeaderLink::query()
             ->search($template)

@@ -5,9 +5,10 @@ namespace App\Models;
 #region USE
 
 use App\Constants\Types;
-use App\Models\Menu;
-use App\Models\Backend\Localization;
-use App\Models\Backend\UserSettings;
+use App\Models\UserLocalization;
+use App\Models\UserMenu;
+use App\Models\UserSetting;
+use App\Models\UserTemplates;
 use App\Services\TemplateService;
 use App\Traits\IsBaseModel;
 use App\Traits\IsFilterable;
@@ -38,11 +39,12 @@ class User extends Authenticatable
     public const FIELD_FIRST_NAME = 'first_name';
     public const FIELD_REMEMBER_TOKEN = 'remember_token';
 
-    public const ATTRIBUTE_MENUS = 'menus';
     public const ATTRIBUTE_LOCALIZATIONS = 'localizations';
+    public const ATTRIBUTE_MENUS = 'menus';
     public const ATTRIBUTE_PERMISSIONS = 'permissions';
     public const ATTRIBUTE_ROLES = 'roles';
     public const ATTRIBUTE_SETTINGS = 'settings';
+    public const ATTRIBUTE_TEMPLATES = 'templates';
 
     #endregion
 
@@ -81,22 +83,27 @@ class User extends Authenticatable
 
     public function localizations() : HasOne
     {
-        return $this->hasOne(Localization::class);
+        return $this->hasOne(UserLocalization::class);
     }
 
     public function menus() : HasMany
     {
-        return $this->hasMany(Menu::class);
+        return $this->hasMany(UserMenu::class);
     }
 
     public function settings() : HasOne
     {
-        if (!$this->hasOne(UserSettings::class)->exists())
+        return $this->hasOne(UserSetting::class);
+    }
+
+    public function templates() : HasOne
+    {
+        if (!$this->hasOne(UserTemplates::class)->exists())
         {
             TemplateService::create($this->id);
         }
 
-        return $this->hasOne(UserSettings::class);
+        return $this->hasOne(UserTemplates::class);
     }
 
     #endregion

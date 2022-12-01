@@ -5,8 +5,8 @@ namespace App\Services;
 #region USE
 
 use App\Constants\MenuConstants;
-use App\Models\Menu;
 use App\Models\MenuItem;
+use App\Models\UserMenu;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
@@ -69,10 +69,10 @@ class MenuService
             }
         }
 
-        Menu::create([
-            Menu::FIELD_USER_ID => $user_id,
-            Menu::FIELD_CATEGORY => 'backend',
-            Menu::FIELD_TEMPLATE => $menu,
+        UserMenu::create([
+            UserMenu::FIELD_USER_ID => $user_id,
+            UserMenu::FIELD_CATEGORY => 'backend',
+            UserMenu::FIELD_TEMPLATE => $menu,
         ]);
     }
 
@@ -134,13 +134,13 @@ class MenuService
     public static function getBackendMenu()
     {
         $backendMenu = Auth::user()->menus
-            ->where(Menu::FIELD_ACTIVE, '=', true)
-            ->where(Menu::FIELD_CATEGORY, '=', Menu::CATEGORY_BACKEND)
+            ->where(UserMenu::FIELD_ACTIVE, '=', true)
+            ->where(UserMenu::FIELD_CATEGORY, '=', UserMenu::CATEGORY_BACKEND)
             ->first();
 
             Log::debug($backendMenu);
 
-        return $backendMenu ? self::getMenuItem($backendMenu->{ Menu::FIELD_TEMPLATE }) : MenuConstants::DEFAULT_BACKEND_MENU;
+        return $backendMenu ? self::getMenuItem($backendMenu->{ UserMenu::FIELD_TEMPLATE }) : MenuConstants::DEFAULT_BACKEND_MENU;
     }
 
     #endregion

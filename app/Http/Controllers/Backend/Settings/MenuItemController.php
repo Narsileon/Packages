@@ -21,7 +21,7 @@ class MenuItemController extends Controller
 
         MenuItem::create($attributes);
 
-        return redirect(route('admin.menus'))
+        return redirect(route('admin.user_menus.index'))
             ->with('success', 'menu_item_created');
     }
 

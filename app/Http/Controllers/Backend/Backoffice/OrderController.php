@@ -9,7 +9,7 @@ use App\Http\Requests\Backend\Backoffice\OrderCreateRequest;
 use App\Http\Requests\Backend\Backoffice\OrderUpdateRequest;
 use App\Http\Resources\Backend\Backoffice\OrderCollection;
 use App\Models\Backend\Order;
-use App\Models\Backend\UserSettings;
+use App\Models\UserTemplates;
 use App\Models\Frontend\Faq;
 use App\Services\TemplateService;
 use App\Templates\OrderTemplate;
@@ -26,7 +26,7 @@ class OrderController extends Controller
         $this->authorize('view', Order::class);
 
         $columns = OrderTemplate::COLUMNS;
-        $template = TemplateService::get(UserSettings::FIELD_TEMPLATE_ORDERS, UserSettings::TYPE_CUSTOM, OrderTemplate::DEFAULT_TEMPLATE);
+        $template = TemplateService::get(UserTemplates::FIELD_TEMPLATE_ORDERS, UserTemplates::TYPE_CUSTOM, OrderTemplate::DEFAULT_TEMPLATE);
 
         $collection = Order::query()
             ->search($template)

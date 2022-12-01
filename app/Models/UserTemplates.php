@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Backend;
+namespace App\Models;
 
 #region USE
 
@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 #endregion
 
-class UserSettings extends Model
+class UserTemplates extends Model
 {
     use HasFactory;
 

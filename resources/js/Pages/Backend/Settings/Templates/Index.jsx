@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { trans, transChoice } from "@/narsil-localization";
-import AppHead from "@/Shared/AppHead";
-import TemplateTable from "./TemplateTable";
+import { useTable } from "@/narsil-table";
+import { Table } from "@/Components/Tables/Index";
 import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
+import AppHead from "@/Shared/AppHead";
 
 export default function Index({ templates }) {
     const [template, setTemplate] = useState(null);
@@ -61,5 +62,16 @@ export default function Index({ templates }) {
                 </div>
             </div>
         </>
+    );
+}
+
+const TemplateTable = ({ columns, template }) => {
+    const [table] = useTable([], columns, template, false);
+
+    return (
+        <Table
+            table={ table }
+            horizontalScrolling={ true }
+        />
     );
 }

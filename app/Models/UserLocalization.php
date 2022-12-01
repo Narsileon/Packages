@@ -5,29 +5,27 @@ namespace App\Models;
 #region USE
 
 use App\Constants\Types;
-use App\Models\User;
+use App\Traits\IsFilterable;
+use App\Traits\IsSortable;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 #endregion
 
-class Menu extends Model
+class UserLocalization extends Model
 {
-    use HasFactory;
+    use HasFactory, IsFilterable, IsSortable;
 
     #region CONSTANTS
 
     public const FIELD_ID = 'id';
-    public const FIELD_USER_ID ='user_id';
-    public const FIELD_ACTIVE = 'active';
+    public const FIELD_USER_ID='user_id';
 
-    public const FIELD_CATEGORY = 'category';
-    public const FIELD_TEMPLATE = 'template';
+    public const FIELD_DICTIONARY = 'dictionary';
 
     public const PROPERTY_USER = 'user';
-
-    public const CATEGORY_BACKEND = 'backend';
 
     #endregion
 
@@ -36,15 +34,14 @@ class Menu extends Model
     protected $fillable =
     [
         self::FIELD_USER_ID,
-        self::FIELD_ACTIVE,
-        self::FIELD_CATEGORY,
-        self::FIELD_TEMPLATE,
+        self::FIELD_DICTIONARY,
     ];
 
     protected $casts = [
-        self::FIELD_ACTIVE => Types::BOOLEAN,
-        self::FIELD_TEMPLATE => Types::ARRAY,
+        self::FIELD_DICTIONARY => Types::ARRAY,
     ];
+
+    protected $perPage = 10;
 
     #endregion
 
@@ -53,6 +50,14 @@ class Menu extends Model
     public function user() : BelongsTo
     {
         return $this->belongsTo(User::class, self::FIELD_ID);
+    }
+
+    protected function dictionary(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => json_decode($value, true),
+            set: fn ($value) => json_encode($value),
+        );
     }
 
     #endregion

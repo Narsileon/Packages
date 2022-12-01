@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Frontoffice\FooterLinkCreateRequest;
 use App\Http\Requests\Backend\Frontoffice\FooterLinkUpdateRequest;
 use App\Http\Resources\Backend\Frontoffice\FooterLinkCollection;
-use App\Models\Backend\UserSettings;
+use App\Models\UserTemplates;
 use App\Models\Frontend\FooterLink;
 use App\Services\TemplateService;
 use App\Templates\FooterLinkTemplate;
@@ -25,7 +25,7 @@ class FooterLinkController extends Controller
         $this->authorize('view', FooterLink::class);
 
         $columns = FooterLinkTemplate::COLUMNS;
-        $template = TemplateService::get(UserSettings::FIELD_TEMPLATE_FOOTER_LINKS, UserSettings::TYPE_CUSTOM, FooterLinkTemplate::DEFAULT_TEMPLATE);
+        $template = TemplateService::get(UserTemplates::FIELD_TEMPLATE_FOOTER_LINKS, UserTemplates::TYPE_CUSTOM, FooterLinkTemplate::DEFAULT_TEMPLATE);
 
         $collection = FooterLink::query()
             ->search($template)

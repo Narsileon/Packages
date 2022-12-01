@@ -110,7 +110,7 @@ export const useTable = (
 			previousCurrent
 		) {
 			const timeout = setTimeout(() => {
-				Inertia.patch(route('admin.templates'), {
+				Inertia.patch(route('admin.user_templates.update'), {
 					'template': {
 						'name': template.name,
 						'columnFilters': { ...table.getState().columnFilters },
