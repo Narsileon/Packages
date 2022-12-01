@@ -1,17 +1,16 @@
+import { useRef } from "react";
 import { useClickAway, useToggle } from "react-use";
 import { usePage } from "@inertiajs/inertia-react";
-import { trans } from "@/narsil-localization";
+import { transChoice } from "@/narsil-localization";
 import CloseButton from "@/Components/Elements/Buttons/CloseButton";
 import MenuButton from "@/Components/Elements/Buttons/MenuButton";
 import NavLink from "@/Components/Elements/Links/NavLink";
-import { useRef } from "react";
 
 export default function Nav() {
-    const auth = usePage().props.shared.auth;
+    const shared = usePage().props.shared;
 
-    const links = [
-        { route: route('home'), label: trans('common.home'), icon: 'home' },
-    ];
+    const auth = shared.auth;
+    const menuLinks = shared.settings.menus.frontend_header
 
     const dropdown = useRef();
 
@@ -31,7 +30,7 @@ export default function Nav() {
             />
 
             <ul className={ `md:flex md:items-center md:justify-between primary-background p-2 space-y-2 md:space-x-4 ${ open ? "absolute md:relative md:w-auto w-full md:h-12 h-screen top-0 left-0 z-40" : "hidden" }` }>
-                { renderLinks(links) }
+                { renderLinks(menuLinks) }
 
                 <li className="md:relative grid">
                     <MenuButton
@@ -60,11 +59,11 @@ const renderLinks = (links) => {
     return (
         <>
             {
-                links.map(({ route, label, icon }) => {
+                links.map(({ url, label, icon }) => {
                     return (
                         <NavLink
-                            href={ route }
-                            label={ label }
+                            href={ route(url) }
+                            label={ transChoice(label, 1) }
                             icon={ icon }
                             key={ label }
                         />
@@ -80,7 +79,7 @@ const NavAuth = ({ auth }) => {
         if (auth.permissions.includes('backend-view'))
         {
             return [
-                { route: route('admin.dashboard'), label: trans('common.dashboard'), icon: 'dashboard' },
+                { url: 'admin.dashboard', label: 'common.dashboard', icon: 'dashboard' },
             ];
         } else {
             return [];
@@ -108,8 +107,8 @@ const NavAuth = ({ auth }) => {
 
 const NavGuest = () => {
     const links = [
-        { route: route('register'), label: trans('common.register'), icon: 'register' },
-        { route: route('login'), label: trans('common.login'), icon: 'login' },
+        { url: 'register', label: 'common.register', icon: 'register' },
+        { url: 'login', label: 'common.login', icon: 'login' },
     ];
 
     return (

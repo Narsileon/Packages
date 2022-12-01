@@ -5,6 +5,9 @@ namespace Database\Seeders\Subseeders;
 #region USE
 
 use App\Models\Frontend\Faq;
+use App\Services\MenuService;
+use App\Templates\Menus\FrontendFooterTemplate;
+use App\Templates\Menus\FrontendHeaderTemplate;
 use Illuminate\Database\Seeder;
 
 #endregion
@@ -15,6 +18,9 @@ class FrontendSeeder extends Seeder
 
     public function run()
     {
+        MenuService::createMenuItem(FrontendFooterTemplate::DEFAULT);
+        MenuService::createMenuItem(FrontendHeaderTemplate::DEFAULT);
+
         $this->createQuestions();
     }
 

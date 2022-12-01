@@ -6,7 +6,6 @@ namespace App\Services;
 
 use App\Models\MenuItem;
 use App\Models\UserMenu;
-use App\Templates\Menus\BackendMenuTemplate;
 use Illuminate\Support\Facades\Auth;
 
 #endregion
@@ -15,65 +14,29 @@ class MenuService
 {
     #region PUBLIC METHODS
 
-    public static function createBackendMenu($user_id)
+    public static function createMenuItem($menu)
     {
-        $menu = [];
-
-        foreach(BackendMenuTemplate::DEFAULT as $item)
+        foreach($menu as $item)
         {
             if ($item[MenuItem::FIELD_TYPE] == MenuItem::TYPE_CATEGORY)
             {
-                $category = MenuItem::create([
+                MenuItem::create([
                     MenuItem::FIELD_TYPE => $item[MenuItem::FIELD_TYPE],
                     MenuItem::FIELD_ICON => $item[MenuItem::FIELD_ICON],
                     MenuItem::FIELD_LABEL => $item[MenuItem::FIELD_LABEL],
                 ]);
 
-                $menuItem = [
-                    MenuItem::FIELD_ID => $category->id,
-                    MenuItem::FIELD_CHILDREN => [],
-                ];
-
                 foreach($item[MenuItem::FIELD_CHILDREN] as $subitem)
                 {
-                    $page = MenuItem::create([
-                        MenuItem::FIELD_TYPE => $subitem[MenuItem::FIELD_TYPE],
-                        MenuItem::FIELD_ICON => $subitem[MenuItem::FIELD_ICON],
-                        MenuItem::FIELD_LABEL => $subitem[MenuItem::FIELD_LABEL],
-                        MenuItem::FIELD_URL => $subitem[MenuItem::FIELD_URL],
-                    ]);
-
-                    $menuItem[MenuItem::FIELD_CHILDREN][] = [
-                        MenuItem::FIELD_ID => $page->id,
-                    ];
+                    MenuItem::create($subitem);
                 }
-
-                $menu[] = $menuItem;
             }
 
             else
             {
-                $page = MenuItem::create([
-                    MenuItem::FIELD_TYPE => $item[MenuItem::FIELD_TYPE],
-                    MenuItem::FIELD_ICON => $item[MenuItem::FIELD_ICON],
-                    MenuItem::FIELD_LABEL => $item[MenuItem::FIELD_LABEL],
-                    MenuItem::FIELD_URL => $item[MenuItem::FIELD_URL],
-                ]);
-
-                $menuItem = [
-                    MenuItem::FIELD_ID => $page->id,
-                ];
-
-                $menu[] = $menuItem;
+                MenuItem::create($item);
             }
         }
-
-        UserMenu::create([
-            UserMenu::FIELD_USER_ID => $user_id,
-            UserMenu::FIELD_TITLE => 'Default Backend Menu',
-            UserMenu::FIELD_TYPE => UserMenu::TYPE_BACKEND_MENU,
-            UserMenu::FIELD_TEMPLATE => $menu,
-        ]);
     }
 
     public static function getMenuID($layout)

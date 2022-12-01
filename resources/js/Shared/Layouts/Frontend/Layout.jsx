@@ -3,17 +3,6 @@ import Header from "./Header";
 import Footer from "./Footer";
 
 export default function Layout({ children }) {
-    const footerTextLinks = [
-        { route: route('faq'), label: "FAQ" },
-    ];
-
-    const footerIconLinks = [
-        { route: '#', name: 'github' },
-        { route: '#', name: 'facebook' },
-        { route: '#', name: 'instagram' },
-        { route: '#', name: 'twitter' },
-    ];
-
     return (
         <main className="flex flex-col min-h-screen w-full min-w-fit">
             <Header />
@@ -26,10 +15,7 @@ export default function Layout({ children }) {
                 <Flash />
             </div>
 
-            <Footer
-                textLinks={ footerTextLinks }
-                iconLinks={ footerIconLinks }
-            />
+            <Footer />
         </main>
     );
 }

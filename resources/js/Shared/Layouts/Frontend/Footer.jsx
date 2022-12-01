@@ -1,23 +1,25 @@
-import { Link } from "@inertiajs/inertia-react";
-import { trans } from "@/narsil-localization";
+import { Link, usePage } from "@inertiajs/inertia-react";
+import { trans, transChoice } from "@/narsil-localization";
 import WebsiteLogo from "@/Shared/Layouts/WebsiteLogo";
 import Logo from "@/Shared/Svg/Logo";
 
-export default function Footer({ textLinks, iconLinks }) {
+export default function Footer() {
     return (
         <footer id="footer">
             <div className="primary-background border-t-2 border-color w-full p-4 space-y-4 text-sm">
-                <UpperFooter textLinks={ textLinks } />
+                <UpperFooter />
 
                 <hr className="border-color" />
 
-                <LowerFooter iconLinks={ iconLinks } />
+                <LowerFooter />
             </div>
         </footer>
     );
 }
 
-const UpperFooter = ({ textLinks }) => {
+const UpperFooter = () => {
+    const menuItems = usePage().props.shared.settings.menus.frontend_footer
+
     return (
         <section id="upper-header">
             <div className="grid grid-cols-1 md:grid-cols-2 space-y-4 md:space-y-0">
@@ -30,14 +32,14 @@ const UpperFooter = ({ textLinks }) => {
                 <div className="col-span-1">
                     <div className="flex items-center justify-center h-full md:justify-end space-x-4">
                         {
-                            textLinks.map(({ route, label }, index) => {
+                            menuItems.map((item, index) => {
                                 return (
                                     <Link
                                         className="hover:underline"
-                                        href={ route }
+                                        href={ route(item.url) }
                                         key={ index }
                                     >
-                                        { trans(label) }
+                                        { transChoice(item.label, 1) }
                                     </Link>
                                 );
                             })
@@ -49,14 +51,21 @@ const UpperFooter = ({ textLinks }) => {
     );
 }
 
-const LowerFooter = ({ iconLinks }) => {
+const LowerFooter = () => {
+    const menuItems = [
+        { route: '#', name: 'github' },
+        { route: '#', name: 'facebook' },
+        { route: '#', name: 'instagram' },
+        { route: '#', name: 'twitter' },
+    ];
+
     return (
         <section id="lower-header">
             <div className="grid grid-cols-1 md:grid-cols-2 space-y-4 md:space-y-0">
                 <div className="col-span-1 md:order-2">
                     <div className="flex items-center justify-center md:justify-end space-x-4">
                         {
-                            iconLinks.map(({ route, name }) => {
+                            menuItems.map(({ route, name }) => {
                                 return (
                                     <Link
                                         className="link-icon"
