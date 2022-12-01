@@ -18,9 +18,9 @@ class UserSetting extends Model
     #region CONSTANTS
 
     public const FIELD_ID = 'id';
-    public const FIELD_USER_ID='user_id';
 
     public const FIELD_SETTINGS = 'settings';
+    public const FIELD_USER_ID='user_id';
 
     public const PROPERTY_USER = 'user';
 
@@ -30,8 +30,8 @@ class UserSetting extends Model
 
     protected $fillable =
     [
-        self::FIELD_USER_ID,
         self::FIELD_SETTINGS,
+        self::FIELD_USER_ID,
     ];
 
     protected $casts = [

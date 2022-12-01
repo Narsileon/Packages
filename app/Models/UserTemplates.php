@@ -18,11 +18,8 @@ class UserTemplates extends Model
     #region CONSTANTS
 
     public const FIELD_ID = 'id';
-    public const FIELD_USER_ID='user_id';
 
-    public const FIELD_TYPE = 'type';
     public const FIELD_SETTINGS = 'settings';
-
     public const FIELD_TEMPLATE_FAQS = 'template_faqs';
     public const FIELD_TEMPLATE_LANGUAGES = 'template_languages';
     public const FIELD_TEMPLATE_LOCALIZATIONS = 'template_localizations';
@@ -30,6 +27,8 @@ class UserTemplates extends Model
     public const FIELD_TEMPLATE_ORDERS = 'template_orders';
     public const FIELD_TEMPLATE_ROLES = 'template_roles';
     public const FIELD_TEMPLATE_USERS = 'template_users';
+    public const FIELD_TYPE = 'type';
+    public const FIELD_USER_ID='user_id';
 
     public const PROPERTY_USER = 'user';
 
@@ -42,8 +41,6 @@ class UserTemplates extends Model
 
     protected $fillable =
     [
-        self::FIELD_USER_ID,
-        self::FIELD_TYPE,
         self::FIELD_SETTINGS,
         self::FIELD_TEMPLATE_FAQS,
         self::FIELD_TEMPLATE_LANGUAGES,
@@ -52,6 +49,8 @@ class UserTemplates extends Model
         self::FIELD_TEMPLATE_ORDERS,
         self::FIELD_TEMPLATE_ROLES,
         self::FIELD_TEMPLATE_USERS,
+        self::FIELD_TYPE,
+        self::FIELD_USER_ID,
     ];
 
     protected $casts = [

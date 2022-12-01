@@ -119,7 +119,7 @@ export default function Index({ menus, menuItems }) {
                             <section id="edit-section">
                                 <div className="flex flex-col space-y-4">
                                     <section id="header">
-                                        <div className="grid grid-cols-1 md:grid-cols-2 mr-4">
+                                        <div className="grid grid-cols-1 md:grid-cols-1 mr-4">
                                             <div className="col-span-1">
                                                 <div className="flex items-center justify-start space-x-2">
                                                     <span>
@@ -131,7 +131,7 @@ export default function Index({ menus, menuItems }) {
                                                 </div>
                                             </div>
                                             <div className="col-span-1">
-                                                <div className="flex items-center justify-end space-x-2">
+                                                <div className="flex items-center justify-start space-x-2">
                                                     <span>
                                                         { upperFirst(trans('common.active')) + trans(':') }
                                                     </span>

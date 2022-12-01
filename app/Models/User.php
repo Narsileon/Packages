@@ -31,13 +31,13 @@ class User extends Authenticatable
 
     public const FIELD_ID = 'id';
 
-    public const FIELD_USERNAME = 'username';
     public const FIELD_EMAIL = 'email';
     public const FIELD_EMAIL_VERIFIED_AT = 'email_verified_at';
-    public const FIELD_PASSWORD = 'password';
-    public const FIELD_LAST_NAME = 'last_name';
     public const FIELD_FIRST_NAME = 'first_name';
+    public const FIELD_LAST_NAME = 'last_name';
+    public const FIELD_PASSWORD = 'password';
     public const FIELD_REMEMBER_TOKEN = 'remember_token';
+    public const FIELD_USERNAME = 'username';
 
     public const ATTRIBUTE_LOCALIZATIONS = 'localizations';
     public const ATTRIBUTE_MENUS = 'menus';
@@ -52,11 +52,11 @@ class User extends Authenticatable
 
     protected $fillable =
     [
-        self::FIELD_USERNAME,
         self::FIELD_EMAIL,
-        self::FIELD_PASSWORD,
-        self::FIELD_LAST_NAME,
         self::FIELD_FIRST_NAME,
+        self::FIELD_LAST_NAME,
+        self::FIELD_PASSWORD,
+        self::FIELD_USERNAME,
     ];
 
     protected $hidden =

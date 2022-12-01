@@ -19,15 +19,17 @@ class UserMenu extends Model
     #region CONSTANTS
 
     public const FIELD_ID = 'id';
-    public const FIELD_USER_ID ='user_id';
-    public const FIELD_ACTIVE = 'active';
 
+    public const FIELD_ACTIVE = 'active';
     public const FIELD_CATEGORY = 'category';
     public const FIELD_TEMPLATE = 'template';
+    public const FIELD_TITLE = 'title';
+    public const FIELD_USER_ID ='user_id';
 
     public const PROPERTY_USER = 'user';
 
     public const CATEGORY_BACKEND = 'backend';
+    public const CATEGORY_FOOTER = 'footer';
 
     #endregion
 
@@ -35,10 +37,11 @@ class UserMenu extends Model
 
     protected $fillable =
     [
-        self::FIELD_USER_ID,
         self::FIELD_ACTIVE,
         self::FIELD_CATEGORY,
         self::FIELD_TEMPLATE,
+        self::FIELD_TITLE,
+        self::FIELD_USER_ID,
     ];
 
     protected $casts = [

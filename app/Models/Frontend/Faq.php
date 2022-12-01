@@ -20,8 +20,8 @@ class Faq extends Model
 
     public const FIELD_ID = 'id';
 
-    public const FIELD_QUESTION = 'question';
     public const FIELD_ANSWER = 'answer';
+    public const FIELD_QUESTION = 'question';
 
     #endregion
 
@@ -29,8 +29,8 @@ class Faq extends Model
 
     protected $fillable =
     [
-        self::FIELD_QUESTION,
         self::FIELD_ANSWER,
+        self::FIELD_QUESTION,
     ];
 
     protected $perPage = 10;

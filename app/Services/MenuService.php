@@ -71,7 +71,8 @@ class MenuService
 
         UserMenu::create([
             UserMenu::FIELD_USER_ID => $user_id,
-            UserMenu::FIELD_CATEGORY => 'backend',
+            UserMenu::FIELD_TITLE => 'Default Backend Menu',
+            UserMenu::FIELD_CATEGORY => UserMenu::CATEGORY_BACKEND,
             UserMenu::FIELD_TEMPLATE => $menu,
         ]);
     }
