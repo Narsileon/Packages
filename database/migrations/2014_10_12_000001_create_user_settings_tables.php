@@ -64,7 +64,7 @@ return new class extends Migration
             $table->foreignId(UserMenu::FIELD_USER_ID)->constrained()->cascadeOnDelete();
 
             $table->boolean(UserMenu::FIELD_ACTIVE)->default(true);
-            $table->string(UserMenu::FIELD_CATEGORY);
+            $table->string(UserMenu::FIELD_TYPE);
 
             $table->string(UserMenu::FIELD_TITLE);
             $table->text(UserMenu::FIELD_TEMPLATE);

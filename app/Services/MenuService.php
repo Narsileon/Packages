@@ -72,7 +72,7 @@ class MenuService
         UserMenu::create([
             UserMenu::FIELD_USER_ID => $user_id,
             UserMenu::FIELD_TITLE => 'Default Backend Menu',
-            UserMenu::FIELD_CATEGORY => UserMenu::CATEGORY_BACKEND,
+            UserMenu::FIELD_TYPE => UserMenu::TYPE_BACKEND_MENU,
             UserMenu::FIELD_TEMPLATE => $menu,
         ]);
     }
@@ -136,7 +136,7 @@ class MenuService
     {
         $backendMenu = Auth::user()->menus
             ->where(UserMenu::FIELD_ACTIVE, '=', true)
-            ->where(UserMenu::FIELD_CATEGORY, '=', UserMenu::CATEGORY_BACKEND)
+            ->where(UserMenu::FIELD_TYPE, '=', UserMenu::TYPE_BACKEND_MENU)
             ->first();
 
             Log::debug($backendMenu);

@@ -10,7 +10,7 @@ use App\Models\UserLocalization;
 use App\Models\UserTemplates;
 use App\Services\LocalizationService;
 use App\Services\TemplateService;
-use App\Templates\LocalizationTemplate;
+use App\Templates\Tables\UserLocalizationTemplate;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
@@ -22,8 +22,8 @@ class UserLocalizationController extends Controller
 
     public function index()
     {
-        $columns = LocalizationTemplate::COLUMNS;
-        $template = TemplateService::get(UserTemplates::FIELD_TEMPLATE_LOCALIZATIONS, UserTemplates::TYPE_CUSTOM, LocalizationTemplate::DEFAULT_TEMPLATE);
+        $columns = UserLocalizationTemplate::COLUMNS;
+        $template = TemplateService::get(UserTemplates::FIELD_TEMPLATE_LOCALIZATIONS, UserTemplates::TYPE_CUSTOM, UserLocalizationTemplate::DEFAULT_TEMPLATE);
 
         $defaultLocalization = collect(LocalizationService::get(false))['dictionary']['common'];
         $customLocalization = collect(json_decode(Auth::user()->localizations, true));

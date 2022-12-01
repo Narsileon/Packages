@@ -12,7 +12,7 @@ use App\Models\Backend\Order;
 use App\Models\UserTemplates;
 use App\Models\Frontend\Faq;
 use App\Services\TemplateService;
-use App\Templates\OrderTemplate;
+use App\Templates\Tables\OrderTemplate;
 use Inertia\Inertia;
 
 #endregion

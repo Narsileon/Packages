@@ -39,7 +39,7 @@ return new class extends Migration
             $table->id();
             $table->boolean(MenuItem::FIELD_ACTIVE)->default(true);
             $table->string(MenuItem::FIELD_TYPE);
-            $table->string(MenuItem::FIELD_ICON);
+            $table->string(MenuItem::FIELD_ICON)->nullable();
             $table->string(MenuItem::FIELD_LABEL);
             $table->string(MenuItem::FIELD_URL)->nullable();
             $table->text(MenuItem::FIELD_CHILDREN)->nullable();

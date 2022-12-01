@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Templates;
+namespace App\Templates\Tables;
 
 #region USE
 
@@ -10,7 +10,7 @@ use App\Models\UserTemplates;
 
 #endregion
 
-class LocalizationTemplate
+class UserLocalizationTemplate
 {
     #region CONSTANTS
 

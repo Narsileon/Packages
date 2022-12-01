@@ -11,7 +11,7 @@ use App\Http\Resources\Backend\Frontoffice\FaqCollection;
 use App\Models\UserTemplates;
 use App\Models\Frontend\Faq;
 use App\Services\TemplateService;
-use App\Templates\FaqTemplate;
+use App\Templates\Tables\FaqTemplate;
 use Inertia\Inertia;
 
 #endregion

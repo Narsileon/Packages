@@ -9,7 +9,7 @@ use App\Http\Resources\Backend\Settings\LanguageResource;
 use App\Models\Backend\Language;
 use App\Models\UserTemplates;
 use App\Services\TemplateService;
-use App\Templates\LanguageTemplate;
+use App\Templates\Tables\LanguageTemplate;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 

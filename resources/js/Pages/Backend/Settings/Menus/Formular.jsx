@@ -13,8 +13,9 @@ export default function Formular({
     errors,
  }) {
     const categories = [
-        'backend',
-        'footer',
+        'backend-menu',
+        'frontend-footer',
+        'frontend-header',
     ];
 
     return (

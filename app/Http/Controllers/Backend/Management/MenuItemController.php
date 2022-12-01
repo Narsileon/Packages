@@ -12,7 +12,7 @@ use App\Http\Resources\Backend\Management\MenuItemCollection;
 use App\Models\MenuItem;
 use App\Models\UserTemplates;
 use App\Services\TemplateService;
-use App\Templates\MenuItemTemplate;
+use App\Templates\Tables\MenuItemTemplate;
 use Inertia\Inertia;
 
 #endregion

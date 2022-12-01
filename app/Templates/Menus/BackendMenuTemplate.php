@@ -1,44 +1,43 @@
 <?php
 
-namespace App\Constants;
+namespace App\Templates\Menus;
+
+#region USE
 
 use App\Models\MenuItem;
 
-abstract class MenuConstants
+#endregion
+
+class BackendMenuTemplate
 {
     #region CONSTANTS
 
-    public const FIELD_CHILDREN = 'children';
-
-    public const TYPE_CATEGORY = 'category';
-    public const TYPE_PAGE = 'page';
-
-    public const DEFAULT_BACKEND_MENU = [
+    public const DEFAULT = [
         [
-            MenuItem::FIELD_TYPE => self::TYPE_PAGE,
+            MenuItem::FIELD_TYPE => MenuItem::TYPE_PAGE,
             MenuItem::FIELD_ICON => 'dashboard',
             MenuItem::FIELD_LABEL => 'common.dashboard',
             MenuItem::FIELD_URL => 'admin.dashboard',
         ],
         [
-            MenuItem::FIELD_TYPE => self::TYPE_CATEGORY,
+            MenuItem::FIELD_TYPE => MenuItem::TYPE_CATEGORY,
             MenuItem::FIELD_ICON => 'user',
             MenuItem::FIELD_LABEL => 'common.management',
-            self::FIELD_CHILDREN => [
+            MenuItem::FIELD_CHILDREN => [
                 [
-                    MenuItem::FIELD_TYPE => self::TYPE_PAGE,
+                    MenuItem::FIELD_TYPE => MenuItem::TYPE_PAGE,
                     MenuItem::FIELD_ICON => 'users',
                     MenuItem::FIELD_LABEL => 'common.users',
                     MenuItem::FIELD_URL => 'admin.users.index',
                 ],
                 [
-                    MenuItem::FIELD_TYPE => self::TYPE_PAGE,
+                    MenuItem::FIELD_TYPE => MenuItem::TYPE_PAGE,
                     MenuItem::FIELD_ICON => 'group',
                     MenuItem::FIELD_LABEL => 'permissions.roles',
                     MenuItem::FIELD_URL => 'admin.roles.index',
                 ],
                 [
-                    MenuItem::FIELD_TYPE => self::TYPE_PAGE,
+                    MenuItem::FIELD_TYPE => MenuItem::TYPE_PAGE,
                     MenuItem::FIELD_ICON => 'link',
                     MenuItem::FIELD_LABEL => 'common.menu_items',
                     MenuItem::FIELD_URL => 'admin.menu_items.index',
@@ -46,18 +45,18 @@ abstract class MenuConstants
             ]
         ],
         [
-            MenuItem::FIELD_TYPE => self::TYPE_CATEGORY,
+            MenuItem::FIELD_TYPE => MenuItem::TYPE_CATEGORY,
             MenuItem::FIELD_ICON => 'office',
             MenuItem::FIELD_LABEL => 'common.backoffice',
-            self::FIELD_CHILDREN => [
+            MenuItem::FIELD_CHILDREN => [
                 [
-                    MenuItem::FIELD_TYPE => self::TYPE_PAGE,
+                    MenuItem::FIELD_TYPE => MenuItem::TYPE_PAGE,
                     MenuItem::FIELD_ICON => 'calendar',
                     MenuItem::FIELD_LABEL => 'date-time.calendars',
                     MenuItem::FIELD_URL => 'admin.calendar',
                 ],
                 [
-                    MenuItem::FIELD_TYPE => self::TYPE_PAGE,
+                    MenuItem::FIELD_TYPE => MenuItem::TYPE_PAGE,
                     MenuItem::FIELD_ICON => 'clipboard',
                     MenuItem::FIELD_LABEL => 'common.orders',
                     MenuItem::FIELD_URL => 'admin.orders.index',
@@ -65,12 +64,12 @@ abstract class MenuConstants
             ]
         ],
         [
-            MenuItem::FIELD_TYPE => self::TYPE_CATEGORY,
+            MenuItem::FIELD_TYPE => MenuItem::TYPE_CATEGORY,
             MenuItem::FIELD_ICON => 'home',
             MenuItem::FIELD_LABEL => 'common.frontoffice',
-            self::FIELD_CHILDREN => [
+            MenuItem::FIELD_CHILDREN => [
                 [
-                    MenuItem::FIELD_TYPE => self::TYPE_PAGE,
+                    MenuItem::FIELD_TYPE => MenuItem::TYPE_PAGE,
                     MenuItem::FIELD_ICON => 'question',
                     MenuItem::FIELD_LABEL => 'common.faqs',
                     MenuItem::FIELD_URL => 'admin.faqs.index',
@@ -78,36 +77,36 @@ abstract class MenuConstants
             ]
         ],
         [
-            MenuItem::FIELD_TYPE => self::TYPE_CATEGORY,
+            MenuItem::FIELD_TYPE => MenuItem::TYPE_CATEGORY,
             MenuItem::FIELD_ICON => 'cog',
             MenuItem::FIELD_LABEL => 'common.settings',
-            self::FIELD_CHILDREN => [
+            MenuItem::FIELD_CHILDREN => [
                 [
-                    MenuItem::FIELD_TYPE => self::TYPE_PAGE,
+                    MenuItem::FIELD_TYPE => MenuItem::TYPE_PAGE,
                     MenuItem::FIELD_ICON => 'cog',
                     MenuItem::FIELD_LABEL => 'common.general_settings',
                     MenuItem::FIELD_URL => 'admin.general_settings',
                 ],
                 [
-                    MenuItem::FIELD_TYPE => self::TYPE_PAGE,
+                    MenuItem::FIELD_TYPE => MenuItem::TYPE_PAGE,
                     MenuItem::FIELD_ICON => 'language',
                     MenuItem::FIELD_LABEL => 'common.languages',
                     MenuItem::FIELD_URL => 'admin.languages',
                 ],
                 [
-                    MenuItem::FIELD_TYPE => self::TYPE_PAGE,
+                    MenuItem::FIELD_TYPE => MenuItem::TYPE_PAGE,
                     MenuItem::FIELD_ICON => 'book',
                     MenuItem::FIELD_LABEL => 'common.dictionaries',
                     MenuItem::FIELD_URL => 'admin.user_localizations.index',
                 ],
                 [
-                    MenuItem::FIELD_TYPE => self::TYPE_PAGE,
+                    MenuItem::FIELD_TYPE => MenuItem::TYPE_PAGE,
                     MenuItem::FIELD_ICON => 'template',
                     MenuItem::FIELD_LABEL => 'common.menus',
                     MenuItem::FIELD_URL => 'admin.user_menus.index',
                 ],
                 [
-                    MenuItem::FIELD_TYPE => self::TYPE_PAGE,
+                    MenuItem::FIELD_TYPE => MenuItem::TYPE_PAGE,
                     MenuItem::FIELD_ICON => 'template',
                     MenuItem::FIELD_LABEL => 'common.templates',
                     MenuItem::FIELD_URL => 'admin.user_templates.index',

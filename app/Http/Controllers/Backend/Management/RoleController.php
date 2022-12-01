@@ -14,7 +14,7 @@ use App\Models\UserTemplates;
 use App\Models\UserPermission;
 use App\Models\UserRole;
 use App\Services\TemplateService;
-use App\Templates\RoleTemplate;
+use App\Templates\Tables\RoleTemplate;
 use Inertia\Inertia;
 use Spatie\Permission\Models\Role;
 

@@ -16,7 +16,7 @@ use App\Models\User;
 use App\Models\UserPermission;
 use App\Models\UserRole;
 use App\Services\TemplateService;
-use App\Templates\UserTemplate;
+use App\Templates\Tables\UserTemplate;
 use Illuminate\Support\Arr;
 use Inertia\Inertia;
 

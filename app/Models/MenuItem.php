@@ -27,6 +27,9 @@ class MenuItem extends Model
     public const FIELD_TYPE = 'type';
     public const FIELD_URL = 'url';
 
+    public const TYPE_CATEGORY = 'category';
+    public const TYPE_PAGE = 'page';
+
     #endregion
 
     #region PROPERTIES

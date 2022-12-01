@@ -17,7 +17,7 @@ class UserMenuCreateRequest extends FormRequest
     public function rules() : array
     {
         return [
-            UserMenu::FIELD_CATEGORY => [
+            UserMenu::FIELD_TYPE => [
                 ValidationRules::REQUIRED,
                 ValidationRules::TYPE_STRING,
             ],
