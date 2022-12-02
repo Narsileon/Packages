@@ -25,7 +25,7 @@ export default function TableMenu({ id, options = {
                 showChevron ={ true }
                 width="12"
             >
-                <DropdownPanel className="fixed -top-2 left-14">
+                <DropdownPanel className="fixed -top-24 left-14">
                     {
                         options.showable && (
                             <DropdownItem

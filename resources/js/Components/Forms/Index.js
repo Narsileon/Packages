@@ -1,5 +1,4 @@
 import Form from "./Form.jsx";
-import FormBody from "./FormBody.jsx";
 import FormCheckbox from "./FormCheckbox.jsx";
 import FormError from "./FormError.jsx";
 import FormFooter from "./FormFooter.jsx";
@@ -13,7 +12,6 @@ import FormTextArea from "./FormTextArea.jsx";
 
 export {
     Form,
-    FormBody,
     FormCheckbox,
     FormError,
     FormFooter,

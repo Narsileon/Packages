@@ -24,38 +24,42 @@ export default function Index({ menus, menuItems }) {
 
             <div className="grid grid-cols-2 md:grid-cols-4 h-full gap-x-8 gap-y-4">
                 <div className="col-span-4">
-                    <button
-                        className="link-text"
-                        onClick={ () => setMenu(null) }
-                    >
-                        { `${ trans('Create a new menu') } ` }
-                    </button>
-                    <span>
-                        { ` ${ trans('or select a menu to edit:') } ` }
-                    </span>
-                    <select
-                        className="field"
-                        onChange={ (event) => onMenuChange(event.target.value != 'none' ? menus[event.target.value] : null) }
-                    >
-                        <option
-                            value={ 'none' }
-                            key={ 'none' }
+                    <div className="flex items-center space-x-4">
+                        <div>
+                            <button
+                                className="link-text"
+                                onClick={ () => setMenu(null) }
+                            >
+                                { `${ trans('Create a new menu') } ` }
+                            </button>
+                            <span>
+                                { ` ${ trans('or select a menu to edit:') } ` }
+                            </span>
+                        </div>
+                        <select
+                            className="field max-w-fit"
+                            onChange={ (event) => onMenuChange(event.target.value != 'none' ? menus[event.target.value] : null) }
                         >
-                            { '---' }
-                        </option>
-                        {
-                            menus.map((menu, index) => {
-                                return (
-                                    <option
-                                        value={ index }
-                                        key={ index }
-                                    >
-                                        { upperFirst(menu.title) }
-                                    </option>
-                                );
-                            })
-                        }
-                    </select>
+                            <option
+                                value={ 'none' }
+                                key={ 'none' }
+                            >
+                                { '---' }
+                            </option>
+                            {
+                                menus.map((menu, index) => {
+                                    return (
+                                        <option
+                                            value={ index }
+                                            key={ index }
+                                        >
+                                            { upperFirst(menu.title) }
+                                        </option>
+                                    );
+                                })
+                            }
+                        </select>
+                    </div>
                 </div>
                 {
                     menu ? (

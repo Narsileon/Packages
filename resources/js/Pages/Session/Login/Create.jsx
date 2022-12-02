@@ -1,6 +1,6 @@
 import { useForm } from "@inertiajs/inertia-react";
 import { trans, transChoice } from "@/narsil-localization";
-import { Form, FormBody, FormFooter, FormHeader, FormInput } from "@/Components/Forms";
+import { Form, FormFooter, FormHeader, FormInput } from "@/Components/Forms";
 import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 import BackButton from "@/Components/Elements/Buttons/BackButton";
 import AppHead from "@/Shared/AppHead";
@@ -16,7 +16,7 @@ export default function Create() {
             <AppHead title={ trans('Connection') } />
 
             <Form
-                className="w-9/12 lg:w-6/12 mx-auto"
+                className="w-10/12 md:w-8/12 lg:w-6/12 mx-auto"
                 submit={ () => post(route('login')) }
             >
                 <FormHeader>
@@ -26,27 +26,30 @@ export default function Create() {
                         </h1>
                     </div>
                 </FormHeader>
-                <FormBody>
-                    {/* Email */}
-                    <FormInput
-                        id="email"
-                        label={ transChoice('common.emails', 1) }
-                        type="email"
-                        value={ data.email}
-                        error={ errors.email}
-                        setData={ setData }
-                    />
-                    {/* Password */}
-                    <FormInput
-                        id="password"
-                        label={ transChoice('common.passwords', 1) }
-                        type="password"
-                        value={ data.password}
-                        error={ errors.password}
-                        setData={ setData }
-                        autoComplete="current-password"
-                    />
-                </FormBody>
+
+                <section id="form-body">
+                    <div className="grid grid-cols-1 gap-4">
+                        {/* Email */}
+                        <FormInput
+                            id="email"
+                            label={ transChoice('common.emails', 1) }
+                            type="email"
+                            value={ data.email}
+                            error={ errors.email}
+                            setData={ setData }
+                        />
+                        {/* Password */}
+                        <FormInput
+                            id="password"
+                            label={ transChoice('common.passwords', 1) }
+                            type="password"
+                            value={ data.password}
+                            error={ errors.password}
+                            setData={ setData }
+                            autoComplete="current-password"
+                        />
+                    </div>
+                </section>
 
                 <FormFooter>
                     <BackButton className="primary-button" />

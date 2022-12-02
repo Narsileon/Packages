@@ -1,6 +1,6 @@
 import { trans, transChoice } from "@/narsil-localization";
 import { useScrollTo } from "@/narsil-react";
-import { Form, FormBody, FormCheckbox, FormFooter, FormHeader, FormInput, FormSectionHeader, FormSummary } from "@/Components/Forms";
+import { Form, FormCheckbox, FormFooter, FormHeader, FormInput, FormSectionHeader, FormSummary } from "@/Components/Forms";
 import BackButton from "@/Components/Elements/Buttons/BackButton";
 import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 
@@ -38,87 +38,96 @@ export default function Formular({
                     </div>
                 </FormHeader>
 
-                <FormBody>
-                    <FormInput
-                        id="username"
-                        label={ transChoice('common.usernames', 1) }
-                        value={ data.username }
-                        error={ errors.username }
-                        setData={ setData }
-                    />
-                    <FormInput
-                        id="email"
-                        label={ transChoice('common.emails', 1) }
-                        type="email"
-                        value={ data.email}
-                        error={ errors.email}
-                        setData={ setData }
-                    />
-                    {
-                        data.password ? (
-                            <FormInput
-                                id="password"
-                                label={ transChoice('common.passwords', 1) }
-                                type="password"
-                                value={ data.password}
-                                error={ errors.password}
-                                setData={ setData }
-                            />
-                        ) : null
-                    }
-                    <FormInput
-                        id="last_name"
-                        label={ transChoice('common.last_names', 1) }
-                        value={ data.last_name }
-                        error={ errors.last_name }
-                        setData={ setData }
-                    />
-                    <FormInput
-                        id="first_name"
-                        label={ transChoice('common.first_names', 1) }
-                        value={ data.first_name }
-                        error={ errors.first_name }
-                        setData={ setData }
-                    />
-
-                    <section ref={ roleSection }>
-                        <FormSectionHeader title={transChoice('permissions.roles', 2) } />
-
+                <section id="form-body">
+                    <div className="grid grid-cols-1 gap-4">
+                        {/* Username */}
+                        <FormInput
+                            id="username"
+                            label={ transChoice('common.usernames', 1) }
+                            value={ data.username }
+                            error={ errors.username }
+                            setData={ setData }
+                        />
+                        {/* Email */}
+                        <FormInput
+                            id="email"
+                            label={ transChoice('common.emails', 1) }
+                            type="email"
+                            value={ data.email}
+                            error={ errors.email}
+                            setData={ setData }
+                        />
+                        {/* Password */}
                         {
-                            roles.data.map((role) => {
-                                return (
-                                    <FormCheckbox
-                                        id={ role.name }
-                                        label={ trans(`permissions.${ role.name }`) }
-                                        checked={ data.roles[role.name] }
-                                        error={ errors[data.roles[role.name]] }
-                                        onChange={ (e) => setData("roles", { ...data.roles, [role.name]: e.target.checked }) }
-                                        key={ role.id }
-                                    />
-                                );
-                            })
+                            data.password ? (
+                                <FormInput
+                                    id="password"
+                                    label={ transChoice('common.passwords', 1) }
+                                    type="password"
+                                    value={ data.password}
+                                    error={ errors.password}
+                                    setData={ setData }
+                                />
+                            ) : null
                         }
-                    </section>
+                        {/* Last name */}
+                        <FormInput
+                            id="last_name"
+                            label={ transChoice('common.last_names', 1) }
+                            value={ data.last_name }
+                            error={ errors.last_name }
+                            setData={ setData }
+                        />
+                        {/* First name */}
+                        <FormInput
+                            id="first_name"
+                            label={ transChoice('common.first_names', 1) }
+                            value={ data.first_name }
+                            error={ errors.first_name }
+                            setData={ setData }
+                        />
 
-                    <section ref={ permissionSection }>
-                        <FormSectionHeader title={transChoice('permissions.permissions', 2) } />
+                        {/* Roles */}
+                        <section ref={ roleSection }>
+                            <FormSectionHeader title={transChoice('permissions.roles', 2) } />
 
-                        {
-                            permissions.data.map((permission) => {
-                                return (
-                                    <FormCheckbox
-                                        id={ permission.name }
-                                        label={ trans(`permissions.${ permission.name }`) }
-                                        checked={ data.permissions[permission.name] }
-                                        error={ errors[data.permissions[permission.name]] }
-                                        onChange={ (e) => setData("permissions", { ...data.permissions, [permission.name]: e.target.checked }) }
-                                        key={ permission.id }
-                                    />
-                                );
-                            })
-                        }
-                    </section>
-                </FormBody>
+                            {
+                                roles.data.map((role) => {
+                                    return (
+                                        <FormCheckbox
+                                            id={ role.name }
+                                            label={ trans(`permissions.${ role.name }`) }
+                                            checked={ data.roles[role.name] }
+                                            error={ errors[data.roles[role.name]] }
+                                            onChange={ (e) => setData("roles", { ...data.roles, [role.name]: e.target.checked }) }
+                                            key={ role.id }
+                                        />
+                                    );
+                                })
+                            }
+                        </section>
+
+                        {/* Permissions */}
+                        <section ref={ permissionSection }>
+                            <FormSectionHeader title={transChoice('permissions.permissions', 2) } />
+
+                            {
+                                permissions.data.map((permission) => {
+                                    return (
+                                        <FormCheckbox
+                                            id={ permission.name }
+                                            label={ trans(`permissions.${ permission.name }`) }
+                                            checked={ data.permissions[permission.name] }
+                                            error={ errors[data.permissions[permission.name]] }
+                                            onChange={ (e) => setData("permissions", { ...data.permissions, [permission.name]: e.target.checked }) }
+                                            key={ permission.id }
+                                        />
+                                    );
+                                })
+                            }
+                        </section>
+                    </div>
+                </section>
 
                 <FormFooter>
                     <BackButton

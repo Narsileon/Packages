@@ -108,7 +108,7 @@ const NavAuth = ({ auth }) => {
 const NavGuest = () => {
     const links = [
         { url: route('register'), label: 'common.register', icon: 'user-plus' },
-        { url: route('login'), label: 'common.login', icon: 'identification' },
+        { url: route('login'), label: 'common.login', icon: 'login' },
     ];
 
     return (
