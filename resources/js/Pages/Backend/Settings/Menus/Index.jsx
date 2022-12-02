@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import { useTimeout } from "react-use";
+import { useState } from "react";
 import { trans, transChoice } from "@/narsil-localization";
 import { upperFirst } from "lodash";
 import AppHead from "@/Shared/AppHead";

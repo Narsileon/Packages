@@ -3,6 +3,7 @@ import { upperFirst } from "lodash";
 import { Form, FormBody, FormFooter, FormHeader, FormInput, FormSelect } from "@/Components/Forms";
 import BackButton from "@/Components/Elements/Buttons/BackButton";
 import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
+import FormIcon from "@/Components/Forms/FormIcon";
 
 export default function Formular({
     title,
@@ -12,7 +13,6 @@ export default function Formular({
     setData,
     processing,
     errors,
-    icons,
 }) {
     const options = [
         {
@@ -63,26 +63,13 @@ export default function Formular({
                         })
                     }
                 </FormSelect>
-                <FormSelect
+                <FormIcon
                     id="icon"
                     label={ transChoice('common.icons', 1) }
                     value={ data.icon }
                     error={ errors.icon }
                     setData={ setData }
-                >
-                    {
-                        icons.map((icon) => {
-                            return (
-                                <option
-                                    value={ icon }
-                                    key={ icon }
-                                >
-                                    { icon }
-                                </option>
-                            );
-                        })
-                    }
-                </FormSelect>
+                />
                 <FormInput
                     id="label"
                     label={ transChoice('common.designations', 1) }

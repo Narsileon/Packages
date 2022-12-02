@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Backend\Management;
 
 #region USE
 
-use App\Constants\IconConstants;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Management\MenuItemCreateRequest;
 use App\Http\Requests\Backend\Management\MenuItemUpdateRequest;
@@ -50,8 +49,6 @@ class MenuItemController extends Controller
     {
         $this->authorize('create', MenuItem::class);
 
-        $icons = IconConstants::NAMES;
-
         return Inertia::render('Backend/Management/MenuItems/Create', compact(
             'icons',
         ));
@@ -82,11 +79,8 @@ class MenuItemController extends Controller
     {
         $this->authorize('update', MenuItem::class);
 
-        $icons = IconConstants::NAMES;
-
         return Inertia::render('Backend/Management/MenuItems/Edit', compact(
             'menuItem',
-            'icons',
         ));
     }
 

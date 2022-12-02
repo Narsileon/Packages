@@ -20,9 +20,12 @@ export default function Dropdown({
             {/* Trigger */}
             <button
                 className={ `selectable w-full ${ triggerClasses } ${ open ? "selectable-active" : "" }` }
-                onClick={ setOpen }
+                onClick={ (event) => {
+                    event.preventDefault();
+                    setOpen();
+                }}
             >
-                <div className="flex items-center justify-between w-full p-1 space-x-1">
+                <div className="flex items-center justify-between w-full space-x-1">
                     <div>
                         { trigger }
                     </div>

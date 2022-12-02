@@ -28,6 +28,7 @@ return [
     'general_settings'      => 'paramètre général|paramètres généraux',
     'header'                => 'en-tête',
     'home'                  => 'accueil',
+    'icons'                 => 'icône|icônes',
     'ids'                   => 'ID|IDs',
     'keys'                  => 'clé|clés',
     'languages'             => 'langage|langages',

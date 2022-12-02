@@ -28,6 +28,7 @@ return [
     'general_settings'      => 'general setting|general settings',
     'header'                => 'header',
     'home'                  => 'home',
+    'icons'                 => 'icon|icons',
     'ids'                   => 'ID|IDs',
     'keys'                  => 'key|keys',
     'languages'             => 'language|languages',

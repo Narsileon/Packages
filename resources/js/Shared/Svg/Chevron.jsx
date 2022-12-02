@@ -4,42 +4,36 @@ export default function Chevron({
 }) {
     function renderChevron() {
         switch (direction) {
-            // Up
             case "up":
                 return (
                     <>
                         <path d="M5 15l7-7 7 7" />
                     </>
                 );
-            // Right
             case "right":
                 return (
                     <>
                         <path d="M9 5l7 7-7 7" />
                     </>
                 );
-            // Down
             case "down":
                 return (
                     <>
                         <path d="M19 9l-7 7-7-7" />
                     </>
                 );
-            // Left
             case "left":
                 return (
                     <>
                         <path d="M15 19l-7-7 7-7" />
                     </>
                 );
-            // Double left
             case "double-left":
                 return (
                     <>
                         <path d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
                     </>
                 );
-            // Double right
             case "double-right":
                 return (
                     <>

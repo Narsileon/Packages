@@ -28,6 +28,7 @@ return [
     'general_settings'      => 'allgemeine Einstellung|allgemeine Einstellungen',
     'header'                => 'Header',
     'home'                  => 'Start',
+    'icons'                 => 'Icon|Icons',
     'ids'                   => 'ID|IDs',
     'keys'                  => 'Schlüssel|Schlüssel',
     'languages'             => 'Sprache|Sprachen',
