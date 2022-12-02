@@ -16,6 +16,12 @@ class FaqTable
 
     public const COLUMNS = [
         [
+            Tables::FIELD_ID =>  Tables::FIELD_MENU,
+            Tables::FIELD_MAX_SIZE => 50,
+            Tables::FIELD_DISABLE_ORDER => true,
+            Tables::FIELD_DISABLE_SORT => true,
+        ],
+        [
             Tables::FIELD_ACCESSOR_KEY => Faq::FIELD_ID,
             Tables::FIELD_ID => Faq::FIELD_ID,
             Tables::FIELD_TYPE => Types::INTEGER,

@@ -10,23 +10,23 @@ import FrontendPagination from "@/Components/Pagination/FrontendPagination";
 import AppHead from "@/Shared/AppHead";
 
 export default function Index({ collection, tableSettings }) {
-	let newHeader = [...tableSettings.columns].map(object => {
-		if (object.id === 'custom_value') {
-		  	return {
-				...object,
+	const columns = tableSettings.columns.map((column) => {
+		if (column.id === 'custom_value') {
+			return {
+				...column,
 				cell: props => (
 					<CustomValue
 						value={ props.getValue() }
 						handleChange={ (event) => handleChange(event, props.row.original.key) }
 					/>
 				)
-			}
-		} else {
-			return object;
-		}
-	});
+			};
+		};
 
-	const [table] = useTable(collection.dictionary, newHeader, tableSettings, false);
+		return column;
+ 	});
+
+	const [table] = useTable(collection.dictionary, columns, tableSettings, false);
 
 	const handleChange = (event, key) => {
 		let temp = [...table.options.data];

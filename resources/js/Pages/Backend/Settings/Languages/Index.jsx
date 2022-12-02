@@ -8,23 +8,23 @@ import FrontendPagination from "@/Components/Pagination/FrontendPagination";
 import AppHead from "@/Shared/AppHead";
 
 export default function Index({ collection, tableSettings }) {
-	let newHeader = [...tableSettings.columns].map(object => {
-		if (object.id === 'active') {
-		  	return {
-				...object,
+	const columns = tableSettings.columns.map((column) => {
+		if (column.id === 'active') {
+			return {
+				...column,
 				cell: props => (
 					<Toggle
 						value={ props.getValue() }
 						onChange={ () => handleChange(props.row._valuesCache.id) }
 					/>
 				)
-			}
-		} else {
-			return object;
-		}
-	});
+			};
+		};
 
-	const [table] = useTable(collection.data, newHeader, tableSettings, false);
+		return column;
+ 	});
+
+	const [table] = useTable(collection.data, columns, tableSettings, false);
 
 	function handleChange(id) {
 		let temp = [...table.options.data];

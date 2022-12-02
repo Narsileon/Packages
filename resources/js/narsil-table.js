@@ -20,10 +20,6 @@ export const useTable = (
 	tableSettings,
 	manual = true,
 ) => {
-	if (!tableColumns) {
-		return [];
-	}
-
   	const [data, setData] = useState(tableData);
 
     const [columns] = useState(() => [...tableColumns]);

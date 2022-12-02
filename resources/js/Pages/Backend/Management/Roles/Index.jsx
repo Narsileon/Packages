@@ -7,20 +7,20 @@ import AppHead from "@/Shared/AppHead";
 import Icon from "@/Shared/Svg/Icon";
 
 export default function Index({ collection, tableSettings }) {
-	let newHeader = [...tableSettings.columns];
+	const columns = tableSettings.columns.map((column) => {
+		if (column.id === 'menu') {
+			return {
+				...column,
+				cell: props => (
+					<TableMenu id={ props.row.original.id } />
+				),
+			};
+		};
 
-	newHeader.push({
-		id: 'menu',
-		header: '',
-		cell: props => (
-			<TableMenu id={ props.row.original.id } />
-		),
-		maxSize: 50,
-		disableOrderBy: true,
-		disableSortBy: true,
-	})
+		return column;
+ 	});
 
-	const [table] = useTable(collection.data, newHeader, tableSettings);
+	const [table] = useTable(collection.data, columns, tableSettings);
 
 	return (
 		<>
