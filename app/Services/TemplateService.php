@@ -58,19 +58,24 @@ class TemplateService
 
         $template = self::getDefaultTemplate($type);
 
-        UserTemplate::create([
+        $default = UserTemplate::create([
             UserTemplate::FIELD_USER_ID => $user->{ User::FIELD_ID },
             UserTemplate::FIELD_CATEGORY => Tables::CATEGORY_DEFAULT,
             UserTemplate::FIELD_TYPE => $type,
             UserTemplate::FIELD_TEMPLATE => $template,
         ]);
 
-        UserTemplate::create([
+        $custom = UserTemplate::create([
             UserTemplate::FIELD_USER_ID => $user->{ User::FIELD_ID },
             UserTemplate::FIELD_CATEGORY => Tables::CATEGORY_CUSTOM,
             UserTemplate::FIELD_TYPE => $type,
             UserTemplate::FIELD_TEMPLATE => $template,
         ]);
+
+        return compact(
+            'default',
+            'custom',
+        );
     }
 
     private static function getDefaultTemplate($type)
@@ -106,13 +111,16 @@ class TemplateService
 
         else if ($user->{ User::ATTRIBUTE_TEMPLATES }->count() == 0 || $user->{ User::ATTRIBUTE_TEMPLATES }->where(UserTemplate::FIELD_TYPE, '=', $type)->first() == null)
         {
-            self::createDefaultTemplate($type);
+            return self::createDefaultTemplate($type)[$category];
         }
 
-        return $user->{ User::ATTRIBUTE_TEMPLATES }
+        else
+        {
+            return $user->{ User::ATTRIBUTE_TEMPLATES }
             ->where(UserTemplate::FIELD_TYPE, '=', $type)
             ->where(UserTemplate::FIELD_CATEGORY, '=', $category)
             ->first();
+        }
     }
 
     private static function getColumns($type)
