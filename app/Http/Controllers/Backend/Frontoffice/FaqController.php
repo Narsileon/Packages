@@ -4,14 +4,13 @@ namespace App\Http\Controllers\Backend\Frontoffice;
 
 #region USE
 
+use App\Constants\Tables;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Frontoffice\FaqCreateRequest;
 use App\Http\Requests\Backend\Frontoffice\FaqUpdateRequest;
 use App\Http\Resources\Backend\Frontoffice\FaqCollection;
-use App\Models\UserTemplates;
 use App\Models\Frontend\Faq;
 use App\Services\TemplateService;
-use App\Templates\Tables\FaqTemplate;
 use Inertia\Inertia;
 
 #endregion
@@ -24,24 +23,15 @@ class FaqController extends Controller
     {
         $this->authorize('view', Faq::class);
 
-        $columns = FaqTemplate::COLUMNS;
-        $template = TemplateService::get(UserTemplates::FIELD_TEMPLATE_FAQS, UserTemplates::TYPE_CUSTOM, FaqTemplate::DEFAULT_TEMPLATE);
+        $tableSettings = TemplateService::get(Tables::TABLE_FAQS, TABLES::CATEGORY_CUSTOM);
 
-        $collection = Faq::query()
-            ->search($template)
-            ->sort($template);
+        $faqs = TemplateService::applyTableSettings(FAQ::query(), $tableSettings);
 
-        if (array_key_exists('current', $template) && $template['current'] != null)
-        {
-            $template['list'][$template['current']] = $collection->pluck($template['current'])->toArray();
-        }
-
-        $faqs = new FaqCollection($collection->paginate(10));
+        $collection = new FaqCollection($faqs->paginate(10));
 
         return Inertia::render('Backend/Frontoffice/Faqs/Index', compact(
-            'columns',
-            'template',
-            'faqs',
+            'collection',
+            'tableSettings',
         ));
     }
 

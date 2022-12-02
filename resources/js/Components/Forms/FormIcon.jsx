@@ -68,10 +68,7 @@ export default function FormIcon({
         <div>
             <FormLabel label={ label } />
 
-            <div
-                className="relative"
-                ref={ dropdown }
-            >
+            <div ref={ dropdown }>
                 <button
                     className="field flex items-center justify-between w-full"
                     onClick={ (event) => {
@@ -91,7 +88,7 @@ export default function FormIcon({
 
                 {
                     open ? (
-                        <DropdownPanel className="w-full">
+                        <DropdownPanel className="max-w-fit">
                             <div className="divide-y divide-color h-64 overflow-y-auto">
                                 {
                                     icons.map((name) => {

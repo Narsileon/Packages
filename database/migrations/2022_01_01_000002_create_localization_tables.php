@@ -2,6 +2,7 @@
 
 #region USE
 
+use App\Constants\Tables;
 use App\Models\Backend\Language;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -11,12 +12,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    #region CONSTANTS
-
-    private const TABLE_LANGUAGES = 'languages';
-
-    #endregion
-
     #region PUBLIC METHODS
 
     public function up()
@@ -26,7 +21,7 @@ return new class extends Migration
 
     public function down()
     {
-        Schema::dropIfExists(self::TABLE_LANGUAGES);
+        Schema::dropIfExists(Tables::TABLE_LANGUAGES);
     }
 
     #endregion
@@ -35,7 +30,7 @@ return new class extends Migration
 
     private static function createLanguageTable()
     {
-        Schema::create(self::TABLE_LANGUAGES, function (Blueprint $table) {
+        Schema::create(Tables::TABLE_LANGUAGES, function (Blueprint $table) {
             $table->id();
             $table->string(Language::FIELD_CODE);
             $table->boolean(Language::FIELD_ACTIVE);

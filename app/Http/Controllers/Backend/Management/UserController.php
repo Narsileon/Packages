@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend\Management;
 
 #region USE
 
+use App\Constants\Tables;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Management\UserCreateRequest;
 use App\Http\Requests\Backend\Management\UserUpdateRequest;
@@ -11,12 +12,10 @@ use App\Http\Resources\Backend\Management\UserCollection;
 use App\Http\Resources\Backend\Management\UserPermissionCollection;
 use App\Http\Resources\Backend\Management\UserResource;
 use App\Http\Resources\Backend\Management\UserRoleCollection;
-use App\Models\UserTemplates;
 use App\Models\User;
 use App\Models\UserPermission;
 use App\Models\UserRole;
 use App\Services\TemplateService;
-use App\Templates\Tables\UserTemplate;
 use Illuminate\Support\Arr;
 use Inertia\Inertia;
 
@@ -30,24 +29,15 @@ class UserController extends Controller
     {
         $this->authorize('view', User::class);
 
-        $columns = UserTemplate::COLUMNS;
-        $template = TemplateService::get(UserTemplates::FIELD_TEMPLATE_USERS, UserTemplates::TYPE_CUSTOM, UserTemplate::DEFAULT_TEMPLATE);
+        $tableSettings = TemplateService::get(Tables::TABLE_USERS, Tables::CATEGORY_CUSTOM);
 
-        $collection = User::query()
-            ->search($template)
-            ->sort($template);
+        $users = TemplateService::applyTableSettings(User::query(), $tableSettings);
 
-        if (array_key_exists('current', $template) && $template['current'] != null)
-        {
-            $template['list'][$template['current']] = $collection->pluck($template['current'])->toArray();
-        }
-
-        $users = new UserCollection($collection->paginate(10));
+        $collection = new UserCollection($users->paginate(10));
 
         return Inertia::render('Backend/Management/Users/Index', compact(
-            'columns',
-            'template',
-            'users',
+            'collection',
+            'tableSettings',
         ));
     }
 

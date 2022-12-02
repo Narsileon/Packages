@@ -4,13 +4,12 @@ namespace App\Http\Controllers\Backend\Settings;
 
 #region USE
 
+use App\Constants\Tables;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Settings\UserLocalizationUpdateRequest;
 use App\Models\UserLocalization;
-use App\Models\UserTemplates;
 use App\Services\LocalizationService;
 use App\Services\TemplateService;
-use App\Templates\Tables\UserLocalizationTemplate;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
@@ -22,11 +21,10 @@ class UserLocalizationController extends Controller
 
     public function index()
     {
-        $columns = UserLocalizationTemplate::COLUMNS;
-        $template = TemplateService::get(UserTemplates::FIELD_TEMPLATE_LOCALIZATIONS, UserTemplates::TYPE_CUSTOM, UserLocalizationTemplate::DEFAULT_TEMPLATE);
+        $tableSettings = TemplateService::get(Tables::TABLE_USER_LOCALIZATIONS, Tables::CATEGORY_CUSTOM);
 
         $defaultLocalization = collect(LocalizationService::get(false))['dictionary']['common'];
-        $customLocalization = collect(json_decode(Auth::user()->localizations, true));
+        $collection = collect(json_decode(Auth::user()->localizations, true));
 
         $dictionary = [];
 
@@ -35,16 +33,15 @@ class UserLocalizationController extends Controller
                 'type' => 'common',
                 'key' => $key,
                 'value' => $value,
-                'custom_value' => $customLocalization['dictionary'][$key] ?? '',
+                'custom_value' => $collection['dictionary'][$key] ?? '',
             ]);
         }
 
-        $customLocalization['dictionary'] = $dictionary;
+        $collection['dictionary'] = $dictionary;
 
         return Inertia::render('Backend/Settings/UserLocalizations/Index', compact(
-            'columns',
-            'template',
-            'customLocalization',
+            'collection',
+            'tableSettings',
         ));
     }
 

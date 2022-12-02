@@ -2,6 +2,7 @@
 
 #region USE
 
+use App\Constants\Tables;
 use App\Models\Backend\GeneralSettings;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -11,12 +12,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    #region CONSTANTS
-
-    private const TABLE_SETTINGS = 'general_settings';
-
-    #endregion
-
     #region PUBLIC METHODS
 
     public function up()
@@ -26,7 +21,7 @@ return new class extends Migration
 
     public function down()
     {
-        Schema::dropIfExists(self::TABLE_SETTINGS);
+        Schema::dropIfExists(Tables::TABLE_GENERAL_SETTINGS);
     }
 
     #endregion
@@ -35,7 +30,7 @@ return new class extends Migration
 
     private static function createSettingsTable()
     {
-        Schema::create(self::TABLE_SETTINGS, function (Blueprint $table) {
+        Schema::create(Tables::TABLE_GENERAL_SETTINGS, function (Blueprint $table) {
             $table->id();
             $table->string(GeneralSettings::FIELD_APP_NAME);
             $table->timestamps();

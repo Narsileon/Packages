@@ -2,6 +2,7 @@
 
 #region USE
 
+use App\Constants\Tables;
 use App\Models\Backend\Order;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -11,12 +12,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    #region CONSTANTS
-
-    private const TABLE_ORDERS = 'orders';
-
-    #endregion
-
     #region PUBLIC METHODS
 
     public function up()
@@ -26,7 +21,7 @@ return new class extends Migration
 
     public function down()
     {
-        Schema::dropIfExists(self::TABLE_ORDERS);
+        Schema::dropIfExists(Tables::TABLE_ORDERS);
     }
 
     #endregion
@@ -35,7 +30,7 @@ return new class extends Migration
 
     private static function createOrderTable()
     {
-        Schema::create(self::TABLE_ORDERS, function (Blueprint $table) {
+        Schema::create(Tables::TABLE_ORDERS, function (Blueprint $table) {
             $table->id();
             $table->string(Order::FIELD_TYPE);
             $table->string(Order::FIELD_STATUS);

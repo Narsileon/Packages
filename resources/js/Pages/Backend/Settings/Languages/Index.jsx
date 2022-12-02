@@ -7,8 +7,8 @@ import Toggle from "@/Components/Elements/Toggle";
 import FrontendPagination from "@/Components/Pagination/FrontendPagination";
 import AppHead from "@/Shared/AppHead";
 
-export default function Index({ languages, columns, template }) {
-	let newHeader = [...columns].map(object => {
+export default function Index({ collection, tableSettings }) {
+	let newHeader = [...tableSettings.columns].map(object => {
 		if (object.id === 'active') {
 		  	return {
 				...object,
@@ -24,7 +24,7 @@ export default function Index({ languages, columns, template }) {
 		}
 	});
 
-	const [table] = useTable(languages.data, newHeader, template, false);
+	const [table] = useTable(collection.data, newHeader, tableSettings, false);
 
 	function handleChange(id) {
 		let temp = [...table.options.data];

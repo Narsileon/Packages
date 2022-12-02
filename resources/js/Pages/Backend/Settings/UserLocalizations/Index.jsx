@@ -9,8 +9,8 @@ import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 import FrontendPagination from "@/Components/Pagination/FrontendPagination";
 import AppHead from "@/Shared/AppHead";
 
-export default function Index({ customLocalization, columns, template }) {
-	let newHeader = [...columns].map(object => {
+export default function Index({ collection, tableSettings }) {
+	let newHeader = [...tableSettings.columns].map(object => {
 		if (object.id === 'custom_value') {
 		  	return {
 				...object,
@@ -26,7 +26,7 @@ export default function Index({ customLocalization, columns, template }) {
 		}
 	});
 
-	const [table] = useTable(customLocalization.dictionary, newHeader, template, false);
+	const [table] = useTable(collection.dictionary, newHeader, tableSettings, false);
 
 	const handleChange = (event, key) => {
 		let temp = [...table.options.data];

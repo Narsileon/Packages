@@ -2,6 +2,7 @@
 
 #region USE
 
+use App\Constants\Tables;
 use App\Models\MenuItem;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -11,12 +12,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    #region CONSTANTS
-
-    private const TABLE_MENU_ITEMS = 'menu_items';
-
-    #endregion
-
     #region PUBLIC METHODS
 
     public function up()
@@ -26,7 +21,7 @@ return new class extends Migration
 
     public function down()
     {
-        Schema::dropIfExists(self::TABLE_MENU_ITEMS);
+        Schema::dropIfExists(Tables::TABLE_MENU_ITEMS);
     }
 
     #endregion
@@ -35,7 +30,7 @@ return new class extends Migration
 
     private static function createMenuItemsTable()
     {
-        Schema::create(self::TABLE_MENU_ITEMS, function (Blueprint $table) {
+        Schema::create(Tables::TABLE_MENU_ITEMS, function (Blueprint $table) {
             $table->id();
             $table->string(MenuItem::FIELD_SLUG)->unique();
             $table->boolean(MenuItem::FIELD_ACTIVE)->default(true);

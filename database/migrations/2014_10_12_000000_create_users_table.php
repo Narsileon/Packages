@@ -2,6 +2,7 @@
 
 #region USE
 
+use App\Constants\Tables;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -11,12 +12,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    #region CONSTANTS
-
-    private const TABLE_USERS = 'users';
-
-    #endregion
-
     #region PUBLIC METHODS
 
     public function up()
@@ -26,7 +21,7 @@ return new class extends Migration
 
     public function down()
     {
-        Schema::dropIfExists(self::TABLE_USERS);
+        Schema::dropIfExists(Tables::TABLE_USERS);
     }
 
     #endregion
@@ -35,7 +30,7 @@ return new class extends Migration
 
     private static function createUserTable()
     {
-        Schema::create(self::TABLE_USERS, function (Blueprint $table)
+        Schema::create(Tables::TABLE_USERS, function (Blueprint $table)
         {
             $table->id();
             $table->string(User::FIELD_USERNAME)->unique();

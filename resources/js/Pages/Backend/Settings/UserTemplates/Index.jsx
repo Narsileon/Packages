@@ -5,7 +5,7 @@ import { Table } from "@/Components/Tables/Index";
 import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 import AppHead from "@/Shared/AppHead";
 
-export default function Index({ templates }) {
+export default function Index({ tables }) {
     const [template, setTemplate] = useState(null);
 
     function displayTable(key) {
@@ -30,10 +30,10 @@ export default function Index({ templates }) {
                         </span>
                         <select
                             className="field max-w-fit"
-                            onChange={ (event) => displayTable(templates.data[event.target.value]) }
+                            onChange={ (event) => displayTable(tables[event.target.value]) }
                         >
                             {
-                                templates && Object.keys(templates.data).map((key) => {
+                                Object.keys(tables).map((key) => {
                                     return (
                                         <option
                                             value={ key }
@@ -56,7 +56,7 @@ export default function Index({ templates }) {
                     {
                         template ? (
                             <TemplateTable
-                                columns={ templates.columns[template.name] }
+                                columns={ template.columns }
                                 template={ template }
                             />
                         ) : null

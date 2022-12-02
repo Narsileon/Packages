@@ -17,7 +17,7 @@ import {
 export const useTable = (
 	tableData,
 	tableColumns,
-	template,
+	tableSettings,
 	manual = true,
 ) => {
 	if (!tableColumns) {
@@ -28,17 +28,17 @@ export const useTable = (
 
     const [columns] = useState(() => [...tableColumns]);
 
-	const [columnFilters, setColumnFilters] = useState(template.columnFilters ?? []);
-    const [columnOrder, setColumnOrder] = useState(template.columnOrder ?? []);
-	const [columnSizing, setColumnSizing] = useState(template.columnSizing ?? {});
-	const [columnVisibility, setColumnVisibility] = useState(template.columnVisibility ?? {});
-	const [globalFilter, setGlobalFilter] = useState(template.globalFilter ?? '');
-    const [sorting, setSorting] = useState(template.sorting ?? []);
+	const [columnFilters, setColumnFilters] = useState(tableSettings.template.columnFilters ?? []);
+    const [columnOrder, setColumnOrder] = useState(tableSettings.template.columnOrder ?? []);
+	const [columnSizing, setColumnSizing] = useState(tableSettings.template.columnSizing ?? {});
+	const [columnVisibility, setColumnVisibility] = useState(tableSettings.template.columnVisibility ?? {});
+	const [globalFilter, setGlobalFilter] = useState(tableSettings.template.globalFilter ?? '');
+    const [sorting, setSorting] = useState(tableSettings.template.sorting ?? []);
 
-	const [autoUpdate, setAutoUpdate] = useState(template.autoUpdate ?? 10);
-	const [current, setCurrent] = useState(template.current ?? '');
+	const [autoUpdate, setAutoUpdate] = useState(tableSettings.template.autoUpdate ?? 10);
+	const [current, setCurrent] = useState(tableSettings.template.current ?? '');
 
-	const list = template.list ?? [];
+	const list = tableSettings.template.list ?? [];
 
 	const table = useReactTable({
 		data,
@@ -110,12 +110,12 @@ export const useTable = (
 			previousCurrent
 		) {
 			const timeout = setTimeout(() => {
-				Inertia.patch(route('admin.user_templates.update'), {
+				Inertia.patch('/admin/user_templates/' + tableSettings.id, {
+					...tableSettings,
 					'template': {
-						'name': template.name,
 						'columnFilters': { ...table.getState().columnFilters },
 						'columnOrder': columnOrder,
-						'columnSizing': { ...template.sizing, ...table.getState().columnSizing },
+						'columnSizing': { ...tableSettings.template.sizing, ...table.getState().columnSizing },
 						'columnVisibility': columnVisibility,
 						'globalFilter': globalFilter,
 						'sorting': { ...table.getState().sorting },

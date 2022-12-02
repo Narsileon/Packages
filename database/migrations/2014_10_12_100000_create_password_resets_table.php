@@ -2,6 +2,7 @@
 
 #region USE
 
+use App\Constants\Tables;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -10,12 +11,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    #region CONSTANTS
-
-    private const TABLE_PASSWORD_RESETS = 'password_resets';
-
-    #endregion
-
     #region PUBLIC METHODS
 
     public function up()
@@ -25,7 +20,7 @@ return new class extends Migration
 
     public function down()
     {
-        Schema::dropIfExists(self::TABLE_PASSWORD_RESETS);
+        Schema::dropIfExists(Tables::TABLE_PASSWORD_RESETS);
     }
 
     #endregion
@@ -34,7 +29,7 @@ return new class extends Migration
 
     private static function createPasswordResetTable()
     {
-        Schema::create(self::TABLE_PASSWORD_RESETS, function (Blueprint $table)
+        Schema::create(Tables::TABLE_PASSWORD_RESETS, function (Blueprint $table)
         {
             $table->string('email')->index();
             $table->string('token');

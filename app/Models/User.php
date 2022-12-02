@@ -8,8 +8,7 @@ use App\Constants\Types;
 use App\Models\UserLocalization;
 use App\Models\UserMenu;
 use App\Models\UserSetting;
-use App\Models\UserTemplates;
-use App\Services\TemplateService;
+use App\Models\UserTemplate;
 use App\Traits\IsBaseModel;
 use App\Traits\IsFilterable;
 use App\Traits\IsSortable;
@@ -96,14 +95,9 @@ class User extends Authenticatable
         return $this->hasOne(UserSetting::class);
     }
 
-    public function templates() : HasOne
+    public function templates() : HasMany
     {
-        if (!$this->hasOne(UserTemplates::class)->exists())
-        {
-            TemplateService::create($this->id);
-        }
-
-        return $this->hasOne(UserTemplates::class);
+        return $this->hasMany(UserTemplate::class);
     }
 
     #endregion

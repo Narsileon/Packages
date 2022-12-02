@@ -4,17 +4,16 @@ namespace App\Http\Controllers\Backend\Management;
 
 #region USE
 
+use App\Constants\Tables;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Management\UserRoleCreateRequest;
 use App\Http\Requests\Backend\Management\UserRoleUpdateRequest;
 use App\Http\Resources\Backend\Management\UserPermissionCollection;
 use App\Http\Resources\Backend\Management\UserRoleCollection;
 use App\Http\Resources\Backend\Management\UserRoleResource;
-use App\Models\UserTemplates;
 use App\Models\UserPermission;
 use App\Models\UserRole;
 use App\Services\TemplateService;
-use App\Templates\Tables\RoleTemplate;
 use Inertia\Inertia;
 use Spatie\Permission\Models\Role;
 
@@ -28,24 +27,15 @@ class RoleController extends Controller
     {
         $this->authorize('view', UserRole::class);
 
-        $columns = RoleTemplate::COLUMNS;
-        $template = TemplateService::get(UserTemplates::FIELD_TEMPLATE_ROLES, UserTemplates::TYPE_CUSTOM, RoleTemplate::DEFAULT_TEMPLATE);
+        $tableSettings = TemplateService::get(Tables::TABLE_ROLES, Tables::CATEGORY_CUSTOM);
 
-        $collection = UserRole::query()
-            ->search($template)
-            ->sort($template);
+        $roles = TemplateService::applyTableSettings(UserRole::query(), $tableSettings);
 
-        if (array_key_exists('current', $template) && $template['current'] != null)
-        {
-            $template['list'][$template['current']] = $collection->pluck($template['current'])->toArray();
-        }
-
-        $roles = new UserRoleCollection($collection->paginate(10));
+        $collection = new UserRoleCollection($roles->paginate(10));
 
         return Inertia::render('Backend/Management/Roles/Index', compact(
-            'columns',
-            'template',
-            'roles',
+            'collection',
+            'tableSettings',
         ));
     }
 

@@ -58,6 +58,6 @@ Route::group([
     });
     Route::controller(UserTemplateController::class)->group(function () {
         Route::get('user_templates', 'index')->name('user_templates.index');
-        Route::patch('user_templates', 'update')->name('user_templates.update');
+        Route::patch('user_templates/{user_template}', 'update')->name('user_templates.update');
     });
 });

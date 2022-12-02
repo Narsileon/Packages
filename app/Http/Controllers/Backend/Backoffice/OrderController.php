@@ -4,15 +4,14 @@ namespace App\Http\Controllers\Backend\Backoffice;
 
 #region USE
 
+use App\Constants\Tables;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Backoffice\OrderCreateRequest;
 use App\Http\Requests\Backend\Backoffice\OrderUpdateRequest;
 use App\Http\Resources\Backend\Backoffice\OrderCollection;
 use App\Models\Backend\Order;
-use App\Models\UserTemplates;
 use App\Models\Frontend\Faq;
 use App\Services\TemplateService;
-use App\Templates\Tables\OrderTemplate;
 use Inertia\Inertia;
 
 #endregion
@@ -25,24 +24,15 @@ class OrderController extends Controller
     {
         $this->authorize('view', Order::class);
 
-        $columns = OrderTemplate::COLUMNS;
-        $template = TemplateService::get(UserTemplates::FIELD_TEMPLATE_ORDERS, UserTemplates::TYPE_CUSTOM, OrderTemplate::DEFAULT_TEMPLATE);
+        $tableSettings = TemplateService::get(Tables::TABLE_ORDERS, Tables::CATEGORY_CUSTOM);
 
-        $collection = Order::query()
-            ->search($template)
-            ->sort($template);
+        $orders = TemplateService::applyTableSettings(Order::query(), $tableSettings);
 
-        if (array_key_exists('current', $template) && $template['current'] != null)
-        {
-            $template['list'][$template['current']] = $collection->pluck($template['current'])->toArray();
-        }
-
-        $orders = new OrderCollection($collection->paginate(10));
+        $collection = new OrderCollection($orders->paginate(10));
 
         return Inertia::render('Backend/Backoffice/Orders/Index', compact(
-            'columns',
-            'template',
-            'orders',
+            'collection',
+            'tableSettings',
         ));
     }
 

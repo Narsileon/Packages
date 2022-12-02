@@ -6,8 +6,8 @@ import BackendPagination from "@/Components/Pagination/BackendPagination";
 import AppHead from "@/Shared/AppHead";
 import Icon from "@/Shared/Svg/Icon";
 
-export default function Index({ orders, columns, template, list }) {
-	let newHeader = [...columns];
+export default function Index({ collection, tableSettings }) {
+	let newHeader = [...tableSettings.columns];
 
 	newHeader.push({
 		id: 'menu',
@@ -20,7 +20,7 @@ export default function Index({ orders, columns, template, list }) {
 		disableSortBy: true,
 	})
 
-	const [table] = useTable(orders.data, newHeader, template);
+	const [table] = useTable(collection.data, newHeader, tableSettings);
 
 	return (
 		<>
@@ -42,14 +42,14 @@ export default function Index({ orders, columns, template, list }) {
 					</>
 				}
 			>
-				{ orders.meta.items > 0 ? (
+				{ collection.meta.items > 0 ? (
 					<>
 						<Table
 							table={ table }
 							horizontalScrolling={ true }
 						/>
 
-						<BackendPagination data={ orders.meta } />
+						<BackendPagination data={ collection.meta } />
 					</>
 				) : (
 					<div>

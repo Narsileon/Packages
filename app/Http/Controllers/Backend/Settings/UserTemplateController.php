@@ -4,13 +4,11 @@ namespace App\Http\Controllers\Backend\Settings;
 
 #region USE
 
-use App\Constants\TableConstants;
+use App\Constants\Tables;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Backend\Settings\UserTemplateResource;
-use App\Models\UserTemplates;
-use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\Backend\Settings\UserTemplateUpdateRequest;
+use App\Models\UserTemplate;
+use App\Services\TemplateService;
 use Inertia\Inertia;
 
 #endregion
@@ -21,23 +19,26 @@ class UserTemplateController extends Controller
 
     public function index()
     {
-        $templates = new UserTemplateResource(Auth::user()->{ User::ATTRIBUTE_TEMPLATES }->where(UserTemplates::FIELD_TYPE, '=', UserTemplates::TYPE_DEFAULT)->first());
+        $tables = [];
+
+        foreach(Tables::TEMPLATES as $table)
+        {
+            $tables[$table] = TemplateService::get($table, Tables::CATEGORY_DEFAULT);
+        }
 
         return Inertia::render('Backend/Settings/UserTemplates/Index', compact(
-            'templates'
+            'tables'
         ));
     }
 
-    public function update(Request $request)
+    public function update(UserTemplateUpdateRequest $request, UserTemplate $userTemplate)
     {
-        $template = $request['template'];
+        $attributes = $request->validated();
 
-        $template = self::tryParseSorting($template, TableConstants::PROPERTY_SORTING);
-        $template = self::tryParseVisiblity($template, TableConstants::PROPERTY_COLUMN_VISIBILITY);
+        $attributes[UserTemplate::FIELD_TEMPLATE] = self::tryParseSorting($attributes[UserTemplate::FIELD_TEMPLATE], Tables::PROPERTY_SORTING);
+        $attributes[UserTemplate::FIELD_TEMPLATE] = self::tryParseVisiblity($attributes[UserTemplate::FIELD_TEMPLATE], Tables::PROPERTY_COLUMN_VISIBILITY);
 
-        Auth::user()->{ User::ATTRIBUTE_TEMPLATES}->where(UserTemplates::FIELD_TYPE, '=', UserTemplates::TYPE_CUSTOM)->update([
-            $template[TableConstants::PROPERTY_NAME] => $template
-        ]);
+        $userTemplate->update($attributes);
 
         return back();
     }
@@ -48,12 +49,12 @@ class UserTemplateController extends Controller
 
     private static function tryParseSorting($template, $array)
     {
-        if (array_key_exists(TableConstants::PROPERTY_SORTING, $template))
+        if (array_key_exists(Tables::PROPERTY_SORTING, $template))
         {
-            $template[TableConstants::PROPERTY_SORTING] = array(
+            $template[Tables::PROPERTY_SORTING] = array(
                 [
-                    TableConstants::FIELD_ID => $template[TableConstants::PROPERTY_SORTING][0][TableConstants::FIELD_ID],
-                    TableConstants::FIELD_DESC => $template[TableConstants::PROPERTY_SORTING][0][TableConstants::FIELD_DESC] == 'true' ? true : false,
+                    Tables::FIELD_ID => $template[Tables::PROPERTY_SORTING][0][Tables::FIELD_ID],
+                    Tables::FIELD_DESC => $template[Tables::PROPERTY_SORTING][0][Tables::FIELD_DESC] == 'true' ? true : false,
                 ]
             );
         }

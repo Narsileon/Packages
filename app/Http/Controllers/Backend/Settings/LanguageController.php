@@ -4,12 +4,11 @@ namespace App\Http\Controllers\Backend\Settings;
 
 #region USE
 
+use App\Constants\Tables;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Backend\Settings\LanguageResource;
 use App\Models\Backend\Language;
-use App\Models\UserTemplates;
 use App\Services\TemplateService;
-use App\Templates\Tables\LanguageTemplate;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -21,15 +20,13 @@ class LanguageController extends Controller
 
     public function index()
     {
-        $columns = LanguageTemplate::COLUMNS;
-        $template = TemplateService::get(UserTemplates::FIELD_TEMPLATE_LANGUAGES, UserTemplates::TYPE_CUSTOM, LanguageTemplate::DEFAULT_TEMPLATE);
+        $tableSettings = TemplateService::get(Tables::TABLE_LANGUAGES, Tables::CATEGORY_CUSTOM);
 
-        $languages = LanguageResource::collection(Language::all());
+        $collection = LanguageResource::collection(Language::all());
 
         return Inertia::render('Backend/Settings/Languages/Index', compact(
-            'columns',
-            'template',
-            'languages',
+            'collection',
+            'tableSettings',
         ));
     }
 

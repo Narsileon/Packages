@@ -4,14 +4,13 @@ namespace App\Http\Controllers\Backend\Management;
 
 #region USE
 
+use App\Constants\Tables;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Management\MenuItemCreateRequest;
 use App\Http\Requests\Backend\Management\MenuItemUpdateRequest;
 use App\Http\Resources\Backend\Management\MenuItemCollection;
 use App\Models\MenuItem;
-use App\Models\UserTemplates;
 use App\Services\TemplateService;
-use App\Templates\Tables\MenuItemTemplate;
 use Inertia\Inertia;
 
 #endregion
@@ -24,24 +23,15 @@ class MenuItemController extends Controller
     {
         $this->authorize('view', MenuItem::class);
 
-        $columns = MenuItemTemplate::COLUMNS;
-        $template = TemplateService::get(UserTemplates::FIELD_TEMPLATE_MENU_ITEMS, UserTemplates::TYPE_CUSTOM, MenuItemTemplate::DEFAULT_TEMPLATE);
+        $tableSettings = TemplateService::get(Tables::TABLE_MENU_ITEMS, Tables::CATEGORY_CUSTOM);
 
-        $collection = MenuItem::query()
-            ->search($template)
-            ->sort($template);
+        $menuItems = TemplateService::applyTableSettings(MenuItem::query(), $tableSettings);
 
-        if (array_key_exists('current', $template) && $template['current'] != null)
-        {
-            $template['list'][$template['current']] = $collection->pluck($template['current'])->toArray();
-        }
-
-        $menuItems = new MenuItemCollection($collection->paginate(10));
+        $collection = new MenuItemCollection($menuItems->paginate(10));
 
         return Inertia::render('Backend/Management/MenuItems/Index', compact(
-            'columns',
-            'template',
-            'menuItems',
+            'collection',
+            'tableSettings',
         ));
     }
 
