@@ -51,6 +51,7 @@ return [
     'passwords'             => 'Passwort|Passwörter',
     'payment_methods'       => 'Zahlungsart|Zahlungsarten',
     'questions'             => 'Frage|Fragen',
+    'refresh_rates'         => 'Wiederholfrequenz|Wiederholfrequenzen',
     'register'              => 'registrieren',
     'reset'                 => 'zurücksetzen',
     'search'                => 'suchen',

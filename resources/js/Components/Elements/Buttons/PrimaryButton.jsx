@@ -14,7 +14,7 @@ export default function PrimaryButton({
         case "button":
             return (
                 <button
-                    className="primary-button"
+                    className="primary-button whitespace-nowrap"
                     disabled={ processing }
                     { ...props }
                 >

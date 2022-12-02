@@ -17,6 +17,7 @@ class UserTable
     public const COLUMNS = [
         [
             Tables::FIELD_ID =>  Tables::FIELD_MENU,
+            Tables::FIELD_HEADER => '',
             Tables::FIELD_MAX_SIZE => 50,
             Tables::FIELD_DISABLE_ORDER => true,
             Tables::FIELD_DISABLE_SORT => true,
