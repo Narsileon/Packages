@@ -12,6 +12,7 @@ use App\Http\Controllers\Backend\Management\RoleController;
 use App\Http\Controllers\Backend\Management\UserController;
 use App\Http\Controllers\Backend\Settings\GeneralSettingsController;
 use App\Http\Controllers\Backend\Settings\LanguageController;
+use App\Http\Controllers\Backend\Settings\ResetUserTemplateController;
 use App\Http\Controllers\Backend\Settings\UserLocalizationController;
 use App\Http\Controllers\Backend\Settings\UserMenuController;
 use App\Http\Controllers\Backend\Settings\UserTemplateController;
@@ -47,6 +48,7 @@ Route::group([
         Route::get('languages', 'index')->name('languages');
         Route::patch('languages', 'update');
     });
+    Route::patch('reset_user_templates', ResetUserTemplateController::class)->name('user_templates.reset');
     Route::controller(UserLocalizationController::class)->group(function () {
         Route::get('user_localizations', 'index')->name('user_localizations.index');
         Route::patch('user_localizations/{localization}', 'update')->name('user_localizations.update');

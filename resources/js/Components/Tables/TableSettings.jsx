@@ -4,8 +4,8 @@ import { Inertia } from "@inertiajs/inertia";
 import { usePage } from "@inertiajs/inertia-react";
 import { trans, transChoice } from "@/narsil-localization";
 import { upperFirst } from "lodash";
+import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 import Icon from "@/Shared/Svg/Icon";
-import PrimaryButton from "../Elements/Buttons/PrimaryButton";
 
 export default function TableSettings({ table }) {
     const [show, setShow] = useToggle(false);
@@ -15,6 +15,7 @@ export default function TableSettings({ table }) {
     useClickAway(element, () => setShow(false));
 
     const url = usePage().url;
+    const tableSettings = usePage().props.tableSettings;
     const autoUpdate = table.getState().autoUpdate;
 
     useInterval(() => {
@@ -86,7 +87,12 @@ export default function TableSettings({ table }) {
                             </div>
                         </section>
                         <section id="footer">
-                            <PrimaryButton label={ trans('Reset the template') } />
+                            <PrimaryButton
+                                label={ trans('Reset the template') }
+                                onClick={ () => Inertia.patch(route('admin.user_templates.reset'), tableSettings, {
+                                    preserveState: false,
+                                }) }
+                            />
                         </section>
                     </div>
                 ) : null

@@ -4,6 +4,7 @@ import { useTable } from "@/narsil-table";
 import { Table } from "@/Components/Tables/Index";
 import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 import AppHead from "@/Shared/AppHead";
+import { Inertia } from "@inertiajs/inertia";
 
 export default function Index({ tables }) {
     const [template, setTemplate] = useState(null);
@@ -49,7 +50,10 @@ export default function Index({ tables }) {
                 </div>
                 <div className="col-span-2 flex justify-end">
                     <PrimaryButton
-                        label={ trans('common.update') }
+                        label={ trans('Reset the template') }
+                        onClick={ () => Inertia.patch(route('admin.user_templates.reset'), template, {
+                            preserveState: false,
+                        }) }
                     />
                 </div>
                 <div className="col-span-2 md:col-span-4">

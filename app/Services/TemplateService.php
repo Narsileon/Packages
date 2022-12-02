@@ -48,6 +48,28 @@ class TemplateService
         return $collection;
     }
 
+    public static function getDefaultTemplate($type)
+    {
+        switch ($type) {
+            case Tables::TABLE_FAQS:
+                return FaqTable::DEFAULT_TEMPLATE;
+            case Tables::TABLE_LANGUAGES:
+                return LanguageTable::DEFAULT_TEMPLATE;
+            case Tables::TABLE_MENU_ITEMS:
+                return MenuItemTable::DEFAULT_TEMPLATE;
+            case Tables::TABLE_ORDERS:
+                return OrderTable::DEFAULT_TEMPLATE;
+            case Tables::TABLE_ROLES:
+                return RoleTable::DEFAULT_TEMPLATE;
+            case Tables::TABLE_USER_LOCALIZATIONS:
+                return UserLocalizationTable::DEFAULT_TEMPLATE;
+            case Tables::TABLE_USERS:
+                return UserTable::DEFAULT_TEMPLATE;
+            default:
+                return [];
+        }
+    }
+
     #endregion
 
     #region PRIVATE METHODS
@@ -76,28 +98,6 @@ class TemplateService
             'default',
             'custom',
         );
-    }
-
-    private static function getDefaultTemplate($type)
-    {
-        switch ($type) {
-            case Tables::TABLE_FAQS:
-                return FaqTable::DEFAULT_TEMPLATE;
-            case Tables::TABLE_LANGUAGES:
-                return LanguageTable::DEFAULT_TEMPLATE;
-            case Tables::TABLE_MENU_ITEMS:
-                return MenuItemTable::DEFAULT_TEMPLATE;
-            case Tables::TABLE_ORDERS:
-                return OrderTable::DEFAULT_TEMPLATE;
-            case Tables::TABLE_ROLES:
-                return RoleTable::DEFAULT_TEMPLATE;
-            case Tables::TABLE_USER_LOCALIZATIONS:
-                return UserLocalizationTable::DEFAULT_TEMPLATE;
-            case Tables::TABLE_USERS:
-                return UserTable::DEFAULT_TEMPLATE;
-            default:
-                return [];
-        }
     }
 
     private static function getUserTemplate($type, $category)
