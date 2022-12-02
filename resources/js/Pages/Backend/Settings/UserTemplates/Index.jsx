@@ -24,26 +24,28 @@ export default function Index({ templates }) {
 
             <div className="grid grid-cols-2 md:grid-cols-4 h-full gap-x-8 gap-y-4">
                 <div className="col-span-2">
-                    <span>
-                        { ` ${ trans('Select a template to edit:') } ` }
-                    </span>
-                    <select
-                        className="field"
-                        onChange={ (event) => displayTable(templates.data[event.target.value]) }
-                    >
-                        {
-                            templates && Object.keys(templates.data).map((key) => {
-                                return (
-                                    <option
-                                        value={ key }
-                                        key={ key }
-                                    >
-                                        { key }
-                                    </option>
-                                );
-                            })
-                        }
-                    </select>
+                    <div className="flex items-center space-x-4">
+                        <span className="whitespace-nowrap">
+                            { ` ${ trans('Select a template to edit:') } ` }
+                        </span>
+                        <select
+                            className="field max-w-fit"
+                            onChange={ (event) => displayTable(templates.data[event.target.value]) }
+                        >
+                            {
+                                templates && Object.keys(templates.data).map((key) => {
+                                    return (
+                                        <option
+                                            value={ key }
+                                            key={ key }
+                                        >
+                                            { key }
+                                        </option>
+                                    );
+                                })
+                            }
+                        </select>
+                    </div>
                 </div>
                 <div className="col-span-2 flex justify-end">
                     <PrimaryButton
