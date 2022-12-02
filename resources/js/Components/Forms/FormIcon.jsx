@@ -12,7 +12,7 @@ export default function FormIcon({
     error,
     setData,
 }) {
-    const[dropdown, open, setOpen] = useDropdown();
+    const[dropdown, open, setOpen] = useDropdown(false, true);
 
     const icons = [
         'arrows_in',
@@ -63,10 +63,6 @@ export default function FormIcon({
         'users',
         'x',
     ];
-
-    const onChange = (event) => {
-        setData(event.target.id, event.target.value);
-    };
 
     return (
         <>

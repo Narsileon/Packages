@@ -32,7 +32,7 @@ class UserMenuController extends Controller
 
         $menuItems = MenuItemResource::collection(MenuItem::all());
 
-        return Inertia::render('Backend/Settings/Menus/Index', compact(
+        return Inertia::render('Backend/Settings/UserMenus/Index', compact(
             'menus',
             'menuItems',
         ));

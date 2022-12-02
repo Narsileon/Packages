@@ -41,7 +41,7 @@ class UserLocalizationController extends Controller
 
         $customLocalization['dictionary'] = $dictionary;
 
-        return Inertia::render('Backend/Settings/Dictionary/Index', compact(
+        return Inertia::render('Backend/Settings/UserLocalizations/Index', compact(
             'columns',
             'template',
             'customLocalization',

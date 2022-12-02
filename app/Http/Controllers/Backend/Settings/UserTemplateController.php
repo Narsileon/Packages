@@ -23,7 +23,7 @@ class UserTemplateController extends Controller
     {
         $templates = new UserTemplateResource(Auth::user()->{ User::ATTRIBUTE_TEMPLATES }->where(UserTemplates::FIELD_TYPE, '=', UserTemplates::TYPE_DEFAULT)->first());
 
-        return Inertia::render('Backend/Settings/Templates/Index', compact(
+        return Inertia::render('Backend/Settings/UserTemplates/Index', compact(
             'templates'
         ));
     }
