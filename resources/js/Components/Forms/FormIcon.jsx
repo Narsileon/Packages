@@ -65,7 +65,7 @@ export default function FormIcon({
     ];
 
     return (
-        <>
+        <div>
             <FormLabel label={ label } />
 
             <div
@@ -121,6 +121,6 @@ export default function FormIcon({
             </div>
 
             <FormError error={ error } />
-        </>
+        </div>
     );
 }

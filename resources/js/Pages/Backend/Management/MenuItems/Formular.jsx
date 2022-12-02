@@ -36,33 +36,37 @@ export default function Formular({
             </FormHeader>
 
             <FormBody>
-                <FormInput
-                    id="slug"
-                    label={ transChoice('common.slugs', 1) }
-                    value={ data.slug }
-                    error={ errors.slug }
-                    setData={ setData }
-                />
-                <FormSelect
-                    id="type"
-                    label={ transChoice('common.types', 1) }
-                    value={ data.type }
-                    error={ errors.type }
-                    setData={ setData }
-                >
-                    {
-                        options.map((option) => {
-                            return (
-                                <option
-                                    value={ option.type }
-                                    key={ option.type }
-                                >
-                                    { upperFirst(transChoice(option.label, 1)) }
-                                </option>
-                            );
-                        })
-                    }
-                </FormSelect>
+                <div className="col-span-1 md:col-span-2">
+                    <FormInput
+                        id="slug"
+                        label={ transChoice('common.slugs', 1) }
+                        value={ data.slug }
+                        error={ errors.slug }
+                        setData={ setData }
+                    />
+                </div>
+                <div className="col-span-1">
+                    <FormSelect
+                        id="type"
+                        label={ transChoice('common.types', 1) }
+                        value={ data.type }
+                        error={ errors.type }
+                        setData={ setData }
+                    >
+                        {
+                            options.map((option) => {
+                                return (
+                                    <option
+                                        value={ option.type }
+                                        key={ option.type }
+                                    >
+                                        { upperFirst(transChoice(option.label, 1)) }
+                                    </option>
+                                );
+                            })
+                        }
+                    </FormSelect>
+                </div>
                 <FormIcon
                     id="icon"
                     label={ transChoice('common.icons', 1) }

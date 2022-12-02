@@ -22,6 +22,7 @@ abstract class Permissions
     public const FAQS_DELETE = 'faqs-delete';
 
     public const GENERAL_SETTINGS_VIEW = 'general-settings-view';
+    public const GENERAL_SETTINGS_UPDATE = 'general-settings-update';
 
     public const LANGUAGES_VIEW = 'languages-view';
 

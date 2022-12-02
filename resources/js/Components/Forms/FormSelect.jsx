@@ -15,6 +15,7 @@ export default function FormSelect({
     return (
         <div>
             <FormLabel label={ label } />
+
             <select
                 className={ `field ${ className }` }
                 onChange={ onChange }
@@ -23,6 +24,7 @@ export default function FormSelect({
             >
                 { children }
             </select>
+
             <FormError message={ error } />
         </div>
     );

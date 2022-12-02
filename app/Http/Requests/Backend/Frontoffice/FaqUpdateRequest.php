@@ -4,6 +4,7 @@ namespace App\Http\Requests\Backend\Frontoffice;
 
 #region USE
 
+use App\Acl\Permissions;
 use App\Constants\ValidationRules;
 use App\Models\Frontend\Faq;
 use Illuminate\Foundation\Http\FormRequest;
@@ -16,7 +17,7 @@ class FaqUpdateRequest extends FormRequest
 
     public function authorize() : bool
     {
-        return $this->user()->can('update', Faq::class);
+        return $this->user()->can(Permissions::FAQS_UPDATE);
     }
 
     public function rules() : array

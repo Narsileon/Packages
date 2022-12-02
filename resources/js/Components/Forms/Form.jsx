@@ -12,7 +12,7 @@ export default function Form({
 
     return (
         <form
-            className={ `relative primary-background border-2 border-color p-8 h-full w-full space-y-8 rounded-xl overflow-y-auto ${ className }` }
+            className={ `primary-background border-2 border-color p-8 h-full w-full space-y-8 rounded-xl ${ className }` }
             onSubmit={ onSubmit }
             { ...props }
         >

@@ -51,7 +51,7 @@
         dark:divide-gray-500
     }
     .field { @apply
-        border-2 border-color p-2 rounded-lg
+        border-2 border-color p-2 w-full rounded-lg
         bg-gray-100 placeholder-gray-500
         dark:bg-gray-800 placeholder-gray-500
     }

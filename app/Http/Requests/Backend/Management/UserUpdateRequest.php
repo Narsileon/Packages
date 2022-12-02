@@ -28,12 +28,12 @@ class UserUpdateRequest extends FormRequest
                 ValidationRules::TYPE_STRING,
                 ValidationRules::min(3),
                 ValidationRules::max(255),
-                ValidationRules::unique('users', User::FIELD_USERNAME, $this->user->id),
+                ValidationRules::unique('users', User::FIELD_USERNAME, $this->user->{ User::FIELD_ID }),
             ],
             User::FIELD_EMAIL => [
                 ValidationRules::REQUIRED,
                 ValidationRules::TYPE_EMAIL,
-                ValidationRules::unique('users', User::FIELD_EMAIL, $this->user->id),
+                ValidationRules::unique('users', User::FIELD_EMAIL, $this->user->{ User::FIELD_ID }),
             ],
             User::FIELD_LAST_NAME => [
                 ValidationRules::REQUIRED,

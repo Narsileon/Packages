@@ -4,6 +4,7 @@ namespace App\Http\Requests\Backend\Settings;
 
 #region USE
 
+use App\Acl\Permissions;
 use App\Constants\ValidationRules;
 use App\Models\Backend\GeneralSettings;
 use Illuminate\Foundation\Http\FormRequest;
@@ -16,7 +17,7 @@ class GeneralSettingsUpdateRequest extends FormRequest
 
     public function authorize() : bool
     {
-        return $this->user()->can('update', Order::class);
+        return $this->user()->can(Permissions::GENERAL_SETTINGS_UPDATE);
     }
 
     public function rules() : array

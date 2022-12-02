@@ -4,6 +4,7 @@ namespace App\Http\Requests\Backend\Management;
 
 #region USE
 
+use App\Acl\Permissions;
 use App\Constants\ValidationRules;
 use App\Models\MenuItem;
 use Illuminate\Foundation\Http\FormRequest;
@@ -14,9 +15,19 @@ class MenuItemUpdateRequest extends FormRequest
 {
     #region PUBLIC METHODS
 
+    public function authorize() : bool
+    {
+        return $this->user()->can(Permissions::MENU_ITEMS_UPDATE);
+    }
+
     public function rules() : array
     {
         return [
+            MenuItem::FIELD_SLUG => [
+                ValidationRules::REQUIRED,
+                ValidationRules::TYPE_STRING,
+                ValidationRules::unique('menu_items', MenuItem::FIELD_SLUG, $this->menuItem->{ MenuItem::FIELD_ID }),
+            ],
             MenuItem::FIELD_TYPE => [
                 ValidationRules::REQUIRED,
                 ValidationRules::TYPE_STRING,

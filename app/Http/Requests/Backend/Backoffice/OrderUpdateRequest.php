@@ -4,6 +4,7 @@ namespace App\Http\Requests\Backend\Backoffice;
 
 #region USE
 
+use App\Acl\Permissions;
 use App\Constants\ValidationRules;
 use App\Models\Backend\Order;
 use Illuminate\Foundation\Http\FormRequest;
@@ -16,7 +17,7 @@ class OrderUpdateRequest extends FormRequest
 
     public function authorize() : bool
     {
-        return $this->user()->can('update', Order::class);
+        return $this->user()->can(Permissions::ORDERS_UPDATE);
     }
 
     public function rules() : array

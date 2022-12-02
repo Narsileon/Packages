@@ -4,6 +4,7 @@ namespace App\Http\Requests\Backend\Frontoffice;
 
 #region USE
 
+use App\Acl\Permissions;
 use App\Constants\ValidationRules;
 use App\Models\Frontend\Faq;
 use Illuminate\Foundation\Http\FormRequest;
@@ -16,7 +17,7 @@ class FaqCreateRequest extends FormRequest
 
     public function authorize() : bool
     {
-        return $this->user()->can('create', Faq::class);
+        return $this->user()->can(Permissions::FAQS_CREATE);
     }
 
     public function rules() : array
