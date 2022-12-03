@@ -2,10 +2,6 @@ import { useFloating } from "@floating-ui/react-dom";
 import { flexRender } from "@tanstack/react-table";
 
 export default function TableBody({ table }) {
-    const { refs, x, y, reference, floating, strategy } = useFloating({
-        placement: 'bottom',
-    });
-
     return (
         <tbody>
             {
@@ -14,7 +10,6 @@ export default function TableBody({ table }) {
                         {
                             row.getVisibleCells().map(cell => (
                                 <td
-                                    ref={ reference }
                                     key={ cell.id }
                                     style={{
                                         width: cell.column.getSize(),
