@@ -14,7 +14,6 @@ export default function TableBody({ table }) {
                         {
                             row.getVisibleCells().map(cell => (
                                 <td
-                                    className={ `${ cell.column.id === 'menu' ? 'left-0' : '' }` }
                                     ref={ reference }
                                     key={ cell.id }
                                     style={{
