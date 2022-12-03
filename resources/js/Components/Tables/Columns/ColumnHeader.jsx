@@ -1,6 +1,8 @@
 import { useDrag, useDrop } from "react-dnd";
+import { useClickAway, useToggle } from "react-use";
 import { flexRender } from "@tanstack/react-table";
 import { transChoice } from "@/narsil-localization";
+import { useFloating } from "@floating-ui/react-dom";
 import { upperFirst } from "lodash";
 import Icon from "@/Shared/Svg/Icon";
 import Sort from "@/Shared/Svg/Sort";
@@ -13,6 +15,9 @@ export default function ColumnHeader ({
     const { getState, setColumnOrder } = table
     const { column } = header
     const { columnOrder } = getState()
+
+    const [showMenu, setShowMenu] = useToggle();
+    const [showOptions, setShowOptions] = useToggle();
 
     const [{ isDragging }, dragRef, previewRef] = useDrag({
         collect: monitor => ({
@@ -37,80 +42,128 @@ export default function ColumnHeader ({
 		return [...columnOrder];
 	}
 
+    const { refs, x, y, reference, floating, strategy } = useFloating({
+        placement: 'bottom',
+    });
+
+    useClickAway(refs.floating, () => {
+        setShowOptions(false);
+    });
+
     return (
         <>
-            { column.id === 'menu' ? (
-                <th
-                    className="sticky left-0 z-10"
-                    colSpan={ header.colSpan }
-                    style={{ width: header.getSize() }}
-                />
-            ) : (
-                <th
-                    className="relative"
-                    ref={ dropRef }
-                    colSpan={ header.colSpan }
-                    style={{
-                        opacity: isDragging ? 0.5 : 1,
-                        width: header.getSize()
-                    }}
-                >
-                    <div
-                        className="grid grid-cols-1 min-h-0"
-                        ref={ previewRef }
+            {
+                column.id === 'menu' ? (
+                    <th
+                        className="sticky left-0 z-10"
+                        colSpan={ header.colSpan }
+                        style={{ width: header.getSize() }}
+                    />
+                ) : (
+                    <th
+                        ref={ dropRef }
+                        colSpan={ header.colSpan }
+                        style={{
+                            opacity: isDragging ? 0.5 : 1,
+                            width: header.getSize()
+                        }}
                     >
-                        <div className="col-span-1 flex items-center justify-between overflow-hidden" >
-                            <button
-                                className="ml-2 cursor-move"
-                                ref={ dragRef }
+                        <div
+                            className="grid grid-cols-1 min-h-0"
+                            onMouseEnter={ () => setShowMenu(true) }
+                            onMouseLeave={ () => setShowMenu(false) }
+                            ref={ previewRef }
+                        >
+                            <div
+                                className="relative col-span-1 flex items-center justify-between h-full"
+                                ref={ reference }
                             >
-                                <Icon name="sort-horizontal" />
-                            </button>
-                            <div className={ `flex flex-grow items-center truncate ${ header.column.getCanSort() ? 'cursor-pointer select-none' : '' }` }
-                                onClick={ header.column.getToggleSortingHandler() }
-                            >
-                                <div className="flex flex-grow justify-start p-2 space-x-2 truncate">
-                                    <span className="truncate">
-                                        {
-                                            flexRender(
-                                                upperFirst(transChoice(header.column.columnDef.header, 1)),
-                                                header.getContext()
-                                            )
-                                        }
-                                    </span>
-                                </div>
-                                {
-                                    header.column.getCanSort() ? (
-                                        <span>
+                                <button
+                                    className="m-1 cursor-move"
+                                    ref={ dragRef }
+                                >
+                                    <Icon name="ellipsis-vertical" />
+                                </button>
+                                <div className={ `flex flex-grow items-center truncate ${ header.column.getCanSort() ? 'cursor-pointer select-none' : '' }` }
+                                    onClick={ header.column.getToggleSortingHandler() }
+                                >
+                                    <div className="flex flex-grow justify-start py-2 truncate">
+                                        <span className="truncate">
                                             {
-                                                {
-                                                    asc: <Sort className="w-5 h-5" order="asc" />,
-                                                    desc: <Sort className="w-5 h-5" order="desc" />,
-                                                } [header.column.getIsSorted()] ?? <Sort className="w-5 h-5" />
+                                                flexRender(
+                                                    upperFirst(transChoice(header.column.columnDef.header, 1)),
+                                                    header.getContext()
+                                                )
                                             }
                                         </span>
-                                    ) : null
-                                }
-                            </div>
-                        </div>
-                        {
-                            header.column.getCanFilter() ? (
-                                <div className="col-span-1 mr-2">
-                                    <ColumnFilter
-                                        table={ table }
-                                        column={ column }
-                                    />
+                                    </div>
+                                    {
+                                        header.column.getCanSort() ? (
+                                            <span>
+                                                {
+                                                    {
+                                                        asc: <Sort className="w-5 h-5" order="asc" />,
+                                                        desc: <Sort className="w-5 h-5" order="desc" />,
+                                                    } [header.column.getIsSorted()] ?? <Sort className="w-5 h-5" />
+                                                }
+                                            </span>
+                                        ) : null
+                                    }
                                 </div>
-                            ) : null
-                        }
-                    </div>
-                    <div
-                        className={ `absolute right-0 top-0 h-full w-2 cursor-col-resize ${ header.column.getIsResizing() ? 'bg-red-500' : 'bg-blue-500'}` }
-                        onMouseDown={ header.getResizeHandler() }
-                        onTouchStart={ header.getResizeHandler() }
-                    />
-                </th>
-            )}
+
+                                <div className={ `m-1 transition-all duration-300 ${ showMenu ? 'w-6' : 'w-1 hidden' }`}>
+                                    <div className="flex items-center">
+                                        <button onClick={ setShowOptions }>
+                                            <Icon name="menu" />
+                                        </button>
+                                    </div>
+                                </div>
+                                <div
+                                    className="absolute -right-1 h-full z-10"
+                                >
+                                    <ColumnResizer header={ header } />
+                                </div>
+                            </div>
+                            {
+                                showOptions ? (
+                                    <div
+                                        className="primary-background border-2 border-color rounded z-10"
+                                        ref={ floating }
+                                        style={{
+                                            position: strategy,
+                                            top: y ?? '0',
+                                            left: x ?? '0',
+                                        }}
+                                    >
+                                        <div className="grid grid-cols-1 p-2">
+                                            {
+                                                column.getCanFilter() ? (
+                                                    <div className="col-span-1 mr-2">
+                                                        <ColumnFilter
+                                                            table={ table }
+                                                            column={ column }
+                                                        />
+                                                    </div>
+                                                ) : null
+                                            }
+                                        </div>
+                                    </div>
+                                ) : null
+                            }
+                        </div>
+                    </th>
+                )
+            }
         </>
     )
+}
+
+const ColumnResizer = ({ header }) => {
+    return (
+        <div
+            className="w-1 h-full cursor-col-resize"
+            onMouseDown={ header.getResizeHandler() }
+            onTouchStart={ header.getResizeHandler() }
+        />
+    );
 }

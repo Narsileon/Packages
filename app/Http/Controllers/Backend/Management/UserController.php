@@ -15,6 +15,7 @@ use App\Http\Resources\Backend\Management\UserRoleCollection;
 use App\Models\User;
 use App\Models\UserPermission;
 use App\Models\UserRole;
+use App\Models\UserTemplate;
 use App\Services\TemplateService;
 use Illuminate\Support\Arr;
 use Inertia\Inertia;
@@ -29,11 +30,15 @@ class UserController extends Controller
     {
         $this->authorize('view', User::class);
 
-        $tableSettings = TemplateService::get(Tables::TABLE_USERS, Tables::CATEGORY_CUSTOM);
+        $tableSettings = TemplateService::get(Tables::TABLE_USERS, TABLES::CATEGORY_CUSTOM);
 
-        $users = TemplateService::applyTableSettings(User::query(), $tableSettings);
+        $collection = User::query()
+            ->search($tableSettings->{ UserTemplate::FIELD_TEMPLATE})
+            ->sort($tableSettings->{ UserTemplate::FIELD_TEMPLATE});
 
-        $collection = new UserCollection($users->paginate(10));
+        $tableSettings = TemplateService::applyTableSettings($collection, $tableSettings);
+
+        $collection = new UserCollection($collection->paginate(10));
 
         return Inertia::render('Backend/Management/Users/Index', compact(
             'collection',

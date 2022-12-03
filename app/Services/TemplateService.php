@@ -36,16 +36,14 @@ class TemplateService
     {
         $template = $tableSettings->{ UserTemplate::FIELD_TEMPLATE };
 
-        $collection
-            ->search($template)
-            ->sort($template);
-
         if (array_key_exists('current', $template) && $template['current'] != null)
         {
             $template['list'][$template['current']] = $collection->pluck($template['current'])->toArray();
         }
 
-        return $collection;
+        $tableSettings->{ UserTemplate::FIELD_TEMPLATE } = $template;
+
+        return $tableSettings;
     }
 
     public static function getDefaultTemplate($type)

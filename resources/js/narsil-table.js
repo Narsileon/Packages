@@ -52,7 +52,6 @@ export const useTable = (
 		},
 		defaultColumn: {
 			minSize: 100,
-			maxSize: 300,
 		},
 		columnResizeMode: 'onChange',
 		filterFns: {

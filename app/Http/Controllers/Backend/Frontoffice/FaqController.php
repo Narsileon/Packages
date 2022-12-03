@@ -10,6 +10,7 @@ use App\Http\Requests\Backend\Frontoffice\FaqCreateRequest;
 use App\Http\Requests\Backend\Frontoffice\FaqUpdateRequest;
 use App\Http\Resources\Backend\Frontoffice\FaqCollection;
 use App\Models\Frontend\Faq;
+use App\Models\UserTemplate;
 use App\Services\TemplateService;
 use Inertia\Inertia;
 
@@ -25,9 +26,13 @@ class FaqController extends Controller
 
         $tableSettings = TemplateService::get(Tables::TABLE_FAQS, TABLES::CATEGORY_CUSTOM);
 
-        $faqs = TemplateService::applyTableSettings(FAQ::query(), $tableSettings);
+        $collection = Faq::query()
+            ->search($tableSettings->{ UserTemplate::FIELD_TEMPLATE})
+            ->sort($tableSettings->{ UserTemplate::FIELD_TEMPLATE});
 
-        $collection = new FaqCollection($faqs->paginate(10));
+        $tableSettings = TemplateService::applyTableSettings($collection, $tableSettings);
+
+        $collection = new FaqCollection($collection->paginate(10));
 
         return Inertia::render('Backend/Frontoffice/Faqs/Index', compact(
             'collection',

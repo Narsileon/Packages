@@ -14,7 +14,7 @@ export default function Table({
             className="min-h-0"
         >
             <div
-                className="w-fit max-w-full min-h-0 h-full border-2 border-color rounded overflow-auto"
+                className="w-fit max-w-full min-h-0 h-full border-2 border-color rounded overflow-y-visible overflow-x-auto"
                 ref={ hozirontalScrollSection }
             >
                 <table style={{ width: table.getCenterTotalSize() }}>

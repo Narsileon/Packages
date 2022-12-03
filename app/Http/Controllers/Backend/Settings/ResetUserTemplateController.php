@@ -10,7 +10,6 @@ use App\Models\UserTemplate;
 use App\Services\TemplateService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 
 #endregion
 

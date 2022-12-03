@@ -10,6 +10,7 @@ use App\Http\Requests\Backend\Management\MenuItemCreateRequest;
 use App\Http\Requests\Backend\Management\MenuItemUpdateRequest;
 use App\Http\Resources\Backend\Management\MenuItemCollection;
 use App\Models\MenuItem;
+use App\Models\UserTemplate;
 use App\Services\TemplateService;
 use Inertia\Inertia;
 
@@ -23,11 +24,15 @@ class MenuItemController extends Controller
     {
         $this->authorize('view', MenuItem::class);
 
-        $tableSettings = TemplateService::get(Tables::TABLE_MENU_ITEMS, Tables::CATEGORY_CUSTOM);
+        $tableSettings = TemplateService::get(Tables::TABLE_MENU_ITEMS, TABLES::CATEGORY_CUSTOM);
 
-        $menuItems = TemplateService::applyTableSettings(MenuItem::query(), $tableSettings);
+        $collection = MenuItem::query()
+            ->search($tableSettings->{ UserTemplate::FIELD_TEMPLATE})
+            ->sort($tableSettings->{ UserTemplate::FIELD_TEMPLATE});
 
-        $collection = new MenuItemCollection($menuItems->paginate(10));
+        $tableSettings = TemplateService::applyTableSettings($collection, $tableSettings);
+
+        $collection = new MenuItemCollection($collection->paginate(10));
 
         return Inertia::render('Backend/Management/MenuItems/Index', compact(
             'collection',

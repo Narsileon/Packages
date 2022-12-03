@@ -11,6 +11,7 @@ use App\Http\Requests\Backend\Backoffice\OrderUpdateRequest;
 use App\Http\Resources\Backend\Backoffice\OrderCollection;
 use App\Models\Backend\Order;
 use App\Models\Frontend\Faq;
+use App\Models\UserTemplate;
 use App\Services\TemplateService;
 use Inertia\Inertia;
 
@@ -26,9 +27,13 @@ class OrderController extends Controller
 
         $tableSettings = TemplateService::get(Tables::TABLE_ORDERS, Tables::CATEGORY_CUSTOM);
 
-        $orders = TemplateService::applyTableSettings(Order::query(), $tableSettings);
+        $collection = Order::query()
+            ->search($tableSettings->{ UserTemplate::FIELD_TEMPLATE})
+            ->sort($tableSettings->{ UserTemplate::FIELD_TEMPLATE});
 
-        $collection = new OrderCollection($orders->paginate(10));
+        $tableSettings = TemplateService::applyTableSettings($collection, $tableSettings);
+
+        $collection = new OrderCollection($collection->paginate(10));
 
         return Inertia::render('Backend/Backoffice/Orders/Index', compact(
             'collection',
