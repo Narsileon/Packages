@@ -55,7 +55,7 @@ export default function ColumnHeader ({
             {
                 column.id === 'menu' ? (
                     <th
-                        className="sticky left-0 z-10"
+                        className="left-0 z-10"
                         colSpan={ header.colSpan }
                         style={{ width: header.getSize() }}
                     />

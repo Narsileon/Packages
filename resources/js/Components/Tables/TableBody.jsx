@@ -14,7 +14,7 @@ export default function TableBody({ table }) {
                         {
                             row.getVisibleCells().map(cell => (
                                 <td
-                                    className={ `${ cell.column.id === 'menu' ? 'sticky left-0' : '' }` }
+                                    className={ `${ cell.column.id === 'menu' ? 'left-0' : '' }` }
                                     ref={ reference }
                                     key={ cell.id }
                                     style={{
@@ -23,7 +23,7 @@ export default function TableBody({ table }) {
                                         background: 'inherit',
                                     }}
                                 >
-                                    <div className="h-full w-full truncate">
+                                    <div className="p-2 h-full w-full truncate">
                                         {
                                             cell.column.columnDef.type == 'datetime' ? (
                                                 new Date(cell.getValue()).toString()

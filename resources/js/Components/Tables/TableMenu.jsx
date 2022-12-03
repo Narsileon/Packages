@@ -3,7 +3,7 @@ import { useToggle } from "react-use";
 import { Inertia } from "@inertiajs/inertia";
 import { usePage } from "@inertiajs/inertia-react";
 import { useDropdown } from "@/narsil-react";
-import { useFloating } from "@floating-ui/react-dom";
+import { offset, useFloating } from "@floating-ui/react-dom";
 import { trans } from "@/narsil-localization";
 import { Dropdown, DropdownItem, DropdownPanel} from "@/Components/Elements/Dropdowns";
 import ModalWindow from "@/Shared/ModalWindow";
@@ -23,7 +23,8 @@ export default function TableMenu({ id, options = {
     const [dropdown, show, setShow] = useDropdown(false, true);
 
     const { x, y, reference, floating, strategy } = useFloating({
-        placement: 'right-end',
+        placement: 'right',
+        middleware: [offset({mainAxis: 10})],
     });
 
     return (
