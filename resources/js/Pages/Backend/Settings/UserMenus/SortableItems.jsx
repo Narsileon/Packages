@@ -1,15 +1,11 @@
 import { transChoice } from "@/narsil-localization";
-import { upperFirst } from "lodash";
-import { useDropdown } from "@/narsil-react";
-import Chevron from "@/Shared/Svg/Chevron";
+import { Collapse, ItemButton } from "@/Components/Elements/Dropdowns";
 
 export default function SortableItems({
     items,
     option,
     setData,
 }) {
-    const[dropdown, open, setOpen] = useDropdown(false, false);
-
     function addToList(item) {
         setData((previousData) => ({
             ...previousData,
@@ -18,50 +14,25 @@ export default function SortableItems({
     }
 
     return (
-        <div className="primary-background rounded">
-            <div
-                className="w-full"
-                ref={ dropdown }
+        <div>
+            <Collapse
+                label={ transChoice(option.label, 2) }
+                className="primary-background border-2 border-color rounded-lg p-2 space-y-2"
             >
-                <div className={ `p-2 ${ open ? 'border-b-2 border-color' : '' }` }>
-                    <button
-                        className="flex items-center space-x-1"
-                        onClick={ setOpen }
-                    >
-                        <Chevron
-                            className="w-4 h-4"
-                            direction={ open ? 'down' : 'right' }
-                        />
-                        <span>
-                            { upperFirst(transChoice(option.label, 2)) }
-                        </span>
-                    </button>
-                </div>
-                {
-                    open ? (
-                        <div>
-                            <ul className="p-1">
-                                {
-                                    items.map((item) => {
-                                        return(
-                                            <li
-                                                className="p-2"
-                                                onClick={ () => addToList(item) }
-                                                key={ item.id }
-                                            >
-                                                <span>
-                                                    { upperFirst(transChoice(item.label)) }
-                                                </span>
-
-                                            </li>
-                                        )
-                                    })
-                                }
-                            </ul>
-                        </div>
-                    ) : null
-                }
-            </div>
+                <ul>
+                    {
+                        items.map((item) => {
+                            return(
+                                <ItemButton
+                                    label={ transChoice(item.label) }
+                                    onClick={ () => addToList(item) }
+                                    key={ item.id }
+                                />
+                            )
+                        })
+                    }
+                </ul>
+            </Collapse>
         </div>
     );
 }

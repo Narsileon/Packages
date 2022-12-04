@@ -18,7 +18,7 @@ class OrderTable
         [
             Tables::FIELD_ID =>  Tables::FIELD_MENU,
             Tables::FIELD_HEADER => '',
-            Tables::FIELD_MAX_SIZE => 50,
+            Tables::FIELD_MAX_SIZE => 60,
             Tables::FIELD_DISABLE_ORDER => true,
             Tables::FIELD_DISABLE_SORT => true,
         ],

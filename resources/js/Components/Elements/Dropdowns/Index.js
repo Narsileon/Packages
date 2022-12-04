@@ -1,9 +1,11 @@
+import Collapse from "./Collapse";
 import Dropdown from "./Dropdown";
-import DropdownItem from "./DropdownItem";
-import DropdownPanel from "./DropdownPanel";
+import ItemButton from "./ItemButton";
+import ItemLink from "./ItemLink";
 
-export { 
+export {
+    Collapse,
     Dropdown,
-    DropdownItem,
-    DropdownPanel,
+    ItemButton,
+    ItemLink,
 }
