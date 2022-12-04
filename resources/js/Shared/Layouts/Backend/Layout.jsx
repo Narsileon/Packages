@@ -14,7 +14,7 @@ export default function Layout({ children }) {
         <main className="flex flex-row min-h-screen max-w-screen">
             <aside
                 className={`
-                    md:relative primary-background top-0 h-screen md:w-10 md:hover:w-64 p-1 space-y-4 overflow-hidden hover:z-50
+                    md:relative primary-background top-0 h-screen md:w-10 md:hover:min-w-fit p-1 space-y-4 overflow-hidden hover:z-50
                     md:transition-all md:duration-300
                     ${ visible ? 'absolute w-full z-50' : 'w-10' }
                 `}
