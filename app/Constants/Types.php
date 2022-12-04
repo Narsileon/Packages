@@ -14,7 +14,9 @@ abstract class Types
     public const DECIMAL = 'decimal';
     public const INTEGER = 'integer';
     public const FLOAT = 'float';
+    public const NUMBER = 'number';
     public const STRING = 'string';
+    public const TEXT = 'text';
 
     #endregion
 }

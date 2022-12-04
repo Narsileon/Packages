@@ -11,12 +11,17 @@ abstract class Tables
     public const FIELD_DESC = 'desc';
     public const FIELD_DISABLE_ORDER = 'disableOrderBy';
     public const FIELD_DISABLE_SORT = 'disableSortBy';
+    public const FIELD_FILTER_1 = 'filter1';
+    public const FIELD_FILTER_2 = 'filter2';
     public const FIELD_HEADER = 'header';
     public const FIELD_ID = 'id';
     public const FIELD_KEY = 'key';
     public const FIELD_MAX_SIZE = 'maxSize';
     public const FIELD_MENU = 'menu';
     public const FIELD_MIN_SIZE = 'minSize';
+    public const FIELD_OPERATOR = 'operator';
+    public const FIELD_OPERATOR_1 = 'operator1';
+    public const FIELD_OPERATOR_2 = 'operator2';
     public const FIELD_SIZE = 'size';
     public const FIELD_TYPE = 'type';
     public const FIELD_VALUE = 'value';

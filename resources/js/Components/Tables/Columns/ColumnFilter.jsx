@@ -1,8 +1,8 @@
 import { useMemo } from "react"
-import TableFilter from "@/Components/Tables/TableFilter"
-import TableFilterDropdown from "../TableFilterDropdown";
 import { trans, transChoice } from "@/narsil-localization";
 import { upperFirst } from "lodash";
+import TableFilter from "@/Components/Tables/TableFilter"
+import TableFilterDropdown from "../TableFilterDropdown";
 
 export default function ColumnFilter({
     table,
@@ -16,30 +16,30 @@ export default function ColumnFilter({
         return typeof firstValue === 'number' ? [] : Array.from(column.getFacetedUniqueValues().keys()).sort();
     }, [column.getFacetedUniqueValues()]);
 
-    const comparaisons = [
+    const comparisons = [
         {
             label: 'equal',
-            value: '==',
+            value: 'like',
         },
         {
             label: 'not_equal',
-            value: '!=',
+            value: 'not like',
         },
         {
             label: 'less',
-            value: '!=',
+            value: '<',
         },
         {
             label: 'less_or_equal',
-            value: '!=',
+            value: '<=',
         },
         {
             label: 'greater_or_equal',
-            value: '!=',
+            value: '>=',
         },
         {
             label: 'greater',
-            value: '!=',
+            value: '>',
         },
     ];
 
@@ -53,6 +53,10 @@ export default function ColumnFilter({
             value: '||',
         },
     ];
+
+    function setFilters(label, value) {
+        column.setFilterValue((old) => [{...old?.[0], [label]: value}])
+    }
 
     function deleteFilters() {
         column.setFilterValue();
@@ -84,32 +88,32 @@ export default function ColumnFilter({
                             ) : null
                         }
                         <TableFilterDropdown
-                            value={ (columnFilterValue)?.[0] ?? '' }
-                            setValue={ value => column.setFilterValue((old) => [value, old?.[0]]) }
-                            options={ comparaisons }
+                            label={ columnFilterValue?.[0]?.['operator1'] ? comparisons.find(x => x.value == columnFilterValue[0]['operator1']).label : comparisons[0].label }
+                            setOption={ (option) => setFilters('operator1', option.value) }
+                            options={ comparisons }
                         />
                         <TableFilter
-                            type="number"
-                            value={ (columnFilterValue)?.[0] ?? '' }
-                            onChange={ value => column.setFilterValue((old) => [value, old?.[0]]) }
+                            type={ column.columnDef.type }
+                            value={ columnFilterValue?.[0]?.['filter1'] ? columnFilterValue[0]['filter1'] : '' }
+                            setData={ (value) =>  setFilters('filter1', value) }
                             list={ column.id + 'list' }
                         />
 
                         <TableFilterDropdown
-                            value={ (columnFilterValue)?.[1] ?? '' }
-                            setValue={ value => column.setFilterValue((old) => [value, old?.[1]]) }
+                            label={ columnFilterValue?.[0]?.['operator'] ? operations.find(x => x.value == columnFilterValue[0]['operator']).label : operations[0].label }
+                            setOption={ (option) => setFilters('operator', option.value) }
                             options={ operations }
                         />
 
                         <TableFilterDropdown
-                            value={ (columnFilterValue)?.[2] ?? '' }
-                            setValue={ value => column.setFilterValue((old) => [value, old?.[2]]) }
-                            options={ comparaisons }
+                            label={ columnFilterValue?.[0]?.['operator2'] ? comparisons.find(x => x.value == columnFilterValue[0]['operator2']).label : comparisons[0].label }
+                            setOption={ (option) => setFilters('operator2', option.value) }
+                            options={ comparisons }
                         />
                         <TableFilter
-                            type="number"
-                            value={ (columnFilterValue)?.[2] ?? '' }
-                            onChange={ value => column.setFilterValue((old) => [old?.[2], value]) }
+                            type={ column.columnDef.type }
+                            value={ columnFilterValue?.[0]?.['filter2'] ? columnFilterValue[0]['filter2'] : '' }
+                            setData={ (value) => setFilters('filter2', value) }
                             list={ column.id + 'list' }
                         />
                     </>
@@ -122,13 +126,13 @@ export default function ColumnFilter({
                                         <TableFilter
                                             type="number"
                                             value={ (columnFilterValue)?.[0] ?? '' }
-                                            onChange={ value => column.setFilterValue((old) => [value, old?.[1]]) }
+                                            setData={ value => column.setFilterValue((old) => [value, old?.[1]]) }
                                             placeholder={ `Min ${ column.getFacetedMinMaxValues()?.[0] ? `(${column.getFacetedMinMaxValues()?.[0]})` : '' }` }
                                         />
                                         <TableFilter
                                             type="number"
                                             value={ (columnFilterValue)?.[1] ?? '' }
-                                            onChange={ value => column.setFilterValue((old) => [old?.[0], value]) }
+                                            setData={ value => column.setFilterValue((old) => [old?.[0], value]) }
                                             placeholder={ `Max ${ column.getFacetedMinMaxValues()?.[1] ? `(${column.getFacetedMinMaxValues()?.[1]})` : '' }` }
                                         />
                                     </div>
@@ -149,7 +153,7 @@ export default function ColumnFilter({
                                     <TableFilter
                                         type="text"
                                         value={ columnFilterValue ?? '' }
-                                        onChange={ value =>
+                                        setData={ value =>
                                         {
                                             column.setFilterValue(value)
                                             table.options.meta.setCurrent(value ? column.id : null)

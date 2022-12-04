@@ -3,8 +3,7 @@ import { upperFirst } from "lodash";
 import Icon from "@/Shared/Svg/Icon";
 
 export default function TableSearch({
-	onChange,
-	debounce = 500,
+	setData,
 	...props
 }) {
 	return (
@@ -17,11 +16,10 @@ export default function TableSearch({
 			</div>
 
 			<input
-				type="text"
-				placeholder={ `${ upperFirst(trans('common.search')) }...` }
-				autoComplete="off"
-				onChange={ e => onChange(e.target.value) }
 				className="bg-transparent focus:outline-none p-2 w-full"
+				placeholder={ `${ upperFirst(trans('common.search')) }...` }
+				onChange={ (event) => setData(event.target.value) }
+				autoComplete="off"
 				{ ...props }
 			/>
 		</div>

@@ -25,25 +25,25 @@ class RoleTable
         [
             Tables::FIELD_ACCESSOR_KEY => UserRole::FIELD_ID,
             Tables::FIELD_ID => UserRole::FIELD_ID,
-            Tables::FIELD_TYPE => Types::INTEGER,
+            Tables::FIELD_TYPE => Types::NUMBER,
             Tables::FIELD_HEADER => 'common.ids',
         ],
         [
             Tables::FIELD_ACCESSOR_KEY => UserRole::FIELD_NAME,
             Tables::FIELD_ID => UserRole::FIELD_NAME,
-            Tables::FIELD_TYPE => Types::STRING,
+            Tables::FIELD_TYPE => Types::TEXT,
             Tables::FIELD_HEADER => 'common.names',
         ],
         [
             Tables::FIELD_ACCESSOR_KEY => UserRole::CREATED_AT,
             Tables::FIELD_ID => UserRole::CREATED_AT,
-            Tables::FIELD_TYPE => Types::DATETIME,
+            Tables::FIELD_TYPE => Types::DATE,
             Tables::FIELD_HEADER => 'validation.attributes.created_at',
         ],
         [
             Tables::FIELD_ACCESSOR_KEY => UserRole::UPDATED_AT,
             Tables::FIELD_ID => UserRole::UPDATED_AT,
-            Tables::FIELD_TYPE => Types::DATETIME,
+            Tables::FIELD_TYPE => Types::DATE,
             Tables::FIELD_HEADER => 'validation.attributes.updated_at',
         ],
     ];

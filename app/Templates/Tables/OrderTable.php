@@ -25,31 +25,31 @@ class OrderTable
         [
             Tables::FIELD_ACCESSOR_KEY => Order::FIELD_ID,
             Tables::FIELD_ID => Order::FIELD_ID,
-            Tables::FIELD_TYPE => Types::INTEGER,
+            Tables::FIELD_TYPE => Types::NUMBER,
             Tables::FIELD_HEADER => 'common.ids',
         ],
         [
             Tables::FIELD_ACCESSOR_KEY => Order::FIELD_TYPE,
             Tables::FIELD_ID => Order::FIELD_TYPE,
-            Tables::FIELD_TYPE => Types::STRING,
+            Tables::FIELD_TYPE => Types::TEXT,
             Tables::FIELD_HEADER => 'common.types',
         ],
         [
             Tables::FIELD_ACCESSOR_KEY => Order::FIELD_STATUS,
             Tables::FIELD_ID => Order::FIELD_STATUS,
-            Tables::FIELD_TYPE => Types::STRING,
+            Tables::FIELD_TYPE => Types::TEXT,
             Tables::FIELD_HEADER => 'common.statuses',
         ],
         [
             Tables::FIELD_ACCESSOR_KEY => Order::FIELD_ORDER_NUMBER,
             Tables::FIELD_ID => Order::FIELD_ORDER_NUMBER,
-            Tables::FIELD_TYPE => Types::INTEGER,
+            Tables::FIELD_TYPE => Types::NUMBER,
             Tables::FIELD_HEADER => 'common.order_numbers',
         ],
         [
             Tables::FIELD_ACCESSOR_KEY => Order::FIELD_ORDER_DATE,
             Tables::FIELD_ID => Order::FIELD_ORDER_DATE,
-            Tables::FIELD_TYPE => Types::DATETIME,
+            Tables::FIELD_TYPE => Types::DATE,
             Tables::FIELD_HEADER => 'common.order_dates',
         ],
         [
@@ -67,31 +67,31 @@ class OrderTable
         [
             Tables::FIELD_ACCESSOR_KEY => Order::FIELD_LOCATION_DEPARTURE,
             Tables::FIELD_ID => Order::FIELD_LOCATION_DEPARTURE,
-            Tables::FIELD_TYPE => Types::STRING,
+            Tables::FIELD_TYPE => Types::TEXT,
             Tables::FIELD_HEADER => 'common.locations_departure',
         ],
         [
             Tables::FIELD_ACCESSOR_KEY => Order::FIELD_LOCATION_ARRIVAL,
             Tables::FIELD_ID => Order::FIELD_LOCATION_ARRIVAL,
-            Tables::FIELD_TYPE => Types::STRING,
+            Tables::FIELD_TYPE => Types::TEXT,
             Tables::FIELD_HEADER => 'common.locations_arrival',
         ],
         [
             Tables::FIELD_ACCESSOR_KEY => Order::FIELD_PAYMENT_METHOD,
             Tables::FIELD_ID => Order::FIELD_PAYMENT_METHOD,
-            Tables::FIELD_TYPE => Types::STRING,
+            Tables::FIELD_TYPE => Types::TEXT,
             Tables::FIELD_HEADER => 'common.payment_methods',
         ],
         [
             Tables::FIELD_ACCESSOR_KEY => Order::CREATED_AT,
             Tables::FIELD_ID => Order::CREATED_AT,
-            Tables::FIELD_TYPE => Types::DATETIME,
+            Tables::FIELD_TYPE => Types::DATE,
             Tables::FIELD_HEADER => 'validation.attributes.created_at',
         ],
         [
             Tables::FIELD_ACCESSOR_KEY => Order::UPDATED_AT,
             Tables::FIELD_ID => Order::UPDATED_AT,
-            Tables::FIELD_TYPE => Types::DATETIME,
+            Tables::FIELD_TYPE => Types::DATE,
             Tables::FIELD_HEADER => 'validation.attributes.updated_at',
         ],
     ];

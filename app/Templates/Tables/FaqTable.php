@@ -25,31 +25,31 @@ class FaqTable
         [
             Tables::FIELD_ACCESSOR_KEY => Faq::FIELD_ID,
             Tables::FIELD_ID => Faq::FIELD_ID,
-            Tables::FIELD_TYPE => Types::INTEGER,
+            Tables::FIELD_TYPE => Types::NUMBER,
             Tables::FIELD_HEADER => 'common.ids',
         ],
         [
             Tables::FIELD_ACCESSOR_KEY => Faq::FIELD_QUESTION,
             Tables::FIELD_ID => Faq::FIELD_QUESTION,
-            Tables::FIELD_TYPE => Types::STRING,
+            Tables::FIELD_TYPE => Types::TEXT,
             Tables::FIELD_HEADER => 'common.questions',
         ],
         [
             Tables::FIELD_ACCESSOR_KEY => Faq::FIELD_ANSWER,
             Tables::FIELD_ID => Faq::FIELD_ANSWER,
-            Tables::FIELD_TYPE => Types::STRING,
+            Tables::FIELD_TYPE => Types::TEXT,
             Tables::FIELD_HEADER => 'common.answers',
         ],
         [
             Tables::FIELD_ACCESSOR_KEY => Faq::CREATED_AT,
             Tables::FIELD_ID => Faq::CREATED_AT,
-            Tables::FIELD_TYPE => Types::DATETIME,
+            Tables::FIELD_TYPE => Types::DATE,
             Tables::FIELD_HEADER => 'validation.attributes.created_at',
         ],
         [
             Tables::FIELD_ACCESSOR_KEY => Faq::UPDATED_AT,
             Tables::FIELD_ID => Faq::UPDATED_AT,
-            Tables::FIELD_TYPE => Types::DATETIME,
+            Tables::FIELD_TYPE => Types::DATE,
             Tables::FIELD_HEADER => 'validation.attributes.updated_at',
         ],
     ];

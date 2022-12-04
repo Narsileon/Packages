@@ -15,44 +15,110 @@ trait IsFilterable
 
     public function scopeSearch($query, $template)
     {
-        $globalFilter = array_key_exists(Tables::PROPERTY_GLOBAL_FILTER, $template) ? $template[Tables::PROPERTY_GLOBAL_FILTER] : '';
+        $globalFilter = array_key_exists(Tables::PROPERTY_GLOBAL_FILTER, $template) ? $template[Tables::PROPERTY_GLOBAL_FILTER] : null;
         $localFilter = array_key_exists(Tables::PROPERTY_COLUMN_FILTERS, $template) ? $template[Tables::PROPERTY_COLUMN_FILTERS] : [];
 
         $columns = Schema::getColumnListing($this->getTable());
 
         foreach($columns as $column)
         {
-            $query->orWhere($column, 'like', '%' . $globalFilter . '%');
+            if ($globalFilter)
+            {
+                $query->orWhere($column, 'like', '%' . $globalFilter . '%');
+            }
 
             foreach($localFilter as $columnFilter)
             {
-                if (is_array($columnFilter[Tables::FIELD_VALUE]))
+                if ($columnFilter[Tables::FIELD_ID] == $column)
                 {
-                    $this->scopeMinMax($query, $columnFilter[Tables::FIELD_ID], $columnFilter[Tables::FIELD_VALUE]);
-                }
+                    if (array_key_exists(Tables::FIELD_FILTER_1, $columnFilter[Tables::FIELD_VALUE][0]))
+                    {
+                        if (is_numeric($columnFilter[Tables::FIELD_VALUE][0][Tables::FIELD_FILTER_1]))
+                        {
+                            $query->where(
+                                $columnFilter[Tables::FIELD_ID],
+                                $columnFilter[Tables::FIELD_VALUE][0][Tables::FIELD_OPERATOR_1] ?? 'like',
+                                $columnFilter[Tables::FIELD_VALUE][0][Tables::FIELD_FILTER_1]
+                            );
+                        }
 
-                else
-                {
-                    $query->where($columnFilter[Tables::FIELD_ID], 'like', '%' . $columnFilter[Tables::FIELD_VALUE] . '%');
+                        else
+                        {
+                            $query->where(
+                                $columnFilter[Tables::FIELD_ID],
+                                $columnFilter[Tables::FIELD_VALUE][0][Tables::FIELD_OPERATOR_1] ?? 'like',
+                                '%' . $columnFilter[Tables::FIELD_VALUE][0][Tables::FIELD_FILTER_1] . '%'
+                            );
+                        }
+
+                        if (array_key_exists(Tables::FIELD_FILTER_2, $columnFilter[Tables::FIELD_VALUE][0]) && $columnFilter[Tables::FIELD_VALUE][0][Tables::FIELD_FILTER_2])
+                        {
+                            if (!array_key_exists(Tables::FIELD_OPERATOR, $columnFilter[Tables::FIELD_VALUE][0]) || $columnFilter[Tables::FIELD_VALUE][0][Tables::FIELD_OPERATOR] == '&&')
+                            {
+                                if (is_numeric($columnFilter[Tables::FIELD_VALUE][0][Tables::FIELD_FILTER_2]))
+                                {
+                                    $query->where(
+                                        $columnFilter[Tables::FIELD_ID],
+                                        $columnFilter[Tables::FIELD_VALUE][0][Tables::FIELD_OPERATOR_2] ?? 'like',
+                                        $columnFilter[Tables::FIELD_VALUE][0][Tables::FIELD_FILTER_2]
+                                    );
+                                }
+
+                                else
+                                {
+                                    $query->where(
+                                        $columnFilter[Tables::FIELD_ID],
+                                        $columnFilter[Tables::FIELD_VALUE][0][Tables::FIELD_OPERATOR_2] ?? 'like',
+                                        '%' . $columnFilter[Tables::FIELD_VALUE][0][Tables::FIELD_FILTER_2] . '%'
+                                    );
+                                }
+                            }
+
+                            else
+                            {
+                                if (is_numeric($columnFilter[Tables::FIELD_VALUE][0][Tables::FIELD_FILTER_2]))
+                                {
+                                    $query->orWhere(
+                                        $columnFilter[Tables::FIELD_ID],
+                                        $columnFilter[Tables::FIELD_VALUE][0][Tables::FIELD_OPERATOR_2] ?? 'like',
+                                        $columnFilter[Tables::FIELD_VALUE][0][Tables::FIELD_FILTER_2]
+                                    );
+                                }
+
+                                else
+                                {
+                                    $query->orWhere(
+                                        $columnFilter[Tables::FIELD_ID],
+                                        $columnFilter[Tables::FIELD_VALUE][0][Tables::FIELD_OPERATOR_2] ?? 'like',
+                                        '%' . $columnFilter[Tables::FIELD_VALUE][0][Tables::FIELD_FILTER_2] . '%'
+                                    );
+                                }
+                            }
+                        }
+                    }
+
+                    else if (array_key_exists(Tables::FIELD_FILTER_2, $columnFilter[Tables::FIELD_VALUE][0]) && $columnFilter[Tables::FIELD_VALUE][0][Tables::FIELD_FILTER_2])
+                    {
+                        if (is_numeric($columnFilter[Tables::FIELD_VALUE][0][Tables::FIELD_FILTER_2]))
+                        {
+                            $query->where(
+                                $columnFilter[Tables::FIELD_ID],
+                                $columnFilter[Tables::FIELD_VALUE][0][Tables::FIELD_OPERATOR_2] ?? 'like',
+                                $columnFilter[Tables::FIELD_VALUE][0][Tables::FIELD_FILTER_2]
+                            );
+                        }
+
+                        else
+                        {
+                            $query->where(
+                                $columnFilter[Tables::FIELD_ID],
+                                $columnFilter[Tables::FIELD_VALUE][0][Tables::FIELD_OPERATOR_2] ?? 'like',
+                                '%' . $columnFilter[Tables::FIELD_VALUE][0][Tables::FIELD_FILTER_2] . '%'
+                            );
+                        }
+                    }
                 }
             }
-        }
-    }
-
-    #endregion
-
-    #region PRIVATE METHODS
-
-    private function scopeMinMax($query, $key, $values)
-    {
-        if (array_key_exists(0, $values) && $values[0])
-        {
-            $query->where($key, '>=', $values[0]);
-        }
-
-        if (array_key_exists(1, $values) && $values[1])
-        {
-            $query->where($key, '<=', $values[1]);
         }
     }
 

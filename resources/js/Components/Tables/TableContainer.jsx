@@ -33,7 +33,7 @@ export default function TableContainer({
                     <div className="col-span-1 sm:col-span-2 md:col-span-1 md:order-1 place-self-center w-full">
                         <TableFilter
                             value={ table.getState().globalFilter ?? '' }
-                            onChange={ (value) => table.setGlobalFilter(value) }
+                            setData={ (value) => table.setGlobalFilter(value) }
                         />
                     </div>
                 </div>
