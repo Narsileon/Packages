@@ -2,7 +2,6 @@ import { transChoice } from "@/narsil-localization";
 import { upperFirst } from "lodash";
 import { FormError, FormLabel } from ".";
 import Dropdown from "@/Components/Elements/Dropdowns/Dropdown";
-import Chevron from "@/Shared/Svg/Chevron";
 import Icon from "@/Shared/Svg/Icon";
 
 export default function FormIcon({
@@ -61,14 +60,6 @@ export default function FormIcon({
         'x',
     ];
 
-    const DropdownTrigger = () => {
-        return (
-            <span>
-                { icons.includes(value) ? <Icon name={ value } /> : upperFirst(transChoice('common.icons', 1)) }
-            </span>
-        );
-    }
-
     return (
         <div>
             <FormLabel label={ label } />
@@ -76,10 +67,8 @@ export default function FormIcon({
             <Dropdown
                 trigger={ icons.includes(value) ? <Icon name={ value } /> : upperFirst(transChoice('common.icons', 1)) }
                 triggerClasses="field"
-                floatingOptions={{
-                    placement: 'bottom',
-                    middleware: [offset(2)],
-                }}
+                placement="bottom"
+                placementOffset={ 2 }
             >
                 <ul className="divide-y divide-color h-64 overflow-y-auto">
                     {

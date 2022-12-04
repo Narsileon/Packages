@@ -7,7 +7,7 @@ import AppHead from "@/Shared/AppHead";
 import { Inertia } from "@inertiajs/inertia";
 
 export default function Index({ tables }) {
-    const [template, setTemplate] = useState(null);
+    const [template, setTemplate] = useState(tables[Object.keys(tables)[0]]);
 
     function displayTable(key) {
         setTemplate(null);

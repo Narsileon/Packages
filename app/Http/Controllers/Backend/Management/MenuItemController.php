@@ -10,7 +10,6 @@ use App\Http\Requests\Backend\Management\MenuItemCreateRequest;
 use App\Http\Requests\Backend\Management\MenuItemUpdateRequest;
 use App\Http\Resources\Backend\Management\MenuItemCollection;
 use App\Models\MenuItem;
-use App\Models\UserTemplate;
 use App\Services\TemplateService;
 use Inertia\Inertia;
 
@@ -44,9 +43,7 @@ class MenuItemController extends Controller
     {
         $this->authorize('create', MenuItem::class);
 
-        return Inertia::render('Backend/Management/MenuItems/Create', compact(
-            'icons',
-        ));
+        return Inertia::render('Backend/Management/MenuItems/Create');
     }
 
     public function store(MenuItemCreateRequest $request)
