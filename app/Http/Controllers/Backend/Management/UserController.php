@@ -33,8 +33,8 @@ class UserController extends Controller
         $tableSettings = TemplateService::get(Tables::TABLE_USERS, TABLES::CATEGORY_CUSTOM);
 
         $collection = User::query()
-            ->search($tableSettings->{ UserTemplate::FIELD_TEMPLATE})
-            ->sort($tableSettings->{ UserTemplate::FIELD_TEMPLATE});
+            ->search($tableSettings)
+            ->sort($tableSettings);
 
         $tableSettings = TemplateService::applyTableSettings($collection, $tableSettings);
 

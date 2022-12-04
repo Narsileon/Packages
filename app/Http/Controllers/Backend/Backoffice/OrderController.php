@@ -28,8 +28,8 @@ class OrderController extends Controller
         $tableSettings = TemplateService::get(Tables::TABLE_ORDERS, Tables::CATEGORY_CUSTOM);
 
         $collection = Order::query()
-            ->search($tableSettings->{ UserTemplate::FIELD_TEMPLATE})
-            ->sort($tableSettings->{ UserTemplate::FIELD_TEMPLATE});
+            ->search($tableSettings)
+            ->sort($tableSettings);
 
         $tableSettings = TemplateService::applyTableSettings($collection, $tableSettings);
 

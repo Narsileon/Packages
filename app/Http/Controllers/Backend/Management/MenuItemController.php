@@ -27,8 +27,8 @@ class MenuItemController extends Controller
         $tableSettings = TemplateService::get(Tables::TABLE_MENU_ITEMS, TABLES::CATEGORY_CUSTOM);
 
         $collection = MenuItem::query()
-            ->search($tableSettings->{ UserTemplate::FIELD_TEMPLATE})
-            ->sort($tableSettings->{ UserTemplate::FIELD_TEMPLATE});
+            ->search($tableSettings)
+            ->sort($tableSettings);
 
         $tableSettings = TemplateService::applyTableSettings($collection, $tableSettings);
 

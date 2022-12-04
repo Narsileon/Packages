@@ -31,8 +31,8 @@ class RoleController extends Controller
         $tableSettings = TemplateService::get(Tables::TABLE_ROLES, TABLES::CATEGORY_CUSTOM);
 
         $collection = UserRole::query()
-            ->search($tableSettings->{ UserTemplate::FIELD_TEMPLATE})
-            ->sort($tableSettings->{ UserTemplate::FIELD_TEMPLATE});
+            ->search($tableSettings)
+            ->sort($tableSettings);
 
         $tableSettings = TemplateService::applyTableSettings($collection, $tableSettings);
 

@@ -27,8 +27,8 @@ class FaqController extends Controller
         $tableSettings = TemplateService::get(Tables::TABLE_FAQS, TABLES::CATEGORY_CUSTOM);
 
         $collection = Faq::query()
-            ->search($tableSettings->{ UserTemplate::FIELD_TEMPLATE})
-            ->sort($tableSettings->{ UserTemplate::FIELD_TEMPLATE});
+            ->search($tableSettings)
+            ->sort($tableSettings);
 
         $tableSettings = TemplateService::applyTableSettings($collection, $tableSettings);
 
