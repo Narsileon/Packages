@@ -25,6 +25,7 @@ return [
     'emails'                => 'E-mail|E-mails',
     'equal'                 => 'gleich',
     'faqs'                  => 'FAQ|FAQs',
+    'filters'               => 'Filter|Filter',
     'first_names'           => 'Vorname|Vornamen',
     'footer'                => 'Footer',
     'frontoffice'           => 'Frontoffice',
