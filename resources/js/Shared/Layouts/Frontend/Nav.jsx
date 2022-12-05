@@ -29,7 +29,7 @@ export default function Nav() {
                 onClick={ setOpen }
             />
 
-            <ul className={ `md:flex md:items-center md:justify-between primary-background p-2 space-y-2 md:space-x-4 ${ open ? "absolute md:relative md:w-auto w-full md:h-12 h-screen top-0 left-0 z-40" : "hidden" }` }>
+            <ul className={ `md:flex md:items-center md:justify-between primary-background p-2 space-y-2 md:space-y-0 md:space-x-2 ${ open ? "absolute md:relative md:w-auto w-full md:h-12 h-screen top-0 left-0 z-40" : "hidden" }` }>
                 { renderLinks(menuLinks) }
 
                 <li className="md:relative grid">

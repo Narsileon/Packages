@@ -7,6 +7,7 @@ namespace App\Services;
 use App\Models\MenuItem;
 use App\Models\UserMenu;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 #endregion
 
@@ -42,6 +43,8 @@ class MenuService
 
     public static function getMenuID($layout)
     {
+        Log::debug($layout);
+
         $menu = [];
 
         foreach($layout as $item)

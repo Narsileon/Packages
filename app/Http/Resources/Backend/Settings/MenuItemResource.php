@@ -17,6 +17,7 @@ class MenuItemResource extends JsonResource
     {
         return [
             MenuItem::FIELD_ID => $this->{ MenuItem::FIELD_ID },
+            MenuItem::FIELD_SLUG => $this->{ MenuItem::FIELD_SLUG },
             MenuItem::FIELD_TYPE => $this->{ MenuItem::FIELD_TYPE },
             MenuItem::FIELD_ICON => $this->{ MenuItem::FIELD_ICON },
             MenuItem::FIELD_LABEL => $this->{ MenuItem::FIELD_LABEL },

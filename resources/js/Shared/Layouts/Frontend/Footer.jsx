@@ -2,6 +2,7 @@ import { Link, usePage } from "@inertiajs/inertia-react";
 import { trans, transChoice } from "@/narsil-localization";
 import WebsiteLogo from "@/Shared/Layouts/WebsiteLogo";
 import Icon from "@/Shared/Svg/Icon";
+import { upperFirst } from "lodash";
 
 export default function Footer() {
     return (
@@ -39,7 +40,7 @@ const UpperFooter = () => {
                                         href={ item.url }
                                         key={ index }
                                     >
-                                        { transChoice(item.label, 1) }
+                                        { upperFirst(transChoice(item.label, 1)) }
                                     </Link>
                                 );
                             })

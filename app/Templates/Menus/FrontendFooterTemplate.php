@@ -17,7 +17,7 @@ class FrontendFooterTemplate
             [
                 MenuItem::FIELD_SLUG => 'page_frontend_faqs',
                 MenuItem::FIELD_TYPE => MenuItem::TYPE_PAGE,
-                MenuItem::FIELD_ICON => '',
+                MenuItem::FIELD_ICON => 'question',
                 MenuItem::FIELD_LABEL => 'common.faqs',
                 MenuItem::FIELD_URL => route('faq'),
             ],
