@@ -3,7 +3,10 @@ import { trans } from "@/narsil-localization";
 import Formular from "./Formular";
 import SortableItems from "./SortableItems";
 
-export default function Edit({ menu, menuItems }) {
+export default function Edit({
+    menu,
+    menuItems,
+}) {
     const { data, setData, patch, processing, errors } = useForm({
         title: menu.title,
         category: menu.category,
@@ -11,34 +14,25 @@ export default function Edit({ menu, menuItems }) {
         template: menu.template
     });
 
-    const options = [
-        {
-            label: 'common.categories',
-            type: 'category',
-        },
-        {
-            label: 'common.pages',
-            type: 'page',
-        },
-    ]
-
     return (
         <>
             <div className="col-span-2 md:col-span-1 min-h-0 overflow-y-auto">
                 <section id="sortable-items">
                     <div className="space-y-2">
                         {
-                            options.map((option) => {
-                                return (
-                                    <SortableItems
-                                        items={ menuItems.data.filter(item => item.type == option.type) }
-                                        option={ option }
-                                        setData={ setData }
-                                        key={ option.type }
-                                    />
-                                );
-                            })
+                            data.category == 'backend_menu' ? (
+                                <SortableItems
+                                    title="common.categories"
+                                    items={ menuItems.data.filter(item => item.type == 'category') }
+                                    setData={ setData }
+                                />
+                            ) : null
                         }
+                        <SortableItems
+                            title="common.pages"
+                            items={ menuItems.data.filter(item => item.type == 'page') }
+                            setData={ setData }
+                        />
                     </div>
                 </section>
             </div>

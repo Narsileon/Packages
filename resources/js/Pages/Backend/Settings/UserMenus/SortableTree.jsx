@@ -1,56 +1,48 @@
-import {useEffect, useMemo, useRef, useState} from 'react';
-import {createPortal} from 'react-dom';
-import {
-	DndContext,
-	closestCenter,
-	DragOverlay,
-	MeasuringStrategy,
-	defaultDropAnimation,
-} from '@dnd-kit/core';
-import {
-	SortableContext,
-	arrayMove,
-	verticalListSortingStrategy,
-} from '@dnd-kit/sortable';
-import {
-  buildTree,
-  flattenTree,
-  getProjection,
-  getChildCount,
-  removeItem,
-  removeChildrenOf,
-  setProperty,
-} from './utilities';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
+import { DndContext, closestCenter, DragOverlay, MeasuringStrategy, defaultDropAnimation } from '@dnd-kit/core';
+import { SortableContext, arrayMove, verticalListSortingStrategy } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
+import { buildTree, flattenTree, getProjection, getChildCount, removeItem, removeChildrenOf, setProperty } from './utilities';
 import { SortableTreeItem } from './components/TreeItem/SortableTreeItem';
 import { transChoice } from '@/narsil-localization';
 import { upperFirst } from 'lodash';
 
 const measuring = {
-  droppable: {
-    strategy: MeasuringStrategy.Always,
-  },
+	droppable: {
+		strategy: MeasuringStrategy.Always,
+	},
 };
 
 const dropAnimationConfig = {
 	keyframes({transform}) {
 		return [
-		{opacity: 1, transform: CSS.Transform.toString(transform.initial)},
-		{
-			opacity: 0,
-			transform: CSS.Transform.toString({
-			...transform.final,
-			x: transform.final.x + 5,
-			y: transform.final.y + 5,
-			}),
-		},
+			{
+				opacity: 1,
+				transform: CSS.Transform.toString(transform.initial)
+			},
+			{
+				opacity: 0,
+				transform: CSS.Transform.toString({
+					...transform.final,
+					x: transform.final.x + 5,
+					y: transform.final.y + 5,
+				}),
+			},
 		];
 	},
 	easing: 'ease-out',
 	sideEffects({active}) {
-		active.node.animate([{opacity: 0}, {opacity: 1}], {
-		duration: defaultDropAnimation.duration,
-		easing: defaultDropAnimation.easing,
+		active.node.animate([
+			{
+				opacity: 0
+			},
+			{
+				opacity: 1
+			}
+		], {
+			duration: defaultDropAnimation.duration,
+			easing: defaultDropAnimation.easing,
 		});
 	},
 	};
@@ -70,9 +62,9 @@ export default function SortableTree({
 
 	const flattenedItems = useMemo(() => {
 		const flattenedTree = flattenTree(data);
-		const collapsedItems = flattenedTree.reduce((acc, {children, collapsed, id}) =>
+		const collapsedItems = flattenedTree.reduce((acc, { children, collapsed, id }) =>
 			collapsed && children.length ? [...acc, id] : acc,
-		[]
+			[]
 		);
 
 		return removeChildrenOf(
@@ -94,36 +86,36 @@ export default function SortableTree({
 		offset: offsetLeft,
 	});
 
-	const sortedIds = useMemo(() => flattenedItems.map(({id}) => id), [
+	const sortedIds = useMemo(() => flattenedItems.map(({ id }) => id), [
 		flattenedItems,
 	]);
 
-	const activeItem = activeId ? flattenedItems.find(({id}) =>
+	const activeItem = activeId ? flattenedItems.find(({ id }) =>
 		id === activeId
 	) : null;
 
 	useEffect(() => {
 		sensorContext.current = {
-		items: flattenedItems,
-		offset: offsetLeft,
+			items: flattenedItems,
+			offset: offsetLeft,
 		};
 	}, [flattenedItems, offsetLeft]);
 
 	const announcements = {
-		onDragStart({active}) {
-			return `Picked up ${active.id}.`;
+		onDragStart({ active }) {
+			return `Picked up ${ active.id }.`;
 		},
-		onDragMove({active, over}) {
+		onDragMove({ active, over }) {
 			return getMovementAnnouncement('onDragMove', active.id, over?.id);
 		},
-		onDragOver({active, over}) {
+		onDragOver({ active, over }) {
 			return getMovementAnnouncement('onDragOver', active.id, over?.id);
 		},
-		onDragEnd({active, over}) {
+		onDragEnd({ active, over }) {
 			return getMovementAnnouncement('onDragEnd', active.id, over?.id);
 		},
-		onDragCancel({active}) {
-			return `Moving was cancelled. ${active.id} was dropped in its original position.`;
+		onDragCancel({ active }) {
+			return `Moving was cancelled. ${ active.id } was dropped in its original position.`;
 		},
 	};
 
@@ -166,12 +158,12 @@ export default function SortableTree({
 							{
 								activeId && activeItem ? (
 									<SortableTreeItem
-										id={'activeId'}
-										depth={activeItem.depth}
+										id={ 'activeId' }
+										depth={ activeItem.depth }
 										clone
 										childCount={ getChildCount(data, activeId) + 1 }
 										value={ activeId.toString() }
-										indentationWidth={indentationWidth}
+										indentationWidth={ indentationWidth }
 									/>
 								) : null
 							}
@@ -182,11 +174,13 @@ export default function SortableTree({
 		</DndContext>
 	);
 
-	function handleDragStart({active: {id: activeId}}) {
+	function handleDragStart({ active: {
+		id: activeId
+	} }) {
 		setActiveId(activeId);
 		setOverId(activeId);
 
-		const activeItem = flattenedItems.find(({id}) => id === activeId);
+		const activeItem = flattenedItems.find(({ id }) => id === activeId);
 
 		if (activeItem) {
 		setCurrentPosition({
@@ -198,15 +192,15 @@ export default function SortableTree({
 		document.body.style.setProperty('cursor', 'grabbing');
 	}
 
-	function handleDragMove({delta}) {
+	function handleDragMove({ delta }) {
 		setOffsetLeft(delta.x);
 	}
 
-	function handleDragOver({over}) {
+	function handleDragOver({ over }) {
 		setOverId(over?.id ?? null);
 	}
 
-	function handleDragEnd({active, over}) {
+	function handleDragEnd({ active, over }) {
 		resetState();
 
 		if (projected && over) {
@@ -216,13 +210,13 @@ export default function SortableTree({
 			const activeIndex = clonedItems.findIndex(({ id }) => id === active.id);
 			const activeTreeItem = clonedItems[activeIndex];
 
-			clonedItems[activeIndex] = {...activeTreeItem, depth, parentId};
+			clonedItems[activeIndex] = { ...activeTreeItem, depth, parentId };
 
 			const sortedItems = arrayMove(clonedItems, activeIndex, overIndex);
 			const newItems = buildTree(sortedItems);
 
 			if (!validateTree(newItems)) {
-				handleDragCancel;
+				handleDragCancel();
 
 				return;
 			}
@@ -276,8 +270,8 @@ export default function SortableTree({
 			}
 
 			const clonedItems = JSON.parse(JSON.stringify(flattenTree(data)));
-			const overIndex = clonedItems.findIndex(({id}) => id === overId);
-			const activeIndex = clonedItems.findIndex(({id}) => id === activeId);
+			const overIndex = clonedItems.findIndex(({ id }) => id === overId);
+			const activeIndex = clonedItems.findIndex(({ id }) => id === activeId);
 			const sortedItems = arrayMove(clonedItems, activeIndex, overIndex);
 
 			const previousItem = sortedItems[overIndex - 1];
@@ -288,20 +282,20 @@ export default function SortableTree({
 
 			if (!previousItem) {
 				const nextItem = sortedItems[overIndex + 1];
-				announcement = `${activeId} was ${movedVerb} before ${nextItem.id}.`;
+				announcement = `${ activeId } was ${ movedVerb } before ${ nextItem.id }.`;
 			} else {
 				if (projected.depth > previousItem.depth) {
-					announcement = `${activeId} was ${nestedVerb} under ${previousItem.id}.`;
+					announcement = `${ activeId } was ${ nestedVerb } under ${ previousItem.id }.`;
 				} else {
 					let previousSibling = previousItem;
 
 					while (previousSibling && projected.depth < previousSibling.depth) {
 						const parentId = previousSibling.parentId;
-						previousSibling = sortedItems.find(({id}) => id === parentId);
+						previousSibling = sortedItems.find(({ id }) => id === parentId);
 					}
 
 					if (previousSibling) {
-						announcement = `${activeId} was ${movedVerb} after ${previousSibling.id}.`;
+						announcement = `${ activeId } was ${ movedVerb } after ${ previousSibling.id }.`;
 					}
 				}
 			}
@@ -313,7 +307,7 @@ export default function SortableTree({
 	}
 }
 
-const adjustTranslate = ({transform}) => {
+const adjustTranslate = ({ transform }) => {
 	return {
 		...transform,
 		y: transform.y - 25,
@@ -322,14 +316,13 @@ const adjustTranslate = ({transform}) => {
 
 function validateTree(items)
 {
-	items.map((item) => {
-		if (!validateChildren(item))
-		{
+	return items.every((item) => {
+		if (!validateChildren(item)) {
 			return false;
 		}
-	})
 
-	return true;
+		return true;
+	});
 }
 
 function validateChildren(item)
@@ -339,12 +332,13 @@ function validateChildren(item)
 			return false;
 		}
 
-		else
-		{
-			item.children.map((child) => {
+		else {
+			return item.children.every((child) => {
 				if (!validateChildren(child)) {
 					return false;
 				}
+
+				return true;
 			})
 		}
 	}

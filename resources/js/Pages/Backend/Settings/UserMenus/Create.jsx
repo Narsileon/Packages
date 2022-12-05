@@ -3,7 +3,9 @@ import { trans } from "@/narsil-localization";
 import Formular from "./Formular";
 import SortableItems from "./SortableItems";
 
-export default function Create({ menuItems }) {
+export default function Create({
+    menuItems,
+}) {
     const { data, setData, post, processing, errors } = useForm({
         title: '',
         category: '',
@@ -11,34 +13,25 @@ export default function Create({ menuItems }) {
         template: [],
     });
 
-    const options = [
-        {
-            label: 'common.categories',
-            type: 'category',
-        },
-        {
-            label: 'common.pages',
-            type: 'page',
-        },
-    ]
-
     return (
         <>
             <div className="col-span-2 md:col-span-1 min-h-0 overflow-y-auto">
                 <section id="sortable-items">
                     <div className="space-y-2">
                         {
-                            options.map((option) => {
-                                return (
-                                    <SortableItems
-                                        items={ menuItems.data.filter(item => item.type == option.type) }
-                                        option={ option }
-                                        setData={ setData }
-                                        key={ option.type }
-                                    />
-                                );
-                            })
+                            data.category == 'backend_menu' ? (
+                                <SortableItems
+                                    title="common.categories"
+                                    items={ menuItems.data.filter(item => item.type == 'category') }
+                                    setData={ setData }
+                                />
+                            ) : null
                         }
+                        <SortableItems
+                            title="common.pages"
+                            items={ menuItems.data.filter(item => item.type == 'page') }
+                            setData={ setData }
+                        />
                     </div>
                 </section>
             </div>

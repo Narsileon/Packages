@@ -12,10 +12,19 @@ export default function Formular({
     processing,
     errors,
  }) {
-    const categories = [
-        'backend_menu',
-        'frontend_footer',
-        'frontend_header',
+    const menus = [
+        {
+            label: 'backend_menu',
+            type: 'backend_menu',
+        },
+        {
+            label: 'frontend_footer',
+            type: 'frontend_footer',
+        },
+        {
+            label: 'frontend_header',
+            type: 'frontend_header',
+        },
     ];
 
     return (
@@ -45,13 +54,13 @@ export default function Formular({
                             { '---' }
                         </option>
                         {
-                            categories.map((category, index) => {
+                            menus.map((menu, index) => {
                                 return (
                                     <option
-                                        value={ category }
+                                        value={ menu.type }
                                         key={ index }
                                     >
-                                        { upperFirst(category) }
+                                        { upperFirst(menu.label) }
                                     </option>
                                 );
                             })

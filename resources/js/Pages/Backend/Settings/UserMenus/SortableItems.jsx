@@ -2,8 +2,8 @@ import { transChoice } from "@/narsil-localization";
 import { Collapse, ItemButton } from "@/Components/Elements/Dropdowns";
 
 export default function SortableItems({
+    title,
     items,
-    option,
     setData,
 }) {
     function addToList(item) {
@@ -16,7 +16,7 @@ export default function SortableItems({
     return (
         <div>
             <Collapse
-                label={ transChoice(option.label, 2) }
+                label={ transChoice(title, 2) }
                 className="primary-background border-2 border-color rounded-lg p-2 space-y-2"
             >
                 <ul>
