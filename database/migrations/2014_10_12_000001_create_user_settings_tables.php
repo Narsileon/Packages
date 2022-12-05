@@ -71,7 +71,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId(UserSetting::FIELD_USER_ID)->constrained()->cascadeOnDelete();
 
-            $table->text(UserSetting::FIELD_SETTINGS)->nullable();
+            $table->string(UserSetting::FIELD_LANGUAGE)->default('en');
+            $table->string(UserSetting::FIELD_THEME)->default('dark');
 
             $table->timestamps();
         });

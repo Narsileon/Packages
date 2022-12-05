@@ -16,6 +16,7 @@ use App\Http\Controllers\Backend\Settings\ResetUserTemplateController;
 use App\Http\Controllers\Backend\Settings\UserLocalizationController;
 use App\Http\Controllers\Backend\Settings\UserMenuController;
 use App\Http\Controllers\Backend\Settings\UserTemplateController;
+use App\Http\Controllers\Backend\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 #endregion
@@ -26,6 +27,10 @@ Route::group([
     'middleware' => 'can:' . Permissions::BACKEND_VIEW,
 ], function () {
     Route::get('dashboard', DashboardController::class)->name('dashboard');
+
+    Route::controller(ProfileController::class)->group(function () {
+        Route::get('profile', 'index')->name('profile');
+    });
 
     // Management
     Route::resource('menu_items', MenuItemController::class);

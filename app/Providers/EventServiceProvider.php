@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\User;
 use App\Models\UserMenu;
+use App\Models\UserSetting;
 use App\Services\MenuService;
 use App\Templates\Menus\BackendMenuTemplate;
 use App\Templates\Menus\FrontendFooterTemplate;
@@ -52,6 +53,9 @@ class EventServiceProvider extends ServiceProvider
                 UserMenu::FIELD_TYPE => UserMenu::TYPE_FRONTEND_HEADER,
                 UserMenu::FIELD_TITLE => 'Default Frontend Header',
                 UserMenu::FIELD_TEMPLATE =>MenuService::getMenuID(FrontendHeaderTemplate::get()),
+            ]);
+            UserSetting::create([
+                UserSetting::FIELD_USER_ID => $model->{ User::FIELD_ID },
             ]);
         });
     }

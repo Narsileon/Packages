@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { useClickAway, useToggle } from "react-use";
 import { usePage } from "@inertiajs/inertia-react";
-import { transChoice } from "@/narsil-localization";
+import { trans, transChoice } from "@/narsil-localization";
 import CloseButton from "@/Components/Elements/Buttons/CloseButton";
 import MenuButton from "@/Components/Elements/Buttons/MenuButton";
 import NavLink from "@/Components/Elements/Links/NavLink";
@@ -95,7 +95,7 @@ const NavAuth = ({ auth }) => {
             <div>
                 <NavLink
                     href={ route('logout') }
-                    label="Log out"
+                    label={ trans('common.logout') }
                     icon="logout"
                     method="post"
                     as="button"

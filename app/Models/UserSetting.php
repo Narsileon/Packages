@@ -4,7 +4,6 @@ namespace App\Models;
 
 #region USE
 
-use App\Constants\Types;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -19,7 +18,8 @@ class UserSetting extends Model
 
     public const FIELD_ID = 'id';
 
-    public const FIELD_SETTINGS = 'settings';
+    public const FIELD_LANGUAGE = 'language';
+    public const FIELD_THEME = 'theme';
     public const FIELD_USER_ID='user_id';
 
     public const PROPERTY_USER = 'user';
@@ -30,12 +30,9 @@ class UserSetting extends Model
 
     protected $fillable =
     [
-        self::FIELD_SETTINGS,
+        self::FIELD_LANGUAGE,
+        self::FIELD_THEME,
         self::FIELD_USER_ID,
-    ];
-
-    protected $casts = [
-        self::FIELD_SETTINGS => Types::ARRAY,
     ];
 
     protected $perPage = 10;

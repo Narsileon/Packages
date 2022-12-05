@@ -1,4 +1,5 @@
 import { useToggle } from "react-use";
+import { trans, transChoice } from "@/narsil-localization";
 import { Dropdown } from "@/Components/Elements/Dropdowns";
 import CloseButton from "@/Components/Elements/Buttons/CloseButton";
 import NavLink from "@/Components/Elements/Links/NavLink";
@@ -65,10 +66,15 @@ const Header = () => {
                     placement="bottom-end"
                     placementOffset={ 4 }
                 >
-                    <ul className="p-1">
+                    <ul className="divide-y divide-color p-1">
+                        <NavLink
+                            href={ route('admin.profile') }
+                            label={ transChoice('common.profiles', 1) }
+                            icon="user"
+                        />
                         <NavLink
                             href={ route('logout') }
-                            label="Log out"
+                            label={ trans('common.logout') }
                             icon="logout"
                             method="post"
                             as="button"

@@ -1,10 +1,10 @@
 import { useState } from "react";
+import { Inertia } from "@inertiajs/inertia";
 import { trans, transChoice } from "@/narsil-localization";
 import { useTable } from "@/narsil-table";
 import { Table } from "@/Components/Tables/Index";
 import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 import AppHead from "@/Shared/AppHead";
-import { Inertia } from "@inertiajs/inertia";
 
 export default function Index({ tables }) {
     const [template, setTemplate] = useState(tables[Object.keys(tables)[0]]);
@@ -72,7 +72,7 @@ export default function Index({ tables }) {
 }
 
 const TemplateTable = ({ columns, template }) => {
-    const [table] = useTable([], columns, template, false);
+    const [table] = useTable([], columns, template);
 
     return (
         <Table
