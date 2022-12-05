@@ -3,7 +3,7 @@ import { useToggle } from "react-use";
 import { upperFirst } from "lodash";
 import Chevron from "@/Shared/Svg/Chevron";
 
-export default function Dropdown({
+export default function Collapse({
     label,
     trigger,
     children,

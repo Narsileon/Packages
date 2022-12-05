@@ -1,5 +1,7 @@
 import { useToggle } from "react-use";
+import { Dropdown } from "@/Components/Elements/Dropdowns";
 import CloseButton from "@/Components/Elements/Buttons/CloseButton";
+import NavLink from "@/Components/Elements/Links/NavLink";
 import Flash from "@/Shared/Flash";
 import LocaleDropdown from "@/Shared/Layouts/LocaleDropdown";
 import ThemeButton from "@/Shared/Layouts/ThemeButton";
@@ -58,9 +60,21 @@ const Header = () => {
 
                 <ThemeButton />
 
-                <button>
-                    <Icon name="menu" />
-                </button>
+                <Dropdown
+                    trigger={ <Icon name="menu" /> }
+                    placement="bottom-end"
+                    placementOffset={ 4 }
+                >
+                    <ul className="p-1">
+                        <NavLink
+                            href={ route('logout') }
+                            label="Log out"
+                            icon="logout"
+                            method="post"
+                            as="button"
+                        />
+                    </ul>
+                </Dropdown>
             </div>
         </header>
     )
