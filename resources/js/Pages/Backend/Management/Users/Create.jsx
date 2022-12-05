@@ -30,6 +30,7 @@ export default function Create({ roles, permissions }) {
         username: '',
         email: '',
 		password: '',
+		password_confirmation: '',
 		last_name: '',
 		first_name: '',
 		roles: initializeRoles(),

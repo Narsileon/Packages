@@ -57,17 +57,29 @@ export default function Formular({
                             error={ errors.email}
                             setData={ setData }
                         />
-                        {/* Password */}
                         {
-                            data.password ? (
-                                <FormInput
-                                    id="password"
-                                    label={ transChoice('common.passwords', 1) }
-                                    type="password"
-                                    value={ data.password}
-                                    error={ errors.password}
-                                    setData={ setData }
-                                />
+                            data.password != null ? (
+                                <>
+                                    {/* Password */}
+                                    <FormInput
+                                        id="password"
+                                        label={ transChoice('common.passwords', 1) }
+                                        type="password"
+                                        value={ data.password}
+                                        error={ errors.password}
+                                        setData={ setData }
+                                    />
+                                    {/* Password Confirmation */}
+                                    <FormInput
+                                        id="password_confirmation"
+                                        label={ trans('validation.attributes.password_confirmation') }
+                                        type="password"
+                                        value={ data.password_confirmation}
+                                        error={ errors.password_confirmation}
+                                        setData={ setData }
+                                        autoComplete="new-password"
+                                    />
+                                </>
                             ) : null
                         }
                         {/* Last name */}
