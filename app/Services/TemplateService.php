@@ -9,10 +9,10 @@ use App\Models\User;
 use App\Models\UserTemplate;
 use App\Templates\Tables\FaqTable;
 use App\Templates\Tables\LanguageTable;
+use App\Templates\Tables\LocalizationTable;
 use App\Templates\Tables\MenuItemTable;
 use App\Templates\Tables\OrderTable;
 use App\Templates\Tables\RoleTable;
-use App\Templates\Tables\UserLocalizationTable;
 use App\Templates\Tables\UserTable;
 use Illuminate\Support\Facades\Auth;
 
@@ -53,14 +53,14 @@ class TemplateService
                 return FaqTable::DEFAULT_TEMPLATE;
             case Tables::TABLE_LANGUAGES:
                 return LanguageTable::DEFAULT_TEMPLATE;
+            case Tables::TABLE_LOCALIZATIONS:
+                return LocalizationTable::DEFAULT_TEMPLATE;
             case Tables::TABLE_MENU_ITEMS:
                 return MenuItemTable::DEFAULT_TEMPLATE;
             case Tables::TABLE_ORDERS:
                 return OrderTable::DEFAULT_TEMPLATE;
             case Tables::TABLE_ROLES:
                 return RoleTable::DEFAULT_TEMPLATE;
-            case Tables::TABLE_USER_LOCALIZATIONS:
-                return UserLocalizationTable::DEFAULT_TEMPLATE;
             case Tables::TABLE_USERS:
                 return UserTable::DEFAULT_TEMPLATE;
             default:
@@ -128,14 +128,14 @@ class TemplateService
                 return FaqTable::COLUMNS;
             case Tables::TABLE_LANGUAGES:
                 return LanguageTable::COLUMNS;
+            case Tables::TABLE_LOCALIZATIONS:
+                return LocalizationTable::COLUMNS;
             case Tables::TABLE_MENU_ITEMS:
                 return MenuItemTable::COLUMNS;
             case Tables::TABLE_ORDERS:
                 return OrderTable::COLUMNS;
             case Tables::TABLE_ROLES:
                 return RoleTable::COLUMNS;
-            case Tables::TABLE_USER_LOCALIZATIONS:
-                return UserLocalizationTable::COLUMNS;
             case Tables::TABLE_USERS:
                 return UserTable::COLUMNS;
             default:

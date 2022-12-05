@@ -5,7 +5,6 @@ namespace App\Models;
 #region USE
 
 use App\Constants\Types;
-use App\Models\UserLocalization;
 use App\Models\UserMenu;
 use App\Models\UserSetting;
 use App\Models\UserTemplate;
@@ -38,7 +37,6 @@ class User extends Authenticatable
     public const FIELD_REMEMBER_TOKEN = 'remember_token';
     public const FIELD_USERNAME = 'username';
 
-    public const ATTRIBUTE_LOCALIZATIONS = 'localizations';
     public const ATTRIBUTE_MENUS = 'menus';
     public const ATTRIBUTE_PERMISSIONS = 'permissions';
     public const ATTRIBUTE_ROLES = 'roles';
@@ -78,11 +76,6 @@ class User extends Authenticatable
     public function setPasswordAttribute($password)
     {
         $this->attributes[self::FIELD_PASSWORD] = bcrypt($password);
-    }
-
-    public function localizations() : HasOne
-    {
-        return $this->hasOne(UserLocalization::class);
     }
 
     public function menus() : HasMany

@@ -108,11 +108,11 @@ class BackendMenuTemplate
                         MenuItem::FIELD_URL => route('admin.languages'),
                     ],
                     [
-                        MenuItem::FIELD_SLUG => 'page_backend_user_localizations',
+                        MenuItem::FIELD_SLUG => 'page_backend_localizations',
                         MenuItem::FIELD_TYPE => MenuItem::TYPE_PAGE,
                         MenuItem::FIELD_ICON => 'book',
                         MenuItem::FIELD_LABEL => 'common.dictionaries',
-                        MenuItem::FIELD_URL => route('admin.user_localizations.index'),
+                        MenuItem::FIELD_URL => route('admin.localizations.index'),
                     ],
                     [
                         MenuItem::FIELD_SLUG => 'page_backend_user_menus',

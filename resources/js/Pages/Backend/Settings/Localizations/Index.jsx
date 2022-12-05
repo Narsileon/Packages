@@ -1,7 +1,8 @@
 import { useRef } from "react";
 import { useClickAway, useToggle } from "react-use";
 import { Inertia } from "@inertiajs/inertia";
-import { trans, transChoice } from "@/narsil-localization";
+import { usePage } from "@inertiajs/inertia-react";
+import { trans, transChoice, transRaw } from "@/narsil-localization";
 import { useTable } from "@/narsil-table";
 import { upperFirst } from "lodash";
 import { Table, TableContainer } from "@/Components/Tables";
@@ -10,13 +11,15 @@ import FrontendPagination from "@/Components/Pagination/FrontendPagination";
 import AppHead from "@/Shared/AppHead";
 
 export default function Index({ collection, tableSettings }) {
+	const localization = usePage().props.shared.localization.dictionary;
+
 	const columns = tableSettings.columns.map((column) => {
-		if (column.id === 'custom_value') {
+		if (column.id === 'value') {
 			return {
 				...column,
 				cell: props => (
 					<CustomValue
-						value={ props.getValue() }
+						value={ props.getValue() == '' ? trans(props.row.original.path == '' ? props.row.original.key : `${ props.row.original.path }.${ props.row.original.key }`) : props.getValue() }
 						handleChange={ (event) => handleChange(event, props.row.original.key) }
 					/>
 				)
@@ -26,7 +29,7 @@ export default function Index({ collection, tableSettings }) {
 		return column;
  	});
 
-	const [table] = useTable(collection.dictionary, columns, tableSettings, false);
+	const [table] = useTable(collection, columns, tableSettings, false);
 
 	const handleChange = (event, key) => {
 		let temp = [...table.options.data];

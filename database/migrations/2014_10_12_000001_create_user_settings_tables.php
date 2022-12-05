@@ -3,7 +3,6 @@
 #region USE
 
 use App\Constants\Tables;
-use App\Models\UserLocalization;
 use App\Models\UserMenu;
 use App\Models\UserSetting;
 use App\Models\UserTemplate;
@@ -19,7 +18,6 @@ return new class extends Migration
 
     public function up()
     {
-        self::createUserLocalizationTable();
         self::createUserMenusTable();
         self::createUserSettingsTable();
         self::createUserTemplatesTable();
@@ -27,7 +25,6 @@ return new class extends Migration
 
     public function down()
     {
-        Schema::dropIfExists(Tables::TABLE_USER_LOCALIZATIONS);
         Schema::dropIfExists(Tables::TABLE_USER_MENUS);
         Schema::dropIfExists(Tables::TABLE_USER_SETTINGS);
         Schema::dropIfExists(Tables::TABLE_USER_TEMPLATES);
@@ -36,18 +33,6 @@ return new class extends Migration
     #endregion
 
     #region PRIVATE METHODS
-
-    private static function createUserLocalizationTable()
-    {
-        Schema::create(Tables::TABLE_USER_LOCALIZATIONS, function (Blueprint $table) {
-            $table->id();
-            $table->foreignId(UserLocalization::FIELD_USER_ID)->constrained()->cascadeOnDelete();
-
-            $table->json(UserLocalization::FIELD_DICTIONARY)->nullable();
-
-            $table->timestamps();
-        });
-    }
 
     private static function createUserMenusTable()
     {

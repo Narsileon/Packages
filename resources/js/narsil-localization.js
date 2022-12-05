@@ -1,7 +1,7 @@
 import { usePage } from "@inertiajs/inertia-react";
 import { upperFirst } from "lodash";
 
-export { trans, transChoice };
+export { trans, transChoice, transRaw };
 
 //#region PUBLIC METHODS
 
@@ -25,6 +25,12 @@ const transChoice = (key, count, replacements = null) => {
     }
 
     return text;
+}
+
+const transRaw = (key) => {
+    let table = usePage().props.shared.localization.dictionary;
+
+    return localizePrimaryKey(table, key);
 }
 
 //#endregion

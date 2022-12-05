@@ -7,7 +7,6 @@ abstract class Tables
     #region CONSTANTS
 
     public const FIELD_ACCESSOR_KEY = 'accessorKey';
-    public const FIELD_CUSTOM_VALUE = 'custom_value';
     public const FIELD_DESC = 'desc';
     public const FIELD_DISABLE_ORDER = 'disableOrderBy';
     public const FIELD_DISABLE_SORT = 'disableSortBy';
@@ -22,7 +21,7 @@ abstract class Tables
     public const FIELD_OPERATOR = 'operator';
     public const FIELD_OPERATOR_1 = 'operator1';
     public const FIELD_OPERATOR_2 = 'operator2';
-    public const FIELD_SIZE = 'size';
+    public const FIELD_PATH = 'path';
     public const FIELD_TYPE = 'type';
     public const FIELD_VALUE = 'value';
 
@@ -45,13 +44,13 @@ abstract class Tables
     public const TABLE_FAILED_JOBS = 'failed_jobs';
     PUBLIC const TABLE_GENERAL_SETTINGS = 'general_settings';
     public const TABLE_LANGUAGES = 'languages';
+    public const TABLE_LOCALIZATIONS = 'localizations';
     public const TABLE_MENU_ITEMS = 'menu_items';
     public const TABLE_ORDERS = 'orders';
     public const TABLE_PASSWORD_RESETS = 'password_resets';
     public const TABLE_PERSONAL_ACCESS_TOKENS = 'personal_access_tokens';
     public const TABLE_ROLES = 'roles';
     public const TABLE_USERS = 'users';
-    public const TABLE_USER_LOCALIZATIONS = 'user_localizations';
     public const TABLE_USER_MENUS = 'user_menus';
     public const TABLE_USER_SETTINGS = 'user_settings';
     public const TABLE_USER_TEMPLATES = 'user_templates';
@@ -59,11 +58,11 @@ abstract class Tables
     public const TEMPLATES = [
         self::TABLE_FAQS,
         self::TABLE_LANGUAGES,
+        self::TABLE_LOCALIZATIONS,
         self::TABLE_MENU_ITEMS,
         self::TABLE_ORDERS,
         self::TABLE_ROLES,
         self::TABLE_USERS,
-        self::TABLE_USER_LOCALIZATIONS,
     ];
 
     #endregion

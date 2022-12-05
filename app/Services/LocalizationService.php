@@ -5,9 +5,8 @@ namespace App\Services;
 #region USE
 
 use App\Models\Backend\Language;
-use App\Models\UserLocalization;
+use App\Models\Backend\Localization;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
@@ -27,21 +26,13 @@ class LocalizationService
 
     #region PUBLIC METHODS
 
-    public static function createTable($user)
-    {
-        UserLocalization::create([
-            UserLocalization::FIELD_USER_ID => $user->id,
-            UserLocalization::FIELD_DICTIONARY => self::getCustomizableLocalization(),
-        ]);
-    }
-
     public static function get($customized = true)
     {
         Cache::flush();
 
         $locale = App::getLocale();
         $locales = Language::where(Language::FIELD_ACTIVE, 1)->pluck(Language::FIELD_CODE)->toArray();
-        $dictionary = $customized ? self::getCustomizedLocalization($locale) : self::getLocalization($locale);
+        $dictionary = self::getLocalization($locale);
 
         return compact(
             'locale',
@@ -50,11 +41,37 @@ class LocalizationService
         );
     }
 
-    public static function getCustomizableLocalization() : array
+    public static function getCustomLocalization()
     {
         $locale = App::getLocale();
 
-        return array_fill_keys(array_keys(self::getPhpLocalization($locale)["common"]), '');
+        return Localization::where(Localization::FIELD_LOCALIZATION, '=', $locale)->first();
+    }
+
+    public static function getLocalizationKeys() : array
+    {
+        $locale = Config::get(self::FALLBACK_LOCALE);
+        $localization = self::getLocalization($locale);
+
+        return self::replaceRecursivelyArrayValues($localization, '');
+    }
+
+    private static function replaceRecursivelyArrayValues($array, $replacer) : array
+    {
+        foreach($array as $key=>$value)
+        {
+            if (is_array($value))
+            {
+                $array[$key] = self::replaceRecursivelyArrayValues($value, $replacer);
+            }
+
+            else
+            {
+                $array[$key] = $replacer;
+            }
+        }
+
+        return $array;
     }
 
     #endregion
@@ -66,15 +83,11 @@ class LocalizationService
         $phpLocalization = self::getPhpLocalization($locale);
         $jsonLocalization = self::getJsonLocalization($locale);
 
-        return array_merge($phpLocalization, $jsonLocalization);
-    }
+        $localization = array_merge($phpLocalization, $jsonLocalization);
 
-    private static function getCustomizedLocalization($locale)
-    {
-        $localization = self::getLocalization($locale);
-        $customLocalization = self::getCustomLocalization($locale);
+        $customLocalization = self::getCustomLocalization()->{ Localization::FIELD_LOCALIZATION };
 
-        $localization['common'] = array_merge($localization['common'], $customLocalization);
+
 
         return $localization;
     }
@@ -146,11 +159,6 @@ class LocalizationService
 
             return json_decode($file, true);
         });
-    }
-
-    private static function getCustomLocalization() : array
-    {
-        return Auth::user() ? array_filter(Auth::user()->localizations->dictionary) : [];
     }
 
     #endregion

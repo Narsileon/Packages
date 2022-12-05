@@ -9,16 +9,16 @@ use App\Constants\Types;
 
 #endregion
 
-class UserLocalizationTable
+class LocalizationTable
 {
     #region CONSTANTS
 
     public const COLUMNS = [
         [
-            Tables::FIELD_ACCESSOR_KEY => Tables::FIELD_TYPE,
-            Tables::FIELD_ID => Tables::FIELD_TYPE,
+            Tables::FIELD_ACCESSOR_KEY => Tables::FIELD_PATH,
+            Tables::FIELD_ID => Tables::FIELD_PATH,
             Tables::FIELD_TYPE => Types::TEXT,
-            Tables::FIELD_HEADER => 'common.types',
+            Tables::FIELD_HEADER => 'common.paths',
         ],
         [
             Tables::FIELD_ACCESSOR_KEY => Tables::FIELD_KEY,
@@ -32,20 +32,13 @@ class UserLocalizationTable
             Tables::FIELD_TYPE => Types::TEXT,
             Tables::FIELD_HEADER => 'common.values',
         ],
-        [
-            Tables::FIELD_ACCESSOR_KEY => Tables::FIELD_CUSTOM_VALUE,
-            Tables::FIELD_ID => Tables::FIELD_CUSTOM_VALUE,
-            Tables::FIELD_TYPE => Types::TEXT,
-            Tables::FIELD_HEADER => 'common.custom_values',
-        ],
     ];
 
     public const DEFAULT_TEMPLATE = [
         Tables::PROPERTY_COLUMN_ORDER => [
-            Tables::FIELD_TYPE,
+            Tables::FIELD_PATH,
             Tables::FIELD_KEY,
             Tables::FIELD_VALUE,
-            Tables::FIELD_CUSTOM_VALUE,
         ],
         Tables::PROPERTY_SORTING => [
             [
