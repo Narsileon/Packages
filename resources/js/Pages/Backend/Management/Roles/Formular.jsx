@@ -2,6 +2,7 @@ import { trans, transChoice } from "@/narsil-localization";
 import { Form, FormCheckbox, FormFooter, FormHeader, FormInput } from "@/Components/Forms";
 import BackButton from "@/Components/Elements/Buttons/BackButton";
 import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
+import Permissions from "@/Components/Forms/Permissions";
 
 export default function Formular({
     title,
@@ -34,21 +35,11 @@ export default function Formular({
                         setData={ setData }
                     />
 
-                    {
-                        permissions.data.map((permission) => {
-                            return (
-                                <FormCheckbox
-                                    id={ permission.name }
-                                    label={ trans(`permissions.${ permission.name }`) }
-                                    type="checkbox"
-                                    checked={ data.permissions[permission.name] }
-                                    error={ errors[data.permissions[permission.name]] }
-                                    onChange={ (e) => setData('permissions', { ...data.permissions, [permission.name]: e.target.checked }) }
-                                    key={ permission.id }
-                                />
-                            );
-                        })
-                    }
+                    <Permissions
+                        data={ data.permissions }
+                        permissions={ permissions }
+                        setData={ (name, value) => setData("permissions", { ...data.permissions, [name]: value }) }
+                    />
                 </div>
             </section>
 

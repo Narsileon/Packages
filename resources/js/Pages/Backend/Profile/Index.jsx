@@ -7,8 +7,13 @@ import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 import Tabs from "@/Components/Tabs/Tabs";
 import TabPanel from "@/Components/Tabs/TabPanel";
 import AppHead from "@/Shared/AppHead";
+import Permissions from "@/Components/Forms/Permissions";
 
-export default function Index({ user, userSettings }) {
+export default function Index({
+    permissions,
+    user,
+    userSettings
+}) {
     const { data, setData, patch, processing, errors } = useForm({
         language: userSettings.language,
         dark: userSettings.dark,
@@ -71,7 +76,7 @@ export default function Index({ user, userSettings }) {
                     activeTab={ activeTab }
                 >
                     <div>
-
+                        <Permissions permissions={ permissions } />
                     </div>
                 </TabPanel>
 
