@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+    font-size: 1em;
+}
+
 @layer base {
     main { @apply
         bg-white text-black

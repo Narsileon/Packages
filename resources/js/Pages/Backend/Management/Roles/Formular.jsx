@@ -1,5 +1,5 @@
-import { trans, transChoice } from "@/narsil-localization";
-import { Form, FormCheckbox, FormFooter, FormHeader, FormInput } from "@/Components/Forms";
+import { transChoice } from "@/narsil-localization";
+import { Form, FormFooter, FormHeader, FormInput } from "@/Components/Forms";
 import BackButton from "@/Components/Elements/Buttons/BackButton";
 import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 import Permissions from "@/Components/Forms/Permissions";
@@ -35,6 +35,9 @@ export default function Formular({
                         setData={ setData }
                     />
 
+                    <hr className="border-color"/>
+
+                    {/* Permissions */}
                     <Permissions
                         data={ data.permissions }
                         permissions={ permissions }

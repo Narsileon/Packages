@@ -1,5 +1,4 @@
 import { trans, transChoice } from "@/narsil-localization";
-import { data } from "autoprefixer";
 import { upperFirst } from "lodash";
 import Toggle from "../Elements/Toggle";
 
@@ -35,22 +34,24 @@ export default function Permissions({ data, setData, permissions }) {
     return (
         <div>
             <div className="grid grid-cols-5">
-                <div>
+                <div className="p-2">
                     { upperFirst(transChoice('common.pages', 2)) }
                 </div>
-                <div>
+                <div className="flex justify-center p-2">
                     { upperFirst(trans('common.view')) }
                 </div>
-                <div>
+                <div className="flex justify-center p-2">
                     { upperFirst(trans('common.create')) }
                 </div>
-                <div>
+                <div className="flex justify-center p-2">
                     { upperFirst(trans('common.update')) }
                 </div>
-                <div>
+                <div className="flex justify-center p-2">
                     { upperFirst(trans('common.delete')) }
                 </div>
             </div>
+
+            <hr className="border-color"/>
 
             {
                 Object.entries(formattedPermissions).map(([key, value]) => {
@@ -79,7 +80,7 @@ const ModelPermissions = ({ label, value, data, setData }) => {
 
     return (
         <div className="grid grid-cols-5">
-            <div className="truncate">
+            <div className="ml-1 p-1 truncate">
                 { upperFirst(transChoice(`common.${ label }`, 2)) }
             </div>
 
@@ -88,7 +89,10 @@ const ModelPermissions = ({ label, value, data, setData }) => {
                     let name = `${ label }_${ suffixe }`
 
                     return (
-                        <div key={ index }>
+                        <div
+                            className="flex justify-center p-1"
+                            key={ index }
+                        >
                             {
                                 suffixe in value ? (
                                     <Toggle
