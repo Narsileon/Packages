@@ -17,6 +17,12 @@ return [
     Permissions::GENERAL_SETTINGS_UPDATE    => 'Update general settings',
 
     Permissions::LANGUAGES_VIEW             => 'View languages',
+    Permissions::LANGUAGES_UPDATE           => 'Update languages',
+
+    Permissions::MENUS_VIEW                 => 'View menus',
+    Permissions::MENUS_CREATE               => 'Create a menu',
+    Permissions::MENUS_UPDATE               => 'Update a menu',
+    Permissions::MENUS_DELETE               => 'Delete a menu',
 
     Permissions::MENU_ITEMS_VIEW            => 'View menu items',
     Permissions::MENU_ITEMS_CREATE          => 'Create a menu item',
@@ -32,6 +38,9 @@ return [
     Permissions::ROLES_CREATE               => 'Create a role',
     Permissions::ROLES_UPDATE               => 'Update a role',
     Permissions::ROLES_DELETE               => 'Delete a role',
+
+    Permissions::TEMPLATES_VIEW             => 'View templates',
+    Permissions::TEMPLATES_UPDATE           => 'Update templates',
 
     Permissions::USERS_VIEW                 => 'View users',
     Permissions::USERS_CREATE               => 'Create an user',

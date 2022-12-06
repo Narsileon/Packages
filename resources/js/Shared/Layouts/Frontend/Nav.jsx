@@ -76,7 +76,7 @@ const renderLinks = (links) => {
 
 const NavAuth = ({ auth }) => {
     function links() {
-        if (auth.permissions.includes('backend-view'))
+        if (auth.permissions.includes('backend_view'))
         {
             return [
                 { url: route('admin.dashboard'), label: 'common.dashboard', icon: 'chart' },
@@ -107,8 +107,15 @@ const NavAuth = ({ auth }) => {
 
 const NavGuest = () => {
     const links = [
-        { url: route('register'), label: 'common.register', icon: 'user-plus' },
-        { url: route('login'), label: 'common.login', icon: 'login' },
+        {
+            url: route('register'),
+            label: 'common.register',
+            icon: 'user-plus' },
+        {
+            url: route('login'),
+            label: 'common.login',
+            icon: 'login'
+        },
     ];
 
     return (

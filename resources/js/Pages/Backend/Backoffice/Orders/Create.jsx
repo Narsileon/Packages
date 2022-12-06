@@ -18,7 +18,7 @@ export default function Create() {
 			<Formular
 				title= { title }
 				label= { trans('common.create') }
-				submit= { () => post('/admin/orders') }
+				submit= { () => post(route('admin.orders.store')) }
 				data={ data }
 				setData={ setData }
 				processing={ processing }

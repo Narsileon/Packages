@@ -1,10 +1,10 @@
 import { useForm } from "@inertiajs/inertia-react";
 import { trans, transChoice } from "@/narsil-localization";
+import { upperFirst } from "lodash";
 import { Form, FormFooter, FormHeader, FormInput } from "@/Components/Forms";
 import BackButton from "@/Components/Elements/Buttons/BackButton";
 import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 import AppHead from "@/Shared/AppHead";
-import { upperFirst } from "lodash";
 
 export default function Index({ generalSettings }) {
     const { data, setData, patch, processing, transform, errors } = useForm({
@@ -22,7 +22,7 @@ export default function Index({ generalSettings }) {
         <>
 			<AppHead title={ title } />
 
-            <Form submit={ () => patch('/admin/general_settings/' + generalSettings.id, generalSettings) }>
+            <Form submit={ () => patch(route('admin.general_settings.update'), generalSettings.id) }>
                 <FormHeader>
                     <div className="flex justify-center">
                         <h1>
@@ -47,7 +47,7 @@ export default function Index({ generalSettings }) {
                 <FormFooter>
                     <BackButton
                         className="primary-button"
-                        href={ route('admin.general_settings') }
+                        href={ route('admin.general_settings.index') }
                     />
                     <PrimaryButton
                         label={ trans('common.update') }

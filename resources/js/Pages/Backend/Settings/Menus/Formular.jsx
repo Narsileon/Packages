@@ -42,9 +42,9 @@ export default function Formular({
                     {/* Category */}
                     <FormSelect
                         id="category"
-                        label={ transChoice('common.categories', 1) }
-                        value={ data.category }
-                        error={ errors.category }
+                        label={ transChoice('common.types', 1) }
+                        value={ data.type }
+                        error={ errors.type }
                         setData={ setData }
                     >
                         <option

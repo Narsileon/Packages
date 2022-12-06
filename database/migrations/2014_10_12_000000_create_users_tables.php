@@ -4,6 +4,7 @@
 
 use App\Constants\Tables;
 use App\Models\User;
+use App\Models\UserSetting;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -17,11 +18,13 @@ return new class extends Migration
     public function up()
     {
         self::createUserTable();
+        self::createUserSettingsTable();
     }
 
     public function down()
     {
         Schema::dropIfExists(Tables::TABLE_USERS);
+        Schema::dropIfExists(Tables::TABLE_USER_SETTINGS);
     }
 
     #endregion
@@ -40,6 +43,19 @@ return new class extends Migration
             $table->string(User::FIELD_LAST_NAME);
             $table->string(User::FIELD_FIRST_NAME);
             $table->rememberToken();
+            $table->timestamps();
+        });
+    }
+
+    private static function createUserSettingsTable()
+    {
+        Schema::create(Tables::TABLE_USER_SETTINGS, function (Blueprint $table) {
+            $table->id();
+            $table->foreignId(UserSetting::FIELD_USER_ID)->constrained()->cascadeOnDelete();
+
+            $table->string(UserSetting::FIELD_LANGUAGE)->default('en');
+            $table->string(UserSetting::FIELD_THEME)->default('dark');
+
             $table->timestamps();
         });
     }

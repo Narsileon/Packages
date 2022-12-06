@@ -10,8 +10,6 @@ use App\Http\Requests\Backend\Backoffice\OrderCreateRequest;
 use App\Http\Requests\Backend\Backoffice\OrderUpdateRequest;
 use App\Http\Resources\Backend\Backoffice\OrderCollection;
 use App\Models\Backend\Order;
-use App\Models\Frontend\Faq;
-use App\Models\UserTemplate;
 use App\Services\TemplateService;
 use Inertia\Inertia;
 
@@ -25,7 +23,7 @@ class OrderController extends Controller
     {
         $this->authorize('view', Order::class);
 
-        $tableSettings = TemplateService::get(Tables::TABLE_ORDERS, Tables::CATEGORY_CUSTOM);
+        $tableSettings = TemplateService::get(Tables::TABLE_ORDERS);
 
         $collection = Order::query()
             ->search($tableSettings)
@@ -54,7 +52,7 @@ class OrderController extends Controller
 
         $attributes = $request->validated();
 
-        Faq::create($attributes);
+        Order::create($attributes);
 
         return redirect(route('admin.orders.index'))
             ->with('success', 'order_created');

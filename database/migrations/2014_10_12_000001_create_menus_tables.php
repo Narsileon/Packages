@@ -3,6 +3,7 @@
 #region USE
 
 use App\Constants\Tables;
+use App\Models\Menu;
 use App\Models\MenuItem;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -12,21 +13,31 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    #region PUBLIC METHODS
-
     public function up()
     {
+        self::createMenusTable();
         self::createMenuItemsTable();
     }
 
     public function down()
     {
+        Schema::dropIfExists(Tables::TABLE_MENUS);
         Schema::dropIfExists(Tables::TABLE_MENU_ITEMS);
     }
 
-    #endregion
-
     #region PRIVATE METHODS
+
+    private static function createMenusTable()
+    {
+        Schema::create(Tables::TABLE_MENUS, function (Blueprint $table) {
+            $table->id();
+            $table->boolean(Menu::FIELD_ACTIVE)->default(true);
+            $table->string(Menu::FIELD_TYPE);
+            $table->string(Menu::FIELD_TITLE);
+            $table->text(Menu::FIELD_TEMPLATE);
+            $table->timestamps();
+        });
+    }
 
     private static function createMenuItemsTable()
     {
@@ -42,6 +53,5 @@ return new class extends Migration
             $table->timestamps();
         });
     }
-
     #endregion
 };

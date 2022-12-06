@@ -5,7 +5,7 @@ namespace App\Http\Requests\Backend\Settings;
 #region USE
 
 use App\Constants\ValidationRules;
-use App\Models\UserMenu;
+use App\Models\UserTemplate;
 use Illuminate\Foundation\Http\FormRequest;
 
 #endregion
@@ -17,7 +17,15 @@ class UserTemplateUpdateRequest extends FormRequest
     public function rules() : array
     {
         return [
-            UserMenu::FIELD_TEMPLATE => [
+            UserTemplate::FIELD_TYPE => [
+                ValidationRules::REQUIRED,
+                ValidationRules::TYPE_STRING,
+            ],
+            UserTemplate::FIELD_DEFAULT => [
+                ValidationRules::OPTIONAL,
+                ValidationRules::TYPE_ARRAY,
+            ],
+            UserTemplate::FIELD_CUSTOM => [
                 ValidationRules::REQUIRED,
                 ValidationRules::TYPE_ARRAY,
             ],

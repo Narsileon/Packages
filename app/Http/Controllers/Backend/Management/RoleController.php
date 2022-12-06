@@ -13,7 +13,6 @@ use App\Http\Resources\Backend\Management\UserRoleCollection;
 use App\Http\Resources\Backend\Management\UserRoleResource;
 use App\Models\UserPermission;
 use App\Models\UserRole;
-use App\Models\UserTemplate;
 use App\Services\TemplateService;
 use Inertia\Inertia;
 use Spatie\Permission\Models\Role;
@@ -28,7 +27,7 @@ class RoleController extends Controller
     {
         $this->authorize('view', UserRole::class);
 
-        $tableSettings = TemplateService::get(Tables::TABLE_ROLES, TABLES::CATEGORY_CUSTOM);
+        $tableSettings = TemplateService::get(Tables::TABLE_ROLES);
 
         $collection = UserRole::query()
             ->search($tableSettings)

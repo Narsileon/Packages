@@ -70,7 +70,7 @@ export default function Index({ user, userSettings }) {
                     id="settings"
                     activeTab={ activeTab }
                 >
-                     <Form submit={ () => patch('/admin/user_settings/' + userSettings.id, userSettings) }>
+                     <Form submit={ () => patch(route('admin.user_settings.update', userSettings.id)) }>
                         <FormHeader>
                             <div className="flex justify-center">
                                 <h1>

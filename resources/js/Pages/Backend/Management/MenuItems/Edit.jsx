@@ -24,7 +24,7 @@ export default function Edit({
 			<Formular
 				title= { title }
 				label= { trans('common.update') }
-				submit= { () => patch('/admin/menu_items/' + menuItem.id) }
+				submit= { () => patch(route('admin.menu_items.update'), menuItem.id) }
 				data={ data }
 				setData={ setData }
 				processing={ processing }

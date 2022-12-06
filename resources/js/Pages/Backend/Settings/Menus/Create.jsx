@@ -8,7 +8,7 @@ export default function Create({
 }) {
     const { data, setData, post, processing, errors } = useForm({
         title: '',
-        category: '',
+        type: '',
 		active: '',
         template: [],
     });
@@ -39,7 +39,7 @@ export default function Create({
             <div className="col-span-2 md:col-span-3 min-h-0 overflow-y-auto">
                 <Formular
                     label= { trans('common.create') }
-                    submit= { () => post('/admin/user_menus') }
+                    submit= { () => post(route('admin.menus.store')) }
                     data={ data }
                     setData={ setData }
                     processing={ processing }

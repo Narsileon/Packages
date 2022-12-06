@@ -4,15 +4,24 @@ namespace App\Services;
 
 #region USE
 
+use App\Models\Menu;
 use App\Models\MenuItem;
-use App\Models\UserMenu;
-use Illuminate\Support\Facades\Auth;
+use App\Templates\Menus\BackendMenu;
+use App\Templates\Menus\FrontendFooter;
+use App\Templates\Menus\FrontendHeader;
 
 #endregion
 
 class MenuService
 {
     #region PUBLIC METHODS
+
+    public static function getMenu($type)
+    {
+        $menu = Menu::where(Menu::FIELD_TYPE, '=', $type)->first();
+
+        return self::getMenuItem($menu->{ Menu::FIELD_TEMPLATE });
+    }
 
     public static function createMenuItem($menu)
     {
@@ -95,14 +104,22 @@ class MenuService
         return $menu;
     }
 
-    public static function getBackendMenu($type, $default)
-    {
-        $menu = Auth::user()->menus
-            ->where(UserMenu::FIELD_ACTIVE, '=', true)
-            ->where(UserMenu::FIELD_TYPE, '=', $type)
-            ->first();
+    #endregion
 
-        return $menu ? self::getMenuItem($menu->{ UserMenu::FIELD_TEMPLATE }) : $default;
+    #region PRIVATE METHODS
+
+    public static function getDefaultTemplate($type)
+    {
+        switch ($type) {
+            case Menu::TYPE_BACKEND_MENU:
+                return BackendMenu::get();
+            case Menu::TYPE_FRONTEND_FOOTER:
+                return FrontendFooter::get();
+            case Menu::TYPE_FRONTEND_HEADER:
+                return FrontendHeader::get();
+            default:
+                return [];
+        }
     }
 
     #endregion

@@ -34,9 +34,6 @@ abstract class Tables
     public const PROPERTY_GLOBAL_FILTER = 'globalFilter';
     public const PROPERTY_SORTING = 'sorting';
 
-    public const CATEGORY_DEFAULT = 'default';
-    public const CATEGORY_CUSTOM = 'custom';
-
     public const ORDER_ASC = 'asc';
     public const ORDER_DESC = 'desc';
 
@@ -45,13 +42,14 @@ abstract class Tables
     PUBLIC const TABLE_GENERAL_SETTINGS = 'general_settings';
     public const TABLE_LANGUAGES = 'languages';
     public const TABLE_LOCALIZATIONS = 'localizations';
+    public const TABLE_MENUS = 'menus';
     public const TABLE_MENU_ITEMS = 'menu_items';
     public const TABLE_ORDERS = 'orders';
     public const TABLE_PASSWORD_RESETS = 'password_resets';
     public const TABLE_PERSONAL_ACCESS_TOKENS = 'personal_access_tokens';
     public const TABLE_ROLES = 'roles';
+    public const TABLE_TEMPLATES = 'templates';
     public const TABLE_USERS = 'users';
-    public const TABLE_USER_MENUS = 'user_menus';
     public const TABLE_USER_SETTINGS = 'user_settings';
     public const TABLE_USER_TEMPLATES = 'user_templates';
 

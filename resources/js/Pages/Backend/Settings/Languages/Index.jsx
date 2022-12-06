@@ -35,10 +35,6 @@ export default function Index({ collection, tableSettings }) {
 		table.options.meta.setData(temp);
 	};
 
-	function update() {
-		Inertia.patch(route('admin.languages'), table.options.data);
-	};
-
 	return (
 		<>
 			<AppHead title={ transChoice('common.languages', 2) } />
@@ -49,7 +45,7 @@ export default function Index({ collection, tableSettings }) {
 				buttons={
 					<PrimaryButton
 						label={ trans('common.update') }
-						onClick={ update }
+						onClick={ () => Inertia.patch(route('admin.languages.update'), table.options.data) }
 					/>
 				}
 			>

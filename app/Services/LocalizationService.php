@@ -32,7 +32,7 @@ class LocalizationService
 
         $locale = App::getLocale();
         $locales = Language::where(Language::FIELD_ACTIVE, 1)->pluck(Language::FIELD_CODE)->toArray();
-        $dictionary = self::getLocalization($locale);
+        $dictionary = self::getDefaultLocalization();
 
         return compact(
             'locale',
@@ -41,56 +41,29 @@ class LocalizationService
         );
     }
 
+    public static function getDefaultLocalization()
+    {
+        $locale = App::getLocale();
+
+        $phpLocalization = self::getPhpLocalization($locale);
+        $jsonLocalization = self::getJsonLocalization($locale);
+
+        return array_merge($phpLocalization, $jsonLocalization);
+    }
+
     public static function getCustomLocalization()
     {
         $locale = App::getLocale();
 
-        return Localization::where(Localization::FIELD_LOCALIZATION, '=', $locale)->first();
-    }
-
-    public static function getLocalizationKeys() : array
-    {
-        $locale = Config::get(self::FALLBACK_LOCALE);
-        $localization = self::getLocalization($locale);
-
-        return self::replaceRecursivelyArrayValues($localization, '');
-    }
-
-    private static function replaceRecursivelyArrayValues($array, $replacer) : array
-    {
-        foreach($array as $key=>$value)
-        {
-            if (is_array($value))
-            {
-                $array[$key] = self::replaceRecursivelyArrayValues($value, $replacer);
-            }
-
-            else
-            {
-                $array[$key] = $replacer;
-            }
-        }
-
-        return $array;
+        return Localization::where(Localization::FIELD_CODE, '=', $locale)->first() ?? Localization::create([
+            Localization::FIELD_CODE => $locale,
+            Localization::FIELD_LOCALIZATION => [],
+        ]);
     }
 
     #endregion
 
     #region PRIVATE METHODS
-
-    private static function getLocalization($locale)
-    {
-        $phpLocalization = self::getPhpLocalization($locale);
-        $jsonLocalization = self::getJsonLocalization($locale);
-
-        $localization = array_merge($phpLocalization, $jsonLocalization);
-
-        $customLocalization = self::getCustomLocalization()->{ Localization::FIELD_LOCALIZATION };
-
-
-
-        return $localization;
-    }
 
     private static function getPhpLocalization($locale) : array
     {

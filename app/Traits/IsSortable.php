@@ -15,11 +15,14 @@ trait IsSortable
 
     public function scopeSort($query, $tableSettings)
     {
-        if (array_key_exists(Tables::PROPERTY_SORTING, $tableSettings->{ UserTemplate::FIELD_TEMPLATE }))
+        if (array_key_exists(Tables::PROPERTY_SORTING, $tableSettings->{ UserTemplate::FIELD_CUSTOM }))
         {
-            $sorting = $tableSettings->{ UserTemplate::FIELD_TEMPLATE }[Tables::PROPERTY_SORTING][0];
+            $sorting = $tableSettings->{ UserTemplate::FIELD_CUSTOM }[Tables::PROPERTY_SORTING][0] ?? null;
 
-            $query->orderBy($sorting[Tables::FIELD_ID], $sorting[Tables::FIELD_DESC] ? Tables::ORDER_DESC : Tables::ORDER_ASC);
+            if ($sorting)
+            {
+                $query->orderBy($sorting[Tables::FIELD_ID], $sorting[Tables::FIELD_DESC] ? Tables::ORDER_DESC : Tables::ORDER_ASC);
+            }
         }
     }
 

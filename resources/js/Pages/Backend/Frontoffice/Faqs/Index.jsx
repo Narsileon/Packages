@@ -1,7 +1,7 @@
 import { Link } from "@inertiajs/inertia-react";
 import { trans, transChoice } from "@/narsil-localization";
 import { useTable } from "@/narsil-table";
-import { Table, TableContainer, TableMenu, TableSettings } from "@/Components/Tables";
+import { Table, TableContainer, TableMenu } from "@/Components/Tables";
 import BackendPagination from "@/Components/Pagination/BackendPagination";
 import AppHead from "@/Shared/AppHead";
 import Icon from "@/Shared/Svg/Icon";
@@ -37,8 +37,6 @@ export default function Index({ collection, tableSettings }) {
 						>
 							<Icon name="plus" />
 						</Link>
-
-						<TableSettings table={ table } />
 					</>
 				}
 			>

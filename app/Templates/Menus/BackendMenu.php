@@ -8,7 +8,7 @@ use App\Models\MenuItem;
 
 #endregion
 
-class BackendMenuTemplate
+class BackendMenu
 {
     #region PUBLIC METHODS
 
@@ -98,14 +98,14 @@ class BackendMenuTemplate
                         MenuItem::FIELD_TYPE => MenuItem::TYPE_PAGE,
                         MenuItem::FIELD_ICON => 'cog',
                         MenuItem::FIELD_LABEL => 'common.general_settings',
-                        MenuItem::FIELD_URL => route('admin.general_settings'),
+                        MenuItem::FIELD_URL => route('admin.general_settings.index'),
                     ],
                     [
                         MenuItem::FIELD_SLUG => 'page_backend_languages',
                         MenuItem::FIELD_TYPE => MenuItem::TYPE_PAGE,
                         MenuItem::FIELD_ICON => 'language',
                         MenuItem::FIELD_LABEL => 'common.languages',
-                        MenuItem::FIELD_URL => route('admin.languages'),
+                        MenuItem::FIELD_URL => route('admin.languages.index'),
                     ],
                     [
                         MenuItem::FIELD_SLUG => 'page_backend_localizations',
@@ -119,14 +119,14 @@ class BackendMenuTemplate
                         MenuItem::FIELD_TYPE => MenuItem::TYPE_PAGE,
                         MenuItem::FIELD_ICON => 'template',
                         MenuItem::FIELD_LABEL => 'common.menus',
-                        MenuItem::FIELD_URL => route('admin.user_menus.index'),
+                        MenuItem::FIELD_URL => route('admin.menus.index'),
                     ],
                     [
-                        MenuItem::FIELD_SLUG => 'page_backend_user_templates',
+                        MenuItem::FIELD_SLUG => 'page_backend_templates',
                         MenuItem::FIELD_TYPE => MenuItem::TYPE_PAGE,
                         MenuItem::FIELD_ICON => 'template',
                         MenuItem::FIELD_LABEL => 'common.templates',
-                        MenuItem::FIELD_URL => route('admin.user_templates.index'),
+                        MenuItem::FIELD_URL => route('admin.templates.index'),
                     ],
                 ]
             ],

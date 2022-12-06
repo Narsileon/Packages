@@ -27,7 +27,7 @@ export default function Create({ permissions }) {
 			permissions: permissions.data.filter(x => data.permissions[x.name] == true)
 		}))
 
-        post('/admin/roles');
+        post(route('admin.roles.store'));
     };
 
 	return (

@@ -27,7 +27,7 @@ export default function Edit({ role, permissions }) {
 			permissions: permissions.data.filter(x => data.permissions[x.name] == true)
 		}))
 
-		patch('/admin/roles/' + role.data.id)
+		patch(route('admin.roles.update', role.data.id));
     };
 
     return (

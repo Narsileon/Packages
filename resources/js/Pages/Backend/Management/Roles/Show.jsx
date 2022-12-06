@@ -12,7 +12,7 @@ export default function Show({ role }) {
 
             <ShowTable
                 title={ title }
-                href={ `/admin/roles/${ role.data.id }/edit` }
+                href={ route('admin.roles.edit', role.data.id) }
                 data={ role.data }
             >
                 <div className="grid grid-cols-4 gap-y-4">

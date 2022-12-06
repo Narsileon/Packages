@@ -23,7 +23,7 @@ class MenuItemController extends Controller
     {
         $this->authorize('view', MenuItem::class);
 
-        $tableSettings = TemplateService::get(Tables::TABLE_MENU_ITEMS, TABLES::CATEGORY_CUSTOM);
+        $tableSettings = TemplateService::get(Tables::TABLE_MENU_ITEMS);
 
         $collection = MenuItem::query()
             ->search($tableSettings)
@@ -54,7 +54,7 @@ class MenuItemController extends Controller
 
         MenuItem::create($attributes);
 
-        return redirect(route('admin.user_menus.index'))
+        return redirect(route('admin.menus.index'))
             ->with('success', 'menu_item_created');
     }
 

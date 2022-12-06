@@ -17,12 +17,17 @@ return [
     Permissions::GENERAL_SETTINGS_UPDATE    => 'Bearbeiten von allgemeinen Einstellungen',
 
     Permissions::LANGUAGES_VIEW             => 'Anzeigen von Sprachen',
+    Permissions::LANGUAGES_UPDATE           => 'Bearbeiten von Sprachen',
+
+    Permissions::MENUS_VIEW                 => 'Anzeigen von Menüs',
+    Permissions::MENUS_CREATE               => 'Erstellen eines Menüs',
+    Permissions::MENUS_UPDATE               => 'Bearbeiten eines Menüs',
+    Permissions::MENUS_DELETE               => 'Löschen eines Menüs',
 
     Permissions::MENU_ITEMS_VIEW            => 'Anzeigen von Menüpunkte',
     Permissions::MENU_ITEMS_CREATE          => 'Erstellen eines Menüpunkts',
     Permissions::MENU_ITEMS_UPDATE          => 'Bearbeiten eines Menüpunkts',
     Permissions::MENU_ITEMS_DELETE          => 'Löschen eines Menüpunkts',
-
 
     Permissions::ORDERS_VIEW                => 'Anzeigen von Aufträgen',
     Permissions::ORDERS_CREATE              => 'Erstellen eines Auftrags',
@@ -33,6 +38,9 @@ return [
     Permissions::ROLES_CREATE               => 'Erstellen einer Rolle',
     Permissions::ROLES_UPDATE               => 'Bearbeiten einer Rolle',
     Permissions::ROLES_DELETE               => 'Löschen einer Rolle',
+
+    Permissions::TEMPLATES_VIEW             => 'Anzeigen von Templates',
+    Permissions::TEMPLATES_UPDATE           => 'Bearbeiten von Templates',
 
     Permissions::USERS_VIEW                 => 'Anzeigen von Benutzern',
     Permissions::USERS_CREATE               => 'Erstellen eines Benutzers',

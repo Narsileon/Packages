@@ -4,6 +4,7 @@
 
 use App\Acl\Permissions;
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\Backoffice\CalendarController;
 use App\Http\Controllers\Backend\Backoffice\OrderController;
 use App\Http\Controllers\Backend\Frontoffice\FaqController;
@@ -12,11 +13,13 @@ use App\Http\Controllers\Backend\Management\RoleController;
 use App\Http\Controllers\Backend\Management\UserController;
 use App\Http\Controllers\Backend\Settings\GeneralSettingsController;
 use App\Http\Controllers\Backend\Settings\LanguageController;
-use App\Http\Controllers\Backend\Settings\ResetUserTemplateController;
 use App\Http\Controllers\Backend\Settings\LocalizationController;
-use App\Http\Controllers\Backend\Settings\UserMenuController;
-use App\Http\Controllers\Backend\Settings\UserTemplateController;
-use App\Http\Controllers\Backend\ProfileController;
+use App\Http\Controllers\Backend\Settings\TemplateController;
+use App\Http\Controllers\Backend\Settings\MenuController;
+use App\Http\Controllers\Backend\Settings\UserTemplates\LoadUserTemplateController;
+use App\Http\Controllers\Backend\Settings\UserTemplates\ResetUserTemplateController;
+use App\Http\Controllers\Backend\Settings\UserTemplates\SaveUserTemplateController;
+use App\Http\Controllers\Backend\Settings\UserTemplates\UpdateUserTemplateController;
 use Illuminate\Support\Facades\Route;
 
 #endregion
@@ -29,7 +32,8 @@ Route::group([
     Route::get('dashboard', DashboardController::class)->name('dashboard');
 
     Route::controller(ProfileController::class)->group(function () {
-        Route::get('profile', 'index')->name('profile');
+        Route::get('profiles', 'index')->name('profile.index');
+        Route::get('profiles/{profile}', 'update')->name('profile.update');
     });
 
     // Management
@@ -46,25 +50,29 @@ Route::group([
 
     // Settings
     Route::controller(GeneralSettingsController::class)->group(function () {
-        Route::get('general_settings', 'index')->name('general_settings');
-        Route::patch('general_settings/{general_setting}', 'update');
+        Route::get('general_settings', 'index')->name('general_settings.index');
+        Route::patch('general_settings/{general_setting}', 'update')->name('general_settings.update');
     });
     Route::controller(LanguageController::class)->group(function () {
-        Route::get('languages', 'index')->name('languages');
-        Route::patch('languages', 'update');
+        Route::get('languages', 'index')->name('languages.index');
+        Route::patch('languages', 'update')->name('languages.update');
     });
-    Route::patch('reset_user_templates', ResetUserTemplateController::class)->name('user_templates.reset');
     Route::controller(LocalizationController::class)->group(function () {
         Route::get('localizations', 'index')->name('localizations.index');
         Route::patch('localizations/{localization}', 'update')->name('localizations.update');
     });
-    Route::controller(UserMenuController::class)->group(function () {
-        Route::get('user_menus', 'index')->name('user_menus.index');
-        Route::post('user_menus', 'store')->name('user_menus.store');
-        Route::patch('user_menus/{user_menu}', 'update')->name('user_menus.update');
+    Route::controller(MenuController::class)->group(function () {
+        Route::get('menus', 'index')->name('menus.index');
+        Route::post('menus', 'store')->name('menus.store');
+        Route::patch('menus/{menu}', 'update')->name('menus.update');
     });
-    Route::controller(UserTemplateController::class)->group(function () {
-        Route::get('user_templates', 'index')->name('user_templates.index');
-        Route::patch('user_templates/{user_template}', 'update')->name('user_templates.update');
+    Route::controller(TemplateController::class)->group(function () {
+        Route::get('templates', 'index')->name('templates.index');
+        Route::patch('templates/{template}', 'update')->name('templates.update');
+        Route::delete('templates/{template}', 'destroy')->name('templates.destroy');
     });
+    Route::patch('user_templates/{user_template}/load', LoadUserTemplateController::class)->name('user_templates.load');
+    Route::patch('user_templates/{user_template}/reset', ResetUserTemplateController::class)->name('user_templates.reset');
+    Route::patch('user_templates/{user_template}/save', SaveUserTemplateController::class)->name('user_templates.save');
+    Route::patch('user_templates/{user_template}/update', UpdateUserTemplateController::class)->name('user_templates.update');
 });

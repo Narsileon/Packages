@@ -42,7 +42,7 @@ export default function Edit({ user, roles, permissions }) {
 			permissions: permissions.data.filter(x => data.permissions[x.name] == true),
 		}))
 
-        patch('/admin/users/' + user.data.id);
+        patch(route('admin.users.update', user.data.id));
     };
 
     return (

@@ -1,6 +1,7 @@
 import { useFullscreenable } from "@/narsil-react";
 import FullScreenButton from "@/Components/Elements/Buttons/FullScreenButton";
 import TableFilter from "@/Components/Tables/TableFilter";
+import { TableSettings } from "./Index";
 
 export default function TableContainer({
     title,
@@ -24,6 +25,7 @@ export default function TableContainer({
                     </div>
                     <div className="flex items-center space-x-2 col-span-1 md:order-2 self-center place-self-end">
                         { buttons }
+                        <TableSettings table={ table } />
                         <FullScreenButton
                             isFullScreen={ fullscreen }
                             onClick={ () => setFullScreen() }

@@ -1,8 +1,7 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useClickAway, useToggle } from "react-use";
 import { Inertia } from "@inertiajs/inertia";
-import { usePage } from "@inertiajs/inertia-react";
-import { trans, transChoice, transRaw } from "@/narsil-localization";
+import { trans, transChoice } from "@/narsil-localization";
 import { useTable } from "@/narsil-table";
 import { upperFirst } from "lodash";
 import { Table, TableContainer } from "@/Components/Tables";
@@ -10,17 +9,15 @@ import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 import FrontendPagination from "@/Components/Pagination/FrontendPagination";
 import AppHead from "@/Shared/AppHead";
 
-export default function Index({ collection, tableSettings }) {
-	const localization = usePage().props.shared.localization.dictionary;
-
+export default function Index({ collection, customLocalization, tableSettings }) {
 	const columns = tableSettings.columns.map((column) => {
 		if (column.id === 'value') {
 			return {
 				...column,
 				cell: props => (
 					<CustomValue
-						value={ props.getValue() == '' ? trans(props.row.original.path == '' ? props.row.original.key : `${ props.row.original.path }.${ props.row.original.key }`) : props.getValue() }
-						handleChange={ (event) => handleChange(event, props.row.original.key) }
+						value={ props.getValue() == '' ? trans(getFullPath(props.row)) : props.getValue() }
+						handleChange={ (event) => handleChange(event, props.row) }
 					/>
 				)
 			};
@@ -29,24 +26,30 @@ export default function Index({ collection, tableSettings }) {
 		return column;
  	});
 
+	const [localization, setLocalization] = useState(customLocalization.localization);
+
+	function getFullPath(row) {
+		return row.original.path == '' ? row.original.key : `${ row.original.path }.${ row.original.key }`
+	}
+
 	const [table] = useTable(collection, columns, tableSettings, false);
 
-	const handleChange = (event, key) => {
-		let temp = [...table.options.data];
+	const handleChange = (event, row) => {
+		let data = [...table.options.data];
 
-		temp.find((object, index) => {
-			if (object.key === key) {
-				object.custom_value = event.target.value;
-				temp[index] = object;
+		data.find((object, index) => {
+			if (object.path === row.original.path && object.key === row.original.key) {
+				object.value = event.target.value;
+				data[index] = object;
 				return true;
 			}
 		});
 
-		table.options.meta.setData(temp);
+		table.options.meta.setData(data);
 	}
 
 	function update() {
-		Inertia.patch(`dictionary/${ customLocalization.user_id }`, { dictionary: table.options.data});
+		Inertia.patch(`/${ customLocalization.usedictionaryr_id }`, { dictionary: table.options.data});
 	};
 
 	return (

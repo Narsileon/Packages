@@ -19,8 +19,8 @@ class UserTemplate extends Model
 
     public const FIELD_ID = 'id';
 
-    public const FIELD_CATEGORY = 'category';
-    public const FIELD_TEMPLATE = 'template';
+    public const FIELD_CUSTOM = 'custom';
+    public const FIELD_DEFAULT = 'default';
     public const FIELD_TYPE = 'type';
     public const FIELD_USER_ID='user_id';
 
@@ -32,15 +32,15 @@ class UserTemplate extends Model
 
     protected $fillable =
     [
-        self::FIELD_CATEGORY,
-        self::FIELD_TEMPLATE,
+        self::FIELD_CUSTOM,
+        self::FIELD_DEFAULT,
         self::FIELD_TYPE,
         self::FIELD_USER_ID,
     ];
 
     protected $casts = [
-
-        self::FIELD_TEMPLATE => Types::ARRAY,
+        self::FIELD_CUSTOM => Types::ARRAY,
+        self::FIELD_DEFAULT => Types::ARRAY,
     ];
 
     protected $perPage = 10;

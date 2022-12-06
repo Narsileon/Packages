@@ -9,7 +9,7 @@ export default function Edit({
 }) {
     const { data, setData, patch, processing, errors } = useForm({
         title: menu.title,
-        category: menu.category,
+        type: menu.type,
 		active: menu.active,
         template: menu.template
     });
@@ -40,7 +40,7 @@ export default function Edit({
             <div className="col-span-2 md:col-span-3 min-h-0 overflow-y-auto">
                 <Formular
                     label= { trans('common.update') }
-                    submit= { () => patch('/admin/user_menus/' + menu.id) }
+                    submit= { () => patch(route('admin.menus.update', menu.id)) }
                     data={ data }
                     setData={ setData }
                     processing={ processing }

@@ -20,21 +20,24 @@ export const useTable = (
 	tableSettings,
 	manual = true,
 ) => {
+	const template = tableSettings.custom ?? tableSettings.template;
+	const url = tableSettings.custom ? route('admin.user_templates.update', tableSettings.id) : route('admin.templates.update', tableSettings.id);
+
   	const [data, setData] = useState(tableData);
 
     const [columns] = useState(() => [...tableColumns]);
 
-	const [columnFilters, setColumnFilters] = useState(tableSettings.template.columnFilters ?? []);
-    const [columnOrder, setColumnOrder] = useState(tableSettings.template.columnOrder ?? []);
-	const [columnSizing, setColumnSizing] = useState(tableSettings.template.columnSizing ?? {});
-	const [columnVisibility, setColumnVisibility] = useState(tableSettings.template.columnVisibility ?? {});
-	const [globalFilter, setGlobalFilter] = useState(tableSettings.template.globalFilter ?? '');
-    const [sorting, setSorting] = useState(tableSettings.template.sorting ?? []);
+	const [columnFilters, setColumnFilters] = useState(template.columnFilters ?? []);
+    const [columnOrder, setColumnOrder] = useState(template.columnOrder ?? []);
+	const [columnSizing, setColumnSizing] = useState(template.columnSizing ?? {});
+	const [columnVisibility, setColumnVisibility] = useState(template.columnVisibility ?? {});
+	const [globalFilter, setGlobalFilter] = useState(template.globalFilter ?? '');
+    const [sorting, setSorting] = useState(template.sorting ?? []);
 
-	const [autoUpdate, setAutoUpdate] = useState(tableSettings.template.autoUpdate ?? 10);
-	const [current, setCurrent] = useState(tableSettings.template.current ?? '');
+	const [autoUpdate, setAutoUpdate] = useState(template.autoUpdate ?? 10);
+	const [current, setCurrent] = useState(template.current ?? '');
 
-	const list = tableSettings.template.list ?? [];
+	const list = template.list ?? [];
 
 	const table = useReactTable({
 		data,
@@ -105,12 +108,12 @@ export const useTable = (
 			previousCurrent
 		) {
 			const timeout = setTimeout(() => {
-				Inertia.patch('/admin/user_templates/' + tableSettings.id, {
+				Inertia.patch(url, {
 					...tableSettings,
-					'template': {
+					[tableSettings.custom ? 'custom' : 'template']: {
 						'columnFilters': { ...table.getState().columnFilters },
 						'columnOrder': columnOrder,
-						'columnSizing': { ...tableSettings.template.sizing, ...table.getState().columnSizing },
+						'columnSizing': { ...template.sizing, ...table.getState().columnSizing },
 						'columnVisibility': columnVisibility,
 						'globalFilter': globalFilter,
 						'sorting': { ...table.getState().sorting },

@@ -17,7 +17,7 @@ trait IsFilterable
     public function scopeSearch($query, $tableSettings)
     {
         $columns = $tableSettings->{ Tables::PROPERTY_COLUMNS };
-        $template = $tableSettings->{ UserTemplate::FIELD_TEMPLATE };
+        $template = $tableSettings->{ UserTemplate::FIELD_CUSTOM };
 
         $globalFilter = array_key_exists(Tables::PROPERTY_GLOBAL_FILTER, $template) ? $template[Tables::PROPERTY_GLOBAL_FILTER] : null;
         $localFilter = array_key_exists(Tables::PROPERTY_COLUMN_FILTERS, $template) ? $template[Tables::PROPERTY_COLUMN_FILTERS] : [];

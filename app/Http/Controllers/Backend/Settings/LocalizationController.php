@@ -21,20 +21,18 @@ class LocalizationController extends Controller
 
     public function index()
     {
-        $tableSettings = TemplateService::get(Tables::TABLE_LOCALIZATIONS, Tables::CATEGORY_CUSTOM);
+        $tableSettings = TemplateService::get(Tables::TABLE_LOCALIZATIONS);
 
         $locale = App::getLocale();
 
-        $defaultLocalization = LocalizationService::get();
-        $customLocalization = Localization::where(Localization::FIELD_CODE, '=', $locale)->first() ?? Localization::create([
-            Localization::FIELD_CODE => $locale,
-            Localization::FIELD_LOCALIZATION => LocalizationService::getLocalizationKeys(),
-        ]);
+        $defaultLocalization = LocalizationService::getDefaultLocalization();
+        $customLocalization = LocalizationService::getCustomLocalization();
 
-        $collection = $this->generateCollection([], $customLocalization->{ Localization::FIELD_LOCALIZATION }, '');
+        $collection = $this->generateCollection([], $defaultLocalization, $customLocalization, '');
 
         return Inertia::render('Backend/Settings/Localizations/Index', compact(
             'collection',
+            'customLocalization',
             'tableSettings',
         ));
     }
@@ -54,19 +52,19 @@ class LocalizationController extends Controller
         $localization->update($attributes);
 
         return redirect(route('admin.localizations.index'))
-            ->with('success', 'dictionary_updated');
+            ->with('success', 'translation_updated');
     }
 
     #endregion
 
     #region PRIVATE METHODS
 
-    private function generateCollection($collection, $localization, $path) : array
+    private function generateCollection($collection, $defaultLocalization, $customLocalization, $path) : array
     {
-        foreach($localization as $key=>$value) {
+        foreach($defaultLocalization as $key=>$value) {
             if (is_array($value))
             {
-                $collection = $this->generateCollection($collection, $value, $path == '' ? $key : $path . '.' . $key);
+                $collection = $this->generateCollection($collection, $value, $customLocalization, $path == '' ? $key : $path . '.' . $key);
             }
 
             else

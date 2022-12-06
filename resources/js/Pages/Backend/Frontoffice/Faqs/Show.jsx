@@ -12,7 +12,7 @@ export default function Show({ faq }) {
 
             <ShowTable
                 title={ title }
-                href={ `/admin/faqs/${ faq.id }/edit` }
+                href={ route('admin.faqs.edit', faq.id) }
                 data={ faq }
             >
                 <div className="grid grid-cols-2 gap-y-4">

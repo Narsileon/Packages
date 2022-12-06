@@ -68,7 +68,7 @@ const Header = () => {
                 >
                     <ul className="divide-y divide-color p-1">
                         <NavLink
-                            href={ route('admin.profile') }
+                            href={ route('admin.profile.index') }
                             label={ transChoice('common.profiles', 1) }
                             icon="user"
                         />

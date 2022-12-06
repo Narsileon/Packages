@@ -12,7 +12,7 @@ export default function Show({ order }) {
 
             <ShowTable
                 title={ title }
-                href={ `/admin/faqs/${ order.id }/edit` }
+                href={ route('admin.faqs.edit', order.id) }
                 data={ order }
             >
                 <div className="grid grid-cols-2 gap-y-4">

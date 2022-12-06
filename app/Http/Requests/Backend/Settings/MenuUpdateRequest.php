@@ -5,31 +5,31 @@ namespace App\Http\Requests\Backend\Settings;
 #region USE
 
 use App\Constants\ValidationRules;
-use App\Models\UserMenu;
+use App\Models\Menu;
 use Illuminate\Foundation\Http\FormRequest;
 
 #endregion
 
-class UserMenuCreateRequest extends FormRequest
+class MenuUpdateRequest extends FormRequest
 {
     #region PUBLIC METHODS
 
     public function rules() : array
     {
         return [
-            UserMenu::FIELD_TYPE => [
+            Menu::FIELD_TYPE => [
                 ValidationRules::REQUIRED,
                 ValidationRules::TYPE_STRING,
             ],
-            UserMenu::FIELD_ACTIVE => [
+            Menu::FIELD_ACTIVE => [
                 ValidationRules::REQUIRED,
                 ValidationRules::TYPE_BOOLEAN,
             ],
-            UserMenu::FIELD_TITLE => [
+            Menu::FIELD_TITLE => [
                 ValidationRules::REQUIRED,
                 ValidationRules::TYPE_STRING,
             ],
-            UserMenu::FIELD_TEMPLATE => [
+            Menu::FIELD_TEMPLATE => [
                 ValidationRules::REQUIRED,
                 ValidationRules::TYPE_ARRAY,
             ],

@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use Database\Seeders\Subseeders\BackendSeeder;
 use Database\Seeders\Subseeders\FrontendSeeder;
+use Database\Seeders\Subseeders\MenuSeeder;
 use Database\Seeders\Subseeders\PermissionSeeder;
 use Database\Seeders\Subseeders\SessionSeeder;
 use Database\Seeders\Subseeders\UserSeeder;
@@ -22,8 +23,9 @@ class DatabaseSeeder extends Seeder
         $this->call([
             PermissionSeeder::class,
             SessionSeeder::class,
-            FrontendSeeder::class,
             BackendSeeder::class,
+            FrontendSeeder::class,
+            MenuSeeder::class,
             UserSeeder::class,
         ]);
     }

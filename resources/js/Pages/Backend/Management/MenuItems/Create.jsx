@@ -23,7 +23,7 @@ export default function Create({
 			<Formular
 				title= { title }
 				label= { trans('common.create') }
-				submit= { () => post('/admin/menu_items') }
+				submit= { () => post(route('admin.menu_items.store')) }
 				data={ data }
 				setData={ setData }
 				processing={ processing }

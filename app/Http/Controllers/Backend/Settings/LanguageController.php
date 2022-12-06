@@ -20,7 +20,7 @@ class LanguageController extends Controller
 
     public function index()
     {
-        $tableSettings = TemplateService::get(Tables::TABLE_LANGUAGES, Tables::CATEGORY_CUSTOM);
+        $tableSettings = TemplateService::get(Tables::TABLE_LANGUAGES);
 
         $collection = LanguageResource::collection(Language::all());
 
@@ -39,7 +39,7 @@ class LanguageController extends Controller
                 ]);
         });
 
-        return redirect(route('admin.languages'))
+        return redirect(route('admin.languages.index'))
             ->with('success', 'languages_updated');
     }
 
