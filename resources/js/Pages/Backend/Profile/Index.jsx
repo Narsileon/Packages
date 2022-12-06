@@ -114,7 +114,7 @@ export default function Index({ user, userSettings }) {
                                 </FormSelect>
                                 <FormCheckbox
                                     id="dark"
-                                    label={ transChoice('common.themes', 1) }
+                                    label={ trans('common.dark_mode') }
                                     checked={ data.dark }
                                     error={ errors.dark }
                                     setData={ setData }
