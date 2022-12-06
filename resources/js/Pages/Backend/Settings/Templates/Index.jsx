@@ -87,7 +87,7 @@ const TableTemplate = ({ columns, template }) => {
                     { upperFirst(transChoice('common.layouts', 1)) }
                 </h1>
 
-                <TableSettings table={ table } />
+                <TableSettings table={ table } actions={ false } />
             </div>
 
             <Table

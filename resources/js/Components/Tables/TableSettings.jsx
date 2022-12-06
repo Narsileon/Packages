@@ -7,7 +7,10 @@ import { Dropdown } from "@/Components/Elements/Dropdowns";
 import { AutoUpdate, ColumnVisibility, UserTemplateActions } from "./Index";
 import Icon from "@/Shared/Svg/Icon";
 
-export default function TableSettings({ table }) {
+export default function TableSettings({
+    table,
+    actions = true
+}) {
     const autoUpdate = table.getState().autoUpdate;
     const tableSettings = usePage().props.tableSettings;
     const url = usePage().url;
@@ -46,12 +49,17 @@ export default function TableSettings({ table }) {
                         </section>
                     </div>
                 </section>
+                {
+                    actions ? (
+                        <>
+                            <hr className="border-color" />
 
-                <hr className="border-color" />
-
-                <section id="footer">
-                    <UserTemplateActions tableSettings={ tableSettings } />
-                </section>
+                            <section id="footer">
+                                <UserTemplateActions tableSettings={ tableSettings } />
+                            </section>
+                        </>
+                    ) : null
+                }
             </div>
         </Dropdown>
     );
