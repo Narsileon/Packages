@@ -31,6 +31,7 @@ return [
         'translation_updated'       => 'Die Übersetzung wurde erfolgreich aktualisiert.',
         'user_created'              => 'Der Benutzer wurde erfolgreich erstellt.',
         'user_deleted'              => 'Der Benutzer wurde erfolgreich gelöscht.',
+        'user_settings_updated'     => 'Ihre Einstellungen wurden erfolgreich aktualisiert.',
         'user_template_loaded'      => 'Das Template wurde erfolgreich geladen.',
         'user_template_reseted'     => 'Das Templete wurde erfolgreich zurückgesetzt.',
         'user_template_saved'       => 'Das Template wurde erfolgreich gespeichert.',

@@ -2,10 +2,10 @@
 
 #region USE
 
+use App\Http\Controllers\Backend\UserSettingsController;
 use App\Http\Controllers\Session\LocaleController;
 use App\Http\Controllers\Session\LoginController;
 use App\Http\Controllers\Session\LogoutController;
-use App\Http\Controllers\Session\ProfileController;
 use App\Http\Controllers\Session\RegisterController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +20,10 @@ Route::controller(RegisterController::class)->middleware('guest')->group(functio
 Route::controller(LoginController::class)->middleware('guest')->group(function () {
     Route::get('login', 'create')->name('login');
     Route::post('login', 'store');
+});
+
+Route::controller(UserSettingsController::class)->middleware('auth')->group(function () {
+    Route::patch('user_settings/{user_setting}', 'update')->name('user_settings.update');
 });
 
 Route::get('locales/{locale}', LocaleController::class)->name('locale');

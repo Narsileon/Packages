@@ -31,6 +31,7 @@ return [
         'translation_updated'       => 'The translation has been successfully updated.',
         'user_created'              => 'The user has been successfully created.',
         'user_deleted'              => 'The user has been successfully deleted.',
+        'user_settings_updated'     => 'Your parameters have been successfully updated.',
         'user_template_loaded'      => 'Your template has been successfully loaded.',
         'user_template_reseted'     => 'Your template has been successfully reseted.',
         'user_template_saved'       => 'Your template has been successfully saved.',

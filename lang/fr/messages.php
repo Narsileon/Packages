@@ -31,6 +31,7 @@ return [
         'translation_updated'       => 'La traduction a été mise à jour avec succès.',
         'user_created'              => 'L\'utilisateur a été créé avec succès.',
         'user_deleted'              => 'L\'utilisateur a été supprimé avec succès.',
+        'user_settings_updated'     => 'Vos paramètres ont été mis à jour avec succès.',
         'user_template_loaded'      => 'Votre template a été chargé avec succès.',
         'user_template_reseted'     => 'Votre template a été réinitialisé avec succès.',
         'user_template_saved'       => 'Votre template a été sauvegardé avec succès.',

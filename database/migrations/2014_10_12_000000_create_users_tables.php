@@ -54,7 +54,7 @@ return new class extends Migration
             $table->foreignId(UserSetting::FIELD_USER_ID)->constrained()->cascadeOnDelete();
 
             $table->string(UserSetting::FIELD_LANGUAGE)->default('en');
-            $table->string(UserSetting::FIELD_THEME)->default('dark');
+            $table->boolean(UserSetting::FIELD_DARK)->default(true);
 
             $table->timestamps();
         });

@@ -6,11 +6,14 @@ namespace App\Services;
 
 use App\Models\Backend\Language;
 use App\Models\Backend\Localization;
+use App\Models\UserSetting;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Session;
 
 #endregion
 
@@ -30,7 +33,7 @@ class LocalizationService
     {
         Cache::flush();
 
-        $locale = App::getLocale();
+        $locale = self::getLocale();
         $locales = Language::where(Language::FIELD_ACTIVE, 1)->pluck(Language::FIELD_CODE)->toArray();
         $dictionary = self::getDefaultLocalization();
 
@@ -39,6 +42,23 @@ class LocalizationService
             'locales',
             'dictionary',
         );
+    }
+
+    public static function getLocale()
+    {
+        if (Session::has('locale'))
+        {
+            App::setLocale(Session::get('locale'));
+        }
+
+        else if (Auth::user())
+        {
+            $locale = Auth::user()->settings->{ UserSetting::FIELD_LANGUAGE };
+
+            App::setLocale($locale);
+        }
+
+        return App::getLocale();
     }
 
     public static function getDefaultLocalization()

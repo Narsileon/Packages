@@ -10,13 +10,14 @@ export default function Tabs({ activeTab, setActiveTab, tabsSettings, children }
                             <div className="w-full h-full mb-4 border-b border-color">
                                 <ul className="flex flex-wrap -mb-px font-medium text-center space-x-2">
                                     {
-                                        tabsSettings.map((tab) => {
+                                        tabsSettings.map((tab, index) => {
                                             return (
                                                 <TabNavItem
                                                     id={ tab.id }
                                                     label={ tab.label }
                                                     activeTab={ activeTab }
                                                     setActiveTab={ setActiveTab }
+                                                    key={ index }
                                                 />
                                             );
                                         })

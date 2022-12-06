@@ -20,6 +20,7 @@ use App\Http\Controllers\Backend\Settings\UserTemplates\LoadUserTemplateControll
 use App\Http\Controllers\Backend\Settings\UserTemplates\ResetUserTemplateController;
 use App\Http\Controllers\Backend\Settings\UserTemplates\SaveUserTemplateController;
 use App\Http\Controllers\Backend\Settings\UserTemplates\UpdateUserTemplateController;
+use App\Http\Controllers\Backend\UserSettingsController;
 use Illuminate\Support\Facades\Route;
 
 #endregion

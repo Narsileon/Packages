@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useForm, usePage } from "@inertiajs/inertia-react";
 import { trans, transChoice } from "@/narsil-localization";
 import { upperFirst } from "lodash";
-import { Form, FormFooter, FormHeader, FormSelect } from "@/Components/Forms";
+import { Form, FormCheckbox, FormFooter, FormHeader, FormSelect } from "@/Components/Forms";
 import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 import Tabs from "@/Components/Tabs/Tabs";
 import TabPanel from "@/Components/Tabs/TabPanel";
@@ -11,7 +11,7 @@ import AppHead from "@/Shared/AppHead";
 export default function Index({ user, userSettings }) {
     const { data, setData, patch, processing, errors } = useForm({
         language: userSettings.language,
-        theme: userSettings.theme,
+        dark: userSettings.dark,
     });
 
     const locales = usePage().props.shared.localization.locales;
@@ -67,10 +67,19 @@ export default function Index({ user, userSettings }) {
                 </TabPanel>
 
                 <TabPanel
+                    id="roles_permissions"
+                    activeTab={ activeTab }
+                >
+                    <div>
+
+                    </div>
+                </TabPanel>
+
+                <TabPanel
                     id="settings"
                     activeTab={ activeTab }
                 >
-                     <Form submit={ () => patch(route('admin.user_settings.update', userSettings.id)) }>
+                     <Form submit={ () => patch(route('user_settings.update', userSettings.id)) }>
                         <FormHeader>
                             <div className="flex justify-center">
                                 <h1>
@@ -94,6 +103,7 @@ export default function Index({ user, userSettings }) {
                                             return (
                                                 <option
                                                     value={ locale }
+                                                    key={ locale }
                                                 >
                                                     { upperFirst(trans(`locale.${ locale }`))}
                                                 </option>
@@ -102,24 +112,13 @@ export default function Index({ user, userSettings }) {
                                     }
 
                                 </FormSelect>
-                                <FormSelect
-                                    id="theme"
+                                <FormCheckbox
+                                    id="dark"
                                     label={ transChoice('common.themes', 1) }
-                                    value={ data.theme }
-                                    error={ errors.theme }
+                                    checked={ data.dark }
+                                    error={ errors.dark }
                                     setData={ setData }
-                                >
-                                    <option
-                                        value="light"
-                                    >
-                                        { upperFirst(trans('common.light_mode'))}
-                                    </option>
-                                    <option
-                                        value="dark"
-                                    >
-                                        { upperFirst(trans('common.dark_mode'))}
-                                    </option>
-                                </FormSelect>
+                                />
                             </div>
                         </section>
 
@@ -130,15 +129,6 @@ export default function Index({ user, userSettings }) {
                             />
                         </FormFooter>
                     </Form>
-                </TabPanel>
-
-                <TabPanel
-                    id="roles_permissions"
-                    activeTab={ activeTab }
-                >
-                    <div>
-
-                    </div>
                 </TabPanel>
             </Tabs>
         </>
