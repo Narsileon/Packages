@@ -74,6 +74,7 @@ export const useTable = (
 		onColumnVisibilityChange: setColumnVisibility,
 		onGlobalFilterChange: setGlobalFilter,
         onSortingChange: setSorting,
+		autoResetPageIndex: false,
 		manualFiltering: manual,
 		manualPagination: manual,
 		manualSorting: manual,

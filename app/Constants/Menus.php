@@ -143,7 +143,7 @@ abstract class Menus
                 MenuItem::FIELD_LABEL => 'common.dictionaries',
                 MenuItem::FIELD_URL => 'admin.localizations.index',
                 MenuItem::ATTRIBUTE_PERMISSIONS => [
-
+                    Permissions::BACKEND_VIEW,
                 ],
             ],
             [
@@ -212,7 +212,9 @@ abstract class Menus
                 MenuItem::FIELD_ICON => 'question',
                 MenuItem::FIELD_LABEL => 'common.faqs',
                 MenuItem::FIELD_URL => 'faq',
-                MenuItem::ATTRIBUTE_PERMISSIONS => [],
+                MenuItem::ATTRIBUTE_PERMISSIONS => [
+
+                ],
             ],
             [
                 MenuItem::FIELD_SLUG => self::PAGE_FRONTEND_HOME,
@@ -220,7 +222,9 @@ abstract class Menus
                 MenuItem::FIELD_ICON => 'home',
                 MenuItem::FIELD_LABEL => 'common.home',
                 MenuItem::FIELD_URL => 'home',
-                MenuItem::ATTRIBUTE_PERMISSIONS => [],
+                MenuItem::ATTRIBUTE_PERMISSIONS => [
+
+                ],
             ],
         ];
     }

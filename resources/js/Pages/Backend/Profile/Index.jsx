@@ -7,10 +7,8 @@ import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 import Tabs from "@/Components/Tabs/Tabs";
 import TabPanel from "@/Components/Tabs/TabPanel";
 import AppHead from "@/Shared/AppHead";
-import Permissions from "@/Components/Forms/Permissions";
 
 export default function Index({
-    permissions,
     user,
     userSettings
 }) {
@@ -25,10 +23,6 @@ export default function Index({
         {
             id: 'profile',
             label: transChoice('common.profiles', 1),
-        },
-        {
-            id: 'roles_permissions',
-            label: `${ transChoice('permissions.roles', 2) } & ${ upperFirst(transChoice('permissions.permissions', 1)) }`,
         },
         {
             id: 'settings',
@@ -72,15 +66,6 @@ export default function Index({
                 </TabPanel>
 
                 <TabPanel
-                    id="roles_permissions"
-                    activeTab={ activeTab }
-                >
-                    <div>
-                        <Permissions permissions={ permissions } />
-                    </div>
-                </TabPanel>
-
-                <TabPanel
                     id="settings"
                     activeTab={ activeTab }
                 >
@@ -95,7 +80,7 @@ export default function Index({
 
                         <section id="form-body">
                             <div className="grid grid-cols-1 gap-4">
-                                { /* App name */ }
+                                { /* Language */ }
                                 <FormSelect
                                     id="language"
                                     label={ transChoice('common.languages', 1) }
@@ -115,8 +100,9 @@ export default function Index({
                                             );
                                         })
                                     }
-
                                 </FormSelect>
+
+                                { /* Dark Mode */ }
                                 <FormCheckbox
                                     id="dark"
                                     label={ trans('common.dark_mode') }
