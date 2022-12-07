@@ -1,7 +1,7 @@
 import { useForm } from "@inertiajs/inertia-react";
 import { trans, transChoice } from "@/narsil-localization";
 import { upperFirst } from "lodash";
-import { Form, FormFooter, FormHeader, FormInput } from "@/Components/Forms";
+import { Form, FormHeader, FormInput } from "@/Components/Forms";
 import BackButton from "@/Components/Elements/Buttons/BackButton";
 import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 import AppHead from "@/Shared/AppHead";
@@ -44,16 +44,20 @@ export default function Index({ generalSettings }) {
                     </div>
                 </section>
 
-                <FormFooter>
-                    <BackButton
-                        className="primary-button"
-                        href={ route('admin.general_settings.index') }
-                    />
-                    <PrimaryButton
-                        label={ trans('common.update') }
-                        processing={ processing }
-                    />
-                </FormFooter>
+                <hr className="border-color" />
+
+                <section id="form-footer">
+                    <div className="flex items-center justify-between">
+                        <BackButton
+                            className="primary-button"
+                            href={ route('admin.general_settings.index') }
+                        />
+                        <PrimaryButton
+                            label={ trans('common.update') }
+                            processing={ processing }
+                        />
+                    </div>
+                </section>
             </Form>
         </>
     );

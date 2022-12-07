@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useForm, usePage } from "@inertiajs/inertia-react";
 import { trans, transChoice } from "@/narsil-localization";
 import { upperFirst } from "lodash";
-import { Form, FormCheckbox, FormFooter, FormHeader, FormSelect } from "@/Components/Forms";
+import { Form, FormCheckbox, FormHeader, FormSelect } from "@/Components/Forms";
 import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 import Tabs from "@/Components/Tabs/Tabs";
 import TabPanel from "@/Components/Tabs/TabPanel";
@@ -127,12 +127,16 @@ export default function Index({
                             </div>
                         </section>
 
-                        <FormFooter>
-                            <PrimaryButton
-                                label={ trans('common.update') }
-                                processing={ processing }
-                            />
-                        </FormFooter>
+                        <hr className="border-color" />
+
+                        <section id="form-footer">
+                            <div className="flex items-center justify-between">
+                                <PrimaryButton
+                                    label={ trans('common.update') }
+                                    processing={ processing }
+                                />
+                            </div>
+                        </section>
                     </Form>
                 </TabPanel>
             </Tabs>

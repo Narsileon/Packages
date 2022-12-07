@@ -1,6 +1,6 @@
 import { trans, transChoice } from "@/narsil-localization";
 import { upperFirst } from "lodash";
-import { Form, FormCheckbox, FormFooter, FormInput, FormSelect } from "@/Components/Forms";
+import { Form, FormCheckbox, FormInput, FormSelect } from "@/Components/Forms";
 import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 import SortableTree from "./SortableTree";
 
@@ -90,12 +90,16 @@ export default function Formular({
                 }
             </section>
 
-            <FormFooter>
-                <PrimaryButton
-                    label={ label }
-                    processing={ processing }
-                />
-            </FormFooter>
+            <hr className="border-color" />
+
+            <section id="form-footer">
+                <div className="flex items-center justify-between">
+                    <PrimaryButton
+                        label={ label }
+                        processing={ processing }
+                    />
+                </div>
+            </section>
         </Form>
     );
 }

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { trans, transChoice } from "@/narsil-localization";
 import { upperFirst } from "lodash";
-import { Form, FormCheckbox, FormFooter, FormHeader, FormInput, FormSectionHeader, FormSummary } from "@/Components/Forms";
+import { Form, FormCheckbox, FormHeader, FormInput, FormSectionHeader, } from "@/Components/Forms";
 import { Tabs, TabPanel } from "@/Components/Tabs";
 import BackButton from "@/Components/Elements/Buttons/BackButton";
 import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
@@ -152,16 +152,18 @@ export default function Formular({
 
                 <hr className="border-color" />
 
-                <FormFooter>
-                    <BackButton
-                        className="primary-button"
-                        href={ route('admin.users.index') }
-                    />
-                    <PrimaryButton
-                        label={ label }
-                        processing={ processing }
-                    />
-                </FormFooter>
+                <section id="form-footer">
+                    <div className="flex items-center justify-between">
+                        <BackButton
+                            className="primary-button"
+                            href={ route('admin.users.index') }
+                        />
+                        <PrimaryButton
+                            label={ label }
+                            processing={ processing }
+                        />
+                    </div>
+                </section>
             </Form>
         </div>
     );

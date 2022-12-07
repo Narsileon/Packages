@@ -1,6 +1,6 @@
 import { transChoice } from "@/narsil-localization";
 import { upperFirst } from "lodash";
-import { Form, FormFooter, FormHeader, FormInput, FormSelect } from "@/Components/Forms";
+import { Form, FormHeader, FormInput, FormSelect } from "@/Components/Forms";
 import BackButton from "@/Components/Elements/Buttons/BackButton";
 import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 import FormIcon from "@/Components/Forms/FormIcon";
@@ -97,16 +97,20 @@ export default function Formular({
                 </div>
             </section>
 
-            <FormFooter>
-                <BackButton
-                    className="primary-button"
-                    href={ route('admin.menu_items.index') }
-                />
-                <PrimaryButton
-                    label={ label }
-                    processing={ processing }
-                />
-            </FormFooter>
+            <hr className="border-color" />
+
+            <section id="form-footer">
+                <div className="flex items-center justify-between">
+                    <BackButton
+                        className="primary-button"
+                        href={ route('admin.menu_items.index') }
+                    />
+                    <PrimaryButton
+                        label={ label }
+                        processing={ processing }
+                    />
+                </div>
+            </section>
         </Form>
     );
 }

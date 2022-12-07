@@ -1,6 +1,6 @@
 import { useForm } from "@inertiajs/inertia-react";
 import { trans, transChoice } from "@/narsil-localization";
-import { Form, FormFooter, FormHeader, FormInput } from "@/Components/Forms";
+import { Form, FormHeader, FormInput } from "@/Components/Forms";
 import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 import BackButton from "@/Components/Elements/Buttons/BackButton";
 import AppHead from "@/Shared/AppHead";
@@ -51,13 +51,17 @@ export default function Create() {
                     </div>
                 </section>
 
-                <FormFooter>
-                    <BackButton className="primary-button" />
-                    <PrimaryButton
-                        label={ trans('common.login') }
-                        processing={ processing }
-                    />
-                </FormFooter>
+                <hr className="border-color" />
+
+                <section id="form-footer">
+                    <div className="flex items-center justify-between">
+                        <BackButton className="primary-button" />
+                        <PrimaryButton
+                            label={ trans('common.login') }
+                            processing={ processing }
+                        />
+                    </div>
+                </section>
             </Form>
         </>
 	);
