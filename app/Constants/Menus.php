@@ -91,7 +91,7 @@ abstract class Menus
                 MenuItem::FIELD_TYPE => self::TYPE_PAGE,
                 MenuItem::FIELD_ICON => 'calendar',
                 MenuItem::FIELD_LABEL => 'date-time.calendars',
-                MenuItem::FIELD_URL => route('admin.calendar'),
+                MenuItem::FIELD_URL => 'admin.calendar',
                 MenuItem::ATTRIBUTE_PERMISSIONS => [
                     Permissions::BACKEND_VIEW,
                 ],
@@ -101,7 +101,7 @@ abstract class Menus
                 MenuItem::FIELD_TYPE => self::TYPE_PAGE,
                 MenuItem::FIELD_ICON => 'chart',
                 MenuItem::FIELD_LABEL => 'common.dashboard',
-                MenuItem::FIELD_URL => route('admin.dashboard'),
+                MenuItem::FIELD_URL => 'admin.dashboard',
                 MenuItem::ATTRIBUTE_PERMISSIONS => [
                     Permissions::BACKEND_VIEW,
                 ],
@@ -111,7 +111,7 @@ abstract class Menus
                 MenuItem::FIELD_TYPE => self::TYPE_PAGE,
                 MenuItem::FIELD_ICON => 'question',
                 MenuItem::FIELD_LABEL => 'common.faqs',
-                MenuItem::FIELD_URL => route('admin.faqs.index'),
+                MenuItem::FIELD_URL => 'admin.faqs.index',
                 MenuItem::ATTRIBUTE_PERMISSIONS => [
                     Permissions::FAQS_VIEW,
                 ],
@@ -121,7 +121,7 @@ abstract class Menus
                 MenuItem::FIELD_TYPE => self::TYPE_PAGE,
                 MenuItem::FIELD_ICON => 'cog',
                 MenuItem::FIELD_LABEL => 'common.general_settings',
-                MenuItem::FIELD_URL => route('admin.general_settings.index'),
+                MenuItem::FIELD_URL => 'admin.general_settings.index',
                 MenuItem::ATTRIBUTE_PERMISSIONS => [
                     Permissions::GENERAL_SETTINGS_VIEW,
                 ],
@@ -131,7 +131,7 @@ abstract class Menus
                 MenuItem::FIELD_TYPE => self::TYPE_PAGE,
                 MenuItem::FIELD_ICON => 'language',
                 MenuItem::FIELD_LABEL => 'common.languages',
-                MenuItem::FIELD_URL => route('admin.languages.index'),
+                MenuItem::FIELD_URL => 'admin.languages.index',
                 MenuItem::ATTRIBUTE_PERMISSIONS => [
                     Permissions::LANGUAGES_VIEW,
                 ],
@@ -141,7 +141,7 @@ abstract class Menus
                 MenuItem::FIELD_TYPE => self::TYPE_PAGE,
                 MenuItem::FIELD_ICON => 'book',
                 MenuItem::FIELD_LABEL => 'common.dictionaries',
-                MenuItem::FIELD_URL => route('admin.localizations.index'),
+                MenuItem::FIELD_URL => 'admin.localizations.index',
                 MenuItem::ATTRIBUTE_PERMISSIONS => [
 
                 ],
@@ -151,7 +151,7 @@ abstract class Menus
                 MenuItem::FIELD_TYPE => self::TYPE_PAGE,
                 MenuItem::FIELD_ICON => 'template',
                 MenuItem::FIELD_LABEL => 'common.menus',
-                MenuItem::FIELD_URL => route('admin.menus.index'),
+                MenuItem::FIELD_URL => 'admin.menus.index',
                 MenuItem::ATTRIBUTE_PERMISSIONS => [
                     Permissions::MENUS_VIEW,
                 ],
@@ -161,7 +161,7 @@ abstract class Menus
                 MenuItem::FIELD_TYPE => self::TYPE_PAGE,
                 MenuItem::FIELD_ICON => 'link',
                 MenuItem::FIELD_LABEL => 'common.menu_items',
-                MenuItem::FIELD_URL => route('admin.menu_items.index'),
+                MenuItem::FIELD_URL => 'admin.menu_items.index',
                 MenuItem::ATTRIBUTE_PERMISSIONS => [
                     Permissions::MENU_ITEMS_VIEW,
                 ],
@@ -171,7 +171,7 @@ abstract class Menus
                 MenuItem::FIELD_TYPE => self::TYPE_PAGE,
                 MenuItem::FIELD_ICON => 'clipboard',
                 MenuItem::FIELD_LABEL => 'common.orders',
-                MenuItem::FIELD_URL => route('admin.orders.index'),
+                MenuItem::FIELD_URL => 'admin.orders.index',
                 MenuItem::ATTRIBUTE_PERMISSIONS => [
                     Permissions::ORDERS_VIEW,
                 ],
@@ -181,7 +181,7 @@ abstract class Menus
                 MenuItem::FIELD_TYPE => self::TYPE_PAGE,
                 MenuItem::FIELD_ICON => 'group',
                 MenuItem::FIELD_LABEL => 'permissions.roles',
-                MenuItem::FIELD_URL => route('admin.roles.index'),
+                MenuItem::FIELD_URL => 'admin.roles.index',
                 MenuItem::ATTRIBUTE_PERMISSIONS => [
                     Permissions::ROLES_VIEW,
                 ],
@@ -191,7 +191,7 @@ abstract class Menus
                 MenuItem::FIELD_TYPE => self::TYPE_PAGE,
                 MenuItem::FIELD_ICON => 'template',
                 MenuItem::FIELD_LABEL => 'common.templates',
-                MenuItem::FIELD_URL => route('admin.templates.index'),
+                MenuItem::FIELD_URL => 'admin.templates.index',
                 MenuItem::ATTRIBUTE_PERMISSIONS => [
                     Permissions::TEMPLATES_VIEW,
                 ],
@@ -201,7 +201,7 @@ abstract class Menus
                 MenuItem::FIELD_TYPE => self::TYPE_PAGE,
                 MenuItem::FIELD_ICON => 'users',
                 MenuItem::FIELD_LABEL => 'common.users',
-                MenuItem::FIELD_URL => route('admin.users.index'),
+                MenuItem::FIELD_URL => 'admin.users.index',
                 MenuItem::ATTRIBUTE_PERMISSIONS => [
                     Permissions::USERS_VIEW,
                 ],
@@ -211,7 +211,7 @@ abstract class Menus
                 MenuItem::FIELD_TYPE => self::TYPE_PAGE,
                 MenuItem::FIELD_ICON => 'question',
                 MenuItem::FIELD_LABEL => 'common.faqs',
-                MenuItem::FIELD_URL => route('faq'),
+                MenuItem::FIELD_URL => 'faq',
                 MenuItem::ATTRIBUTE_PERMISSIONS => [],
             ],
             [
@@ -219,7 +219,7 @@ abstract class Menus
                 MenuItem::FIELD_TYPE => self::TYPE_PAGE,
                 MenuItem::FIELD_ICON => 'home',
                 MenuItem::FIELD_LABEL => 'common.home',
-                MenuItem::FIELD_URL => route('home'),
+                MenuItem::FIELD_URL => 'home',
                 MenuItem::ATTRIBUTE_PERMISSIONS => [],
             ],
         ];

@@ -25,6 +25,7 @@ return [
     'edit'                  => 'edit',
     'emails'                => 'email|emails',
     'equal'                 => 'equal to',
+    'external_links'        => 'external link|external links',
     'faqs'                  => 'FAQ|FAQs',
     'filters'               => 'filter|filters',
     'first_names'           => 'first name|first names',

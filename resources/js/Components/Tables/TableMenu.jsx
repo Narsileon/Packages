@@ -12,7 +12,7 @@ export default function TableMenu({ id, options = {
     editable: true,
     deletable: true,
 }}) {
-    const url = usePage().url;
+    const url = usePage().props.shared.ziggy.location;
 
     const [window, setWindow] = useState();
     const [showWindow, setShowWindow] = useToggle(false);

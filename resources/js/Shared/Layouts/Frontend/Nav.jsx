@@ -73,7 +73,7 @@ const renderLinks = (links) => {
                 links.map(({ url, label, icon }) => {
                     return (
                         <NavLink
-                            href={ url }
+                            href={ route(url) }
                             label={ transChoice(label, 1) }
                             icon={ icon }
                             key={ label }
@@ -90,7 +90,7 @@ const NavAuth = ({ auth }) => {
         if (auth.permissions.includes('backend_view'))
         {
             return [
-                { url: route('admin.dashboard'), label: 'common.dashboard', icon: 'chart' },
+                { url: 'admin.dashboard', label: 'common.dashboard', icon: 'chart' },
             ];
         } else {
             return [];
@@ -119,11 +119,11 @@ const NavAuth = ({ auth }) => {
 const NavGuest = () => {
     const links = [
         {
-            url: route('register'),
+            url: 'register',
             label: 'common.register',
             icon: 'user-plus' },
         {
-            url: route('login'),
+            url: 'login',
             label: 'common.login',
             icon: 'login'
         },

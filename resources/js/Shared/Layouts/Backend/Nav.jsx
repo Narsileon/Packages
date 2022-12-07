@@ -33,7 +33,7 @@ export default function Nav() {
                                             return (
                                                 hasPermission(link) ? (
                                                     <NavLink
-                                                        href={ link.url }
+                                                        href={ route(link.url) }
                                                         label={ transChoice(link.label, 2) }
                                                         icon={ link.icon }
                                                         key={ index }
@@ -46,7 +46,7 @@ export default function Nav() {
                             ) : (
                                 hasPermission(link.data) ? (
                                     <NavLink
-                                        href={ link.data.url }
+                                        href={ route(link.data.url) }
                                         label={ transChoice(link.data.label, 2) }
                                         icon={ link.data.icon }
                                         key={ index }

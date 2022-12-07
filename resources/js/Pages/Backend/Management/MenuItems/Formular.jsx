@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { trans, transChoice } from "@/narsil-localization";
+import { usePage } from "@inertiajs/inertia-react";
 import { upperFirst } from "lodash";
 import { Form, FormCheckbox, FormHeader, FormInput, FormSectionHeader, FormSelect } from "@/Components/Forms";
 import { TabPanel, Tabs } from "@/Components/Tabs";
@@ -19,6 +20,8 @@ export default function Formular({
     roles,
     permissions,
 }) {
+    const routes = usePage().props.shared.ziggy.routes;
+
     const tabsSettings = [
         {
             id: 'menu_item',
@@ -40,6 +43,10 @@ export default function Formular({
         {
             label: 'common.pages',
             type: 'page',
+        },
+        {
+            label: 'common.external_links',
+            type: 'external_link',
         },
     ]
 
@@ -74,28 +81,26 @@ export default function Formular({
                             />
                         </div>
                         { /* Type */ }
-                        <div className="col-span-1">
-                            <FormSelect
-                                id="type"
-                                label={ transChoice('common.types', 1) }
-                                value={ data.type }
-                                error={ errors.type }
-                                setData={ setData }
-                            >
-                                {
-                                    options.map((option) => {
-                                        return (
-                                            <option
-                                                value={ option.type }
-                                                key={ option.type }
-                                            >
-                                                { upperFirst(transChoice(option.label, 1)) }
-                                            </option>
-                                        );
-                                    })
-                                }
-                            </FormSelect>
-                        </div>
+                        <FormSelect
+                            id="type"
+                            label={ transChoice('common.types', 1) }
+                            value={ data.type }
+                            error={ errors.type }
+                            setData={ setData }
+                        >
+                            {
+                                options.map((option) => {
+                                    return (
+                                        <option
+                                            value={ option.type }
+                                            key={ option.type }
+                                        >
+                                            { upperFirst(transChoice(option.label, 1)) }
+                                        </option>
+                                    );
+                                })
+                            }
+                        </FormSelect>
                         { /* Icon */ }
                         <FormIcon
                             id="icon"
@@ -112,14 +117,38 @@ export default function Formular({
                             error={ errors.label }
                             setData={ setData }
                         />
-                        { /* URL */ }
-                        <FormInput
-                            id="url"
-                            label={ transChoice('common.urls', 1) }
-                            value={ data.url }
-                            error={ errors.url }
-                            setData={ setData }
-                        />
+                        {
+                            data.type == 'page' ? (
+                                <FormSelect
+                                    id="url"
+                                    label={ transChoice('common.pages', 1) }
+                                    value={ data.url }
+                                    error={ errors.url }
+                                    setData={ setData }
+                                >
+                                    {
+                                        Object.keys(routes).map((key, index) => {
+                                            return (
+                                                <option
+                                                    value={ key }
+                                                    key={ index }
+                                                >
+                                                    { key }
+                                                </option>
+                                            );
+                                        })
+                                    }
+                                </FormSelect>
+                            ) : data.type == 'external_link' ? (
+                                <FormInput
+                                    id="url"
+                                    label={ transChoice('common.urls', 1) }
+                                    value={ data.url }
+                                    error={ errors.url }
+                                    setData={ setData }
+                                />
+                            ) : null
+                        }
                     </div>
                 </TabPanel>
 

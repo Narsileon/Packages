@@ -25,6 +25,7 @@ return [
     'edit'                  => 'bearbeiten',
     'emails'                => 'E-mail|E-mails',
     'equal'                 => 'gleich',
+    'external_links'        => 'externer Link|externe Links',
     'faqs'                  => 'FAQ|FAQs',
     'filters'               => 'Filter|Filter',
     'first_names'           => 'Vorname|Vornamen',
