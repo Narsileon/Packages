@@ -8,13 +8,13 @@ use App\Constants\Tables;
 use App\Models\Backend\Order;
 use App\Models\Backend\GeneralSettings;
 use App\Models\Template;
-use App\Templates\Tables\FaqTable;
-use App\Templates\Tables\LanguageTable;
-use App\Templates\Tables\LocalizationTable;
-use App\Templates\Tables\MenuItemTable;
-use App\Templates\Tables\OrderTable;
-use App\Templates\Tables\RoleTable;
-use App\Templates\Tables\UserTable;
+use App\Templates\FaqTable;
+use App\Templates\LanguageTable;
+use App\Templates\LocalizationTable;
+use App\Templates\MenuItemTable;
+use App\Templates\OrderTable;
+use App\Templates\RoleTable;
+use App\Templates\UserTable;
 use Illuminate\Database\Seeder;
 
 #endregion
@@ -36,7 +36,7 @@ class BackendSeeder extends Seeder
 
     private function createOrders()
     {
-        Order::factory(10)->create();
+        Order::factory(20)->create();
     }
 
     private function createSettings()

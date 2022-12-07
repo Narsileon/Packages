@@ -19,7 +19,7 @@ export default function Create({
                 <section id="sortable-items">
                     <div className="space-y-2">
                         {
-                            data.category == 'backend_menu' ? (
+                            data.type == 'backend_menu' ? (
                                 <SortableItems
                                     title="common.categories"
                                     items={ menuItems.data.filter(item => item.type == 'category') }

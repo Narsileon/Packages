@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Templates\Tables;
+namespace App\Templates;
 
 #region USE
 
 use App\Constants\Tables;
 use App\Constants\Types;
-use App\Models\UserRole;
+use App\Models\Frontend\Faq;
 
 #endregion
 
-class RoleTable
+class FaqTable
 {
     #region CONSTANTS
 
@@ -23,26 +23,32 @@ class RoleTable
             Tables::FIELD_DISABLE_SORT => true,
         ],
         [
-            Tables::FIELD_ACCESSOR_KEY => UserRole::FIELD_ID,
-            Tables::FIELD_ID => UserRole::FIELD_ID,
+            Tables::FIELD_ACCESSOR_KEY => Faq::FIELD_ID,
+            Tables::FIELD_ID => Faq::FIELD_ID,
             Tables::FIELD_TYPE => Types::NUMBER,
             Tables::FIELD_HEADER => 'common.ids',
         ],
         [
-            Tables::FIELD_ACCESSOR_KEY => UserRole::FIELD_NAME,
-            Tables::FIELD_ID => UserRole::FIELD_NAME,
+            Tables::FIELD_ACCESSOR_KEY => Faq::FIELD_QUESTION,
+            Tables::FIELD_ID => Faq::FIELD_QUESTION,
             Tables::FIELD_TYPE => Types::TEXT,
-            Tables::FIELD_HEADER => 'common.names',
+            Tables::FIELD_HEADER => 'common.questions',
         ],
         [
-            Tables::FIELD_ACCESSOR_KEY => UserRole::CREATED_AT,
-            Tables::FIELD_ID => UserRole::CREATED_AT,
+            Tables::FIELD_ACCESSOR_KEY => Faq::FIELD_ANSWER,
+            Tables::FIELD_ID => Faq::FIELD_ANSWER,
+            Tables::FIELD_TYPE => Types::TEXT,
+            Tables::FIELD_HEADER => 'common.answers',
+        ],
+        [
+            Tables::FIELD_ACCESSOR_KEY => Faq::CREATED_AT,
+            Tables::FIELD_ID => Faq::CREATED_AT,
             Tables::FIELD_TYPE => Types::DATE,
             Tables::FIELD_HEADER => 'validation.attributes.created_at',
         ],
         [
-            Tables::FIELD_ACCESSOR_KEY => UserRole::UPDATED_AT,
-            Tables::FIELD_ID => UserRole::UPDATED_AT,
+            Tables::FIELD_ACCESSOR_KEY => Faq::UPDATED_AT,
+            Tables::FIELD_ID => Faq::UPDATED_AT,
             Tables::FIELD_TYPE => Types::DATE,
             Tables::FIELD_HEADER => 'validation.attributes.updated_at',
         ],
@@ -51,14 +57,15 @@ class RoleTable
     public const DEFAULT_TEMPLATE = [
         Tables::PROPERTY_COLUMN_ORDER => [
             Tables::FIELD_MENU,
-            UserRole::FIELD_ID,
-            UserRole::FIELD_NAME,
-            UserRole::CREATED_AT,
-            UserRole::UPDATED_AT,
+            Faq::FIELD_ID,
+            Faq::FIELD_QUESTION,
+            Faq::FIELD_ANSWER,
+            Faq::CREATED_AT,
+            Faq::UPDATED_AT,
         ],
         Tables::PROPERTY_SORTING => [
             [
-                Tables::FIELD_ID => UserRole::FIELD_ID,
+                Tables::FIELD_ID => Faq::FIELD_ID,
                 Tables::ORDER_DESC => false,
             ],
         ],

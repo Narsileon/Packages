@@ -4,11 +4,9 @@ namespace Database\Seeders\Subseeders;
 
 #region USE
 
+use App\Constants\Menus;
 use App\Models\Menu;
 use App\Services\MenuService;
-use App\Templates\Menus\BackendMenu;
-use App\Templates\Menus\FrontendFooter;
-use App\Templates\Menus\FrontendHeader;
 use Illuminate\Database\Seeder;
 
 #endregion
@@ -19,39 +17,58 @@ class MenuSeeder extends Seeder
 
     public function run()
     {
-        $this->createMenuItems();
-        $this->createMenus();
+        $this->createCategories();
+        $this->createPages();
+
+        $this->createBackendMenu();
+        $this->createFrontendFooter();
+        $this->createFrontendHeader();
     }
 
     #endregion
 
     #region PRIVATE METHODS
 
-    private function createMenuItems()
+    private function createCategories()
     {
-        MenuService::createMenuItem(BackendMenu::get());
-        MenuService::createMenuItem(FrontendFooter::get());
-        MenuService::createMenuItem(FrontendHeader::get());
+        foreach(Menus::getDefaultCategories() as $category)
+        {
+            MenuService::createMenuItem($category);
+        }
     }
 
-    private function createMenus()
+    private function createPages()
+    {
+        foreach(Menus::getDefaultPages() as $page)
+        {
+            MenuService::createMenuItem($page);
+        }
+    }
+
+    private function createBackendMenu()
     {
         Menu::create([
-            Menu::FIELD_TYPE => Menu::TYPE_BACKEND_MENU,
+            Menu::FIELD_TYPE => Menus::BACKEND_MENU,
             Menu::FIELD_TITLE => 'Default Backend Menu',
-            Menu::FIELD_TEMPLATE => MenuService::getMenuID(BackendMenu::get()),
+            Menu::FIELD_TEMPLATE => Menus::getDefaultMenu(Menus::BACKEND_MENU),
         ]);
+    }
 
+    private function createFrontendFooter()
+    {
         Menu::create([
-            Menu::FIELD_TYPE => Menu::TYPE_FRONTEND_FOOTER,
+            Menu::FIELD_TYPE => Menus::FRONTEND_FOOTER,
             Menu::FIELD_TITLE => 'Default Frontend Footer',
-            Menu::FIELD_TEMPLATE => MenuService::getMenuID(FrontendFooter::get()),
+            Menu::FIELD_TEMPLATE => Menus::getDefaultMenu(Menus::FRONTEND_FOOTER),
         ]);
+    }
 
+    private function createFrontendHeader()
+    {
         Menu::create([
-            Menu::FIELD_TYPE => Menu::TYPE_FRONTEND_HEADER,
+            Menu::FIELD_TYPE => Menus::FRONTEND_HEADER,
             Menu::FIELD_TITLE => 'Default Frontend Header',
-            Menu::FIELD_TEMPLATE =>MenuService::getMenuID(FrontendHeader::get()),
+            Menu::FIELD_TEMPLATE => Menus::getDefaultMenu(Menus::FRONTEND_HEADER),
         ]);
     }
 

@@ -23,6 +23,7 @@ class MenuItemResource extends JsonResource
             MenuItem::FIELD_SLUG => $this->{ MenuItem::FIELD_SLUG },
             MenuItem::FIELD_TYPE => $this->{ MenuItem::FIELD_TYPE },
             MenuItem::FIELD_URL => $this->{ MenuItem::FIELD_URL },
+            MenuItem::FIELD_CHILDREN => $this->{ MenuItem::FIELD_CHILDREN },
             MenuItem::CREATED_AT => $this->{ MenuItem::CREATED_AT },
             MenuItem::UPDATED_AT => $this->{ MenuItem::UPDATED_AT },
 

@@ -32,9 +32,6 @@ class MenuItem extends Model
     public const ATTRIBUTE_PERMISSIONS = 'permissions';
     public const ATTRIBUTE_ROLES = 'roles';
 
-    public const TYPE_CATEGORY = 'category';
-    public const TYPE_PAGE = 'page';
-
     #endregion
 
     #region PROPERTIES
@@ -48,6 +45,8 @@ class MenuItem extends Model
         self::FIELD_TYPE,
         self::FIELD_URL,
     ];
+
+    protected $guard_name = 'web';
 
     #endregion
 

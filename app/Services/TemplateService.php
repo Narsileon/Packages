@@ -7,13 +7,13 @@ namespace App\Services;
 use App\Constants\Tables;
 use App\Models\User;
 use App\Models\UserTemplate;
-use App\Templates\Tables\FaqTable;
-use App\Templates\Tables\LanguageTable;
-use App\Templates\Tables\LocalizationTable;
-use App\Templates\Tables\MenuItemTable;
-use App\Templates\Tables\OrderTable;
-use App\Templates\Tables\RoleTable;
-use App\Templates\Tables\UserTable;
+use App\Templates\FaqTable;
+use App\Templates\LanguageTable;
+use App\Templates\LocalizationTable;
+use App\Templates\MenuItemTable;
+use App\Templates\OrderTable;
+use App\Templates\RoleTable;
+use App\Templates\UserTable;
 use Illuminate\Support\Facades\Auth;
 
 #endregion

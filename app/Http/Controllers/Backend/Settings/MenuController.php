@@ -11,7 +11,6 @@ use App\Http\Resources\Backend\Settings\MenuItemResource;
 use App\Models\Menu;
 use App\Models\MenuItem;
 use App\Services\MenuService;
-use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
 
 #endregion
@@ -26,7 +25,7 @@ class MenuController extends Controller
 
         foreach($menus as $key => $value)
         {
-            $menus[$key]->{ Menu::FIELD_TEMPLATE } = MenuService::getMenuItem($menus[$key]->{ Menu::FIELD_TEMPLATE });
+            $menus[$key]->{ Menu::FIELD_TEMPLATE } = MenuService::getMenuItems($menus[$key]->{ Menu::FIELD_TEMPLATE });
         }
 
         $menuItems = MenuItemResource::collection(MenuItem::all());
@@ -51,11 +50,7 @@ class MenuController extends Controller
 
     public function update(MenuUpdateRequest $request, Menu $menu)
     {
-        Log::debug($menu);
-
         $attributes = $request->validated();
-
-        Log::debug($attributes);
 
         $attributes[Menu::FIELD_TEMPLATE] = MenuService::getMenuID($attributes[Menu::FIELD_TEMPLATE]);
 

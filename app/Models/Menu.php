@@ -23,10 +23,6 @@ class Menu extends Model
     public const FIELD_TITLE = 'title';
     public const FIELD_TYPE = 'type';
 
-    public const TYPE_BACKEND_MENU = 'backend_menu';
-    public const TYPE_FRONTEND_FOOTER = 'frontend_footer';
-    public const TYPE_FRONTEND_HEADER = 'frontend_header';
-
     #endregion
 
     #region PROPERTIES

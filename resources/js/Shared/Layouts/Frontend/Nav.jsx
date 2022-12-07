@@ -10,7 +10,7 @@ export default function Nav() {
     const shared = usePage().props.shared;
 
     const auth = shared.auth;
-    const menuLinks = shared.settings.menus.frontend_header
+    const menuLinks = shared.menus.frontendHeader
 
     const dropdown = useRef();
 
@@ -30,7 +30,18 @@ export default function Nav() {
             />
 
             <ul className={ `md:flex md:items-center md:justify-between primary-background p-2 space-y-2 md:space-y-0 md:space-x-2 ${ open ? "absolute md:relative md:w-auto w-full md:h-12 h-screen top-0 left-0 z-40" : "hidden" }` }>
-                { renderLinks(menuLinks) }
+                {
+                    menuLinks.map((link) => {
+                        return (
+                            <NavLink
+                                href={ link.data.url }
+                                label={ transChoice(link.data.label, 1) }
+                                icon={ link.data.icon }
+                                key={ link.data.label }
+                            />
+                        );
+                    })
+                }
 
                 <li className="md:relative grid">
                     <MenuButton

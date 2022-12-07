@@ -1,8 +1,8 @@
 import { Link, usePage } from "@inertiajs/inertia-react";
 import { trans, transChoice } from "@/narsil-localization";
+import { upperFirst } from "lodash";
 import WebsiteLogo from "@/Shared/Layouts/WebsiteLogo";
 import Icon from "@/Shared/Svg/Icon";
-import { upperFirst } from "lodash";
 
 export default function Footer() {
     return (
@@ -19,7 +19,7 @@ export default function Footer() {
 }
 
 const UpperFooter = () => {
-    const menuItems = usePage().props.shared.settings.menus.frontend_footer
+    const menuItems = usePage().props.shared.menus.frontendFooter
 
     return (
         <section id="upper-header">
@@ -33,14 +33,14 @@ const UpperFooter = () => {
                 <div className="col-span-1">
                     <div className="flex items-center justify-center h-full md:justify-end space-x-4">
                         {
-                            menuItems.map((item, index) => {
+                            menuItems.map((menuItem, index) => {
                                 return (
                                     <Link
                                         className="hover:underline"
-                                        href={ item.url }
+                                        href={ menuItem.data.url }
                                         key={ index }
                                     >
-                                        { upperFirst(transChoice(item.label, 1)) }
+                                        { upperFirst(transChoice(menuItem.data.label, 1)) }
                                     </Link>
                                 );
                             })

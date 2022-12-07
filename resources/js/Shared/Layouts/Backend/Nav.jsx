@@ -7,40 +7,54 @@ import Chevron from "@/Shared/Svg/Chevron";
 import Icon from "@/Shared/Svg/Icon";
 
 export default function Nav() {
-    const menu = usePage().props.shared.settings.menus.backend_menu;
+    const shared = usePage().props.shared;
 
-    function renderLinks(menuItems) {
-        return (
-            menuItems.map((menuItem, index) => {
-                return (
-                    menuItem.type == 'category' ? (
-                        <Section
-                            label={ transChoice(menuItem.label, 2) }
-                            icon={ menuItem.icon }
-                            key={ index }
-                        >
-                            {
-                                renderLinks(menuItem.children)
-                            }
-                        </Section>
-                    ) : (
-                        <NavLink
-                            href={ menuItem.url }
-                            label={ transChoice(menuItem.label, 2) }
-                            icon={ menuItem.icon }
-                            key={ index }
-                        />
-                    )
-                )
-            })
-        )
+    const links = shared.menus.backendMenu;
+    const permissions = shared.auth.permissions;
+
+    function hasPermission(link) {
+        return link.permissions.some((x) => permissions.includes(x.name));
     }
 
     return (
         <nav className="font-semibold">
             <ul>
                 {
-                    renderLinks(menu)
+                    links.map((link, index) => {
+                        return (
+                            link.data.type == 'category' ? (
+                                <Section
+                                    label={ transChoice(link.data.label, 2) }
+                                    icon={ link.data.icon }
+                                    key={ index }
+                                >
+                                    {
+                                        link.data.children.map((link, index) => {
+                                            return (
+                                                hasPermission(link) ? (
+                                                    <NavLink
+                                                        href={ link.url }
+                                                        label={ transChoice(link.label, 2) }
+                                                        icon={ link.icon }
+                                                        key={ index }
+                                                    />
+                                                ) : null
+                                            );
+                                        })
+                                    }
+                                </Section>
+                            ) : (
+                                hasPermission(link.data) ? (
+                                    <NavLink
+                                        href={ link.data.url }
+                                        label={ transChoice(link.data.label, 2) }
+                                        icon={ link.data.icon }
+                                        key={ index }
+                                    />
+                                ) : null
+                            )
+                        )
+                    })
                 }
             </ul>
         </nav>

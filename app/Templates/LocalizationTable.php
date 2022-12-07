@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Templates\Tables;
+namespace App\Templates;
 
 #region USE
 

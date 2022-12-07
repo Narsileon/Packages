@@ -4,11 +4,11 @@ namespace App\Services;
 
 #region USE
 
+use App\Constants\Menus;
+use App\Http\Resources\Backend\Management\MenuItemResource;
 use App\Models\Menu;
 use App\Models\MenuItem;
-use App\Templates\Menus\BackendMenu;
-use App\Templates\Menus\FrontendFooter;
-use App\Templates\Menus\FrontendHeader;
+use Illuminate\Support\Facades\Log;
 
 #endregion
 
@@ -20,52 +20,49 @@ class MenuService
     {
         $menu = Menu::where(Menu::FIELD_TYPE, '=', $type)->where(Menu::FIELD_ACTIVE, '=', true)->first();
 
-        return $menu ? self::getMenuItem($menu->{ Menu::FIELD_TEMPLATE }) : self::getDefaultTemplate($type);
+        return $menu ? self::getMenuItems($menu->{ Menu::FIELD_TEMPLATE }) : Menus::getDefaultMenu($type);
     }
 
-    public static function createMenuItem($menu)
+    public static function createMenuItem($template)
     {
-        foreach($menu as $item)
+        $menuItem = MenuItem::create([
+            MenuItem::FIELD_SLUG => $template[MenuItem::FIELD_SLUG],
+            MenuItem::FIELD_TYPE => $template[MenuItem::FIELD_TYPE],
+            MenuItem::FIELD_ICON => $template[MenuItem::FIELD_ICON],
+            MenuItem::FIELD_LABEL => $template[MenuItem::FIELD_LABEL],
+            MenuItem::FIELD_URL => $template[MenuItem::FIELD_URL] ?? null,
+        ]);
+
+        if ($menuItem[MenuItem::ATTRIBUTE_PERMISSIONS])
         {
-            if ($item[MenuItem::FIELD_TYPE] == MenuItem::TYPE_CATEGORY)
-            {
-                MenuItem::create([
-                    MenuItem::FIELD_SLUG => $item[MenuItem::FIELD_SLUG],
-                    MenuItem::FIELD_TYPE => $item[MenuItem::FIELD_TYPE],
-                    MenuItem::FIELD_ICON => $item[MenuItem::FIELD_ICON],
-                    MenuItem::FIELD_LABEL => $item[MenuItem::FIELD_LABEL],
-                ]);
-
-                foreach($item[MenuItem::FIELD_CHILDREN] as $subitem)
-                {
-                    MenuItem::create($subitem);
-                }
-            }
-
-            else
-            {
-                MenuItem::create($item);
-            }
+            $menuItem->givePermissionTo($template[MenuItem::ATTRIBUTE_PERMISSIONS]);
         }
+    }
+
+    public static function getMenuItem($slug)
+    {
+        return MenuItem::where(MenuItem::FIELD_SLUG, '=', $slug)->first();
     }
 
     public static function getMenuID($layout)
     {
         $menu = [];
 
-        foreach($layout as $item)
+        foreach($layout as $key=>$value)
         {
-            if ($item[MenuItem::FIELD_TYPE] == MenuItem::TYPE_CATEGORY)
+            $menuItem = self::getMenuItem($key);
+
+            if ($menuItem->{ MenuItem::FIELD_TYPE } == Menus::TYPE_CATEGORY)
             {
                 $menuItem = [
-                    MenuItem::FIELD_ID => MenuItem::where(MenuItem::FIELD_SLUG, $item[MenuItem::FIELD_SLUG])->first()->{ MenuItem::FIELD_ID },
+                    MenuItem::FIELD_ID => $menuItem->{ MenuItem::FIELD_ID },
                     MenuItem::FIELD_CHILDREN => [],
                 ];
 
-                foreach($item[MenuItem::FIELD_CHILDREN] as $subitem)
+                foreach($value as $page)
                 {
                     $menuItem[MenuItem::FIELD_CHILDREN][] = [
-                        MenuItem::FIELD_ID => MenuItem::where(MenuItem::FIELD_SLUG, $subitem[MenuItem::FIELD_SLUG])->first()->{ MenuItem::FIELD_ID },
+                        MenuItem::FIELD_ID => self::getMenuItem($page)->{ MenuItem::FIELD_ID },
                     ];
                 }
 
@@ -74,18 +71,14 @@ class MenuService
 
             else
             {
-                $menuItem = [
-                    MenuItem::FIELD_ID => MenuItem::where(MenuItem::FIELD_SLUG, $item[MenuItem::FIELD_SLUG])->first()->{ MenuItem::FIELD_ID },
-                ];
-
-                $menu[] = $menuItem;
+                $menu[] = $menuItem->{ MenuItem::FIELD_ID };
             }
         }
 
         return $menu;
     }
 
-    public static function getMenuItem($layout)
+    public static function getMenuItems($layout)
     {
         $menu = [];
 
@@ -95,31 +88,15 @@ class MenuService
 
             if (!empty($item[MenuItem::FIELD_CHILDREN]))
             {
-                $menuItem[MenuItem::FIELD_CHILDREN] = self::getMenuItem($item[MenuItem::FIELD_CHILDREN]);
+                $menuItem[MenuItem::FIELD_CHILDREN] = self::getMenuItems($item[MenuItem::FIELD_CHILDREN]);
             }
 
-            $menu[] = $menuItem;
+            $menu[] = new MenuItemResource($menuItem);
         }
+
+        Log::debug($menu);
 
         return $menu;
-    }
-
-    #endregion
-
-    #region PRIVATE METHODS
-
-    public static function getDefaultTemplate($type)
-    {
-        switch ($type) {
-            case Menu::TYPE_BACKEND_MENU:
-                return BackendMenu::get();
-            case Menu::TYPE_FRONTEND_FOOTER:
-                return FrontendFooter::get();
-            case Menu::TYPE_FRONTEND_HEADER:
-                return FrontendHeader::get();
-            default:
-                return [];
-        }
     }
 
     #endregion

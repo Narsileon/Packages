@@ -12,8 +12,8 @@ abstract class Types
     public const DATE = 'date';
     public const DATETIME = 'datetime';
     public const DECIMAL = 'decimal';
-    public const INTEGER = 'integer';
     public const FLOAT = 'float';
+    public const INTEGER = 'integer';
     public const NUMBER = 'number';
     public const STRING = 'string';
     public const TEXT = 'text';

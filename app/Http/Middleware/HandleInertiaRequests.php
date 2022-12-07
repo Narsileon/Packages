@@ -4,9 +4,9 @@ namespace App\Http\Middleware;
 
 #region USE
 
+use App\Constants\Menus;
 use App\Http\Resources\Session\UserSettingResource;
 use App\Models\Backend\GeneralSettings;
-use App\Models\Menu;
 use App\Services\LocalizationService;
 use App\Services\MenuService;
 use Illuminate\Http\Request;
@@ -36,6 +36,7 @@ class HandleInertiaRequests extends Middleware
     {
         $auth = $this->initializeAuth($request);
         $flash = $this->initializeFlash($request);
+        $menus = $this->initializeMenus($request);
         $settings = $this->initializeSettings($request);
         $ziggy = $this->initializeZiggy($request);
 
@@ -45,6 +46,7 @@ class HandleInertiaRequests extends Middleware
             'auth',
             'flash',
             'localization',
+            'menus',
             'settings',
             'ziggy',
         );
@@ -85,6 +87,19 @@ class HandleInertiaRequests extends Middleware
         );
     }
 
+    private function initializeMenus($request)
+    {
+        $backendMenu = MenuService::getMenu(Menus::BACKEND_MENU);
+        $frontendFooter = MenuService::getMenu(Menus::FRONTEND_FOOTER);
+        $frontendHeader = MenuService::getMenu(Menus::FRONTEND_HEADER);
+
+        return compact(
+            'backendMenu',
+            'frontendFooter',
+            'frontendHeader',
+        );
+    }
+
     private function initializeSettings($request)
     {
         $app = [
@@ -92,9 +107,9 @@ class HandleInertiaRequests extends Middleware
         ];
 
         $menus = [
-            'backend_menu' => MenuService::getMenu(Menu::TYPE_BACKEND_MENU),
-            'frontend_footer' => MenuService::getMenu(Menu::TYPE_FRONTEND_FOOTER),
-            'frontend_header' => MenuService::getMenu(Menu::TYPE_FRONTEND_HEADER),
+            'backend_menu' => MenuService::getMenu(Menus::BACKEND_MENU),
+            'frontend_footer' => MenuService::getMenu(Menus::FRONTEND_FOOTER),
+            'frontend_header' => MenuService::getMenu(Menus::FRONTEND_HEADER),
         ];
 
         return compact(
