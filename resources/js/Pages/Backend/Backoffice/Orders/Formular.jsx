@@ -24,7 +24,7 @@ export default function Formular({
 
             <section id="form-body">
                 <div className="grid grid-cols-1 gap-4">
-                    {/* Type */}
+                    { /* Type */ }
                     <FormInput
                         id="type"
                         label={ transChoice('common.types', 1) }
@@ -32,7 +32,7 @@ export default function Formular({
                         error={ errors.type }
                         setData={ setData }
                     />
-                    {/* Status */}
+                    { /* Status */ }
                     <FormInput
                         id="status"
                         label={ transChoice('common.statuses', 1) }

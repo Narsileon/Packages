@@ -33,7 +33,7 @@ export default function Index({ generalSettings }) {
 
                 <section id="form-body">
                     <div className="grid grid-cols-1 gap-4">
-                        {/* App name */}
+                        { /* App name */ }
                         <FormInput
                             id="app_name"
                             label={ transChoice('common.names', 1) }

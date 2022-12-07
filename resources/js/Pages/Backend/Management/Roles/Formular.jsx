@@ -26,7 +26,7 @@ export default function Formular({
 
             <section id="form-body">
                 <div className="grid grid-cols-1 gap-4">
-                    {/* Name */}
+                    { /* Name */ }
                     <FormInput
                         id="name"
                         label={ transChoice('common.names', 1) }
@@ -37,7 +37,7 @@ export default function Formular({
 
                     <hr className="border-color"/>
 
-                    {/* Permissions */}
+                    { /* Permissions */ }
                     <Permissions
                         data={ data.permissions }
                         permissions={ permissions }

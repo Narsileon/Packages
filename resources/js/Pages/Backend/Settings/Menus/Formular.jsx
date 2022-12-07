@@ -31,7 +31,7 @@ export default function Formular({
         <Form submit={ submit }>
             <section id="form-body">
                 <div className="grid grid-cols-1 gap-4">
-                    {/* Title */}
+                    { /* Title */ }
                     <FormInput
                         id="title"
                         label={ transChoice('common.names', 1) }
@@ -39,7 +39,7 @@ export default function Formular({
                         error={ errors.title }
                         setData={ setData }
                     />
-                    {/* Category */}
+                    { /* Category */ }
                     <FormSelect
                         id="category"
                         label={ transChoice('common.types', 1) }
@@ -66,7 +66,7 @@ export default function Formular({
                             })
                         }
                     </FormSelect>
-                    {/* Active */}
+                    { /* Active */ }
                     <FormCheckbox
                         id="active"
                         label={ trans('common.active') }

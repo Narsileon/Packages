@@ -23,7 +23,7 @@ export default function Formular({
             </FormHeader>
 
             <div className="grid grid-cols-1 gap-4">
-                {/* Question */}
+                { /* Question */ }
                 <FormInput
                     id="question"
                     label={ transChoice('common.questions', 1) }
@@ -31,7 +31,7 @@ export default function Formular({
                     error={ errors.question }
                     setData={ setData }
                 />
-                {/* Answer */}
+                { /* Answer */ }
                 <FormInput
                     id="answer"
                     label={ transChoice('common.answers', 1) }

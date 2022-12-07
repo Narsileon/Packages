@@ -33,7 +33,7 @@ export default function Create() {
 
                 <section id="form-body">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {/* Username */}
+                        { /* Username */ }
                         <FormInput
                             id="username"
                             label={ transChoice('common.usernames', 1) }
@@ -41,7 +41,7 @@ export default function Create() {
                             error={ errors.username }
                             setData={ setData }
                         />
-                        {/* Email */}
+                        { /* Email */ }
                         <FormInput
                             id="email"
                             label={ transChoice('common.emails', 1) }
@@ -50,7 +50,7 @@ export default function Create() {
                             error={ errors.email}
                             setData={ setData }
                         />
-                        {/* Password */}
+                        { /* Password */ }
                         <FormInput
                             id="password"
                             label={ transChoice('common.passwords', 1) }
@@ -60,7 +60,7 @@ export default function Create() {
                             setData={ setData }
                             autoComplete="new-password"
                         />
-                        {/* Password Confirmation */}
+                        { /* Password Confirmation */ }
                         <FormInput
                             id="password_confirmation"
                             label={ trans('validation.attributes.password_confirmation') }
@@ -70,7 +70,7 @@ export default function Create() {
                             setData={ setData }
                             autoComplete="new-password"
                         />
-                        {/* Last Name */}
+                        { /* Last Name */ }
                         <FormInput
                             id="last_name"
                             label={ transChoice('common.last_names', 1) }
@@ -78,7 +78,7 @@ export default function Create() {
                             error={ errors.last_name }
                             setData={ setData }
                         />
-                        {/* First Name */}
+                        { /* First Name */ }
                         <FormInput
                             id="first_name"
                             label={ transChoice('common.first_names', 1) }

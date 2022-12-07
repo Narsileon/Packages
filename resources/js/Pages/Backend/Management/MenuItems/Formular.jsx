@@ -62,7 +62,7 @@ export default function Formular({
                     activeTab={ activeTab }
                 >
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {/* Slug */}
+                        { /* Slug */ }
                         <div className="col-span-1 md:col-span-2">
                             <FormInput
                                 id="slug"
@@ -72,7 +72,7 @@ export default function Formular({
                                 setData={ setData }
                             />
                         </div>
-                        {/* Type */}
+                        { /* Type */ }
                         <div className="col-span-1">
                             <FormSelect
                                 id="type"
@@ -95,7 +95,7 @@ export default function Formular({
                                 }
                             </FormSelect>
                         </div>
-                        {/* Icon */}
+                        { /* Icon */ }
                         <FormIcon
                             id="icon"
                             label={ transChoice('common.icons', 1) }
@@ -103,7 +103,7 @@ export default function Formular({
                             error={ errors.icon }
                             setData={ setData }
                         />
-                        {/* Label */}
+                        { /* Label */ }
                         <FormInput
                             id="label"
                             label={ transChoice('common.designations', 1) }
@@ -111,7 +111,7 @@ export default function Formular({
                             error={ errors.label }
                             setData={ setData }
                         />
-                        {/* URL */}
+                        { /* URL */ }
                         <FormInput
                             id="url"
                             label={ transChoice('common.urls', 1) }
@@ -127,7 +127,7 @@ export default function Formular({
                     activeTab={ activeTab }
                 >
                     <div className="grid grid-cols-1 gap-4">
-                        {/* Roles */}
+                        { /* Roles */ }
                         <section id="roles">
                             <FormSectionHeader title={ transChoice('permissions.roles', 2) } />
                             {
@@ -146,7 +146,7 @@ export default function Formular({
                             }
                         </section>
 
-                        {/* Permissions */}
+                        { /* Permissions */ }
                         <section id="permissions">
                             <FormSectionHeader title={ transChoice('permissions.permissions', 2) } />
 

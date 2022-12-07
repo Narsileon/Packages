@@ -52,7 +52,7 @@ export default function Formular({
                         activeTab={ activeTab }
                     >
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            {/* Username */}
+                            { /* Username */ }
                             <FormInput
                                 id="username"
                                 label={ transChoice('common.usernames', 1) }
@@ -60,7 +60,7 @@ export default function Formular({
                                 error={ errors.username }
                                 setData={ setData }
                             />
-                            {/* Email */}
+                            { /* Email */ }
                             <FormInput
                                 id="email"
                                 label={ transChoice('common.emails', 1) }
@@ -72,7 +72,7 @@ export default function Formular({
                             {
                                 data.password != null ? (
                                     <>
-                                        {/* Password */}
+                                        { /* Password */ }
                                         <FormInput
                                             id="password"
                                             label={ transChoice('common.passwords', 1) }
@@ -81,7 +81,7 @@ export default function Formular({
                                             error={ errors.password}
                                             setData={ setData }
                                         />
-                                        {/* Password Confirmation */}
+                                        { /* Password Confirmation */ }
                                         <FormInput
                                             id="password_confirmation"
                                             label={ trans('validation.attributes.password_confirmation') }
@@ -94,7 +94,7 @@ export default function Formular({
                                     </>
                                 ) : null
                             }
-                            {/* Last name */}
+                            { /* Last name */ }
                             <FormInput
                                 id="last_name"
                                 label={ transChoice('common.last_names', 1) }
@@ -102,7 +102,7 @@ export default function Formular({
                                 error={ errors.last_name }
                                 setData={ setData }
                             />
-                            {/* First name */}
+                            { /* First name */ }
                             <FormInput
                                 id="first_name"
                                 label={ transChoice('common.first_names', 1) }
@@ -118,7 +118,7 @@ export default function Formular({
                         activeTab={ activeTab }
                     >
                         <div className="grid grid-cols-1 gap-4">
-                            {/* Roles */}
+                            { /* Roles */ }
                             <section id="roles">
                                 <FormSectionHeader title={ transChoice('permissions.roles', 2) } />
                                 {
@@ -137,7 +137,7 @@ export default function Formular({
                                 }
                             </section>
 
-                            {/* Permissions */}
+                            { /* Permissions */ }
                             <section id="permissions">
                                 <FormSectionHeader title={ transChoice('permissions.permissions', 2) } />
 

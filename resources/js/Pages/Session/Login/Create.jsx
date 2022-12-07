@@ -29,7 +29,7 @@ export default function Create() {
 
                 <section id="form-body">
                     <div className="grid grid-cols-1 gap-4">
-                        {/* Email */}
+                        { /* Email */ }
                         <FormInput
                             id="email"
                             label={ transChoice('common.emails', 1) }
@@ -38,7 +38,7 @@ export default function Create() {
                             error={ errors.email}
                             setData={ setData }
                         />
-                        {/* Password */}
+                        { /* Password */ }
                         <FormInput
                             id="password"
                             label={ transChoice('common.passwords', 1) }

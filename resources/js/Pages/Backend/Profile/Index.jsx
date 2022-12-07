@@ -95,7 +95,7 @@ export default function Index({
 
                         <section id="form-body">
                             <div className="grid grid-cols-1 gap-4">
-                                {/* App name */}
+                                { /* App name */ }
                                 <FormSelect
                                     id="language"
                                     label={ transChoice('common.languages', 1) }
