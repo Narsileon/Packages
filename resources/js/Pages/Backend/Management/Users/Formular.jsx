@@ -21,11 +21,11 @@ export default function Formular({
     const tabsSettings = [
         {
             id: 'user',
-            label: transChoice('common.users', 1),
+            label: transChoice('common.menu_items', 1),
         },
         {
             id: 'roles_permissions',
-            label: `${ transChoice('permissions.roles', 2) } & ${ upperFirst(transChoice('permissions.permissions', 1)) }`,
+            label: `${ transChoice('permissions.roles', 2) } & ${ upperFirst(transChoice('permissions.permissions', 2)) }`,
         },
     ]
 
@@ -129,7 +129,7 @@ export default function Formular({
                                                 label={ trans(`permissions.${ role.name }`) }
                                                 checked={ data.roles[role.name] }
                                                 error={ errors[data.roles[role.name]] }
-                                                onChange={ (e) => setData("roles", { ...data.roles, [role.name]: e.target.checked }) }
+                                                onChange={ (e) => setData('roles', { ...data.roles, [role.name]: e.target.checked }) }
                                                 key={ role.id }
                                             />
                                         );
@@ -144,7 +144,7 @@ export default function Formular({
                                 <Permissions
                                     data={ data.permissions }
                                     permissions={ permissions }
-                                    setData={ (name, value) => setData("permissions", { ...data.permissions, [name]: value }) }
+                                    setData={ (name, value) => setData('permissions', { ...data.permissions, [name]: value }) }
                                 />
                             </section>
                         </div>

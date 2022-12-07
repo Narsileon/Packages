@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { transChoice } from "@/narsil-localization";
+import { trans, transChoice } from "@/narsil-localization";
 import { upperFirst } from "lodash";
-import { Form, FormHeader, FormInput, FormSectionHeader, FormSelect } from "@/Components/Forms";
+import { Form, FormCheckbox, FormHeader, FormInput, FormSectionHeader, FormSelect } from "@/Components/Forms";
 import { TabPanel, Tabs } from "@/Components/Tabs";
 import BackButton from "@/Components/Elements/Buttons/BackButton";
 import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 import FormIcon from "@/Components/Forms/FormIcon";
+import Permissions from "@/Components/Forms/Permissions";
 
 export default function Formular({
     title,
@@ -20,16 +21,16 @@ export default function Formular({
 }) {
     const tabsSettings = [
         {
-            id: 'user',
-            label: transChoice('common.users', 1),
+            id: 'menu_item',
+            label: transChoice('common.menu_items', 1),
         },
         {
             id: 'roles_permissions',
-            label: `${ transChoice('permissions.roles', 2) } & ${ upperFirst(transChoice('permissions.permissions', 1)) }`,
+            label: `${ transChoice('permissions.roles', 2) } & ${ upperFirst(transChoice('permissions.permissions', 2)) }`,
         },
     ]
 
-    const [activeTab, setActiveTab] = useState('user');
+    const [activeTab, setActiveTab] = useState('menu_item');
 
     const options = [
         {
@@ -58,7 +59,7 @@ export default function Formular({
                 setActiveTab={ setActiveTab }
             >
                 <TabPanel
-                    id="user"
+                    id="menu_item"
                     activeTab={ activeTab }
                 >
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -138,7 +139,7 @@ export default function Formular({
                                             label={ trans(`permissions.${ role.name }`) }
                                             checked={ data.roles[role.name] }
                                             error={ errors[data.roles[role.name]] }
-                                            onChange={ (e) => setData("roles", { ...data.roles, [role.name]: e.target.checked }) }
+                                            onChange={ (e) => setData('roles', { ...data.roles, [role.name]: e.target.checked }) }
                                             key={ role.id }
                                         />
                                     );
@@ -153,7 +154,7 @@ export default function Formular({
                             <Permissions
                                 data={ data.permissions }
                                 permissions={ permissions }
-                                setData={ (name, value) => setData("permissions", { ...data.permissions, [name]: value }) }
+                                setData={ (name, value) => setData('permissions', { ...data.permissions, [name]: value }) }
                             />
                         </section>
                     </div>

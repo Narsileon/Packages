@@ -5,8 +5,30 @@ import Formular from "./Formular";
 
 export default function Create({
 	icons,
+	permissions,
+	roles,
 }) {
 	const title = trans('Creating a new menu item:');
+
+	function initializeRoles() {
+		let object = {};
+
+		roles.data.map((item) => {
+			object[item.name] = false;
+		});
+
+		return object;
+	}
+
+	function initializePermissions() {
+		let object = {};
+
+		permissions.data.map((item) => {
+			object[item.name] = false;
+		});
+
+		return object;
+	}
 
 	const { data, setData, post, processing, errors } = useForm({
         slug: '',
@@ -14,6 +36,8 @@ export default function Create({
 		icon: '',
 		label: '',
         url: '',
+		roles: initializeRoles(),
+		permissions: initializePermissions(),
     });
 
 	return (
@@ -29,6 +53,8 @@ export default function Create({
 				processing={ processing }
 				errors={ errors }
 				icons={ icons }
+				roles={ roles }
+				permissions={ permissions }
 			/>
 		</>
 	);

@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Management\MenuItemCreateRequest;
 use App\Http\Requests\Backend\Management\MenuItemUpdateRequest;
 use App\Http\Resources\Backend\Management\MenuItemCollection;
+use App\Http\Resources\Backend\Management\MenuItemResource;
 use App\Models\MenuItem;
 use App\Services\TemplateService;
 use Inertia\Inertia;
@@ -78,6 +79,8 @@ class MenuItemController extends Controller
     public function edit(MenuItem $menuItem)
     {
         $this->authorize('update', MenuItem::class);
+
+        $menuItem = new MenuItemResource($menuItem);
 
         $roles = Roles::getAll();
         $permissions = Permissions::getAll();

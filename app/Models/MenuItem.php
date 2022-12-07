@@ -29,6 +29,9 @@ class MenuItem extends Model
     public const FIELD_TYPE = 'type';
     public const FIELD_URL = 'url';
 
+    public const ATTRIBUTE_PERMISSIONS = 'permissions';
+    public const ATTRIBUTE_ROLES = 'roles';
+
     public const TYPE_CATEGORY = 'category';
     public const TYPE_PAGE = 'page';
 
