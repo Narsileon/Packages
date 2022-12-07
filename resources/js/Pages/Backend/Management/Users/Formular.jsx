@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { trans, transChoice } from "@/narsil-localization";
 import { upperFirst } from "lodash";
-import { Form, FormCheckbox, FormHeader, FormInput, FormSectionHeader, } from "@/Components/Forms";
+import { Form, FormCheckbox, FormHeader, FormInput, FormSectionHeader } from "@/Components/Forms";
 import { Tabs, TabPanel } from "@/Components/Tabs";
 import BackButton from "@/Components/Elements/Buttons/BackButton";
 import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 import Permissions from "@/Components/Forms/Permissions";
+
 export default function Formular({
     title,
     label,
@@ -117,9 +118,9 @@ export default function Formular({
                         activeTab={ activeTab }
                     >
                         <div className="grid grid-cols-1 gap-4">
-                            <section>
                             {/* Roles */}
-                                <FormSectionHeader title={transChoice('permissions.roles', 2) } />
+                            <section id="roles">
+                                <FormSectionHeader title={ transChoice('permissions.roles', 2) } />
                                 {
                                     roles.data.map((role) => {
                                         return (
@@ -137,7 +138,7 @@ export default function Formular({
                             </section>
 
                             {/* Permissions */}
-                            <section>
+                            <section id="permissions">
                                 <FormSectionHeader title={ transChoice('permissions.permissions', 2) } />
 
                                 <Permissions

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend\Management;
 #region USE
 
 use App\Acl\Permissions;
+use App\Acl\Roles;
 use App\Constants\Tables;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Management\UserCreateRequest;
@@ -46,8 +47,8 @@ class UserController extends Controller
     {
         $this->authorize('create', User::class);
 
-        $roles = Permissions::getAllRoles();
-        $permissions = Permissions::getAllPermissions();
+        $roles = Roles::getAll();
+        $permissions = Permissions::getAll();
 
         return Inertia::render('Backend/Management/Users/Create', compact(
             'roles',
@@ -86,8 +87,8 @@ class UserController extends Controller
 
         $user = new UserResource($user);
 
-        $roles = Permissions::getAllRoles();
-        $permissions = Permissions::getAllPermissions();
+        $roles = Roles::getAll();
+        $permissions = Permissions::getAll();
 
         return Inertia::render('Backend/Management/Users/Edit', compact(
             'user',

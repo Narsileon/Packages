@@ -5,9 +5,7 @@ namespace App\Acl;
 #region USE
 
 use App\Http\Resources\Backend\Management\UserPermissionCollection;
-use App\Http\Resources\Backend\Management\UserRoleCollection;
 use App\Models\UserPermission;
-use App\Models\UserRole;
 use App\Traits\HasConstants;
 
 #endregion
@@ -63,12 +61,7 @@ abstract class Permissions
 
     #region PUBLIC METHODS
 
-    public static function getAllRoles()
-    {
-        return new UserRoleCollection(UserRole::All());
-    }
-
-    public static function getAllPermissions()
+    public static function getAll()
     {
         return new UserPermissionCollection(UserPermission::All());
     }

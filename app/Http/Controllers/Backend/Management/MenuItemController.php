@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Backend\Management;
 
 #region USE
 
+use App\Acl\Permissions;
+use App\Acl\Roles;
 use App\Constants\Tables;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Management\MenuItemCreateRequest;
@@ -43,7 +45,13 @@ class MenuItemController extends Controller
     {
         $this->authorize('create', MenuItem::class);
 
-        return Inertia::render('Backend/Management/MenuItems/Create');
+        $roles = Roles::getAll();
+        $permissions = Permissions::getAll();
+
+        return Inertia::render('Backend/Management/MenuItems/Create', compact(
+            'roles',
+            'permissions',
+        ));
     }
 
     public function store(MenuItemCreateRequest $request)
@@ -71,8 +79,13 @@ class MenuItemController extends Controller
     {
         $this->authorize('update', MenuItem::class);
 
+        $roles = Roles::getAll();
+        $permissions = Permissions::getAll();
+
         return Inertia::render('Backend/Management/MenuItems/Edit', compact(
             'menuItem',
+            'roles',
+            'permissions',
         ));
     }
 

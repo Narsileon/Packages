@@ -5,7 +5,7 @@ export default function FormSectionHeader({
 }) {
     return (
         <div className="border-b-2 border-color" >
-            <h1 className="text-lg">
+            <h1 className="p-2 text-lg">
                 { upperFirst(title) }
             </h1>
         </div>
