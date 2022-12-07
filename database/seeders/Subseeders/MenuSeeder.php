@@ -19,16 +19,20 @@ class MenuSeeder extends Seeder
 
     public function run()
     {
-        MenuService::createMenuItem(BackendMenu::get());
-        MenuService::createMenuItem(FrontendFooter::get());
-        MenuService::createMenuItem(FrontendHeader::get());
-
+        $this->createMenuItems();
         $this->createMenus();
     }
 
     #endregion
 
     #region PRIVATE METHODS
+
+    private function createMenuItems()
+    {
+        MenuService::createMenuItem(BackendMenu::get());
+        MenuService::createMenuItem(FrontendFooter::get());
+        MenuService::createMenuItem(FrontendHeader::get());
+    }
 
     private function createMenus()
     {

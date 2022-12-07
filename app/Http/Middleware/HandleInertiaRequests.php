@@ -4,9 +4,9 @@ namespace App\Http\Middleware;
 
 #region USE
 
+use App\Http\Resources\Session\UserSettingResource;
 use App\Models\Backend\GeneralSettings;
 use App\Models\Menu;
-use App\Models\UserSetting;
 use App\Services\LocalizationService;
 use App\Services\MenuService;
 use Illuminate\Http\Request;
@@ -70,7 +70,7 @@ class HandleInertiaRequests extends Middleware
         return [
             'username' => $user->username,
             'permissions' => $user->getAllPermissions()->pluck('name')->toArray(),
-            'settings' => $user->settings,
+            'settings' => new UserSettingResource($user->settings),
         ];
     }
 

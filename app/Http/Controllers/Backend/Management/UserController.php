@@ -4,17 +4,14 @@ namespace App\Http\Controllers\Backend\Management;
 
 #region USE
 
+use App\Acl\Permissions;
 use App\Constants\Tables;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Management\UserCreateRequest;
 use App\Http\Requests\Backend\Management\UserUpdateRequest;
 use App\Http\Resources\Backend\Management\UserCollection;
-use App\Http\Resources\Backend\Management\UserPermissionCollection;
 use App\Http\Resources\Backend\Management\UserResource;
-use App\Http\Resources\Backend\Management\UserRoleCollection;
 use App\Models\User;
-use App\Models\UserPermission;
-use App\Models\UserRole;
 use App\Services\TemplateService;
 use Illuminate\Support\Arr;
 use Inertia\Inertia;
@@ -49,8 +46,8 @@ class UserController extends Controller
     {
         $this->authorize('create', User::class);
 
-        $roles = $this->getAllRoles();
-        $permissions = $this->getAllPermissions();
+        $roles = Permissions::getAllRoles();
+        $permissions = Permissions::getAllPermissions();
 
         return Inertia::render('Backend/Management/Users/Create', compact(
             'roles',
@@ -89,8 +86,8 @@ class UserController extends Controller
 
         $user = new UserResource($user);
 
-        $roles = $this->getAllRoles();
-        $permissions = $this->getAllPermissions();
+        $roles = Permissions::getAllRoles();
+        $permissions = Permissions::getAllPermissions();
 
         return Inertia::render('Backend/Management/Users/Edit', compact(
             'user',
@@ -122,20 +119,6 @@ class UserController extends Controller
 
         return back()
             ->with('success', 'user_deleted');;
-    }
-
-    #endregion
-
-    #region PRIVATE METHODS
-
-    private function getAllRoles()
-    {
-        return new UserRoleCollection(UserRole::All());
-    }
-
-    private function getAllPermissions()
-    {
-        return new UserPermissionCollection(UserPermission::All());
     }
 
     #endregion

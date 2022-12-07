@@ -9,12 +9,13 @@ use App\Traits\IsFilterable;
 use App\Traits\IsSortable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Permission\Traits\HasRoles;
 
 #endregion
 
 class MenuItem extends Model
 {
-    use HasFactory, IsBaseModel, IsFilterable, IsSortable;
+    use HasFactory, HasRoles, IsBaseModel, IsFilterable, IsSortable;
 
     #region CONSTANTS
 

@@ -2,7 +2,7 @@
 
 namespace App\Constants;
 
-abstract class LanguageConstants
+abstract class Languages
 {
     #region CONSTANTS
 

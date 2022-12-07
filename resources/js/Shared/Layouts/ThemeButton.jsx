@@ -59,11 +59,11 @@ const GuestThemeButton = ({ }) => {
 
 const AuthThemeButton = ({ auth }) => {
     useMount(() => {
-        applyValue(auth.settings.dark);
+        applyValue(auth.settings.data.dark);
     })
 
     useUpdateEffect(() => {
-        applyValue(auth.settings.dark);
+        applyValue(auth.settings.data.dark);
 
         return () => {
             document.body.classList.remove("dark");
@@ -79,8 +79,8 @@ const AuthThemeButton = ({ auth }) => {
     }
 
     function onClick() {
-        Inertia.patch(route('user_settings.update', auth.settings.id), {
-            dark: !auth.settings.dark,
+        Inertia.patch(route('user_settings.update', auth.settings.data.id), {
+            dark: !auth.settings.data.dark,
         })
     }
 

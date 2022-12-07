@@ -44,7 +44,7 @@ export default function Create({ roles, permissions }) {
 			permissions: permissions.data.filter(x => data.permissions[x.name] == true),
 		}))
 
-        post(route('admin.users.create'));
+        post(route('admin.users.store'));
     };
 
 	return (
