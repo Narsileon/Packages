@@ -209,7 +209,6 @@ abstract class Menus
             [
                 MenuItem::FIELD_SLUG => self::PAGE_FRONTEND_FAQS,
                 MenuItem::FIELD_TYPE => self::TYPE_PAGE,
-                MenuItem::FIELD_ICON => 'question',
                 MenuItem::FIELD_LABEL => 'common.faqs',
                 MenuItem::FIELD_URL => 'faq',
                 MenuItem::ATTRIBUTE_PERMISSIONS => [

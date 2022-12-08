@@ -1,8 +1,7 @@
 import { useToggle } from "react-use";
-import { trans, transChoice } from "@/narsil-localization";
 import { Dropdown } from "@/Components/Elements/Dropdowns";
+import { MenuLink } from "@/Components/Elements/Menus";
 import CloseButton from "@/Components/Elements/Buttons/CloseButton";
-import NavLink from "@/Components/Elements/Links/NavLink";
 import Flash from "@/Shared/Flash";
 import LocaleDropdown from "@/Shared/Layouts/LocaleDropdown";
 import ThemeButton from "@/Shared/Layouts/ThemeButton";
@@ -67,15 +66,21 @@ const Header = () => {
                     placementOffset={ 4 }
                 >
                     <ul className="divide-y divide-color p-1">
-                        <NavLink
-                            href={ route('admin.profile.index') }
-                            label={ transChoice('common.profiles', 1) }
-                            icon="user"
+                        <MenuLink
+                            menuItem={{
+                                type: 'page',
+                                icon: 'user',
+                                label: 'common.profiles',
+                                url: 'admin.profile.index',
+                            }}
                         />
-                        <NavLink
-                            href={ route('logout') }
-                            label={ trans('common.logout') }
-                            icon="logout"
+                        <MenuLink
+                            menuItem={{
+                                type: 'page',
+                                icon: 'logout',
+                                label: 'common.logout',
+                                url: 'logout',
+                            }}
                             method="post"
                             as="button"
                         />

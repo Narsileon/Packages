@@ -28,7 +28,7 @@ class MenuService
         $menuItem = MenuItem::create([
             MenuItem::FIELD_SLUG => $template[MenuItem::FIELD_SLUG],
             MenuItem::FIELD_TYPE => $template[MenuItem::FIELD_TYPE],
-            MenuItem::FIELD_ICON => $template[MenuItem::FIELD_ICON],
+            MenuItem::FIELD_ICON => $template[MenuItem::FIELD_ICON] ?? null,
             MenuItem::FIELD_LABEL => $template[MenuItem::FIELD_LABEL],
             MenuItem::FIELD_URL => $template[MenuItem::FIELD_URL] ?? null,
         ]);

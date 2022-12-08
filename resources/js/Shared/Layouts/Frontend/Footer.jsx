@@ -3,6 +3,7 @@ import { trans, transChoice } from "@/narsil-localization";
 import { upperFirst } from "lodash";
 import WebsiteLogo from "@/Shared/Layouts/WebsiteLogo";
 import Icon from "@/Shared/Svg/Icon";
+import { MenuLink } from "@/Components/Elements/Menus";
 
 export default function Footer() {
     return (
@@ -31,21 +32,19 @@ const UpperFooter = () => {
                 </div>
 
                 <div className="col-span-1">
-                    <div className="flex items-center justify-center h-full md:justify-end space-x-4">
+                    <ul className="flex items-center justify-center h-full md:justify-end">
                         {
                             menuItems.map((menuItem, index) => {
                                 return (
-                                    <Link
+                                    <MenuLink
                                         className="hover:underline"
-                                        href={ menuItem.data.url }
+                                        menuItem={ menuItem.data }
                                         key={ index }
-                                    >
-                                        { upperFirst(transChoice(menuItem.data.label, 1)) }
-                                    </Link>
+                                    />
                                 );
                             })
                         }
-                    </div>
+                    </ul>
                 </div>
             </div>
         </section>
@@ -54,31 +53,28 @@ const UpperFooter = () => {
 
 const LowerFooter = () => {
     const menuItems = [
-        { route: '#', name: 'github' },
-        { route: '#', name: 'facebook' },
-        { route: '#', name: 'instagram' },
-        { route: '#', name: 'twitter' },
+        { url: '#', icon: 'github' },
+        { url: '#', icon: 'facebook' },
+        { url: '#', icon: 'instagram' },
+        { url: '#', icon: 'twitter' },
     ];
 
     return (
         <section id="lower-header">
             <div className="grid grid-cols-1 md:grid-cols-2 space-y-4 md:space-y-0">
                 <div className="col-span-1 md:order-2">
-                    <div className="flex items-center justify-center md:justify-end space-x-4">
-                        {
-                            menuItems.map(({ route, name }) => {
-                                return (
-                                    <Link
-                                        className="link-icon"
-                                        href={ route }
-                                        key={ name }
-                                    >
-                                        <Icon name={ name } />
-                                    </Link>
-                                );
-                            })
-                        }
-                    </div>
+                    <ul className="flex items-center justify-center md:justify-end">
+                            {
+                                menuItems.map((menuItem, index) => {
+                                    return (
+                                        <MenuLink
+                                            menuItem={ menuItem }
+                                            key={ index }
+                                        />
+                                    );
+                                })
+                            }
+                    </ul>
                 </div>
 
                 <div className="col-span-1 md:order-1">
