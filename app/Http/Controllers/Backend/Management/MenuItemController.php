@@ -14,7 +14,6 @@ use App\Http\Resources\Backend\Management\MenuItemCollection;
 use App\Http\Resources\Backend\Management\MenuItemResource;
 use App\Models\MenuItem;
 use App\Services\TemplateService;
-use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
 
 #endregion

@@ -9,7 +9,6 @@ use App\Constants\Tables;
 use App\Constants\ValidationRules;
 use App\Models\MenuItem;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Log;
 
 #endregion
 
@@ -24,13 +23,11 @@ class MenuItemUpdateRequest extends FormRequest
 
     public function rules() : array
     {
-        Log::debug($this);
-
         return [
             MenuItem::FIELD_SLUG => [
                 ValidationRules::REQUIRED,
                 ValidationRules::TYPE_STRING,
-                ValidationRules::unique(Tables::TABLE_MENU_ITEMS, MenuItem::FIELD_SLUG, $this->menuItem->{ MenuItem::FIELD_ID }),
+                ValidationRules::unique(Tables::TABLE_MENU_ITEMS, MenuItem::FIELD_SLUG, $this->menu_item->{ MenuItem::FIELD_ID }),
             ],
             MenuItem::FIELD_TYPE => [
                 ValidationRules::REQUIRED,

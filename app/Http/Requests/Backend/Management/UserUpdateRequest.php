@@ -9,7 +9,6 @@ use App\Constants\Tables;
 use App\Constants\ValidationRules;
 use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Log;
 
 #endregion
 
@@ -24,8 +23,6 @@ class UserUpdateRequest extends FormRequest
 
     public function rules() : array
     {
-        Log::debug($this);
-
         return [
             User::FIELD_USERNAME => [
                 ValidationRules::REQUIRED,
