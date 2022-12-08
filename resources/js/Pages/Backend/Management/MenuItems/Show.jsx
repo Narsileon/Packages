@@ -12,7 +12,7 @@ export default function Show({ menuItem }) {
 
             <ShowTable
                 title={ title }
-                href={ route('admin.menu_items.edit', menuItem.id) }
+                href={ route('admin.menuItems.edit', menuItem.id) }
                 data={ menuItem }
             >
                 <div className="grid grid-cols-2 gap-y-4">

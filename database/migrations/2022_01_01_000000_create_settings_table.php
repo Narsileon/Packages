@@ -3,7 +3,7 @@
 #region USE
 
 use App\Constants\Tables;
-use App\Models\Backend\GeneralSettings;
+use App\Models\Backend\GeneralSetting;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -16,7 +16,7 @@ return new class extends Migration
 
     public function up()
     {
-        self::createGeneralSettingsTable();
+        self::createGeneralSettingTable();
     }
 
     public function down()
@@ -28,11 +28,11 @@ return new class extends Migration
 
     #region PRIVATE METHODS
 
-    private static function createGeneralSettingsTable()
+    private static function createGeneralSettingTable()
     {
         Schema::create(Tables::TABLE_GENERAL_SETTINGS, function (Blueprint $table) {
             $table->id();
-            $table->string(GeneralSettings::FIELD_APP_NAME);
+            $table->string(GeneralSetting::FIELD_APP_NAME);
             $table->timestamps();
         });
     }

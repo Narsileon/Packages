@@ -69,7 +69,7 @@ export default function Index({
                     id="settings"
                     activeTab={ activeTab }
                 >
-                     <Form submit={ () => patch(route('user_settings.update', userSettings.id)) }>
+                     <Form submit={ () => patch(route('userSettings.update', userSettings.id)) }>
                         <FormHeader>
                             <div className="flex justify-center">
                                 <h1>

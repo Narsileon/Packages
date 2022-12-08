@@ -11,7 +11,7 @@ use App\Http\Controllers\Backend\Frontoffice\FaqController;
 use App\Http\Controllers\Backend\Management\MenuItemController;
 use App\Http\Controllers\Backend\Management\RoleController;
 use App\Http\Controllers\Backend\Management\UserController;
-use App\Http\Controllers\Backend\Settings\GeneralSettingsController;
+use App\Http\Controllers\Backend\Settings\GeneralSettingController;
 use App\Http\Controllers\Backend\Settings\LanguageController;
 use App\Http\Controllers\Backend\Settings\LocalizationController;
 use App\Http\Controllers\Backend\Settings\TemplateController;
@@ -20,7 +20,6 @@ use App\Http\Controllers\Backend\Settings\UserTemplates\LoadUserTemplateControll
 use App\Http\Controllers\Backend\Settings\UserTemplates\ResetUserTemplateController;
 use App\Http\Controllers\Backend\Settings\UserTemplates\SaveUserTemplateController;
 use App\Http\Controllers\Backend\Settings\UserTemplates\UpdateUserTemplateController;
-use App\Http\Controllers\Backend\UserSettingsController;
 use Illuminate\Support\Facades\Route;
 
 #endregion
@@ -38,7 +37,7 @@ Route::group([
     });
 
     // Management
-    Route::resource('menu_items', MenuItemController::class);
+    Route::resource('menuItems', MenuItemController::class);
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
 
@@ -50,9 +49,9 @@ Route::group([
     Route::resource('faqs', FaqController::class);
 
     // Settings
-    Route::controller(GeneralSettingsController::class)->group(function () {
-        Route::get('general_settings', 'index')->name('general_settings.index');
-        Route::patch('general_settings/{general_setting}', 'update')->name('general_settings.update');
+    Route::controller(GeneralSettingController::class)->group(function () {
+        Route::get('generalSettings', 'index')->name('generalSettings.index');
+        Route::patch('generalSettings/{generalSetting}', 'update')->name('generalSettings.update');
     });
     Route::controller(LanguageController::class)->group(function () {
         Route::get('languages', 'index')->name('languages.index');
@@ -73,8 +72,8 @@ Route::group([
         Route::patch('templates/{template}', 'update')->name('templates.update');
         Route::delete('templates/{template}', 'destroy')->name('templates.destroy');
     });
-    Route::patch('user_templates/{user_template}/load', LoadUserTemplateController::class)->name('user_templates.load');
-    Route::patch('user_templates/{user_template}/reset', ResetUserTemplateController::class)->name('user_templates.reset');
-    Route::patch('user_templates/{user_template}/save', SaveUserTemplateController::class)->name('user_templates.save');
-    Route::patch('user_templates/{user_template}/update', UpdateUserTemplateController::class)->name('user_templates.update');
+    Route::patch('userTemplates/{userTemplate}/load', LoadUserTemplateController::class)->name('userTemplates.load');
+    Route::patch('userTemplates/{userTemplate}/reset', ResetUserTemplateController::class)->name('userTemplates.reset');
+    Route::patch('userTemplates/{userTemplate}/save', SaveUserTemplateController::class)->name('userTemplates.save');
+    Route::patch('userTemplates/{userTemplate}/update', UpdateUserTemplateController::class)->name('userTemplates.update');
 });

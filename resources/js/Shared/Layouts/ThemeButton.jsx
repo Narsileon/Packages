@@ -79,7 +79,7 @@ const AuthThemeButton = ({ auth }) => {
     }
 
     function onClick() {
-        Inertia.patch(route('user_settings.update', auth.settings.data.id), {
+        Inertia.patch(route('userSettings.update', auth.settings.data.id), {
             dark: !auth.settings.data.dark,
         })
     }

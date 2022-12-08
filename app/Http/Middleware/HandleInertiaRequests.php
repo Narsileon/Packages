@@ -5,8 +5,9 @@ namespace App\Http\Middleware;
 #region USE
 
 use App\Constants\Menus;
+use App\Constants\Tables;
 use App\Http\Resources\Session\UserSettingResource;
-use App\Models\Backend\GeneralSettings;
+use App\Models\Backend\GeneralSetting;
 use App\Services\LocalizationService;
 use App\Services\MenuService;
 use Illuminate\Http\Request;
@@ -103,7 +104,7 @@ class HandleInertiaRequests extends Middleware
     private function initializeSettings($request)
     {
         $app = [
-            'name' => DB::table('general_settings')->first()->{ GeneralSettings::FIELD_APP_NAME }
+            'name' => DB::table(Tables::TABLE_GENERAL_SETTINGS)->first()->{ GeneralSetting::FIELD_APP_NAME }
         ];
 
         $menus = [

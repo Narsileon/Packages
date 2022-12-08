@@ -209,7 +209,7 @@ export default function Formular({
                 <div className="flex items-center justify-between">
                     <BackButton
                         className="primary-button"
-                        href={ route('admin.menu_items.index') }
+                        href={ route('admin.menuItems.index') }
                     />
                     <PrimaryButton
                         label={ label }

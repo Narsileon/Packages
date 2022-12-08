@@ -22,7 +22,7 @@ export default function Index({ generalSettings }) {
         <>
 			<AppHead title={ title } />
 
-            <Form submit={ () => patch(route('admin.general_settings.update', generalSettings.id)) }>
+            <Form submit={ () => patch(route('admin.generalSettings.update', generalSettings.id)) }>
                 <FormHeader>
                     <div className="flex justify-center">
                         <h1>
@@ -50,7 +50,7 @@ export default function Index({ generalSettings }) {
                     <div className="flex items-center justify-between">
                         <BackButton
                             className="primary-button"
-                            href={ route('admin.general_settings.index') }
+                            href={ route('admin.generalSettings.index') }
                         />
                         <PrimaryButton
                             label={ trans('common.update') }

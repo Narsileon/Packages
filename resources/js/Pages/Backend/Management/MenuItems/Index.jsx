@@ -33,7 +33,7 @@ export default function Index({ collection, tableSettings }) {
 					<>
 						<Link
 							className="primary-button whitespace-nowrap"
-							href={ route('admin.menu_items.create') }
+							href={ route('admin.menuItems.create') }
 						>
 							<Icon name="plus" />
 						</Link>

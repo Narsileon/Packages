@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 
 #endregion
 
-class GeneralSettings extends Model
+class GeneralSetting extends Model
 {
     use HasFactory;
 

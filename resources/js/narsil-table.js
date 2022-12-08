@@ -21,7 +21,7 @@ export const useTable = (
 	manual = true,
 ) => {
 	const template = tableSettings.custom ?? tableSettings.template;
-	const url = tableSettings.custom ? route('admin.user_templates.update', tableSettings.id) : route('admin.templates.update', tableSettings.id);
+	const url = tableSettings.custom ? route('admin.userTemplates.update', tableSettings.id) : route('admin.templates.update', tableSettings.id);
 
   	const [data, setData] = useState(tableData);
 

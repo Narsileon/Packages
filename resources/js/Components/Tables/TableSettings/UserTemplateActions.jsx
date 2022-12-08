@@ -8,7 +8,7 @@ export default function UserTemplateActions({ tableSettings }) {
             <div className="col-span-1">
                 <button
                     className="primary-button w-full"
-                    onClick={ () => Inertia.patch(route('admin.user_templates.save', tableSettings.id), tableSettings, {
+                    onClick={ () => Inertia.patch(route('admin.userTemplates.save', tableSettings.id), tableSettings, {
                         preserveState: true,
                     }) }
                 >
@@ -18,7 +18,7 @@ export default function UserTemplateActions({ tableSettings }) {
             <div className="col-span-1">
                 <button
                     className="primary-button w-full"
-                    onClick={ () => Inertia.patch(route('admin.user_templates.load', tableSettings.id), tableSettings, {
+                    onClick={ () => Inertia.patch(route('admin.userTemplates.load', tableSettings.id), tableSettings, {
                         preserveState: false,
                     }) }
                 >
@@ -28,7 +28,7 @@ export default function UserTemplateActions({ tableSettings }) {
             <div className="col-span-1 md:col-span-2">
                 <button
                     className="primary-button w-full"
-                    onClick={ () => Inertia.patch(route('admin.user_templates.reset', tableSettings.id), tableSettings, {
+                    onClick={ () => Inertia.patch(route('admin.userTemplates.reset', tableSettings.id), tableSettings, {
                         preserveState: false,
                     }) }
                 >

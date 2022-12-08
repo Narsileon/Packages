@@ -6,12 +6,12 @@ namespace App\Http\Requests\Backend\Settings;
 
 use App\Acl\Permissions;
 use App\Constants\ValidationRules;
-use App\Models\Backend\GeneralSettings;
+use App\Models\Backend\GeneralSetting;
 use Illuminate\Foundation\Http\FormRequest;
 
 #endregion
 
-class GeneralSettingsUpdateRequest extends FormRequest
+class GeneralSettingUpdateRequest extends FormRequest
 {
     #region PUBLIC METHODS
 
@@ -23,7 +23,7 @@ class GeneralSettingsUpdateRequest extends FormRequest
     public function rules() : array
     {
         return [
-            GeneralSettings::FIELD_APP_NAME => [
+            GeneralSetting::FIELD_APP_NAME => [
                 ValidationRules::REQUIRED,
                 ValidationRules::TYPE_STRING,
             ],

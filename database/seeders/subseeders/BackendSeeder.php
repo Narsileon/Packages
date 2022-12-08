@@ -6,7 +6,7 @@ namespace Database\Seeders\Subseeders;
 
 use App\Constants\Tables;
 use App\Models\Backend\Order;
-use App\Models\Backend\GeneralSettings;
+use App\Models\Backend\GeneralSetting;
 use App\Models\Template;
 use App\Templates\FaqTable;
 use App\Templates\LanguageTable;
@@ -41,8 +41,8 @@ class BackendSeeder extends Seeder
 
     private function createSettings()
     {
-        GeneralSettings::create([
-            GeneralSettings::FIELD_APP_NAME => 'PIA-Framework',
+        GeneralSetting::create([
+            GeneralSetting::FIELD_APP_NAME => 'PIA-Framework',
         ]);
     }
 

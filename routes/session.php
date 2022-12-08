@@ -23,7 +23,7 @@ Route::controller(LoginController::class)->middleware('guest')->group(function (
 });
 
 Route::controller(UserSettingsController::class)->middleware('auth')->group(function () {
-    Route::patch('user_settings/{user_setting}', 'update')->name('user_settings.update');
+    Route::patch('userSettings/{userSetting}', 'update')->name('userSettings.update');
 });
 
 Route::get('locales/{locale}', LocaleController::class)->name('locale');

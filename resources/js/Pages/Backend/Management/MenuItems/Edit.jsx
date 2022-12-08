@@ -49,7 +49,7 @@ export default function Edit({
 			<Formular
 				title= { title }
 				label= { trans('common.update') }
-				submit= { () => patch(route('admin.menu_items.update', menuItem.data.id)) }
+				submit= { () => patch(route('admin.menuItems.update', menuItem.data.id)) }
 				data={ data }
 				setData={ setData }
 				processing={ processing }

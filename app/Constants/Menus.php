@@ -180,7 +180,7 @@ abstract class Menus
                     MenuItem::PROPERTY_VALUE => 'common.general_settings',
                     MenuItem::PROPERTY_PLURAL => true,
                 ],
-                MenuItem::FIELD_URL => 'admin.general_settings.index',
+                MenuItem::FIELD_URL => 'admin.generalSettings.index',
                 MenuItem::ATTRIBUTE_PERMISSIONS => [
                     Permissions::GENERAL_SETTINGS_VIEW,
                 ],
@@ -232,7 +232,7 @@ abstract class Menus
                     MenuItem::PROPERTY_VALUE => 'common.menu_items',
                     MenuItem::PROPERTY_PLURAL => true,
                 ],
-                MenuItem::FIELD_URL => 'admin.menu_items.index',
+                MenuItem::FIELD_URL => 'admin.menuItems.index',
                 MenuItem::ATTRIBUTE_PERMISSIONS => [
                     Permissions::MENU_ITEMS_VIEW,
                 ],
