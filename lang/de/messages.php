@@ -15,6 +15,7 @@ return [
         'logout'                    => 'Abmeldung erfolgreich.',
         'menu_created'              => 'Das Menü wurde erfolgreich erstellt.',
         'menu_deleted'              => 'Das Menü wurde erfolgreich gelöscht.',
+        'menu_duplicated'           => 'Das Menü wurde erfolgreich dupliziert.',
         'menu_item_created'         => 'Der Menüpunkt wurde erfolgreich erstellt.',
         'menu_item_deleted'         => 'Der Menüpunkt wurde erfolgreich gelöscht.',
         'menu_item_updated'         => 'Der Menüpunkt wurde erfolgreich aktualisiert.',

@@ -11,6 +11,7 @@ use App\Http\Resources\Backend\Settings\MenuItemResource;
 use App\Models\Menu;
 use App\Models\MenuItem;
 use App\Services\MenuService;
+use Carbon\Carbon;
 use Inertia\Inertia;
 
 #endregion
@@ -60,5 +61,18 @@ class MenuController extends Controller
             ->with('success', 'menu_updated');
     }
 
+    public function duplicate(Menu $menu)
+    {
+        $duplicatedMenu = $menu->replicate();
+
+        $duplicatedMenu->{ Menu::FIELD_TITLE } = $menu->{ Menu::FIELD_TITLE } . '(1)';
+        $duplicatedMenu->{ Menu::CREATED_AT } = Carbon::now();
+        $duplicatedMenu->{ Menu::UPDATED_AT } = Carbon::now();
+
+        $duplicatedMenu->save();
+
+        return back()
+            ->with('success', 'menu_duplicated');
+    }
     #endregion
 }

@@ -4,6 +4,8 @@ import { upperFirst } from "lodash";
 import AppHead from "@/Shared/AppHead";
 import Create from "./Create";
 import Edit from "./Edit";
+import IconButton from "@/Components/Elements/Buttons/IconButton";
+import { Inertia } from "@inertiajs/inertia";
 
 export default function Index({ menus, menuItems }) {
     const [menu, setMenu] = useState(null);
@@ -23,42 +25,53 @@ export default function Index({ menus, menuItems }) {
         	<AppHead title={ transChoice('common.menus', 2) } />
 
             <div className="grid grid-cols-2 md:grid-cols-4 h-full gap-x-8 gap-y-4">
-                <div className="col-span-4">
-                    <div className="flex items-center space-x-4">
-                        <div>
-                            <button
-                                className="link-text"
-                                onClick={ () => setMenu(null) }
+                <div className="col-span-2 md:col-span-4">
+                    <div className="flex items-center justify-between">
+                        <div className="flex items-center space-x-4">
+                            <div>
+                                <button
+                                    className="link-text"
+                                    onClick={ () => setMenu(null) }
+                                >
+                                    { `${ trans('Create a new menu') } ` }
+                                </button>
+                                <span>
+                                    { ` ${ trans('or select a menu to edit:') } ` }
+                                </span>
+                            </div>
+                            <select
+                                className="field max-w-fit"
+                                onChange={ (event) => onMenuChange(event.target.value != 'none' ? menus[event.target.value] : null) }
                             >
-                                { `${ trans('Create a new menu') } ` }
-                            </button>
-                            <span>
-                                { ` ${ trans('or select a menu to edit:') } ` }
-                            </span>
+                                <option
+                                    value={ 'none' }
+                                    key={ 'none' }
+                                >
+                                    { '---' }
+                                </option>
+                                {
+                                    menus.map((menu, index) => {
+                                        return (
+                                            <option
+                                                value={ index }
+                                                key={ index }
+                                            >
+                                                { upperFirst(menu.title) }
+                                            </option>
+                                        );
+                                    })
+                                }
+                            </select>
                         </div>
-                        <select
-                            className="field max-w-fit"
-                            onChange={ (event) => onMenuChange(event.target.value != 'none' ? menus[event.target.value] : null) }
-                        >
-                            <option
-                                value={ 'none' }
-                                key={ 'none' }
-                            >
-                                { '---' }
-                            </option>
-                            {
-                                menus.map((menu, index) => {
-                                    return (
-                                        <option
-                                            value={ index }
-                                            key={ index }
-                                        >
-                                            { upperFirst(menu.title) }
-                                        </option>
-                                    );
-                                })
-                            }
-                        </select>
+                        {
+                            menu ? (
+                                <IconButton
+                                    className="primary-button"
+                                    icon="duplicate"
+                                    onClick={ () => Inertia.patch(route('admin.menus.duplicate', menu.id)) }
+                                />
+                            ) : null
+                        }
                     </div>
                 </div>
                 {

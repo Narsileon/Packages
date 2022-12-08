@@ -15,6 +15,7 @@ return [
         'logout'                    => 'Logout successful.',
         'menu_created'              => 'The menu has been successfully created.',
         'menu_deleted'              => 'The menu has been successfully deleted.',
+        'menu_duplicated'           => 'The menu has been successfully duplicated.',
         'menu_item_created'         => 'The menu item has been successfully created.',
         'menu_item_deleted'         => 'The menu item has been successfully deleted.',
         'menu_item_updated'         => 'The menu item has been successfully updated.',

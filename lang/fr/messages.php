@@ -15,6 +15,7 @@ return [
         'logout'                    => 'Déconnexion réussie.',
         'menu_created'              => 'Le menu a été crée avec succès.',
         'menu_deleted'              => 'Le menu a été supprimé avec succès.',
+        'menu_duplicated'           => 'Le menu a été dupliqué avec succès.',
         'menu_item_created'         => 'L\'élément de menu a été créé avec succès.',
         'menu_item_deleted'         => 'L\'élément de menu a été supprimé avec succès.',
         'menu_item_updated'         => 'L\'élément de menu a été mis à jour avec succès.',

@@ -66,6 +66,7 @@ Route::group([
         Route::get('menus', 'index')->name('menus.index');
         Route::post('menus', 'store')->name('menus.store');
         Route::patch('menus/{menu}', 'update')->name('menus.update');
+        Route::patch('menus/{menu}/duplicate', 'duplicate')->name('menus.duplicate');
     });
     Route::controller(TemplateController::class)->group(function () {
         Route::get('templates', 'index')->name('templates.index');
