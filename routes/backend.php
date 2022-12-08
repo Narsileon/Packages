@@ -16,10 +16,7 @@ use App\Http\Controllers\Backend\Settings\LanguageController;
 use App\Http\Controllers\Backend\Settings\LocalizationController;
 use App\Http\Controllers\Backend\Settings\TemplateController;
 use App\Http\Controllers\Backend\Settings\MenuController;
-use App\Http\Controllers\Backend\Settings\UserTemplates\LoadUserTemplateController;
-use App\Http\Controllers\Backend\Settings\UserTemplates\ResetUserTemplateController;
-use App\Http\Controllers\Backend\Settings\UserTemplates\SaveUserTemplateController;
-use App\Http\Controllers\Backend\Settings\UserTemplates\UpdateUserTemplateController;
+use App\Http\Controllers\Backend\Settings\UserTemplateController;
 use Illuminate\Support\Facades\Route;
 
 #endregion
@@ -72,8 +69,10 @@ Route::group([
         Route::patch('templates/{template}', 'update')->name('templates.update');
         Route::delete('templates/{template}', 'destroy')->name('templates.destroy');
     });
-    Route::patch('userTemplates/{userTemplate}/load', LoadUserTemplateController::class)->name('userTemplates.load');
-    Route::patch('userTemplates/{userTemplate}/reset', ResetUserTemplateController::class)->name('userTemplates.reset');
-    Route::patch('userTemplates/{userTemplate}/save', SaveUserTemplateController::class)->name('userTemplates.save');
-    Route::patch('userTemplates/{userTemplate}/update', UpdateUserTemplateController::class)->name('userTemplates.update');
+    Route::controller(UserTemplateController::class)->group(function () {
+        Route::patch('userTemplates/{userTemplate}/load', 'load')->name('userTemplates.load');
+        Route::patch('userTemplates/{userTemplate}/reset', 'reset')->name('userTemplates.reset');
+        Route::patch('userTemplates/{userTemplate}/save', 'save')->name('userTemplates.save');
+        Route::patch('userTemplates/{userTemplate}/update', 'update')->name('userTemplates.update');
+    });
 });
