@@ -20,7 +20,7 @@ export default function MenuCategory({
                 <div className="flex items-center selectable p-1 space-x-2">
                     <Icon name={ menuItem.icon } />
                     <h1>
-                        { upperFirst(transChoice(menuItem.label), 2) }
+                        { upperFirst(transChoice(menuItem.label, 2)) }
                     </h1>
                 </div>
                 <div>

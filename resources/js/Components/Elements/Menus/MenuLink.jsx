@@ -22,13 +22,26 @@ export default function MenuLink({
                             <Icon name={ menuItem.icon } />
                         )  : null
                     }
-                    <Link
-                        className={ `selectable ${ className } ${ active ? "selectable-active" : ""}` }
-                        href={ menuItem.type == 'page' ? route(menuItem.url) : menuItem.url }
-                        { ...props }
-                    >
-                        { menuItem.label && upperFirst(transChoice(menuItem.label, 2)) }
-                    </Link>
+                    {
+                        menuItem.type == 'page' ? (
+                            <Link
+                                className={ `selectable ${ className } ${ active ? "selectable-active" : ""}` }
+                                href={ route(menuItem.url) }
+                                { ...props }
+                            >
+                                { menuItem.label && upperFirst(transChoice(menuItem.label, 2)) }
+                            </Link>
+                        ) : (
+                            <a
+                                className={ `selectable ${ className }` }
+                                href={ menuItem.url }
+                                target="_blank"
+                                { ...props }
+                            >
+                                { menuItem.label && upperFirst(transChoice(menuItem.label, 2)) }
+                            </a>
+                        )
+                    }
                 </div>
             </li>
         ) : null

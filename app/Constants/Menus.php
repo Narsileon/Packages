@@ -15,9 +15,12 @@ abstract class Menus
     public const FRONTEND_HEADER = 'frontend_header';
 
     public const CATEGORY_BACKOFFICE = 'category_backoffice';
+    public const CATEGORY_EXTERNAL_LINKS = 'category_external_links';
     public const CATEGORY_FRONTOFFICE = 'category_frontoffice';
     public const CATEGORY_MANAGEMENT = 'category_management';
     public const CATEGORY_SETTINGS = 'category_settings';
+
+    public const EXTERNAL_LINK_GITHUB = 'external_link_github';
 
     public const PAGE_BACKEND_CALENDAR = 'page_backend_calendar';
     public const PAGE_BACKEND_DASHBOARD = 'page_backend_dashboard';
@@ -35,6 +38,7 @@ abstract class Menus
     public const PAGE_FRONTEND_HOME = 'page_frontend_home';
 
     public const TYPE_CATEGORY = 'category';
+    public const TYPE_EXTERNAL_LINK = 'external_link';
     public const TYPE_PAGE = 'page';
 
     #endregion
@@ -49,6 +53,15 @@ abstract class Menus
                 MenuItem::FIELD_TYPE => self::TYPE_CATEGORY,
                 MenuItem::FIELD_ICON => 'office',
                 MenuItem::FIELD_LABEL => 'common.backoffice',
+                MenuItem::ATTRIBUTE_PERMISSIONS => [
+                    Permissions::BACKEND_VIEW,
+                ],
+            ],
+            [
+                MenuItem::FIELD_SLUG => self::CATEGORY_EXTERNAL_LINKS,
+                MenuItem::FIELD_TYPE => self::TYPE_CATEGORY,
+                MenuItem::FIELD_ICON => 'link',
+                MenuItem::FIELD_LABEL => 'common.external_links',
                 MenuItem::ATTRIBUTE_PERMISSIONS => [
                     Permissions::BACKEND_VIEW,
                 ],
@@ -78,6 +91,22 @@ abstract class Menus
                 MenuItem::FIELD_LABEL => 'common.settings',
                 MenuItem::ATTRIBUTE_PERMISSIONS => [
                     Permissions::BACKEND_VIEW,
+                ],
+            ],
+        ];
+    }
+
+    public static function getDefaultExternalLinks()
+    {
+        return [
+            [
+                MenuItem::FIELD_SLUG => self::EXTERNAL_LINK_GITHUB,
+                MenuItem::FIELD_TYPE => self::TYPE_EXTERNAL_LINK,
+                MenuItem::FIELD_ICON => 'github',
+                MenuItem::FIELD_LABEL => 'Github',
+                MenuItem::FIELD_URL => 'https://github.com/',
+                MenuItem::ATTRIBUTE_PERMISSIONS => [
+
                 ],
             ],
         ];
@@ -263,6 +292,12 @@ abstract class Menus
                             [MenuItem::FIELD_ID => MenuService::getMenuItem(self::PAGE_BACKEND_LANGUAGES)->{ MenuItem::FIELD_ID }],
                             [MenuItem::FIELD_ID => MenuService::getMenuItem(self::PAGE_BACKEND_LOCALIZATIONS)->{ MenuItem::FIELD_ID }],
                             [MenuItem::FIELD_ID => MenuService::getMenuItem(self::PAGE_BACKEND_TEMPLATES)->{ MenuItem::FIELD_ID }],
+                        ],
+                    ],
+                    [
+                        MenuItem::FIELD_ID => MenuService::getMenuItem(self::CATEGORY_EXTERNAL_LINKS)->{ MenuItem::FIELD_ID },
+                        MenuItem::FIELD_CHILDREN => [
+                            [MenuItem::FIELD_ID => MenuService::getMenuItem(self::EXTERNAL_LINK_GITHUB)->{ MenuItem::FIELD_ID }],
                         ],
                     ],
                 ];

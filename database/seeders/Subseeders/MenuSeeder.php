@@ -18,6 +18,7 @@ class MenuSeeder extends Seeder
     public function run()
     {
         $this->createCategories();
+        $this->createExternalLinks();
         $this->createPages();
 
         $this->createBackendMenu();
@@ -34,6 +35,14 @@ class MenuSeeder extends Seeder
         foreach(Menus::getDefaultCategories() as $category)
         {
             MenuService::createMenuItem($category);
+        }
+    }
+
+    private function createExternalLinks()
+    {
+        foreach(Menus::getDefaultExternalLinks() as $externalLinks)
+        {
+            MenuService::createMenuItem($externalLinks);
         }
     }
 
