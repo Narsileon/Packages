@@ -1,5 +1,3 @@
-import { useInterval } from "react-use";
-import { Inertia } from "@inertiajs/inertia";
 import { usePage } from "@inertiajs/inertia-react";
 import { transChoice } from "@/narsil-localization";
 import { upperFirst } from "lodash";
@@ -11,16 +9,7 @@ export default function TableSettings({
     table,
     actions = true
 }) {
-    const autoUpdate = table.getState().autoUpdate;
     const tableSettings = usePage().props.tableSettings;
-    const url = usePage().url;
-
-    useInterval(() => {
-        Inertia.visit(url, {
-            preserveScroll: true,
-            preserveState: true,
-        });
-    }, autoUpdate > 0 ? autoUpdate * 1000 : null);
 
     return (
         <Dropdown
@@ -44,9 +33,13 @@ export default function TableSettings({
                             <ColumnVisibility table={ table } />
                         </section>
 
-                        <section id="auto-update">
-                            <AutoUpdate table={ table } />
-                        </section>
+                        {
+                            table.options.meta.manual ? (
+                                <section id="auto-update">
+                                    <AutoUpdate table={ table } />
+                                </section>
+                            ) : null
+                        }
                     </div>
                 </section>
                 {

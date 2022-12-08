@@ -38,6 +38,7 @@ class UserCreateRequest extends FormRequest
             ],
             User::FIELD_PASSWORD => [
                 ValidationRules::REQUIRED,
+                ValidationRules::CONFIRMED,
                 ValidationRules::min(8),
                 ValidationRules::max(255),
             ],

@@ -79,6 +79,7 @@ export const useTable = (
 		manualPagination: manual,
 		manualSorting: manual,
 		meta: {
+			manual,
 			setAutoUpdate,
 			setCurrent,
 			setData,

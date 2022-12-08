@@ -10,6 +10,8 @@ import FrontendPagination from "@/Components/Pagination/FrontendPagination";
 import AppHead from "@/Shared/AppHead";
 
 export default function Index({ collection, customLocalization, tableSettings }) {
+	const [localization, setLocalization] = useState(customLocalization.localization)
+
 	const columns = tableSettings.columns.map((column) => {
 		if (column.id === 'value') {
 			return {
@@ -25,8 +27,6 @@ export default function Index({ collection, customLocalization, tableSettings })
 
 		return column;
  	});
-
-	const [localization, setLocalization] = useState(customLocalization.localization);
 
 	function getFullPath(row) {
 		return row.original.path == '' ? row.original.key : `${ row.original.path }.${ row.original.key }`
@@ -49,7 +49,7 @@ export default function Index({ collection, customLocalization, tableSettings })
 	}
 
 	function update() {
-		Inertia.patch(`/${ customLocalization.usedictionaryr_id }`, { dictionary: table.options.data});
+		Inertia.patch(route('admin.localizations.update', customLocalization.id), table.options.data);
 	};
 
 	return (
