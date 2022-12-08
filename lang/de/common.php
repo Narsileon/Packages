@@ -64,6 +64,7 @@ return [
     'passwords'             => 'Passwort|Passwörter',
     'paths'                 => 'Pfad|Pfade',
     'payment_methods'       => 'Zahlungsart|Zahlungsarten',
+    'plural'                => 'plural',
     'profiles'              => 'Profil|Profile',
     'questions'             => 'Frage|Fragen',
     'refresh_rates'         => 'Wiederholfrequenz|Wiederholfrequenzen',

@@ -5,6 +5,7 @@ namespace App\Http\Requests\Backend\Backoffice;
 #region USE
 
 use App\Acl\Permissions;
+use App\Constants\Tables;
 use App\Constants\ValidationRules;
 use App\Models\Backend\Order;
 use Illuminate\Foundation\Http\FormRequest;
@@ -26,7 +27,7 @@ class OrderUpdateRequest extends FormRequest
             Order::FIELD_ORDER_NUMBER => [
                 ValidationRules::REQUIRED,
                 ValidationRules::TYPE_INTEGER,
-                ValidationRules::unique('orders', Order::FIELD_ORDER_NUMBER, $this->faq->id),
+                ValidationRules::unique(Tables::TABLE_ORDERS, Order::FIELD_ORDER_NUMBER, $this->order->id),
             ],
             Order::FIELD_ORDER_DATE => [
                 ValidationRules::REQUIRED,

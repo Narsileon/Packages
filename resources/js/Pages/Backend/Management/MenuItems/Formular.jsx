@@ -71,15 +71,21 @@ export default function Formular({
                 >
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         { /* Slug */ }
-                        <div className="col-span-1 md:col-span-2">
-                            <FormInput
-                                id="slug"
-                                label={ transChoice('common.slugs', 1) }
-                                value={ data.slug }
-                                error={ errors.slug }
-                                setData={ setData }
-                            />
-                        </div>
+                        <FormInput
+                            id="slug"
+                            label={ transChoice('common.slugs', 1) }
+                            value={ data.slug }
+                            error={ errors.slug }
+                            setData={ setData }
+                        />
+                        { /* Active */ }
+                        <FormCheckbox
+                            id="active"
+                            label={ trans('common.active') }
+                            checked={ data.active }
+                            error={ errors.active }
+                            setData={ setData }
+                        />
                         { /* Type */ }
                         <FormSelect
                             id="type"
@@ -113,9 +119,16 @@ export default function Formular({
                         <FormInput
                             id="label"
                             label={ transChoice('common.designations', 1) }
-                            value={ data.label }
+                            value={ data.label.value }
                             error={ errors.label }
-                            setData={ setData }
+                            onChange={ (event) => setData('label', { ...data.label, value: event.target.value }) }
+                        />
+                        <FormCheckbox
+                            id="label"
+                            label={ trans('common.plural') }
+                            checked={ data.label.plural }
+                            error={ errors.label }
+                            onChange={ (event) => setData('label', { ...data.label, plural: event.target.checked }) }
                         />
                         {
                             data.type == 'page' ? (

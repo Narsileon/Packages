@@ -5,9 +5,11 @@ namespace App\Http\Requests\Backend\Management;
 #region USE
 
 use App\Acl\Permissions;
+use App\Constants\Tables;
 use App\Constants\ValidationRules;
 use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Log;
 
 #endregion
 
@@ -22,18 +24,20 @@ class UserUpdateRequest extends FormRequest
 
     public function rules() : array
     {
+        Log::debug($this);
+
         return [
             User::FIELD_USERNAME => [
                 ValidationRules::REQUIRED,
                 ValidationRules::TYPE_STRING,
                 ValidationRules::min(3),
                 ValidationRules::max(255),
-                ValidationRules::unique('users', User::FIELD_USERNAME, $this->user->{ User::FIELD_ID }),
+                ValidationRules::unique(Tables::TABLE_USERS, User::FIELD_USERNAME, $this->user->{ User::FIELD_ID }),
             ],
             User::FIELD_EMAIL => [
                 ValidationRules::REQUIRED,
                 ValidationRules::TYPE_EMAIL,
-                ValidationRules::unique('users', User::FIELD_EMAIL, $this->user->{ User::FIELD_ID }),
+                ValidationRules::unique(Tables::TABLE_USERS, User::FIELD_EMAIL, $this->user->{ User::FIELD_ID }),
             ],
             User::FIELD_LAST_NAME => [
                 ValidationRules::REQUIRED,

@@ -8,7 +8,6 @@ use App\Constants\Menus;
 use App\Http\Resources\Backend\Management\MenuItemResource;
 use App\Models\Menu;
 use App\Models\MenuItem;
-use Illuminate\Support\Facades\Log;
 
 #endregion
 
@@ -48,21 +47,23 @@ class MenuService
     {
         $menu = [];
 
-        foreach($layout as $key=>$value)
+        foreach($layout as $item)
         {
-            $menuItem = self::getMenuItem($key);
+            $menuItem = [
+                MenuItem::FIELD_ID => $item[MenuItem::FIELD_ID]
+            ];
 
-            if ($menuItem->{ MenuItem::FIELD_TYPE } == Menus::TYPE_CATEGORY)
+            if ($item[MenuItem::FIELD_TYPE] == Menus::TYPE_CATEGORY)
             {
                 $menuItem = [
-                    MenuItem::FIELD_ID => $menuItem->{ MenuItem::FIELD_ID },
+                    MenuItem::FIELD_ID => $item[MenuItem::FIELD_ID],
                     MenuItem::FIELD_CHILDREN => [],
                 ];
 
-                foreach($value as $page)
+                foreach($item["children"] as $subitem)
                 {
                     $menuItem[MenuItem::FIELD_CHILDREN][] = [
-                        MenuItem::FIELD_ID => self::getMenuItem($page)->{ MenuItem::FIELD_ID },
+                        MenuItem::FIELD_ID => $subitem[MenuItem::FIELD_ID],
                     ];
                 }
 
@@ -71,7 +72,7 @@ class MenuService
 
             else
             {
-                $menu[] = $menuItem->{ MenuItem::FIELD_ID };
+                $menu[] = $menuItem;
             }
         }
 
@@ -93,8 +94,6 @@ class MenuService
 
             $menu[] = new MenuItemResource($menuItem);
         }
-
-        Log::debug($menu);
 
         return $menu;
     }

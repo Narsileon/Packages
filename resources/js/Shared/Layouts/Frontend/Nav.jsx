@@ -62,7 +62,10 @@ export default function Nav() {
                                         menuItem={{
                                             type: 'page',
                                             icon: 'chart',
-                                            label: 'common.dashboard',
+                                            label: {
+                                                value: 'common.dashboard',
+                                                plural: false,
+                                            },
                                             url: 'admin.dashboard',
                                             permissions: [{
                                                 name: 'backend_view'
@@ -73,7 +76,10 @@ export default function Nav() {
                                         menuItem={{
                                             type: 'page',
                                             icon: 'logout',
-                                            label: 'common.logout',
+                                            label: {
+                                                value: 'common.logout',
+                                                plural: false,
+                                            },
                                             url: 'logout',
                                         }}
                                         method="post"
@@ -86,7 +92,10 @@ export default function Nav() {
                                         menuItem={{
                                             type: 'page',
                                             icon: 'user-plus',
-                                            label: 'common.register',
+                                            label: {
+                                                value: 'common.register',
+                                                plural: false,
+                                            },
                                             url: 'register',
                                         }}
                                     />
@@ -94,7 +103,10 @@ export default function Nav() {
                                         menuItem={{
                                             type: 'page',
                                             icon: 'login',
-                                            label: 'common.login',
+                                            label: {
+                                                value: 'common.login',
+                                                plural: false,
+                                            },
                                             url: 'login',
                                         }}
                                     />

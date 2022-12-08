@@ -139,7 +139,7 @@ export default function SortableTree({
 						<SortableTreeItem
 							key={ id }
 							id={ id }
-							value={ upperFirst(transChoice(label)) }
+							value={ upperFirst(transChoice(label.value, label.plural ? 2 : 1)) }
 							depth={ id === activeId && projected ? projected.depth : depth }
 							indentationWidth={ indentationWidth }
 							indicator={ indicator }

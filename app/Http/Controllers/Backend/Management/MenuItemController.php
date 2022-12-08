@@ -14,6 +14,7 @@ use App\Http\Resources\Backend\Management\MenuItemCollection;
 use App\Http\Resources\Backend\Management\MenuItemResource;
 use App\Models\MenuItem;
 use App\Services\TemplateService;
+use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
 
 #endregion
@@ -63,7 +64,7 @@ class MenuItemController extends Controller
 
         MenuItem::create($attributes);
 
-        return redirect(route('admin.menus.index'))
+        return redirect(route('admin.menu_items.index'))
             ->with('success', 'menu_item_created');
     }
 

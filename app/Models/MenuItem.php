@@ -4,6 +4,7 @@ namespace App\Models;
 
 #region USE
 
+use App\Constants\Types;
 use App\Traits\IsBaseModel;
 use App\Traits\IsFilterable;
 use App\Traits\IsSortable;
@@ -29,6 +30,9 @@ class MenuItem extends Model
     public const FIELD_TYPE = 'type';
     public const FIELD_URL = 'url';
 
+    public const PROPERTY_PLURAL = 'plural';
+    public const PROPERTY_VALUE = 'value';
+
     public const ATTRIBUTE_PERMISSIONS = 'permissions';
     public const ATTRIBUTE_ROLES = 'roles';
 
@@ -44,6 +48,11 @@ class MenuItem extends Model
         self::FIELD_SLUG,
         self::FIELD_TYPE,
         self::FIELD_URL,
+    ];
+
+    protected $casts = [
+        self::FIELD_ACTIVE => Types::BOOLEAN,
+        self::FIELD_LABEL => Types::ARRAY,
     ];
 
     protected $guard_name = 'web';

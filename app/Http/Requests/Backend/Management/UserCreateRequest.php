@@ -5,6 +5,7 @@ namespace App\Http\Requests\Backend\Management;
 #region USE
 
 use App\Acl\Permissions;
+use App\Constants\Tables;
 use App\Constants\ValidationRules;
 use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
@@ -28,12 +29,12 @@ class UserCreateRequest extends FormRequest
                 ValidationRules::TYPE_STRING,
                 ValidationRules::min(3),
                 ValidationRules::max(255),
-                ValidationRules::unique('users', User::FIELD_USERNAME),
+                ValidationRules::unique(Tables::TABLE_USERS, User::FIELD_USERNAME),
             ],
             User::FIELD_EMAIL => [
                 ValidationRules::REQUIRED,
                 ValidationRules::TYPE_EMAIL,
-                ValidationRules::unique('users', User::FIELD_EMAIL),
+                ValidationRules::unique(Tables::TABLE_USERS, User::FIELD_EMAIL),
             ],
             User::FIELD_PASSWORD => [
                 ValidationRules::REQUIRED,

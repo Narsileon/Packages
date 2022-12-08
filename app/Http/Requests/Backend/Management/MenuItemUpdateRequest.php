@@ -5,9 +5,11 @@ namespace App\Http\Requests\Backend\Management;
 #region USE
 
 use App\Acl\Permissions;
+use App\Constants\Tables;
 use App\Constants\ValidationRules;
 use App\Models\MenuItem;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Log;
 
 #endregion
 
@@ -22,11 +24,13 @@ class MenuItemUpdateRequest extends FormRequest
 
     public function rules() : array
     {
+        Log::debug($this);
+
         return [
             MenuItem::FIELD_SLUG => [
                 ValidationRules::REQUIRED,
                 ValidationRules::TYPE_STRING,
-                ValidationRules::unique('menu_items', MenuItem::FIELD_SLUG, $this->menuItem->{ MenuItem::FIELD_ID }),
+                ValidationRules::unique(Tables::TABLE_MENU_ITEMS, MenuItem::FIELD_SLUG, $this->menuItem->{ MenuItem::FIELD_ID }),
             ],
             MenuItem::FIELD_TYPE => [
                 ValidationRules::REQUIRED,
@@ -38,7 +42,7 @@ class MenuItemUpdateRequest extends FormRequest
             ],
             MenuItem::FIELD_LABEL => [
                 ValidationRules::REQUIRED,
-                ValidationRules::TYPE_STRING,
+                ValidationRules::TYPE_ARRAY,
             ],
             MenuItem::FIELD_URL => [
                 ValidationRules::OPTIONAL,

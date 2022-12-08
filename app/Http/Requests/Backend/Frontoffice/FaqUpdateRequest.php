@@ -5,6 +5,7 @@ namespace App\Http\Requests\Backend\Frontoffice;
 #region USE
 
 use App\Acl\Permissions;
+use App\Constants\Tables;
 use App\Constants\ValidationRules;
 use App\Models\Frontend\Faq;
 use Illuminate\Foundation\Http\FormRequest;
@@ -26,7 +27,7 @@ class FaqUpdateRequest extends FormRequest
             Faq::FIELD_QUESTION => [
                 ValidationRules::REQUIRED,
                 ValidationRules::TYPE_STRING,
-                ValidationRules::unique('faqs', Faq::FIELD_QUESTION, $this->faq->id),
+                ValidationRules::unique(Tables::TABLE_FAQS, Faq::FIELD_QUESTION, $this->faq->id),
             ],
             Faq::FIELD_ANSWER => [
                 ValidationRules::REQUIRED,

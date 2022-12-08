@@ -5,6 +5,7 @@ namespace App\Http\Requests\Backend\Management;
 #region USE
 
 use App\Acl\Permissions;
+use App\Constants\Tables;
 use App\Constants\ValidationRules;
 use App\Models\MenuItem;
 use Illuminate\Foundation\Http\FormRequest;
@@ -26,7 +27,7 @@ class MenuItemCreateRequest extends FormRequest
             MenuItem::FIELD_SLUG => [
                 ValidationRules::REQUIRED,
                 ValidationRules::TYPE_STRING,
-                ValidationRules::unique('menu_items', MenuItem::FIELD_SLUG),
+                ValidationRules::unique(Tables::TABLE_MENU_ITEMS, MenuItem::FIELD_SLUG),
             ],
             MenuItem::FIELD_TYPE => [
                 ValidationRules::REQUIRED,
@@ -38,7 +39,7 @@ class MenuItemCreateRequest extends FormRequest
             ],
             MenuItem::FIELD_LABEL => [
                 ValidationRules::REQUIRED,
-                ValidationRules::TYPE_STRING,
+                ValidationRules::TYPE_ARRAY,
             ],
             MenuItem::FIELD_URL => [
                 ValidationRules::OPTIONAL,

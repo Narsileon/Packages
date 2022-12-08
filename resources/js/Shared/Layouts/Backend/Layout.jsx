@@ -70,7 +70,10 @@ const Header = () => {
                             menuItem={{
                                 type: 'page',
                                 icon: 'user',
-                                label: 'common.profiles',
+                                label: {
+                                    value: 'common.profiles',
+                                    plural: false,
+                                },
                                 url: 'admin.profile.index',
                             }}
                         />
@@ -78,7 +81,10 @@ const Header = () => {
                             menuItem={{
                                 type: 'page',
                                 icon: 'logout',
-                                label: 'common.logout',
+                                label: {
+                                    value: 'common.logout',
+                                    plural: false,
+                                },
                                 url: 'logout',
                             }}
                             method="post"

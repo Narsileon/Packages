@@ -24,7 +24,7 @@ export default function SortableItems({
                         items.map((item) => {
                             return(
                                 <ItemButton
-                                    label={ transChoice(item.label) }
+                                    label={ transChoice(item.label.value, item.label.plural ? 2 : 1) }
                                     onClick={ () => addToList(item) }
                                     key={ item.id }
                                 />

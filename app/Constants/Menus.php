@@ -52,7 +52,10 @@ abstract class Menus
                 MenuItem::FIELD_SLUG => self::CATEGORY_BACKOFFICE,
                 MenuItem::FIELD_TYPE => self::TYPE_CATEGORY,
                 MenuItem::FIELD_ICON => 'office',
-                MenuItem::FIELD_LABEL => 'common.backoffice',
+                MenuItem::FIELD_LABEL => [
+                    MenuItem::PROPERTY_VALUE => 'common.backoffice',
+                    MenuItem::PROPERTY_PLURAL => false,
+                ],
                 MenuItem::ATTRIBUTE_PERMISSIONS => [
                     Permissions::BACKEND_VIEW,
                 ],
@@ -61,7 +64,10 @@ abstract class Menus
                 MenuItem::FIELD_SLUG => self::CATEGORY_EXTERNAL_LINKS,
                 MenuItem::FIELD_TYPE => self::TYPE_CATEGORY,
                 MenuItem::FIELD_ICON => 'link',
-                MenuItem::FIELD_LABEL => 'common.external_links',
+                MenuItem::FIELD_LABEL => [
+                    MenuItem::PROPERTY_VALUE => 'common.external_links',
+                    MenuItem::PROPERTY_PLURAL => true,
+                ],
                 MenuItem::ATTRIBUTE_PERMISSIONS => [
                     Permissions::BACKEND_VIEW,
                 ],
@@ -70,7 +76,10 @@ abstract class Menus
                 MenuItem::FIELD_SLUG => self::CATEGORY_FRONTOFFICE,
                 MenuItem::FIELD_TYPE => self::TYPE_CATEGORY,
                 MenuItem::FIELD_ICON => 'home',
-                MenuItem::FIELD_LABEL => 'common.frontoffice',
+                MenuItem::FIELD_LABEL => [
+                    MenuItem::PROPERTY_VALUE => 'common.frontoffice',
+                    MenuItem::PROPERTY_PLURAL => false,
+                ],
                 MenuItem::ATTRIBUTE_PERMISSIONS => [
                     Permissions::BACKEND_VIEW,
                 ],
@@ -79,7 +88,10 @@ abstract class Menus
                 MenuItem::FIELD_SLUG => self::CATEGORY_MANAGEMENT,
                 MenuItem::FIELD_TYPE => self::TYPE_CATEGORY,
                 MenuItem::FIELD_ICON => 'user',
-                MenuItem::FIELD_LABEL => 'common.management',
+                MenuItem::FIELD_LABEL => [
+                    MenuItem::PROPERTY_VALUE => 'common.management',
+                    MenuItem::PROPERTY_PLURAL => false,
+                ],
                 MenuItem::ATTRIBUTE_PERMISSIONS => [
                     Permissions::BACKEND_VIEW,
                 ],
@@ -88,7 +100,10 @@ abstract class Menus
                 MenuItem::FIELD_SLUG => self::CATEGORY_SETTINGS,
                 MenuItem::FIELD_TYPE => self::TYPE_CATEGORY,
                 MenuItem::FIELD_ICON => 'cog',
-                MenuItem::FIELD_LABEL => 'common.settings',
+                MenuItem::FIELD_LABEL => [
+                    MenuItem::PROPERTY_VALUE => 'common.settings',
+                    MenuItem::PROPERTY_PLURAL => true,
+                ],
                 MenuItem::ATTRIBUTE_PERMISSIONS => [
                     Permissions::BACKEND_VIEW,
                 ],
@@ -103,7 +118,10 @@ abstract class Menus
                 MenuItem::FIELD_SLUG => self::EXTERNAL_LINK_GITHUB,
                 MenuItem::FIELD_TYPE => self::TYPE_EXTERNAL_LINK,
                 MenuItem::FIELD_ICON => 'github',
-                MenuItem::FIELD_LABEL => 'Github',
+                MenuItem::FIELD_LABEL => [
+                    MenuItem::PROPERTY_VALUE => 'Github',
+                    MenuItem::PROPERTY_PLURAL => false,
+                ],
                 MenuItem::FIELD_URL => 'https://github.com/',
                 MenuItem::ATTRIBUTE_PERMISSIONS => [
 
@@ -119,7 +137,10 @@ abstract class Menus
                 MenuItem::FIELD_SLUG => self::PAGE_BACKEND_CALENDAR,
                 MenuItem::FIELD_TYPE => self::TYPE_PAGE,
                 MenuItem::FIELD_ICON => 'calendar',
-                MenuItem::FIELD_LABEL => 'date-time.calendars',
+                MenuItem::FIELD_LABEL => [
+                    MenuItem::PROPERTY_VALUE => 'date-time.calendars',
+                    MenuItem::PROPERTY_PLURAL => false,
+                ],
                 MenuItem::FIELD_URL => 'admin.calendar',
                 MenuItem::ATTRIBUTE_PERMISSIONS => [
                     Permissions::BACKEND_VIEW,
@@ -129,7 +150,10 @@ abstract class Menus
                 MenuItem::FIELD_SLUG => self::PAGE_BACKEND_DASHBOARD,
                 MenuItem::FIELD_TYPE => self::TYPE_PAGE,
                 MenuItem::FIELD_ICON => 'chart',
-                MenuItem::FIELD_LABEL => 'common.dashboard',
+                MenuItem::FIELD_LABEL => [
+                    MenuItem::PROPERTY_VALUE => 'common.dashboard',
+                    MenuItem::PROPERTY_PLURAL => false,
+                ],
                 MenuItem::FIELD_URL => 'admin.dashboard',
                 MenuItem::ATTRIBUTE_PERMISSIONS => [
                     Permissions::BACKEND_VIEW,
@@ -139,7 +163,10 @@ abstract class Menus
                 MenuItem::FIELD_SLUG => self::PAGE_BACKEND_FAQS,
                 MenuItem::FIELD_TYPE => self::TYPE_PAGE,
                 MenuItem::FIELD_ICON => 'question',
-                MenuItem::FIELD_LABEL => 'common.faqs',
+                MenuItem::FIELD_LABEL => [
+                    MenuItem::PROPERTY_VALUE => 'common.faqs',
+                    MenuItem::PROPERTY_PLURAL => true,
+                ],
                 MenuItem::FIELD_URL => 'admin.faqs.index',
                 MenuItem::ATTRIBUTE_PERMISSIONS => [
                     Permissions::FAQS_VIEW,
@@ -149,7 +176,10 @@ abstract class Menus
                 MenuItem::FIELD_SLUG => self::PAGE_BACKEND_GENERAL_SETTINGS,
                 MenuItem::FIELD_TYPE => self::TYPE_PAGE,
                 MenuItem::FIELD_ICON => 'cog',
-                MenuItem::FIELD_LABEL => 'common.general_settings',
+                MenuItem::FIELD_LABEL => [
+                    MenuItem::PROPERTY_VALUE => 'common.general_settings',
+                    MenuItem::PROPERTY_PLURAL => true,
+                ],
                 MenuItem::FIELD_URL => 'admin.general_settings.index',
                 MenuItem::ATTRIBUTE_PERMISSIONS => [
                     Permissions::GENERAL_SETTINGS_VIEW,
@@ -159,7 +189,10 @@ abstract class Menus
                 MenuItem::FIELD_SLUG => self::PAGE_BACKEND_LANGUAGES,
                 MenuItem::FIELD_TYPE => self::TYPE_PAGE,
                 MenuItem::FIELD_ICON => 'language',
-                MenuItem::FIELD_LABEL => 'common.languages',
+                MenuItem::FIELD_LABEL => [
+                    MenuItem::PROPERTY_VALUE => 'common.languages',
+                    MenuItem::PROPERTY_PLURAL => true,
+                ],
                 MenuItem::FIELD_URL => 'admin.languages.index',
                 MenuItem::ATTRIBUTE_PERMISSIONS => [
                     Permissions::LANGUAGES_VIEW,
@@ -169,7 +202,10 @@ abstract class Menus
                 MenuItem::FIELD_SLUG => self::PAGE_BACKEND_LOCALIZATIONS,
                 MenuItem::FIELD_TYPE => self::TYPE_PAGE,
                 MenuItem::FIELD_ICON => 'book',
-                MenuItem::FIELD_LABEL => 'common.dictionaries',
+                MenuItem::FIELD_LABEL => [
+                    MenuItem::PROPERTY_VALUE => 'common.dictionaries',
+                    MenuItem::PROPERTY_PLURAL => false,
+                ],
                 MenuItem::FIELD_URL => 'admin.localizations.index',
                 MenuItem::ATTRIBUTE_PERMISSIONS => [
                     Permissions::BACKEND_VIEW,
@@ -179,7 +215,10 @@ abstract class Menus
                 MenuItem::FIELD_SLUG => self::PAGE_BACKEND_MENUS,
                 MenuItem::FIELD_TYPE => self::TYPE_PAGE,
                 MenuItem::FIELD_ICON => 'template',
-                MenuItem::FIELD_LABEL => 'common.menus',
+                MenuItem::FIELD_LABEL => [
+                    MenuItem::PROPERTY_VALUE => 'common.menus',
+                    MenuItem::PROPERTY_PLURAL => true,
+                ],
                 MenuItem::FIELD_URL => 'admin.menus.index',
                 MenuItem::ATTRIBUTE_PERMISSIONS => [
                     Permissions::MENUS_VIEW,
@@ -189,7 +228,10 @@ abstract class Menus
                 MenuItem::FIELD_SLUG => self::PAGE_BACKEND_MENU_ITEMS,
                 MenuItem::FIELD_TYPE => self::TYPE_PAGE,
                 MenuItem::FIELD_ICON => 'link',
-                MenuItem::FIELD_LABEL => 'common.menu_items',
+                MenuItem::FIELD_LABEL => [
+                    MenuItem::PROPERTY_VALUE => 'common.menu_items',
+                    MenuItem::PROPERTY_PLURAL => true,
+                ],
                 MenuItem::FIELD_URL => 'admin.menu_items.index',
                 MenuItem::ATTRIBUTE_PERMISSIONS => [
                     Permissions::MENU_ITEMS_VIEW,
@@ -199,7 +241,10 @@ abstract class Menus
                 MenuItem::FIELD_SLUG => self::PAGE_BACKEND_ORDERS,
                 MenuItem::FIELD_TYPE => self::TYPE_PAGE,
                 MenuItem::FIELD_ICON => 'clipboard',
-                MenuItem::FIELD_LABEL => 'common.orders',
+                MenuItem::FIELD_LABEL => [
+                    MenuItem::PROPERTY_VALUE => 'common.orders',
+                    MenuItem::PROPERTY_PLURAL => true,
+                ],
                 MenuItem::FIELD_URL => 'admin.orders.index',
                 MenuItem::ATTRIBUTE_PERMISSIONS => [
                     Permissions::ORDERS_VIEW,
@@ -209,7 +254,10 @@ abstract class Menus
                 MenuItem::FIELD_SLUG => self::PAGE_BACKEND_ROLES,
                 MenuItem::FIELD_TYPE => self::TYPE_PAGE,
                 MenuItem::FIELD_ICON => 'group',
-                MenuItem::FIELD_LABEL => 'permissions.roles',
+                MenuItem::FIELD_LABEL => [
+                    MenuItem::PROPERTY_VALUE => 'permissions.roles',
+                    MenuItem::PROPERTY_PLURAL => true,
+                ],
                 MenuItem::FIELD_URL => 'admin.roles.index',
                 MenuItem::ATTRIBUTE_PERMISSIONS => [
                     Permissions::ROLES_VIEW,
@@ -219,7 +267,10 @@ abstract class Menus
                 MenuItem::FIELD_SLUG => self::PAGE_BACKEND_TEMPLATES,
                 MenuItem::FIELD_TYPE => self::TYPE_PAGE,
                 MenuItem::FIELD_ICON => 'template',
-                MenuItem::FIELD_LABEL => 'common.templates',
+                MenuItem::FIELD_LABEL => [
+                    MenuItem::PROPERTY_VALUE => 'common.templates',
+                    MenuItem::PROPERTY_PLURAL => true,
+                ],
                 MenuItem::FIELD_URL => 'admin.templates.index',
                 MenuItem::ATTRIBUTE_PERMISSIONS => [
                     Permissions::TEMPLATES_VIEW,
@@ -229,7 +280,10 @@ abstract class Menus
                 MenuItem::FIELD_SLUG => self::PAGE_BACKEND_USERS,
                 MenuItem::FIELD_TYPE => self::TYPE_PAGE,
                 MenuItem::FIELD_ICON => 'users',
-                MenuItem::FIELD_LABEL => 'common.users',
+                MenuItem::FIELD_LABEL => [
+                    MenuItem::PROPERTY_VALUE => 'common.users',
+                    MenuItem::PROPERTY_PLURAL => true,
+                ],
                 MenuItem::FIELD_URL => 'admin.users.index',
                 MenuItem::ATTRIBUTE_PERMISSIONS => [
                     Permissions::USERS_VIEW,
@@ -238,7 +292,10 @@ abstract class Menus
             [
                 MenuItem::FIELD_SLUG => self::PAGE_FRONTEND_FAQS,
                 MenuItem::FIELD_TYPE => self::TYPE_PAGE,
-                MenuItem::FIELD_LABEL => 'common.faqs',
+                MenuItem::FIELD_LABEL => [
+                    MenuItem::PROPERTY_VALUE => 'common.faqs',
+                    MenuItem::PROPERTY_PLURAL => true,
+                ],
                 MenuItem::FIELD_URL => 'faq',
                 MenuItem::ATTRIBUTE_PERMISSIONS => [
 
@@ -248,7 +305,10 @@ abstract class Menus
                 MenuItem::FIELD_SLUG => self::PAGE_FRONTEND_HOME,
                 MenuItem::FIELD_TYPE => self::TYPE_PAGE,
                 MenuItem::FIELD_ICON => 'home',
-                MenuItem::FIELD_LABEL => 'common.home',
+                MenuItem::FIELD_LABEL => [
+                    MenuItem::PROPERTY_VALUE => 'common.home',
+                    MenuItem::PROPERTY_PLURAL => false,
+                ],
                 MenuItem::FIELD_URL => 'home',
                 MenuItem::ATTRIBUTE_PERMISSIONS => [
 

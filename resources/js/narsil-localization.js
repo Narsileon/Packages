@@ -34,7 +34,7 @@ const transChoice = (key, count, replacements = null) => {
 function localize(key) {
     let table = usePage().props.shared.localization.dictionary;
 
-    if (key.slice(0, -1).includes('.')) {
+    if (typeof key === 'string' && key.slice(0, -1).includes('.')) {
         return localizeNestedKey(table, key);
     } else {
         return localizePrimaryKey(table, key);
@@ -65,7 +65,7 @@ function localizeNestedKey(table, key) {
 }
 
 function pluralize(text, count) {
-    if (text.includes('|')) {
+    if (typeof text === 'string' && text.includes('|')) {
         let values = text.split('|');
 
         if (count > 1 ) {

@@ -47,7 +47,7 @@ class MenuItemTable
             Tables::FIELD_HEADER => 'common.icons',
         ],
         [
-            Tables::FIELD_ACCESSOR_KEY => MenuItem::FIELD_LABEL,
+            Tables::FIELD_ACCESSOR_KEY => MenuItem::FIELD_LABEL . '.' . MenuItem::PROPERTY_VALUE,
             Tables::FIELD_ID => MenuItem::FIELD_LABEL,
             Tables::FIELD_TYPE => Types::TEXT,
             Tables::FIELD_HEADER => 'common.designations',

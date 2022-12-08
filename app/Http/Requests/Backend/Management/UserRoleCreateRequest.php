@@ -5,6 +5,7 @@ namespace App\Http\Requests\Backend\Management;
 #region USE
 
 use App\Acl\Permissions;
+use App\Constants\Tables;
 use App\Constants\ValidationRules;
 use App\Models\UserRole;
 use Illuminate\Foundation\Http\FormRequest;
@@ -28,7 +29,7 @@ class UserRoleCreateRequest extends FormRequest
                 ValidationRules::TYPE_STRING,
                 ValidationRules::min(3),
                 ValidationRules::max(255),
-                ValidationRules::unique('roles', UserRole::FIELD_NAME),
+                ValidationRules::unique(Tables::TABLE_ROLES, UserRole::FIELD_NAME),
             ],
             UserRole::ATTRIBUTE_PERMISSIONS => [
                 ValidationRules::OPTIONAL,

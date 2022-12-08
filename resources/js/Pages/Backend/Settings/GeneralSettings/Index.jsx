@@ -22,7 +22,7 @@ export default function Index({ generalSettings }) {
         <>
 			<AppHead title={ title } />
 
-            <Form submit={ () => patch(route('admin.general_settings.update'), generalSettings.id) }>
+            <Form submit={ () => patch(route('admin.general_settings.update', generalSettings.id)) }>
                 <FormHeader>
                     <div className="flex justify-center">
                         <h1>

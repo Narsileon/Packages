@@ -32,6 +32,7 @@ export default function Edit({
 	}
 
     const { data, setData, patch, processing, errors } = useForm({
+		active: menuItem.data.active,
 		slug: menuItem.data.slug,
 		type: menuItem.data.type,
 		icon: menuItem.data.icon,
@@ -48,7 +49,7 @@ export default function Edit({
 			<Formular
 				title= { title }
 				label= { trans('common.update') }
-				submit= { () => patch(route('admin.menu_items.update'), menuItem.data.id) }
+				submit= { () => patch(route('admin.menu_items.update', menuItem.data.id)) }
 				data={ data }
 				setData={ setData }
 				processing={ processing }

@@ -31,6 +31,7 @@ export default function Create({
 	}
 
 	const { data, setData, post, processing, errors } = useForm({
+		active: '',
         slug: '',
 		type: '',
 		icon: '',
