@@ -29,6 +29,10 @@ class MenuItemUpdateRequest extends FormRequest
                 ValidationRules::TYPE_STRING,
                 ValidationRules::unique(Tables::TABLE_MENU_ITEMS, MenuItem::FIELD_SLUG, $this->menu_item->{ MenuItem::FIELD_ID }),
             ],
+            MenuItem::FIELD_ACTIVE => [
+                ValidationRules::REQUIRED,
+                ValidationRules::TYPE_BOOLEAN,
+            ],
             MenuItem::FIELD_TYPE => [
                 ValidationRules::REQUIRED,
                 ValidationRules::TYPE_STRING,
