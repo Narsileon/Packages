@@ -35,12 +35,12 @@ class LocalizationService
 
         $locale = self::getLocale();
         $locales = Language::where(Language::FIELD_ACTIVE, 1)->pluck(Language::FIELD_CODE)->toArray();
-        $dictionary = self::getDefaultLocalization();
+        $localization = self::getLocalization();
 
         return compact(
             'locale',
             'locales',
-            'dictionary',
+            'localization',
         );
     }
 
@@ -68,7 +68,9 @@ class LocalizationService
         $phpLocalization = self::getPhpLocalization($locale);
         $jsonLocalization = self::getJsonLocalization($locale);
 
-        return array_merge($phpLocalization, $jsonLocalization);
+        $localization = array_merge($phpLocalization, $jsonLocalization);
+
+        return self::formatLocalization($localization);
     }
 
     public static function getCustomLocalization()
@@ -84,6 +86,25 @@ class LocalizationService
     #endregion
 
     #region PRIVATE METHODS
+
+    private static function getLocalization() : array
+    {
+        $defaultLocalization = self::getDefaultLocalization();
+        $customLocalization = self::getCustomLocalization()->localization;
+
+        foreach($customLocalization as $customIndex=>$customObject)
+        {
+            foreach($defaultLocalization as $defaultIndex=>$defaultObject)
+            {
+                if ($defaultObject['path'] == $customObject['path'] && $defaultObject['key'] == $customObject['key'])
+                {
+                    $defaultLocalization[$defaultIndex] = $customObject;
+                }
+            }
+        }
+
+        return $defaultLocalization;
+    }
 
     private static function getPhpLocalization($locale) : array
     {
@@ -152,6 +173,27 @@ class LocalizationService
 
             return json_decode($file, true);
         });
+    }
+
+    private static function formatLocalization($localization, $collection = [], $path = null)
+    {
+        foreach($localization as $key=>$value) {
+            if (is_array($value))
+            {
+                $collection = self::formatLocalization($value, $collection, $path == null ? $key : $path . '.' . $key);
+            }
+
+            else
+            {
+                array_push($collection, [
+                    'path' => $path,
+                    'key' => $key,
+                    'value' => $value,
+                ]);
+            }
+        }
+
+        return $collection;
     }
 
     #endregion

@@ -10,17 +10,13 @@ use Illuminate\Foundation\Http\FormRequest;
 
 #endregion
 
-class UserLocalizationUpdateRequest extends FormRequest
+class LocalizationUpdateRequest extends FormRequest
 {
     #region PUBLIC METHODS
 
     public function rules() : array
     {
         return [
-            Localization::FIELD_CODE => [
-                ValidationRules::REQUIRED,
-                ValidationRules::TYPE_STRING,
-            ],
             Localization::FIELD_LOCALIZATION => [
                 ValidationRules::REQUIRED,
                 ValidationRules::TYPE_ARRAY,

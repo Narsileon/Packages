@@ -3,6 +3,14 @@ import { upperFirst } from "lodash";
 
 export { trans, transChoice };
 
+//#region CONSTANTS
+
+const KEY_SEPARATOR = '.';
+const PLURAL_SEPERATOR = '|';
+const TYPE_STRING = 'string';
+
+//#endregion
+
 //#region PUBLIC METHODS
 
 const trans = (key, replacements = null) => {
@@ -32,41 +40,38 @@ const transChoice = (key, count, replacements = null) => {
 //#region PRIVATE METHODS
 
 function localize(key) {
-    let table = usePage().props.shared.localization.dictionary;
+    let table = usePage().props.shared.localization.localization;
 
-    if (typeof key === 'string' && key.slice(0, -1).includes('.')) {
+    if (typeof key === TYPE_STRING && key.slice(0, -1).includes(KEY_SEPARATOR)) {
         return localizeNestedKey(table, key);
     } else {
         return localizePrimaryKey(table, key);
     }
 }
 
-function localizePrimaryKey(table, key) {
-    let value = table[key] || key;
+function localizePrimaryKey(table, primaryKey) {
+    let path = null;
+    let key = primaryKey;
 
-    return value;
+    let object = table.find(x => x.path === path && x.key === key)
+
+    return object ? object.value : key;
 }
 
-function localizeNestedKey(table, key) {
-    let value = table;
+function localizeNestedKey(table, nestedKey) {
+    let index = nestedKey.lastIndexOf('.');
 
-    let keys = key.split('.');
-    let failed = false;
+    let path = nestedKey.substr(0, index);
+    let key = nestedKey.substr(index + 1, nestedKey.length - 1)
 
-    keys.forEach((subKey) => {
-        if (value[subKey] != undefined) {
-            value = value[subKey]
-        } else {
-            failed = true;
-        }
-    });
+    let object = table.find(x => x.path === path && x.key === key)
 
-    return failed ? keys.pop() : value;
+    return object ? object.value : key;
 }
 
 function pluralize(text, count) {
-    if (typeof text === 'string' && text.includes('|')) {
-        let values = text.split('|');
+    if (typeof text === TYPE_STRING && text.includes(PLURAL_SEPERATOR)) {
+        let values = text.split(PLURAL_SEPERATOR);
 
         if (count > 1 ) {
             return values[1];

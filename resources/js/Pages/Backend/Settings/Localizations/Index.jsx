@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { useClickAway, useToggle } from "react-use";
 import { Inertia } from "@inertiajs/inertia";
 import { trans, transChoice } from "@/narsil-localization";
@@ -9,16 +9,14 @@ import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 import FrontendPagination from "@/Components/Pagination/FrontendPagination";
 import AppHead from "@/Shared/AppHead";
 
-export default function Index({ collection, customLocalization, tableSettings }) {
-	const [localization, setLocalization] = useState(customLocalization.localization)
-
+export default function Index({ defaultLocalization, customLocalization, tableSettings }) {
 	const columns = tableSettings.columns.map((column) => {
 		if (column.id === 'value') {
 			return {
 				...column,
 				cell: props => (
 					<CustomValue
-						value={ props.getValue() == '' ? trans(getFullPath(props.row)) : props.getValue() }
+						value={ getValue(props) }
 						handleChange={ (event) => handleChange(event, props.row) }
 					/>
 				)
@@ -28,28 +26,41 @@ export default function Index({ collection, customLocalization, tableSettings })
 		return column;
  	});
 
-	function getFullPath(row) {
-		return row.original.path == '' ? row.original.key : `${ row.original.path }.${ row.original.key }`
+	function getValue(props) {
+		let object = customLocalization.localization.find(x => x.path === props.row.original.path && x.key === props.row.original.key);
+
+		return object ? object.value : props.getValue();
 	}
 
-	const [table] = useTable(collection, columns, tableSettings, false);
+	const [table] = useTable(defaultLocalization, columns, tableSettings, false);
 
 	const handleChange = (event, row) => {
-		let data = [...table.options.data];
-
-		data.find((object, index) => {
+		const data = table.options.data.map((object) => {
 			if (object.path === row.original.path && object.key === row.original.key) {
-				object.value = event.target.value;
-				data[index] = object;
-				return true;
+				let newObject = { ...object, value: event.target.value };
+
+				let customObject = customLocalization.localization.find(x => x.path === row.original.path && x.key === row.original.key)
+
+				if (customObject) {
+					customLocalization.localization.find(x => x.path === row.original.path && x.key === row.original.key).value = event.target.value;
+				} else {
+					customLocalization.localization = [...customLocalization.localization, newObject]
+				}
+
+				return newObject;
 			}
-		});
+
+			return object;
+		})
 
 		table.options.meta.setData(data);
+
 	}
 
 	function update() {
-		Inertia.patch(route('admin.localizations.update', customLocalization.id), table.options.data);
+		Inertia.patch(route('admin.localizations.update', customLocalization.id), customLocalization, {
+			preserveState: false
+		});
 	};
 
 	return (
@@ -79,12 +90,12 @@ const CustomValue = ({ value, handleChange }) => {
 
 	const field = useRef();
 
-	useClickAway(field, () => setShow(false), ['mousedown', 'submit'])
+	useClickAway(field, () => setShow(false), ['mousedown', 'submit']);
 
 	return (
 		<div
 			className="h-full w-full"
-			onClick={ setShow }
+			onClick={ () => setShow(true) }
 			ref={ field }
 		>
 			{

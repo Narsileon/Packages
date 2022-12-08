@@ -95,9 +95,7 @@ export const useTable = (
 	const previousCurrent = usePrevious(current);
 
 	useEffect(() => {
-		if (tableData.length > 0) {
-			setData(tableData);
-		}
+		setData([...tableData]);
 	}, [tableData]);
 
 	useEffect(() => {
