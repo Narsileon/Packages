@@ -19,7 +19,7 @@ class MenuService
     {
         $menu = Menu::where(Menu::FIELD_TYPE, '=', $type)->where(Menu::FIELD_ACTIVE, '=', true)->first();
 
-        return $menu ? self::getMenuItems($menu->{ Menu::FIELD_TEMPLATE }) : Menus::getDefaultMenu($type);
+        return self::getMenuItems($menu ? $menu->{ Menu::FIELD_TEMPLATE } : Menus::getDefaultMenu($type));
     }
 
     public static function createMenuItem($template)

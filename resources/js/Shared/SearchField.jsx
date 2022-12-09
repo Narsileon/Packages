@@ -25,8 +25,8 @@ export default function SearchField({ filters }) {
 
     function handleChange(e) {
         setValues(values => ({
-          ...values,
-          ['search']: e.target.value
+            ...values,
+            ['search']: e.target.value
         }));
     }
 
@@ -37,13 +37,13 @@ export default function SearchField({ filters }) {
             </div>
 
             <input
-                    value={ values['search'] ? values['search'] : "" }
-                    type="text"
-                    placeholder={ `${ upperFirst(trans('common.search')) }...` }
-                    autoComplete="off"
-                    onChange={ handleChange }
-                    className="bg-transparent focus:outline-none p-2 w-full"
-                />
+                value={ values['search'] ? values['search'] : "" }
+                type="text"
+                placeholder={ `${ upperFirst(trans('common.search')) }...` }
+                autoComplete="off"
+                onChange={ handleChange }
+                className="bg-transparent focus:outline-none p-2 w-full"
+            />
         </div>
 	);
 }

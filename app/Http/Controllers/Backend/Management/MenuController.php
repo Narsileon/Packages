@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Backend\Settings;
+namespace App\Http\Controllers\Backend\Management;
 
 #region USE
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Backend\Settings\MenuCreateRequest;
-use App\Http\Requests\Backend\Settings\MenuUpdateRequest;
+use App\Http\Requests\Backend\Management\MenuCreateRequest;
+use App\Http\Requests\Backend\Management\MenuUpdateRequest;
 use App\Http\Resources\Backend\Settings\MenuItemResource;
 use App\Models\Menu;
 use App\Models\MenuItem;
@@ -31,7 +31,7 @@ class MenuController extends Controller
 
         $menuItems = MenuItemResource::collection(MenuItem::all());
 
-        return Inertia::render('Backend/Settings/Menus/Index', compact(
+        return Inertia::render('Backend/Management/Menus/Index', compact(
             'menus',
             'menuItems',
         ));

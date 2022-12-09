@@ -1,5 +1,5 @@
 import { useRef, useEffect } from "react";
-import { useClickAway, useFullscreen, useToggle } from "react-use";
+import { useFullscreen, useToggle } from "react-use";
 
 // Horizontal Scroll
 export function useHorizontalScroll(

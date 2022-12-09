@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend\Backoffice;
+namespace App\Http\Controllers\Backend;
 
 #region USE
 
@@ -15,7 +15,7 @@ class CalendarController extends Controller
 
     public function __invoke()
     {
-        return Inertia::render('Backend/Backoffice/Calendar/Index');
+        return Inertia::render('Backend/Calendar/Index');
     }
 
     #endregion

@@ -1,12 +1,8 @@
 import { useToggle } from "react-use";
-import { Dropdown } from "@/Components/Elements/Dropdowns";
-import { MenuLink } from "@/Components/Elements/Menus";
 import CloseButton from "@/Components/Elements/Buttons/CloseButton";
 import Flash from "@/Shared/Flash";
-import LocaleDropdown from "@/Shared/Layouts/LocaleDropdown";
-import ThemeButton from "@/Shared/Layouts/ThemeButton";
 import WebsiteLogo from "@/Shared/Layouts/WebsiteLogo";
-import Icon from "@/Shared/Svg/Icon";
+import Header from "./Header";
 import Nav from "./Nav";
 
 export default function Layout({ children }) {
@@ -50,49 +46,4 @@ export default function Layout({ children }) {
             </section>
         </main>
     );
-}
-
-const Header = () => {
-    return (
-        <header className="w-full h-10 primary-background">
-            <div className="flex items-center justify-end mx-2">
-                <LocaleDropdown />
-
-                <ThemeButton />
-
-                <Dropdown
-                    trigger={ <Icon name="menu" /> }
-                    placement="bottom-end"
-                    placementOffset={ 4 }
-                >
-                    <ul className="divide-y divide-color p-1">
-                        <MenuLink
-                            menuItem={{
-                                type: 'page',
-                                icon: 'user',
-                                label: {
-                                    value: 'common.profiles',
-                                    plural: false,
-                                },
-                                url: 'admin.profile.index',
-                            }}
-                        />
-                        <MenuLink
-                            menuItem={{
-                                type: 'page',
-                                icon: 'logout',
-                                label: {
-                                    value: 'common.logout',
-                                    plural: false,
-                                },
-                                url: 'logout',
-                            }}
-                            method="post"
-                            as="button"
-                        />
-                    </ul>
-                </Dropdown>
-            </div>
-        </header>
-    )
 }

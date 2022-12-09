@@ -45,7 +45,7 @@ abstract class Menus
 
     #region PUBLIC METHODS
 
-    public static function getDefaultCategories()
+    public static function getDefaultCategories() : array
     {
         return [
             [
@@ -111,7 +111,7 @@ abstract class Menus
         ];
     }
 
-    public static function getDefaultExternalLinks()
+    public static function getDefaultExternalLinks() : array
     {
         return [
             [
@@ -130,7 +130,7 @@ abstract class Menus
         ];
     }
 
-    public static function getDefaultPages()
+    public static function getDefaultPages() : array
     {
         return [
             [
@@ -317,7 +317,7 @@ abstract class Menus
         ];
     }
 
-    public static function getDefaultMenu($name)
+    public static function getDefaultMenu($name) : array
     {
         switch ($name) {
             case self::BACKEND_MENU:

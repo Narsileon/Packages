@@ -17,6 +17,10 @@ class LocalizationUpdateRequest extends FormRequest
     public function rules() : array
     {
         return [
+            Localization::FIELD_CODE => [
+                ValidationRules::REQUIRED,
+                ValidationRules::TYPE_STRING,
+            ],
             Localization::FIELD_LOCALIZATION => [
                 ValidationRules::REQUIRED,
                 ValidationRules::TYPE_ARRAY,

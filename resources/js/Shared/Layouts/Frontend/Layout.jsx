@@ -5,17 +5,24 @@ import Footer from "./Footer";
 export default function Layout({ children }) {
     return (
         <main className="flex flex-col min-h-screen w-full min-w-fit">
-            <Header />
+            <section id="header">
+                <Header />
+            </section>
 
-            <section className="flex-grow w-11/12 md:w-10/12 lg:w-9/12 mx-auto my-4">
+            <section
+                id="content"
+                className="flex-grow w-11/12 md:w-10/12 lg:w-9/12 mx-auto my-4"
+            >
                 { children }
             </section>
 
-            <div className="fixed bottom-4 right-4 rounded">
+            <section id="flash_message">
                 <Flash />
-            </div>
+            </section>
 
-            <Footer />
+            <section id="footer">
+                <Footer />
+            </section>
         </main>
     );
 }

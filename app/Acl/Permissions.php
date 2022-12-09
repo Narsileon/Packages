@@ -61,7 +61,7 @@ abstract class Permissions
 
     #region PUBLIC METHODS
 
-    public static function getAll()
+    public static function getAll() : UserPermissionCollection
     {
         return new UserPermissionCollection(UserPermission::All());
     }

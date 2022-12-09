@@ -24,7 +24,7 @@ abstract class Roles
 
     #region PUBLIC METHODS
 
-    public static function getAll()
+    public static function getAll() : UserRoleCollection
     {
         return new UserRoleCollection(UserRole::All());
     }

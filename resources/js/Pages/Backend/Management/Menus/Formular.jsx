@@ -2,7 +2,7 @@ import { trans, transChoice } from "@/narsil-localization";
 import { upperFirst } from "lodash";
 import { Form, FormCheckbox, FormInput, FormSelect } from "@/Components/Forms";
 import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
-import SortableTree from "./SortableTree";
+import SortableTree from "@/Components/Trees/SortableTree";
 
 export default function Formular({
     label,

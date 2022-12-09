@@ -2,9 +2,9 @@ import {forwardRef} from 'react';
 import classNames from 'classnames';
 
 import styles from './TreeItem.module.css';
-import { Action } from '../Action';
-import { Remove } from '../Remove';
-import { Handle } from '../Handle';
+import { Action } from './Action';
+import { Remove } from './Remove';
+import { Handle } from './Handle';
 
 export const TreeItem = forwardRef(({
 	childCount,

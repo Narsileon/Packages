@@ -4,7 +4,7 @@ import { DndContext, closestCenter, DragOverlay, MeasuringStrategy, defaultDropA
 import { SortableContext, arrayMove, verticalListSortingStrategy } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { buildTree, flattenTree, getProjection, getChildCount, removeItem, removeChildrenOf, setProperty } from './utilities';
-import { SortableTreeItem } from './components/TreeItem/SortableTreeItem';
+import { SortableTreeItem } from './SortableTreeItem';
 import { transChoice } from '@/narsil-localization';
 import { upperFirst } from 'lodash';
 

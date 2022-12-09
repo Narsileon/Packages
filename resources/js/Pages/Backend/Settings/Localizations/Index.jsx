@@ -2,21 +2,21 @@ import { useRef } from "react";
 import { useClickAway, useToggle } from "react-use";
 import { Inertia } from "@inertiajs/inertia";
 import { trans, transChoice } from "@/narsil-localization";
-import { useTable } from "@/narsil-table";
+import { useTable } from "@/Components/Tables/pia-table";
 import { upperFirst } from "lodash";
 import { Table, TableContainer } from "@/Components/Tables";
 import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 import FrontendPagination from "@/Components/Pagination/FrontendPagination";
 import AppHead from "@/Shared/AppHead";
 
-export default function Index({ defaultLocalization, customLocalization, tableSettings }) {
+export default function Index({ collection, tableSettings }) {
 	const columns = tableSettings.columns.map((column) => {
 		if (column.id === 'value') {
 			return {
 				...column,
 				cell: props => (
 					<CustomValue
-						value={ getValue(props) }
+						value={ props.getValue() }
 						handleChange={ (event) => handleChange(event, props.row) }
 					/>
 				)
@@ -26,40 +26,26 @@ export default function Index({ defaultLocalization, customLocalization, tableSe
 		return column;
  	});
 
-	function getValue(props) {
-		let object = customLocalization.localization.find(x => x.path === props.row.original.path && x.key === props.row.original.key);
-
-		return object ? object.value : props.getValue();
-	}
-
-	const [table] = useTable(defaultLocalization, columns, tableSettings, false);
+	const [table] = useTable(collection.localization, columns, tableSettings, false);
 
 	const handleChange = (event, row) => {
 		const data = table.options.data.map((object) => {
 			if (object.path === row.original.path && object.key === row.original.key) {
-				let newObject = { ...object, value: event.target.value };
-
-				let customObject = customLocalization.localization.find(x => x.path === row.original.path && x.key === row.original.key)
-
-				if (customObject) {
-					customLocalization.localization.find(x => x.path === row.original.path && x.key === row.original.key).value = event.target.value;
-				} else {
-					customLocalization.localization = [...customLocalization.localization, newObject]
-				}
-
-				return newObject;
+				return { ...object, value: event.target.value };
 			}
 
 			return object;
 		})
 
 		table.options.meta.setData(data);
-
 	}
 
 	function update() {
-		Inertia.patch(route('admin.localizations.update', customLocalization.id), customLocalization, {
-			preserveState: false
+		Inertia.patch(route('admin.localizations.update', collection.id), {
+			code: collection.code,
+			localization: table.options.data,
+		}, {
+			preserveState: false,
 		});
 	};
 

@@ -1,6 +1,6 @@
 import { Link } from "@inertiajs/inertia-react";
 import { trans, transChoice } from "@/narsil-localization";
-import { useTable } from "@/narsil-table";
+import { useTable } from "@/Components/Tables/pia-table";
 import { Table, TableContainer, TableMenu } from "@/Components/Tables";
 import BackendPagination from "@/Components/Pagination/BackendPagination";
 import AppHead from "@/Shared/AppHead";

@@ -5,9 +5,10 @@
 use App\Acl\Permissions;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\ProfileController;
-use App\Http\Controllers\Backend\Backoffice\CalendarController;
+use App\Http\Controllers\Backend\CalendarController;
 use App\Http\Controllers\Backend\Backoffice\OrderController;
 use App\Http\Controllers\Backend\Frontoffice\FaqController;
+use App\Http\Controllers\Backend\Management\MenuController;
 use App\Http\Controllers\Backend\Management\MenuItemController;
 use App\Http\Controllers\Backend\Management\RoleController;
 use App\Http\Controllers\Backend\Management\UserController;
@@ -15,7 +16,6 @@ use App\Http\Controllers\Backend\Settings\GeneralSettingController;
 use App\Http\Controllers\Backend\Settings\LanguageController;
 use App\Http\Controllers\Backend\Settings\LocalizationController;
 use App\Http\Controllers\Backend\Settings\TemplateController;
-use App\Http\Controllers\Backend\Settings\MenuController;
 use App\Http\Controllers\Backend\Settings\UserTemplateController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +27,7 @@ Route::group([
     'middleware' => 'can:' . Permissions::BACKEND_VIEW,
 ], function () {
     Route::get('dashboard', DashboardController::class)->name('dashboard');
+    Route::get('calendar', CalendarController::class)->name('calendar');
 
     Route::controller(ProfileController::class)->group(function () {
         Route::get('profiles', 'index')->name('profile.index');
@@ -34,12 +35,17 @@ Route::group([
     });
 
     // Management
+    Route::controller(MenuController::class)->group(function () {
+        Route::get('menus', 'index')->name('menus.index');
+        Route::post('menus', 'store')->name('menus.store');
+        Route::patch('menus/{menu}', 'update')->name('menus.update');
+        Route::patch('menus/{menu}/duplicate', 'duplicate')->name('menus.duplicate');
+    });
     Route::resource('menuItems', MenuItemController::class);
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
 
     // Back office
-    Route::get('calendar', CalendarController::class)->name('calendar');
     Route::resource('orders', OrderController::class);
 
     // Front office
@@ -57,12 +63,6 @@ Route::group([
     Route::controller(LocalizationController::class)->group(function () {
         Route::get('localizations', 'index')->name('localizations.index');
         Route::patch('localizations/{localization}', 'update')->name('localizations.update');
-    });
-    Route::controller(MenuController::class)->group(function () {
-        Route::get('menus', 'index')->name('menus.index');
-        Route::post('menus', 'store')->name('menus.store');
-        Route::patch('menus/{menu}', 'update')->name('menus.update');
-        Route::patch('menus/{menu}/duplicate', 'duplicate')->name('menus.duplicate');
     });
     Route::controller(TemplateController::class)->group(function () {
         Route::get('templates', 'index')->name('templates.index');

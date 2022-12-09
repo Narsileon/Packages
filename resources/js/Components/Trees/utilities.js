@@ -1,4 +1,4 @@
-import {arrayMove} from '@dnd-kit/sortable';
+import { arrayMove } from '@dnd-kit/sortable';
 
 function getDragDepth(offset, indentationWidth) {
   	return Math.round(offset / indentationWidth);

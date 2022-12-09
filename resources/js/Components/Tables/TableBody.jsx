@@ -1,4 +1,3 @@
-import { useFloating } from "@floating-ui/react-dom";
 import { flexRender } from "@tanstack/react-table";
 
 export default function TableBody({ table }) {

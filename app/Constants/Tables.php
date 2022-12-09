@@ -25,6 +25,9 @@ abstract class Tables
     public const FIELD_TYPE = 'type';
     public const FIELD_VALUE = 'value';
 
+    public const ORDER_ASC = 'asc';
+    public const ORDER_DESC = 'desc';
+
     public const PROPERTY_NAME = 'name';
     public const PROPERTY_COLUMN_FILTERS = 'columnFilters';
     public const PROPERTY_COLUMN_ORDER = 'columnOrder';
@@ -33,9 +36,6 @@ abstract class Tables
     public const PROPERTY_COLUMNS = 'columns';
     public const PROPERTY_GLOBAL_FILTER = 'globalFilter';
     public const PROPERTY_SORTING = 'sorting';
-
-    public const ORDER_ASC = 'asc';
-    public const ORDER_DESC = 'desc';
 
     public const TABLE_FAQS = 'faqs';
     public const TABLE_FAILED_JOBS = 'failed_jobs';
@@ -52,16 +52,6 @@ abstract class Tables
     public const TABLE_USERS = 'users';
     public const TABLE_USER_SETTINGS = 'user_settings';
     public const TABLE_USER_TEMPLATES = 'user_templates';
-
-    public const TEMPLATES = [
-        self::TABLE_FAQS,
-        self::TABLE_LANGUAGES,
-        self::TABLE_LOCALIZATIONS,
-        self::TABLE_MENU_ITEMS,
-        self::TABLE_ORDERS,
-        self::TABLE_ROLES,
-        self::TABLE_USERS,
-    ];
 
     #endregion
 }

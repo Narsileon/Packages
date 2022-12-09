@@ -1,5 +1,5 @@
 import { trans } from "@/narsil-localization";
-import { days } from "@/Components/Calendars/narsil-calendar"
+import { days } from "@/Components/Calendars/pia-calendar"
 import CalendarCell from "@/Components/Calendars/CalendarCell";
 
 export default function CalendarDayTable({ date, activeMonth, setDate }) {

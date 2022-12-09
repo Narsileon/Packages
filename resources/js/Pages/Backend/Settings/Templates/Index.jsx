@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Inertia } from "@inertiajs/inertia";
 import { trans, transChoice } from "@/narsil-localization";
-import { useTable } from "@/narsil-table";
+import { useTable } from "@/Components/Tables/pia-table";
 import { upperFirst } from "lodash";
 import { Table, TableSettings } from "@/Components/Tables/Index";
 import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";

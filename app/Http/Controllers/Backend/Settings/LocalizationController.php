@@ -25,12 +25,12 @@ class LocalizationController extends Controller
 
         $locale = App::getLocale();
 
-        $defaultLocalization = LocalizationService::getDefaultLocalization();
-        $customLocalization = LocalizationService::getCustomLocalization();
+        $collection = LocalizationService::getCustomLocalization($locale);
+
+        $collection->{ Localization::FIELD_LOCALIZATION } = LocalizationService::getLocalization($locale);
 
         return Inertia::render('Backend/Settings/Localizations/Index', compact(
-            'defaultLocalization',
-            'customLocalization',
+            'collection',
             'tableSettings',
         ));
     }
@@ -39,7 +39,7 @@ class LocalizationController extends Controller
     {
         $attributes = $request->validated();
 
-        $localization->update($attributes);
+        $localization->update(LocalizationService::getLocalizationDifference($attributes));
 
         return redirect(route('admin.localizations.index'))
             ->with('success', 'translation_updated');

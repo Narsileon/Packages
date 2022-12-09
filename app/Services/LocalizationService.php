@@ -35,7 +35,7 @@ class LocalizationService
 
         $locale = self::getLocale();
         $locales = Language::where(Language::FIELD_ACTIVE, 1)->pluck(Language::FIELD_CODE)->toArray();
-        $localization = self::getLocalization();
+        $localization = self::getLocalization($locale);
 
         return compact(
             'locale',
@@ -44,7 +44,7 @@ class LocalizationService
         );
     }
 
-    public static function getLocale()
+    public static function getLocale() : string
     {
         if (Session::has('locale'))
         {
@@ -61,36 +61,10 @@ class LocalizationService
         return App::getLocale();
     }
 
-    public static function getDefaultLocalization()
+    public static function getLocalization($locale) : array
     {
-        $locale = App::getLocale();
-
-        $phpLocalization = self::getPhpLocalization($locale);
-        $jsonLocalization = self::getJsonLocalization($locale);
-
-        $localization = array_merge($phpLocalization, $jsonLocalization);
-
-        return self::formatLocalization($localization);
-    }
-
-    public static function getCustomLocalization()
-    {
-        $locale = App::getLocale();
-
-        return Localization::where(Localization::FIELD_CODE, '=', $locale)->first() ?? Localization::create([
-            Localization::FIELD_CODE => $locale,
-            Localization::FIELD_LOCALIZATION => [],
-        ]);
-    }
-
-    #endregion
-
-    #region PRIVATE METHODS
-
-    private static function getLocalization() : array
-    {
-        $defaultLocalization = self::getDefaultLocalization();
-        $customLocalization = self::getCustomLocalization()->localization;
+        $defaultLocalization = self::getDefaultLocalization($locale);
+        $customLocalization = self::getCustomLocalization($locale)->{ Localization::FIELD_LOCALIZATION };
 
         foreach($customLocalization as $customIndex=>$customObject)
         {
@@ -105,6 +79,52 @@ class LocalizationService
 
         return $defaultLocalization;
     }
+
+    public static function getDefaultLocalization($locale)
+    {
+        $phpLocalization = self::getPhpLocalization($locale);
+        $jsonLocalization = self::getJsonLocalization($locale);
+
+        $defaultLocalization = array_merge($phpLocalization, $jsonLocalization);
+
+        return self::formatLocalization($defaultLocalization);
+    }
+
+    public static function getCustomLocalization($locale) : Localization
+    {
+        return Localization::where(Localization::FIELD_CODE, '=', $locale)->first() ?? Localization::create([
+            Localization::FIELD_CODE => $locale,
+            Localization::FIELD_LOCALIZATION => [],
+        ]);
+    }
+
+    public static function getLocalizationDifference($localization)
+    {
+        $defaultLocalization = self::getDefaultLocalization($localization[Localization::FIELD_CODE]);
+        $customLocalization = [];
+
+        foreach($localization[Localization::FIELD_LOCALIZATION] as $object)
+        {
+            foreach($defaultLocalization as $defaultObject)
+            {
+                if ($defaultObject['path'] == $object['path'] && $defaultObject['key'] == $object['key'])
+                {
+                    if($object['value'] != $defaultObject['value'])
+                    {
+                        $customLocalization[] = $object;
+                    }
+                }
+            }
+        }
+
+        $localization[Localization::FIELD_LOCALIZATION] = $customLocalization;
+
+        return $localization;
+    }
+
+    #endregion
+
+    #region PRIVATE METHODS
 
     private static function getPhpLocalization($locale) : array
     {
@@ -175,7 +195,7 @@ class LocalizationService
         });
     }
 
-    private static function formatLocalization($localization, $collection = [], $path = null)
+    private static function formatLocalization($localization, $collection = [], $path = null) : array
     {
         foreach($localization as $key=>$value) {
             if (is_array($value))

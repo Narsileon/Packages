@@ -1,7 +1,7 @@
 import { useForm } from "@inertiajs/inertia-react";
 import { trans } from "@/narsil-localization";
 import Formular from "./Formular";
-import SortableItems from "./SortableItems";
+import SortableItems from "../../../../Components/Trees/SortableItems";
 
 export default function Edit({
     menu,

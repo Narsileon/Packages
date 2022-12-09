@@ -1,11 +1,11 @@
 import { useState } from "react";
+import { Inertia } from "@inertiajs/inertia";
 import { trans, transChoice } from "@/narsil-localization";
 import { upperFirst } from "lodash";
+import IconButton from "@/Components/Elements/Buttons/IconButton";
 import AppHead from "@/Shared/AppHead";
 import Create from "./Create";
 import Edit from "./Edit";
-import IconButton from "@/Components/Elements/Buttons/IconButton";
-import { Inertia } from "@inertiajs/inertia";
 
 export default function Index({ menus, menuItems }) {
     const [menu, setMenu] = useState(null);

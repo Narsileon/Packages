@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { trans, transChoice } from "@/narsil-localization";
-import { addDays, addMonths, months, useCalendar } from "@/Components/Calendars/narsil-calendar"
+import { addDays, addMonths, months, useCalendar } from "@/Components/Calendars/pia-calendar"
 import CalendarDayTable from "@/Components/Calendars/CalendarDayTable";
 import CalendarMonthTable from "@/Components/Calendars/CalendarMonthTable";
 import CalendarWeekTable from "@/Components/Calendars/CalendarWeekTable";
@@ -8,8 +8,7 @@ import Chevron from "@/Shared/Svg/Chevron";
 import Datepicker from "@/Components/Calendars/DatePicker/DatePicker";
 import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 
-export default function Calendar({ tasks }) {
-
+export default function Calendar() {
     const [ date, setDate, dates, activeWeek ] = useCalendar();
 
     const [ show, setShow ] = useState("month");
