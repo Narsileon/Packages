@@ -23,8 +23,8 @@ return new class extends Migration
 
     public function down()
     {
-        Schema::dropIfExists(Tables::TABLE_USERS);
         Schema::dropIfExists(Tables::TABLE_USER_SETTINGS);
+        Schema::dropIfExists(Tables::TABLE_USERS);
     }
 
     #endregion
