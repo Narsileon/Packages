@@ -4,8 +4,6 @@ import { MenuCategory, MenuLink } from "@/Components/Elements/Menus";
 export default function Nav() {
     const menuItems = usePage().props.shared.menus.backendMenu;
 
-    console.log(menuItems)
-
     return (
         <nav className="font-semibold">
             <ul>

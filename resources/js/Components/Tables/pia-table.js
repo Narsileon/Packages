@@ -95,7 +95,7 @@ export const useTable = (
 	const previousCurrent = usePrevious(current);
 
 	useEffect(() => {
-		setData([...tableData]);
+		setData(manual ? [...tableData] : [...table.options.data]);
 	}, [tableData]);
 
 	useEffect(() => {

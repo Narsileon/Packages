@@ -1,10 +1,10 @@
-import { useRef } from "react";
-import { useClickAway, useToggle } from "react-use";
+import { useEffect, useRef, useState } from "react";
+import { useClickAway, usePrevious, useToggle } from "react-use";
 import { Inertia } from "@inertiajs/inertia";
 import { trans, transChoice } from "@/narsil-localization";
-import { useTable } from "@/Components/Tables/pia-table";
 import { upperFirst } from "lodash";
 import { Table, TableContainer } from "@/Components/Tables";
+import { useTable } from "@/Components/Tables/pia-table";
 import PrimaryButton from "@/Components/Elements/Buttons/PrimaryButton";
 import FrontendPagination from "@/Components/Pagination/FrontendPagination";
 import AppHead from "@/Shared/AppHead";
@@ -17,7 +17,7 @@ export default function Index({ collection, tableSettings }) {
 				cell: props => (
 					<CustomValue
 						value={ props.getValue() }
-						handleChange={ (event) => handleChange(event, props.row) }
+						handleChange={ (value) => handleChange(value, props.row) }
 					/>
 				)
 			};
@@ -28,10 +28,10 @@ export default function Index({ collection, tableSettings }) {
 
 	const [table] = useTable(collection.localization, columns, tableSettings, false);
 
-	const handleChange = (event, row) => {
+	const handleChange = (value, row) => {
 		const data = table.options.data.map((object) => {
 			if (object.path === row.original.path && object.key === row.original.key) {
-				return { ...object, value: event.target.value };
+				return { ...object, value: value };
 			}
 
 			return object;
@@ -45,7 +45,7 @@ export default function Index({ collection, tableSettings }) {
 			code: collection.code,
 			localization: table.options.data,
 		}, {
-			preserveState: false,
+			preserveState: true,
 		});
 	};
 
@@ -72,11 +72,20 @@ export default function Index({ collection, tableSettings }) {
 }
 
 const CustomValue = ({ value, handleChange }) => {
+	const [customValue, setCustomValue] = useState(value);
 	const [show, setShow] = useToggle(false);
 
 	const field = useRef();
 
 	useClickAway(field, () => setShow(false), ['mousedown', 'submit']);
+
+	const previousShow = usePrevious(show);
+
+	useEffect(() => {
+		if (previousShow && show == false) {
+			handleChange(customValue);
+		}
+	}, [show]);
 
 	return (
 		<div
@@ -88,8 +97,8 @@ const CustomValue = ({ value, handleChange }) => {
 				show ? (
 					<textarea
 						className="field h-8 w-full p-0 m-0"
-						value={ value }
-						onChange={ (event) => handleChange(event) }
+						value={ customValue }
+						onChange={ (event) => setCustomValue(event.target.value) }
 						autoFocus
 					/>
 				) : (
